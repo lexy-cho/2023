@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi">
+		<title>FREEMOA</title>
+		<!-- <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico" /> -->
+		<link rel="stylesheet" type="text/css" href="../css/datepicker.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/freemoa.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/datepicker.min.js"></script>
+		<script type="text/javascript" src="../js/i18n/datepicker.kr.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header data-include="include/header.html"></header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Mobile GNB Menu -->
+			<div id="mobileGnb">
+				<section data-include="include/mobileGnb.html"></section>
+			</div>
+			<!-- //Mobile GNB Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<!--------------------------------------------------------------------------------------------------->
+			<!--------------------------------------------------------------------------------------------------->
+			<section>
+				<div class="subTit">
+					<h2>마이 페이지</h2>
+				</div>
+				<div class="content myPage">
+					<side>
+						<div class="mypageLeft">
+							<div class="proflieSum">
+								<span class="listClient">
+									<span class="thumRnImg">
+										<em><!-- <img src="../images/sample2.png" alt=""/> --></em>
+									</span>
+								</span>
+								<span>
+									<strong>Atomic Co.</strong>
+									<i class="member">Client</i>
+								</span>
+								<button class="moreSum">더보기</button>
+							</div>
+							<script>
+								$( document ).ready( function() {
+									$('.moreSum').on('click', function() {
+										$(this).toggleClass('on');
+										$('.historySum div').slideToggle( "slow" );
+									});
+								});
+							</script>
+							<div class="historySum">
+								<span class="btn">
+									<a>프로젝트 컨설팅 의뢰하기</a>
+									<a class="btnChange">파트너스로 전환하기</a>
+								</span>
+								<div>
+									<dl>
+										<dt>클라이언트 지역</dt>
+										<dd>서울> 강남구</dd>
+									</dl>
+									<dl>
+										<dt>등록 프로젝트</dt>
+										<dd>138건</dd>
+									</dl>
+									<dl>
+										<dt>계약 프로젝트</dt>
+										<dd>0건</dd>
+									</dl>
+									<dl>
+										<dt>완료 프로젝트</dt>
+										<dd>19건</dd>
+									</dl>
+									<dl>
+										<dt>누적 계약금</dt>
+										<dd>1,362만원</dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+					</side>
+					<article>
+						<!-- page layout -->
+						<div>
+						    <!-- tab -->
+				        <div class="tabNav">
+										<ul>
+												<li class="on"><button class="newTab" data-name="3">마이홈</button></li>
+												<li><button data-name="4">프로젝트 관리</button></li>
+												<li><button data-name="5">리뷰관리</button></li>
+												<li><button data-name="6">프로필관리</button></li>
+												<li><button data-name="7">문서관리</button></li>
+												<li><button data-name="8">설정</button></li>
+										</ul>
+				        </div>
+						    <!--// tab -->
+						    <div class="tabLayout">
+										<!-- 마이홈 -->
+						        <div class="tabData mypageMain tData3">
+											<!----->
+											<div class="topBack">
+												<div class="mmmSummery">
+													<div class="stepCase">
+														<a href="" class="register"><span><em>등록<strong>20</strong></em></span></a>
+														<a href="" class="consulting"><span><em>컨설팅<strong>57</strong></em></span></a>
+														<a href="" class="meeting"><span><em>미팅<strong>45</strong></em></span></a>
+														<a href="" class="contract"><span><em>계약<strong>20</strong></em></span></a>
+														<a href="" class="progress"><span><em>진행<strong>80</strong></em></span></a>
+														<a href="" class="complete"><span><em>완료<strong>20</strong></em></span></a>
+														<!-- <a href="" class="apply"><span><em>지원<strong>20</strong></em></span></a> -->
+														<!-- <a href="" class="developing"><span><em>진행<strong>80</strong></em></span></a> -->
+													</div>
+													<div class="accrueCase">
+														<span>
+															누적등록 프로젝트<strong>22건</strong>
+														</span>
+														<span>
+															프로젝트 취소율<strong>67 %</strong>
+														</span>
+														<span>
+															누적계약금<strong>1,000,000원</strong>
+														</span>
+													</div>
+												</div>
+												<!--
+												<div class="mypageSummery prtCase">
+													<div class="stepCase">
+														<a href="" class="apply"><span><em>지원<strong>20</strong></em></span></a>
+														<a href="" class="meeting"><span><em>미팅<strong>45</strong></em></span></a>
+														<a href="" class="contract"><span><em>계약<strong>20</strong></em></span></a>
+														<a href="" class="developing"><span><em>진행<strong>80</strong></em></span></a>
+														<a href="" class="complete"><span><em>완료<strong>20</strong></em></span></a>
+													</div>
+													<div class="accrueCase">
+														<span>
+															누적등록 프로젝트<strong>22건</strong>
+														</span>
+														<span>
+															프로젝트 취소율<strong>67 %</strong>
+														</span>
+														<span>
+															누적계약금<strong>1,000,000원</strong>
+														</span>
+													</div>
+												</div>
+												--->
+												<div class="mmmlikeSearch">
+													<div>
+														<h3>포트폴리오 검색</h3>
+														<p>유사 포트폴리오를 찾고 빠르게 매칭 지원해보세요.</p>
+														<input type="text" placeholder="포트폴리오 주제 검색" class="listSearch" />
+														<span class="skill">
+															<i>JAVA</i><i>JavaScript</i><i>C++</i>
+														</span>
+													</div>
+													<div>
+														<h3>프로젝트 검색</h3>
+														<p>유사 포트폴리오를 찾고 빠르게 매칭 지원해보세요.</p>
+														<input type="text" placeholder="포트폴리오 주제 검색" class="listSearch" />
+														<span class="skill">
+															<i>JAVA</i><i>JavaScript</i><i>C++</i>
+														</span>
+													</div>
+												</div>
+											</div>
+											<!----->
+											<div class="mmmBoard">
+												<div>
+													<h3>공지사항</h3>
+													<ul>
+														<li><a href="">연간 2,000여건의 기획/디자인/개발 분야의 프로젝트가 등 연간</a></li>
+														<li><a href="">프리모아 4월 공지사항</a></li>
+														<li><a href="">연간 2,000여건의 기획/디자인/개발 분야</a></li>
+													</ul>
+												</div>
+												<div>
+													<h3>프리모아 포스트</h3>
+													<ul>
+														<li><a href="">프리모아 4월 공지사항</a></li>
+														<li><a href="">연간 2,000여건의 기획/디자인/개발 분야의 프로젝트가 등 연간</a></li>
+													</ul>
+												</div>
+											</div>
+											<!----->
+											<div class="mmmlikePrj">
+												<h3>최근 등록 된 관심 카테고리 프로젝트</h3>
+												<div class="prjList">
+													<ul>
+														<!-- Loop -->
+														<li>
+															<span class="filterData">
+																<i class="type">도급</i>
+																<i class="sts">Matching</i>
+															</span>
+															<strong>투어 시 사용될 오디오 가이드 Hybrid App개발 ( 디자인제공 )</strong>
+															<em class="price">11,000 ~ 7,000 만원</em>
+															<span class="tag">
+																<i>#개발자</i><i>#프론트엔드</i><i>#서울</i>
+															</span>
+															<span class="more">
+																<a href="" class="likeThis">유사 프로젝트 등록하기</a>
+															</span>
+														</li>
+														<!-- end Loop -->
+														<li>
+															<span class="filterData">
+																<i class="type">도급</i>
+																<i class="sts">Matching</i>
+															</span>
+															<strong>투어 시 사용될 오디오 가이드 Hybrid App개발 ( 디자인제공 )</strong>
+															<em class="price">11,000 ~ 7,000 만원</em>
+															<span class="tag">
+																<i>#개발자</i><i>#프론트엔드</i><i>#서울</i>
+															</span>
+															<span class="more">
+																<a href="" class="likeThis">유사 프로젝트 등록하기</a>
+															</span>
+														</li>
+														<li>
+															<span class="filterData">
+																<i class="type">도급</i>
+																<i class="sts">Matching</i>
+															</span>
+															<strong>투어 시 사용될 오디오 가이드 Hybrid App개발 ( 디자인제공 )</strong>
+															<em class="price">11,000 ~ 7,000 만원</em>
+															<span class="tag">
+																<i>#개발자</i><i>#프론트엔드</i><i>#서울</i>
+															</span>
+															<span class="more">
+																<a href="" class="likeThis">유사 프로젝트 등록하기</a>
+															</span>
+														</li>
+														<li>
+															<span class="filterData">
+																<i class="type">도급</i>
+																<i class="sts">Matching</i>
+															</span>
+															<strong>투어 시 사용될 오디오 가이드 Hybrid App개발 ( 디자인제공 )</strong>
+															<em class="price">11,000 ~ 7,000 만원</em>
+															<span class="tag">
+																<i>#개발자</i><i>#프론트엔드</i><i>#서울</i>
+															</span>
+															<span class="more">
+																<a href="" class="likeThis">유사 프로젝트 등록하기</a>
+															</span>
+														</li>
+													</ul>
+													<div class="listMore"><button>더보기</button></div>
+												</div>
+											</div>
+											<!----->
+										</div>
+										<!-- end 마이홈 -->
+										<!-- 프로젝트 관리 -->
+						        <div class="tabData tData4" data-include="70201.html">프로젝트 관리</div>
+										<!-- end 프로젝트 관리 -->
+										<!-- 리뷰관리 -->
+						        <div class="tabData tData5" data-include="70301.html" style="display:block;">리뷰관리</div>
+										<!-- end 리뷰관리 -->
+										<!-- 프로필관리 -->
+						        <div class="tabData tData6" data-include="70401.html">프로필관리</div>
+										<!-- end 프로필관리 -->
+										<!-- 문서관리 -->
+						        <div class="tabData tData7" data-include="70501.html">문서관리</div>
+										<!-- end 문서관리 -->
+										<!-- 설정 -->
+						        <div class="tabData tData8" data-include="70601.html">설정</div>
+										<!-- end 설정 -->
+						    </div>
+						</div>
+						<!-- //page layout -->
+					</article>
+				</div>
+			</section>
+			<!--------------------------------------------------------------------------------------------------->
+			<!--------------------------------------------------------------------------------------------------->
+			</div>
+			<!-- //container -->
+			<!-- footer -->
+			<div id="footer">
+				<footer data-include="include/footer.html"></footer>
+			</div>
+			<!-- //footer -->
+		</div>
+		<!-- //Wrap -->
+	</body>
+</html>

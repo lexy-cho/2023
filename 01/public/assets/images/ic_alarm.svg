@@ -1,0 +1,20 @@
+<svg id="Component_19_1" data-name="Component 19 – 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="29.818" height="40" viewBox="0 0 29.818 40">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_75" data-name="Path 75" d="M2.647,9.868a6.518,6.518,0,0,0,12.7,0Z" transform="translate(-2.647 -9.868)" fill="#e24b97"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Path_76" data-name="Path 76" d="M14.864,0a2.13,2.13,0,0,0-1.44.558,2.021,2.021,0,0,0-.685,1.5V3.822l-1.342.42C6.259,5.841,3.92,11.526,3.92,16.129v7.794a4.315,4.315,0,0,1-1.353,3.1L.178,29.3A.548.548,0,0,0,0,29.712a.606.606,0,0,0,.616.586H29.2a.6.6,0,0,0,.613-.586.557.557,0,0,0-.174-.413h0l-2.386-2.271a4.3,4.3,0,0,1-1.356-3.1V16.129c0-4.6-2.339-10.281-7.473-11.887l-1.345-.42V2.158A2.152,2.152,0,0,0,15.056.008,1.86,1.86,0,0,0,14.864,0Z" transform="translate(0 -0.001)" fill="#e24b97"/>
+    </clipPath>
+  </defs>
+  <g id="Group_62" data-name="Group 62" transform="translate(8.559 34.953)">
+    <g id="Group_61" data-name="Group 61" clip-path="url(#clip-path)">
+      <rect id="Rectangle_96" data-name="Rectangle 96" width="12.7" height="5.047" transform="translate(0 -0.001)" fill="#e24b97"/>
+    </g>
+  </g>
+  <g id="Group_64" data-name="Group 64">
+    <g id="Group_63" data-name="Group 63" clip-path="url(#clip-path-2)">
+      <rect id="Rectangle_97" data-name="Rectangle 97" width="29.818" height="30.296" transform="translate(0 -0.001)" fill="#e24b97"/>
+    </g>
+  </g>
+</svg>
