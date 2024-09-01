@@ -1,0 +1,33 @@
+/* dropdown.css */
+.dropdown-menu {
+  overflow: hidden;
+  transition: max-height 300ms ease-in-out;
+}
+
+.dropdown-menu-enter {
+  max-height: 0;
+}
+
+.dropdown-menu-enter-active {
+  max-height: 500px; /* 적절한 최대 높이로 설정 */
+  transition: max-height 0.3s ease-in-out;
+}
+
+.dropdown-menu-enter-done {
+  max-height: 500px; /* 적절한 최대 높이로 설정 */
+}
+
+.dropdown-menu-exit {
+  max-height: 500px;
+}
+
+.dropdown-menu-exit-active {
+  max-height: 0;
+  transition: max-height 300ms ease-in-out;
+}
+
+.dropdown-menu-exit-done {
+  max-height: 0;
+}
+
+/* slide.css */

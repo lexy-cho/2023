@@ -1,0 +1,82 @@
+/* #lnb div {
+  transition: opacity 0.3s ease-in-out;
+}
+
+#containerWrap.lnbClose #lnb {
+  width: 36px;
+  background: #f7f8f9;
+  transition: width 0.3s ease-in-out;
+}
+
+#containerWrap.lnbClose #lnb div {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.slide-menu-enter {
+  animation: slide-in 0.3s forwards;
+}
+
+.slide-menu-exit {
+  animation: slide-out 0.3s forwards;
+}
+
+@keyframes slide-in {
+  from {
+    width: 36px;
+  }
+  to {
+    width: 300px;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    width: 300px;
+  }
+  to {
+    width: 36px;
+  }
+} */
+/* 
+#lnb div {
+  transition: opacity 0.3s ease-in-out;
+} */
+
+#containerWrap.lnbClose #lnb {
+  width: 36px;
+  transition: width 0.3s ease-in-out;
+}
+
+#containerWrap #lnb {
+  width: 300px;
+  transition: width 0.3s ease-in-out;
+}
+
+#containerWrap.lnbClose #lnb div {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.slide-menu-enter {
+  width: 36px;
+}
+
+.slide-menu-enter-active {
+  width: 300px;
+  transition: width 0.3s ease-in-out;
+}
+
+.slide-menu-exit {
+  width: 36px;
+}
+
+.slide-menu-exit-active {
+  width: 300px;
+  transition: width 0.3s ease-in-out;
+}
+
+.slide-menu-exit-done {
+  width: 300px;
+  transition: width 0.3s ease-in-out;
+}

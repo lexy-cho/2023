@@ -1,0 +1,1038 @@
+/* ---------------------- @File Name: main.css ---------------------- */
+.mainVisual {
+    position: relative;
+    width: 100%;
+    .txt {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+        font-weight: 500;
+        * {
+            color: #fff;
+        }
+        div {
+            display: flex;
+            @extend %maxWidth;
+            max-width: 1084px;
+            flex-direction: column;
+            text-align: left;
+            font-size: 15px;
+            font-weight: 500;
+            strong {
+                margin: 15px 0 26px;
+                font-size: 42px;
+                font-weight: 900;
+            }
+            a {
+                font-size: 13px;
+                font-weight: 700;
+                &::after {
+                    @include beforeItem(20px, 20px);
+                    background: url('../../src/assets/images/ic_arrow_rightW.svg') no-repeat center;
+                }
+            }
+        }
+    }
+    .img {
+        position: relative;
+        width: 100%;
+        height: 680px;
+        img {
+            height: 100%;
+            max-height: 100%;
+            width: 100%;
+            max-width: 100%;
+            object-fit: cover;
+        }
+    }
+}
+.infoAreaTit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 17px;
+    padding: 60px 0 40px;
+    em {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        height: 34px;
+        padding: 9px 20px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 20px;
+        background: $pointColor;
+    }
+    strong {
+        font-size: 30px;
+        color: #222222;
+        line-height: 1.4;
+        strong {
+            color: $pointColor;
+        }
+        span {
+            font-size: inherit;
+            font-weight: 500;
+        }
+        &.big {
+            font-size: 34px;
+            span {
+                font-size: inherit;
+            }
+        }
+    }
+    span.subT {
+        display: block;
+        padding-top: 10px;
+        color: #222222;
+        font-size: 18px;
+        strong {
+            font-size: inherit;
+            color: inherit;
+            line-height: inherit;
+        }
+    }
+}
+// 의뢰서
+.mainInquire {
+    padding: 0 0 65px 0;
+    width: 100%;
+    text-align: center;
+    .infoAreaTit {
+        padding: 45px 0 35px;
+    }
+    .go {
+        display: flex;
+        justify-content: space-between;
+        gap: 63px;
+        width: 833px;
+        padding: 20px;
+        margin: 0 auto;
+        div {
+            //width: 365px;
+            flex-grow: 1;
+            dl {
+                padding: 36px 33px;
+                text-align: left;
+                border-radius: 10px 10px 0 0;
+                background: #e8edff url("../../src/assets/images/img_main_request1.png") no-repeat 87% 70%;
+                dt {
+                    padding-bottom: 16px;
+                    font-size: 22px;
+                    font-weight: 700;
+                    color: $pointColor;
+                }
+                dd {
+                    font-size: 18px;
+                    color: $pointColor;
+                    line-height: 1.4;
+                    em {
+                        font-size: inherit;
+                        color: inherit;
+                        font-weight: 600;
+                    }
+                }
+            }
+            a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 4px;
+                height: 47px;
+                font-size: 13px;
+                font-weight: 700;
+                color: $pointColor;
+                border: 1px solid #E8EDFF;
+                border-top: 0;
+                border-radius: 0 0 10px 10px;
+                &::after {
+                    @include beforeItem(20px, 20px);
+                    background: url('../../src/assets/images/ic_arrow_rightB.svg') no-repeat center;
+                }
+            }
+            &:last-child {
+                dl {
+                    * {
+                        color: $whiteColor;
+                    }
+                    background: $pointColor url("../../src/assets/images/img_main_request2.png") no-repeat 87% 70%;
+                }
+            }
+        }
+        @media (max-width: 850px) { 
+            & {
+                width: 100%;
+            }
+        }
+        @include mq(mobile){
+            flex-direction: column;
+        }
+    }
+}
+// CAD 디자인
+.mainCad {
+    padding-bottom: 60px;
+    width: 100%;
+    .go {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 22px;
+        max-width: 855px;
+        margin: 0 auto;
+        padding: 35px 33px;
+        @extend %lineBox;
+        * {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 16px;
+            width: 180px;
+            height: 140px;
+            font-size: 15px;
+            color: #555555;
+            border: 0;
+            background: transparent;
+            &::before {
+                @include beforeItem(78px, 76px);
+            }
+            @for $i from 1 to 11 {
+                &:nth-child(#{$i}) {
+                    &::before {
+                        background: url('../../src/assets/images/ic_cadFile' +  $i + '.png') no-repeat center;
+                    }
+                }
+            }
+        }
+    }
+    &.serviceCase {
+        background: #FAFBFE;
+        padding: 0 20px 70px;
+    }
+}
+// 치과기공소
+.mainCenterMapBack {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 50px 40px;
+    background: #FAFBFE;
+    .mainCenterMap {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+        max-width: 908px;
+        overflow: hidden;
+        .infoAreaTit {
+            align-items: flex-start;
+            padding: 152px 0 0;
+            strong {
+                text-align: left;
+            }
+            .infoTxt {
+                margin-top: 31px;
+                font-size: 15px;
+                font-weight: 500;
+                color: #6378C5;
+                span {
+                    position: relative;
+                    display: inline-block;
+                    width: 223px;
+                    margin-left: 26px;
+                    vertical-align: middle;
+                    border-top: 1px solid #B8C0DC;
+                    &::after {
+                        position: absolute;
+                        right: 0;
+                        top: -9px;
+                        @include beforeItem(8px, 8px);
+                        vertical-align: middle;
+                        border: 5px solid #6378c5;
+                        border-radius: 100%;
+                        background: #fff;
+                    }
+                }
+            }
+        }
+        .centerMap {
+            flex-grow: 0;
+            position: relative;
+            width: 434px;
+            height: 687px;
+            background: url("../../src/assets/images/img_main_centerMap.png") no-repeat center;
+            a {
+                position: absolute;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                height: 30px; 
+                padding: 0 10px;
+                color: #8796CA; 
+                font-size: 12px;
+                font-weight: 700;
+                border-radius: 5px;
+                background: #fff;
+                box-shadow: 0 4px 5px 0 rgba(173, 177, 255, 0.5);
+                span {
+                    color: inherit;
+                    font-size: inherit;
+                    white-space: nowrap;
+                    &::before {
+                        @include beforeItem(2px, 2px);
+                        margin: -3px 2px 0;
+                        border-radius: 100%;
+                        background: #8D90A2;
+                    }
+                }
+                &:hover {
+                    color: #ffffff; 
+                    background: $pointColor;
+                }
+                $map-position: (
+                    1: (top:124px, left:127px),
+                    2: (top:193px, left:163px),
+                    3: (top:145px, left:17px),
+                    4: (top:126px, left:272px),
+                    5: (top:299px, left:63px),
+                    6: (top:271px, left:196px),
+                    7: (top:339px, left:313px),
+                    8: (top:410px, left:126px),
+                    9: (top:510px, left:84px),
+                    10: (top:469px, left:265px),
+                    11: (top:636px, left:74px),
+                );
+                @each $style, $value in $map-position {
+                    &:nth-child(#{$style}) {top:map-get($value, top); left:map-get($value, left);}
+                }
+            }
+        }
+        @media (max-width: 907px) { 
+            & {
+               flex-direction: column;
+               align-items: center;
+            }
+        }
+    }
+}
+// 의뢰서 작성 TIP
+.tabNav.mainCase {
+    nav {
+        max-width: 1184px;
+        ul {
+            margin: 0;
+        }
+        li {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            & * {
+                height: 42px;
+                width: 100%;
+                font-weight: 500;
+                font-size: 17px;
+                color: #C2C6DD;
+                background: transparent;
+            }
+            &::after {
+                content: '';
+                display: block;
+                height: 3px;
+                width: 100%;
+                border-radius: 5px;
+                background-color: transparent;
+            }
+            &.on {
+                &::after {
+                    background-color: $pointColor;
+                }
+                * {
+                    color: $pointColor;
+                    font-weight: 700;
+                    background: transparent;
+                }
+            }
+        }
+    }
+}
+.mainTip {
+    width: 100%;
+    .topSlogan {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 46px 0 40px;
+        background: #E8EDFF;
+        div {
+            display: flex;
+            align-items: center;
+            width: 369px;
+            gap: 27px;
+            &::before {
+                @include beforeItem(90px, 90px);
+                background: url('../../src/assets/images/img_main_request2.png') no-repeat center;
+            }
+        }
+        span {
+            text-align: left;
+            font-size: 24px;
+            color: $pointColor;
+            line-height: 1.4;
+            em {
+                font-size: inherit;
+                color: inherit;
+                font-weight: 600;
+            }
+        }
+        &.detailCase {
+            background: $pointColor;
+            div {
+                * {
+                    color: $whiteColor;
+                }
+                &::before {
+                    background: url('../../src/assets/images/img_main_request1.png') no-repeat center;
+                }
+            }
+        }
+    }
+    .mReqStep {
+        @extend %maxWidth;
+        max-width: 1184px;
+        padding: 20px 50px 70px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 22px;
+        dl {
+            flex: 1 1 40%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 40px 3.88% 30px;
+            text-align: left;
+            background: #FAFBFE;
+            dt {
+                font-size: 25px;
+                font-weight: 700;
+                strong {
+                    font-size: inherit;
+                    color: #4B72FE;
+                    margin-right: 5px;
+                }
+            }
+            dd {
+                font-size: 15px;
+                strong {
+                    font-weight: 600;
+                }
+                span {
+                    display: inline-block;
+                    border-radius: 10px;
+                    border: 1px solid #EFF0F5;
+                    overflow: hidden;
+                    img {
+                        display: block;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    @include mq(mobile){
+        .mReqStep {
+            flex-direction: column;
+        }
+    }
+}
+// 요청
+.mainRequest {
+    width: 100%;
+    padding-bottom: 72px;
+    background: #FAFBFE;
+    .infoAreaTit {
+        padding: 50px 0 40px;
+    }
+    .mRStep {
+        @extend %maxWidth;
+        max-width: 1184px;
+        padding: 22px 50px 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 59px;
+            padding: 15px 15px 35px;
+            background: $whiteColor;
+            dl {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 21px;
+                text-align: left;
+                flex: 1 1 41.84%;
+                dt {
+                    font-size: 25px;
+                    font-weight: 800;
+                    color: #222222;
+                    strong {
+                        display: block;
+                        font-size: 15px;
+                        font-weight: 800;
+                        color: $pointColor;
+                        white-space: nowrap;
+                        strong {
+                            display: inline-block;
+                            color: inherit;
+                            font-size: inherit;
+                            &::before {
+                                @include beforeItem(4px, 4px);
+                                margin: -3px 5px 0 6px;
+                                border-radius: 100%;
+                                background: #B6CAFF;
+                            }
+                        }
+                    }
+                }
+                dd {
+                    font-size: 15px;
+                    font-weight: 500;
+                }
+            }
+            span {
+                flex: 1 1 58.16%;
+                img {width: 100%;}
+            }
+        }
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            height: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #222222;
+            border: 1px solid #222222;
+            border-radius: 8px;
+            background: $whiteColor;
+            &::after {
+                @include beforeItem(20px, 20px);
+                background: url('../../src/assets/images/ic_arrow_rightBlack.svg') no-repeat center;
+            }
+        }
+    }
+}
+// 덴트너 이용
+.mainUsed {
+    @extend %maxWidth;
+    max-width: 1184px;
+    padding: 10px 50px 70px;
+    .num {
+        display: flex;
+        gap: 10px;
+        span {
+            flex: 1 1 30%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            height: 110px;
+            font-size: 16px;
+            font-weight: 600;
+            background-color: #FAFBFE;
+            strong {
+                font-size: 30px;
+                font-weight: 800;
+                color: $pointColor;
+                strong {
+                    font-size: 40px;
+                    margin-right: 5px;
+                }
+            }
+            &:first-child {
+                border-radius: 10px 0 0 10px;
+            }
+            &:last-child {
+                border-radius: 0 10px 10px 0;
+            }
+        }
+    }
+    @include mq(mobile){
+        .num {
+            flex-direction: column;
+            gap: 10px;
+            span {
+                flex: 1 1 100%;
+            }
+        }
+    }
+}
+// 고객사
+.mainPartner {
+    width: 100%;
+    padding: 0 0 53px;
+    overflow: hidden;
+    background: #FAFBFE;
+    ul {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 25px;
+        overflow: hidden;
+    }
+    .infoAreaTit {
+        padding: 52px 0 34px;
+    }
+}
+// FAQ
+.mainFaq {
+    width: 100%;
+    .fqalsBack {
+        padding: 40px 0 100px;
+    }
+    .btn {
+        @extend %maxWidth;
+        padding: 38px 50px 0;
+        text-align: right;
+        a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            font-weight: 700;
+            color: $pointColor;
+            &::after {
+                @include beforeItem(20px, 20px);
+                background: url('../../src/assets/images/ic_arrow_rightB.svg') no-repeat center;
+            }
+        }
+    }
+}
+// 규제샌드박스
+.sampleBox {
+    @extend %maxWidth;
+    padding: 0 50px 70px;
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 320px;
+        font-size: 30px;
+        background: #EEEEEE;
+    }
+}
+/* ===== 서비스 소개 ===== */
+.serviceVisual {
+    padding: 70px 0;
+    img {
+        display: block;
+        width: 100%;
+        max-width: 646px;
+    }
+}
+.serviceCostInfo {
+    img {
+        display: block;
+        width: 100%;
+        max-width: 881px;
+    }
+}
+.serviceSuggest {
+    width: 100%;
+    background: #FAFBFE;
+    padding-bottom: 70px;
+    .infoAreaTit {
+        padding: 50px 0 40px;
+    }
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        max-width: 656px;
+        margin: 0 auto;
+        li {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            height: 60px;
+            padding: 0 20px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #222222;
+            border-radius: 10px;
+            background: $whiteColor;
+            &::before {
+                @include beforeItem(32px, 32px);
+                flex-shrink:0;
+                background: url('../../src/assets/images/ic_suggest.svg') no-repeat center;
+            }
+        }
+    }
+}
+.serviceKeyTerms {
+    width: 100%;
+    background: #FAFBFE;
+    padding-bottom: 70px;
+    .infoAreaTit {
+        padding-bottom: 35px;
+    }
+    .key {
+        @extend %maxWidth;
+        max-width: 1254px;
+        display: flex;
+        gap: 30px;
+        dl {
+            flex: 1 1 30%;
+            padding: 28px 33px 30px;
+            text-align: left;
+            border-radius: 10px;
+            background: #E8EDFF;
+            * {
+                color: $pointColor;
+            }
+            dt {
+                padding-bottom: 18px;
+                font-size: 22px;
+                font-weight: 700;
+            }
+            dd {
+                font-size: 17px;
+                line-height: 1.3;
+                em {
+                    font-size: inherit;
+                    font-weight: 700;
+                }
+                i {
+                    display: block;
+                    padding-top: 10px;
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+            }
+            &:last-child {
+                background: $pointColor;
+                * {
+                    color: $whiteColor;
+                }
+            }
+        }
+    }
+    @include mq(mobile){
+        .key {
+            flex-direction: column;
+        }
+    }
+}
+/* ===== 마이페이지 ===== */
+.mypageTop {
+    padding: 33px;
+    text-align: center;
+    background: $pointColor;
+    div {
+        position: relative;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 550px;
+        height: 262px;
+        border-radius: 10px;
+        gap: 14px;
+        background: $whiteColor;
+        strong {
+            margin-top: 4px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .itemTag {
+            justify-content: center;
+            em {
+                font-size: 13px;
+                border-radius: 4px;
+            }
+        }
+        .btnPModify {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            @extend %txtBtn;
+            width: 106px;
+            height: 37px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #4D4F55;
+            border-radius: 6px;
+            border-color: #F2F4F8 !important;
+            background-color: #F2F4F8;
+        }
+    }
+}
+.mypageBox {
+    @extend %maxWidth;
+    max-width: 1156px;
+    .listTit.myPayment {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    // 개인정보 관리
+    .myInfoModify {
+        position: relative;
+        .memberLayout {
+            padding: 70px 0;
+            width: 320px;
+            margin: 0 auto;
+        }
+        .postEdit {
+            position: absolute;
+            top: 70px;
+            right: 0;
+        }
+    }
+    //치과기공소 관리 & 치자이너 관리
+    .searchList {
+        padding: 0 0 50px;
+        ul {
+            li {
+                padding: 49px 22px 46px 0;
+                align-items: center;
+                border: 0;
+                border-bottom: 1px solid #DCDCDC;
+                border-radius: 0;
+                .listD {
+                    strong {
+                        padding-bottom: 2px;
+                    }
+                    p {
+                        padding: 18px 0 0;
+                    }
+                }
+                .right {
+                    right: 0;
+                    top: 50px;
+                    .bBU {
+                        margin-top: -5px;
+                    }
+                    .postsMore {
+                        margin-left: 15px;
+                    }
+                }
+            }
+        }
+        &.blockCase {
+            max-width: 680px;
+            margin: 0 auto;
+            li {
+                padding: 30px 0 30px;
+                align-items: center;
+                border: 0;
+                border-bottom: 1px solid #DCDCDC;
+                border-radius: 0;
+                justify-content: space-between;
+                .profileImg {
+                    flex-shrink: 0;
+                }
+                .listD {
+                    flex-grow: 1;
+                    strong {
+                        padding-bottom: 0;
+                    }
+                }
+                .bBU {
+                    margin-top: 0;
+                    flex-shrink: 0;
+                }
+            }
+        }
+    }
+    //
+    // 개인정보 업무위탁 계약 관리
+    .privacyAgree {
+        padding: 44px 44px 48px;
+        line-height: 1.8;
+        text-align: left;
+        max-width: 810px;
+        & + .btnArea {
+            border-top: 1px solid #DCDCDC;
+        }
+    }
+    // 내가 작성한 리뷰
+    .reviewList {
+        padding-bottom: 50px;
+        li {
+            display: flex;
+            gap: 20px;
+            padding: 30px 0;
+            border-bottom: 1px solid #DCDCDC;
+            .profileImg{
+                flex-shrink: 0;
+            }
+            .back {
+                flex-grow: 0;
+                display: flex;
+                flex-direction: column;
+                .userInfo {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0 0 14px;
+                }
+                .historyInfo {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 14px 0 0;
+                    border-top: 1px solid #EFF0F5;
+                    div {
+                        text-align: left;
+                    }
+                    
+                    .dRating {
+                        display: flex;
+                        span {
+                            flex-shrink: 0;
+                            width: 50px;
+                            font-weight: 700;
+                            font-size: 12px;
+                            color: #222222;
+                            em {
+                                display: inline-block;
+                                margin-left: 8px;
+                                font-size: inherit;
+                                color: inherit;
+                            }
+                            i {
+                                @include iconBtn(12px, 12px);
+                                font-size: 0;
+                                vertical-align: text-top;
+                                background: url('../../src/assets/images/btn_star_on.svg') no-repeat center;
+                                background-size: 100%;
+                            }
+                        }
+                        strong {
+                            font-weight: 500;
+                            color: #616575;
+                            &::before {
+                                @include beforeLine(10px, #C2C6DD);
+                                margin: -2px 8px 0 9px;
+                            }
+                        }
+                    }
+                    p {
+                        padding-top: 15px;
+                        font-size: 15px;
+                        color: #3E4149;
+                        line-height: 1.4;
+                    }
+                    .postEdit {
+                        flex-shrink: 0;
+                    }
+                }
+                ol {
+                    display: flex;
+                    gap: 8px;
+                    padding-top: 14px;
+                    li {
+                        width: 80px;
+                        height: 80px;
+                        border-radius: 6px;
+                        border: none;
+                        padding: 0;
+                        overflow: hidden;
+                        img {
+                            height: 100%;
+                            max-height: 100%;
+                            width: 100%;
+                            max-width: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    // 알림
+    .notiySetting {
+        padding-bottom: 50px;
+        li {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid #DCDCDC;
+            dl {
+                text-align: left;
+                dt {
+                    padding-bottom: 12px;
+                    font-size: 17px;
+                    font-weight: 600;
+                }
+                dd {
+                    font-size: 15px;
+                    color: #666666;
+                }
+            }
+            .toggleSet{
+                flex-shrink: 0;
+            }
+        }
+    }
+}
+.profileModify {
+    position: relative;
+    @extend %lineBox;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 50px 115px;
+    margin-bottom: 100px;
+    .tws {
+        .profileImgBack {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            li {
+                div {
+                    display: flex;
+                    flex-wrap: wrap;
+                    padding-top: 13px;
+                    span {
+                        flex: 0 1 30%;
+                        margin-top: 12px;
+                    }
+                }
+                input[type='text'] {
+                    margin-top: 15px;
+                }
+            }
+        }
+    }
+    .btnB.modifyCase {
+        position: absolute;
+        right: 39px;
+        top: 36px;
+        width: 69px;
+        height: 37px;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+}
