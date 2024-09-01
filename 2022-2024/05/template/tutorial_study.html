@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>토탈시스템</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <!-- <link rel="stylesheet" href="../css/login.css"> -->
+    <link rel="stylesheet" href="../css/swiper.css">
+    <link rel="stylesheet" href="../css/billboard.css">
+    <link rel="stylesheet" href="../css/newLayout.css">
+    <link rel="stylesheet" href="../css/popup.css">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="../js/billboard.js"></script>
+    <script src="../js/billboard.pkgd.js"></script>
+		<script src="https://www.gstatic.com/charts/loader.js"></script>
+		<script src="../js/jquery-3.5.1.js"></script>
+    <script src="../js/swiper.js"></script>
+    <style>
+        .tutorialGuide img {width:100%;display:block;}
+        .tutorialGuide .swiper-pagination {position:fixed;bottom:20px;z-index:10000}
+        .btnGuideClose {position:fixed;bottom:12px;left:70%;z-index:10000;padding:5px;background:#fff;border:none;border-radius:8px;}
+    </style>
+  </head>
+<body>
+  <div class="tutorialGuide">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="../images/newImage/study_tutorial1.png" alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src="../images/newImage/study_tutorial2.png" alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src="../images/newImage/study_tutorial3.png" alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src="../images/newImage/study_tutorial4.png" alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src="../images/newImage/study_tutorial5.png" alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src="../images/newImage/study_tutorial6.png" alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src="../images/newImage/study_tutorial7.png" alt="">
+        </div>
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+    <button class="btnGuideClose" onclick="history.back()">닫기</button>
+  </div>
+  <script>
+    $(document).ready(function(){
+      var mySwiper = new Swiper('.swiper-container', {
+        autoHeight: true,
+        direction: 'horizontal',
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable : true,
+        }
+      });
+    });
+  </script>
+</body>
+</html>

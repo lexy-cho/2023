@@ -1,0 +1,224 @@
+/* font */
+@font-face{
+    font-family: 'NanumGothic';
+    src: url("../font/NanumGothic.woff");
+}
+@font-face{
+    font-family: 'NanumGothicBold';
+    src: url("../font/NanumGothicBold.woff");
+}
+@font-face{
+    font-family: 'NanumGothicExtraBold';
+    src: url("../font/NanumGothicExtraBold.woff");
+}
+@font-face{
+    font-family: 'NanumGothicLight';
+    src: url("../font/NanumGothicLight.woff");
+}
+@font-face {
+    font-family: 'younsofunny';
+    font-weight: bold;
+    src: url("../font/oTE2_YoonSofunny.woff2") format('woff2');
+}
+
+/* css reset */
+html, body, div, img, p, span, h1, ul, li, input, button, table, tbody, tr, td, a{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    border-radius: 0;
+    vertical-align: baseline; /* 2020-12-21 수정 */
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    appearance: none;
+}
+
+body{
+    -webkit-font-smoothing: subpixel-antialiased;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+html{
+    font-size: 62.5%; /* 2020-12-21 수정 */
+}
+
+ul, li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* 모든 페이지 전체 감싸고 있는 div 클래스 명은 all_wrap으로 통일 */
+.all_wrap{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%; /* 2020-12-21 수정 */
+    height: 100vh; /* 2020-12-21 수정 */
+    overflow: hidden; /* 2020-12-21 수정 */
+}
+
+/* 인트로, 로그인, 아이디, 비밀번호 찾기 페이지 외 모든 페이지 공통 헤더, 콘텐츠 영역, 푸터 */
+.header_wrap{
+    flex-shrink: 0; /* 2020-12-21 수정 */
+    position: fixed; /* 2020-12-21 수정 */
+    width: 100%; /* 2020-12-21 수정 */
+    background: #C41925; /* 2020-12-21 수정 */
+    font-family: 'NanumGothic'; /* 2020-12-21 수정 */
+    color: #FFFFFF; /* 2020-12-21 수정 */
+}
+.header{
+    display: flex; /* 2020-12-21 수정 */
+    justify-content: space-between; /* 2020-12-21 수정 */
+    align-items: center; /* 2020-12-21 수정 */
+    width: 100%; /* 2020-12-21 수정 */
+    border-bottom: 1px solid #FFFFFF;
+    padding: 12px 13px; /* 2020-12-21 수정 */
+    box-sizing: border-box; /* 2020-12-21 수정 */
+}
+.home{
+    width: 26px; /* 2020-12-21 수정 */
+    height: 26px; /* 2020-12-21 수정 */
+    background: url(../images/home_bt.svg) no-repeat;
+    background-size: cover; /* 2020-12-21 수정 */
+}
+h1{
+    width: 60%;
+    text-align: right; /* 2020-12-21 수정 */
+    font-size: 2.1rem; /* 2020-12-21 수정 */
+    font-weight: bold;
+}
+.mypage{
+    width: 27px; /* 2020-12-21 수정 */
+    height: 26px; /* 2020-12-21 수정 */
+    background: url(../images/mypage_bt.svg) no-repeat; /* 2020-12-21 수정 */
+    background-size: cover; /* 2020-12-21 수정 */
+}
+.setting{
+    width: 26px; /* 2020-12-21 수정 */
+    height: 26px; /* 2020-12-21 수정 */
+    background: url(../images/setting_bt.svg) no-repeat; /* 2020-12-21 수정 */
+    background-size: cover; /* 2020-12-21 수정 */
+}
+
+
+/* 2021-01-21 수정 */
+.profile{
+    padding: 29px 0;
+    text-align: center;
+}
+.profile_info{
+    display: inline-block;
+    vertical-align: middle;
+}
+.profile_picture{
+    display: inline-block;
+    vertical-align: middle;
+    width: 84px;
+    height: 84px;
+    background: url(../images/profile.svg) no-repeat;
+    background-size: cover;
+}
+.profile_name{
+    font-size: 27px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: left;
+}
+.profile_subject{
+    width: 200px;
+    font-size: 12px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* 2021-01-21 수정 */
+
+.tap_menu{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    border-bottom: 3px solid #ECECEC;
+    background: #FFFFFF;
+    font-size: 1.8rem; /* 2020-12-21 수정 */
+    font-weight: bold;
+    color: #BBBBBB;
+    text-align: center;
+    line-height: 58px;
+}
+.tap_menu > span{
+    width: 25%;
+    height: 50px;
+}
+.con_wrap{
+    flex-grow: 1;
+    overflow: auto;
+    z-index: 1;
+    position: relative;
+    margin-top: 246px; /* 2021-01-21 수정 */
+    width: 100%;
+}
+.footer_wrap{
+    flex-shrink: 0;
+    /* z-index: 1; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 64px;
+    background: url(../images/footer_bg.svg) repeat-x; /* 2020-12-21 수정 */
+}
+.foot_card_news{
+    width: 85px;
+    height: 58px;
+    background: url(../images/foot_card_news_off.svg) no-repeat;
+    background-size: cover;
+}
+.foot_card_news:hover{
+    width: 85px;
+    height: 58px;
+    background: url(../images/foot_card_news_on.svg) no-repeat;
+}
+.foot_event{
+    width: 85px;
+    height: 58px;
+    background: url(../images/foot_event_off.svg) no-repeat;
+}
+.foot_event:hover{
+    width: 85px;
+    height: 58px;
+    background: url(../images/foot_event_on.svg) no-repeat;
+}
+.foot_center{
+    width: 85px;
+    height: 58px;
+    background: url(../images/foot_center_off.svg) no-repeat;
+}
+.foot_center:hover{
+    width: 85px;
+    height: 58px;
+    background: url(../images/foot_center_on.svg) no-repeat;
+}
+.foot_notice_talk{
+    width: 85px;
+    height: 58px;
+    background: url(../images/foot_notice_talk_off.svg) no-repeat;
+}
+.foot_notice_talk:hover{
+    width: 85px;
+    height: 58px;
+    background: url(../images/foot_notice_talk_on.svg) no-repeat;
+}
