@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ThinkTree Visitor</title>
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/navmenu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/jquery.toast.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('.entypo-popup').click(function(){
+				$('.mainGo').toggle();
+			});
+			$('.alertPop button, .basicPop button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			/**/
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<button class="btnPrev" onclick="history.back()">이전</button>
+					<h1>Office Visitor Service</h1>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<div class="deskVisitorLayout">
+						<div class="first">
+							000님 안녕하세요. 입실하기 전 개인정보제공 동의 및 서명을 진행해 주시기 바랍니다.<br/>
+						</div>
+                        <div class="dlstyle">
+							<div class="gridSet grid3">
+								<div class="gridItem">
+									<dl>
+										<dt>방문 예정일시</dt>
+										<dd>2020-03-13 09:15 ~ 09:30</dd>
+									</dl>
+								</div>
+								<div class="gridItem">
+									<dl>
+										<dt>담당자</dt>
+										<dd>오유진 [전략기획팀]</dd>
+									</dl>
+								</div>
+								<div class="gridItem">
+									<dl>
+										<dt>방문목적</dt>
+										<dd>일정 제목을 입력해 주세요 (최대 50글자)</dd>
+									</dl>
+								</div>
+							</div>
+							<div class="gridSet grid3">
+								<div class="gridItem">
+									<dl>
+										<dt>업체명</dt>
+										<dd>(주)가나다라마바사</dd>
+									</dl>
+								</div>
+								<div class="gridItem">
+									<dl>
+										<dt>방문자 성명</dt>
+										<dd>홍길동</dd>
+									</dl>
+								</div>
+								<div class="gridItem">
+									<dl>
+										<dt>방문자 전화번호</dt>
+										<dd>000-****-0000</dd>
+									</dl>
+								</div>
+							</div>
+                        </div>
+						<div class="attendData">
+							<dl class="entry">
+								<dt>개인정보수집 동의</dt>
+								<dd>
+									<div class="agreeTerms">
+										<ol>
+											<li>
+												수집 및 이용 목적
+												<div>(주)씽크트리에서는 방문객등록서비스(비지터스)를 위해 다음과 같이 개인정보를 수집 및 이용 합니다.
+												수집된 개인정보는 방문객등록 목적 이외에는 이용되지 않으며, 수집 목적이 변경될 경우 사전에 알리고 동의를 받을 예정 입니다. </div>
+											</li>
+											<li>
+												수집하는 개인정보의 항목
+												<div>- 성명, 회사명, 휴대전화번호</div>
+											</li>
+											<li>
+												개인정보의 보유 및 이용 기간
+												<div>- 방문객의 개인정보는 방문 종료 후 별도의 암호화 과정을 거쳐 별도의 DB에 보관됩니다.</div>
+												<div>- 방문객의 개인정보는 방문객 등록과 동시에 저장되어 1년 동안 보관됩니다. </div>
+											</li>
+											<li>
+												개인정보의 파기 절차 및 파기방법
+												<div>- 방문객의 개인정보는 목적이 달성된 후 별도의 DB로 옮겨져 내부 방침 및 기타 관련 법령에 의한 정보보호 사유에 따라(보유 및 이용기간 참조) 일정 기간 저장된 후 파기됩니다. 별도 DB로 옮겨진 개인정보는 법률에 의한 경우가 아니고서는 보유되는 이외의 다른 목적으로 이용되지 않습니다.</div>
+												<div>- 전자적 파일형태로 저장된 개인정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제합니다. 종이에 출력된 개인정보는 분쇄기로 분쇄하거나 소각을 통하여 파기합니다. </div>
+											</li>
+											<li>
+												동의를 거부할 권리가 있다는 사실과 동의 거부에 따른 불이익 내용
+												<div>방문객은 (주)씽크트리 방문객등록서비스(비지터스)에서 수집하는 개인정보에 대해 동의를 거부할 권리가 있으며 동의 거부 시에는 방문 목적등에 따라 회사 내부 진입이 제한 됩니다. </div>
+											</li>
+										</ol>
+									</div>
+								</dd>
+							</dl>
+							<div class="agreeNSign">
+								<div class="gridSet grid2">
+									<div class="gridItem">
+										<span class="checkSet">
+											<input type="checkbox" id="chk1">
+											<label for="chk1"><i></i><span>위 개인정보 수집 및 이용에 동의 합니다.</span></label>
+										</span>
+										<p class="smallBox bgGray">* 동의를 거부할 수 있으며, 동의 거부 시에는 방문 목적등에 따라 회사 내부 진입이 제한 됩니다.</p>
+										<p class="smallBox">* 주차시에는 최소 30분은 무료입니다. 차량 주차권은 30분권 1매가 발급되며, 이후 추가비용은 자가 결제가 필요합니다.<br/>주차권이 필요한 경우 퇴실시 미팅 담당자에게 문의하세요.</p>
+									</div>
+									<div class="gridItem">
+										<div class="signSet">
+											<div class="signArea">
+												<strong><em>홍길동</em></strong>
+												<div class="cvsArea">
+													<canvas></canvas>
+												</div>
+											</div>
+											<div class="btnArea">
+												<span>* 이름을 정자로 2회 이상 해주세요.</span>
+												<span class="right">
+													<button class="btnSign reset">초기화</button>
+													<button class="btnSign prev">한단계전</button>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+                        </div>
+						<div class="tC">
+							<a href="desk_visitor_case1_fever.html" class="btnM navy">다음</a>
+						</div>
+					</div>
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+	</body>
+</html>

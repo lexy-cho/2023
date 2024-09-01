@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				<!-- 2020-07-13 비밀번호 재발급 팝업 관련 삭제 -->
+				$('.pwReissuePop .btnNumGo').click(function(){
+					$(this).hide();
+					$('.btnReGo').show();
+					$('.btnPhonePass').attr('disabled',false);
+				});
+				$('.pwReissuePop .btnPhonePass').click(function(){
+					$('.pwReissuePop .chapter1').hide();
+					$('.pwReissuePop .chapter2').show();
+					$('.pwReissuePop .pBtn span').hide();
+					$('.pwReissuePop .pBtn .black').show();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- loginWrap -->
+		<div id="loginWrap">
+			<div class="formBack">
+				<div class="formBack2"><!-- 2020-07-08 div 추가 -->
+				<div class="formBack3"><!-- 2020-07-08 div 추가 -->
+					<div class="loginForm">
+						<h1>물류플랫폼<!-- 2020-10-29 텍스트 변경 -->  <span>(운영자)</span><!-- 2020-07-08 추가 --></h1>
+						<form id="" action="" method="post">
+							<div class="loginInput">
+								<label>아이디</label>
+								<span><input type="text" placeholder="ID"/></span><!-- 2020-07-13 placeholder 수정 -->
+							</div>
+							<div class="loginInput pwCase">
+								<label>비밀번호</label><!-- 2020-07-13 label 텍스트 수정 --><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+								<span><input type="password" placeholder="Password"/></span>
+							</div>
+							<div class="loginOption">
+								<span class="radioSet left">
+									<input type="checkbox" id="chk1" />
+									<label for="chk1"><i></i>아이디 저장</label>
+								</span>
+								<!-- 2020-07-13 자동로그인 라디오 추가 -->
+								<span class="radioSet right">
+									<input type="checkbox" id="chk2" />
+									<label for="chk2"><i></i>자동로그인</label>
+								</span>
+								<!-- //2020-07-13 자동로그인 라디오  -->
+							</div>
+							<button type="button" class="btnL black" onClick="location.href='change_password.html'">Login</button>
+						</form>
+						<div class="joinGo">
+							<span><button type="button" class="btnPwGet" onclick="location.href='find_password.html'">비밀번호 재발급</button></span><!-- 2020-07-13 팝업 -> 페이지로 변경 --><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+						</div>
+						<div class="copration"><em>씽크트리<!-- 2020-10-29 텍스트 변경 --></em></div>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+		<!-- //loginWrap -->
+		<div class="popDim" style="display:none;">
+			<!-- 패스워드 재발급 -->
+			<div class="basicPop pwReissuePop" id="samplePop2" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>비밀번호 재발급</h1><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+				</div>
+				<div class="pBack">
+					<div class="chapter1">
+						<div class="before">
+							<dl class="inputBox iner wFull">
+								<dt>아이디 (ID)</dt>
+								<dd><input type="password" placeholder="아이디를 입력해주세요"/></dd>
+							</dl>
+							<dl class="inputBox iner wFull">
+								<dt>성명</dt>
+								<dd><input type="password" placeholder="성명을 입력해주세요"/></dd>
+							</dl>
+						</div>
+						<div class="phonePass">
+							<div class="back">
+								<dl class="inputBox iner">
+									<dt>휴대전화</dt>
+									<dd><input type="tel" placeholder="‘ - ’ 없이 숫자로 입력"/></dd>
+								</dl>
+								<button class="btnM green btnNumGo">인증번호발송</button>
+								<button class="btnM gray btnReGo" style="display:none;">재발송</button>
+							</div>
+							<div class="back noTt">
+								<dl class="inputBox iner">
+									<dt>인증번호</dt>
+									<dd><input type="tel" placeholder="6자리"/></dd>
+									<dd>2:59</dd>
+								</dl>
+								<button class="btnM green btnPhonePass" disabled>확인</button>
+							</div>
+						</div>
+					</div>
+					<div class="chapter2" style="display:none">
+						<div class="grayBox">
+							<dl class="inputBox iner wFull">
+								<dt>신규 비밀번호</dt><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+								<dd><input type="password" placeholder="영,숫자 포함하여 8자리 이상"/></dd>
+							</dl>
+							<dl class="inputBox iner wFull">
+								<dt>신규 비밀번호(확인)</dt><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+								<dd><input type="password" placeholder="영,숫자 포함하여 8자리 이상"/></dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<span>* 휴대전화번호를 입력한 후 인증번호발송 버튼을 클릭해 주세요. <br/>신규 비밀번호를 설정할 수 있습니다.</span><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+					<button class="btnM black" style="display:none;">확인</button>
+				</div>
+			</div>
+			<!--//패스워드 재발급-->
+		</div>
+    </body>
+</html>

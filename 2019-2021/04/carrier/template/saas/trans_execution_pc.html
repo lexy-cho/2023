@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$(document).on("click",".btnDoor.mult1",function(){
+					$(this).toggleClass("on");
+					$('tbody tr.mult1').toggle();
+				});
+				$(document).on("click",".btnDoor.mult2",function(){
+					$(this).toggleClass("on");
+					$('tbody tr.mult2').toggle();
+				});
+				$(document).on("click",".btnDoor.mult3",function(){
+					$(this).toggleClass("on");
+					$('tbody tr.mult3').toggle();
+				});
+				$(document).on("click",".btnDoor.mult4",function(){
+					$(this).toggleClass("on");
+					$('tbody tr.mult4').toggle();
+				});
+				$(document).on("click",".btnDoor.mult5",function(){
+					$(this).toggleClass("on");
+					$('tbody tr.mult5').toggle();
+				});
+				$(document).on("click",".btnDoor.mult6",function(){
+					$(this).toggleClass("on");
+					$('tbody tr.mult6').toggle();
+				});
+				$(document).on("click",".btnDoor.mult7",function(){
+					$(this).toggleClass("on");
+					$('tbody tr.mult7').toggle();
+				});
+				$('.tls tbody tr td:nth-child(n+4)').click(function(){
+					location.href = 'trans_execution_view.html';
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="grayBox searchArea">
+			<fieldset>
+				<button class="btnM lineRed">선택삭제</button>
+				<button class="btnM lineOrange">엑셀 다운로드</button>
+				<span class="right">
+					<dl class="inputBox">
+						<dt>상태</dt>
+						<dd>
+							<span class="selectSet">
+								<select>
+									<option selected>전체</option>
+									<option>드라이버 확정</option>
+									<option>드라이버 미확정</option>
+									<option>운송실행</option>
+									<option>컨테이너작업</option>
+									<option>운송완료</option>
+								</select>
+							</span>
+						</dd>
+					</dl>
+					<dl class="inputBox">
+						<dt>운송유형</dt>
+						<dd>
+							<span class="selectSet">
+								<select>
+									<option selected>전체</option>
+									<option>수입</option>
+									<option>수출</option>
+								</select>
+							</span>
+						</dd>
+					</dl>
+					<dl class="inputBox">
+						<dt>운송형태</dt>
+						<dd>
+							<span class="selectSet">
+								<select>
+									<option selected>전체</option>
+									<option>왕복</option>
+									<option>편도</option>
+									<option>환적</option>
+								</select>
+							</span>
+						</dd>
+					</dl>
+					<span class="inputKeyword">
+						<input type="text" placeholder="작업지로 검색">
+						<input type="submit" class="btnM black" value="조회">
+					</span>
+				</span>
+			</fieldset>
+		</div>
+		<div class="pd2">
+			<div class="tls">
+				<table>
+					<colgroup>
+						<col width="80" />
+						<col width="120" />
+						<col width="120" />
+						<col width="180" />
+						<col width="100" />
+						<col width="100" />
+						<col width="150" />
+						<col width="120" />
+						<col width="120" />
+						<col width="120" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chkAll" />
+									<label for="chkAll"><i></i></label>
+								</span>
+							</th>
+							<th>운송일</th>
+							<th>배차번호</th>
+							<th>오더상태</th>
+							<th>운송유형</th>
+							<th>형태</th>
+							<th>운송비용</th>
+							<th>출발지</th>
+							<th>작업지</th>
+							<th>도착지</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!--Loop-->
+						<tr class="today"><!-- 2020-07-16 당일운송건 class 추가 -->
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk1" />
+									<label for="chk1"><i></i></label>
+								</span>
+							</td>
+							<td>2019-12-01</td>
+							<td>20010001 <button class="btnDoor mult1">여닫기</button></td>
+							<td><span class="statusSet receive">운송실행</span></td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td class="tR">560,000</td>
+							<td>부산항(05:00)</td>
+							<td>충북/안산(09:00)</td>
+							<td>부산항(15:00)</td>
+						</tr>
+						<tr class="mult mult1" style="display:none">
+							<td><span class="arrow">상세목록</span></td>
+							<!-- 2020-06-24 td분리 -->
+							<td colspan="2" class="tL">
+								<strong>[배차확정일]</strong>
+								<span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-16 컴포넌트 수정 -->
+							</td>
+							<td colspan="2" class="tL">
+								<strong>[컨테이너]</strong>Open Top / 40ft High Cube / 30ton
+							</td>
+							<!-- //2020-06-24 td분리 -->
+							<td colspan="5" class="tL">
+								<strong>[품목]</strong>공기청정기, 빠렛트 작업됨, 공기청정…
+							</td>
+						</tr>
+						<!--//Loop-->
+						<tr class="today"><!-- 2020-07-16 당일운송건 class 추가 -->
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk2" />
+									<label for="chk2"><i></i></label>
+								</span>
+							</td>
+							<td>2019-12-01</td>
+							<td>20010001 <button class="btnDoor mult2">여닫기</button></td>
+							<td><span class="statusSet regist">드라이버 확정</span></td>
+							<td class="ftBlue">수출</td>
+							<td>왕복</td>
+							<td class="tR">560,000</td>
+							<td>부산항(05:00)</td>
+							<td>충북/안산(09:00)</td>
+							<td>부산항(<span class="ftRed">익</span> 15:00)</td>
+						</tr>
+						<tr class="mult mult2" style="display:none">
+							<td><span class="arrow">상세목록</span></td>
+							<!-- 2020-06-24 td분리 -->
+							<td colspan="2" class="tL">
+								<strong>[배차확정일]</strong>
+								<span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-16 컴포넌트 수정 -->
+							</td>
+							<td colspan="2" class="tL">
+								<strong>[컨테이너]</strong>Open Top / 40ft High Cube / 30ton
+							</td>
+							<!-- //2020-06-24 td분리 -->
+							<td colspan="5" class="tL">
+								<strong>[품목]</strong>공기청정기, 빠렛트 작업됨, 공기청정…
+							</td>
+						</tr>
+						<tr class="today"><!-- 2020-07-16 당일운송건 class 추가 -->
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk3" />
+									<label for="chk3"><i></i></label>
+								</span>
+							</td>
+							<td>2019-12-01</td>
+							<td>20010001 <button class="btnDoor mult3">여닫기</button></td>
+							<td><span class="statusSet regist">드라이버 확정</span></td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td class="tR">560,000</td>
+							<td>부산항(05:00)</td>
+							<td>충북/안산(09:00)</td>
+							<td>부산항(15:00)</td>
+						</tr>
+						<tr class="mult mult3" style="display:none">
+							<td><span class="arrow">상세목록</span></td>
+							<!-- 2020-06-24 td분리 -->
+							<td colspan="2" class="tL">
+								<strong>[배차확정일]</strong>
+								<span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-16 컴포넌트 수정 -->
+							</td>
+							<td colspan="2" class="tL">
+								<strong>[컨테이너]</strong>Open Top / 40ft High Cube / 30ton
+							</td>
+							<!-- //2020-06-24 td분리 -->
+							<td colspan="5" class="tL">
+								<strong>[품목]</strong>공기청정기, 빠렛트 작업됨, 공기청정…
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk4" />
+									<label for="chk4"><i></i></label>
+								</span>
+							</td>
+							<td>2019-12-01</td>
+							<td>20010001 <button class="btnDoor mult4">여닫기</button></td>
+							<td><span class="statusSet delay">드라이버 미확정</span></td>
+							<td class="ftBlue">수출</td>
+							<td>왕복</td>
+							<td class="tR">560,000</td>
+							<td>부산항(05:00)</td>
+							<td>충북/안산(09:00)</td>
+							<td>부산항(15:00)</td>
+						</tr>
+						<tr class="mult mult4" style="display:none">
+							<td><span class="arrow">상세목록</span></td>
+							<!-- 2020-06-24 td분리 -->
+							<td colspan="2" class="tL">
+								<strong>[배차확정일]</strong>
+								<span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-16 컴포넌트 수정 -->
+							</td>
+							<td colspan="2" class="tL">
+								<strong>[컨테이너]</strong>Open Top / 40ft High Cube / 30ton
+							</td>
+							<!-- //2020-06-24 td분리 -->
+							<td colspan="5" class="tL">
+								<strong>[품목]</strong>공기청정기, 빠렛트 작업됨, 공기청정…
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk5" />
+									<label for="chk5"><i></i></label>
+								</span>
+							</td>
+							<td>2019-12-01</td>
+							<td>20010001 <button class="btnDoor mult5">여닫기</button></td>
+							<td><span class="statusSet regist">드라이버 확정</span></td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td class="tR">560,000</td>
+							<td>부산항(05:00)</td>
+							<td>충북/안산(09:00)</td>
+							<td>부산항(15:00)</td>
+						</tr>
+						<tr class="mult mult5" style="display:none">
+							<td><span class="arrow">상세목록</span></td>
+							<!-- 2020-06-24 td분리 -->
+							<td colspan="2" class="tL">
+								<strong>[배차확정일]</strong>
+								<span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-16 컴포넌트 수정 -->
+							</td>
+							<td colspan="2" class="tL">
+								<strong>[컨테이너]</strong>Open Top / 40ft High Cube / 30ton
+							</td>
+							<!-- //2020-06-24 td분리 -->
+							<td colspan="5" class="tL">
+								<strong>[품목]</strong>공기청정기, 빠렛트 작업됨, 공기청정…
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk6" />
+									<label for="chk6"><i></i></label>
+								</span>
+							</td>
+							<td>2019-12-01</td>
+							<td>20010001 <button class="btnDoor mult6">여닫기</button></td>
+							<td><span class="statusSet regist">드라이버 확정</span></td>
+							<td class="ftBlue">수출</td>
+							<td>왕복</td>
+							<td class="tR">560,000</td>
+							<td>부산항(05:00)</td>
+							<td>충북/안산(09:00)</td>
+							<td>부산항(15:00)</td>
+						</tr>
+						<tr class="mult mult6" style="display:none">
+							<td><span class="arrow">상세목록</span></td>
+							<!-- 2020-06-24 td분리 -->
+							<td colspan="2" class="tL">
+								<strong>[배차확정일]</strong>
+								<span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-16 컴포넌트 수정 -->
+							</td>
+							<td colspan="2" class="tL">
+								<strong>[컨테이너]</strong>Open Top / 40ft High Cube / 30ton
+							</td>
+							<!-- //2020-06-24 td분리 -->
+							<td colspan="5" class="tL">
+								<strong>[품목]</strong>공기청정기, 빠렛트 작업됨, 공기청정…
+							</td>
+						</tr>
+						<tr class="completed">
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk7" />
+									<label for="chk7"><i></i></label>
+								</span>
+							</td>
+							<td>2019-12-01</td>
+							<td>20010001 <button class="btnDoor mult7">여닫기</button></td>
+							<td><span class="statusSet end">운송완료</span></td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td class="tR">560,000</td>
+							<td>부산항(05:00)</td>
+							<td>충북/안산(09:00)</td>
+							<td>부산항(15:00)</td>
+						</tr>
+						<tr class="mult mult7" style="display:none">
+							<td><span class="arrow">상세목록</span></td>
+							<!-- 2020-06-24 td분리 -->
+							<td colspan="2" class="tL">
+								<strong>[배차확정일]</strong>
+								<span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-16 컴포넌트 수정 -->
+							</td>
+							<td colspan="2" class="tL">
+								<strong>[컨테이너]</strong>Open Top / 40ft High Cube / 30ton
+							</td>
+							<!-- //2020-06-24 td분리 -->
+							<td colspan="5" class="tL">
+								<strong>[품목]</strong>공기청정기, 빠렛트 작업됨, 공기청정…
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+    </body>
+</html>

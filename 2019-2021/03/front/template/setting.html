@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/timepicki.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/timepicki.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('#pwBtn').click(function(){
+				$('.popDim').show();
+				$('.pwPop').show();
+			});
+			$('#sleepBtn').click(function(){
+				$('.popDim').show();
+				$('.sleepPop').show();
+			});
+			$('#versionBtn').click(function(){
+				$('.popDim').show();
+				$('.versionPop').show();
+			});
+			$('.miniPop .pBtn button').click(function(){
+				$('.popDim').hide();
+				$('.miniPop').hide();
+			});
+			$('#push4').click(function(){
+				if($("input:checkbox[name=push4]").is(":checked") == true) {
+					$('.popDim').show();
+					$('.sleepPop').show();
+					setTimeout(function(){
+						$('.popDim').hide();
+						$('.sleepPop').hide();
+					}, 3000);
+				}
+			});
+
+			$('.timeSet input').timepicki({reset:true}); //Timer
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<h1>환경설정</h1>
+					<button class="btnNav">햄버거</button>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+
+			<div id="snb">
+				<section>
+					<div class="c-menu c-menu--slide-left"><!-- 우측 Slide 일 경우 -->
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</section>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="settingLayout">
+						<h3>[개인/보안]</h3>
+						<div>
+							<dl>
+								<dt>비밀번호 설정</dt>
+								<dd><button class="btnS" id="pwBtn">변경</button></dd>
+							</dl>
+							<!--<dl>
+								<dt>자동로그인 설정</dt>
+								<dd>
+									<span class="toggleSet">
+										<input type="checkbox" id="push2" checked >
+										<label for="push2">
+											<span>OFF</span> 2020-07-17 On/Off 변경
+											<span>ON</span>
+										</label>
+									</span>
+								</dd>
+							</dl> -->
+						</div>
+						<h3>[알림]</h3>
+						<div>
+							<dl>
+								<dt>앱 실행 중 알림</dt>
+								<dd class="notView">
+									<span class="toggleSet">
+										<input type="checkbox" id="push3">
+										<label for="push3">
+											<span>OFF</span><!-- 2020-07-17 On/Off 변경 -->
+											<span>ON</span>
+										</label>
+									</span>
+								</dd>
+							</dl>
+							<dl>
+								<dt>방해금지 시간대 설정</dt>
+								<dd class="notView">
+									<!-- 2020-07-31 On/Off 변경 -->
+									<span class="toggleSet">
+										<input type="checkbox" id="push4" name="push4">
+										<label for="push4">
+											<span>OFF</span>
+											<span>ON</span>
+										</label>
+									</span>
+									<!-- //2020-07-31 On/Off 변경 -->
+								</dd>
+								<!--<dd class="notView"><button class="btnS" id="sleepBtn">사용안함</button></dd>
+								 <dd class="notView"><button class="btnS" id="sleepBtn">오전 00:00 ~ 오후 00:00</button></dd> -->
+							</dl>
+						</div>
+						<h3>[버전정보]</h3>
+						<div>
+							<dl>
+								<dt>설치된 버전</dt>
+								<dd><button class="btnS" id="versionBtn">최신버전 / V 8.4.5</button></dd>
+							</dl>
+						</div>
+						<div class="btnLogout"><a href="login.html" class="btnM blue">로그아웃</a></div>
+						<div class="location"><button class="btnM white">내 위치정보</button> 37.5715124,126.8426766</div><!-- 2020-07-20 --> 
+					</div>
+					<!--//-->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>상단으로</button></div>
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 비밀번호 변경 -->
+			<div class="miniPop pwPop" style="display:none;">
+				<div class="tt">
+					<h1>비밀번호 변경</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="dlstyle">
+						<dl>
+							<dt>기존 비밀번호</dt>
+							<dd>
+								<div class="pwSet">
+									<input type="password" id="" name="" placeholder="영문, 숫자, 특수기호" /> <!-- 2020-07-17 문구변경 -->
+									<i class="off"></i>
+								</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt>신규 비밀번호</dt>
+							<dd>
+								<div class="pwSet">
+									<input type="password" id="" name="" placeholder="영문, 숫자, 특수기호" /> <!-- 2020-07-17 문구변경 -->
+									<i class="off"></i>
+								</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt>신규 비밀번호 (확인)</dt>
+							<dd>
+								<div class="pwSet">
+									<input type="password" id="" name="" placeholder="영문, 숫자, 특수기호" /> <!-- 2020-07-17 문구변경 -->
+									<i class="off"></i>
+								</div>
+							</dd>
+						</dl>
+						<p>※ 비밀번호는 영문, 숫자, 특수기호 8~16자 이내로 입력해주시기 바랍니다.</p> <!-- 2020-07-17 문구추가 -->
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //비밀번호 변경 -->
+			<!-- 방해금지 시간대 설정 -->
+			<div class="miniPop sleepPop" style="display:none;">
+				<div class="tt">
+					<h1>방해금지 설정</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="setYN">
+						<p>Ting 알림을 받지 않도록 설정되었습니다.</p>
+						<p>방해금지 시간 <strong>오후 21:30 ~ 오전 07:30</strong></p>
+					</div>
+					<!-- 2020-07-31 기존 삭제 <div class="dlstyle">
+						<div class="setYN">
+							<div>
+								<strong>방해금지 시간대 설정</strong>
+								<span class="toggleSet">
+									<input type="checkbox" id="push4">
+									<label for="push4">
+										<span>OFF</span>2020-07-17 On/Off 변경
+										<span>ON</span>
+									</label>
+								</span>
+							</div>
+							<p>알림을 받지 않을 시간을 설정합니다.</p>
+						</div>
+						<div class="setTime">
+							<div>
+								<span>시작시간</span>
+								<span>종료시간</span>
+							</div>
+							<span class="timeSet">
+								<input type="text" placeholder="오전 00 : 00" readonly />
+							</span> ~
+							<span class="timeSet">
+								<input type="text" placeholder="오전 00 : 00" readonly />
+							</span>
+						</div>
+					</div> -->
+					<!--//-->
+				</div>
+				<div class="tC">
+					본 팝업은 3초후 자동 닫힘됩니다.
+				</div>
+			</div>
+			<!-- //방해금지 시간대 설정 -->
+			<!-- 버전 업데이트 -->
+			<div class="miniPop versionPop" style="display:none;">
+				<div class="tt">
+					<h1>설치된 버전 업데이트</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div>
+						<p>최신 버전을 사용 중입니다.</p>
+						<p> V 9.1 버전이 있습니다. <span>최시 버전으로 업데이트 하시기 바랍니다.</span></p>
+						<em>현재 버전 : V 8.4.5</em>
+						<button class="btnS red">최신 버전 설치</button>
+					 </div>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //버전 업데이트 -->
+		</div>
+		<!-- //Popup -->
+	</body>
+</html>

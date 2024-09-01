@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<meta name="theme-color" content="#212121">
+		<meta name="apple-mobile-web-app-status-bar-style" content="#212121">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('.entypo-popup').click(function(){
+				$('.mainGo').toggle();
+			});
+			$('.apply').click(function(){
+				$('.popDim').show();
+				$('.evidencePop').show();
+			});
+			$('.evidencePop .pBtn button').click(function(){
+				$('.popDim').hide();
+				$('.evidencePop').hide();
+			});
+			/**/
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<button class="btnPrev" onclick="history.back()">이전</button>
+					<h1>갤러리</h1>
+					<!-- <button class="btnNav">햄버거</button> -->
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu : 서브일 경우 삭제 -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="bbsLayout">
+						<!---->
+                        <div class="tvs">
+                            <div class="tvsHead"><span class="new">신규</span><strong>[카테고리] 2020년 글제목이 노출할 영역입니다 글제목은 최대 2줄까지 고려하여 게시판 높이를 정했습니다 글제목이 노출할 영역입니다 글제목은 최대 2줄까지 고려하여 게시판 높이를 정했습니다</strong></div>
+                            <div class="tvsContents">
+								<p>글 내용이 나온다면 이 부분에서 표기됩니다. 글 내용이 나온다면 이 부분에서 표기됩니다. 글 내용이 나온다면 이 부분에서 표기됩니다. 글 내용이 나온다면 이 부분에서 표기됩니다. 글 내용이 나온다면 이 부분에서 표기됩니다. 글 내용이 나온다면 이 부분에서 표기됩니다. 글 내용이 나온다면 이 부분에서 표기됩니다.</p>
+							</div>
+                        </div>
+						<!--comment-->
+						<script>
+						$(document).ready(function(){
+							$(".btnPost").click(function(){
+								$(".sampleComment").show();
+							});
+							$(".btnModify").click(function(){
+								$('.reEditor').hide();
+								$(this).next('p').toggle();
+								$(this).next().next('.commentEditor').toggle();
+							});
+							$(".btnReAdd").click(function(){
+								$('.commentEditor').hide();
+								$(this).next().next().next().next('.reEditor').toggle();
+							});
+							$(".btnReModify").click(function(){
+								$(this).next('p').toggle();
+								$(this).next().next('.reEditor').toggle();
+							});
+							$(".commentInfo button").click(function(){
+								$('.commentList').toggle();
+							});
+
+						});
+						</script>
+						<div class="commentSet">
+							<div class="commentWrite">
+								<div>
+									<textarea placeholder="Write a comment..."></textarea>
+									<input type="button" value="등록" class="btnPost" />
+								</div>
+							</div>
+							<!---->
+							<div class="commentInfo">
+								<strong class="entypo-comment">댓글 4개</strong> <button>여닫기</button>
+							</div>
+							<!---->
+							<div class="commentList" style="display:none;">
+								<ul>
+									<li style="display:none;" class="sampleComment">
+										<div class="commentBox">
+											<span class="name">조명진 (160201)</span>
+											<span class="time">2020-02-06 13:20</span>
+											<button class="btnReAdd">답글</button>
+											<button class="btnModify">편집</button>
+											<p>새로 등록한 댓글입니다</p>
+											<div class="commentEditor">
+												<textarea></textarea>
+												<button class="btnSave">저장</button>
+												<button class="btnDelete">삭제</button>
+											</div>
+											<div class="reEditor">
+												<textarea></textarea>
+												<button class="btnReSave">등록</button>
+												<button class="btnReCancel">취소</button>
+											</div>
+										</div>
+									</li>
+									<!-- Comment Loop -->
+									<li>
+										<div class="commentBox">
+											<span class="name">홍길동 (000000)</span>
+											<span class="time">2020-02-05 00:00</span>
+											<button class="btnReAdd">답글</button>
+											<button class="btnModify">편집</button>
+											<p>Do I like musicals? Not really... but damn, 'La La Land' is a nostalgic, colourful, joyful marvel! Do I like musicals? Not really... but damn, 'La La Land' is a nostalgic, colourful, joyful marvel!</p>
+											<div class="commentEditor">
+												<textarea></textarea>
+												<button class="btnSave">저장</button>
+												<button class="btnDelete">삭제</button>
+											</div>
+											<div class="reEditor">
+												<textarea></textarea>
+												<button class="btnReSave">등록</button>
+												<button class="btnReCancel">취소</button>
+											</div>
+										</div>
+									</li>
+									<!-- //Comment Loop -->
+									<li>
+										<div class="commentBox">
+											<span class="name">홍길동 (000000)</span>
+											<span class="time">2020-02-05 00:00</span>
+											<button class="btnReAdd">답글</button>
+											<button class="btnModify">편집</button>
+											<p>Do I like musicals? Not really... but damn, 'La La Land' is a nostalgic, colourful, joyful marvel! Do I like musicals? Not really... but damn, 'La La Land' is a nostalgic, colourful, joyful marvel!</p>
+											<div class="commentEditor">
+												<textarea></textarea>
+												<button class="btnSave">저장</button>
+												<button class="btnDelete">삭제</button>
+											</div>
+											<div class="reEditor">
+												<textarea></textarea>
+												<button class="btnReSave">등록</button>
+												<button class="btnReCancel">취소</button>
+											</div>
+										</div>
+										<!-- Reply List -->
+										<ol>
+											<!-- Reply Loop -->
+											<li>
+												<div class="commentBox">
+													<span class="name">홍길동 (000000)</span>
+													<span class="time">2020-02-05 00:00</span>
+													<button class="btnReModify">편집</button>
+													<p>Do I like musicals? Not really... but damn, 'La La Land' is a nostalgic, colourful, joyful marvel! Do I like musicals? Not really... but damn, 'La La Land' is a nostalgic, colourful, joyful marvel!</p>
+													<div class="reEditor">
+														<textarea></textarea>
+														<button class="btnReSave">저장</button>
+														<button class="btnReDelete">삭제</button>
+													</div>
+												</div>
+											</li>
+											<!-- //Reply Loop -->
+											<li>
+												<div class="commentBox">
+													<span class="name">홍길동 (000000)</span>
+													<span class="time">2020-02-05 00:00</span>
+													<button class="btnReModify">편집</button>
+													<p>Do I like musicals? Not really... but damn, 'La La Land' is a nostalgic, colourful, joyful marvel! Do I like musicals? Not really... but damn, 'La La Land' is a nostalgic, colourful, joyful marvel!</p>
+													<div class="reEditor">
+														<textarea></textarea>
+														<button class="btnReSave">저장</button>
+														<button class="btnReDelete">삭제</button>
+													</div>
+												</div>
+											</li>
+										</ol>
+										<!-- //Reply List -->
+									</li>
+								</ul>
+								<div class="paginate">
+									<span>
+										<a class="first">이전</a>
+											<a class="on">1</a>
+											<a>2</a>
+											<a>3</a>
+											<a>4</a>
+											<a>5</a>
+										<a class="next">다음</a>
+									</span>
+								</div>
+							</div>
+							<!---->
+						</div>
+						<!--comment-->
+						<!---->
+						<div class="pnvBtn">
+							<a href="" class="btnM white">이전글</a>
+							<a href="" class="btnM white right">다음글</a>
+						</div>
+						<!--//-->
+					</div>
+					<!--//-->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>상단으로</button></div>
+		</div>
+		<!-- //Wrap -->
+	</body>
+</html>

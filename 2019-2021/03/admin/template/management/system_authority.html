@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/jstree.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/fullTree.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$('.treeBox .allOpen').click(function () {
+				$(this).hide();
+				$('.treeBox .allClose').show();
+			});
+			$('.treeBox .allClose').click(function () {
+				$(this).hide();
+				$('.treeBox .allOpen').show();
+			}); // jstree 그룹 열기닫기 토글
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>권한관리</h2>
+					<div class="pagePos"><span>Home</span><span>시스템관리</span><strong>권한관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="authorityLayout">
+						<!-- 조직도 -->
+						<div class="treeBox left">
+							<div class="jstreeBack">
+								<div id="jstree" style="width:100%"></div>
+							</div>
+						</div>
+						<!-- //조직도 -->
+						<!-- 사용자 정보 -->
+						<div class="authorityList right">
+							<!---->
+							<h3 class="firstH3">권한 별 메뉴설정 정보</h3>
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="40" />
+										<col />
+										<col span="2" width="18%"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th></th>
+											<th>메뉴명</th>
+											<th>View</th>
+											<th>Edit</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><button class="btnToggleVert">+</button></td>
+											<td class="tL">시스템관리</td>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="au1" />
+													<label for="au1"><i></i></label>
+												</span>
+											</td>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="au2" />
+													<label for="au2"><i></i></label>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td class="tL">시스템관리 > 경영지원</td>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="au1" />
+													<label for="au1"><i></i></label>
+												</span>
+											</td>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="au2" />
+													<label for="au2"><i></i></label>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td class="tL">시스템관리 > 경영지원 > 사용자관리</td>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="au11" />
+													<label for="au11"><i></i></label>
+												</span>
+											</td>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="au12" />
+													<label for="au12"><i></i></label>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td class="tL">시스템관리 > 경영지원 > 사용자관리 > 계약직 정보</td>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="au21" />
+													<label for="au21"><i></i></label>
+												</span>
+											</td>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="au22" />
+													<label for="au22"><i></i></label>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td class="tL">정직원 서류발급</td>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="au31" />
+													<label for="au31"><i></i></label>
+												</span>
+											</td>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="au32" />
+													<label for="au32"><i></i></label>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td class="tL">계약직 서류발급</td>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="au41" />
+													<label for="au41"><i></i></label>
+												</span>
+											</td>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="au42" />
+													<label for="au42"><i></i></label>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td class="tL">휴가 관리</td>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="au51" />
+													<label for="au51"><i></i></label>
+												</span>
+											</td>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="au52" />
+													<label for="au52"><i></i></label>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td class="tL">출퇴근 관리</td>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="au61" />
+													<label for="au61"><i></i></label>
+												</span>
+											</td>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="au62" />
+													<label for="au62"><i></i></label>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<td><button class="btnToggleVert">+</button></td>
+											<td class="tL">D-PUB</td>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="au71" />
+													<label for="au61"><i></i></label>
+												</span>
+											</td>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="au72" />
+													<label for="au72"><i></i></label>
+												</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="bottom tR">
+									<button class="btnM" type="button" onclick="saveAuthMenu();">저장</button>
+								</div>
+							</div>
+							<!--//-->
+						</div>
+						<!-- //권한정보 -->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		</div>
+    </body>
+</html>

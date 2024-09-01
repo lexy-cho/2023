@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/push.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				var swiper = new Swiper('.swiper-container', {
+					navigation: {
+						nextEl: '.swiper-button-next',
+						prevEl: '.swiper-button-prev'
+					},
+					pagination: {
+						el: '.swiper-pagination'
+					},
+					grabCursor: true,
+					slidesPerView: 'auto'
+				});
+				$('.btnTaxBill').click(function(){
+			        $('.popDim').show();
+			        $('.taxBillPop#singleCase').show();
+					$('.taxBillPop#singleCase .pBtn .red').click(function(){
+						$('.btnTaxBill').css('display','none');
+						$('.taxBillArea .imgArea .taxImgBack, .taxBillArea .billBtn').show();
+					});
+			    }); //세금계산서 발행
+				$('.taxBillArea .billBtn .red').click(function(){
+					$('.btnTaxBill').show();
+					$('.taxBillArea .imgArea .taxImgBack, .taxBillArea .billBtn').hide();
+				}); //세금계산서 발행취소
+			    $('.taxBillPop#singleCase .btnAddLine').click(function(){
+			        var clone = $('#singleCase .cloneTr').clone().removeClass('cloneTr');
+			        clone.find('input').val('');
+			        $('.cloneTr').parents('table').append(clone);
+			    }); // 단일 세금계산서 팝업 행추가
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap" class="freightCase">
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back">
+						<div data-include="../include/saas_snb.html"></div>
+					</div>
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<!-- 모바일 메뉴 없음 -->
+			<!-- //mobile Menu -->
+			<hr/>
+			<div id="containerBack">
+				<!-- header -->
+				<div id="header">
+					<header>
+						<span class="left">
+							<button class="btnList" onclick="location.href='freight_calculate_detail.html'">목록</button>
+						</span>
+						<div class="viewTit2">
+							<span class="simpleTit">
+								<em>[<span class="red">수입</span> / 왕복]</em>
+								<strong class="date">2020-01-22</strong>
+							</span>
+							<span class="right">
+								<dl>
+									<dt>총 발행금액</dt>
+									<dd><span>755,000</span>원</dd>
+								</dl>
+							</span>
+						</div>
+					</header>
+				</div>
+				<!-- //header -->
+				<hr/>
+				<!-- container -->
+				<div id="container">
+				<section>
+					<div class="content">
+					<article>
+						<!-- Page Layout -->
+						<div class="freightCalculateIssue">
+							<div class="grayArea">
+								<div class="taxBillArea">
+									<div class="imgArea">
+										<div class="taxImgBack">
+											<div class="taxImg swiper-container">
+												<div class="centered swiper-wrapper">
+													<div class="swiper-slide"><img src="../../images/img_taxBillBlue.png" alt="세금계산서1"/></div>
+													<div class="swiper-slide"><img src="../../images/img_taxBillRed.png" alt="세금계산서2"/></div>
+												</div>
+												<div class="swiper-pagination"></div>
+											</div>
+											<button class="btnImgPass before swiper-button-prev">이전</button>
+											<button class="btnImgPass next swiper-button-next">다음</button>
+										</div>
+										<button class="btnM whiteBlack btnTaxBill" style="display:none;">세금계산서 발행</button>
+									</div>
+									<div class="billBtn">
+										<div class="btnSet">
+											<button class="btnS red">세금계산서 발행취소</button>
+											<button class="btnS gray">세금계산서 다운로드</button>
+										</div>
+										<dl>
+											<dt>세금계산서 발행일 :</dt>
+											<dd>2020-01-23</dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+							<div class="freightArea">
+								<ul>
+									<li>
+										<div class="freightBox">
+											<strong>[운임 상세]</strong>
+											<div class="tls wHalf">
+												<table>
+													<colgroup>
+														<col width="100"/>
+														<col width="100"/>
+														<col width="100"/>
+														<col width="100"/>
+													</colgroup>
+													<thead>
+														<tr>
+															<th>출발</th>
+															<th>작업</th>
+															<th>도착</th>
+															<th>운송금액(원)</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>부산항 (05:00)</td>
+															<td>충북/안산 (09:00)</td>
+															<td>부산항 (15:00)</td>
+															<td class="ftRed">560,000</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<strong>[운임 외 상세]</strong>
+											<!-- 2020-06-22 table 수정 -->
+											<div class="tls freTotal">
+												<table>
+													<colgroup>
+														<col width="40"/>
+														<col width="120"/>
+														<col width="120"/>
+														<col width="120"/>
+														<col width="120"/>
+														<col width="120"/>
+														<col width="120"/>
+														<col width="120"/>
+														<col width="120"/>
+														<col width="120"/>
+													</colgroup>
+													<thead>
+														<tr>
+															<th>구분</th>
+															<th>Port 사용료</th>
+															<th>컨테이너 반납비</th>
+															<th>픽업료</th>
+															<th>상하차료</th>
+															<th>경유비</th>
+															<th>대기료</th>
+															<th>기타</th>
+															<th>부대비용(원)</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>금액</td>
+															<td>30,000</td>
+															<td>15,000</td>
+															<td>65,000</td>
+															<td>20,000</td>
+															<td>35,000</td>
+															<td>20,000</td>
+															<td>10,000</td>
+															<td class="tR ftRed">195,000</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<div class="tls freTotalM">
+												<table>
+													<colgroup>
+														<col width="200"/>
+														<col width="150"/>
+														<col width="150"/>
+													</colgroup>
+													<thead>
+														<tr>
+															<th>구분</th>
+															<th>금액</th>
+															<th>부대비용(원)</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>Port 사용료</td>
+															<td>30,000</td>
+															<td class="ftRed" rowspan="7">195,000</td>
+														</tr>
+														<tr>
+															<td>컨테이너 반납비</td>
+															<td>15,000</td>
+														</tr>
+														<tr>
+															<td>픽업료</td>
+															<td>65,000</td>
+														</tr>
+														<tr>
+															<td>상하차료</td>
+															<td>20,000</td>
+														</tr>
+														<tr>
+															<td>경유비</td>
+															<td>35,000</td>
+														</tr>
+														<tr>
+															<td>대기료</td>
+															<td>20,000</td>
+														</tr>
+														<tr>
+															<td>기타</td>
+															<td>10,000</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<!-- //2020-06-22 table 수정 -->
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- //page Layout -->
+					</article>
+					</div>
+				</section>
+				</div>
+				<!-- //container -->
+			</div>
+		</div>
+		<!-- //Wrap -->
+		<!-- popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 세금계산서 단일 발행 -->
+			<div class="basicPop taxBillPop" id="singleCase" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>세금계산서를 발행하시겠습니까?</h1>
+				</div>
+				<div class="pBack">
+					<div class="alertList">
+						<ul>
+							<li>해당 세금계산서는 전자세금계산서는 아닙니다. 국세청 세금신고를 위해서는 별도의 신고절차가 필요합니다.</li>
+							<li>추가운임비용이 있다면 아래에 추가 항목을 입력한 후, [확인]버튼을 클릭해 주세요. 추가운임비용이 없다면 곧바로 [확인]버튼을 클릭해 주세요.</li>
+							<li>부가가치세액은 자동으로 입력되므로 세액을 빼고 입력해주세요.</li>
+						</ul>
+					</div>
+					<div class="tls">
+						<table>
+							<colgroup>
+								<col width="110">
+								<col width="240">
+								<col width="30">
+								<col width="120">
+							</colgroup>
+							<thead>
+								<tr>
+									<th>일자</th>
+									<th>품목</th>
+									<th>수량</th>
+									<th>단가(원)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="tC"><button class="dateCalSet">2020-06-24</button></td>
+									<td><input type="text" class="tL" value="수출입 운임 비용"/></td>
+									<td><input type="text" class="tC" value="1"/></td>
+									<td><input type="text" class="tR" value="999,000"/></td>
+								</tr>
+								<tr>
+									<td class="tC"><button class="dateCalSet">2020-06-24</button></td>
+									<td><input type="text" class="tL" value="Port 사용료"/></td>
+									<td><input type="text" class="tC" value="1"/></td>
+									<td><input type="text" class="tR" value="30,000"/></td>
+								</tr>
+								<tr>
+									<td class="tC"><button class="dateCalSet">2020-06-24</button></td>
+									<td><input type="text" class="tL" value="컨테이너 반납비"/></td>
+									<td><input type="text" class="tC" value="1"/></td>
+									<td><input type="text" class="tR" value="15,000"/></td>
+								</tr>
+								<tr>
+									<td class="tC"><button class="dateCalSet">2020-06-24</button></td>
+									<td><input type="text" class="tL" value="픽업료"/></td>
+									<td><input type="text" class="tC" value="1"/></td>
+									<td><input type="text" class="tR" value="15,000"/></td>
+								</tr>
+								<!-- 2020-08-04 세금계산서 단일발행 테이블 8행 > 무조건 4행으로 변경 -->
+							</tbody>
+						</table>
+					</div>
+					<div class="tls">
+						<table>
+							<colgroup>
+								<col width="110">
+								<col width="210">
+								<col width="180">
+							</colgroup>
+							<thead>
+								<tr>
+									<th>발행일자</th>
+									<th>공급가액</th>
+									<th>세액</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="tC"><button class="dateCalSet">2020-06-24</button></td>
+									<td><input class="tR" type="text" value="999,999,999"/></td>
+									<td class="tR">999,000</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM gray">취소</button>
+					<button class="btnM red">확인</button>
+				</div>
+			</div>
+			<!--//세금계산서 단일 발행-->
+			<!-- 세금계산서 일괄 발행 -->
+			<div class="basicPop taxBillPop" id="batchCase" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>세금계산서를 발행하시겠습니까?</h1>
+				</div>
+				<div class="pBack">
+					<div class="alertList">
+						<ul>
+							<li>해당 세금계산서는 전자세금계산서는 아닙니다. 국세청 세금신고를 위해서는 별도의 신고절차가 필요합니다.</li>
+							<li>추가운임비용이 있다면 아래에 추가 항목을 입력한 후, [확인]버튼을 클릭해 주세요. 추가운임비용이 없다면 곧바로 [확인]버튼을 클릭해 주세요.</li>
+							<li>부가가치세액은 자동으로 입력되므로 세액을 빼고 입력해주세요.</li>
+						</ul>
+					</div>
+					<div class="tls">
+						<table>
+							<colgroup>
+								<col width="110">
+								<col width="240">
+								<col width="30">
+								<col width="120">
+							</colgroup>
+							<thead>
+								<tr>
+									<th>일자</th>
+									<th>품목</th>
+									<th>수량</th>
+									<th>단가(원)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="tC"><button class="dateCalSet">2020-06-24</button></td>
+									<td><input type="text" class="tL" value="수출입 운임 및 부대비용"/></td>
+									<td><input type="text" class="tC" value="3"/></td>
+									<td><input type="text" class="tR" value="2,260,000"/></td>
+								</tr>
+								<tr class="cloneTr"><!-- 2020-08-04 cloneTr 클래스 삭제 -->
+									<td><button class="dateCalSet">2020-06-24</button></td>
+									<td><input type="text" class="tL"/></td>
+									<td><input type="text" class="tC"/></td>
+									<td><input type="text" class="tR"/></td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- 2020-08-04 add 버튼, 버튼 영역 삭제 -->
+					</div>
+					<div class="tls">
+						<table>
+							<colgroup>
+								<col width="110">
+								<col width="210">
+								<col width="180">
+							</colgroup>
+							<thead>
+								<tr>
+									<th>발행일자</th>
+									<th>공급가액</th>
+									<th>세액</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><button class="dateCalSet">2020-06-24</button></td>
+									<td><input class="tR" type="text" value="999,999,999"/></td>
+									<td class="tR">999,000</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM gray">취소</button>
+					<button class="btnM red">확인</button>
+				</div>
+			</div>
+			<!--//세금계산서 일괄 발행-->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

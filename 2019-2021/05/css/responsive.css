@@ -1,0 +1,95 @@
+@charset "utf-8";
+
+/* =================================================================================
+* INFORMATION
+* -----------------------------------------------------------------------
+* @File Name: responsive.css
+* @Version: 1.0
+* @Descration: PC버전 대응 
+* @Create Date: 2019-10-16
+* @Update Date: N/A
+* @History: N/A
+* ================================================================================= */
+
+
+body.edgeCase, body.edgeCase * {font-family:맑은고딕,'Malgun Gothic','RenaultSamsungMotors', 'Noto Sans';}
+body.edgeCase {overflow-x:hidden;}
+
+/* 메인화면 */
+@media (min-width:1120px) {
+	body.edgeCase.loginCase {background:url('../images/bg_loginPC.png') no-repeat center center fixed;background-size:auto 100%;}
+	body.edgeCase #header .headTop .gnbOpen {background-size:1.1rem auto;}
+	body.edgeCase #header .headSub .session span {bottom:0px;}
+
+	/* ============================================ */
+	/* 메인화면 */
+	/* ============================================ */
+	body.edgeCase .mainLayout .mainImg {display:none;}
+	body.edgeCase .mainLayout .mainImgPC {display:block;}
+	body.edgeCase .mainLayout .mainImgPC img {width:100%;}
+	body.edgeCase .edgeLayout1 {*zoom:1;}
+	body.edgeCase .edgeLayout1:after {content:"";display:block;clear:both;}
+	body.edgeCase .edgeLayout1 .mainBox {float:left;width:50%;padding-right:0.7rem;}
+	body.edgeCase .edgeLayout1 .mainBox:last-child {float:right;padding-right:1.4rem;padding-left:0.7rem;}
+	body.edgeCase .edgeLayout1 .mainBox div {padding:0.5rem 0;}
+	body.edgeCase .edgeLayout1 .mainBox li {padding:0 0.5rem;}
+	body.edgeCase .edgeLayout2 {*zoom:1;}
+	body.edgeCase .edgeLayout2:after {content:"";display:block;clear:both;}
+	body.edgeCase .edgeLayout2 .mainGo {float:left;width:50%;padding:1rem 0.2rem 1rem 0.9rem;}
+	body.edgeCase .edgeLayout2 .mainBbs {float:right;width:50%; padding:1rem 1.2rem 1rem 0.5rem;}
+	body.edgeCase .edgeLayout2 .mainBbs h3 {display:none;}
+	body.edgeCase .mainLayout .mainBbs ul li {padding:0 0.8rem;width:20%;} 
+	body.edgeCase .mainLayout .mainBbs ul li a {position:relative;display:table;padding:0 0.5rem;height:3.9rem;width:100%;line-height:1.2;text-align:center;font-weight:bold;box-sizing:border-box;border-radius:3px;border:1px solid #bbb;background:#f8f8f8;}
+	body.edgeCase .mainLayout .mainBbs ul li a:after {display:none;}
+
+	/* ============================================ */
+	/* gnb 오픈 시 grid 정렬 변환 */
+	/* ============================================ */
+	body.edgeCase .pushCase .gridSet {display:table;width:100%;}
+	body.edgeCase .pushCase .gridItem {display:table-cell;width:100%;}
+	body.edgeCase .pushCase .gridSet.grid2 .gridItem {width:50%;}
+	body.edgeCase .pushCase .gridSet.grid3 .gridItem {width:33.3%;}
+	body.edgeCase .pushCase .gridSet.grid3 .gridItem:nth-child(2) {width:33.4%;}
+	body.edgeCase .pushCase .stepBox .gridSet.grid2 .gridItem:first-child {padding-right:0.7rem;}
+	body.edgeCase .pushCase .stepBox .gridSet.grid2 .gridItem:nth-child(2) {padding-left:0.7rem;}
+	/* body.edgeCase .pushCase .stepBox .gridItem.inlineBL {display:table-cell;width:50%;} */
+	body.edgeCase .pushCase .estDtlMain .gridSet.grid2 .gridItem:nth-child(1) {padding-right:0.7rem;}
+	body.edgeCase .pushCase .estDtlMain .gridSet.grid2 .gridItem:nth-child(2) {padding-left:0.7rem;}
+	body.edgeCase .pushCase .estDtlMain .gridSet.grid2.type2 .gridItem:nth-child(1) {width:33.3%;padding-right:1.4rem;}
+	body.edgeCase .pushCase .estDtlMain .gridSet.grid2.type2 .gridItem:nth-child(2) {width:66.7;}
+	body.edgeCase .pushCase .estDtlMain .gridSet.grid3 .gridItem:nth-child(1) {padding-right:1.4rem;}
+	body.edgeCase .pushCase .estDtlMain .gridSet.grid3 .gridItem:nth-child(2) {padding-right:1.4rem;}
+	body.edgeCase .pushCase .estDtlMain .gridSet.result .gridItem {display:block;}
+	body.edgeCase .pushCase .estDtlMain .gridSet.result .gridItem:nth-child(1) {width:33.3%;padding-right:1.4rem;}
+	body.edgeCase .pushCase .estDtlMain .gridSet.result .gridItem:nth-child(2) {width:33.4%;padding-left:0;padding-right:1.4rem;}
+	body.edgeCase .pushCase .pointCard > li {display:inline-block;width:50%;margin-top:0.7rem;}
+	body.edgeCase .pushCase .pointCard > li:first-child,
+	body.edgeCase .pushCase .pointCard > li:nth-child(2) {margin-top:0;}
+	body.edgeCase .pushCase .pointCard > li:nth-child(2n+1) {padding-right:0.7rem;}
+	body.edgeCase .pushCase .pointCard > li:nth-child(2n) {padding-left:0.7rem;}
+	body.edgeCase .pushCase .emailForm .txt {display:inline-block;width:5%;height:2.3rem;line-height:2.3rem;}
+	body.edgeCase .pushCase .emailForm .emailDomain input,
+	body.edgeCase .pushCase .emailForm .emailDomain .selectSet {width:47%;}
+	body.edgeCase .pushCase .emailForm .emailDomain .selectSet {margin-left:1%;margin-top:0;}
+	body.edgeCase .pushCase .addrForm .btnLG {width:auto;margin-left:0.3rem;margin-top:0;}
+	body.edgeCase .pushCase .addrForm .post {width:6.4rem;}
+	body.edgeCase .pushCase .agreement li > * {margin-right:0.5rem;}
+	body.edgeCase .pushCase .agreement li .btnTypeTag {float:left;margin-left:0.5rem;}
+	body.edgeCase .pushCase .agreement .agreeDelete {padding:0 0.6rem 0 2rem;margin-left:0.5rem;width:auto;text-indent:-9999px;background-position:left center;}
+	body.edgeCase .pushCase .frmSub.type3 li {width:50%;float:left;}
+	body.edgeCase .pushCase .frmSub.type3 li:first-child {padding-right:3.2rem;}
+	body.edgeCase .pushCase .frmSub.type3 li:first-child .txt {margin-right:0.9rem;}
+	body.edgeCase .pushCase .frmSub.type3 li:last-child {padding-right:4.5rem;}
+	body.edgeCase .pushCase .leaseAddInfo {padding-top:2.2rem !important;}
+
+	/* ============================================ */
+	/* */
+	/* ============================================ */
+	body.edgeCase .iReSign {background-size:22px auto;}
+	body.edgeCase .btnSign {background-size:auto 47%;}
+	body.edgeCase .btnSign.action {background-size:auto 47%;}
+	body.edgeCase .customerList.tbHead > li > span {box-sizing:border-box;}
+	body.edgeCase .cardSummary li.name {background-size:16px auto;}
+	body.edgeCase .tbList .numbering {position:static;}
+	body.edgeCase .tbList.tbBody .numbering {position:relative;}
+}

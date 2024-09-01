@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function() {
+				$(".loginInput button.btnPhoneChk").click(function () {
+					$('.erMsg').hide();
+					$('.loginInput.phoneChk').show();
+					$(".loginInput.phoneChk input").focus(function(){
+						$('.phoneChk button.green').removeAttr("disabled");
+					});
+					$('.phoneChk button.green').click(function(){
+						$('.phoneChk + .erMsg').show();
+						$('.phoneChk button.green').click(function(){
+							location.href="main.html";
+						});
+					});
+
+				});
+
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- loginWrap -->
+			<div id="loginWrap">
+				<div class="formBack">
+					<div class="loginForm whiteBox">
+						<h1>물류플랫폼<!-- 2020-10-29 텍스트 변경 --> <span>(차주용)</span><!-- 2020-07-08 추가 --></h1>
+						<form id="" method="get">
+							<div class="loginInput">
+								<label>휴대폰 번호</label>
+								<span>
+									<input type="text" placeholder="'-'없이 입력"/><button type="button" class="btnS black btnPhoneChk">휴대폰 인증</button>
+									<!-- <button type="button" class="btnS black btnResend" style="display:none;">재발송</button> -->
+								</span>
+							</div>
+							<p class="erMsg">입력하신 휴대폰 번호와 일치하는 소속 운송사가 없습니다. 입력정보를 다시 한 번 확인해주세요.</p>
+							<p class="erMsg" style="display:none;">휴대폰 번호 형식이 올바르지 않습니다.</p>
+							<p class="erMsg" style="display:none;">계정 비활성화 상태입니다. 소속 운송사에 문의하세요.</p>
+							<div class="loginInput phoneChk" style="display:none;">
+								<label>인증번호</label>
+								<span>
+									<input type="number" placeholder="6자리 숫자"/><em>2:59</em><button type="button" class="btnS green" disabled >확인</button>
+								</span>
+							</div>
+							<p class="erMsg" style="display:none;">인증번호가 일치하지 않습니다.</p>
+						</form>
+					</div>
+					<div class="bottomLogo">씽크트리<!-- 2020-10-29 텍스트 변경 --></div>
+				</div>
+			</div>
+			<!-- //loginWrap -->
+		</div>
+		<!-- //Wrap -->
+    </body>
+</html>

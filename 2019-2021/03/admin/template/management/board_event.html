@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/* 파일업로드 */
+			$('.fileSet input[type=file]').change(function() {
+				var fileValue = $(this).val().split("\\");
+				var fileName = fileValue[fileValue.length-1];
+				$('.fileSet .loadEnd em').text(fileName);
+				$('.fileSet .fileFind').hide();
+				$('.fileSet .loadIng').show();
+				setTimeout(function() {
+					$('.fileSet .loadIng').hide();
+					$('.fileSet .loadFail').show();
+				}, 3000);
+				setTimeout(function() {
+					$('.fileSet .loadFail').hide();
+					$('.fileSet .loadEnd').show();
+				}, 6000);
+			});
+			$('.fileSet .loadEnd button').click(function() {
+				$('.fileSet .fileFind').show();
+				$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+			});
+			/* end 파일업로드 */
+			$(".tabNav li button").click(function () {
+				$(".tabNav li").removeClass("on");
+				$(this).parent("li").addClass("on");
+				var activeTab = $(this).attr("data-name");
+				$('.tabData').hide();
+				$('.tData' + activeTab).show();
+			});
+			$('.basicPop .pBtn button, .basicPop .pclose, .alertPop .pBtn button').click(function(){
+				$('.alertDim, .alertPop').hide();
+				$('.popDim, .basicPop').hide();
+			})
+			$('.btnEvDel').click(function(){
+				$('.alertDim, .evDelPop').show();
+			});
+			$('#btnEvEnd').click(function(){
+				$('.alertDim, .evEndPop').show();
+			});
+			$('#btnEvGo').click(function(){
+				$('.alertDim, .evGoPop').show();
+			});
+			$('#btnEvNew').click(function(){
+				$('.popDim, .evViewPop#newCase').show();
+			});
+			$('.evGoingList td a').click(function(){
+				$('.popDim, .evViewPop#detailCase').show();
+			});
+			$('.evViewPop .pBtn .white').click(function(){
+				$('.alertDim, .evCancelPop').show();
+			});
+			$('.evViewPop .pBtn .primary').click(function(){
+				$('.alertDim, .evSavePop').show();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>이벤트</h2>
+					<div class="pagePos"><span>Home</span><span>게시판관리</span><span>AndU 게시판</span><strong>이벤트</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="eventLayout">
+						<!-- tab-wrap -->
+						<div class="tabWrap" style="display:block;">
+							<!-- tab -->
+							<div class="tabBack">
+								<div class="tabNav">
+									<nav>
+										<ul>
+											<li class="on"><button data-name="0">고정 이벤트</button></li>
+											<li><button data-name="1">진행중</button></li>
+											<li><button data-name="2">완료</button></li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+							<!--// tab -->
+							<div class="tabLayout">
+								<div class="tabData tData0" style="display:block;">
+									<div class="fixEvent">
+										<p>고정 이벤트는 사용자 생일을 공지해주는 기능입니다. 사용여부를 적용해야 이벤트 노출이 됩니다.<br/>고정 이벤트 외의 배너가 등록되어도 고정 이벤트 배너가 우선순위 입니다.</p>
+										<div class="tws">
+											<table>
+												<colgroup>
+													<col width="100"/>
+													<col width="800"/>
+													<col width="100"/>
+													<col width="800"/>
+												</colgroup>
+												<tbody>
+													<tr>
+														<th>노출순서</th>
+														<td colspan="3">
+															<span class="radioSet">
+																<input type="radio" id="evSeq1" name="evSeq" />
+																<label for="evSeq1"><i></i>이름 가나다순</label>
+															</span>
+															<span class="radioSet">
+																<input type="radio" id="evSeq2" name="evSeq" />
+																<label for="evSeq2"><i></i>사번 내림차순</label>
+															</span>
+															<span class="radioSet">
+																<input type="radio" id="evSeq3" name="evSeq" />
+																<label for="evSeq3"><i></i>사번 올림차순</label>
+															</span>
+															<em>(생일자가 여러명일 경우에 대한 우선순위 입니다)</em>
+														</td>
+													</tr>
+													<tr>
+														<th>배경등록</th>
+														<td colspan="3">
+															<span class="fileSet">
+																<span class="fileFind" style="display:none;">
+																	<input type="file" id="file1" />
+																	<label for="file1">파일 찾기</label>
+																</span>
+																<span class="loadIng" style="display:none;">업로드 중</span>
+																<strong class="loadEnd thumbnailCase">
+																	<em>샘플 데이터.png</em>
+																	<button>취소</button>
+																	<div class="imgAlign"><span><img src="../../images/img_logo_thinktree.png" /></span></div>
+																</strong>
+																<button class="loadFail" style="display:none;">업로드 실패</button>
+															</span>
+															<em>(권장 최소 Size : 넓이 600 px X 높이 200 px )</em>
+														</td>
+													</tr>
+													<tr>
+														<th>내용정렬</th>
+														<td>
+															<span class="radioSet">
+																<input type="radio" id="evAlign1" name="evAlign" />
+																<label for="evAlign1"><i></i>왼쪽</label>
+															</span>
+															<span class="radioSet">
+																<input type="radio" id="evAlign2" name="evAlign" />
+																<label for="evAlign2"><i></i>오른쪽</label>
+															</span>
+															<span class="radioSet">
+																<input type="radio" id="evAlign3" name="evAlign" />
+																<label for="evAlign3"><i></i>중앙</label>
+															</span>
+														</td>
+														<th>글자색상</th>
+														<td>
+															<span class="radioSet">
+																<input type="radio" id="evColor1" name="evColor"/>
+																<label for="evColor1"><i></i>#000000</label>
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<th>미리보기</th>
+														<td colspan="3">
+															<div class="eventPreview">
+																<p>2020년 00월 00일<br/>홍길동님, 김철수님 생일 축하합니다.</p>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="btnArea tC">
+										<button class="btnM white">수정 취소</button>
+										<button class="btnM white">저장</button>
+									</div>
+								</div>
+								<div class="tabData tData1">
+									<div class="boardTop">
+										<em>전체 10,000건</em>
+										<span class="right">
+											<span class="calDupSet">
+												<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+												<em>~</em>
+												<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+											</span>
+											<span class="searchBasic">
+												<input type="text" placeholder="제목 입력" />
+												<input type="submit" value="검색" class="btnSearch" />
+												<button class="btnReset">초기화</button>
+											</span>
+											<button class="btnM">엑셀다운로드</button>
+										</span>
+									</div>
+									<div class="tls evGoingList">
+										<table>
+											<colgroup>
+												<col width="40"/>
+												<col width="70"/>
+												<col width="150"/>
+												<col width="180"/>
+												<col width="600"/>
+												<col width="70"/>
+												<col width="140"/>
+												<col width="140"/>
+												<col width="140"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="evGoingAll"/>
+															<label for="evGoingAll"><i></i></label>
+														</span>
+													</th>
+													<th>순서변경</th>
+													<th>제목</th>
+													<th>노출기간</th>
+													<th>이미지</th>
+													<th>연결링크</th>
+													<th>사용여부</th>
+													<th>등록자</th>
+													<th>등록일자</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="evGoing1"/>
+															<label for="evGoing1"><i></i></label>
+														</span>
+													</td>
+													<td><input type="text" value="1" class="seqInput"/></td>
+													<td class="tL"><a href="#">생일 안내 이벤트</a></td>
+													<td>2020-00-00 ~ 2020-00-00</td>
+													<td>
+														<div class="imgAlign">
+															<span><img src="../../images/img_sign_example.png" alt=""></span>
+														</div>
+													</td>
+													<td>O</td>
+													<td>
+														<span class="labelToggleSet">
+															<input type="checkbox" id="evUse1" />
+															<label for="evUse1"><span>X</span><span>O</span></label>
+														</span>
+													</td>
+													<td>홍길동 (00000)</td>
+													<td>2020-00-00 00:00</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="evUse1"/>
+															<label for="evGoing1"><i></i></label>
+														</span>
+													</td>
+													<td><input type="text" value="2" class="seqInput"/></td>
+													<td class="tL"><a href="#">회람 공지</a></td>
+													<td>2020-00-00 ~ 2020-00-00</td>
+													<td>
+														<div class="imgAlign">
+															<span><img src="../../images/img_sign_example.png" alt=""></span>
+														</div>
+													</td>
+													<td>O</td>
+													<td>
+														<span class="labelToggleSet">
+															<input type="checkbox" id="evUse2" />
+															<label for="evUse2"><span>X</span><span>O</span></label>
+														</span>
+													</td>
+													<td>홍길동 (00000)</td>
+													<td>2020-00-00 00:00</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="evGoing1"/>
+															<label for="evGoing1"><i></i></label>
+														</span>
+													</td>
+													<td><input type="text" class="seqInput"/></td>
+													<td class="tL"><a href="#">사내 행사 이벤트</a></td>
+													<td>2020-00-00 ~ 2020-00-00</td>
+													<td>
+														<div class="imgAlign">
+															<span><img src="../../images/img_sign_example.png" alt=""></span>
+														</div>
+													</td>
+													<td>O</td>
+													<td>
+														<span class="labelToggleSet">
+															<input type="checkbox" id="evUse3" />
+															<label for="evUse3"><span>X</span><span>O</span></label>
+														</span>
+													</td>
+													<td>홍길동 (00000)</td>
+													<td>2020-00-00 00:00</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="bpSet">
+										<div class="btnArea">
+											<span class="left">
+												<button class="btnM white btnEvDel">선택 삭제</button>
+												<button class="btnM white" id="btnEvEnd">선택 완료</button>
+											</span>
+											<span class="right">
+												<button class="btnM white" id="btnEvNew">신규 추가</button>
+											</span>
+										</div>
+										<div class="paginate">
+											<span>
+												<a class="first">이전</a>
+													<a class="on">1</a>
+													<a>2</a>
+													<a>3</a>
+													<a>4</a>
+													<a>5</a>
+												<a class="next">다음</a>
+											</span>
+											<span class="selectSet">
+												<select>
+													<option>10개</option>
+													<option>20개</option>
+													<option>50개</option>
+													<option>100개</option>
+												</select>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="tabData tData2">
+									<div class="boardTop">
+										<em>전체 10,000건</em>
+										<span class="right">
+											<span class="calDupSet">
+												<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+												<em>~</em>
+												<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+											</span>
+											<span class="searchBasic">
+												<input type="text" placeholder="제목 입력" />
+												<input type="submit" value="검색" class="btnSearch" />
+												<button class="btnReset">초기화</button>
+											</span>
+											<button class="btnM">엑셀다운로드</button>
+										</span>
+									</div>
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="40"/>
+												<col width="200"/>
+												<col width="200"/>
+												<col width="600"/>
+												<col width="70"/>
+												<col width="140"/>
+												<col width="140"/>
+												<col width="140"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="evGoingAll"/>
+															<label for="evGoingAll"><i></i></label>
+														</span>
+													</th>
+													<th>제목</th>
+													<th>노출기간</th>
+													<th>이미지</th>
+													<th>연결링크</th>
+													<th>사용여부</th>
+													<th>등록자</th>
+													<th>등록일자</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="evEnd1"/>
+															<label for="evEnd1"><i></i></label>
+														</span>
+													</td>
+													<td class="tL">생일 안내 이벤트</td>
+													<td>2020-00-00 ~ 2020-00-00</td>
+													<td>
+														<div class="imgAlign">
+															<span><img src="../../images/img_sign_example.png" alt=""></span>
+														</div>
+													</td>
+													<td>O</td>
+													<td>
+														<span class="labelToggleSet">
+															<input type="checkbox" id="evUse1" />
+															<label for="evUse1"><span>X</span><span>O</span></label>
+														</span>
+													</td>
+													<td>홍길동 (00000)</td>
+													<td>2020-00-00 00:00</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="evEnd2"/>
+															<label for="evEndevEnd2"><i></i></label>
+														</span>
+													</td>
+													<td class="tL">회람 공지</td>
+													<td>2020-00-00 ~ 2020-00-00</td>
+													<td>
+														<div class="imgAlign">
+															<span><img src="../../images/img_sign_example.png" alt=""></span>
+														</div>
+													</td>
+													<td>O</td>
+													<td>
+														<span class="labelToggleSet">
+															<input type="checkbox" id="evUse2" />
+															<label for="evUse2"><span>X</span><span>O</span></label>
+														</span>
+													</td>
+													<td>홍길동 (00000)</td>
+													<td>2020-00-00 00:00</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="evEnd3"/>
+															<label for="evEnd3"><i></i></label>
+														</span>
+													</td>
+													<td class="tL">사내 행사 이벤트</td>
+													<td>2020-00-00 ~ 2020-00-00</td>
+													<td>
+														<div class="imgAlign">
+															<span><img src="../../images/img_sign_example.png" alt=""></span>
+														</div>
+													</td>
+													<td>O</td>
+													<td>
+														<span class="labelToggleSet">
+															<input type="checkbox" id="evEnd3" />
+															<label for="evEnd3"><span>X</span><span>O</span></label>
+														</span>
+													</td>
+													<td>홍길동 (00000)</td>
+													<td>2020-00-00 00:00</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="bpSet">
+										<div class="btnArea">
+											<span class="left">
+												<button class="btnM white btnEvDel">선택 삭제</button>
+												<button class="btnM white" id="btnEvGo">선택 진행</button>
+											</span>
+										</div>
+										<div class="paginate">
+											<span>
+												<a class="first">이전</a>
+													<a class="on">1</a>
+													<a>2</a>
+													<a>3</a>
+													<a>4</a>
+													<a>5</a>
+												<a class="next">다음</a>
+											</span>
+											<span class="selectSet">
+												<select>
+													<option>10개</option>
+													<option>20개</option>
+													<option>50개</option>
+													<option>100개</option>
+												</select>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- //tab-wrap -->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Alert Pop -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop evDelPop" style="display:none;">
+				<div class="pBack">
+					<p>선택한 항목을 삭제 하시겠습니까?</p>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<div class="alertPop evEndPop" style="display:none;">
+				<div class="pBack">
+					<p>선택한 이벤트가 완료되었습니다.<br/>완료된 이벤트는 완료 탭에서 확인이 가능합니다.</p>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<div class="alertPop evCancelPop" style="display:none;">
+				<div class="pBack">
+					<p>등록된 정보는 저장되지 않습니다.<br/>취소하시겠습니까?</p>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<div class="alertPop evSavePop" style="display:none;">
+				<div class="pBack">
+					<p>입력한 정보가 저장되었습니다.</p>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<div class="alertPop evGoPop" style="display:none;">
+				<div class="pBack">
+					<p>선택한 이벤트가 진행중 목록으로 이동합니다.<br/>사용여부 및 노출기간 변경이 필요합니다.</p>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //Alert Pop -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<div class="basicPop evViewPop" id="newCase" style="display:none;">
+				<div class="tt">
+					<h1>이벤트 추가</h1>
+				</div>
+				<div class="pBack">
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="100"/>
+								<col width="600"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>제목</th>
+									<td><input type="text"/></td>
+								</tr>
+								<tr>
+									<th>노출기간</th>
+									<td>
+										<span class="calDupSet">
+											<span class="calSet"><input type="tel"/><button>달력열기</button></span>
+											<em>~</em>
+											<span class="calSet"><input type="tel"/><button>달력열기</button></span>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>이미지 등록</th>
+									<td>
+										<span class="fileSet">
+											<span class="fileFind">
+												<input type="file" id="file1" />
+												<label for="file1">파일찾기</label>
+											</span> <!--파일선택:버튼만있는형식:초록색버전-->
+											<span class="loadIng" style="display:none;">업로드 중</span>
+											<strong class="loadEnd" style="display:none;">
+												<em>샘플 데이터.png</em>
+												<button>취소</button>
+											</strong>
+											<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>연결 링크</th>
+									<td>
+										<span class="checkSet">
+											<input type="checkbox" id="evGoingAll"/>
+											<label for="evGoingAll"><i></i>사용</label>
+										</span>
+										<span class="menuSet">
+											<span class="selectSet">
+												<select>
+													<option>메뉴명 선택</option>
+													<option>공지사항</option>
+												</select>
+											</span>
+											<input type="text" placeholder="게시글 선택(자동완성)" />
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>사용여부</th>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="evNew" checked/>
+											<label for="evNew"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<div class="basicPop evViewPop" id="detailCase" style="display:none;">
+				<div class="tt">
+					<h1>이벤트 수정</h1>
+				</div>
+				<div class="pBack">
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="100"/>
+								<col width="600"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>제목</th>
+									<td><input type="text" value="발열체크 안내 공지"/></td>
+								</tr>
+								<tr>
+									<th>노출기간</th>
+									<td>
+										<span class="calDupSet">
+											<span class="calSet"><input type="tel" value="2020-01-21" /><button>달력열기</button></span>
+											<em>~</em>
+											<span class="calSet"><input type="tel" value="2020-01-21" /><button>달력열기</button></span>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>이미지 등록</th>
+									<td>
+										<span class="fileSet">
+											<span class="fileFind" style="display:none;">
+												<input type="file" id="file1" />
+												<label for="file1">파일찾기</label>
+											</span> <!--파일선택:버튼만있는형식:초록색버전-->
+											<span class="loadIng" style="display:none;">업로드 중</span>
+											<strong class="loadEnd">
+												<em>샘플 데이터.png</em>
+												<button>취소</button>
+											</strong>
+											<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>연결 링크</th>
+									<td>
+										<span class="checkSet">
+											<input type="checkbox" id="evGoingAll" checked/>
+											<label for="evGoingAll"><i></i>사용</label>
+										</span>
+										<span class="menuSet">
+											<span class="selectSet">
+												<select>
+													<option>메뉴명 선택</option>
+													<option selected>공지사항</option>
+												</select>
+											</span>
+											<input type="text" placeholder="게시글 선택(자동완성)" value="발열체크 관련의 건"/>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>사용여부</th>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="evNew2" checked/>
+											<label for="evNew2"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //Popup -->
+		</div>
+    </body>
+</html>

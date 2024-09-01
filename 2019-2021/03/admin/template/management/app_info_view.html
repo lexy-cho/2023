@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('#dHistoryBtn').click(function() {
+				$('.popDim').show();
+				$('.dHistoryPop').show();
+			});
+			$('.pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop, .pushPreviewPop').hide();
+			});
+
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>APP 정보관리</h2>
+					<div class="pagePos"><span>Home</span><span>APP 관리</span><strong>APP 정보관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="">
+						<div class="tws">
+							<table>
+								<colgroup>
+									<col width="100"/>
+									<col width="100"/>
+									<col width="100" />
+									<col width="200" />
+									<col width="100"/>
+									<col width="300" />
+								</colgroup>
+								<tbody>
+									<tr>
+										<th rowspan="2">기본정보</th>
+										<th>APP 이름</th>
+										<td colspan="2"></td>
+										<th>개발담당자</th>
+										<td></td>
+									</tr>
+									<tr>
+										<th>APP 설명</th>
+										<td colspan="4"></td>
+									</tr>
+									<tr>
+										<th rowspan="3">배포 정보</th>
+										<th>iOS 계정</th>
+										<td colspan="2"></td>
+										<th>Android 계정</th>
+										<td></td>
+									</tr>
+									<tr>
+										<th>iOS 배포 URL</th>
+										<td colspan="2"></td>
+										<th>Android 배포 URL</th>
+										<td></td>
+									</tr>
+									<tr>
+										<th>배포 마이크로 URL</th>
+										<td colspan="2"><a class="btnS blue" href="http://cyan2.think-tree.com/ting/front/download/template/ting_download.html" target="_blank">미리보기</a></td>
+										<th>개인정보취급방침 URL</th>
+										<td></td>
+									</tr>
+									<tr>
+										<th rowspan="4">iOS 스팩</th>
+										<th>deployment Target </th>
+										<td colspan="2"></td>
+										<th>bundle identifier</th>
+										<td></td>
+									</tr>
+									<tr>
+										<th>swift Version</th>
+										<td colspan="2"></td>
+										<th>Framework</th>
+										<td></td>
+									</tr>
+									<tr>
+										<th>Last Store Version</th>
+										<td colspan="2"></td>
+										<th>엔터프라이즈 갱신일자</th>
+										<td></td>
+									</tr>
+									<tr>
+										<th>이중인중 정보</th>
+										<td colspan="4"></td>
+									</tr>
+									<tr>
+										<th rowspan="6">Android 스팩</th>
+										<th>minSdkVersion</th>
+										<td colspan="2"></td>
+										<th>패키지 이름</th>
+										<td></td>
+									</tr>
+									<tr>
+										<th>permission</th>
+										<td colspan="2"></td>
+										<th>framework</th>
+										<td></td>
+									</tr>
+									<tr>
+										<th>Last Store Version</th>
+										<td colspan="2"></td>
+										<th></th>
+										<td></td>
+									</tr>
+									<tr>
+										<th rowspan="3">key 생성정보</th>
+										<th>key file name</th>
+										<td colspan="3">
+											<button class="btnS white">파일다운로드 : Ting_ANDROID.jks</button>
+										</td>
+									</tr>
+									<tr>
+										<th>key file password</th>
+										<td>#@#1234</td>
+										<th>alias</th>
+										<td>Ting</td>
+									</tr>
+									<tr>
+										<th>valid (year)</th>
+										<td>100</td>
+										<th>First and last name</th>
+										<td></td>
+									</tr>
+									<!-- 2020-08-04 -->
+									<tr>
+										<th>Splash 이미지</th>
+										<td colspan="5">
+											<p>이미지 노출 랜덤 적용/미적용
+												<span class="ml1">로딩시간 : 2초</span><!-- 2020-08-04 로딩시간 -->
+											</p>
+											<div class="thumbnailCase pt1">
+				                                <img src="../../images/img_library_thumbnail.png" alt="이미지 예시" />
+				                                <img src="../../images/img_library_thumbnail.png" alt="이미지 예시" />
+				                                <img src="../../images/img_library_thumbnail.png" alt="이미지 예시" />
+												<img src="../../images/img_library_thumbnail.png" alt="이미지 예시" />
+											</div>
+										</td>
+									</tr>
+									<!-- 2020-08-04 -->
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="btnArea tC">
+							<a href="app_info_write.html" class="btnM">수정</a>
+							<a href="app_info.html" class="btnM">목록</a>
+							<a href="app_info.html" class="btnM">삭제</a>
+							<span class="right">
+								<button class="btnM blue">APP정보 입력요청</button>
+							</span>
+						</div>
+						<!--//-->
+						<!---->
+						<h3 class="firstH3">배포이력</h3>
+						<!---->
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="80"/>
+									<col width="150"/>
+									<col width="200"/>
+									<col />
+									<col width="200"/>
+									<col width="80"/>
+								</colgroup>
+								<thead>
+									<tr>
+										<th>No</th>
+										<th>구분</th>
+										<th>버전</th>
+										<th>배포내용</th>
+										<th>배포날짜</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2</td>
+										<td>iOS</td>
+										<td>1.0.0</td>
+										<td class="tL">iOS 최초 배포</td>
+										<td>YYYY-MM-DD 00:00</td>
+										<td><button class="btnS pink">삭제</button></td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>안드로이드</td>
+										<td>1.0.0</td>
+										<td class="tL">안드로이드 최초 배포</td>
+										<td>YYYY-MM-DD 00:00</td>
+										<td><button class="btnS pink">삭제</button></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="bpSet">
+							<div class="btnArea">
+								<span class="right">
+									<button class="btnM white" id="dHistoryBtn">배포이력 추가</button>
+								</span>
+							</div>
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+									<a class="on">1</a>
+									<a>2</a>
+									<a>3</a>
+									<a>4</a>
+									<a>5</a>
+									<a class="next">다음</a>
+								</span>
+								<span class="selectSet">
+									<select>
+										<option>10개</option>
+										<option>20개</option>
+										<option>50개</option>
+										<option>100개</option>
+									</select>
+								</span>
+							</div>
+						</div>
+						<!--//-->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none">
+			<div class="alertPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>입력한 정보가 삭제됩니다.<br/>삭제하시겠습니까?</p>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- 배포이력추가 -->
+			<div class="basicPop dHistoryPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>배포이력 추가하기</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="90"/>
+								<col />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>구분</th>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option>iOS</option>
+												<option>안드로이드</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>버전</th>
+									<td><input type="text" /></td>
+								</tr>
+								<tr>
+									<th>배포내용</th>
+									<td><textarea></textarea></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!---->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //배포이력추가 -->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

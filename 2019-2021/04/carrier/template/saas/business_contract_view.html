@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/timepicki.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/push.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/timepicki.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('.btnHarbor').click(function(){
+					$('.popDim').show();
+					$('.harborPop').show();
+					scrollClose();
+				});
+				/* 작업지 추가,삭제 대응 */
+				$('.work .whiteBlue').click(function(){
+					$(this).prev('dl').show();
+				});
+				$('.work .btnTrash').click(function(){
+					$(this).parents('dl').hide();
+				});
+				/* end 작업지 추가,삭제 대응 */
+				$('#popBtn7').click(function(){
+					$('.popDim').show();
+					$('#samplePop7').show();
+					scrollClose();
+				}); //최근실적 불러오기
+
+				/* containerSet 활성화비활성화 */
+				$(".inputBox input, .inputBox select, .inputBox textarea, .company input, .address input, .calSet input").focus(function(){
+					$(this).parents(".orderStepBox").addClass('focusOn');
+					$(".containerArea").removeClass('focusOn');
+					$(this).parents(".containerArea").addClass('focusOn');
+				});
+				$(".inputBox input, .inputBox select, .inputBox textarea, .company input, .address input, .calSet input").blur(function(){
+					$(this).parents(".orderStepBox").removeClass('focusOn');
+					$(this).parents(".containerArea").addClass('focusOn');
+				});
+				/* end containerSet 활성화비활성화 */
+
+				$("#kindSelect select").on("change", function(){
+					if($(this).find("option:selected").val() == 0){
+						$("#kindSelect").removeClass('blue').removeClass('green').addClass('red');
+						$(".taxInfo .transType").removeClass('blue').removeClass('green').addClass('red').text('수입');
+						$(".containerArea .map").removeClass('change');
+					}else if($(this).find("option:selected").val() == 1){
+						$("#kindSelect").removeClass('red').removeClass('green').addClass('blue');
+						$(".taxInfo .transType").removeClass('red').removeClass('green').addClass('blue').text('수출');
+						$(".containerArea .map").removeClass('change');
+					}
+				}); //수입,수출 구분에 따른 대응
+
+				$('.freightShape select').change(function(){
+					if($(this).find("option:selected").val() == 2){
+						$(".containerArea .map").addClass('change');
+					} else {
+						$(".containerArea .map").removeClass('change');
+					}
+				});
+				/* 운임형태 - 환적 대응 */
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap" class="detailCase">
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back">
+						<div data-include="../include/saas_snb.html"></div>
+					</div>
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<!-- 상세페이지는 모바일 메뉴 없음 -->
+			<hr/>
+			<div id="containerBack">
+				<!-- header -->
+				<div id="header">
+					<header>
+						 <span class="left">
+							<button class="btnList" onclick="history.back()">목록</button>
+						 </span>
+						 <h2 class="viewTit">영업계약관리</h2>
+						 <span class="right mSmallBtn">
+							<a class="btnM black" href="business_contract_write.html">수정</a>
+							<a class="btnM red" href="business_contract.html">계약삭제</a>
+						 </span>
+					</header>
+				</div>
+				<!-- //header -->
+				<hr/>
+				<!-- container -->
+				<div id="container">
+				<section>
+					<div class="content">
+					<article>
+						<!-- Page Layout -->
+						<div class="businessWriteLayout viewCase">
+							<!--화물구분-->
+							<div class="orderStepBox stepKind">
+								<div class="osTit">
+									<h3>1</h3>
+									<span class="txt">계약회사 정보</span>
+								</div>
+								<div class="osData basicCase">
+									<div class="gridSet grid3">
+										<div class="gridItem">
+											<dl class="inputBox priceSelect">
+												<dt>계약회사</dt>
+												<dd>주식회사 계약회사명</dd>
+											</dl>
+										</div>
+										<div class="gridItem">
+											<dl class="inputBox">
+												<dt>담당자</dt>
+												<dd>홍길동</dd>
+											</dl>
+										</div>
+										<div class="gridItem">
+											<dl class="inputBox">
+												<dt>휴대폰 번호</dt>
+												<dd>010-1234-1234</dd>
+											</dl>
+										</div>
+									</div>
+									<div class="gridSet grid3">
+										<div class="gridItem">
+											<dl class="inputBox">
+												<dt>사업자번호</dt>
+												<dd>123-12-12345</dd>
+											</dl>
+										</div>
+										<div class="gridItem">
+											<dl class="inputBox">
+												<dt>업종</dt>
+												<dd>업종입니다</dd>
+											</dl>
+										</div>
+										<div class="gridItem">
+											<dl class="inputBox">
+												<dt>업태</dt>
+												<dd>업태입니다</dd>
+											</dl>
+										</div>
+									</div>
+									<dl class="inputBox taxEmail">
+										<dt>세금계산서 발행 이메일</dt>
+										<dd>honggildong1234@gmail.com</dd>
+									</dl>
+									<dl class="inputBox mt10px">
+										<dt>주소</dt>
+										<dd>[경기성남] 경기도 성남시 수정대로 34 컨테이너 빌딩 지하 1층</dd>
+									</dl>
+								</div>
+							</div>
+							<!--//화물구분-->
+							<!--위치정보-->
+							<div class="orderStepBox stepMap">
+								<div class="osTit">
+									<h3>2</h3>
+									<span class="txt">계약 정보</span>
+									<dl class="inputBox">
+										<dt>계약기간</dt>
+										<dd><span class="dateFormat"><em>2019-12-01</em>~<em>2019-12-01</em></span></dd>
+									</dl>
+								</div>
+								<div class="osData">
+									<!-- 컨테이너 셋트 (기본) -->
+									<div class="containerSet">
+										<div class="containerArea">
+											<div class="businessInfo">
+												<dl class="inputBox twoSelect">
+													<dt>운송형태</dt>
+													<dd class="ftRed">수입</dd>
+													<dd>왕복</dd>
+												</dl>
+												<dl class="inputBox">
+													<dt><em>컨테이너 </em>유형</dt>
+													<dd>Sliding Open Top</dd>
+												</dl>
+												<dl class="inputBox">
+													<dt><em>컨테이너 </em>크기 (ft)</dt>
+													<dd>40 High Cube</dd>
+												</dl>
+											</div>
+											<div class="map businessCase"><!-- 환적Case ="map change" -->
+												<!-- 출발지 -->
+												<div class="start">
+													<dl>
+														<dt>상차<span>(출발지)</span></dt>
+														<dd>
+															<dl class="inputBox">
+																<dt>출발지</dt>
+																<dd>부산북항 - 대한통운부산컨테이너터미널(KBCT)</dd>
+															</dl>
+														</dd>
+													</dl>
+												</div>
+												<!-- //출발지 -->
+												<!-- 작업지 -->
+												<div class="work">
+													<!---->
+													<dl>
+														<dt>작업1<span>(작업지)</span></dt>
+														<dd>
+															<!-- 2020-07-21 영업계약(회사명, 담당, 연락처) 항목 추가 -->
+															<div class="gridSet grid3">
+																<div class="gridItem">
+																	<dl class="inputBox">
+																		<dt>회사명</dt>
+																		<dd>주식회사 물류플랫폼<!-- 2020-10-29 텍스트 변경 --> 물류창고</dd>
+																	</dl>
+																</div>
+																<div class="gridItem">
+																	<dl class="inputBox">
+																		<dt>담당</dt>
+																		<dd>홍길동</dd>
+																	</dl>
+																</div>
+																<div class="gridItem">
+																	<dl class="inputBox">
+																		<dt>연락처</dt>
+																		<dd>010-1234-1234</dd>
+																	</dl>
+																</div>
+															</div>
+															<!-- //2020-07-21 영업계약(회사명, 담당, 연락처) 항목 추가 -->
+															<dl class="inputBox">
+																<dt>주소</dt>
+																<dd>부산북항 - 대한통운부산컨테이너터미널(KBCT)</dd>
+															</dl>
+														</dd>
+													</dl>
+													<!--//-->
+													<!---->
+													<dl>
+														<dt>작업2<span>(작업지)</span></dt>
+														<dd>
+															<!-- 2020-07-21 영업계약(회사명, 담당, 연락처) 항목 추가 -->
+															<div class="gridSet grid3">
+																<div class="gridItem">
+																	<dl class="inputBox">
+																		<dt>회사명</dt>
+																		<dd>주식회사 물류플랫폼<!-- 2020-10-29 텍스트 변경 --> 물류창고</dd>
+																	</dl>
+																</div>
+																<div class="gridItem">
+																	<dl class="inputBox">
+																		<dt>담당</dt>
+																		<dd>홍길동</dd>
+																	</dl>
+																</div>
+																<div class="gridItem">
+																	<dl class="inputBox">
+																		<dt>연락처</dt>
+																		<dd>010-1234-1234</dd>
+																	</dl>
+																</div>
+															</div>
+															<!-- //2020-07-21 영업계약(회사명, 담당, 연락처) 항목 추가 -->
+															<dl class="inputBox">
+																<dt>주소</dt>
+																<dd>부산북항 - 대한통운부산컨테이너터미널(KBCT)</dd>
+															</dl>
+														</dd>
+													</dl>
+													<!--//-->
+												</div>
+												<!-- //작업지 -->
+												<!-- 도착지 -->
+												<div class="end">
+													<dl>
+														<dt>반납<span>(도착지)</span></dt>
+														<dd>
+															<dl class="inputBox">
+																<dt>도착지</dt>
+																<dd>부산북항 - 대한통운부산컨테이너터미널(KBCT)</dd>
+															</dl>
+														</dd>
+													</dl>
+												</div>
+												<!-- //도착지 -->
+											</div>
+											<div class="total">
+												<strong>계약금액<sup>필수</sup></strong>
+												<dl class="inputBox">
+													<dt>운임비용</dt>
+													<dd><span>999,000</span> 원</dd>
+												</dl>
+											</div>
+											<div class="guid">
+												<strong>
+													운임 기준 안내
+													<span>국토교통부가 고지한 안전운임제 운임표를 기준으로 운임 기준을 안내합니다. 안전운송운임을 준수해주세요.</span>
+													<a href="https://www.safetruck.go.kr/notice/noticeView.do" target="_blank">화물자동차 안전운임고시</a>
+												</strong>
+												<div class="standard">
+													<em>[왕복]</em>
+													<dl>
+														<dt>구간거리</dt>
+														<dd>150 km</dd>
+													</dl>
+													<dl>
+														<dt>안전운송운임</dt>
+														<dd>1,123,200 원</dd>
+													</dl>
+												</div>
+												<ul>
+													<li>의왕ICD, 인천항, 평택항 등 수도권 컨테이너 장치장에서 공(空)컨테이너를 반납 또는 수령하는 경우에는 편도 운임을 적용합니다.</li>
+													<li>일요일 및 공휴일에 작업하는 경우 20%가산됩니다. 심야(22:00-06:00)에 운행하는 경우 20%가산됩니다. 물류플랫폼은<!-- 2020-10-29 텍스트 변경 --> 휴일운임가산과 야간운임가산 두 조건만 운임 안내에 반영하였습니다.</li>
+													<li>운임비용 계산  = 안전운임제 기준 단가 X (휴일운임가산 20% + 야간운임가산 20%)</li>
+													<li>주간에 화물자동차 운행이 제한되어 허가를 받아야 되는 지역은 해당구간 운임의 30% 이상을 가산합니다. 상기 추천금액에는 이 조건이 반영되어 있지 않습니다.</li>
+													<li>산간벽지 등 오지의 경우는 화주, 운수사업자, 화물차주 간에 협의하여 운임을 가산 적용합니다.</li>
+													<li>도로통행 제한 높이 또는 길이의 초과로 발생되는 “제한차량 운행허가” 수수료 등은 화주가 실비 정산하여 지급합니다.</li>
+													<li>가산적용의 총 비율은 거리당 운임단가의 50%를 초과할 수 없습니다.</li>
+												</ul>
+											</div>
+										</div>
+										<!-- 여닫기없음 -->
+									</div>
+									<!--//컨테이너 셋트 (기본) -->
+								</div>
+							</div>
+							<!--//위치정보-->
+						</div>
+						<!-- //page Layout -->
+					</article>
+					</div>
+				</section>
+				</div>
+				<!-- //container -->
+			</div>
+		</div>
+		<!-- //Wrap -->
+		<!-- popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 최근 실적 불러오기 -->
+			<div class="basicPop loadResultPop" id="samplePop4" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>최근 실적 불러오기</h1>
+				</div>
+				<div class="pBack">
+					<div class="calendarSet">
+						<span class="calDupSet">
+							<span class="calSet"><label for="searchDate">조회기간</label><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span>
+							<em>~</em>
+							<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+						</span>
+						<span class="radioChoose">
+							<label for="lb1"><input type="radio" id="lb1" name="radio1" value="오늘" /><span>오늘</span></label>
+							<label for="lb2"><input type="radio" id="lb2" name="radio1" value="10일" /><span>10일</span></label>
+							<label for="lb3"><input type="radio" id="lb3" name="radio1" value="지난달" /><span>지난달</span></label>
+							<label for="lb4"><input type="radio" id="lb4" name="radio1" value="이번달" /><span>이번달</span></label>
+						</span>
+					</div>
+					<div class="resultContents">
+						<ul class="resultList">
+							<li>
+								<div>
+									<div class="listHead">
+										<strong>입</strong>
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div>
+									<div class="listHead">
+										<strong>입</strong>
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div>
+									<div class="listHead">
+										<strong>입</strong>
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div>
+									<div class="listHead">
+										<strong>입</strong>
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="red">
+								<div>
+									<div class="listHead">
+										<strong>입</strong>
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div>
+									<div class="listHead">
+										<strong>입</strong>
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//최근 실적 불러오기-->
+			<!-- 항만정보 -->
+			<div class="basicPop harborPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>항만 정보</h1>
+				</div>
+				<div class="pBack">
+					<div class="harborStep">
+						<strong>1. 항만 선택</strong>
+						<div class="harborBox">
+							<ul>
+								<li>부산신항</li>
+								<li>부산북항</li>
+								<li>인천항</li>
+								<li>인천신항</li>
+								<li>경인항</li>
+								<li>울산신항</li>
+								<li>울산항</li>
+								<li>광양항</li>
+								<li>대산항</li>
+								<li>포항항</li>
+								<li>평택항</li>
+								<li>군산항</li>
+								<li>마산항</li>
+								<li>목포항</li>
+								<li>의왕ICD</li>
+							</ul>
+						</div>
+					</div>
+					<div class="harborStep">
+						<strong>2. 터미널 선택</strong>
+						<div class="listArea">
+							<div class="listTop">
+								<div class="tls">
+									<table>
+										<colgroup>
+											<col width="10" />
+											<col width="200" />
+										</colgroup>
+										<thead>
+											<tr>
+												<th>터미널코드</th>
+												<th>터미널명</th>
+											</tr>
+										</thead>
+									</table>
+								</div>
+							</div>
+							<div class="listScroll">
+								<div class="tls">
+									<table>
+										<colgroup>
+											<col width="10" />
+											<col width="200" />
+										</colgroup>
+										<tbody>
+											<!--Loop-->
+											<tr>
+												<td>03012240</td>
+												<td class="tL">허치슨부산터미널(HBCT)</td>
+											</tr>
+											<!--//Loop-->
+											<tr class="on">
+												<td>03012257</td>
+												<td class="tL">우암터미널(UTC)</td>
+											</tr>
+											<tr>
+												<td>03012226</td>
+												<td class="tL">부산인터내셔널터미널(BIT)</td>
+											</tr>
+											<tr>
+												<td>03077016</td>
+												<td class="tL">대한통운부산컨테이너터미널(KBCT)</td>
+											</tr>
+											<tr>
+												<td>03012312</td>
+												<td class="tL">동부감만터미널(DPCT)</td>
+											</tr>
+											<tr>
+												<td>03912047</td>
+												<td class="tL">KCTC UAM CY</td>
+											</tr>
+											<tr>
+												<td>03912047</td>
+												<td class="tL">KCTC UAM CY</td>
+											</tr>
+											<tr>
+												<td>03912047</td>
+												<td class="tL">KCTC UAM CY</td>
+											</tr>
+											<tr>
+												<td>03912047</td>
+												<td class="tL">KCTC UAM CY</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!-- //항만정보 -->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

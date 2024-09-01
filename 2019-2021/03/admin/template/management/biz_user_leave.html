@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.highcharts.com/highcharts.src.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$(".btnSearch").click(function () {
+				$(".leaveUserList .tabWrap").show();
+			});
+			$(".tabNav li button").click(function () {
+				$(".tabNav li").removeClass("on");
+				$(this).parent("li").addClass("on");
+				var activeTab = $(this).attr("data-name");
+				$('.tabData').hide();
+				$('.tData' + activeTab).show();
+			});
+			$(".sensitivePop button").click(function(){
+				$(".sensitivePop").hide();
+			});
+			$(".leaveUserList .tData0 > .tls tbody tr").click(function(){
+				$('.tls tr').removeClass('on');
+				$(this).addClass('on');
+				$(".tabWrap2").toggle();
+			});
+			$(".tabNav2 li button").click(function () {
+				$(".tabNav2 li").removeClass("on");
+				$(this).parent("li").addClass("on");
+				var activeTab = $(this).attr("data-name");
+				$('.tabData2').hide();
+				$('.tData' + activeTab).show();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>퇴사자 현황</h2>
+					<div class="pagePos"><span>Home</span><span>사용자관리</span><strong>퇴사자 현황</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="leaveUserLayout">
+						<div class="boardTop">
+							<span class="calDupSet">
+								<span class="calSet"><input type="tel" placeholder="2006-01-01" value="2006-01-01" /><button>달력열기</button></span>
+								<em>~</em>
+								<span class="calSet"><input type="tel" placeholder="2020-06-22" value="2020-06-22" /><button>달력열기</button></span>
+							</span>
+							<input type="submit" value="검색" class="btnSearch" />
+							<button class="btnReset">초기화</button>
+							<button class="btnM">엑셀 다운로드</button>
+						</div>
+						<div class="leaveUserList"><!-- 2020-09-01 -->
+							<div class="tabWrap pt2" style="display:none;">
+								<!-- tab -->
+								<div class="tabBack">
+									<div class="tabNav">
+										<nav>
+											<ul>
+												<li class="on"><button data-name="0">퇴사자 현황</button></li>
+												<li><button data-name="1">상세 분포 및 현황</button></li>
+												<li class="left"><strong>대상 총인력 : 00명 / 2020년 6월 이전 퇴사자 기준</strong></li>
+											</ul>
+										</nav>
+									</div>
+								</div>
+								<!--// tab -->
+								<div class="tabLayout">
+									<!-- 퇴사자 현황 -->
+									<div class="tabData tData0" style="display:block;">
+										<!---->
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="70"/>
+													<col width="150"/>
+													<col width="200" colspan="2" />
+													<col width="200" colspan="4" />
+													<col width="150" colspan="2" />
+												</colgroup>
+												<thead>
+													<tr>
+														<th>번호</th>
+														<th>이름</th>
+														<th>입사일</th>
+														<th>퇴사일</th>
+														<th colspan="2">근속년수</th>
+														<th>근속개월수</th>
+														<th>근속일수</th>
+														<th>입사월</th>
+														<th>퇴사월</th>
+													</tr>
+												</thead>
+												<tbody>
+													<!--Loop-->
+													<tr>
+														<td>1</td>
+														<td>홍길동</td>
+														<td>2006-06-07</td>
+														<td>2008-02-29</td>
+														<td>1년</td>
+														<td>20개월</td>
+														<td>20개월</td>
+														<td>632일</td>
+														<td>6월</td>
+														<td>2월</td>
+													</tr>
+													<!--//Loop-->
+													<tr>
+														<td>2</td>
+														<td>김철수</td>
+														<td>2006-06-07</td>
+														<td>2009-05-01</td>
+														<td>2년</td>
+														<td>34개월</td>
+														<td>34개월</td>
+														<td>1059일</td>
+														<td>6월</td>
+														<td>5월</td>
+													</tr>
+													<tr>
+														<td>3</td>
+														<td>이남일</td>
+														<td>2006-06-07</td>
+														<td>2008-07-01</td>
+														<td>2년</td>
+														<td>24개월</td>
+														<td>24개월</td>
+														<td>755일</td>
+														<td>6월</td>
+														<td>7월</td>
+													</tr>
+													<tr>
+														<td>4</td>
+														<td>고길동</td>
+														<td>2006-06-07</td>
+														<td>2007-03-01</td>
+														<td>0년</td>
+														<td>08개월</td>
+														<td>08개월</td>
+														<td>267일</td>
+														<td>6월</td>
+														<td>3월</td>
+													</tr>
+													<tr>
+														<td>5</td>
+														<td>박희동</td>
+														<td>2006-09-04</td>
+														<td>2009-01-31</td>
+														<td>2년</td>
+														<td>28개월</td>
+														<td>28개월</td>
+														<td>880일</td>
+														<td>9월</td>
+														<td>1월</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<!---->
+										<div class="paginate">
+											<span>
+												<a class="first">이전</a>
+													<a class="on">1</a>
+													<a>2</a>
+													<a>3</a>
+													<a>4</a>
+													<a>5</a>
+												<a class="next">다음</a>
+											</span>
+											<span class="selectSet">
+												<select>
+													<option>10개</option>
+													<option>20개</option>
+													<option>50개</option>
+													<option>100개</option>
+												</select>
+											</span>
+										</div>
+										<!--//-->
+										<!-- 2020-09-01 퇴사자 정보 -->
+										<div class="tabWrap2" style="display:none;">
+											<!-- tab -->
+											<div class="tabBack">
+												<div class="tabNav2">
+													<nav>
+														<ul>
+															<li class="on"><button data-name="20">인적사항</button></li>
+															<li><button data-name="21">학력정보</button></li>
+															<li><button data-name="22">자격증</button></li>
+															<li><button data-name="23">경력정보</button></li>
+															<li><button data-name="24">사내경력정보</button></li>
+														</ul>
+													</nav>
+												</div>
+											</div>
+											<!--// tab -->
+											<div class="tabLayout">
+												<!-- 인적사항 -->
+												<div class="tabData2 tData20" style="display:block;">
+													<div class="tws userArea">
+														<div class="left">
+															<div class="userImg">
+																<img src="../../images/sample5.png" alt=""/>
+															</div>
+														</div>
+														<div class="right">
+															<table>
+																<colgroup>
+																	<col width="120" />
+																	<col width="350" />
+																	<col width="120" />
+																	<col width="350" />
+																</colgroup>
+																<tbody>
+																	<tr>
+																		<th>사원번호</th>
+																		<td>0000000</td>
+																		<th>권한</th>
+																		<td>권한1, 권한2</td>
+																	</tr>
+																	<tr>
+																		<th>부서/소속팀</th>
+																		<td>부서팀명</td>
+																		<th>직급</th>
+																		<td>직급명</td>
+																	</tr>
+																	<tr>
+																		<th>직책</th>
+																		<td>직책명</td>
+																		<th>담당업무</th>
+																		<td>담당업무명</td>
+																	</tr>
+																	<tr>
+																		<th>성명</th>
+																		<td></td>
+																		<th>영문닉네임</th>
+																		<td></td>
+																	</tr>
+																	<tr>
+																		<th>성명(영문)</th>
+																		<td></td>
+																		<th>성명(한자)</th>
+																		<td></td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+														<div class="pt1">
+															<table>
+																<colgroup>
+																	<col width="120">
+																	<col>
+																	<col width="120">
+																	<col>
+																</colgroup>
+																<tbody>
+																	<tr>
+																		<th>생년월일 / 성별</th>
+																		<td>
+																			2020-01-21 / 남
+																		</td>
+																		<th>핸드폰번호</th>
+																		<td>010-0000-0000</td>
+																	</tr>
+																	<tr>
+																		<th>회사이메일</th>
+																		<td></td>
+																		<th>외부이메일</th>
+																		<td></td>
+																	</tr>
+																	<tr>
+																		<th>자택주소</th>
+																		<td colspan="3">
+																			[000000] GPS : 113.2222,113.2222<br/>
+																			주소 주소 주소 
+																		</td>
+																	</tr>
+																	<tr>
+																		<th>비상연락망</th>
+																		<td>010-0000-0000</td>
+																		<th>비상연락망 관계</th>
+																		<td>배우자</td>
+																	</tr>
+																	<tr>
+																		<th>계정 생성일</th>
+																		<td>2020-02-06</td>
+																		<th>구분</th>
+																		<td>재직자 / 정규직</td>
+																	</tr>
+																	<tr>
+																		<th>입사일</th>
+																		<td>2020-01-21</td>
+																		<th>퇴사일</th>
+																		<td>2020-01-21</td>
+																	</tr>
+																	<tr>
+																		<th>근무지</th>
+																		<td>사업지명</td>
+																		<th>마지막 접속일자</th>
+																		<td>YY-MM-DD 00:00:00</td>
+																	</tr>
+																	<tr>
+																		<th>주민등록등본</th>
+																		<td><button class="btnM white">미리보기</button></td>
+																		<th>가족관계증명원</th>
+																		<td><button class="btnM white">미리보기</button></td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+													</div>
+												</div>
+												<!-- //인적사항 -->
+												<!-- 학력정보 -->
+												<div class="tabData2 tData21">
+													<!---->
+													<div class="tls">
+														<table>
+															<colgroup>
+																<col width="100"/>
+																<col width="100"/>
+																<col width="160"/>
+																<col width="200"/>
+																<col width="100"/>
+																<col width="100"/>
+																<col width="100"/>
+																<col width="100"/>
+																<col />
+															</colgroup>
+															<thead>
+																<tr>
+																	<th>입학년월</th>
+																	<th>졸업년월</th>
+																	<th>학교명</th>
+																	<th>전공학과</th>
+																	<th>학위</th>
+																	<th>졸업구분</th>
+																	<th>증빙서류</th>
+																	<th>미리보기</th>
+																	<th>소재지</th>
+																</tr>
+															</thead>
+															<tbody>
+																<!--Loop-->
+																<tr>
+																	<td>2020-01-21</td>
+																	<td>2020-01-21</td>
+																	<td>학교명</td>
+																	<td>전공학과</td>
+																	<td>학사</td>
+																	<td></td>
+																	<td><strong class="loadEnd"><em>샘플 데이터.png</em></strong></td>
+																	<td><button class="btnS white openView">미리보기</button></td>
+																	<td>소재지</td>
+																</tr>
+																<!--//Loop-->
+															</tbody>
+														</table>
+													</div>
+													<!--//-->
+												</div>
+												<!-- //학력정보 -->
+												<!-- 자격증 -->
+												<div class="tabData2 tData22">
+													<!---->
+													<div class="tls">
+														<table>
+															<colgroup>
+																<col />
+																<col width="220"/>
+																<col width="100"/>
+																<col width="100"/>
+																<col width="200"/>
+																<col width="100"/>
+																<col width="100"/>
+															</colgroup>
+															<thead>
+																<tr>
+																	<th>자격증명</th>
+																	<th>발급기관</th>
+																	<th>취득일자</th>
+																	<th>유효일자</th>
+																	<th>자격증번호</th>
+																	<th>증빙서류</th>
+																	<th>미리보기</th>
+																</tr>
+															</thead>
+															<tbody>
+																<!--Loop-->
+																<tr>
+																	<td>자격증명</td>
+																	<td>발급기관</td>
+																	<td>2020-01-21</td>
+																	<td>2020-01-21</td>
+																	<td>자격증번호</td>
+																	<td><strong class="loadEnd"><em>샘플 데이터.png</em></strong></td>
+																	<td><button class="btnS white openView">미리보기</button></td>
+																</tr>
+																<!--//Loop-->
+															</tbody>
+														</table>
+													</div>
+													<!--//-->
+												</div>
+												<!-- //자격증 -->
+												<!-- 경력정보 -->
+												<div class="tabData2 tData23">
+													<!---->
+													<div class="tls">
+														<table>
+															<colgroup>
+																<col width="230"/>
+																<col width="100"/>
+																<col width="100"/>
+																<col width="150"/>
+																<col width="200"/>
+																<col />
+																<col width="100"/>
+																<col width="100"/>
+															</colgroup>
+															<thead>
+																<tr>
+																	<th>회사명</th>
+																	<th>입사일자</th>
+																	<th>퇴직일자</th>
+																	<th>직책</th>
+																	<th>근무부서</th>
+																	<th>퇴직사유</th>
+																	<th>증빙서류</th>
+																	<th>미리보기</th>
+																</tr>
+															</thead>
+															<tbody>
+																<!--Loop-->
+																<tr>
+																	<td>회사명</td>
+																	<td>2020-01-21</td>
+																	<td>2020-01-21</td>
+																	<td>직책</td>
+																	<td>근무부서</td>
+																	<td>퇴직사유</td>
+																	<td><strong class="loadEnd"><em>샘플 데이터.png</em></strong></td>
+																	<td><button class="btnS white openView">미리보기</button></td>
+																</tr>
+																<!--//Loop-->
+															</tbody>
+														</table>
+													</div>
+													<!--//-->
+												</div>
+												<!-- //경력정보 -->
+												<!-- 사내경력정보 -->
+												<div class="tabData2 tData24">
+													<!---->
+													<div class="tls">
+														<table>
+															<colgroup>
+																<col width="230"/>
+																<col width="100"/>
+																<col width="100"/>
+																<col width="150"/>
+																<col width="200"/>
+																<col />
+															</colgroup>
+															<thead>
+																<tr>
+																	<th>프로젝트명</th>
+																	<th>시작일</th>
+																	<th>종료일</th>
+																	<th>직책</th>
+																	<th>내용</th>
+																	<th>비고</th>
+																</tr>
+															</thead>
+															<tbody>
+																<!--Loop-->
+																<tr>
+																	<td>프로젝트명</td>
+																	<td>2020-01-21</td>
+																	<td>2020-01-21</td>
+																	<td>직책</td>
+																	<td>내용</td>
+																	<td>비고</td>
+																</tr>
+																<!--//Loop-->
+															</tbody>
+														</table>
+													</div>
+													<!--//-->
+												</div>
+												<!-- //사내경력정보 -->
+											</div>
+										</div>
+										<!-- //2020-09-01 퇴사자 정보 -->
+									</div>
+									<!-- //퇴사자 현황 -->
+									<!-- 근태현황 -->
+									<div class="tabData tData1">
+										<h3>입사월분포</h3>
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="80"/>
+													<col colspan="12" />
+												</colgroup>
+												<thead>
+													<tr>
+														<th>구분</th>
+														<th>1월</th>
+														<th>2월</th>
+														<th>3월</th>
+														<th>4월</th>
+														<th>5월</th>
+														<th>6월</th>
+														<th>7월</th>
+														<th>8월</th>
+														<th>9월</th>
+														<th>10월</th>
+														<th>11월</th>
+														<th>12월</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>인원수</td>
+														<td>4</td>
+														<td>8</td>
+														<td>3</td>
+														<td>16</td>
+														<td>10</td>
+														<td>15</td>
+														<td>7</td>
+														<td>11</td>
+														<td>10</td>
+														<td>11</td>
+														<td>2</td>
+														<td>9</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<!---->
+										<h3>퇴사월분포</h3>
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="80"/>
+													<col colspan="12" />
+												</colgroup>
+												<thead>
+													<tr>
+														<th>구분</th>
+														<th>1월</th>
+														<th>2월</th>
+														<th>3월</th>
+														<th>4월</th>
+														<th>5월</th>
+														<th>6월</th>
+														<th>7월</th>
+														<th>8월</th>
+														<th>9월</th>
+														<th>10월</th>
+														<th>11월</th>
+														<th>12월</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>인원수</td>
+														<td>4</td>
+														<td>8</td>
+														<td>3</td>
+														<td>16</td>
+														<td>10</td>
+														<td>15</td>
+														<td>7</td>
+														<td>11</td>
+														<td>10</td>
+														<td>11</td>
+														<td>2</td>
+														<td>9</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<!---->
+										<h3>근속년수</h3>
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="80"/>
+													<col colspan="12" />
+												</colgroup>
+												<thead>
+													<tr>
+														<th>구분</th>
+														<th>1년(12개월이하)</th>
+														<th>2년(24개월이하)</th>
+														<th>3년(36개월이하)</th>
+														<th>4년(48개월이하)</th>
+														<th>5년(60개월이하)</th>
+														<th>6년(72개월이하)</th>
+														<th>7년(84개월이하)</th>
+														<th>8년(96개월이하)</th>
+														<th>9년(108개월이하)</th>
+														<th>10년(120개월이하)</th>
+														<th>11년(132개월이하)</th>
+														<th>12년(144개월이하)</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>인원수</td>
+														<td>4</td>
+														<td>8</td>
+														<td>3</td>
+														<td>16</td>
+														<td>10</td>
+														<td>15</td>
+														<td>7</td>
+														<td>11</td>
+														<td>10</td>
+														<td>11</td>
+														<td>2</td>
+														<td>9</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<!---->
+										<h3>월별 입사현황</h3>
+										<div class="graphImage">
+											<div id="graph01"></div>
+											<script>
+												$(document).ready(function(){
+													function graph01Open(){
+														Highcharts.chart('graph01', {
+															    chart: {
+																	type: 'column',
+																	height: '280px'
+																},
+																title: { text: ''},
+																subtitle: { text: ''},
+																xAxis: {
+																	categories: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+																	crosshair: true
+																},
+																yAxis: {
+																	min: 0,
+																	title: {text: ''}
+																},
+																tooltip: {
+																	enabled: false
+																},
+																plotOptions: {
+																	series: {
+																		borderWidth: 0,
+																		dataLabels: {
+																			enabled: true,
+																			format: '{point.y}'
+																		}
+																	}
+																},
+																series: [{
+																	showInLegend: false,
+																	name: '',
+																	data: [4,8,3,16,10,15,7,11,10,11,2,9]
+																}]
+														});
+													}
+													graph01Open();
+												});
+											</script>
+										</div>
+										<!---->
+										<h3>월별 퇴사현황</h3>
+										<div class="graphImage">
+											<div id="graph02"></div>
+											<script>
+												$(document).ready(function(){
+													function graph02Open(){
+														Highcharts.chart('graph02', {
+															    chart: {
+																	type: 'column',
+																	height: '280px'
+																},
+																title: { text: ''},
+																subtitle: { text: ''},
+																xAxis: {
+																	categories: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+																	crosshair: true
+																},
+																yAxis: {
+																	min: 0,
+																	title: {text: ''}
+																},
+																tooltip: {
+																	enabled: false
+																},
+																plotOptions: {
+																	series: {
+																		borderWidth: 0,
+																		dataLabels: {
+																			enabled: true,
+																			format: '{point.y}'
+																		}
+																	}
+																},
+																series: [{
+																	showInLegend: false,
+																	name: '',
+																	color: '#f9b202',
+																	data: [4,8,3,16,10,15,7,11,10,11,2,9]
+																}]
+														});
+													}
+													graph02Open();
+												});
+											</script>
+										</div>
+										<!---->
+										<h3>근속년수별 현황</h3><!-- 2020-07-17 -->
+										<div class="graphImage">
+											<div id="graph03"></div>
+											<script>
+												$(document).ready(function(){
+													function graph03Open(){
+														Highcharts.chart('graph03', {
+															    chart: {
+																	type: 'column',
+																	height: '280px'
+																},
+																title: { text: ''},
+																subtitle: { text: ''},
+																xAxis: {
+																	categories: ['1년(12개월이하)','2년(24개월이하)','3년(36개월이하)','4년(48개월이하)','5년(60개월이하)','6년(72개월이하)','7년(84개월이하)','8년(96개월이하)','9년(108개월이하)','10년(120개월이하)','11년(132개월이하)','12년(144개월이하)'],
+																	crosshair: true,
+																	labels: {
+																		rotation: -45,
+																		style: {
+																			fontSize: '11px'
+																		}
+																	}
+																},
+																yAxis: {
+																	min: 0,
+																	title: {text: ''}
+																},
+																tooltip: {
+																	enabled: false
+																},
+																plotOptions: {
+																	series: {
+																		borderWidth: 0,
+																		dataLabels: {
+																			enabled: true,
+																			format: '{point.y}'
+																		}
+																	}
+																},
+																series: [{
+																	showInLegend: false,
+																	name: '',
+																	color: '#99c139',
+																	data: [4,8,3,16,10,15,7,11,10,11,2,9]
+																}]
+														});
+													}
+													graph03Open();
+												});
+											</script>
+										</div>
+										<!---->
+									</div>
+									<!-- //근태현황 -->
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<!-- 2020-08-14 민감화면 -->
+		<div class="sensitivePop">
+			<div class="align">
+				<div>
+					<h1>민감화면 비밀번호</h1>
+					<p>본 화면은 민감화면으로<br/>비밀번호 인증 후 확인이 가능합니다.</p>
+					<div class="inputBox pwSet">
+						<label>비밀번호 :</label>
+						<input type="password" placeholder="영문, 숫자, 특수기호 8~16자 이내"/>
+						<i class="off"></i>
+					</div>
+					<!-- 2020-09-01 민감화면 비밀번호 확인 버튼 -->
+					<div class="btnArea tC">
+						<button class="btnM white">확인</button>
+					</div>
+					<!-- //2020-09-01 민감화면 비밀번호 확인 버튼 -->
+				</div>
+			</div>
+		</div>
+		<!-- //2020-08-14 민감화면 -->
+		<!-- //Popup -->
+    </body>
+</html>

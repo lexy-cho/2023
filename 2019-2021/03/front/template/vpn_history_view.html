@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ThinkTree Visitor</title>
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<!-- <script type="text/javascript" src="../js/jquery.toast.js"></script> -->
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$(".fullPop .pclose").click(function(){
+				$(".fullPop.security").removeClass("show");
+			});
+			$(".btnPrivateTerm").click(function(){
+				$(".private").toggle();
+			});
+			$(".btnSecurityTerm").click(function(){
+				$(".fullPop.security").addClass("show");
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<button class="btnPrev" onClick="location.href='vpn_history.html'">이전</button>
+					<h1>VPN 사용 이력</h1>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- snb 생략 -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<div class="vpnLayout">
+						<div class="ing">승인 진행 중인 신청입니다.</div>
+                        <div class="dlstyle">
+                            <dl>
+                                <dt>사용기간</dt>
+                                <dd>2020-06-08 (월) 00:00 ~ 2020-06-08 (월) 00:00 (1일 )</dd>
+                            </dl>
+                            <dl>
+                                <dt>접속시스템명</dt>
+                                <dd>프로젝트 명</dd>
+                            </dl>
+							<dl>
+								<dt>사용목적</dt>
+								<dd>사용목적을 나오게 합니다. </dd>
+							</dl>
+                            <dl>
+                                <dt>사용장소</dt>
+                                <dd>외근 근무지</dd>
+                            </dl>
+                            <dl>
+                                <dt>비고</dt>
+                                <dd>비고내용이 나타납니다</dd>
+                            </dl>
+                            <dl>
+                                <dt>개인정보 수집 · 이용 및 제공 동의
+									<span class="right"><button class="btnS white btnPrivateTerm">전문보기</button></span>
+								</dt>
+								<dd class="private" style="display:none;">
+									<div class="tws">
+										<table>
+											<colgroup>
+												<col width="125"/>
+												<col width="*"/>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th>수집・이용 목적</th>
+													<td>VPN 사용신청 위한 보안서약</td>
+												</tr>
+												<tr>
+													<th>수집・이용 항목</th>
+													<td>성명, 생년월일, 소속(직위), 성명, 주소</td>
+												</tr>
+												<tr>
+													<th>수집・이용  기간</th>
+													<td>수집,이용에 대한 동의일로부터 자료 파기 시</td>
+												</tr>
+												<tr>
+													<th>동의하지 않을 경우의 처리</th>
+													<td> VPN 사용신청 불가</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</dd>
+                            </dl>
+                            <dl>
+                                <dt>정보보호 보안서약
+									<span class="right"><button class="btnS white btnSecurityTerm">전문보기</button></span>
+								</dt>
+                            </dl>
+                            <dl>
+                                <dt>승인자</dt>
+                                <dd>
+									<div class="dotList">
+                                		<ul>
+                                			<li><strong>김철수1 [개발팀]</strong> <button class="btnS red">승인요청</button></li>
+                                		</ul>
+                                	</div>
+                                </dd>
+                            </dl>
+							<p class="smallBox">신청 후 보안담당자의 승인 및 발행이 완료되면 안내가 될 예정입니다.</p>
+                        </div>
+                    </div>
+					<div class="btnArea tC">
+						<button class="btnM primary">신청 취소</button>
+					</div>
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>TOP</button></div>
+		</div>
+		<!-- 정보보호 보안서약 -->
+		<div class="fullPop ntFullPop security">
+			<div class="tt">
+				<h1>정보보호 보안서약</h1>
+				<button class="pclose">닫기</button>
+			</div>
+			<div class="pBack">
+				<div class="tws">
+					<table>
+						<colgroup>
+							<col width="80"/>
+							<col width="120"/>
+							<col width="80"/>
+							<col width="120"/>
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>성명</th>
+								<td>홍길동</td>
+								<th>생년월일</th>
+								<td>0000년00월00일</td>
+							</tr>
+							<tr>
+								<th>소속부서</th>
+								<td>개발팀</td>
+								<th>직급</th>
+								<td>매니저</td>
+							</tr>
+							<tr>
+								<th>주소</th>
+								<td colspan="3">[00000] 서울시 마포구 매봉산로 개인주소 표기</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="securityTerm">
+					<p>주식회사 씽크트리 (이하 "회사"이라 함)의 임직원(협력업체 포함) 홍길동 (이하 "나"로 칭함) 으로서 “회사”와 업무를 추진(거래, 계약, 출입, 상주)하면서 재직 중 또는 퇴직 이후에도 상호신뢰를 바탕으로 “회사”의 영업비밀 보호를 위해 아래의 사항을 성실히 준수할 것을 서약합니다. 이를 위배할 경우 회사소정의 규정에 의거 받는 어떠한 처분도 이의가 없음을 서약합니다.</p>
+					<ol>
+						<li>나는 회사 내 정보보호 정책 및 지침을 성실히 준수하겠습니다.</li>
+						<li>나는 업무를 수행함에 있어서 취득한 모든 정보에 대한 권리는 회사 소유임을 확약합니다.</li>
+						<li>나는 업무 수행상 알게 된 고객에 관한 일체의 정보 및 회사의 영업비밀(경영정보, 재무정보, 고객정보 등)을 회사 및 고객의 승인 없이 제 3자에게 판매, 대여, 유용 등을 하지 않겠습니다.</li>
+						<li>나는 퇴사 후에도 회사에서 습득한 회사 고유의 기술과 경영노하우를 제3자에게 유출하지 않겠습니다.</li>
+						<li>나는 고객의 정보를 수집할 때에는 업무상 필요한 정보 이외의 것을 확인하지 않으며, 본인에게 접근이 허용되지 않은 정보에 대한 접근 통제 규칙을 철저하게 준수하겠습니다.</li>
+						<li>고객의 정보 유출이나 정보보호 위반사례를 발견할 시에는 이를 지체 없이 부서장 또는 정보보호 책임자에게 보고하겠습니다.</li>
+						<li>나는 업무 프로그램, 전산기기, 시설물 등을 훼손하거나 외부로 유출하는 일이 없도록 하고, 나에게 출입이 허용되지 않은 구역에 대한 접근 통제 규칙을 철저히 준수하겠습니다.</li>
+						<li>나는 정보통신망 이용촉진 및 정보보호 등에 관한 법률에 입각하여 회사의 정보보호 지침을 준수합니다.</li>
+					</ol>
+					<p>나는 상기 사항을 숙지하여 이를 준수할 것을 동의하며 만일, 본 서약을 위반할 경우 “부정경쟁방지 및 영업비밀 보호에 관한 법률","정보통신망이용촉진 및 정보보호법" “개인정보보호법”, "형법상의 업무상 배임죄","기타 제반 관계법률"에 따라 민. 형사상의 책임을 질 것을 서약합니다.</p>
+					<div class="lineBox">
+						<p class="tL">본인은 위 사항을 명확히 읽고, 설명 받아 이해하였으며, 미 준수 시 회사의 경영에 큰 영향을 미친다는 것을 알고 본인의 진정한 의지로 서명합니다.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //정보보호 보안서약 -->
+	</body>
+</html>

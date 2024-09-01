@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.orderBox .btnShut').click(function(){
+					$(this).toggleClass("on");
+					$('.detailList ul').toggle();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="grayBox pd0">
+			<div class="filterArea">
+				<div class="filter">
+					<span class="left">
+						<dl class="inputBox iner">
+							<dt>오더상태</dt>
+							<dd>
+								<span class="selectSet">
+									<select>
+										<option selected>전체</option>
+										<option>작성중</option>
+										<option>오더제출</option>
+										<option>오더취소</option>
+										<option>배차확정</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+					</span>
+					<span class="right">
+						<span class="radioChoose">
+							<label for="lb1"><input type="radio" id="lb1" name="radio1" value="전체" checked/><span>전체</span></label>
+							<label for="lb2"><input type="radio" id="lb2" name="radio1" value="수입" /><span>수입</span></label>
+							<label for="lb3"><input type="radio" id="lb3" name="radio1" value="수출" /><span>수출</span></label>
+						</span>
+					</span>
+				</div>
+				<div class="keywordBox">
+					<div class="keywordArea">
+						<div class="bag">
+							<!-- 2020-07-08 키워드 정리 -->
+							<span class="keyword">
+								<dl>
+									<dt>작업지</dt>
+									<dd>경남창원</dd>
+								</dl>
+								<button class="btnKwdDel">삭제</button>
+							</span>
+							<!-- //2020-07-08 키워드 정리 -->
+						</div>
+					</div>
+					<button class="btnKwdRefresh">새로고침</button>
+				</div>
+			</div>
+			<div class="mobileOrderList">
+				<ol>
+					<!-- 수입 case -->
+					<li>
+						<div class="orderBox">
+							<div class="tabHead">
+								<span class="orderNum"><button class="btnTrash">삭제</button></span><!-- 2020-07-08 삭제버튼 위치 이동 -->
+							</div>
+							<div class="orderBody">
+								<div class="transInfo">
+									<span class="transType red">수입</span>
+									<span class="transShape red">편도</span>
+									<strong><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></strong>
+									<span class="blLine">D/O. HRBU-99999999</span><!-- 2020-06-26 수입일 경우 D/0로 시작 -->
+								</div>
+								<div class="orderDetail" onClick="location.href='order_write2.html'">
+									<div class="info">
+										<div>
+											<div class="orderListImg">
+												<div>
+													<div class="orderImg"><span>20ft</span></div>
+													<strong>A000001</strong>
+													<em>(Open Top)</em><!-- 2020-06-26 유형 추가 -->
+												</div>
+											</div>
+										</div>
+										<div>
+											<dl>
+												<dt>상차/픽업</dt>
+												<dd class="txtS">[권역정보] XX항 XXCY터미널</dd><!-- 2020-07-08 데이터 수정, 클래스 추가 -->
+											</dl>
+											<dl>
+												<dt>작업지</dt>
+												<dd class="txtS">[권역정보] 경남 창원시 마산합포구 문화북1길 57-5 문화북1길 57-5</dd><!-- 2020-07-08 데이터 수정 -->
+											</dl>
+											<dl>
+												<dt>반납/하차</dt>
+												<dd class="txtS">[권역정보] 인천광역시 중구 제물량로232번 안길 13안길 13</dd><!-- 2020-07-08 데이터 수정 -->
+											</dl>
+										</div>
+									</div>
+								</div>
+								<div class="orderSet">
+									<span class="left">
+										<span class="statusSet request">작성중</span>
+									</span>
+									<span class="right">
+										<span class="cost">운송비용<span class="sum">合</span><strong>999,000</strong>원</span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="orderBox">
+							<div class="tabHead">
+								<span class="orderNum"><strong><em>No.</em>C999999</strong><button class="btnTrash">삭제</button></span><!-- 2020-07-08 오더번호 구조 수정, 삭제버튼 위치 이동 -->
+							</div>
+							<div class="orderBody">
+								<div class="transInfo">
+									<span class="transType red">수입</span>
+									<span class="transShape red">왕복</span>
+									<strong><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></strong>
+									<span class="blLine">D/O. HRBU-99999999</span><!-- 2020-06-26 수입일 경우 D/0로 시작 -->
+								</div>
+								<div class="orderDetail" onClick="location.href='order_view.html'">
+									<div class="info">
+										<div>
+											<div class="orderListImg">
+												<div>
+													<div class="orderImg"><span>20ft</span></div>
+													<strong>A000001</strong>
+													<em>(Open Top)</em><!-- 2020-06-26 유형 추가 -->
+												</div>
+											</div>
+										</div>
+										<div>
+											<dl>
+												<dt>상차/픽업</dt>
+												<dd class="txtS">[권역정보] XX항 XXCY터미널</dd><!-- 2020-07-08 데이터 수정, 클래스 추가 -->
+											</dl>
+											<dl>
+												<dt>작업지</dt>
+												<dd class="txtS">[권역정보] 경남 창원시 마산합포구 문화북1길 57-5 문화북1길 57-5</dd><!-- 2020-07-08 데이터 수정 -->
+											</dl>
+											<dl>
+												<dt>반납/하차</dt>
+												<dd class="txtS">[권역정보] 인천광역시 중구 제물량로232번 안길 13안길 13</dd><!-- 2020-07-08 데이터 수정 -->
+											</dl>
+										</div>
+									</div>
+								</div>
+								<div class="orderSet">
+									<span class="left">
+										<span class="statusSet receive">오더제출</span>
+									</span>
+									<span class="right">
+										<span class="cost">운송비용<span class="sum">合</span><strong>999,000</strong>원</span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<!-- 2020-06-26 수입/환적 case 삭제 -->
+					<!-- //수입 case -->
+					<!-- 수출 case -->
+					<li>
+						<div class="orderBox">
+							<div class="tabHead">
+								<span class="orderNum"><strong><em>No.</em>C999999</strong><button class="btnTrash">삭제</button></span><!-- 2020-07-08 오더번호 구조 수정, 삭제버튼 위치 이동 -->
+							</div>
+							<div class="orderBody">
+								<div class="transInfo">
+									<span class="transType blue">수출</span>
+									<span class="transShape blue">편도</span>
+									<strong><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></strong>
+									<span class="blLine">B/O. HRBU-99999999</span><!-- 2020-06-26 수출일 경우 B/0로 시작 -->
+								</div>
+								<div class="orderDetail" onClick="location.href='order_view2.html'">
+									<div class="infos">
+										<div class="orderListImg">
+											<div>
+												<div class="orderImg"><span>20ft</span></div>
+												<strong>A000001</strong>
+												<em>(Open Top)</em><!-- 2020-06-26 유형 추가 -->
+											</div>
+										</div>
+										<strong>(X <em>5</em>ea)</strong><!-- 2020-06-26 텍스트 수정 -->
+									</div>
+								</div>
+								<div class="orderSet">
+									<span class="left">
+										<span class="statusSet receive">오더제출</span>
+									</span>
+									<span class="right">
+										<span class="cost">운송비용<span class="sum">合</span><strong>999,000</strong>원</span>
+									</span>
+								</div>
+							</div>
+							<div class="detailList">
+								<button class="btnShut">여닫기</button>
+								<ul>
+									<li>
+										<div class="orderBox">
+											<div class="orderBody">
+												<div class="orderDetail">
+													<div class="info">
+														<div>
+															<div class="orderListImg">
+																<div>
+																	<div class="orderImg"><span>20ft</span></div>
+																	<strong>A000001</strong>
+																	<em>(Open Top)</em><!-- 2020-06-26 유형 추가 -->
+																</div>
+															</div>
+														</div>
+														<div>
+															<dl>
+																<dt>상차/픽업</dt>
+																<dd class="txtS">[권역정보] XX항 XXCY터미널</dd><!-- 2020-07-08 데이터 수정, 클래스 추가 -->
+															</dl>
+															<dl>
+																<dt>작업지</dt>
+																<dd class="txtS">[권역정보] 경남 창원시 마산합포구 문화북1길 57-5 문화북1길 57-5</dd><!-- 2020-07-08 데이터 수정 -->
+															</dl>
+															<dl>
+																<dt>반납/하차</dt>
+																<dd class="txtS">[권역정보] 인천광역시 중구 제물량로232번 안길 13안길 13</dd><!-- 2020-07-08 데이터 수정 -->
+															</dl>
+														</div>
+													</div>
+												</div>
+												<div class="orderSet">
+													<span class="left"><span class="statusSet receive">오더제출</span></span>
+													<span class="right">
+														<span class="cost">운송비용(소계)<strong>555,000</strong>원</span><!-- 2020-07-08 데이터 수정 -->
+													</span>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="orderBox">
+											<div class="orderBody">
+												<div class="orderDetail">
+													<div class="info">
+														<div>
+															<div class="orderListImg">
+																<div>
+																	<div class="orderImg"><span>20ft</span></div>
+																	<strong>A000001</strong>
+																	<em>(Open Top)</em><!-- 2020-06-26 유형 추가 -->
+																</div>
+															</div>
+														</div>
+														<div>
+															<dl>
+																<dt>상차/픽업</dt>
+																<dd class="txtS">[권역정보] XX항 XXCY터미널</dd><!-- 2020-07-08 데이터 수정, 클래스 추가 -->
+															</dl>
+															<dl>
+																<dt>작업지</dt>
+																<dd class="txtS">[권역정보] 경남 창원시 마산합포구 문화북1길 57-5 문화북1길 57-5</dd><!-- 2020-07-08 데이터 수정 -->
+															</dl>
+															<dl>
+																<dt>반납/하차</dt>
+																<dd class="txtS">[권역정보] 인천광역시 중구 제물량로232번 안길 13안길 13</dd><!-- 2020-07-08 데이터 수정 -->
+															</dl>
+														</div>
+													</div>
+												</div>
+												<div class="orderSet">
+													<span class="left"><span class="statusSet">배차확정</span></span>
+													<span class="right">
+														<span class="cost">운송비용(소계)<strong>444,000</strong>원</span><!-- 2020-07-08 데이터 수정 -->
+													</span>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="orderBox">
+							<div class="tabHead">
+								<span class="orderNum"><strong><em>No.</em>C999999</strong><button class="btnTrash">삭제</button></span><!-- 2020-07-08 오더번호 구조 수정, 삭제버튼 위치 이동 -->
+							</div>
+							<div class="orderBody">
+								<div class="transInfo">
+									<span class="transType blue">수출</span>
+									<span class="transShape blue">왕복</span>
+									<strong><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></strong>
+									<span class="blLine">B/O. HRBU-99999999</span><!-- 2020-06-26 수출일 경우 B/0로 시작 -->
+								</div>
+								<div class="orderDetail" onClick="location.href='order_view2.html'">
+									<div class="info">
+										<div>
+											<div class="orderListImg">
+												<div>
+													<div class="orderImg"><span>20ft</span></div>
+													<strong>A000001</strong>
+													<em>(Open Top)</em><!-- 2020-06-26 유형 추가 -->
+												</div>
+											</div>
+										</div>
+										<div>
+											<dl>
+												<dt>상차/픽업</dt>
+												<dd class="txtS">[권역정보] XX항 XXCY터미널</dd><!-- 2020-07-08 데이터 수정, 클래스 추가 -->
+											</dl>
+											<dl>
+												<dt>작업지</dt>
+												<dd class="txtS">[권역정보] 경남 창원시 마산합포구 문화북1길 57-5 문화북1길 57-5</dd><!-- 2020-07-08 데이터 수정 -->
+											</dl>
+											<dl>
+												<dt>반납/하차</dt>
+												<dd class="txtS">[권역정보] 인천광역시 중구 제물량로232번 안길 13안길 13</dd><!-- 2020-07-08 데이터 수정 -->
+											</dl>
+										</div>
+									</div>
+								</div>
+								<div class="orderSet">
+									<span class="left">
+										<span class="statusSet cancel">오더취소</span><!-- 2020-06-29 오더취소상태로 수정 -->
+									</span>
+									<span class="right">
+										<span class="cost">운송비용<span class="sum">合</span><strong>999,000</strong>원</span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="orderBox">
+							<div class="tabHead">
+								<span class="orderNum"><strong><em>No.</em>C999999</strong><button class="btnTrash">삭제</button></span><!-- 2020-07-08 오더번호 구조 수정, 삭제버튼 위치 이동 -->
+							</div>
+							<div class="orderBody">
+								<div class="transInfo">
+									<span class="transType blue">수출</span>
+									<span class="transShape blue">환적</span>
+									<strong><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></strong>
+									<span class="blLine">B/O. HRBU-99999999</span><!-- 2020-06-26 수출일 경우 B/0로 시작 -->
+								</div>
+								<div class="orderDetail" onClick="location.href='order_view2.html'">
+									<div class="info">
+										<div>
+											<div class="orderListImg">
+												<div>
+													<div class="orderImg"><span>20ft</span></div>
+													<strong>A000001</strong>
+													<em>(Open Top)</em><!-- 2020-06-26 유형 추가 -->
+												</div>
+											</div>
+										</div>
+										<div>
+											<div>
+												<dl>
+													<dt>상차/픽업</dt>
+													<dd class="txtS">[권역정보] XX항 XXCY터미널</dd><!-- 2020-07-08 데이터 수정, 클래스 추가 -->
+												</dl>
+												<dl>
+													<dt>반납/하차</dt>
+													<dd class="txtS">[권역정보] 인천광역시 중구 제물량로232번 안길 13안길 13</dd><!-- 2020-07-08 데이터 수정 -->
+												</dl>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="orderSet">
+									<span class="left">
+										<span class="statusSet receive">오더제출</span>
+									</span>
+									<span class="right">
+										<span class="cost">운송비용<span class="sum">合</span><strong>999,000</strong>원</span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<!-- //수출 case -->
+				</ol>
+			</div>
+		</div>
+		<!-- popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 검색필터 -->
+			<div class="basicPop filterPop" id="samplePop8" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>검색필터</h1>
+				</div>
+				<div class="pBack">
+					<dl>
+						<dt>오더일자</dt>
+						<dd>
+							<span class="radioChoose">
+								<label for="lb1"><input type="radio" id="lb1" name="radio1" value="오늘" /><span>오늘</span></label>
+								<label for="lb2"><input type="radio" id="lb2" name="radio1" value="10일" /><span>10일</span></label>
+								<label for="lb3"><input type="radio" id="lb3" name="radio1" value="지난달" /><span>지난달</span></label>
+								<label for="lb4"><input type="radio" id="lb4" name="radio1" value="이번달" /><span>이번달</span></label>
+							</span>
+							<span class="calDupSet">
+								<span class="calSet"><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span>
+								<em>~</em>
+								<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+							</span>
+						</dd>
+					</dl>
+					<dl>
+						<dt>작업지 검색</dt>
+						<dd>
+							<span class="selectSet">
+								<select>
+									<option>선택</option>
+									<option>1</option>
+								</select>
+							</span>
+						</dd>
+					</dl>
+				</div>
+				<div class="pBtn">
+					<button class="btnM orange">적용하기</button>
+				</div>
+			</div>
+			<!--//검색필터-->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

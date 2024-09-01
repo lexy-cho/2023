@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.btnLogout').click(function(){
+					$('.alertDim').show();
+					$('.logoutPop').show();
+				});
+				$('.logoutPop .btnOut').click(function(){
+					$(location).attr('href','login.html');
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- panelBack -->
+			<div id="panelBack">
+				<div class="mypage">
+					<div class="panelTit">
+						<span class="left"><button class="btnBack" onclick="location.href='reservation.html'">이전</button></span>
+						<span class="profile"><span class="btnProfile">프로필</span><strong>010-1234-4567</strong></span>
+					</div>
+					<div class="panelArea">
+						<!-- 마이페이지 상세화면 -->
+						<div class="mypageLayout">
+							<div class="mypageList">
+								<ul>
+									<li><a href="user_info.html">회원정보 변경</a></li>
+									<li><a href="area_setting.html">기본배차권역</a></li><!-- 2020-07-08 기본배차권역 페이지 추가 -->
+									<li><a href="holiday_setting.html">휴일 설정</a></li>
+									<li><a href="question.html">자주 묻는 질문</a></li>
+									<li><a href="service_center.html">고객센터</a></li>
+									<li><a href="setting.html">설정 및 버전 정보</a></li>
+								</ul>
+							</div>
+							<div class="bottomSet">
+								<button class="btnL" onclick="location.href='system_notice.html'">시스템 공지<span class="numMark">N</span></button><!-- 2020-07-27 텍스트 변경 -->
+								<button class="btnL btnLogout">로그아웃</button>
+							</div>
+						</div>
+						<!-- //마이페이지 상세화면 -->
+					</div>
+				</div>
+			</div>
+			<!-- //panelBack -->
+		</div>
+		<!-- //Wrap -->
+		<!-- alertPopup -->
+		<div class="alertDim" style="display:none;">
+			<!-- 로그아웃 -->
+			<div class="alertPop logoutPop" id="samplePop19" style="display:none;">
+				<div class="pBack">
+					<div>
+						<strong>로그아웃 하시겠습니까?</strong>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM gray">취소</button>
+					<button class="btnM orange btnOut">확인</button>
+				</div>
+			</div>
+			<!-- //로그아웃 -->
+		</div>
+		<!-- //alertPopup -->
+    </body>
+</html>

@@ -1,0 +1,63 @@
+@charset "utf-8";
+
+/*===================================================================
+* INFORMATION
+* -------------------------------------------------------------------
+* @Author : Cho, Myung Jin (lexy.cho@think-tree.co.kr)
+* @File Name: common.css
+* @Description : 공통 레이아웃 정의
+* @Create Date: 2020-01-15
+* @Last Update Date: N/A
+* @History: N/A
+* ====================================================================*/
+
+/* =============================================================================== */
+/* 타블렛 세로 (갤럭시 Tab S4 세로버전 넓이 기준) */
+/* =============================================================================== */
+@media all and (max-width:800px) {
+}
+
+/* =============================================================================== */
+/* 모바일 세로 (iPhone 6,7,8 세로버전 넓이 기준) & 가로 (iPhone X 가로버전 넓이 기준) */
+/* =============================================================================== */
+@media all and (max-width:420px), (orientation : landscape) and (max-width:820px) {
+    /* ====================== */
+	/* Popup Setting */
+	/* ====================== */
+	/* 공차예약 */
+	.basicPop.reservationPop {top:5.4rem;bottom:5.4rem;}
+	/* filterPop */
+	.filterPop .gridSet {display:table;}
+	.filterPop .gridSet.grid2 .gridItem {display:table-cell;width:50%;}
+	/* 회원탈퇴 */
+	.basicPop.withdrawPop {top:6.4rem;bottom:6.4rem;}
+	/* 서비스 가입, 해지 */
+	.basicPop.serviceJoinPop {top:4.4rem;bottom:4.4rem;}
+	.basicPop.serviceClosePop {top:8.4rem;bottom:8.4rem;}
+	/* 서명 */
+	.basicPop.signPop {top:12rem;bottom:12rem;}
+	/* 검색필터 */
+	.basicPop.filterPop {top:6rem;bottom:6rem;}
+}
+/* =============================================================================== */
+/* 모바일 세로 (iPhone 6,7,8 세로버전 넓이 기준) */
+/* =============================================================================== */
+@media all and (orientation : portrait) and (max-width:420px) {
+
+}
+
+/* =============================================================================== */
+/* 모바일 가로 (iPhone X 가로버전 넓이 기준) */
+/* =============================================================================== */
+@media all and (orientation : landscape) and (max-width:820px) {
+}
+
+/* =============================================================================== */
+/* 디바이스 특정 버전 */
+/* =============================================================================== */
+/* 갤 8 & 갤 9+ 가로버전 서명 대응 */
+@media only screen and (min-resolution: 4dppx) and (orientation : landscape) {
+}
+/* iPhone X 가로버전 서명 대응 */
+@media only screen and (min-width: 812px) and (min-resolution: 3dppx) and (orientation : landscape) {
+}

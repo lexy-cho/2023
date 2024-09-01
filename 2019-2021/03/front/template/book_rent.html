@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.miniPop .pclose, .miniPop .pBtn button').click(function(){
+				$('.popDim, .miniPop').hide();
+			});
+			$(".mobileList li.stand").click(function(){
+				$('.popDim, .bookRentPop#standCase').show();
+			});
+			$(".mobileList li.renting").click(function(){
+				$('.popDim, .bookRentPop#viewCase').show();
+			});
+			$(".mobileList li.refuse").click(function(){
+				$('.popDim, .bookRentPop#viewCase2').show();
+			});
+			$('.eStatus.rent').click(function(){
+				$('.popDim, .bookRentPop#applyCase').show();
+			});
+			$('.sortSet input[type="radio"]').change(function(){
+				$('.bookLayout > .mobileList').hide();
+				if($('#chk000').is(":checked") == true){
+				   $('.bookLayout > .mobileList#allCase').show();
+			   } else {
+				   $('.bookLayout > .mobileList#historyCase').show();
+			   }
+			});
+			$('.btnFilter').click(function(){
+				$('.popDim, .filterPop').show();
+				$('.filterPop li').click(function(){
+					$('.popDim, .filterPop').hide();
+				});
+			});
+			$('.searchOpner').click(function(){
+				$('.searchBasic').slideToggle();
+			});
+			$('.btnSearch').click(function(){
+				$('.searchBasic').slideToggle();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<h1>사내도서 대여</h1>
+					<button class="btnNav">햄버거</button>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+
+			<div id="snb">
+				<section>
+					<div class="c-menu c-menu--slide-left"><!-- 우측 Slide 일 경우 -->
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</section>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<span class="sortSet">
+						<span>
+							<input type="radio" id="chk000" name="bookSort" checked />
+							<label for="chk000">구비도서</label>
+						</span>
+						<span>
+							<input type="radio" id="chk001" name="bookSort"/>
+							<label for="chk001">대여이력</label>
+						</span>
+					</span>
+					<span class="right">
+						<span class="btnFilter">필터</span>
+						00개
+						<button class="searchOpner">검색</button>
+					</span>
+				</div>
+				<!-- 검색영역 -->
+				<div class="searchBasic online"> <!--2020-07-17 class 변경 및 검색조건 변경 -->
+					<div class="searchBack">
+						<div class="term">
+							<span class="selectSet">
+								<select>
+									<option>도서명</option>
+									<option>출판사</option>
+									<option>지은이</option>
+								</select>
+							</span>
+							<input type="text" />
+						</div>
+						<input type="submit" value="검색" class="btnSearch" />
+					</div>
+				</div>
+				<!-- //검색영역 -->
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="bookLayout">
+						<div class="mobileList" id="allCase">
+							<ul>
+								<!--Loop-->
+								<li>
+									<span class="kind">과학일반</span>
+									<div class="tL"><span class="bookNum">(B-2019-001)</span>슈퍼인텔리전스</div>
+									<span class="author">까치 * 닉 보스트롬 / 조성진 옮김</span>
+									<span class="eStatus rent"><em>대여 하기</em></span>
+								</li>
+								<!--//Loop-->
+								<li>
+									<span class="kind">경제경영</span>
+									<div class="tL"><span class="bookNum">(B-2019-001)</span>사업을 한다는 것</div>
+									<span class="author">센시오 * 레이 크록 / 이영래 옮김</span>
+									<div class="schedule">
+										<span class="date">대여자 : 홍길동(팀명)</span>
+										<span class="date">대여가능 예정일 : 2020-00-00</span>
+									</div>
+								</li>
+								<li>
+									<span class="kind">과학일반</span>
+									<div class="tL"><span class="bookNum">(B-2019-001)</span>슈퍼인텔리전스</div>
+									<span class="author">까치 * 닉 보스트롬 / 조성진 옮김</span>
+									<span class="eStatus rent"><em>대여 하기</em></span>
+								</li>
+								<li>
+									<span class="kind">경제경영</span>
+									<div class="tL"><span class="bookNum">(B-2019-001)</span>사업을 한다는 것</div>
+									<span class="author">까치 * 닉 보스트롬 / 조성진 옮김</span>
+									<span class="eStatus rent"><em>대여 하기</em></span>
+								</li>
+								<li>
+									<span class="kind">과학일반</span>
+									<div class="tL"><span class="bookNum">(B-2019-001)</span>슈퍼인텔리전스</div>
+									<span class="author">까치 * 닉 보스트롬 / 조성진 옮김</span>
+									<span class="eStatus rent"><em>대여 하기</em></span>
+								</li>
+								<li>
+									<span class="kind">경제경영</span>
+									<div class="tL"><span class="bookNum">(B-2019-001)</span>사업을 한다는 것</div>
+									<span class="author">까치 * 닉 보스트롬 / 조성진 옮김</span>
+									<div class="schedule">
+										<span class="date">대여자 : 홍길동(팀명)</span>
+										<span class="date">대여가능 예정일 : 2020-00-00</span>
+									</div>
+								</li>
+								<!-- 2020-08-14 -->
+								<li class="notList">
+									<div>등록된 목록이 없습니다.</div>
+								</li>
+								<!-- //2020-08-14 -->
+							</ul>
+						</div>
+						<div class="mobileList" id="historyCase" style="display:none;">
+							<ul>
+								<!--Loop-->
+								<!--//Loop-->
+								<li class="stand">
+									<span class="kind">컴퓨터/인터넷</span>
+									<div class="tL"><span class="bookNum">(B-2019-003)</span>오라클 11g 부터 12g 완벽 바이블 1</div>
+									<span class="author">까치 * 닉 보스트롬 / 조성진 옮김</span>
+									<div class="schedule">
+										<span class="date">대여신청일 : 0000-00-00</span>
+										<span class="date">반납예정일 : 0000-00-00</span>
+									</div>
+									<div class="tL bcName ing">승인 대기중</div>
+								</li>
+								<li class="renting">
+									<span class="kind">컴퓨터/인터넷</span>
+									<div class="tL"><span class="bookNum">(B-2019-003)</span>오라클 11g 부터 12g 완벽 바이블 1</div>
+									<span class="author">까치 * 닉 보스트롬 / 조성진 옮김</span>
+									<div class="schedule">
+										<div>대여자 : 홍길동</div>
+										<span class="date">대여신청일 : 0000-00-00</span>
+										<span class="date red">반납예정일 : 0000-00-00</span>
+									</div>
+									<span class="eStatus"><em>대여중</em></span>
+								</li>
+								<li class="renting">
+									<span class="kind">컴퓨터/인터넷</span>
+									<div class="tL"><span class="bookNum">(B-2019-003)</span>오라클 11g 부터 12g 완벽 바이블 1</div>
+									<span class="author">까치 * 닉 보스트롬 / 조성진 옮김</span>
+									<div class="schedule">
+										<div>대여자 : 홍길동</div>
+										<span class="date">대여신청일 : 0000-00-00</span>
+										<span class="date red">반납예정일 : 0000-00-00</span>
+									</div>
+									<div class="tL bcName ing">연장 대기중</div>
+								</li>
+								<li class="refuse">
+									<span class="kind">컴퓨터/인터넷</span>
+									<div class="tL"><span class="bookNum">(B-2019-003)</span>오라클 11g 부터 12g 완벽 바이블 1</div>
+									<span class="author">까치 * 닉 보스트롬 / 조성진 옮김</span>
+									<div class="schedule">
+										<div>대여자 : 홍길동</div>
+										<span class="date">대여신청일 : 0000-00-00</span>
+										<span class="date red">반납예정일 : 0000-00-00(연장 반려)</span>
+									</div>
+									<span class="eStatus renting"><em>대여중</em></span>
+								</li>
+								<li class="end"><!-- 2020-08-17 반납일 경우 -->
+									<span class="kind">컴퓨터/인터넷</span>
+									<div class="tL"><span class="bookNum">(B-2019-003)</span>오라클 11g 부터 12g 완벽 바이블 1</div>
+									<span class="author">까치 * 닉 보스트롬 / 조성진 옮김</span>
+									<div class="schedule">
+										<div>대여자 : 홍길동</div>
+										<span class="date">대여신청일 : 0000-00-00</span>
+										<span class="date">반납일 : 0000-00-00</span><!-- 2020-08-17 반납일 경우 -->
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!--//-->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>상단으로</button></div>
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 필터 -->
+			<div class="miniPop filterPop" style="display:none;">
+				<div class="pBack">
+					<ul>
+						<li>
+							<span class="checkSet">
+								<input type="radio" id="filter01" name="filter" checked/>
+								<label for="filter01"><i></i>최신 등록순</label>
+							</span>
+						</li>
+						<li>
+							<span class="checkSet">
+								<input type="radio" id="filter02" name="filter"/>
+								<label for="filter02"><i></i>가나다순</label>
+							</span>
+						</li>
+						<li>
+							<span class="checkSet">
+								<input type="radio" id="filter03" name="filter"/>
+								<label for="filter03"><i></i>저자 명순</label>
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- //필터 -->
+			<!-- 도서대여하기 -->
+			<div class="miniPop bookRentPop" id="applyCase" style="display:none;">
+				<div class="tt">
+					<h1>도서대여</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="bookInfo">
+						<span class="kind">컴퓨터/인터넷</span>
+						<div><span class="bookNum">(B-2019-001)</span>오라클 11g 부터 12g 완벽 바이블 1</div>
+						<span class="author">까치 * 닉 보스트롬 / 조성진 옮김</span>
+					</div>
+					<div class="dlstyle deviceSame">
+						<dl>
+							<dt>대여 신청일</dt>
+							<dd>0000-00-00</dd>
+						</dl>
+						<dl>
+							<dt>반납 예정일<sup>필수</sup></dt>
+							<dd><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></dd>
+						</dl>
+					</div>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM gray">취소</button>
+					<button class="btnM blue">승인요청</button>
+				</div>
+			</div>
+			<!-- //도서대여하기 -->
+			<!-- 도서대여 승인대기중 -->
+			<div class="miniPop bookRentPop" id="standCase" style="display:none;">
+				<div class="tt">
+					<h1>도서대여</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="bookInfo">
+						<span class="kind">컴퓨터/인터넷</span>
+						<div><span class="bookNum">(B-2019-001)</span>오라클 11g 부터 12g 완벽 바이블 1</div>
+						<span class="author">까치 * 닉 보스트롬 / 조성진 옮김</span>
+					</div>
+					<div class="dlstyle deviceSame">
+						<dl>
+							<dt>대여 신청일</dt>
+							<dd>0000-00-00</dd>
+						</dl>
+						<dl>
+							<dt>반납 예정일<sup>필수</sup></dt>
+							<dd>0000-00-00</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM">닫기</button>
+				</div>
+			</div>
+			<!-- //도서대여 승인대기중 -->
+			<!-- 도서대여 대여중 -->
+			<div class="miniPop bookRentPop" id="viewCase" style="display:none;">
+				<div class="tt">
+					<h1>도서대여</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="bookInfo">
+						<span class="kind">컴퓨터/인터넷</span>
+						<div><span class="bookNum">(B-2019-001)</span>오라클 11g 부터 12g 완벽 바이블 1</div>
+						<span class="author">까치 * 닉 보스트롬 / 조성진 옮김</span>
+					</div>
+					<div class="dlstyle deviceSame">
+						<dl>
+							<dt>대여 신청일</dt>
+							<dd>0000-00-00</dd>
+						</dl>
+						<dl>
+							<dt>반납 예정일<sup>필수</sup></dt>
+							<dd>0000-00-00</dd>
+						</dl>
+						<dl>
+							<dt>연장 신청일<sup>필수</sup></dt>
+							<dd><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></dd>
+						</dl>
+						<dl>
+							<dt>연장 사유</dt>
+							<dd><textarea rows="2"></textarea></dd>
+						</dl>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM gray">취소</button>
+					<button class="btnM white">연장 승인요청</button>
+					<button class="btnM blue">반납</button>
+				</div>
+			</div>
+			<!-- //도서대여 대여중 -->
+			<!-- 도서대여 연장 신청 반려 -->
+			<div class="miniPop bookRentPop" id="viewCase2" style="display:none;">
+				<div class="tt">
+					<h1>도서대여</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="bookInfo">
+						<span class="kind">컴퓨터/인터넷</span>
+						<div><span class="bookNum">(B-2019-001)</span>오라클 11g 부터 12g 완벽 바이블 1</div>
+						<span class="author">까치 * 닉 보스트롬 / 조성진 옮김</span>
+					</div>
+					<div class="dlstyle deviceSame">
+						<dl>
+							<dt>대여 신청일</dt>
+							<dd>0000-00-00</dd>
+						</dl>
+						<dl>
+							<dt>반납 예정일<sup>필수</sup></dt>
+							<dd>0000-00-00</dd>
+						</dl>
+					</div>
+					<div class="refuseArea">
+						<strong>반납 예정일 연장 신청이 반려된 대여 이력이 있습니다.</strong>
+						<div class="reason">
+							<div class="date">신청일 : 2020-00-00 / 연장 요청예정일 : 2020-00-00</div>
+							<p>반려 사유가 나옵니다.반려 사유가 나옵니다.반려 사유가 나옵니다.</p>
+						</div>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM gray">취소</button>
+					<button class="btnM blue">반납</button>
+				</div>
+			</div>
+			<!-- //도서대여 연장 신청 반려 -->
+		</div>
+		<!-- //Popup -->
+	</body>
+</html>

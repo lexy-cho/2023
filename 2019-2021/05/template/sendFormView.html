@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../css/inview.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/preview.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../js/menu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$(".goSendTalk").click(function () {
+				$(".dimPop, .sendEndAlert").show();
+                
+                setTimeout(function(){
+                    $('.dimPop, .sendEndAlert').fadeOut();
+                }, 2000);
+			});
+			$(".goSendSMS").click(function () {
+				$(".dimPop, #sendFormPop1").show();
+			});
+			$(".goSendMail").click(function () {
+				$(".dimPop, #sendFormPop2").show();
+			});
+			$(".goSendFax").click(function () {
+				$(".dimPop, #sendFormPop3").show();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- 발송하기 -->
+		<!-- 헤더 샘플 / Native 개발진행 시 삭제 필요 -->
+		<a onclick="history.back()" style="display: block; text-align: center; background: #53565b;"><img src="../images/img_preview_hd_sample2.png" alt="" style="max-width: 100%;"></a>
+		<!-- // 헤더 샘플 / Native 개발진행 시 삭제 필요 -->
+		<div class="sendFormView">
+			<!-- 발송용 서식은 Swiper 없음 --->
+			<div>
+				<img src="../images/img_terms.jpg" alt="">
+				<img src="../images/img_terms.jpg" alt="">
+				<img src="../images/img_terms.jpg" alt="">
+			</div>
+			<!-- //발송용 서식은 Swiper 없음 --->
+			<!-- bottom button -->
+			<div class="kindBtn">
+				<div>
+					<span><button class="goSendTalk">알림톡발송</button></span>
+					<span><button class="goSendSMS">SMS발송</button></span>
+					<span><button class="goSendMail">이메일발송</button></span>
+					<span><button class="goSendFax">FAX발송</button></span>
+				</div>
+			</div>
+			<!-- // bottom button -->
+		</div>
+		<!-- // 발송하기 -->
+        <!-- DimPopUp -->
+		<div class="dimPop" style="display: none">
+            
+            <!-- 발송완료 안내 -->
+            <div class="popSMCase sendEndAlert" style="display: none;">
+                <div>
+					<p>견적서를 고객의 <strong>[SMS문자]</strong>로<br/> 발송하였습니다.</p>
+                </div>
+				<p>고객에게 수신되기까지 약간의 시간이 소요됩니다. </p>
+			</div>
+            <!-- //발송완료 안내 -->
+            
+            <!-- 휴대번호 입력 시 -->
+            <div id="sendFormPop1" class="popSMCase hAuto sendFormPop smsCase" style="display:none;"> <!-- 2019-08-02 class 추가 -->
+                <div class="alertCnt">
+                    <h1 class="tit">아래 정보와 같이 SMS문자가 발송됩니다.</h1>
+					<p>전화번호를 확인 해주세요.</p>
+					<div class="phoneNum">
+						<!-- 2019-10-14 -->
+						<div class="name">
+							고객명 <input type="text" />
+						</div>
+						<!-- //2019-10-14 -->
+						<span class="selectSet">
+							<select>
+								<option>010</option>
+								<option>011</option>
+								<option>017</option>
+								<option>018</option>
+								<option>019</option>
+							</select>
+						</span>
+						<span class="txt">-</span>
+						<input type="tel" id="middleNum">
+						<span class="txt">-</span>
+						<input type="tel" id="lastNum">
+					</div>
+                    <!-- <div class="cntTxt">
+						SMS 및 알림톡 수신 : 
+						<span class="radioSet dot"><input type="radio" id="a1" name="a" checked=""><label for="a1"><i></i>거부</label></span>
+						<span class="radioSet dot"><input type="radio" id="a2" name="a" checked="checked"><label for="a2"><i></i>동의</label></span>
+					</div> -->
+					<!-- 2019-08-02 추가 -->
+					<div class="smsScroll"> 
+						<pre>
+■■ 견 적 서 ■■
+▷New SM7 V6 19MY
+* 색상 : 메탈릭 블랙/프레스티지(가솔린)/프리미엄(2.0 LPe) 블랙 가죽시트
+* 용품 : 스마트 커넥트 II (8")(0)
+
+■■ 비용요약 ■■
+▷차량가격 33,020,000
+▷등록비용 0
+▷총소요금액 33,020,000
+
+▷차량가격
+* 기본가 33,020,000
+* 옵션가 0
+* 용품가 0
+* 해피케어상품가 0
+* 탁송료 0
+* 선포인트1 0
+* 일반할인 0
+★ 총판매금액 33,020,000
+
+▷등록비용
+* 취득세() 0
+* 공채할인 0
+* 인지대 2,000
+* 번호판대 10,000
+* 등록대행 30,000
+★ 합계 0
+
+■ 상담전화
+지점 : 영업본부
+영업담당 : 조명진 
+전화 : 
+휴대폰 : 
+E-mail : 	
+						</pre>
+					</div>
+					<!-- //2019-08-02 추가 -->
+                </div>
+				<div class="btn mt15">
+                    <button class="btnLB">취소</button>
+					<button class="btnBY">발송</button>
+				</div>
+			</div>
+            <!-- // 휴대번호 입력 시 -->
+            
+            <!-- 팩스번호 입력 시 -->
+            <div id="sendFormPop2" class="popSMCase hAuto sendFormPop" style="display: none">
+                <div class="alertCnt">
+                    <h1 class="tit">팩스번호가 입력되지 않았습니다.</h1>
+					<p>팩스번호와 함께 수신동의를 해주세요.</p>
+					<div class="phoneNum">
+						<!-- 2019-10-14 -->
+						<div class="name">
+							고객명 <input type="text" />
+						</div>
+						<!-- //2019-10-14 -->
+						<span class="selectSet">
+							<select>
+								<option>선택</option>
+								<option>070</option>
+								<option>02</option>
+								<option>031</option>
+								<option>032</option>
+							</select>
+						</span>
+						<span class="txt">-</span>
+						<input type="tel" id="middleNum">
+						<span class="txt">-</span>
+						<input type="tel" id="lastNum">
+					</div>
+                    <!-- <div class="cntTxt">
+						팩스전화 수신 : 
+						<span class="radioSet dot"><input type="radio" id="aa1" name="aa" checked=""><label for="aa1"><i></i>거부</label></span>
+						<span class="radioSet dot"><input type="radio" id="aa2" name="aa" checked="checked"><label for="aa2"><i></i>동의</label></span>
+					</div> -->
+                </div>
+				<div class="btn mt15">
+                    <button class="btnLB">취소</button>
+					<button class="btnBY">발송</button>
+				</div>
+			</div>
+            <!-- // 팩스번호 입력 시 -->
+            
+            <!-- 이메일 입력 시 -->
+            <div id="sendFormPop3" class="popSMCase hAuto sendFormPop" style="display: none">
+                <div class="alertCnt">
+                    <h1 class="tit">이메일 주소가 입력되지 않았습니다.</h1>
+					<p>이메일 주소와 함께 수신동의를 해주세요.</p>					
+					<div class="emailForm">
+						<!-- 2019-10-14 -->
+						<div class="name">
+							고객명 <input type="text" />
+						</div>
+						<!-- //2019-10-14 -->
+						<input type="email" id="emailId">
+						<div class="emailDomain">
+							<span class="txt">@</span>
+							<input type="email" id="domain">
+							<span class="selectSet">
+								<select>
+									<option>선택해주세요</option>
+									<option>nave.com</option>
+									<option>gmail.com</option>
+									<option>hanmail.net</option>
+									<option>직접입력</option>
+								</select>
+							</span>
+						</div>
+					</div>
+                   <!--  <div class="cntTxt">
+						홍보메일 수신 : 
+						<span class="radioSet dot"><input type="radio" id="aaa1" name="aaa" checked=""><label for="aaa1"><i></i>거부</label></span>
+						<span class="radioSet dot"><input type="radio" id="aaa2" name="aaa" checked="checked"><label for="aaa2"><i></i>동의</label></span>
+					</div> -->
+                </div>
+				<div class="btn mt15">
+                    <button class="btnLB">취소</button>
+					<button class="btnBY">발송</button>
+				</div>
+			</div>
+            <!-- // 이메일 입력 시 -->
+        </div>
+        <!-- // DimPopUp -->
+	</body>
+</html>

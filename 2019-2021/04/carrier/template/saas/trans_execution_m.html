@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/push.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.orderBox .btnShut').click(function(){
+					$(this).toggleClass("on");
+					$('.detailList ul').toggle();
+				});
+				$('.orderData').click(function(){
+					location.href = 'trans_execution_view.html';
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<div class="grayOptionArea">
+				<span>2020.01.26 ~ 2020.02.01</span>
+				<div>
+					<span class="selectSet">
+						<select>
+							<option selected>전체</option>
+							<option>드라이버 확정</option>
+							<option>드라이버 미확정</option>
+							<option>운송실행</option>
+							<option>컨테이너작업</option>
+							<option>운송완료</option>
+						</select>
+					</span>
+				</div>
+			</div>
+			<div class="orderlist basicList">
+				<ul>
+					<li class="orderData today"><!-- 2020-07-16 당일운송건 class 추가 -->
+						<!-- 2020-06-16 listDate 삭제, simpleTit 수정 -->
+						<span class="simpleTit">
+							<em>[<span class="red">수입</span> / 왕복]</em>
+							<strong class="date">2020-01-22</strong>
+							<span class="statusSet receive">운송실행</span>
+						</span>
+						<!-- //2020-06-16 listDate 삭제, simpleTit 수정 -->
+						<div class="listMap">
+							<strong>부산항(05:00) – 충북/안산(09:00)</strong> – 부산항(15:00)<!-- 2020-06-16 strong 위치수정 -->
+							<span>(Open Top / 40ft High Cube / 30ton)</span>
+						</div>
+						<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+						<div class="listPrice">
+							<span class="price right"><strong>560,000</strong> 원</span>
+						</div>
+					</li>
+					<li class="orderData today"><!-- 2020-07-16 당일운송건 class 추가 -->
+						<!-- 2020-06-16 listDate 삭제, simpleTit 수정 -->
+						<span class="simpleTit">
+							<em>[<span class="blue">수출</span> / 왕복]</em>
+							<strong class="date">2020-01-22</strong>
+							<span class="statusSet regist">드라이버 확정</span>
+						</span>
+						<!-- //2020-06-16 listDate 삭제, simpleTit 수정 -->
+						<div class="listMap">
+							부산항(05:00) – <strong>충북/안산(09:00) – 부산항(<span class="ftRed">익</span> 15:00)</strong><!-- 2020-06-16 strong 위치수정, 익 추가 -->
+							<span>(Open Top / 40ft High Cube / 30ton)</span>
+						</div>
+						<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+						<div class="listPrice">
+							<span class="price right"><strong>880,000</strong> 원</span>
+						</div>
+					</li>
+					<li class="orderData">
+						<!-- 2020-06-16 listDate 삭제, simpleTit 수정 -->
+						<span class="simpleTit">
+							<em>[<span class="red">수입</span> / 왕복]</em>
+							<strong class="date">2020-01-22</strong>
+							<span class="statusSet delay">드라이버 미확정</span>
+						</span>
+						<!-- //2020-06-16 listDate 삭제, simpleTit 수정 -->
+						<div class="listMap">
+							<strong>부산항(05:00) – 충북/안산(09:00)</strong> – 부산항(15:00)<!-- 2020-06-16 strong 위치수정 -->
+							<span>(Open Top / 40ft High Cube / 30ton)</span>
+						</div>
+						<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+						<div class="listPrice">
+							<span class="price right"><strong>560,000</strong> 원</span>
+						</div>
+					</li>
+					<li class="orderData">
+						<!-- 2020-06-16 listDate 삭제, simpleTit 수정 -->
+						<span class="simpleTit">
+							<em>[<span class="blue">수출</span> / 왕복]</em>
+							<strong class="date">2020-01-22</strong>
+							<span class="statusSet regist">드라이버 확정</span>
+						</span>
+						<!-- //2020-06-16 listDate 삭제, simpleTit 수정 -->
+						<div class="listMap">
+							부산항(05:00) – <strong>충북/안산(09:00) – 부산항(15:00)</strong><!-- 2020-06-16 strong 위치수정 -->
+							<span>(Open Top / 40ft High Cube / 30ton)</span>
+						</div>
+						<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+						<div class="listPrice">
+							<span class="price right"><strong>560,000</strong> 원</span>
+						</div>
+					</li>
+					<!-- 2020-06-22 운송완료 case 추가 -->
+					<li class="orderData completed">
+						<span class="simpleTit">
+							<em>[<span class="red">수입</span> / 왕복]</em>
+							<strong class="date">2020-02-01</strong>
+							<span class="statusSet end">운송완료</span>
+						</span>
+						<div class="listMap">
+							<strong>부산항(05:00) – 충북/안산(09:00)</strong> – 부산항(15:00)
+							<span>(Open Top / 40ft High Cube / 30ton)</span>
+						</div>
+						<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+						<div class="listPrice">
+							<span class="disCode">배차번호 200100001</span>
+							<span class="price right"><strong>560,000</strong> 원</span>
+						</div>
+					</li>
+					<!-- 2020-06-22 운송완료 case 추가 -->
+				</ul>
+			</div>
+		</div>
+		<!-- popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 검색필터 -->
+			<div class="basicPop filterPop" id="samplePop8" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>검색필터</h1>
+				</div>
+				<div class="pBack">
+					<dl>
+						<dt>오더일자</dt>
+						<dd>
+							<span class="radioChoose">
+								<label for="lb1"><input type="radio" id="lb1" name="radio1" value="오늘" /><span>오늘</span></label>
+								<label for="lb2"><input type="radio" id="lb2" name="radio1" value="10일" /><span>10일</span></label>
+								<label for="lb3"><input type="radio" id="lb3" name="radio1" value="지난달" /><span>지난달</span></label>
+								<label for="lb4"><input type="radio" id="lb4" name="radio1" value="이번달" /><span>이번달</span></label>
+							</span>
+							<span class="calDupSet">
+								<span class="calSet"><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span>
+								<em>~</em>
+								<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+							</span>
+						</dd>
+					</dl>
+					<dl>
+						<dt>작업지 검색</dt>
+						<dd>
+							<input class="wFull" type="text" placeholder="작업지를 입력해주세요">
+						</dd>
+					</dl>
+				</div>
+				<div class="pBtn">
+					<button class="btnM orange">적용하기</button>
+				</div>
+			</div>
+			<!--//검색필터-->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/customer.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){            
+            // 스크롤 영역 외 높이
+            var nonSclHeight = $("#header").height() + $(".searchField").outerHeight(true) + $(".dtTopBtn").outerHeight(true) + $(".custDtlTbHead").outerHeight(true) + 20;
+            
+            // 2019-04-17 스크롤 plugin 삭제 테이블 스크롤
+            /*$(".custDtlTbBody").css({
+                "height" : $(window).height() - nonSclHeight
+            }).mCustomScrollbar({
+                axis:"yx",
+                theme:"dark",
+                contentTouchScroll:true
+            });*/
+			$(".custDtlTbBody").css({"height" : $(window).height() - nonSclHeight});
+            
+            // bottom PopUp
+            function bottomPop(id, index) {
+                $(".subDtlBox").css({
+                    "transform" : "translateY(800px)"
+                });
+                $(id).css({
+                    "transform" : "translateY(0)"
+                });
+                
+                if(window.matchMedia("(max-width:420px), (orientation : landscape) and (max-width:820px)").matches){ // 모바일일때 dim show
+                    $("body").append("<div class='subDtlBoxDim'></div>");
+                }else{
+                    $(".custDtlTbBody").css({ // 그 외 팝업 크기에 맞춰 테이블 높이 조정
+                        "height" : ($(window).height() - ($(id).outerHeight(true) + nonSclHeight + 20))
+                    });
+                }
+                
+                if(index == 1){ // 예외처리
+                   /* 2019-04-17 스크롤 plugin 삭제 $(id).find(".subDtlBoxBody").mCustomScrollbar({
+                        axis:"yx",
+                        theme:"dark",
+                        contentTouchScroll:true
+                    }); */
+                }else{ // 팝업높이 보다 컨텐츠 내용이 길 경우 스크롤 생성
+                    if($(id).find(".subDtlMain").height() > $(id).find(".subDtlBoxBody").height()){
+                       /* 2019-04-17 스크롤 plugin 삭제 $(id).find(".subDtlBoxBody").mCustomScrollbar({
+                            axis:"yx",
+                            theme:"dark",
+                            contentTouchScroll:true
+                        });*/
+                    }   
+                }
+            }
+            
+            // 관계인입력
+            $(".newInsert").click(function(){
+                bottomPop("#relationInfoInsert");
+            });
+            
+            // 관계인정보보기
+            $(".relationInfo").click(function(){
+                bottomPop("#relationInfoView");
+            });
+            
+            // 닫기
+            $(".boxClose").click(function(){
+                $(this).parent(".subDtlBox").css({
+                    "transform" : "translateY(800px)"
+                });
+                $(".custDtlTbBody").css({
+                    "height" : $(window).height() - nonSclHeight
+                });
+                $(".subDtlBoxDim").remove();
+            });
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<!--<button class="gnbOpen">GNB 열기</button>-->
+							<button class="goPrev" onclick="history.back()">뒤로가기</button>
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="../main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<!-- <h2>1Depth title</h2> -->
+						<h2 class="sCase"><span>고객 조회 &gt; </span>관계인</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<div class="custDetail">
+                            <div class="dtTopBtn type2">
+                                <button class="btnBY newInsert">신규등록</button>
+                            </div>
+                            
+                            <div class="custDtlTbScroll">
+                                <!-- table header -->
+                                <div class="custDtlTbHead">
+                                    <table>
+                                        <colgroup>
+                                            <col style="width:12%;">
+                                            <col style="width:18%;">
+                                            <col style="width:12%;">
+                                            <col style="width:12%;">
+                                            <col style="width:*;">
+                                            <col style="width:14%;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>성명</th>
+                                                <th>관계인구분</th>
+                                                <th>차량구매<br />결정권</th>
+                                                <th>발송대상</th>
+                                                <th>연락전화</th>
+                                                <th>생년월일</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <!-- // table header -->
+                                
+                                <!-- table list -->
+                                <div class="custDtlTbBody">
+                                    <table>
+                                        <colgroup>
+                                            <col style="width:12%;">
+                                            <col style="width:18%;">
+                                            <col style="width:12%;">
+                                            <col style="width:12%;">
+                                            <col style="width:*;">
+                                            <col style="width:14%;">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr class="relationInfo">
+                                                <td>홍길동</td>
+                                                <td>차량관리담당자</td>
+                                                <td>무</td>
+                                                <td>비대상</td>
+                                                <td>010-2466-7898</td>
+                                                <td>1970-12-14</td>
+                                            </tr>
+                                            <tr class="relationInfo">
+                                                <td>홍길동</td>
+                                                <td>차량관리담당자</td>
+                                                <td>무</td>
+                                                <td>비대상</td>
+                                                <td>010-2466-7898</td>
+                                                <td>1970-12-14</td>
+                                            </tr>
+                                            <tr class="relationInfo">
+                                                <td>홍길동</td>
+                                                <td>차량관리담당자</td>
+                                                <td>무</td>
+                                                <td>비대상</td>
+                                                <td>010-2466-7898</td>
+                                                <td>1970-12-14</td>
+                                            </tr>
+                                            <tr class="relationInfo">
+                                                <td>홍길동</td>
+                                                <td>차량관리담당자</td>
+                                                <td>무</td>
+                                                <td>비대상</td>
+                                                <td>010-2466-7898</td>
+                                                <td>1970-12-14</td>
+                                            </tr>
+                                            <tr class="relationInfo">
+                                                <td>홍길동</td>
+                                                <td>차량관리담당자</td>
+                                                <td>무</td>
+                                                <td>비대상</td>
+                                                <td>010-2466-7898</td>
+                                                <td>1970-12-14</td>
+                                            </tr>
+                                            <tr class="relationInfo">
+                                                <td>홍길동</td>
+                                                <td>차량관리담당자</td>
+                                                <td>무</td>
+                                                <td>비대상</td>
+                                                <td>010-2466-7898</td>
+                                                <td>1970-12-14</td>
+                                            </tr>
+                                            <tr class="relationInfo">
+                                                <td>홍길동</td>
+                                                <td>차량관리담당자</td>
+                                                <td>무</td>
+                                                <td>비대상</td>
+                                                <td>010-2466-7898</td>
+                                                <td>1970-12-14</td>
+                                            </tr>
+                                            <tr class="relationInfo">
+                                                <td>홍길동</td>
+                                                <td>차량관리담당자</td>
+                                                <td>무</td>
+                                                <td>비대상</td>
+                                                <td>010-2466-7898</td>
+                                                <td>1970-12-14</td>
+                                            </tr>
+                                            <tr class="relationInfo">
+                                                <td>홍길동</td>
+                                                <td>차량관리담당자</td>
+                                                <td>무</td>
+                                                <td>비대상</td>
+                                                <td>010-2466-7898</td>
+                                                <td>1970-12-14</td>
+                                            </tr>
+                                            <tr class="relationInfo">
+                                                <td>홍길동</td>
+                                                <td>차량관리담당자</td>
+                                                <td>무</td>
+                                                <td>비대상</td>
+                                                <td>010-2466-7898</td>
+                                                <td>1970-12-14</td>
+                                            </tr>
+                                            <!--<tr>
+                                                <td colspan="6" class="listNone">
+                                                    <span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+                                                </td>
+                                            </tr>-->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- // table list -->
+                            </div>
+                            
+                            <!-- 관계인정보(리스트 목록에서 선택 시) -->
+                            <div id="relationInfoView" class="subDtlBox">
+                                <button class="boxClose">닫기</button>
+                                <h2 class="sdBoxTit">관계인</h2>
+                                <div class="subDtlBoxBody h500">
+                                    <div class="subDtlMain">
+                                        <div class="sdMainHead">
+                                            <h3 class="sdMainTit"><i class="iCustResult"></i>관계인정보</h3>
+                                            <div class="sdBtnRight">
+                                                <button class="btnLB">삭제</button>
+                                                <button class="btnBY">저장</button>
+                                            </div>
+                                        </div>
+                                        <div class="gridContainer listViewCase"> <!-- 2019-06-14 목록에서 선택 시 class 변경 -->
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">  <!-- 2019-06-14 목록에서 선택 시 class 변경 (이하 동일) -->
+                                                        <dt>고객명<sup>필수입력</sup></dt>
+                                                        <dd class="inMust"><input type="text" /></dd> <!--2019-04-18 필수class추가-->
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>관계인구분<sup>필수입력</sup></dt>
+                                                        <dd class="inMust"> <!--2019-04-18 필수class추가-->
+                                                            <span class="selectSet">
+                                                                <select>
+                                                                    <option>선택해 주세요</option>
+                                                                    <option>구매담당자</option>
+                                                                    <option>영업담당자</option>
+                                                                    <option>차량관리담당자</option>
+                                                                    <option>기타</option>
+                                                                </select>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+											<!-- 2019-06-13 추가 -->
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>부서명<sup>필수입력</sup></dt>
+                                                        <dd class="inMust"><input type="text" /></dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>직위/호칭<sup>필수입력</sup></dt>
+                                                        <dd>
+                                                            <div class="spotExtension inMust">
+                                                               <input type="text" />
+                                                               <input type="text" />
+                                                            </div>
+														</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+											<!-- //2019-06-13 추가 -->
+											<!-- 2019-06-14 수정 추가 -->
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>회사전화번호</dt>
+                                                        <dd>
+															<span class="phoneNumEtc">
+																<div class="phoneNum">
+																	<span class="selectSet">
+																		<select>
+																			<option>010</option>
+																			<option>011</option>
+																			<option>017</option>
+																			<option>018</option>
+																			<option>019</option>
+																		</select>
+																	</span>
+																	<span class="txt">-</span>
+																	<input type="tel" id="middleNum">
+																	<span class="txt">-</span>
+																	<input type="tel" id="lastNum">
+																</div>
+																<input type="tel" class="etcNum"/>
+															</span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>팩스번호</dt>
+                                                        <dd>
+															<div class="phoneNum">
+																<input type="tel">
+																<span class="txt">-</span>
+																<input type="tel" id="middleNum">
+																<span class="txt">-</span>
+																<input type="tel" id="lastNum">
+															</div>
+														</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>휴대전화번호</dt>
+                                                        <dd>
+															<div class="phoneNumEtc">
+																<div class="phoneNum">
+																	<span class="selectSet">
+																		<select>
+																			<option>010</option>
+																			<option>011</option>
+																			<option>017</option>
+																			<option>018</option>
+																			<option>019</option>
+																		</select>
+																	</span>
+																	<span class="txt">-</span>
+																	<input type="tel" id="middleNum">
+																	<span class="txt">-</span>
+																	<input type="tel" id="lastNum">
+																</div>
+																 <span class="checkSet"><input type="checkbox" id="sendOk" name="sendOk" /><label for="sendOk"><i></i>허용</label></span>
+															</div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet">
+                                                <div class="gridItem">
+                                                    <dl class="tbView nonTb">
+                                                        <dt>자택주소</dt>
+                                                        <dd>
+                                                            <div class="addrCnt">
+                                                                <div class="addrTop">
+                                                                    <div class="postNum">
+                                                                        <input type="tel" readonly />
+                                                                        <button class="btnRBG openPop7">우편번호</button>
+                                                                    </div>
+                                                                    <div class="addrView">
+                                                                        <input type="text" readonly />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="addrDetail">
+                                                                    <input type="text" placeholder="상세주소를 입력해주세요" />
+                                                                    <button class="btnBG reflesh">새로고침</button>
+                                                                </div>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet">
+                                                <div class="gridItem">
+                                                    <dl class="tbView nonTb">
+                                                        <dt>직장주소</dt>
+                                                        <dd>
+                                                            <div class="addrCnt innerSame">
+                                                                <div class="addrTop">
+                                                                    <div class="postNum">
+                                                                        <input type="tel" readonly />
+                                                                        <button class="btnRBG openPop7">우편번호</button>
+                                                                    </div>
+                                                                    <div class="addrView">
+                                                                        <input type="text" readonly />
+                                                                        <div class="sameCnt">
+                                                                            <span class="txt">위와 동일</span>
+                                                                            <button class="btnCYN copy">복사</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="addrDetail">
+                                                                    <input type="text" placeholder="상세주소를 입력해주세요" />
+                                                                    <button class="btnBG reflesh">새로고침</button>
+                                                                </div>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>DM수신장소</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                <span class="radioSet"><input type="radio" id="dm1" name="dm" checked /><label for="dm1"><i></i>자택</label></span>
+                                                                <span class="radioSet"><input type="radio" id="dm2" name="dm" /><label for="dm2"><i></i>직장</label></span>
+                                                                <span class="radioSet"><input type="radio" id="dm3" name="dm" /><label for="dm3"><i></i>수신거부</label></span>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>발송대상</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                <span class="radioSet"><input type="radio" id="dm21" name="dm2" checked /><label for="dm21"><i></i>대상</label></span>
+                                                                <span class="radioSet"><input type="radio" id="dm22" name="dm2" /><label for="dm22"><i></i>비대상</label></span>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+											<!-- //2019-06-14 수정 추가 -->
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>대표관계인여부</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                <span class="radioSet"><input type="radio" id="representativeY" name="representative" checked /><label for="representativeY"><i></i>Yes</label></span>
+                                                                <span class="radioSet"><input type="radio" id="representativeN" name="representative" /><label for="representativeN"><i></i>No</label></span>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>차량구매결정권</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                <span class="radioSet"><input type="radio" id="decisionY" name="decision" checked /><label for="decisionY"><i></i>Yes</label></span>
+                                                                <span class="radioSet"><input type="radio" id="decisionN" name="decision" /><label for="decisionN"><i></i>No</label></span>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="tbView nonTb">
+                                                        <dt>e-Mail</dt>
+                                                        <dd>
+                                                            <div class="emailCnt">
+                                                                <input type="email" />
+                                                                <span class="txt">@</span>
+                                                                <input type="text" />
+                                                                <span class="selectSet">
+                                                                    <select>
+                                                                        <option disabled>이메일선택</option>
+                                                                        <option>naver.com</option>
+                                                                        <option>gmail.com</option>
+                                                                        <option>직접입력</option>
+                                                                    </select>
+                                                                </span>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>이메일 수신여부</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                <span class="radioSet"><input type="radio" id="emailOK" name="emailSend" checked /><label for="emailOK"><i></i>동의</label></span>
+                                                                <span class="radioSet"><input type="radio" id="emailNo" name="emailSend" /><label for="emailNo"><i></i>거부</label></span>
+                                                                <span>2019-02-15</span>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // 관계인정보(리스트 목록에서 선택 시) -->
+                            
+                            <!-- 관계인정보입력 -->
+                            <div id="relationInfoInsert" class="subDtlBox">
+                                <button class="boxClose">닫기</button>
+                                <h2 class="sdBoxTit">관계인</h2>
+                                <div class="subDtlBoxBody h500">
+                                    <div class="subDtlMain">
+                                        <div class="sdMainHead">
+                                            <h3 class="sdMainTit"><i class="iResultMemo"></i>관계인정보입력</h3>
+                                            <div class="sdBtnRight">
+                                                <button class="btnBG reflesh">새로고침</button>
+                                                <button class="btnBY">저장</button>
+                                            </div>
+                                        </div>
+                                        <div class="gridContainer tbType">
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>고객명<sup>필수입력</sup></dt>
+                                                        <dd class="inMust"><input type="text" /></dd> <!--2019-04-18 필수class추가-->
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>관계인구분<sup>필수입력</sup></dt>
+                                                        <dd class="inMust"> <!--2019-04-18 필수class추가-->
+                                                            <span class="selectSet">
+                                                                <select>
+                                                                    <option>선택해 주세요</option>
+                                                                    <option>구매담당자</option>
+                                                                    <option>영업담당자</option>
+                                                                    <option>차량관리담당자</option>
+                                                                    <option>기타</option>
+                                                                </select>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+											<!-- 2019-06-13 추가 -->
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>부서명<sup>필수입력</sup></dt>
+                                                        <dd class="inMust"><input type="text" /></dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>직위/호칭<sup>필수입력</sup></dt>
+                                                        <dd>
+                                                            <div class="spotExtension inMust">
+                                                               <input type="text" />
+                                                               <input type="text" />
+                                                            </div>
+														</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+											<!-- //2019-06-13 추가 -->
+											<!-- 2019-06-14 수정 추가 -->
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>회사전화번호</dt>
+                                                        <dd>
+															<span class="phoneNumEtc">
+																<div class="phoneNum">
+																	<span class="selectSet">
+																		<select>
+																			<option>010</option>
+																			<option>011</option>
+																			<option>017</option>
+																			<option>018</option>
+																			<option>019</option>
+																		</select>
+																	</span>
+																	<span class="txt">-</span>
+																	<input type="tel" id="middleNum">
+																	<span class="txt">-</span>
+																	<input type="tel" id="lastNum">
+																</div>
+																<input type="tel" class="etcNum"/>
+															</span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>팩스번호</dt>
+                                                        <dd>
+															<div class="phoneNum">
+																<input type="tel">
+																<span class="txt">-</span>
+																<input type="tel" id="middleNum">
+																<span class="txt">-</span>
+																<input type="tel" id="lastNum">
+															</div>
+														</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>휴대전화번호</dt>
+                                                        <dd>
+															<div class="phoneNumEtc">
+																<div class="phoneNum">
+																	<span class="selectSet">
+																		<select>
+																			<option>010</option>
+																			<option>011</option>
+																			<option>017</option>
+																			<option>018</option>
+																			<option>019</option>
+																		</select>
+																	</span>
+																	<span class="txt">-</span>
+																	<input type="tel" id="middleNum">
+																	<span class="txt">-</span>
+																	<input type="tel" id="lastNum">
+																</div>
+																 <span class="checkSet"><input type="checkbox" id="sendOk" name="sendOk" /><label for="sendOk"><i></i>허용</label></span>
+															</div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet">
+                                                <div class="gridItem">
+                                                    <dl class="tbView nonTb">
+                                                        <dt>자택주소</dt>
+                                                        <dd>
+                                                            <div class="addrCnt">
+                                                                <div class="addrTop">
+                                                                    <div class="postNum">
+                                                                        <input type="tel" readonly />
+                                                                        <button class="btnRBG openPop7">우편번호</button>
+                                                                    </div>
+                                                                    <div class="addrView">
+                                                                        <input type="text" readonly />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="addrDetail">
+                                                                    <input type="text" placeholder="상세주소를 입력해주세요" />
+                                                                    <button class="btnBG reflesh">새로고침</button>
+                                                                </div>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet">
+                                                <div class="gridItem">
+                                                    <dl class="tbView nonTb">
+                                                        <dt>직장주소</dt>
+                                                        <dd>
+                                                            <div class="addrCnt innerSame">
+                                                                <div class="addrTop">
+                                                                    <div class="postNum">
+                                                                        <input type="tel" readonly />
+                                                                        <button class="btnRBG openPop7">우편번호</button>
+                                                                    </div>
+                                                                    <div class="addrView">
+                                                                        <input type="text" readonly />
+                                                                        <div class="sameCnt">
+                                                                            <span class="txt">위와 동일</span>
+                                                                            <button class="btnCYN copy">복사</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="addrDetail">
+                                                                    <input type="text" placeholder="상세주소를 입력해주세요" />
+                                                                    <button class="btnBG reflesh">새로고침</button>
+                                                                </div>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>DM수신장소</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                <span class="radioSet"><input type="radio" id="dm31" name="dm3" checked /><label for="dm31"><i></i>자택</label></span>
+                                                                <span class="radioSet"><input type="radio" id="dm32" name="dm3" /><label for="dm32"><i></i>직장</label></span>
+                                                                <span class="radioSet"><input type="radio" id="dm33" name="dm3" /><label for="dm33"><i></i>수신거부</label></span>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>발송대상</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                <span class="radioSet"><input type="radio" id="dm41" name="dm4" checked /><label for="dm41"><i></i>대상</label></span>
+                                                                <span class="radioSet"><input type="radio" id="dm42" name="dm4" /><label for="dm42"><i></i>비대상</label></span>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+											<!-- //2019-06-14 수정 추가 -->
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>대표관계인<br/>여부</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                <span class="radioSet"><input type="radio" id="representativeY" name="representative" checked /><label for="representativeY"><i></i>Yes</label></span>
+                                                                <span class="radioSet"><input type="radio" id="representativeN" name="representative" /><label for="representativeN"><i></i>No</label></span>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>차량구매<br/>결정권</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                <span class="radioSet"><input type="radio" id="decisionY" name="decision" checked /><label for="decisionY"><i></i>Yes</label></span>
+                                                                <span class="radioSet"><input type="radio" id="decisionN" name="decision" /><label for="decisionN"><i></i>No</label></span>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>e-Mail</dt>
+                                                        <dd>
+                                                            <div class="emailCnt">
+                                                                <input type="email" />
+                                                                <span class="txt">@</span>
+                                                                <input type="text" />
+                                                                <span class="selectSet">
+                                                                    <select>
+                                                                        <option>이메일선택</option>
+                                                                        <option>naver.com</option>
+                                                                        <option>gmail.com</option>
+                                                                        <option>직접입력</option>
+                                                                    </select>
+                                                                </span>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>이메일 수신<br/>여부</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                <span class="radioSet"><input type="radio" id="emailOK" name="emailSend" checked /><label for="emailOK"><i></i>동의</label></span>
+                                                                <span class="radioSet"><input type="radio" id="emailNo" name="emailSend" /><label for="emailNo"><i></i>거부</label></span>
+                                                                <span class="txt">2019-02-15</span>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // 관계인정보입력 -->
+                        </div>  
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

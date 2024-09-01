@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$(".btnGuide").click(function(){
+				$(".guideDim, .guidePop").show();
+			});
+			$(".gClose").click(function(){
+				$(".guideDim, .guidePop").hide();
+			});
+			var swiper2 = new Swiper('.guidePop .swiper-container', {
+				pagination: {
+					el: '.swiper-pagination',
+				},
+				autoplay: false,
+		    });
+			/**/
+			$('.entypo-popup').click(function(){
+				$('.mainGo').toggle();
+			});
+			$('.apply').click(function(){
+				$('.popDim').show();
+				$('.evidencePop').show();
+			});
+			$('.evidencePop .pBtn button').click(function(){
+				$('.popDim').hide();
+				$('.evidencePop').hide();
+			});
+			/**/
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap" class="headFix">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<h1>증빙서류<button class="btnGuide">가이드 보기</button></h1>
+					<button class="btnNav">햄버거</button>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+
+			<div id="snb">
+				<section>
+					<div class="c-menu c-menu--slide-left"><!-- 우측 Slide 일 경우 -->
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</section>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<span class="selectSet">
+						<select>
+							<option>2020</option>
+							<option>2019</option>
+							<option>2018</option>
+						</select>
+					</span>
+					<span class="right">00개</span>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="evidenceLayout">
+						<div class="mobileList">
+							<ul>
+								<!-- Loop : 신청 -->
+								<li>
+									<div class="eKind tL">
+										<strong>재직증명서</strong> (은행 제출용)
+									</div>
+									<span class="eStatus"><em>신청</em></span>
+									<span class="date">
+										신청일 : 2020-02-11
+										<em>수령 희망일자 : 2020-02-15</em>
+									</span>
+								</li>
+								<!--//Loop : 신청 -->
+								<!-- Loop : 완료 -->
+								<li>
+									<div class="eKind tL">
+										<strong>재직증명서</strong> (은행 제출용)
+										<div>
+											<a>
+												<em>TDW-2002001</em><i>재직증명서파일명.pdf</i>
+												<span>다운로드 기간  : 2020-02-15 ~ 2020-05-14 (D-90)</span>
+											</a>
+										</div>
+									</div>
+									<span class="eStatus end"><em>완료</em></span>
+									<span class="date">
+										신청일 : 2020-02-11
+										<em>발행일자 : 2020-02-15</em>
+									</span>
+								</li>
+								<!--//Loop : 완료 -->
+								<li>
+									<div class="eKind tL">
+										<strong>원천징수영수증</strong> (은행 제출용)
+										<div>
+											<a>
+												<em>TRT-2002001</em><i>원천징수영수증파일명.pdf</i>
+												<span>다운로드 기간  : 2020-02-15 ~ 2020-05-14 (D-1)</span>
+											</a>
+										</div>
+									</div>
+									<span class="eStatus end"><em>완료</em></span>
+									<span class="date">
+										신청일 : 2020-02-11
+										<em>발행일자 : 2020-02-15</em>
+									</span>
+								</li>
+								<!-- 2020-06-05 기간만료 -->
+								<li>
+									<div class="eKind tL">
+										<strong>원천징수영수증</strong> (은행 제출용)
+										<div>
+											<a>
+												<span class="end">다운로드 기간이 만료된 서류입니다.</span>
+											</a>
+										</div>
+									</div>
+									<span class="eStatus out"><em>만료</em></span>
+									<span class="date">
+										신청일 : 2020-02-11
+										<em>발행일자 : 2020-02-15</em>
+									</span>
+								</li>
+								<!--//기간만료 -->
+								<li class="notList">
+									<div>
+										신청한 증빙서류가 없습니다
+									</div>
+								</li>
+							</ul>
+						</div>
+						<span class="fab"><button class="apply">신청하기</button></span>
+					</div>
+					<!--//-->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>상단으로</button></div>
+		</div>
+		<!-- //Wrap -->
+		<!-- guide -->
+		<div class="guideDim">
+			<div class="guideDimAlign">
+				<div class="guidePop">
+					<div class="gBack">
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="gImg"><img src="../images/guide_evidence_step01.png" alt=""></div>
+									<div class="gText">
+										<span class="number">1</span>
+										<strong>하단의 신규등록 아이콘을<br/>선택하여 신청합니다.</strong>
+										<p>항목을 모두 입력하고 신청 버튼을 클릭해주세요.</p>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="gImg"><img src="../images/guide_evidence_step02.png" alt=""></div>
+									<div class="gText">
+										<span class="number">2</span>
+										<strong>목록에서 신청한 증빙서류를 확인합니다.</strong>
+										<p>신청한 증빙서류가 발행되면 푸시가 발송되며<br/>파일을 다운로드 할 수 있습니다.</p>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="gImg"><img src="../images/guide_evidence_step03.png" alt=""></div>
+									<div class="gText">
+										<span class="number">3</span>
+										<strong>다운로드 유효기간을 꼭 확인해주세요.</strong>
+										<p>유효기간 내에 다운로드 받지 못하면<br/>새로 신청해야 합니다.</p>
+									</div>
+								</div>
+							</div>
+							<!-- Add Pagination -->
+							<div class="swiper-pagination"></div>
+						</div>
+					</div>
+					<div class="gFooter">
+						<span class="checkSet">
+							<input type="checkbox" id="chk1">
+							<label for="chk1"><i></i>다시 안보기</label>
+						</span>
+						<button class="gClose">닫기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //guide -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<div class="miniPop evidencePop" style="display:none;">
+				<div class="tt">
+					<h1>증빙서류 신청</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="dlstyle deviceSame">
+						<dl>
+							<dt>이름</dt>
+							<dd><div class="txtline">홍길동</div></dd>
+						</dl>
+						<dl>
+							<dt>사번</dt>
+							<dd><div class="txtline">190101</div></dd>
+						</dl>
+						<dl>
+							<dt>신청일</dt>
+							<dd><div class="txtline">2020-01-21</div></dd>
+						</dl>
+						<dl>
+							<dt>신청서류</dt>
+							<dd>
+								<span class="selectSet">
+									<select>
+										<option>선택하세요</option>
+										<option>재직증명서</option>
+										<option>경력증명서</option>
+										<option>원천징수영수증</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<dl>
+							<dt>사용처</dt>
+							<dd>
+								<span class="selectSet">
+									<select>
+										<option>선택하세요</option>
+										<option>은행 제출용</option>
+									</select>
+								</span>
+								<div class="mt5px"><input type="text"/></div></dd>
+							</dd>
+						</dl>
+						<!-- 2020-04-10 -->
+						<dl>
+							<dt>추가 수령방법</dt>
+							<dd>
+								<span class="checkSet">
+									<input type="checkbox" id="chk105" />
+									<label for="chk106"><i></i>이메일</label>
+								</span>
+								<span class="checkSet">
+									<input type="checkbox" id="chk106" />
+									<label for="chk106"><i></i>직접수령</label>
+								</span>
+							</dd>
+						</dl>
+						<!-- //2020-04-10 -->
+						<dl>
+							<dt>수령 희망일자</dt>
+							<dd><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></dd>
+						</dl>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">신청</button>
+				</div>
+			</div>
+		</div>
+		<!-- //Popup -->
+	</body>
+</html>

@@ -1,0 +1,131 @@
+@charset "utf-8";
+
+/* =================================================================================
+* INFORMATION
+* -----------------------------------------------------------------------
+* @File Name: inview.css
+* @Version: 1.0
+* @Descration: 네이티브 인앱 브라우저 일 경우
+* @Create Date: 2019-02-22
+* @Update Date: N/A
+* @History: N/A
+* ================================================================================= */
+
+/* 견적전체보기 */
+.allEstLayout {padding:1.4rem;}
+.allEstLayout .basicInfo {display:inline-block;width:100%;border:1px solid #ffcc33;}
+.allEstLayout .basicInfo dl {float:left;display:table;width:33.3%;}
+.allEstLayout .basicInfo dl dt {display:table-cell;width:36%;padding:0.4rem;text-align:center;background:#ffcc33;}
+.allEstLayout .basicInfo dl dd {display:table-cell;padding:0.4rem;}
+.allEstLayout .summary {padding:1.4rem 0;}
+.allEstLayout .summary dl {padding:1.2rem 1.4rem;border:1px solid #eee;border-left:0;border-right:0;background:#faf9f8;}
+.allEstLayout .summary dl dt {padding-bottom:0.7rem;font-size:1.2rem;font-weight:bold;border-bottom:1px solid #999;}
+.allEstLayout .summary dl dt strong {float:right;}
+.allEstLayout .summary dl dd {padding-top:0.7rem;}
+.allEstLayout .summary dl dd span {padding-right:1.4rem;}
+.allEstLayout .summary dl dd span:before {content:'';display:inline-block;margin:0 0.7rem 0 0;width:3px;height:3px;vertical-align:middle;background:#ffcc33;}
+.allEstLayout .summary dl dd div span {display:inline-block;width:100%;padding:0;}
+.allEstLayout .detailInfo {padding:0 0.7rem;}
+.allEstLayout .detailInfo .gridSet {table-layout:fixed;}
+.allEstLayout .detailInfo .gridItem {vertical-align:top;}
+.allEstLayout .detailInfo .gridItem:first-child {padding-right:0.7rem;}
+.allEstLayout .detailInfo .gridItem:last-child {padding-left:0.7rem;}
+.allEstLayout .detailInfo dl {padding-bottom:1.8rem;}
+.allEstLayout .detailInfo dl dt {padding-bottom:0.7rem;font-size:1.2rem;font-weight:bold;border-bottom:1px solid #999;}
+.allEstLayout .detailInfo dl dt strong {float:right;padding-right:0.7rem;}
+.allEstLayout .detailInfo dl dt strong.sale {color:#e85252;}
+.allEstLayout .detailInfo dl dd {padding:0.4rem 0.6rem;border:1px solid #eee;border-top:none;}
+.allEstLayout .detailInfo dl dd li {position:relative;}
+.allEstLayout .detailInfo dl dd li span {display:inline-block;width:100%;padding:0 30% 0 0;box-sizing:border-box;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.allEstLayout .detailInfo dl dd li strong {position:absolute;right:0;top:0;font-weight:normal;}
+.allEstLayout .totalPrice p {display:table;width:100%;border:1px solid #ffcc33;}
+.allEstLayout .totalPrice p span {display:table-cell;width:50%;padding:0.4rem 1.4rem 0.8rem;font-size:1.1rem;vertical-align:middle;}
+.allEstLayout .totalPrice p span:last-child {text-align:right;border-left:1px solid #ffcc33;background:#ffebae;}
+.allEstLayout .totalPrice p span strong {font-size:1.3rem;}
+
+/* 할부견적 공통 */
+.installmentLayout {padding:1.7rem 1.0rem 1.7rem 1.7rem;}
+.igridSet {display:table;width:100%;table-layout:fixed;}
+.igridTt {position:relative;display:table-cell;width:17%;font-size:0.9rem;vertical-align:middle;letter-spacing:-0.05rem;}
+.igridTt:before {content:'';display:inline-block;margin:-2px 4px 0 0;width:3px;height:3px;vertical-align:middle;border-radius:8px;background:#007396;}
+.igridTt:after {content:'';position:absolute;right:5px;top:50%;display:inline-block;margin:-1px 0 0 0;width:12px;height:0;vertical-align:middle;border-radius:8px;border-top:1px dashed #007396;}
+.igridData {display:table-cell;width:83%;vertical-align:middle;}
+
+.priceTable {display:table;width:100%;table-layout:fixed;}
+.priceCell {display:table-cell;width:33.3%;padding-right:0.7rem;vertical-align:middle;}
+.priceCell .priceBack {display:inline-block;width:100%;padding:7px 0 7px 0;height:1.9rem;vertical-align:middle;border-bottom:1px solid #efefef;background:#f8f8f8;}
+.priceCell:nth-child(2) .priceBack {background:#fffaeb;}
+.firstLine .priceCell .priceBack  {border-top:2px solid #ffcc33;}
+.priceCell .priceBack .price {padding:0 2.7rem 0 1rem;}
+.priceCell .priceBack .price input {height:1.9rem;background:#fff;}
+.priceCell .priceBack .price input:disabled {background:#eee;}
+.priceCell .priceBack .price .selectSet {position:relative;right:auto;width:100%;height:1.9rem;text-align:left;}
+.priceCell .priceBack .price .selectSet strong {text-align:left;}
+
+.ttCase .igridTt:before {display:none;}
+.ttCase .igridTt:after {display:none;}
+.ttCase .priceCell {padding-bottom:0.7rem;font-weight:bold;}
+.ttCase .priceCell:before {content:'';display:inline-block;margin:-2px 4px 0 0;width:4px;height:4px;vertical-align:middle;border-radius:100%;border:2px solid #007396;}
+.ttCase .priceCell span {font-size:0.8rem;font-weight:normal;color:#007396;}
+
+.rCase {position:relative;display:inline-block;padding:0 0.7rem 0 0;width:100%;box-sizing:border-box;}
+.rCase .iBasicSet {float:left;width:50%;}
+/* .rCase .iBasicSet  .priceCell .priceBack {padding:7px 7px 7px 7px;height:1.9rem;box-sizing:border-box;} */
+.rCase .total {float:left;width:50%;padding:30px 0 0 0;}
+.rCase .total div {display:table;width:100%;height:9.2rem;border:2px solid #ffcc33;box-sizing:border-box;}
+.rCase .total div p {display:table-cell;text-align:center;vertical-align:middle;}
+.rCase .total div p:before {content:'';display:inline-block;width:2.6rem;height:2.6rem;border-radius:100%;background:#ffcc33 url('../images/i_coinsWhite.svg') no-repeat center;background-size:50% auto;}
+.rCase .total div p span {display:inline-block;width:100%;font-weight:bold;line-height:1.6;}
+.rCase .total div p strong {padding-right:0.2rem;font-size:1.4rem;color:red;}
+.rCase .priceCell .priceBack .price {padding:0 2.7rem 0 10rem;}
+.rCase .priceCell .priceBack .price em {position:absolute;left:1rem;top:0;line-height:2.2rem;letter-spacing:-0.05rem;}
+.rCase .priceCell .priceBack .price span {right:1rem;}
+
+.iResult {padding:0.7rem 0.7rem 0.7rem 0;}
+.iResult button {padding:0.5rem 0;width:100%;color:#fff;border:none;background:#000;}
+
+.iResultList {padding:0 0.7rem 0 0;}
+.iResultList .poplist table thead th {border:1px solid #bbb;border-left:0;border-right:0;background:#f8f8f8;}
+.iResultList .poplist table thead * {color:#222;}
+.iResultList .poplist table tbody td {border-right:none;}
+.iResultList .poplist table tbody td .lgTd {border-right:none;}
+.iResultList .poplist table tbody tr:nth-child(2n) th, 
+.iResultList .poplist table tbody tr:nth-child(2n) td {background:#ddd;}
+
+.iRollSet {padding:0.7rem 0.7rem 0 0;}
+.iRollSet dl {clear:left;display:inline-block;width:100%;border-bottom:1px solid #ddd;}
+.iRollSet dt {clear:left;padding:0.5rem 1rem;background:#e7f4f8;}
+.iRollSet dt .tt {padding-right:1rem;}
+.iRollSet dt .dt {padding-left:1rem;}
+.iRollSet dt .dt strong {color:#007396;}
+.iRollSet dd {float:left;padding:0.5rem 1rem;}
+.iRollSet dd strong {position:relative;float:left;padding:0.3rem 0.5rem 0 1.5rem;}
+.iRollSet dd strong:before {content:'';position:absolute;left:0;top:50%;display:inline-block;margin:2px 0 0 0;width:12px;height:0;vertical-align:middle;border-top:2px solid #007396;}
+.iRollSet dd div {float:left;display:inline-block;}
+
+/* 리스 비교견적 */
+.priceCell .priceBack .price.checkCase {padding:0 2.7rem 0 2.7rem;}
+.priceCell .priceBack .price.checkCase .checkSet {z-index:5;right:auto;left:1rem;top:0.5rem;}
+.priceCell .priceBack.longHeight {height:4.6rem;}
+.priceCell .priceBack.longHeight .price.checkCase {margin-bottom:0.4rem}
+.priceCell .priceBack.etcInput {height:calc(1.9rem + 14px);padding:7px 0 7px 1rem;box-sizing: border-box;}
+.priceCell .priceBack.etcInput .selectSet,
+.priceCell .priceBack.etcInput input {width:12rem;height:1.9rem;}
+.priceCell .priceBack.etcInput em {display:inline-block;width:7.5rem;padding:0 0.5rem 0 0;text-align:right;}
+.priceCell .priceBack.etcInput .ml5 {margin-left:5.6rem;}
+.priceCell .priceBack.etcInput .ml1 {margin-left:1rem;}
+
+/* 
+#inHeader {position:relative;height:3.4rem;line-height:1.5;text-align:center;background:#333;}
+#inHeader h1 {color:#ffcc33;}
+#inHeader button {position:absolute;right:0.7rem;top:0.5rem;padding:0.5rem 1.4rem;color:#ffcc33;border:1px solid #ffcc33;background:none;} */
+/* 모바일 세로모드, 가로모드 */
+/* @media (max-width:420px), (orientation : landscape) and (max-width:820px)  { */
+@media all and (max-width:420px), (orientation : landscape) and (max-width:667px) {
+	/**/
+	.allEstLayout {padding:0.7rem;}
+	.allEstLayout .basicInfo dl {width:100%;}
+	.allEstLayout .detailInfo .gridItem:first-child {padding-right:0;}
+	.allEstLayout .detailInfo .gridItem:last-child {padding-left:0;}
+	.allEstLayout .detailInfo {padding:0;}
+}

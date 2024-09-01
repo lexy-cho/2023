@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/push.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.orderBox .btnShut').click(function(){
+					$(this).toggleClass("on");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<div class="grayOptionArea">
+				<div>
+					<!-- 2020-06-24 옵션삭제 -->
+					<span class="selectSet">
+						<select>
+							<!-- 2020-06-16 option 수정 -->
+							<option>최근 1개월</option>
+							<option>최근 3개월</option>
+							<option>최근 1년</option>
+							<option>전체</option>
+							<!-- //2020-06-16 option 수정 -->
+						</select>
+					</span>
+					<span class="selectSet">
+						<select>
+							<option>전체</option>
+							<option>왕복</option>
+							<option>편도</option>
+							<option>환적</option>
+						</select>
+					</span>
+				</div>
+			</div>
+			<div class="mobileOrderList">
+				<ol>
+					<li>
+						<div class="orderBox case2">
+							<div class="tabHead">
+								<span class="orderNum"><span>No.</span>C999999</span>
+								<span class="right"><button class="btnTrash">삭제</button></span>
+							</div>
+							<div class="orderBody">
+								<div class="transInfo">
+									<span class="transType red">수입</span>
+									<span class="transShape red">왕복</span>
+									<!-- 2020-06-16 날짜 삭제 -->
+								</div>
+								<div class="orderDetail" onClick="location.href='business_contract_view.html'">
+									<div class="info">
+										<dl>
+											<dt>계약회사</dt>
+											<dd><span class="companyName">대림물류㈜</span>(유관순 / 010-1234-5678)</dd><!-- 2020-06-23 회사영역 추가 -->
+										</dl>
+										<dl>
+											<dt>계약기간</dt>
+											<dd>2020-01-01 ~ 2020-12-31</dd>
+										</dl>
+									</div>
+								</div>
+								<div class="orderSet">
+									<span class="right">
+										<span class="cost">계약금액<span class="sum">合</span><strong>999,000</strong>원</span>
+									</span>
+								</div>
+							</div>
+							<!-- 2020-06-16 detail list 추가 -->
+							<div class="detailList bcCase">
+								<button class="btnShut">여닫기</button>
+								<ul>
+									<li>
+										<div class="orderBox">
+											<div class="orderBody">
+												<div class="transInfo">
+													<strong>컨테이너</strong>
+													<span>(Sliding Open Top / 40ft High Cube)</span>
+												</div>
+												<div class="info">
+													<dl>
+														<dt>출발/도착지</dt>
+														<dd><strong>XX CY</strong>부산광역시 남구 신선로 294 (용당동)</dd>
+													</dl>
+													<span class="distance">56km</span>
+													<dl>
+														<dt>작업지</dt>
+														<dd><strong>경남창원</strong>경남 창원시 마산합포구 문화북1길 57-5</dd>
+													</dl>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<!-- //2020-06-16 detail list 추가 -->
+						</div>
+					</li>
+					<li>
+						<div class="orderBox case2">
+							<div class="tabHead">
+								<span class="orderNum"><span>No.</span>C999999</span>
+								<span class="right"><button class="btnTrash">삭제</button></span>
+							</div>
+							<div class="orderBody">
+								<div class="transInfo">
+									<span class="transType blue">수출</span>
+									<span class="transShape blue">편도</span>
+								</div>
+								<div class="orderDetail" onClick="location.href='business_contract_view.html'">
+									<div class="info">
+										<dl>
+											<dt>계약회사</dt>
+											<dd><span class="companyName">미화중공업㈜</span>(유관순 / 010-1234-5678)</dd><!-- 2020-06-23 회사영역 추가 -->
+										</dl>
+										<dl>
+											<dt>계약기간</dt>
+											<dd>2020-01-01 ~ 2020-12-31</dd>
+										</dl>
+									</div>
+								</div>
+								<div class="orderSet">
+									<span class="right">
+										<span class="cost">계약금액<span class="sum">合</span><strong>999,000</strong>원</span>
+									</span>
+								</div>
+							</div>
+							<!-- 2020-06-16 detail list 추가 -->
+							<div class="detailList bcCase">
+								<button class="btnShut">여닫기</button>
+								<ul>
+									<li>
+										<div class="orderBox">
+											<div class="orderBody">
+												<div class="transInfo">
+													<strong>컨테이너</strong>
+													<span>(Sliding Open Top / 40ft High Cube)</span>
+												</div>
+												<div class="info">
+													<dl>
+														<dt>출발지</dt>
+														<dd><strong>의왕 ICD</strong>경기 의왕시 오봉로 175 의왕 ICD</dd>
+													</dl>
+													<dl>
+														<dt>작업지</dt>
+														<dd><strong>경남창원</strong>경남 창원시 마산합포구 문화북1길 57-5</dd>
+													</dl>
+													<span class="distance">56km</span>
+													<dl>
+														<dt>도착지</dt>
+														<dd><strong>XX CY</strong>부산광역시 남구 신선로 294 (용당동)</dd>
+													</dl>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<!-- //2020-06-16 detail list 추가 -->
+						</div>
+					</li>
+				</ol>
+			</div>
+		</div>
+		<!-- popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 2020-06-24 검색필터 삭제 -->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

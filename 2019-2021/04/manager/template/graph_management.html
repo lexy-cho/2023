@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.highcharts.com/highcharts.src.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$("input:radio[name=graph]").click(function(){
+				$(".graphLayout > div").hide();
+				if($("input[name=graph]:checked").val() == "thisMonth"){
+			    	$(".graphLayout .thisMonth").show();
+				} else if($("input[name=graph]:checked").val() == "monthly"){
+					$(".graphLayout .monthly").show();
+		   		}
+	  		});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back">
+						<div data-include="include/snb.html"></div>
+					</div>
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- header -->
+			<div id="header">
+				<header>
+					 <h2>통계 관리</h2>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="searchArea">
+					<fieldset>
+						<span class="graphSet">
+							<span class="radioSet">
+								<input type="radio" id="rdo1" name="graph" value="thisMonth" checked/>
+								<label for="rdo1"><i></i>일별 보기</label><!-- 2020-07-14 label 텍스트 수정 -->
+							</span>
+							<span class="radioSet">
+								<input type="radio" id="rdo2" name="graph" value="monthly" />
+								<label for="rdo2"><i></i>월별 보기</label><!-- 2020-07-14 label 텍스트 수정 -->
+							</span>
+						</span>
+						<span class="calendarSet">
+							<span class="calDupSet">
+								<span class="calSet"><label for="searchDate">기간 설정</label><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span>
+								<em>~</em>
+								<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+							</span>
+							<span class="radioChoose">
+								<label for="lb1"><input type="radio" id="lb1" name="radio1" value="오늘" checked/><span>전월</span></label>
+								<label for="lb3"><input type="radio" id="lb2" name="radio1" value="6개월" /><span>6개월</span></label>
+								<label for="lb4"><input type="radio" id="lb3" name="radio1" value="1년" /><span>1년</span></label>
+							</span>
+						</span>
+					</fieldset>
+				</div>
+				<div class="content">
+					<div class="graphLayout">
+						<!-- 일별 보기 -->
+						<div class="thisMonth">
+							<div class="gridSet grid2">
+								<div class="gridItem">
+									<div class="graphBack">
+										<h3>오더 건수</h3>
+										<!-- 2020-07-13 그래프 수정 -->
+										<div class="graphImage" id="graph0101">
+											<script>
+												$(document).ready(function(){
+													function graph0101Open(){
+														Highcharts.chart('graph0101', {
+															colors: ['#f15146', '#f49658'],
+															chart: {
+																type: 'column'
+														    },
+														    title: {
+															    text: ''
+														    },
+														    xAxis: {
+															    categories: [
+																	'2020-05-01',
+ 																    '2020-05-02',
+ 																    '2020-05-03',
+ 																    '2020-05-04',
+ 																    '2020-05-05',
+ 																    '2020-05-06',
+ 																    '2020-05-07',
+ 																    '2020-05-08',
+ 																    '2020-05-09',
+ 																    '2020-05-10',
+ 																    '2020-05-11',
+ 																    '2020-05-12'
+															    ],
+															    crosshair: true
+														    },
+														    yAxis: {
+																min: 0,
+															    max: 200,
+																title: {
+																	text: ''
+																}
+														    },
+														    tooltip: {
+															    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+															    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+																    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+															    footerFormat: '</table>',
+															    shared: true,
+															    useHTML: true
+														    },
+														    plotOptions: {
+															    column: {
+																    pointPadding: 0.2,
+																    borderWidth: 0
+															    }
+													 	    },
+														    series: [{
+															    name: '플랫폼 운송',
+															    data: [40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40]
+														    }, {
+															    name: 'SaaS(계약운송)',
+															    data: [130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130]
+														    }]
+														});
+													}
+													graph0101Open();
+												});
+											</script>
+										</div>
+										<!-- //2020-07-13 그래프 수정 -->
+									</div>
+								</div>
+								<div class="gridItem">
+									<div class="graphBack">
+										<h3>매칭 수수료</h3><!-- 2020-07-13 제목 변경 -->
+										<!-- 2020-07-13 그래프 수정 -->
+										<div class="graphImage" id="graph0102">
+											<script>
+												$(document).ready(function(){
+													function graph0102Open(){
+														Highcharts.chart('graph0102', {
+															colors: ['#8ac287'],
+															chart: {
+														        type: 'line'
+														    },
+														    title: {
+														        text: ''
+														    },
+														    xAxis: {
+																categories: [
+ 																   '2020-05-01',
+ 																   '2020-05-02',
+ 																   '2020-05-03',
+ 																   '2020-05-04',
+ 																   '2020-05-05',
+ 																   '2020-05-06',
+ 																   '2020-05-07',
+ 																   '2020-05-08',
+ 																   '2020-05-09',
+ 																   '2020-05-10',
+ 																   '2020-05-11',
+ 																   '2020-05-12'
+ 															   ],
+														    },
+														    yAxis: {
+																max:400,
+														        title: {
+														            text: ''
+														        }
+														    },
+														    plotOptions: {
+														        line: {
+														            dataLabels: {
+														                enabled: true
+														            },
+														            enableMouseTracking: false
+														        }
+														    },
+														    series: [{
+														        name: '매칭수수료(원)',
+														        data: [50, 60, 80, 100, 130, 160, 180, 200, 211, 300, 320, 350]
+														    }]
+														});
+													}
+													graph0102Open();
+												});
+											</script>
+										</div>
+										<!-- //2020-07-13 그래프 수정 -->
+									</div>
+								</div>
+							</div>
+							<div class="gridSet grid2">
+								<div class="gridItem">
+									<div class="graphBack">
+										<h3>플랫폼서비스 가입자</h3><!-- 2020-07-13 그래프 제목수정 -->
+										<!-- 2020-07-13 그래프 수정 -->
+										<div class="graphImage" id="graph0103">
+											<script>
+												$(document).ready(function(){
+													function graph0103Open(){
+														Highcharts.chart('graph0103', {
+															colors: ['#8fb8f1', '#bfa2d5'],
+															chart: {
+																type: 'column'
+														    },
+														    title: {
+															    text: ''
+														    },
+														    xAxis: {
+															    categories: [
+																	'2020-05-01',
+ 																    '2020-05-02',
+ 																    '2020-05-03',
+ 																    '2020-05-04',
+ 																    '2020-05-05',
+ 																    '2020-05-06',
+ 																    '2020-05-07',
+ 																    '2020-05-08',
+ 																    '2020-05-09',
+ 																    '2020-05-10',
+ 																    '2020-05-11',
+ 																    '2020-05-12'
+															    ],
+															    crosshair: true
+														    },
+														    yAxis: {
+																min: 0,
+															    max: 400,
+																title: {
+																	text: ''
+																}
+														    },
+														    tooltip: {
+															    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+															    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+																    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+															    footerFormat: '</table>',
+															    shared: true,
+															    useHTML: true
+														    },
+														    plotOptions: {
+															    column: {
+																    pointPadding: 0.2,
+																    borderWidth: 0
+															    }
+													 	    },
+														    series: [{
+															    name: '플랫폼 고객(화주용)',
+															    data: [44, 56, 44, 112, 56, 44, 112, 44, 56, 44, 56, 112]
+														    }, {
+															    name: '플랫폼 고객(차주용)',
+															    data: [21, 75, 21, 90, 75, 21, 90, 21, 75, 21, 75, 90]
+														    }]
+													    });
+													}
+													graph0103Open();
+												});
+											</script>
+										</div>
+										<!-- //2020-07-13 그래프 수정 -->
+									</div>
+								</div>
+								<div class="gridItem">
+									<!-- 2020-07-13 SaaS서비스 가입자 통계 -->
+									<div class="graphBack">
+										<h3>SaaS서비스 가입자</h3>
+										<!-- 2020-07-13 그래프 수정 -->
+										<div class="graphImage" id="graph0104">
+											<script>
+												$(document).ready(function(){
+													function graph0104Open(){
+														Highcharts.chart('graph0104', {
+															colors: ['#8ac287', '#f49658'],
+															chart: {
+																type: 'column'
+														    },
+														    title: {
+															    text: ''
+														    },
+														    xAxis: {
+															    categories: [
+																	'2020-05-01',
+ 																    '2020-05-02',
+ 																    '2020-05-03',
+ 																    '2020-05-04',
+ 																    '2020-05-05',
+ 																    '2020-05-06',
+ 																    '2020-05-07',
+ 																    '2020-05-08',
+ 																    '2020-05-09',
+ 																    '2020-05-10',
+ 																    '2020-05-11',
+ 																    '2020-05-12'
+															    ],
+															    crosshair: true
+														    },
+														    yAxis: {
+																min: 0,
+															    max: 200,
+																title: {
+																	text: ''
+																}
+														    },
+														    tooltip: {
+															    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+															    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+																    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+															    footerFormat: '</table>',
+															    shared: true,
+															    useHTML: true
+														    },
+														    plotOptions: {
+															    column: {
+																    pointPadding: 0.2,
+																    borderWidth: 0
+															    }
+													 	    },
+														    series: [{
+															    name: 'SaaS 고객(화주용)',
+															    data: [40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40]
+														    }, {
+															    name: 'SaaS 차주(차주용)',
+															    data: [130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130]
+														    }]
+													    });
+													}
+													graph0104Open();
+												});
+											</script>
+										</div>
+										<!-- //2020-07-13 그래프 수정 -->
+									</div>
+									<!-- //2020-07-13 SaaS서비스 가입자 통계 -->
+								</div>
+							</div>
+						</div>
+						<!-- //일별 보기 -->
+						<!-- 월별 보기 -->
+						<div class="monthly" style="display:none">
+							<div class="gridSet grid2">
+								<div class="gridItem">
+									<div class="graphBack">
+										<h3>오더 건수</h3>
+										<div class="graphImage" id="graph0201">
+											<script>
+												$(document).ready(function(){
+													function graph0201Open(){
+														Highcharts.chart('graph0201', {
+															colors: ['#f15146', '#f49658'],
+															chart: {
+																type: 'column'
+														    },
+														    title: {
+															    text: ''
+														    },
+														    xAxis: {
+																categories: [
+ 																   '2020-02',
+ 																   '2020-03',
+ 																   '2020-04',
+ 																   '2020-05',
+ 																   '2020-06',
+ 																   '2020-07',
+ 																   '2020-08',
+ 																   '2020-09',
+ 																   '2020-10',
+ 																   '2020-11',
+ 																   '2020-12',
+																   '2021-01'
+ 															    ],
+															    crosshair: true
+														    },
+														    yAxis: {
+																min: 0,
+															    max: 200,
+																title: {
+																	text: ''
+																}
+														    },
+														    tooltip: {
+															    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+															    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+																    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+															    footerFormat: '</table>',
+															    shared: true,
+															    useHTML: true
+														    },
+														    plotOptions: {
+															    column: {
+																    pointPadding: 0.2,
+																    borderWidth: 0
+															    }
+													 	    },
+														    series: [{
+															    name: '플랫폼 운송',
+															    data: [40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40]
+														    }, {
+															    name: 'SaaS(계약운송)',
+															    data: [130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130]
+														    }]
+														});
+													}
+													graph0201Open();
+												});
+											</script>
+										</div>
+									</div>
+								</div>
+								<div class="gridItem">
+									<div class="graphBack">
+										<h3>서비스 가입자 수</h3><!-- 2020-07-13 제목수정 -->
+										<div class="graphImage" id="graph0202">
+											<script>
+												$(document).ready(function(){
+													function graph0202Open(){
+														Highcharts.chart('graph0202', {
+															colors: ['#8ac287'],
+															chart: {
+														        type: 'line'
+														    },
+														    title: {
+														        text: ''
+														    },
+														    xAxis: {
+																categories: [
+ 																   '2020-02',
+ 																   '2020-03',
+ 																   '2020-04',
+ 																   '2020-05',
+ 																   '2020-06',
+ 																   '2020-07',
+ 																   '2020-08',
+ 																   '2020-09',
+ 																   '2020-10',
+ 																   '2020-11',
+ 																   '2020-12',
+																   '2021-01'
+ 															   ],
+														    },
+														    yAxis: {
+																max:400,
+														        title: {
+														            text: ''
+														        }
+														    },
+														    plotOptions: {
+														        line: {
+														            dataLabels: {
+														                enabled: true
+														            },
+														            enableMouseTracking: false
+														        }
+														    },
+														    series: [{
+														        name: '매칭수수료(원)',
+														        data: [50, 60, 80, 100, 130, 160, 180, 200, 211, 300, 320, 350]
+														    }]
+														});
+													}
+													graph0202Open();
+												});
+											</script>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="gridSet grid2">
+								<div class="gridItem">
+									<div class="graphBack">
+										<h3>서비스 가입자 수</h3><!-- 2020-07-13 제목수정 -->
+										<div class="graphImage" id="graph0203">
+											<script>
+												$(document).ready(function(){
+													function graph0203Open(){
+														Highcharts.chart('graph0203', {
+															colors: ['#8fb8f1', '#bfa2d5'],
+															title: {
+																text: ''
+															},
+															xAxis: {
+																categories: [
+ 																   '2020-02',
+ 																   '2020-03',
+ 																   '2020-04',
+ 																   '2020-05',
+ 																   '2020-06',
+ 																   '2020-07',
+ 																   '2020-08',
+ 																   '2020-09',
+ 																   '2020-10',
+ 																   '2020-11',
+ 																   '2020-12',
+																   '2021-01'
+ 															    ],
+																crosshair: true,
+																labels: {
+																	useHTML:true,
+																	style:{
+																		align: "center",
+																		width:'60px',
+																		whiteSpace:'normal'
+																	}
+																},
+															},
+															yAxis: {
+																min: 0,
+																title: {
+																	text: ''
+																}
+															},
+															tooltip: {
+																headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+																pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+																	'<td style="padding:0">{point.y}</td></tr>',
+																footerFormat: '</table>',
+																shared: true,
+																useHTML: true
+															},
+															plotOptions: {
+																column: {
+																	pointPadding: 0.2,
+																	borderWidth: 0
+																}
+															},
+															series: [{
+																type: 'column',
+																name: 'Client (화주용)',
+																color: '#726fdf',
+																data: [44,56,44,112,56,44,112,44,112,56,44,112]
+
+															}, {
+																type: 'column',
+																name: 'Driver (차주용)',
+																color: '#2faf95',
+																data: [21,75,21,90,75,21,90,21,90,75,21,90]
+
+															}, {
+																type: 'spline',
+																name: 'Client (화주용) 누적',
+																color: '#726fdf',
+																data: [200,240,260,290,320,360,380,399,420,450,480,500],
+																marker: {
+																	lineWidth: 2,
+																	lineColor: Highcharts.getOptions().colors[3],
+																	fillColor: 'white'
+																}
+															},{
+																type: 'spline',
+																name: 'Driver (차주용) 누적',
+																color: '#2faf95',
+																data: [210,233,250,278,388,390,411,439,470,480,490,520],
+																marker: {
+																	lineWidth: 2,
+																	lineColor: Highcharts.getOptions().colors[3],
+																	fillColor: 'white'
+																}
+															}]
+														});
+													}
+													graph0203Open();
+												});
+											</script>
+										</div>
+									</div>
+								</div>
+								<div class="gridItem">
+									<!-- 2020-07-13 SaaS서비스 가입자 통계 -->
+									<div class="graphBack">
+										<h3>SaaS서비스 가입자</h3>
+										<div class="graphImage" id="graph0204">
+											<script>
+												$(document).ready(function(){
+													function graph0204Open(){
+														Highcharts.chart('graph0204', {
+															colors: ['#8ac287', '#f49658'],
+															chart: {
+																type: 'column'
+														    },
+														    title: {
+															    text: ''
+														    },
+														    xAxis: {
+																categories: [
+ 																  '2020-02',
+ 																  '2020-03',
+ 																  '2020-04',
+ 																  '2020-05',
+ 																  '2020-06',
+ 																  '2020-07',
+ 																  '2020-08',
+ 																  '2020-09',
+ 																  '2020-10',
+ 																  '2020-11',
+ 																  '2020-12',
+ 																  '2021-01'
+ 															    ],
+															    crosshair: true
+														    },
+														    yAxis: {
+																min: 0,
+															    max: 200,
+																title: {
+																	text: ''
+																}
+														    },
+														    tooltip: {
+															    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+															    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+																    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+															    footerFormat: '</table>',
+															    shared: true,
+															    useHTML: true
+														    },
+														    plotOptions: {
+															    column: {
+																    pointPadding: 0.2,
+																    borderWidth: 0
+															    }
+													 	    },
+														    series: [{
+															    name: 'SaaS 고객(화주용)',
+															    data: [40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40]
+														    }, {
+															    name: 'SaaS 차주(차주용)',
+															    data: [130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130]
+														    }]
+													    });
+													}
+													graph0204Open();
+												});
+											</script>
+										</div>
+									</div>
+									<!-- //2020-07-13 SaaS서비스 가입자 통계 -->
+								</div>
+							</div>
+						</div>
+						<!-- 월별 보기 -->
+					</div>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+    </body>
+</html>

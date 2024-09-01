@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+        <style>
+			#container {padding:0 0 0 0;}
+			.componentLayout {padding:10px;}
+			.componentLayout table {width:100%;border:1px solid #eee;border-collapse:collapse;}
+			.componentLayout table th {border:1px solid #dddddd;padding:5px;text-align:center;}
+			.componentLayout table td {border:1px solid #dddddd;padding:14px;}
+		</style>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="componentLayout">
+						<table>
+							<tr>
+								<th>step</th>
+							</tr>
+							<tr>
+								<td>
+									<div class="step step2">
+										<span class="now"><em>step1</em></span>
+										<span><em>step2</em></span>
+									</div>
+									<div class="step step3">
+										<span class="fin"><em>step1</em></span>
+										<span class="now"><em>step2</em></span>
+										<span><em>step3</em></span>
+									</div>
+									<div class="step step4">
+										<span class="fin"><em>step1</em></span>
+										<span class="now"><em>step3</em></span>
+										<span><em>step3</em></span>
+										<span><em>step4</em></span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>tab</th>
+							</tr>
+							<tr>
+								<td>
+									<div class="tab01">
+										<!-- tab -->
+										<div class="tabBack">
+											<div class="tabNav">
+												<nav>
+													<ul>
+														<li class="on"><button data-name="1">오더<span class="number">9</span></button></li>
+														<li><button data-name="2">배차<span class="number">5</span></button></li>
+														<li><button data-name="3">[출발지 이동]<span class="number">2</span></button></li>
+														<li><button data-name="4">출발지<span class="subTitle">(상차/픽업)</span><span class="number">9</span></button></li>
+														<li><button data-name="5">[작업지 이동]<span class="number">9</span></button></li>
+														<li><button data-name="6">작업지<span class="number">9</span></button></li>
+														<li><button data-name="7">[도착지 이동]<span class="number">9</span></button></li>
+														<li><button data-name="8">도착지<span class="subTitle">(반납/하차)</span><span class="number">8</span></button></li>
+													</ul>
+												</nav>
+											</div>
+										</div>
+										<!--// tab -->
+										<div class="tabLayout">
+											<div class="tabData tData1" style="display:block;">Tab Menu 1 Data</div>
+											<div class="tabData tData2">Tab Menu 2 Data</div>
+											<div class="tabData tData3">Tab Menu 3 Data</div>
+											<div class="tabData tData4">Tab Menu 4 Data</div>
+											<div class="tabData tData5">Tab Menu 5 Data</div>
+											<div class="tabData tData6">Tab Menu 6 Data</div>
+											<div class="tabData tData7">Tab Menu 7 Data</div>
+											<div class="tabData tData8">Tab Menu 8 Data</div>
+										</div>
+									</div>
+									<div class="tab02">
+										<!-- tab -->
+										<div class="tabBack">
+											<div class="tabNav">
+												<nav>
+													<ul>
+														<li class="on"><button data-name="1">Tab Menu 1<span>완료</span></button></li>
+														<li><button data-name="2">Tab Menu 2<span>완료</span></button></li>
+														<li><button data-name="3">Tab Menu 3</button></li>
+														<li><button data-name="4">Tab Menu 4</button></li>
+													</ul>
+												</nav>
+											</div>
+										</div>
+										<!--// tab -->
+										<div class="tabLayout">
+											<div class="tabData tData1" style="display:block;">Tab Menu 1 Data</div>
+											<div class="tabData tData2">Tab Menu 2 Data</div>
+											<div class="tabData tData3">Tab Menu 3 Data</div>
+											<div class="tabData tData4">Tab Menu 4 Data</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>input</th>
+							</tr>
+							<tr>
+								<td>
+									<dl class="inputBox">
+										<dt>입항일</dt>
+										<dd><input type="text" placeholder="운송 요청사항"/></dd>
+									</dl>
+									<dl class="inputBox">
+										<dt>담당</dt>
+										<dd><input type="text" value="홍길동"/></dd>
+									</dl>
+									<dl class="inputBox">
+										<dt>담당</dt>
+										<dd>
+											<div class="searchInput">
+												<input type="text"/>
+												<button class="btnSearch">검색하기</button>
+											</div>
+										</dd>
+									</dl>
+									<dl class="inputBox">
+										<dt>담당</dt>
+										<dd>
+											<span class="selectSet">
+												<select>
+													<option selected>메뉴1</option>
+													<option>메뉴2</option>
+												</select>
+											</span>
+										</dd>
+									</dl>
+									<dl class="inputBox iner">
+										<dt>담당</dt>
+										<dd><input type="text" value="홍길동"/></dd>
+									</dl>
+									<dl class="inputBox iner">
+										<dt>담당</dt>
+										<dd>
+											<span class="selectSet">
+												<select>
+													<option selected>메뉴1</option>
+													<option>메뉴2</option>
+												</select>
+											</span>
+										</dd>
+									</dl>
+									<input type="text" class="inputAuto" placeholder="서울시 마포구 매봉산로 37"/><br/>
+									<input type="text" class="inputAuto" value="서울시 마포구 매봉산로 37"/><br/>
+									<span class="calendarSet">
+										<span class="calDupSet">
+											<span class="calSet"><label for="searchDate">조회기간</label><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span>
+											<em>~</em>
+											<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+										</span>
+										<span class="radioChoose">
+											<label for="lb1"><input type="radio" id="lb1" name="radio1" value="오늘" /><span>오늘</span></label>
+											<label for="lb2"><input type="radio" id="lb2" name="radio1" value="10일" /><span>10일</span></label>
+											<label for="lb3"><input type="radio" id="lb3" name="radio1" value="지난달" /><span>지난달</span></label>
+											<label for="lb4"><input type="radio" id="lb4" name="radio1" value="이번달" /><span>이번달</span></label>
+										</span>
+									</span><br/><br/>
+									<span class="checkSet">
+										<input type="checkbox" id="chk2" />
+										<label for="chk2"><i></i></label>
+									</span>
+									<span class="checkSet">
+										<input type="checkbox" id="chk1" checked/>
+										<label for="chk1"><i></i></label>
+									</span>
+									<span class="radioSet">
+										<input type="radio" id="rdo1" name="radio1" />
+										<label for="rdo1"><i></i></label>
+									</span>
+									<span class="radioSet">
+										<input type="radio" id="rdo2" name="radio1" checked/>
+										<label for="rdo2"><i></i></label>
+									</span>
+									<span class="radioSet">
+										<input type="radio" id="rdo21" checked disabled />
+										<label for="rdo21"><i></i></label>
+									</span>
+									<span class="agreeSet">
+										<input type="checkbox" id="chk3" />
+										<label for="chk3"><i></i></label>
+									</span>
+									<span class="agreeSet">
+										<input type="checkbox" id="chk4" checked/>
+										<label for="chk4"><i></i></label>
+									</span>
+									<span class="agreeSet all">
+										<input type="checkbox" id="chk5" />
+										<label for="chk5"><i></i></label>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<th>button</th>
+							</tr>
+							<tr>
+								<td>
+									<button class="searchCompany">회사검색</button>
+									<button class="searchUnipass">UNIPASS 검색</button><br/><br/>
+									<button class="btnM red">신규등록</button>
+									<button class="btnM orange">선택 건 배차요청</button>
+									<button class="btnM whiteOrange">배차취소</button>
+									<button class="btnM blue">오더확정</button>
+									<button class="btnM whiteBlue">배차요청</button>
+									<button class="btnM whiteBlack">목록</button>
+									<button class="btnM grayBlack">목록</button>
+									<button class="btnList">목록</button>
+									<button class="btnM black">조회</button>
+									<button class="btnM gray">오늘</button>
+									<button class="btnM green">확인</button>
+									<button class="btnM" disabled>다음</button>
+									<br/><br/>
+									<button class="btnTax">세금계산서</button>
+									<button class="btnTax" disabled>세금계산서</button>
+									<button class="btnDetail">상세보기</button>
+									<button class="btnS lineRed">선택삭제</button>
+									<button class="btnS lineOrange">엑셀 다운로드</button>
+									<br/><br/>
+									<div class="btnSet">
+										<button class="btnL whiteOrange">뒤로</button>
+										<button class="btnL orange">다음</button>
+									</div><br/>
+									<div class="easyLogin">
+										<button class="btnNaver">네이버 로그인</button>
+										<button class="btnFacebook">페이스북 로그인</button>
+										<button class="btnGoogle">구글 로그인</button>
+										<button class="btnKakao">카카오계정 로그인</button>
+									</div><br/>
+									<button class="btnAllowDown">더보기</button>
+									<button class="btnDelete">삭제</button>
+									<button class="btnAdress">주소검색</button>
+									<button class="btnAllowRight">더보기</button>
+									<br/><br/>
+									<button class="statusSet receive">오더접수</button>
+									<button class="statusSet cancel">오더취소<span>(차주)</span></button>
+									<button class="statusSet confirm">오더확정</button>
+									<button class="statusSet request">배차요청중</button>
+									<button class="statusSet delay">배차지연</button>
+									<button class="statusSet bracket">배차요청중</button>
+									<button class="statusSet bracket">배차지연</button>
+								</td>
+							</tr>
+							<tr>
+								<th>select</th>
+							</tr>
+							<tr>
+								<td>
+									<span class="selectSet">
+										<select>
+											<option selected>메뉴1</option>
+											<option>메뉴2</option>
+										</select>
+									</span>
+									<span class="selectSet red">
+										<select>
+											<option selected>메뉴1</option>
+											<option>메뉴2</option>
+										</select>
+									</span>
+									<span class="selectSet blue">
+										<select>
+											<option selected>메뉴1</option>
+											<option>메뉴2</option>
+										</select>
+									</span>
+									<span class="selectSet green">
+										<select>
+											<option selected>메뉴1</option>
+											<option>메뉴2</option>
+										</select>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<th>icon</th>
+							</tr>
+							<tr>
+								<td>
+									<span class="numIcon">1</span>
+									<span class="numIcon">2</span>
+									<span class="orderType">계약오더</span>
+									<span class="orderType">콜오더</span>
+									<span class="transType red">수입</span>
+									<span class="transType blue">수출</span>
+								</td>
+							</tr>
+							<tr>
+								<th>mobile</th>
+							</tr>
+							<tr>
+								<td>
+									<button class="btnClose">닫기</button>
+									<button class="btnRing white" style="background-color:#222;">알림<span>2</span></button>
+									<button class="btnOption">옵션</button>
+									<button class="btnTrash">휴지통</button>
+									<button class="btnNew">신규</button>
+									<button class="btnSetting">셋팅</button>
+									<button class="btnDelete mobile">삭제</button>
+									<div class="orderListImg">
+										<div>
+											<p class="orderImg">
+												<span>혼합</span>
+												<em>+1</em>
+											</p>
+											<strong class="gray">A000001</strong>
+										</div>
+									</div>
+									<div class="orderListImg">
+										<div>
+											<div class="orderImg">
+												<span>20ft</span>
+											</div>
+											<strong>A000001</strong>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>리스트</th>
+							</tr>
+							<tr>
+								<td>
+									<ul class="resultList">
+										<li>
+											<div>
+												<div class="listHead">
+													<strong>입</strong>
+													<span><em>오더날짜</em>2019.12.22</span>
+												</div>
+												<div class="listBody">
+													<div>
+														<dl>
+															<dt>상</dt>
+															<dd>경기인천</dd>
+														</dl>
+														<dl>
+															<dt>반</dt>
+															<dd>경기성남</dd>
+														</dl>
+													</div>
+													<div>
+														<dl>
+															<dt>EA</dt>
+															<dd>20ft*3</dd>
+														</dl>
+														<dl>
+															<dt>ton</dt>
+															<dd>55</dd>
+														</dl>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li class="red">
+											<div>
+												<div class="listHead">
+													<strong>입</strong>
+													<span><em>오더날짜</em>2019.12.22</span>
+												</div>
+												<div class="listBody">
+													<div>
+														<dl>
+															<dt>상</dt>
+															<dd>경기인천</dd>
+														</dl>
+														<dl>
+															<dt>반</dt>
+															<dd>경기성남</dd>
+														</dl>
+													</div>
+													<div>
+														<dl>
+															<dt>EA</dt>
+															<dd>20ft*3</dd>
+														</dl>
+														<dl>
+															<dt>ton</dt>
+															<dd>55</dd>
+														</dl>
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<th>paginate</th>
+							</tr>
+							<tr>
+								<td>
+									<div class="paginate">
+										<span>
+											<a class="first">처음</a>
+											<a class="prev">이전</a>
+											<a class="on">1</a>
+											<a>2</a>
+											<a>3</a>
+											<a>4</a>
+											<a>5</a>
+											<a>6</a>
+											<a>7</a>
+											<a>8</a>
+											<a>9</a>
+											<a class="next">다음</a>
+											<a class="last">마지막</a>
+										</span>
+										<span class="selectSet">
+											<select>
+												<option selected>20</option>
+												<option>50</option>
+												<option>100</option>
+											</select>
+										</span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>팝업버튼</th>
+							</tr>
+							<tr>
+								<td>
+									<button class="btnS" id="popBtn1">alert팝업</button>
+									<button class="btnS" id="popBtn2">패스워드 변경</button>
+									<button class="btnS" id="popBtn3">결제정보 변경</button>
+									<button class="btnS" id="popBtn4">최근 실적 불러오기</button>
+									<button class="btnS" id="popBtn5">주소검색</button>
+									<button class="btnS" id="popBtn6">회사검색</button>
+									<button class="btnS" id="popBtn7">계약검색</button>
+									<button class="btnS" id="popBtn8">검색필터</button>
+									<button class="btnS" id="popBtn9">계약상세</button>
+									<button class="btnS" id="popBtn10">오더정보</button>
+									<button class="btnS" id="popBtn11">세금계산서</button>
+
+									<script>
+										$(document).ready(function() {
+											$('#popBtn1').click(function(){
+												$('.alertDim').show();
+												$('#samplePop1').show();
+											});
+											$('#popBtn2').click(function(){
+												$('.popDim').show();
+												$('#samplePop2').show();
+											});
+											$('#popBtn3').click(function(){
+												$('.popDim').show();
+												$('#samplePop3').show();
+											});
+											$('#popBtn4').click(function(){
+												$('.popDim').show();
+												$('#samplePop4').show();
+											});
+											$('#popBtn5').click(function(){
+												$('.popDim').show();
+												$('#samplePop5').show();
+											});
+											$('#popBtn6').click(function(){
+												$('.popDim').show();
+												$('#samplePop6').show();
+											});
+											$('#popBtn7').click(function(){
+												$('.popDim').show();
+												$('#samplePop7').show();
+											});
+											$('#popBtn8').click(function(){
+												$('.popDim').show();
+												$('#samplePop8').show();
+											});
+											$('#popBtn9').click(function(){
+												$('.popDim').show();
+												$('#samplePop9').show();
+											});
+											$('#popBtn10').click(function(){
+												$('.popDim').show();
+												$('#samplePop10').show();
+											});
+											$('#popBtn11').click(function(){
+												$('.popDim').show();
+												$('#samplePop11').show();
+											});
+											$('.alertPop .pBtn button, .basicPop .pBtn button, .pclose').click(function(){
+												$('.popDim, .alertDim').hide();
+												$('.alertPop, .basicPop').hide();
+											});
+										});
+									</script>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<!-- //Page Layout -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- alertPopup -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop" id="samplePop1" style="display:none;">
+				<div class="pBack">
+					<p>alert 팝업 샘플입니다. <br/> 여러줄일 경우엔 이렇게 나오면 됩니다</p>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //alertPopup -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none">
+			<!-- 패스워드 변경 -->
+			<div class="basicPop pwChangePop" id="samplePop2" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>패스워드 변경</h1>
+				</div>
+				<div class="pBack">
+					<div class="before">
+						<dl class="inputBox iner wFull">
+							<dt>기존 패스워드</dt>
+							<dd><input type="password" placeholder="영,숫자 포함하여 8자리 이상"/></dd>
+						</dl>
+					</div>
+					<div class="grayBox">
+						<dl class="inputBox iner wFull">
+							<dt>신규 패스워드</dt>
+							<dd><input type="password" placeholder="영,숫자 포함하여 8자리 이상"/></dd>
+						</dl>
+						<dl class="inputBox iner wFull">
+							<dt>신규 패스워드(확인)</dt>
+							<dd><input type="password" placeholder="영,숫자 포함하여 8자리 이상"/></dd>
+						</dl>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//패스워드 변경-->
+			<!-- 결제정보 변경 -->
+			<div class="basicPop cardChangePop" id="samplePop3" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>결제정보 변경</h1>
+				</div>
+				<div class="pBack">
+					<div class="cardName">
+						<dl class="inputBox iner wFull">
+							<dt>카드명(닉네임)</dt>
+							<dd><input type="text" placeholder="카드관리 위한 이름(20자 이내)"/></dd>
+						</dl>
+					</div>
+					<div class="grayBox">
+						<dl class="inputBox iner wFull">
+							<dt>카드번호</dt>
+							<dd><input type="tel" placeholder="- 하이픈을 제외한 14~16자리 숫자"/></dd>
+						</dl>
+						<dl class="inputBox iner">
+							<dt>결제비밀번호<em>(앞 2자리)</em></dt>
+							<dd><input type="password" placeholder="앞 2자리"/></dd>
+							<dd class="notInput"><span></span><span></span></dd>
+						</dl>
+						<dl class="inputBox iner">
+							<dt>유효기간<em>(월/년도)</em></dt>
+							<dd><input type="tel" placeholder="MMYY"/></dd>
+						</dl>
+						<dl class="inputBox iner">
+							<dt>CSV코드<em>(카드 뒷면 3자리)</em></dt>
+							<dd><input type="tel" placeholder="3자리 숫자"/></dd>
+						</dl>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//결제정보 변경-->
+			<!-- 최근 실적 불러오기 -->
+			<div class="basicPop loadResultPop" id="samplePop4" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>최근 실적 불러오기</h1>
+				</div>
+				<div class="pBack">
+					<div class="calendarSet">
+						<span class="calDupSet">
+							<span class="calSet"><label for="searchDate">조회기간</label><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span>
+							<em>~</em>
+							<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+						</span>
+						<span class="radioChoose">
+							<label for="lb1"><input type="radio" id="lb1" name="radio1" value="오늘" /><span>오늘</span></label>
+							<label for="lb2"><input type="radio" id="lb2" name="radio1" value="10일" /><span>10일</span></label>
+							<label for="lb3"><input type="radio" id="lb3" name="radio1" value="지난달" /><span>지난달</span></label>
+							<label for="lb4"><input type="radio" id="lb4" name="radio1" value="이번달" /><span>이번달</span></label>
+						</span>
+					</div>
+					<div class="resultContents">
+						<ul class="resultList">
+							<li>
+								<div>
+									<div class="listHead">
+										<strong>입</strong>
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div>
+									<div class="listHead">
+										<strong>입</strong>
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div>
+									<div class="listHead">
+										<strong>입</strong>
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div>
+									<div class="listHead">
+										<strong>입</strong>
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="red">
+								<div>
+									<div class="listHead">
+										<strong>입</strong>
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div>
+									<div class="listHead">
+										<strong>입</strong>
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div>
+									<div class="listHead">
+										<strong>입</strong>
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div>
+									<div class="listHead">
+										<strong>입</strong>
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div>
+									<div class="listHead">
+										<strong>입</strong>
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div>
+									<div class="listHead">
+										<strong>입</strong>
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="red">
+								<div>
+									<div class="listHead">
+										<strong>입</strong>
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="red">
+								<div>
+									<div class="listHead">
+										<strong>입</strong>
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//최근 실적 불러오기-->
+			<!-- 주소검색 -->
+			<div class="basicPop searchPop addressPop" id="samplePop5" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>주소검색</h1>
+				</div>
+				<div class="pBack">
+					<div class="seachArea">
+						<div class="searchInput">
+							<input type="text" placeholder="도로명 + 번지로 검색"/>
+							<button class="btnSearch">조회</button>
+						</div>
+						<div class="tip">
+							<dl>
+								<dt><strong>Search tip</strong></dt>
+								<dd><span>도로명 + 건물번호</span>예) 세종대로 207,  매봉산로 37</dd>
+								<dd><span>지역명(동/리) + 번지</span>예) 역삼동 68-1,  상암동 1682</dd>
+							</dl>
+						</div>
+					</div>
+					<div class="listArea">
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="40" />
+									<col width="450" />
+									<col width="40" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>우편번호</th>
+										<th>회사명</th>
+										<th>위치</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr class="on">
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//주소검색-->
+			<!-- 회사검색 -->
+			<div class="basicPop searchPop companyPop" id="samplePop6" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>회사검색</h1>
+				</div>
+				<div class="pBack">
+					<div class="seachArea">
+						<div class="searchInput">
+							<input type="text" placeholder="회사명, 위치로 검색"/>
+							<button class="btnSearch">조회</button>
+						</div>
+					</div>
+					<div class="listArea">
+						<div class="tls comapySearch">
+							<table>
+								<colgroup>
+									<col width="20" class="pCase" />
+									<col width="350" />
+									<col width="50" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th class="pCase">No</th>
+										<th>회사명</th>
+										<th>위치</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td class="pCase">99</td>
+										<td class="tL">주식회사 에비에스중공업</td>
+										<td>경남창원</td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td class="pCase">98</td>
+										<td class="tL">마블소더비 주식회사</td>
+										<td>경기인천</td>
+									</tr>
+									<tr class="on">
+										<td class="pCase">97</td>
+										<td class="tL">성원엔팍스</td>
+										<td>서울마포</td>
+									</tr>
+									<tr>
+										<td class="pCase">96</td>
+										<td class="tL">주식회사 에비에스중공업</td>
+										<td>경남창원</td>
+									</tr>
+									<tr>
+										<td class="pCase">95</td>
+										<td class="tL">마블소더비 주식회사</td>
+										<td>경기인천</td>
+									</tr>
+									<tr>
+										<td class="pCase">94</td>
+										<td class="tL">성원엔팍스</td>
+										<td>서울마포</td>
+									</tr>
+									<tr>
+										<td class="pCase">93</td>
+										<td class="tL">주식회사 에비에스중공업</td>
+										<td>경남창원</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//회사검색-->
+			<!-- 계약검색 -->
+			<div class="basicPop searchPop contractSearchPop" id="samplePop7" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>계약검색</h1>
+				</div>
+				<div class="pBack">
+					<div class="seachArea">
+						<div class="searchInput">
+							<input type="text" placeholder="계약번호, 출발지, 작업지, 도착지로 검색"/>
+							<button class="btnSearch">조회</button>
+						</div>
+					</div>
+					<div class="listArea contractSearch">
+						<div class="resList">
+							<ul class="thead">
+								<li>
+									<div>
+										<div class="listGrid">
+											<span>계약번호</span>
+											<span>계약금액</span>
+											<span>종류</span>
+										</div>
+									</div>
+									<div>
+										<div class="listGrid">
+											<span>출발지</span>
+											<span>작업지</span>
+											<span>도착치</span>
+										</div>
+									</div>
+									<span>계약기간</span>
+								</li>
+							</ul>
+							<ul class="tbody">
+								<!--Loop-->
+								<li>
+									<div>
+										<div class="listGrid">
+											<span>C999999</span>
+											<span>9,999,999</span>
+											<span>20ft</span>
+										</div>
+									</div>
+									<div>
+										<div class="listGrid">
+											<span>XX CY</span>
+											<span>경남부산</span>
+											<span>경남부산</span>
+										</div>
+									</div>
+									<span>2020-01-01~2020-12-31</span>
+								</li>
+								<!--//Loop-->
+								<li>
+									<div>
+										<div class="listGrid">
+											<span>C999999</span>
+											<span>9,999,999</span>
+											<span>20ft</span>
+										</div>
+									</div>
+									<div>
+										<div class="listGrid">
+											<span>XX CY</span>
+											<span>경남부산</span>
+											<span>경남부산</span>
+										</div>
+									</div>
+									<span>2020-01-01~2020-12-31</span>
+								</li>
+								<li>
+									<div>
+										<div class="listGrid">
+											<span>C999999</span>
+											<span>9,999,999</span>
+											<span>20ft</span>
+										</div>
+									</div>
+									<div>
+										<div class="listGrid">
+											<span>XX CY</span>
+											<span>경남부산</span>
+											<span>경남부산</span>
+										</div>
+									</div>
+									<span>2020-01-01~2020-12-31</span>
+								</li>
+								<li>
+									<div>
+										<div class="listGrid">
+											<span>C999999</span>
+											<span>9,999,999</span>
+											<span>20ft</span>
+										</div>
+									</div>
+									<div>
+										<div class="listGrid">
+											<span>XX CY</span>
+											<span>경남부산</span>
+											<span>경남부산</span>
+										</div>
+									</div>
+									<span>2020-01-01~2020-12-31</span>
+								</li>
+								<li>
+									<div>
+										<div class="listGrid">
+											<span>C999999</span>
+											<span>9,999,999</span>
+											<span>20ft</span>
+										</div>
+									</div>
+									<div>
+										<div class="listGrid">
+											<span>XX CY</span>
+											<span>경남부산</span>
+											<span>경남부산</span>
+										</div>
+									</div>
+									<span>2020-01-01~2020-12-31</span>
+								</li>
+								<li>
+									<div>
+										<div class="listGrid">
+											<span>C999999</span>
+											<span>9,999,999</span>
+											<span>20ft</span>
+										</div>
+									</div>
+									<div>
+										<div class="listGrid">
+											<span>XX CY</span>
+											<span>경남부산</span>
+											<span>경남부산</span>
+										</div>
+									</div>
+									<span>2020-01-01~2020-12-31</span>
+								</li>
+								<li>
+									<div>
+										<div class="listGrid">
+											<span>C999999</span>
+											<span>9,999,999</span>
+											<span>20ft</span>
+										</div>
+									</div>
+									<div>
+										<div class="listGrid">
+											<span>XX CY</span>
+											<span>경남부산</span>
+											<span>경남부산</span>
+										</div>
+									</div>
+									<span>2020-01-01~2020-12-31</span>
+								</li>
+								<li>
+									<div>
+										<div class="listGrid">
+											<span>C999999</span>
+											<span>9,999,999</span>
+											<span>20ft</span>
+										</div>
+									</div>
+									<div>
+										<div class="listGrid">
+											<span>XX CY</span>
+											<span>경남부산</span>
+											<span>경남부산</span>
+										</div>
+									</div>
+									<span>2020-01-01~2020-12-31</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//계약검색-->
+			<!-- 검색필터 -->
+			<div class="basicPop filterPop" id="samplePop8" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>검색필터</h1>
+				</div>
+				<div class="pBack">
+					<dl>
+						<dt>오더일자</dt>
+						<dd>
+							<span class="radioChoose">
+								<label for="lb1"><input type="radio" id="lb1" name="radio1" value="오늘" /><span>오늘</span></label>
+								<label for="lb2"><input type="radio" id="lb2" name="radio1" value="10일" /><span>10일</span></label>
+								<label for="lb3"><input type="radio" id="lb3" name="radio1" value="지난달" /><span>지난달</span></label>
+								<label for="lb4"><input type="radio" id="lb4" name="radio1" value="이번달" /><span>이번달</span></label>
+							</span>
+							<span class="calDupSet">
+								<span class="calSet"><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span>
+								<em>~</em>
+								<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+							</span>
+						</dd>
+					</dl>
+					<div class="gridSet grid2">
+						<div class="gridItem">
+							<dl>
+								<dt>작업지</dt>
+								<dd>
+									<span class="selectSet">
+										<select>
+											<option selected>메뉴1</option>
+											<option>메뉴2</option>
+										</select>
+									</span>
+								</dd>
+							</dl>
+						</div>
+						<div class="gridItem">
+							<dl>
+								<dt>선사</dt>
+								<dd>
+									<span class="selectSet">
+										<select>
+											<option selected>메뉴1</option>
+											<option>메뉴2</option>
+										</select>
+									</span>
+								</dd>
+							</dl>
+						</div>
+					</div>
+					<dl>
+						<dt>키워드 검색</dt>
+						<dd>
+							<input class="wFull" type="text" placeholder="검색어를 입력해주세요">
+							<span class="orangeTxt">※ 검색 가능한 키워드는 다음과 같습니다.<br/>: B/L, 컨테이너 번호, 상차/픽업지, 반납/하차지, 총 운임</span>
+						</dd>
+					</dl>
+				</div>
+				<div class="pBtn">
+					<button class="btnM orange">적용하기</button>
+				</div>
+			</div>
+			<!--//검색필터-->
+			<!-- 계약상세 -->
+			<div class="basicPop contractPop" id="samplePop9" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>계약상세</h1>
+				</div>
+				<div class="pBack">
+					<div class="transInfo">
+						<span class="transType red">수입</span>
+						<div class="txtCover"><span>계약번호 M999999</span></div>
+					</div>
+					<div class="transSize">
+						<dl class="inputBox">
+							<dt>컨테이너 크기</dt>
+							<dd>40</dd>
+							<dd>High Cube</dd>
+						</dl>
+					</div>
+					<div class="distance">
+						<dl class="addressArea">
+							<dt>출발지</dt>
+							<dd>
+								<span>인천항</span>
+								<p>경기도 안산시 단원구 성곡동 번영로 109</p>
+							</dd>
+						</dl>
+						<dl class="inputBox">
+							<dt>거리 (km)</dt>
+							<dd>56</dd>
+						</dl>
+						<dl class="addressArea">
+							<dt>도착지</dt>
+							<dd>
+								<span>시화공단</span>
+								<p>경기도 안산시 단원구 성곡동 번영로 109<strong>시화중공업 (제1공장)</strong></p>
+							</dd>
+						</dl>
+					</div>
+					<div class="totalCost">
+						<span class="left">계약금액</span>
+						<span class="right"><strong>278,000</strong>원</span>
+					</div>
+				</div>
+			</div>
+			<!--//계약상세-->
+			<!-- 오더정보 -->
+			<div class="basicPop orderPop" id="samplePop10" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>오더 번호: A00001</h1>
+				</div>
+				<div class="pBack">
+					<div class="tab02">
+						<!-- tab -->
+						<div class="tabBack">
+							<div class="tabNav">
+								<nav>
+									<ul>
+										<li class="on"><button data-name="1">오더~배차현황<span>완료</span></button></li>
+										<li><button data-name="2">배차 ~ 운송현황<span>완료</span></button></li>
+										<li><button data-name="3">차량정보</button></li>
+										<li><button data-name="4">고객정보</button></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<!--// tab -->
+						<div class="tabLayout">
+							<p class="orderKind">
+								<span class="orderType">계약오더</span>
+								<span class="orderType">콜오더</span>
+								<span class="transType red">수입</span>
+								<span class="transType blue">수출</span>
+							</p>
+							<div class="tabData tData1" style="display:block;">
+								<div class="orderInfoList">
+									<ul class="thead">
+										<li>
+											<div>진행 현황</div>
+											<span>비고(증빙자료)</span>
+										</li>
+									</ul>
+									<ul class="tbody">
+										<li>
+											<span class="status">오더</span>
+											<div class="dlistBack">
+												<div class="status2">
+													<table>
+														<tbody>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">오더접수(제출)</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">ㄴ 오더취소</td>
+																<td class="date"></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="etc">
+													<table>
+														<tbody>
+															<tr>
+																<td></td>
+															</tr>
+															<tr>
+																<td></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</li>
+										<li>
+											<span class="status">배차</span>
+											<div class="dlistBack">
+												<div class="status2">
+													<table>
+														<tbody>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">배차접수(오더확정)</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+															<tr class="on">
+																<td class="p"><span></span></td>
+																<td class="txt">배차접수(오더확정)</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+															<tr>
+																<td class="p"><span></span></td>
+																<td class="txt">배차접수(오더확정)</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+															<tr>
+																<td class="p"><span></span></td>
+																<td class="txt">배차접수(오더확정)</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+															<tr>
+																<td class="p"><span></span></td>
+																<td class="txt">배차접수(오더확정)</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="etc">
+													<table>
+														<tbody>
+															<tr>
+																<td><strong>반출신고 완료</strong></td>
+															</tr>
+															<tr>
+																<td><span class="taking"><strong>인계확인</strong></span></td>
+															</tr>
+															<tr>
+																<td>반입신고 미완료</td>
+															</tr>
+															<tr>
+																<td><span class="thum"><em><img src="../images/sample1.png" alt=""/></em></span></td>
+															</tr>
+															<tr>
+																<td><span class="thum"><em><img src="../images/sample2.png" alt=""/></em></span></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="tabData tData2">Tab Menu 2 Data</div>
+							<div class="tabData tData3">Tab Menu 3 Data</div>
+							<div class="tabData tData4">Tab Menu 4 Data</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--//오더정보-->
+			<!-- 세금계산서 -->
+			<div class="basicPop taxBillPop" id="samplePop11" style="display:none">
+				<button class="pclose">닫기</button>
+				<button class="btnDownLoad">다운로드</button>
+				<div class="tt">
+					<h1>세금계산서</h1>
+				</div>
+				<div class="pBack">
+					<div class="topSet">
+						<span class="left"><strong>계약번호 : M999999</strong></span>
+						<span class="right">
+							<button class="btnS gray">인쇄</button>
+							<button class="btnS green">다운로드</button>
+						</span>
+					</div>
+					<div class="taxImg">
+						<div class="centered">
+							<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/2pEM/image/pfA8B1fZYdX_1MsAy7bFcplNzSc.jpg">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--//세금계산서-->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

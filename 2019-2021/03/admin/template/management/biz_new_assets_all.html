@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.highcharts.com/highcharts.src.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.btnToggleVert').click(function(){
+				$(this).parents('tr').next('tr').toggle();
+			});
+			$(".tabNav li button").click(function () {
+				var tN = $(this).closest(".tabNav");
+				$(tN).find("li").removeClass("on");
+				$(this).parent("li").addClass("on");
+				var activeTab = $(this).attr("data-name");
+				$(tN).closest(".tabWrap").find(".tabLayout .tabData").hide();
+				$('.tData' + activeTab).show();
+			});
+			/* 파일업로드 */
+			$('.fileSet input[type=file]').change(function() {
+				var fileValue = $(this).val().split("\\");
+				var fileName = fileValue[fileValue.length-1];
+				$('.fileSet .loadEnd em').text(fileName);
+				$('.fileSet .fileFind').hide();
+				$('.fileSet .loadIng').show();
+				setTimeout(function() {
+					$('.fileSet .loadIng').hide();
+					$('.fileSet .loadFail').show();
+				}, 3000);
+				setTimeout(function() {
+					$('.fileSet .loadFail').hide();
+					$('.fileSet .loadEnd').show();
+				}, 6000);
+			});
+			$('.fileSet .loadEnd button').click(function() {
+				$('.fileSet .fileFind').show();
+				$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+			});
+			/* end 파일업로드 */
+			$('#newhwBtn').click(function(){
+				$('.popDim, #hwManagedPop1').show();
+			});
+			$('.tData0 .tls a').click(function(){
+				$('.popDim, #hwManagedPop2').show();
+			});
+			$('#newswBtn').click(function(){
+				$('.popDim, #swManagedPop1').show();
+			});
+			$('.tData1 .tls a').click(function(){
+				$('.popDim, #swManagedPop2').show();
+			});
+			$('.tls .btnM.white').click(function(){
+				$('.popDim, .imgViewPop').show();
+			});
+			$('.pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			$('.badCase').click(function(){
+				$('.popDim, .etcReasonsPop').show();
+			});//
+			$(".swEndDate .selectSet select").on("change", function(){
+				if($(this).find("option:selected").val() == 0){
+					$(this).parent().next().hide();
+				}else {
+					$(this).parent().next().show();
+				}
+			}); //갱신여부/만료기간
+
+			$('#newPdBtn').click(function(){
+				$('.popDim, #productManagedPop1').show();
+			}); //2020-07-28 물품 신규추가
+			$('.tData2 .tls a').click(function(){
+				$('.popDim, #productManagedPop2').show();
+			}); //2020-07-28 물품 상세
+
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>자산현황</h2>
+					<div class="pagePos"><span>Home</span><span>자산관리</span><strong>자산현황</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="assetsAllLayout">
+						<div class="tabWrap">
+							<!-- tab -->
+							<div class="tabBack">
+								<div class="tabNav">
+									<nav>
+										<ul>
+											<li class="on"><button data-name="0">하드웨어</button></li>
+											<li><button data-name="1">소프트웨어</button></li>
+											<li><button data-name="2">물품대장</button></li><!-- 2020-07-28 물품대장 tab -->
+										</ul>
+									</nav>
+								</div>
+							</div>
+							<!--// tab -->
+							<div class="tabLayout">
+								<!-- 하드웨어 -->
+								<div class="tabData tData0" style="display:block;">
+									<!---->
+									<div class="boardTop">
+										<em>전체 10,000건</em>
+										<span class="selectSet">
+											<select>
+												<option selected>도입일자</option>
+												<option>무상A/S기간</option>
+												<option>지급일자</option>
+												<option>폐기일자</option>
+											</select>
+										</span>
+										<span class="calDupSet">
+											<span class="calSet"><input type="tel" placeholder="2006-01-01" value="2006-01-01" /><button>달력열기</button></span>
+											<em>~</em>
+											<span class="calSet"><input type="tel" placeholder="2020-06-22" value="2020-06-22" /><button>달력열기</button></span>
+										</span>
+										<span class="searchBasic">
+											<span class="selectSet">
+												<select>
+													<option>선택하세요</option>
+													<option>종류</option>
+													<option>브랜드</option>
+													<option>사용자</option>
+												</select>
+											</span>
+											<input type="text" placeholder="종류, 브랜드, 사용자 입력" />
+											<input type="submit" value="검색" class="btnSearch" />
+											<button class="btnReset">초기화</button>
+										</span>
+										<button class="btnM right">엑셀 다운로드</button>
+									</div>
+									<!---->
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="20"/>
+												<col width="20"/>
+												<col width="50"/>
+												<col width="150"/>
+												<col width="100"/>
+												<col width="120"/>
+												<col width="120"/>
+												<col width="80"/>
+												<col width="80"/>
+												<col width="70"/>
+												<col width="110"/>
+												<col width="80"/>
+												<col width="80"/>
+												<col width="150"/>
+												<col width="100"/>
+												<col width="70"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chkall" />
+															<label for="chkall"><i></i></label>
+														</span>
+													</th>
+													<th></th>
+													<th>번호</th>
+													<th>종류</th>
+													<th>고유번호</th>
+													<th>브랜드</th>
+													<th>기기명</th>
+													<th>도입일자</th>
+													<th>무상A/S기간</th>
+													<th>보유상태</th>
+													<th>현재 사용자</th>
+													<th>지급일자</th>
+													<th>폐기일자</th>
+													<th>상세스펙</th>
+													<th>비고</th>
+													<th>증빙</th>
+												</tr>
+											</thead>
+											<tbody>
+												<!--Loop-->
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chkal2" />
+															<label for="chkal2"><i></i></label>
+														</span>
+													</td>
+													<td><button class="btnToggleVert">+</button></td>
+													<td>63</td>
+													<td><a>노트북</a></td>
+													<td>NT1-028</td>
+													<td>LENOVO</td>
+													<td>ideapad330S</td>
+													<td>2020-10-22</td>
+													<td>2021-10-22</td>
+													<td>양호</td>
+													<td>박지훈 (181002)</td>
+													<td>2020-10-22</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td><button class="btnM white">미리보기</button></td>
+												</tr>
+												<tr style="display:none;">
+													<td colspan="16" class="assetsDetail">
+														<div class="tabWrap">
+															<div class="tabBack">
+																<div class="tabNav">
+																	<nav>
+																		<ul>
+																			<li class="on"><button data-name="R51">지급이력</button></li>
+																			<li><button data-name="R52">수리이력</button></li>
+																		</ul>
+																	</nav>
+																</div>
+															</div>
+															<div class="tabLayout">
+																<!-- 지급이력 -->
+																<div class="tabData tDataR51" style="display:block;">
+																	<div class="tls">
+																		<table>
+																			<colgroup>
+																				<col width="90" />
+																				<col width="90" />
+																				<col width="90" />
+																				<col width="180" />
+																			</colgroup>
+																			<thead>
+																				<tr>
+																					<th>사용자</th>
+																					<th>지급일</th>
+																					<th>반납일</th>
+																					<th>반납사유</th>
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<!--Loop-->
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-05</td>
+																					<td></td>
+																					<td></td>
+																				</tr>
+																				<!--//Loop-->
+																				<tr>
+																					<td>최남단 (190105)</td>
+																					<td>2020-02-01</td>
+																					<td>2020-02-06</td>
+																					<td>퇴사</td>
+																				</tr>
+																				<tr>
+																					<td>김남일 (190103)</td>
+																					<td>2019-01-01</td>
+																					<td>2019-08-01</td>
+																					<td>장비교체</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</div>
+																</div>
+																<!-- //지급이력 -->
+																<!-- 수리이력 -->
+																<div class="tabData tDataR52">
+																	<div class="tls">
+																		<table>
+																			<colgroup>
+																				<col width="100" />
+																				<col width="80" />
+																				<col width="140" />
+																				<col width="80" />
+																				<col width="80" />
+																				<col width="140" />
+																			</colgroup>
+																			<thead>
+																				<tr>
+																					<th>사용자</th>
+																					<th>수리신청</th>
+																					<th>수리사유</th>
+																					<th>수리완료</th>
+																					<th>재지급여부</th>
+																					<th>수리반려</th>
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<!--Loop-->
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-06</td>
+																					<td>모니터 연결이 안됨</td>
+																					<td>2020-03-08</td>
+																					<td>N</td>
+																					<td></td>
+																				</tr>
+																				<!--//Loop-->
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-06</td>
+																					<td>모니터 연결이 안됨</td>
+																					<td>2020-03-08</td>
+																					<td>2020-03-08</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-06</td>
+																					<td>모니터 연결이 안됨</td>
+																					<td></td>
+																					<td></td>
+																					<td>2020-07-09 수리반려사유입니다.</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</div>
+																</div>
+																<!-- //수리이력 -->
+															</div>
+														</div>
+													</td>
+												</tr>
+												<!--//Loop-->
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chkal3" />
+															<label for="chkal3"><i></i></label>
+														</span>
+													</td>
+													<td><button class="btnToggleVert">+</button></td>
+													<td>58</td>
+													<td><a>데스크탑</a></td>
+													<td>PC1-004</td>
+													<td>apple</td>
+													<td>iMAC(27)</td>
+													<td>2020-09-09</td>
+													<td></td>
+													<td>양호</td>
+													<td>김재성 (180101)</td>
+													<td>2020-10-22</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr style="display:none;">
+													<td colspan="16" class="assetsDetail">
+														<div class="tabWrap">
+															<div class="tabBack">
+																<div class="tabNav">
+																	<nav>
+																		<ul>
+																			<li class="on"><button data-name="R41">지급이력</button></li>
+																			<li><button data-name="R42">수리이력</button></li>
+																		</ul>
+																	</nav>
+																</div>
+															</div>
+															<div class="tabLayout">
+																<!-- 지급이력 -->
+																<div class="tabData tDataR41" style="display:block;">
+																	<div class="tls">
+																		<table>
+																			<colgroup>
+																				<col width="90" />
+																				<col width="90" />
+																				<col width="90" />
+																				<col width="180" />
+																			</colgroup>
+																			<thead>
+																				<tr>
+																					<th>사용자</th>
+																					<th>지급일</th>
+																					<th>반납일</th>
+																					<th>반납사유</th>
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<!--Loop-->
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-05</td>
+																					<td></td>
+																					<td></td>
+																				</tr>
+																				<!--//Loop-->
+																				<tr>
+																					<td>최남단 (190105)</td>
+																					<td>2020-02-01</td>
+																					<td>2020-02-06</td>
+																					<td>퇴사</td>
+																				</tr>
+																				<tr>
+																					<td>김남일 (190103)</td>
+																					<td>2019-01-01</td>
+																					<td>2019-08-01</td>
+																					<td>장비교체</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</div>
+																</div>
+																<!-- //지급이력 -->
+																<!-- 수리이력 -->
+																<div class="tabData tDataR42">
+																	<div class="tls">
+																		<table>
+																			<colgroup>
+																				<col width="100" />
+																				<col width="80" />
+																				<col width="140" />
+																				<col width="80" />
+																				<col width="80" />
+																				<col width="140" />
+																			</colgroup>
+																			<thead>
+																				<tr>
+																					<th>사용자</th>
+																					<th>수리신청</th>
+																					<th>수리사유</th>
+																					<th>수리완료</th>
+																					<th>재지급여부</th>
+																					<th>수리반려</th>
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<!--Loop-->
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-06</td>
+																					<td>모니터 연결이 안됨</td>
+																					<td>2020-03-08</td>
+																					<td>N</td>
+																					<td></td>
+																				</tr>
+																				<!--//Loop-->
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-06</td>
+																					<td>모니터 연결이 안됨</td>
+																					<td>2020-03-08</td>
+																					<td>2020-03-08</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-06</td>
+																					<td>모니터 연결이 안됨</td>
+																					<td></td>
+																					<td></td>
+																					<td>2020-07-09 수리반려사유입니다.</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</div>
+																</div>
+																<!-- //수리이력 -->
+															</div>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chkal4" />
+															<label for="chkal4"><i></i></label>
+														</span>
+													</td>
+													<td><button class="btnToggleVert">+</button></td>
+													<td>57</td>
+													<td><a>모니터</a></td>
+													<td>PC1-003</td>
+													<td>apple</td>
+													<td>iMAC(27)</td>
+													<td>2020-09-09</td>
+													<td></td>
+													<td>양호</td>
+													<td>김재성 (180101)</td>
+													<td>2020-09-09</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr style="display:none;">
+													<td colspan="16" class="assetsDetail">
+														<div class="tabWrap">
+															<div class="tabBack">
+																<div class="tabNav">
+																	<nav>
+																		<ul>
+																			<li class="on"><button data-name="R31">지급이력</button></li>
+																			<li><button data-name="R32">수리이력</button></li>
+																		</ul>
+																	</nav>
+																</div>
+															</div>
+															<div class="tabLayout">
+																<!-- 지급이력 -->
+																<div class="tabData tDataR31" style="display:block;">
+																	<div class="tls">
+																		<table>
+																			<colgroup>
+																				<col width="90" />
+																				<col width="90" />
+																				<col width="90" />
+																				<col width="180" />
+																			</colgroup>
+																			<thead>
+																				<tr>
+																					<th>사용자</th>
+																					<th>지급일</th>
+																					<th>반납일</th>
+																					<th>반납사유</th>
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<!--Loop-->
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-05</td>
+																					<td></td>
+																					<td></td>
+																				</tr>
+																				<!--//Loop-->
+																				<tr>
+																					<td>최남단 (190105)</td>
+																					<td>2020-02-01</td>
+																					<td>2020-02-06</td>
+																					<td>퇴사</td>
+																				</tr>
+																				<tr>
+																					<td>김남일 (190103)</td>
+																					<td>2019-01-01</td>
+																					<td>2019-08-01</td>
+																					<td>장비교체</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</div>
+																</div>
+																<!-- //지급이력 -->
+																<!-- 수리이력 -->
+																<div class="tabData tDataR32">
+																	<div class="tls">
+																		<table>
+																			<colgroup>
+																				<col width="100" />
+																				<col width="80" />
+																				<col width="140" />
+																				<col width="80" />
+																				<col width="80" />
+																				<col width="140" />
+																			</colgroup>
+																			<thead>
+																				<tr>
+																					<th>사용자</th>
+																					<th>수리신청</th>
+																					<th>수리사유</th>
+																					<th>수리완료</th>
+																					<th>재지급여부</th>
+																					<th>수리반려</th>
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<!--Loop-->
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-06</td>
+																					<td>모니터 연결이 안됨</td>
+																					<td>2020-03-08</td>
+																					<td>N</td>
+																					<td></td>
+																				</tr>
+																				<!--//Loop-->
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-06</td>
+																					<td>모니터 연결이 안됨</td>
+																					<td>2020-03-08</td>
+																					<td>2020-03-08</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-06</td>
+																					<td>모니터 연결이 안됨</td>
+																					<td></td>
+																					<td></td>
+																					<td>2020-07-09 수리반려사유입니다.</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</div>
+																</div>
+																<!-- //수리이력 -->
+															</div>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chkal5" />
+															<label for="chkal5"><i></i></label>
+														</span>
+													</td>
+													<td><button class="btnToggleVert">+</button></td>
+													<td>56</td>
+													<td><a>데스크탑</a></td>
+													<td>PC1-002</td>
+													<td>apple</td>
+													<td>iMAC(27)</td>
+													<td>2020-09-09</td>
+													<td></td>
+													<td><span class="badCase">불량</span></td>
+													<td></td>
+													<td>2020-10-22</td>
+													<td>2020-10-22</td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr style="display:none;">
+													<td colspan="16" class="assetsDetail">
+														<div class="tabWrap">
+															<div class="tabBack">
+																<div class="tabNav">
+																	<nav>
+																		<ul>
+																			<li class="on"><button data-name="R21">지급이력</button></li>
+																			<li><button data-name="R22">수리이력</button></li>
+																		</ul>
+																	</nav>
+																</div>
+															</div>
+															<div class="tabLayout">
+																<!-- 지급이력 -->
+																<div class="tabData tDataR21" style="display:block;">
+																	<div class="tls">
+																		<table>
+																			<colgroup>
+																				<col width="90" />
+																				<col width="90" />
+																				<col width="90" />
+																				<col width="180" />
+																			</colgroup>
+																			<thead>
+																				<tr>
+																					<th>사용자</th>
+																					<th>지급일</th>
+																					<th>반납일</th>
+																					<th>반납사유</th>
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<!--Loop-->
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-05</td>
+																					<td></td>
+																					<td></td>
+																				</tr>
+																				<!--//Loop-->
+																				<tr>
+																					<td>최남단 (190105)</td>
+																					<td>2020-02-01</td>
+																					<td>2020-02-06</td>
+																					<td>퇴사</td>
+																				</tr>
+																				<tr>
+																					<td>김남일 (190103)</td>
+																					<td>2019-01-01</td>
+																					<td>2019-08-01</td>
+																					<td>장비교체</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</div>
+																</div>
+																<!-- //지급이력 -->
+																<!-- 수리이력 -->
+																<div class="tabData tDataR22">
+																	<div class="tls">
+																		<table>
+																			<colgroup>
+																				<col width="100" />
+																				<col width="80" />
+																				<col width="140" />
+																				<col width="80" />
+																				<col width="80" />
+																				<col width="140" />
+																			</colgroup>
+																			<thead>
+																				<tr>
+																					<th>사용자</th>
+																					<th>수리신청</th>
+																					<th>수리사유</th>
+																					<th>수리완료</th>
+																					<th>재지급여부</th>
+																					<th>수리반려</th>
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<!--Loop-->
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-06</td>
+																					<td>모니터 연결이 안됨</td>
+																					<td>2020-03-08</td>
+																					<td>N</td>
+																					<td></td>
+																				</tr>
+																				<!--//Loop-->
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-06</td>
+																					<td>모니터 연결이 안됨</td>
+																					<td>2020-03-08</td>
+																					<td>2020-03-08</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-06</td>
+																					<td>모니터 연결이 안됨</td>
+																					<td></td>
+																					<td></td>
+																					<td>2020-07-09 수리반려사유입니다.</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</div>
+																</div>
+																<!-- //수리이력 -->
+															</div>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chkal6" />
+															<label for="chkal6"><i></i></label>
+														</span>
+													</td>
+													<td><button class="btnToggleVert">+</button></td>
+													<td>55</td>
+													<td><a>테스트기기</a></td>
+													<td>SD1-009</td>
+													<td>삼성</td>
+													<td>SM-G610L</td>
+													<td>2020-09-04</td>
+													<td></td>
+													<td>양호</td>
+													<td>김재성 (180101)</td>
+													<td>2020-10-22</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr style="display:none;">
+													<td colspan="16" class="assetsDetail">
+														<div class="tabWrap">
+															<div class="tabBack">
+																<div class="tabNav">
+																	<nav>
+																		<ul>
+																			<li class="on"><button data-name="R11">지급이력</button></li>
+																			<li><button data-name="R12">수리이력</button></li>
+																		</ul>
+																	</nav>
+																</div>
+															</div>
+															<div class="tabLayout">
+																<!-- 지급이력 -->
+																<div class="tabData tDataR11" style="display:block;">
+																	<div class="tls">
+																		<table>
+																			<colgroup>
+																				<col width="90" />
+																				<col width="90" />
+																				<col width="90" />
+																				<col width="180" />
+																			</colgroup>
+																			<thead>
+																				<tr>
+																					<th>사용자</th>
+																					<th>지급일</th>
+																					<th>반납일</th>
+																					<th>반납사유</th>
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<!--Loop-->
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-05</td>
+																					<td></td>
+																					<td></td>
+																				</tr>
+																				<!--//Loop-->
+																				<tr>
+																					<td>최남단 (190105)</td>
+																					<td>2020-02-01</td>
+																					<td>2020-02-06</td>
+																					<td>퇴사</td>
+																				</tr>
+																				<tr>
+																					<td>김남일 (190103)</td>
+																					<td>2019-01-01</td>
+																					<td>2019-08-01</td>
+																					<td>장비교체</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</div>
+																</div>
+																<!-- //지급이력 -->
+																<!-- 수리이력 -->
+																<div class="tabData tDataR12">
+																	<div class="tls">
+																		<table>
+																			<colgroup>
+																				<col width="100" />
+																				<col width="80" />
+																				<col width="140" />
+																				<col width="80" />
+																				<col width="80" />
+																				<col width="140" />
+																			</colgroup>
+																			<thead>
+																				<tr>
+																					<th>사용자</th>
+																					<th>수리신청</th>
+																					<th>수리사유</th>
+																					<th>수리완료</th>
+																					<th>재지급여부</th>
+																					<th>수리반려</th>
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<!--Loop-->
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-06</td>
+																					<td>모니터 연결이 안됨</td>
+																					<td>2020-03-08</td>
+																					<td>N</td>
+																					<td></td>
+																				</tr>
+																				<!--//Loop-->
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-06</td>
+																					<td>모니터 연결이 안됨</td>
+																					<td>2020-03-08</td>
+																					<td>2020-03-08</td>
+																					<td></td>
+																				</tr>
+																				<tr>
+																					<td>김일수 (190106)</td>
+																					<td>2020-03-06</td>
+																					<td>모니터 연결이 안됨</td>
+																					<td></td>
+																					<td></td>
+																					<td>2020-07-09 수리반려사유입니다.</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</div>
+																</div>
+																<!-- //수리이력 -->
+															</div>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<!---->
+									<div class="bpSet">
+										<div class="btnArea">
+											<span class="left">
+												<button class="btnM" onclick="if(!confirm('선택한 항목을 삭제 하시겠습니끼?')){return false;}">선택 삭제</button>
+											</span>
+											<span class="right">
+												<button class="btnM" id="newhwBtn">신규 등록</button>
+											</span>
+										</div>
+										<div class="paginate">
+											<span>
+												<a class="first">이전</a>
+													<a class="on">1</a>
+													<a>2</a>
+													<a>3</a>
+													<a>4</a>
+													<a>5</a>
+												<a class="next">다음</a>
+											</span>
+											<span class="selectSet">
+												<select>
+													<option>10개</option>
+													<option>20개</option>
+													<option>50개</option>
+													<option>100개</option>
+												</select>
+											</span>
+										</div>
+									</div>
+									<!--//-->
+								</div>
+								<!-- //하드웨어 -->
+								<!-- 소프트웨어 -->
+								<div class="tabData tData1">
+									<!---->
+									<div class="boardTop">
+										<em>전체 10,000건</em>
+										<span class="selectSet">
+											<select>
+												<option selected>도입일자</option>
+												<option>만료기간</option>
+											</select>
+										</span>
+										<span class="calDupSet">
+											<span class="calSet"><input type="tel" placeholder="2006-01-01" value="2006-01-01" /><button>달력열기</button></span>
+											<em>~</em>
+											<span class="calSet"><input type="tel" placeholder="2020-06-22" value="2020-06-22" /><button>달력열기</button></span>
+										</span>
+										<span class="searchBasic">
+											<span class="selectSet">
+												<select>
+													<option>소프트웨어</option>
+													<option>저작사</option>
+													<option>갱신여부</option>
+													<option>사용자</option>
+													<option>고유번호</option>
+												</select>
+											</span>
+											<input type="text" placeholder="키워드 입력" />
+											<input type="submit" value="검색" class="btnSearch" />
+											<button class="btnReset">초기화</button>
+										</span>
+										<button class="btnM right">엑셀 다운로드</button>
+									</div>
+									<!---->
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="20"/>
+												<col width="20"/>
+												<col width="50"/>
+												<col width="150"/>
+												<col width="100"/>
+												<col width="120"/>
+												<col width="70"/>
+												<col width="90"/>
+												<col width="80"/>
+												<col width="120"/>
+												<col width="70"/>
+												<col width="80"/>
+												<col width="70"/>
+												<col width="90"/>
+												<col width="70"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chkall" />
+															<label for="chkall"><i></i></label>
+														</span>
+													</th>
+													<th></th>
+													<th>번호</th>
+													<th>소프트웨어</th>
+													<th>고유번호</th>
+													<th>저작사</th>
+													<th>시리얼 갯수</th>
+													<th>라이선스 유형</th>
+													<th>도입일자</th>
+													<th>구매처</th>
+													<th>갱신여부</th>
+													<th>만료기간</th>
+													<th>사용여부</th>
+													<th>비고</th>
+													<th>증빙</th>
+												</tr>
+											</thead>
+											<tbody>
+												<!--Loop-->
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chkal2" />
+															<label for="chkal2"><i></i></label>
+														</span>
+													</td>
+													<td><button class="btnToggleVert">+</button></td>
+													<td>63</td>
+													<td><a>MS Office</a></td>
+													<td>MS-008</td>
+													<td>test</td>
+													<td>1</td>
+													<td>상용 (개별)</td>
+													<td>2020-10-15</td>
+													<td></td>
+													<td>영구</td>
+													<td>2020-10-15</td>
+													<td></td>
+													<td></td>
+													<td><button class="btnM white">미리보기</button></td>
+												</tr>
+												<tr style="display:none;">
+													<td colspan="16" class="assetsDetail">
+														<div class="tls">
+															<p>
+																시리얼 넘버 총 4 개 :
+																<span class="selectSet">
+																	<select>
+																		<option>000000</option>
+																		<option>000001</option>
+																		<option>000002</option>
+																		<option>000003</option>
+																	</select>
+																</span>
+															</p>
+															<table>
+																<colgroup>
+																	<col width="150" />
+																	<col width="100" />
+																	<col width="100" />
+																	<col width="260" />
+																</colgroup>
+																<thead>
+																	<tr>
+																		<th>사용자</th>
+																		<th>지급일</th>
+																		<th>반납일</th>
+																		<th>반납사유</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<!--Loop-->
+																	<tr>
+																		<td>김일수 (190106)</td>
+																		<td>2020-03-05</td>
+																		<td></td>
+																		<td></td>
+																	</tr>
+																	<!--//Loop-->
+																	<tr>
+																		<td>최남단 (190105)</td>
+																		<td>2020-02-01</td>
+																		<td>2020-02-06</td>
+																		<td>퇴사</td>
+																	</tr>
+																	<tr>
+																		<td>김남일 (190103)</td>
+																		<td>2019-01-01</td>
+																		<td>2019-08-01</td>
+																		<td>장비교체</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+													</td>
+												</tr>
+												<!--//Loop-->
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chkal3" />
+															<label for="chkal3"><i></i></label>
+														</span>
+													</td>
+													<td><button class="btnToggleVert">+</button></td>
+													<td>60</td>
+													<td><a>한컴</a></td>
+													<td>HA-001</td>
+													<td>123213</td>
+													<td>3</td>
+													<td>상용 (개별)</td>
+													<td>2020-09-25</td>
+													<td></td>
+													<td>영구</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chkal4" />
+															<label for="chkal4"><i></i></label>
+														</span>
+													</td>
+													<td><button class="btnToggleVert">+</button></td>
+													<td>58</td>
+													<td><a>오라클</a></td>
+													<td>OR-002</td>
+													<td>12312321</td>
+													<td>1</td>
+													<td>상용 (개별)</td>
+													<td>2020-09-25</td>
+													<td></td>
+													<td>영구</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chkal5" />
+															<label for="chkal5"><i></i></label>
+														</span>
+													</td>
+													<td><button class="btnToggleVert">+</button></td>
+													<td>57</td>
+													<td><a>DB툴(클라이언트)</a></td>
+													<td>DB-005</td>
+													<td>개별12342134</td>
+													<td>1</td>
+													<td>상용 (개별)</td>
+													<td>2020-09-25</td>
+													<td></td>
+													<td>영구</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chkal6" />
+															<label for="chkal6"><i></i></label>
+														</span>
+													</td>
+													<td><button class="btnToggleVert">+</button></td>
+													<td>56</td>
+													<td><a>DB툴(클라이언트)</a></td>
+													<td>DB-004</td>
+													<td>개별123213</td>
+													<td>1</td>
+													<td>상용 (개별)</td>
+													<td>2020-09-25</td>
+													<td></td>
+													<td>영구</td>
+													<td>2020-10-15</td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chkal7" />
+															<label for="chkal7"><i></i></label>
+														</span>
+													</td>
+													<td><button class="btnToggleVert">+</button></td>
+													<td>55</td>
+													<td><a>DB툴(클라이언트)</a></td>
+													<td>DB-003</td>
+													<td>개별테스트트</td>
+													<td>1</td>
+													<td>상용 (개별)</td>
+													<td>2020-09-25</td>
+													<td></td>
+													<td>영구</td>
+													<td></td>
+													<td>Y</td>
+													<td></td>
+													<td></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<!---->
+									<div class="bpSet">
+										<div class="btnArea">
+											<span class="left">
+												<button class="btnM" onclick="if(!confirm('선택한 항목을 삭제하시겠습니끼?')){return false;}">선택 삭제</button>
+											</span>
+											<span class="right">
+												<button class="btnM" id="newswBtn">신규 등록</button>
+											</span>
+										</div>
+										<div class="paginate">
+											<span>
+												<a class="first">이전</a>
+													<a class="on">1</a>
+													<a>2</a>
+													<a>3</a>
+													<a>4</a>
+													<a>5</a>
+												<a class="next">다음</a>
+											</span>
+											<span class="selectSet">
+												<select>
+													<option>10개</option>
+													<option>20개</option>
+													<option>50개</option>
+													<option>100개</option>
+												</select>
+											</span>
+										</div>
+									</div>
+									<!--//-->
+								</div>
+								<!-- //소프트웨어 -->
+								<!-- 2020-07-28 물품대장 -->
+								<div class="tabData tData2">
+									<!---->
+									<div class="boardTop">
+										<em>전체 10,000건</em>
+										<span class="searchBasic">
+											<input type="text" placeholder="고유번호, 모델명" />
+											<input type="submit" value="검색" class="btnSearch" />
+											<button class="btnReset">초기화</button>
+										</span>
+										<button class="btnM right">엑셀 다운로드</button>
+									</div>
+									<!---->
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="20"/>
+												<col width="20"/>
+												<col width="110"/>
+												<col width="140"/>
+												<col width="60"/>
+												<col width="120"/>
+												<col width="80"/>
+												<col width="100"/>
+												<col width="80"/>
+												<col width="80"/>
+												<col width="80"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chkall" />
+															<label for="chkall"><i></i></label>
+														</span>
+													</th>
+													<th>번호</th>
+													<th>고유번호</th>
+													<th>모델명</th>
+													<th>품명</th>
+													<th>자산위치</th>
+													<th>구매일</th>
+													<th>구매처</th>
+													<th>현재상태</th>
+													<th>사용자</th>
+													<th>증빙</th>
+												</tr>
+											</thead>
+											<tbody>
+												<!--Loop-->
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chkal2" />
+															<label for="chkal2"><i></i></label>
+														</span>
+													</td>
+													<td>1</td>
+													<td>E-201306-01</td>
+													<td>RT25FARADWW</td>
+													<td><a>냉장고</a></td>
+													<td>㈜씽크트리 본사탕비실</td>
+													<td>2000-00-00</td>
+													<td>11번가</td>
+													<td>
+														<span class="selectSet">
+															<select>
+																<option>사용중</option>
+																<option>폐기</option>
+															</select>
+														</span>
+													</td>
+													<td>홍길동</td>
+													<td><button class="btnM white">미리보기</button></td>
+												</tr>
+												<!--//Loop-->
+											</tbody>
+										</table>
+									</div>
+									<!---->
+									<div class="bpSet">
+										<div class="btnArea">
+											<span class="left">
+												<button class="btnM" onclick="if(!confirm('선택한 항목을 삭제 하시겠습니끼?')){return false;}">선택 삭제</button>
+											</span>
+											<span class="right">
+												<button class="btnM" id="newPdBtn">신규 추가</button>
+											</span>
+										</div>
+										<div class="paginate">
+											<span>
+												<a class="first">이전</a>
+													<a class="on">1</a>
+													<a>2</a>
+													<a>3</a>
+													<a>4</a>
+													<a>5</a>
+												<a class="next">다음</a>
+											</span>
+											<span class="selectSet">
+												<select>
+													<option>10개</option>
+													<option>20개</option>
+													<option>50개</option>
+													<option>100개</option>
+												</select>
+											</span>
+										</div>
+									</div>
+									<!--//-->
+								</div>
+								<!-- //2020-07-28 물품대장 -->
+							</div>
+						</div>
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 2020-07-09 하드웨어 불량사유 보기 -->
+			<div class="basicPop etcReasonsPop"  style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>불량사유</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<p>사유가 나옵니다. 사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다 영문abcdefgabcdefgabcdefgabcdefg</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!--//2020-07-09 하드웨어 불량사유 보기-->
+			<!-- 하드웨어 신규등록 -->
+			<div class="basicPop hwManagedPop" id="hwManagedPop1" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>하드웨어 신규등록</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="120"/>
+								<col width="250"/>
+								<col width="120"/>
+								<col width="250"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>종류 <sup>필수항목</sup></th>
+									<td>
+										<span class="selectSet wFull">
+											<select>
+												<option>선택하세요</option>
+												<option>노트북</option>
+												<option>데스크탑</option>
+												<option>모니터</option>
+												<option>키보드/마우스</option>
+												<option>젠더</option>
+												<option>테스트기기</option>
+											</select>
+										</span>
+									</td>
+									<th>고유번호</th>
+									<td>NT1-001</td>
+								</tr>
+								<tr>
+									<th>브랜드 <sup>필수항목</sup></th>
+									<td><input type="text" placeholder="" value="" /></td>
+									<th>기기명 <sup>필수항목</sup></th>
+									<td><input type="text" placeholder="" value="" /></td>
+								</tr>
+								<tr>
+									<th>도입일자 <sup>필수항목</sup></th>
+									<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+									<th>무상A/S기간</th>
+									<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+								</tr>
+								<tr>
+									<th>보유상태 <sup>필수항목</sup></th>
+									<td colspan="3" class="hwState"><!-- 2020-07-09 colspan 변경 class 추가 -->
+										<span class="selectSet">
+											<select>
+												<option>양호</option>
+												<option>보통</option>
+												<option>불량</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>상세스펙</th>
+									<td colspan="3"><input type="text" placeholder="" value="" /></td>
+								</tr>
+								<tr>
+									<th>비고</th>
+									<td colspan="3"><input type="text" placeholder="최대 80자까지 입력 가능합니다."/></td>
+								</tr>
+								<tr>
+									<th>증빙</th>
+									<td>
+										<span class="fileSet">
+											<span class="fileFind">
+												<input type="file" id="file1" />
+												<label for="file1">증빙서류 첨부</label>
+											</span> <!--파일선택:버튼만있는형식:초록색버전-->
+											<span class="loadIng" style="display:none;">업로드 중</span>
+											<strong class="loadEnd" style="display:none;">
+												<em>샘플 데이터.png</em>
+												<button>취소</button>
+											</strong>
+											<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+										</span>
+									</td>
+									<!-- 2020-07-09위치변경 -->
+									<th>폐기일자</th>
+									<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+									<!-- //2020-07-09 위치변경 -->
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //하드웨어 신규등록 -->
+			<!-- 하드웨어 상세 -->
+			<div class="basicPop hwManagedPop" id="hwManagedPop2" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>하드웨어 상세내용</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="120"/>
+								<col width="250"/>
+								<col width="120"/>
+								<col width="250"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>종류 <sup>필수항목</sup></th>
+									<td>
+										<span class="selectSet wFull">
+											<select>
+												<option>선택하세요</option>
+												<option selected>노트북</option>
+												<option>데스크탑</option>
+												<option>모니터</option>
+												<option>키보드/마우스</option>
+												<option>젠더</option>
+												<option>테스트기기</option>
+											</select>
+										</span>
+									</td>
+									<th>고유번호</th>
+									<td>NT1-001</td>
+								</tr>
+								<tr>
+									<th>브랜드 <sup>필수항목</sup></th>
+									<td><input type="text" placeholder="" value="" /></td>
+									<th>기기명 <sup>필수항목</sup></th>
+									<td><input type="text" placeholder="" value="" /></td>
+								</tr>
+								<tr>
+									<th>도입일자 <sup>필수항목</sup></th>
+									<td><span class="calSet"><input type="tel" value="2020-01-21" /><button>달력열기</button></span></td>
+									<th>무상A/S기간</th>
+									<td><span class="calSet"><input type="tel" value="2020-01-21" /><button>달력열기</button></span></td>
+								</tr>
+								<tr>
+									<td colspan="3" class="hwState"><!-- 2020-07-09 colspan 변경 class 추가 -->
+										<span class="selectSet">
+											<select>
+												<option>양호</option>
+												<option>보통</option>
+												<option>불량</option>
+											</select>
+										</span>
+										<input type="text" />
+									</td>
+								</tr>
+								<tr>
+									<th>상세스펙</th>
+									<td colspan="3"><input type="text" placeholder="" value="" /></td>
+								</tr>
+								<tr>
+									<th>비고</th>
+									<td colspan="3"><input type="text" placeholder="" value="" /></td>
+								</tr>
+								<tr>
+									<th>증빙</th>
+									<td>
+										<span class="fileSet">
+											<span class="fileFind" style="display:none;">
+												<input type="file" id="file1" />
+												<label for="file1">증빙서류 첨부</label>
+											</span> <!--파일선택:버튼만있는형식:초록색버전-->
+											<span class="loadIng" style="display:none;">업로드 중</span>
+											<strong class="loadEnd">
+												<em>샘플 데이터.png</em>
+												<button>취소</button>
+											</strong>
+											<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+										</span>
+									</td>
+									<!-- 2020-07-09위치변경 -->
+									<th>폐기일자</th>
+									<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+									<!-- //2020-07-09 위치변경 -->
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //하드웨어 상세 -->
+			<!-- 소프트웨어 신규등록 -->
+			<div class="basicPop swManagedPop" id="swManagedPop1" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>소프트웨어 신규등록</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="140"/>
+								<col width="250"/>
+								<col width="140"/>
+								<col width="250"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>소프트웨어 <sup>필수항목</sup></th>
+									<td>
+										<span class="selectSet wFull">
+											<select>
+												<option>선택하세요</option>
+												<option>MS Office</option>
+												<option>윈도우10</option>
+												<option>윈도우엔터프라이즈</option>
+												<option>오피스</option>
+												<option>한컴</option>
+												<option>울트라에디터</option>
+												<option>에디터플러스</option>
+												<option>포토샵</option>
+												<option>오라클</option>
+												<option>DB툴(클라이언트)</option>
+											</select>
+										</span>
+									</td>
+									<th>고유번호</th>
+									<td>SW1-001</td>
+								</tr>
+								<tr>
+									<th>저작사 <sup>필수항목</sup></th>
+									<td><input type="text" placeholder="" value="" /></td>
+									<th>사용여부 <sup>필수항목</sup></th>
+									<td>
+										<span class="radioSet">
+											<input type="radio" id="chk00" name="1" />
+											<label for="chk00"><i></i>사용가능</label>
+										</span>
+										<span class="radioSet">
+											<input type="radio" id="chk01" name="1" />
+											<label for="chk01"><i></i>사용불가능</label>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>시리얼 넘버 <sup>필수항목</sup></th>
+									<td colspan="3">
+										<div class="serialList">
+											<span class="selectSet">
+												<select>
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+													<option>20</option><!-- 재직자 명수 + 5 -->
+												</select>
+											</span>
+											<ul>
+												<li><input type="text" placeholder="" value="" /></li>
+												<li><input type="text" placeholder="" value="" /></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th>라이선스 유형 <sup>필수항목</sup></th>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option>상용 (개별)</option>
+												<option>상용 (동시)</option>
+												<option>쉐어</option>
+												<option>프리</option>
+											</select>
+										</span>
+									</td>
+									<th>구매처</th>
+									<td><input type="text" placeholder="" value="" /></td>
+								</tr>
+								<tr>
+									<th>도입일자 <sup>필수항목</sup></th>
+									<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+									<th>갱신여부/만료기간</th>
+									<td class="swEndDate">
+										<span class="selectSet">
+											<select>
+												<option value="0">영구</option>
+												<option value="1">기간</option>
+												<option value="2">임시</option>
+											</select>
+										</span>
+										<span class="calSet" style="display:none"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									</td>
+								</tr>
+								<tr>
+									<th>비고</th>
+									<td colspan="3"><input type="text" placeholder="최대 80자까지 입력 가능합니다." value="" /></td>
+								</tr>
+								<tr>
+									<th>증빙</th>
+									<td colspan="3">
+										<span class="fileSet">
+											<span class="fileFind">
+												<input type="file" id="file1" />
+												<label for="file1">증빙서류 첨부</label>
+											</span> <!--파일선택:버튼만있는형식:초록색버전-->
+											<span class="loadIng" style="display:none;">업로드 중</span>
+											<strong class="loadEnd" style="display:none;">
+												<em>샘플 데이터.png</em>
+												<button>취소</button>
+											</strong>
+											<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //소프트웨어 신규등록 -->
+			<!-- 소프트웨어 상세 -->
+			<div class="basicPop swManagedPop" id="swManagedPop2" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>소프트웨어 상세내용</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="140"/>
+								<col width="250"/>
+								<col width="140"/>
+								<col width="250"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>소프트웨어 <sup>필수항목</sup></th>
+									<td>
+										<span class="selectSet wFull">
+											<select>
+												<option selected >MS Office</option>
+												<option>윈도우10</option>
+												<option>윈도우엔터프라이즈</option>
+												<option>오피스</option>
+												<option>한컴</option>
+												<option>울트라에디터</option>
+												<option>에디터플러스</option>
+												<option>포토샵</option>
+												<option>오라클</option>
+												<option>DB툴(클라이언트)</option>
+											</select>
+										</span>
+									</td>
+									<th>고유번호</th>
+									<td>SW1-001</td>
+								</tr>
+								<tr>
+									<th>저작사 <sup>필수항목</sup></th>
+									<td><input type="text" placeholder="" value="Microsoft" /></td>
+									<th>사용여부</th>
+									<td>
+										<span class="radioSet">
+											<input type="radio" id="chk00" name="1" />
+											<label for="chk00"><i></i>사용가능</label>
+										</span>
+										<span class="radioSet">
+											<input type="radio" id="chk01" name="1" />
+											<label for="chk01"><i></i>사용불가능</label>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>시리얼 넘버 <sup>필수항목</sup></th>
+									<td colspan="3">
+										<div class="serialList">
+											<span class="selectSet">
+												<select>
+													<option>1</option>
+													<option>2</option>
+													<option selected >10</option>
+													<option>20</option><!-- 재직자 명수 + 5 -->
+												</select>
+											</span>
+											<ul>
+												<li><input type="text" placeholder="" value="000-00000001" /></li>
+												<li><input type="text" placeholder="" value="000-00000002" /></li>
+												<li><input type="text" placeholder="" value="000-00000003" /></li>
+												<li><input type="text" placeholder="" value="000-00000004" /></li>
+												<li><input type="text" placeholder="" value="000-00000005" /></li>
+												<li><input type="text" placeholder="" value="000-00000006" /></li>
+												<li><input type="text" placeholder="" value="000-00000007" /></li>
+												<li><input type="text" placeholder="" value="000-00000008" /></li>
+												<li><input type="text" placeholder="" value="000-00000009" /></li>
+												<li><input type="text" placeholder="" value="000-00000010" /></li>
+												<li><input type="text" placeholder="" value="000-00000011" /></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th>라이선스 유형 <sup>필수항목</sup></th>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option selected >상용 (개별)</option>
+												<option>상용 (동시)</option>
+												<option>쉐어</option>
+												<option>프리</option>
+											</select>
+										</span>
+									</td>
+									<th>구매처</th>
+									<td><input type="text" placeholder="" value="OOO" /></td>
+								</tr>
+								<tr>
+									<th>도입일자 <sup>필수항목</sup></th>
+									<td><span class="calSet"><input type="tel" placeholder="2020-01-21" value="2020-01-21" /><button>달력열기</button></span></td>
+									<th>갱신여부/만료기간</th>
+									<td class="swEndDate">
+										<span class="selectSet">
+											<select>
+												<option value="0">영구</option>
+												<option value="1" selected>기간</option>
+												<option value="2">임시</option>
+											</select>
+										</span>
+										<span class="calSet"><input type="tel" placeholder="2020-01-21" value="2020-01-21" /><button>달력열기</button></span>
+									</td>
+								</tr>
+								<tr>
+									<th>비고</th>
+									<td colspan="3"><input type="text" placeholder="" value="" /></td>
+								</tr>
+								<tr>
+									<th>증빙</th>
+									<td colspan="3">
+										<span class="fileSet">
+											<span class="fileFind">
+												<input type="file" id="file1" />
+												<label for="file1">증빙서류 첨부</label>
+											</span> <!--파일선택:버튼만있는형식:초록색버전-->
+											<span class="loadIng" style="display:none;">업로드 중</span>
+											<strong class="loadEnd" style="display:none;">
+												<em>샘플 데이터.png</em>
+												<button>취소</button>
+											</strong>
+											<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //소프트웨어 상세 -->
+			<!-- 물품 신규추가 -->
+			<div class="basicPop productManagedPop" id="productManagedPop1" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>물품 추가</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="120"/>
+								<col width="250"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>고유번호 <sup>필수항목</sup></th>
+									<td><input type="text"/></td>
+								</tr>
+								<tr>
+									<th>모델명 <sup>필수항목</sup></th>
+									<td><input type="text"/></td>
+								</tr>
+								<tr>
+									<th>품명</th>
+									<td><input type="text"/></td>
+								</tr>
+								<tr>
+									<th>자산위치</th>
+									<td><input type="text"/></td>
+								</tr>
+								<tr>
+									<th>구매일</th>
+									<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+								</tr>
+								<tr>
+									<th>구매처</th>
+									<td><input type="text"/></td>
+								</tr>
+								<tr>
+									<th>현재상태</th>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option>선택</option>
+												<option>사용중</option>
+												<option>폐기</option>
+											</select>
+										</span>
+										<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									</td>
+								</tr>
+								<tr>
+									<th>사용자</th>
+									<td><input type="text" placeholder="사용자 자동완성"/></td>
+								</tr>
+								<tr>
+									<th>증빙등록</th>
+									<td>
+										<span class="fileSet">
+											<span class="fileFind">
+												<input type="file" id="file1" />
+												<label for="file1">파일찾기</label>
+											</span> <!--파일선택:버튼만있는형식:초록색버전-->
+											<span class="loadIng" style="display:none;">업로드 중</span>
+											<strong class="loadEnd" style="display:none;">
+												<em>샘플 데이터.png</em>
+												<button>취소</button>
+											</strong>
+											<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //물품 신규추가 -->
+			<!-- 2020-07-28 물품 상세 -->
+			<div class="basicPop productManagedPop" id="productManagedPop2" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>물품 정보</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="120"/>
+								<col width="250"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>고유번호 <sup>필수항목</sup></th>
+									<td><input type="text" value="E-201306-01"/></td>
+								</tr>
+								<tr>
+									<th>모델명 <sup>필수항목</sup></th>
+									<td><input type="text" value="RT25FARADWW"/></td>
+								</tr>
+								<tr>
+									<th>품명</th>
+									<td><input type="text" value="냉장고"/></td>
+								</tr>
+								<tr>
+									<th>자산위치</th>
+									<td><input type="text" value="㈜씽크트리 본사탕비실"/></td>
+								</tr>
+								<tr>
+									<th>구매일</th>
+									<td><span class="calSet"><input type="tel" placeholder="2000-00-00" /><button>달력열기</button></span></td>
+								</tr>
+								<tr>
+									<th>구매처</th>
+									<td><input type="text" value="11번가"/></td>
+								</tr>
+								<tr>
+									<th>현재상태</th>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option>선택</option>
+												<option>사용중</option>
+												<option>폐기</option>
+											</select>
+										</span>
+										<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									</td>
+								</tr>
+								<tr>
+									<th>사용자</th>
+									<td><input type="text" placeholder="사용자 자동완성" value="홍길동"/></td>
+								</tr>
+								<tr>
+									<th>증빙등록</th>
+									<td>
+										<span class="fileSet">
+											<span class="fileFind" style="display:none;">
+												<input type="file" id="file1" />
+												<label for="file1">파일찾기</label>
+											</span> <!--파일선택:버튼만있는형식:초록색버전-->
+											<span class="loadIng" style="display:none;">업로드 중</span>
+											<strong class="loadEnd">
+												<em>샘플 데이터.png</em>
+												<button>취소</button>
+											</strong>
+											<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //2020-07-28 물품 상세 -->
+			<!-- 이미지 증빙서류 보기 -->
+			<div class="basicPop imgViewPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>증빙서류 보기</h1>
+				</div>
+				<div class="pBack">
+					<div><img src="../../images/sample6.jpg" alt="" /></div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM red">다운로드</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //이미지 증빙서류 보기 -->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

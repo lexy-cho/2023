@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.highcharts.com/highcharts.src.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/* 파일업로드 */
+			$('.fileSet input[type=file]').change(function() {
+				var fileValue = $(this).val().split("\\");
+				var fileName = fileValue[fileValue.length-1];
+				$('.fileSet .loadEnd em').text(fileName);
+				$('.fileSet .fileFind').hide();
+				$('.fileSet .loadIng').show();
+				setTimeout(function() {
+					$('.fileSet .loadIng').hide();
+					$('.fileSet .loadFail').show();
+				}, 3000);
+				setTimeout(function() {
+					$('.fileSet .loadFail').hide();
+					$('.fileSet .loadEnd').show();
+				}, 6000);
+			});
+			$('.fileSet .loadEnd button').click(function() {
+				$('.fileSet .fileFind').show();
+				$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+			});
+			/* end 파일업로드 */
+			$('.btnNtManager').click(function(){
+				$('.popDim, .ntManagerPop').show();
+				$('.ntManagerPop .pBtn button').click(function(){
+					$('.popDim, .ntManagerPop').hide();
+				});
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>네트워크 관리 설정</h2>
+					<div class="pagePos"><span>Home</span><span>전자결재</span><strong>네트워크 관리 설정</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="apprNtLayout">
+						<h3>보안 담당자/책임자
+							<span class="right">
+								<button class="btnS white btnNtManager">설정</button>
+							</span>
+						</h3>
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="200"/>
+									<col width="200"/>
+									<col width="200"/>
+									<col width="200"/>
+									<col width="400"/>
+									<col width="600"/>
+								</colgroup>
+								<thead>
+									<tr>
+										<th>구분</th>
+										<th>사용자명</th>
+										<th>부서</th>
+										<th>직급</th>
+										<th>연락처</th>
+										<th>이메일</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>보안 담당자</td>
+										<td>김순자</td>
+										<td>경영지원</td>
+										<td>실장</td>
+										<td>000-0000-0000</td>
+										<td class="tL">abcdefg@abcdefg.co.kr</td>
+									</tr>
+									<tr>
+										<td>보안 책임자</td>
+										<td>김철수</td>
+										<td>전략기획</td>
+										<td>매니저</td>
+										<td>000-0000-0000</td>
+										<td class="tL">abcdefg@abcdefg.co.kr</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="gridSet grid2">
+							<div class="gridItem">
+								<h3>네트워크 기본정보</h3>
+								<div class="tls">
+									<table>
+										<colgroup>
+											<col width="200"/>
+											<col width="500"/>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>구분</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>서브넷 마스크</td>
+												<td><input type="text" value="255.255.255.0"/></td>
+											</tr>
+											<tr>
+												<td>DNS 서버 1</td>
+												<td><input type="text" value="203.248.252.2"/></td>
+											</tr>
+											<tr>
+												<td>DNS 서버 2</td>
+												<td><input type="text" value="164.124.101.2"/></td>
+											</tr>
+											<tr>
+												<td>VPN 접속 URL</td>
+												<td><input type="text" placeholder="https://192.168.10.XX"/></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="gridItem">
+								<h3>와이파이 정보
+									<span class="right">
+										<span class="pwCycle">
+											비밀번호 주기 : <input type="number" value="30"/>
+										</span>
+									</span>
+								</h3>
+								<div class="tls">
+									<table>
+										<colgroup>
+											<col width="50"/>
+											<col width="80"/>
+											<col width="250"/>
+											<col width="250"/>
+											<col width="250"/>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>
+													<span class="checkSet noLabel">
+														<input type="checkbox" id="chkAll" />
+														<label for="chkAll"><i></i></label>
+													</span>
+												</th>
+												<th>No</th>
+												<th>이름</th>
+												<th>비밀번호</th>
+												<th>유효기간</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>
+													<span class="checkSet noLabel">
+														<input type="checkbox" id="chk3" />
+														<label for="chk3"><i></i></label>
+													</span>
+												</td>
+												<td>3</td>
+												<td><input type="text" class="tC" value="Thinktree3"/></td>
+												<td><input type="text" class="tC" value="123*******"/></td>
+												<td>0000-00-00 ~ 0000-00-00</td>
+											</tr>
+											<tr>
+												<td>
+													<span class="checkSet noLabel">
+														<input type="checkbox" id="chk2" />
+														<label for="chk2"><i></i></label>
+													</span>
+												</td>
+												<td>2</td>
+												<td><input type="text" class="tC" value="Thinktree2"/></td>
+												<td><input type="text" class="tC" value="123*******"/></td>
+												<td>0000-00-00 ~ 0000-00-00</td>
+											</tr>
+											<tr>
+												<td>
+													<span class="checkSet noLabel">
+														<input type="checkbox" id="chk1" />
+														<label for="chk1"><i></i></label>
+													</span>
+												</td>
+												<td>1</td>
+												<td><input type="text" class="tC" value="Thinktree1"/></td>
+												<td><input type="text" class="tC" value="123*******"/></td>
+												<td>0000-00-00 ~ 0000-00-00</td>
+											</tr>
+											<tr>
+												<td>
+													<span class="checkSet noLabel">
+														<input type="checkbox" id="chk4" />
+														<label for="chk4"><i></i></label>
+													</span>
+												</td>
+												<td></td>
+												<td><input type="text" class="tC" /></td>
+												<td><input type="text" class="tC" placeholder="영문, 숫자, 특수기호 8~20자 이내"/></td>
+												<td>0000-00-00 ~ 0000-00-00</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="btnArea">
+									<span class="left"><button class="btnM white" onclick="if(!confirm('선택한 항목을 삭제 하시겠습니끼?')){return false;}">선택삭제</button></span>
+									<span class="right"><button class="btnM white">추가</button></span>
+								</div>
+							</div>
+						</div>
+						<div class="gridSet grid2">
+							<div class="gridItem">
+								<h3>접근제한 사이트 관리</h3>
+								<div class="tls">
+									<table>
+										<colgroup>
+											<col width="60"/>
+											<col width="100"/>
+											<col width="200"/>
+											<col width="400"/>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>
+													<span class="checkSet noLabel">
+														<input type="checkbox" id="chkAll" />
+														<label for="chkAll"><i></i></label>
+													</span>
+												</th>
+												<th>No</th>
+												<th>이름</th>
+												<th>도메인</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>
+													<span class="checkSet noLabel">
+														<input type="checkbox" id="chk1" />
+														<label for="chk1"><i></i></label>
+													</span>
+												</td>
+												<td>2</td>
+												<td><input type="text" class="tC" value="카카오"/></td>
+												<td><input type="text" class="tC" value="kakao.com"/></td>
+											</tr>
+											<tr>
+												<td>
+													<span class="checkSet noLabel">
+														<input type="checkbox" id="chk1" />
+														<label for="chk1"><i></i></label>
+													</span>
+												</td>
+												<td>1</td>
+												<td><input type="text" class="tC" value="네이트온"/></td>
+												<td><input type="text" class="tC" value="nate.com"/></td>
+											</tr>
+											<tr>
+												<td>
+													<span class="checkSet noLabel">
+														<input type="checkbox" id="chk1" />
+														<label for="chk1"><i></i></label>
+													</span>
+												</td>
+												<td></td>
+												<td><input type="text" class="tC"/></td>
+												<td><input type="text" class="tC"/></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="btnArea">
+									<span class="left"><button class="btnM white" onclick="if(!confirm('선택한 항목을 삭제 하시겠습니끼?')){return false;}">선택삭제</button></span>
+									<span class="right"><button class="btnM white">추가</button></span>
+								</div>
+							</div>
+							<div class="gridItem"></div>
+						</div>
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 수신자 선택 팝업 -->
+			<div class="basicPop ntManagerPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>보안 담당자/책임자 설정</h1>
+				</div>
+				<div class="pBack">
+					<dl class="inputBox">
+						<dt>구분</dt>
+						<dd>
+							<span class="radioSet">
+								<input type="radio" id="ntManager1" name="ntManager" checked/>
+								<label for="ntManager1"><i></i>보안 담당자</label>
+							</span>
+							<span class="radioSet">
+								<input type="radio" id="ntManager2" name="ntManager" />
+								<label for="ntManager2"><i></i>보안 책임자</label>
+							</span>
+						</dd>
+					</dl>
+					<dl class="inputBox">
+						<dt>사용자</dt>
+						<dd>
+							<input type="text" placeholder="이름, 사번 검색"/>
+							<div class="receiver">
+								<div class="workerWrap">
+									<span class="worker">김순자 (0000000) <button class="btnDel">삭제</button></span>
+								</div>
+							</div>
+						</dd>
+					</dl>
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //수신자 선택 팝업 -->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

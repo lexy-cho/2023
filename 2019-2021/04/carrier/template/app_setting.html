@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/push.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.userApproval .tls td .green').click(function(){
+					$('.alertDim').show();
+					$('.approvalUsePop').show();
+				});
+				$('.userApproval .tls td .red').click(function(){
+					$('.alertDim').show();
+					$('.approvalStopPop').show();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap" class="mypageCase"><!-- 마이페이지 일 경우 -->
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back">
+						<div data-include="include/snb.html"></div>
+					</div>
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<!-- 마이페이지는 모바일 메뉴 없음 -->
+			<hr/>
+			<div id="containerBack">
+				<!-- header -->
+				<div id="header">
+					<header>
+						<span class="left">
+							<button class="btnList" onclick="location.href='setting_m.html'">목록</button>
+						</span>
+						 <h2>설정</h2>
+						 <span class="right">
+							<button class="btnM grayBlack" onclick="location.href='login.html'">로그아웃</button>
+						 </span>
+					</header>
+				</div>
+				<!-- //header -->
+				<hr/>
+				<!-- container -->
+				<div id="container">
+				<section>
+					<div class="content">
+					<article>
+						<!-- Page Layout -->
+						<div class="mypageLayout">
+							<div class="pd2-t">
+								<div class="mypageContents">
+									<h3>알림설정 및 버전정보</h3><!-- 2020-06-23 제목 수정 -->
+									<div class="tabData">
+										<div class="settingList">
+											<ul>
+												<li>PUSH 알림
+													<span class="right">
+														<span class="toggleSet">
+															<input type="checkbox" id="push2" />
+															<label for="push2"><span>ON</span></label>
+														</span>
+													</span>
+												</li>
+											</ul>
+										</div>
+										<div class="version">
+											<dl>
+												<dt>App 버전</dt>
+												<dd>1.06 <span class="right">2020-01-02 15:25:55</span></dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- //page Layout -->
+					</article>
+					</div>
+				</section>
+				</div>
+				<!-- //container -->
+			</div>
+		</div>
+		<!-- //Wrap -->
+    </body>
+</html>

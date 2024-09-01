@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/jstree.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/basicTree.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			/* 파일업로드 */
+			$('.fileSet input[type=file]').change(function() {
+				var fileValue = $(this).val().split("\\");
+				var fileName = fileValue[fileValue.length-1];
+				$('.fileSet .loadEnd em').text(fileName);
+				$('.fileSet .fileFind').hide();
+				$('.fileSet .loadIng').show();
+				setTimeout(function() {
+					$('.fileSet .loadIng').hide();
+					$('.fileSet .loadFail').show();
+				}, 3000);
+				setTimeout(function() {
+					$('.fileSet .loadFail').hide();
+					$('.fileSet .loadEnd').show();
+				}, 6000);
+			});
+			$('.fileSet .loadEnd button').click(function() {
+				$('.fileSet .fileFind').show();
+				$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+			});
+			/* end 파일업로드 */
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>지출 결의서</h2>
+					<div class="pagePos"><span>Home</span><span>문서 관리</span><strong>지출 결의서</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="docSpendWriteLayout">
+							<!---->
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="120"/>
+										<col width="400"/>
+										<col width="120"/>
+										<col width="640"/>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th class="tC">작성일자</th> <!-- 2020-12-08 -->
+											<td>홍길동(000000)</td>
+											<th class="tC">작성일자</th> <!-- 2020-12-08 -->
+											<td>2020-01-01 (월)</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tws spendDetail">
+								<table>
+									<colgroup>
+										<col width="120"/>
+										<col width="150"/>
+										<col width="150"/>
+										<col width="300"/>
+										<col width="160"/>
+										<col width="300"/>
+										<col width="100"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th></th>
+											<th>지출일자</th>
+											<th>사용자</th>
+											<th>적요</th>
+											<th>금액</th>
+											<th>비고</th>
+											<th><button class="btnS white">행추가</button></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<button class="listArrow up">위로 이동</button>
+												<button class="listArrow down">아래로 이동</button>
+											</td>
+											<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span> (월)</td>
+											<td><input type="text" placeholder="직원 자동완성"/></td>
+											<td><textarea rows="2"></textarea></td>
+											<td><input type="text"/></td>
+											<td><textarea rows="2"></textarea></td>
+											<td><button class="btnS white">X</button></td>
+										</tr>
+										<tr>
+											<td>
+												<button class="listArrow up">위로 이동</button>
+												<button class="listArrow down">아래로 이동</button>
+											</td>
+											<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span> (월)</td>
+											<td><input type="text" placeholder="직원 자동완성"/></td>
+											<td><textarea rows="2"></textarea></td>
+											<td><input type="text"/></td>
+											<td><textarea rows="2"></textarea></td>
+											<td><button class="btnS white">X</button></td>
+										</tr>
+										<tr>
+											<td>
+												<button class="listArrow up">위로 이동</button>
+												<button class="listArrow down">아래로 이동</button>
+											</td>
+											<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span> (월)</td>
+											<td><input type="text" placeholder="직원 자동완성"/></td>
+											<td><textarea rows="2"></textarea></td>
+											<td><input type="text"/></td>
+											<td><textarea rows="2"></textarea></td>
+											<td><button class="btnS white">X</button></td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<th colspan="3">총액</th>
+										<td></td>
+										<td></td>
+										<td colspan="2"></td>
+									</tfoot>
+								</table>
+							</div>
+							<!---->
+							<div class="btnArea tC">
+								<a href="biz_document_spend.html" class="btnM" onclick="if(!confirm('등록된 정보가 저장되지 않습니다. 취소 하시겠습니까?')){return false;}">취소</a>
+								<a href="biz_document_spend_view.html" class="btnM blue" onclick="if(!alert('해당 항목이 등록되었습니다.')){location.href='biz_document_spend_view.html'}">저장</a>
+							</div>
+							<!--//-->
+						</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;"></div>
+		<!-- //Popup -->
+    </body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<!-- <script type="text/javascript" src="js/jquery-ui.min.js"></script> -->
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			/* $(document).on('click tab', '.gnbOpen', function(e){
+				$('.gnbScroll').load('../gnb.html',function(){
+					funcGnbOpen();
+				});
+				return false;
+			}); */
+			//
+			
+			var swiperDoc = new Swiper('.documentView .swiper-container', {
+				autoHeight: true,
+				//initialSlide: 1,
+				onSlideChangeStart: function (swiper) {
+					if (swiper.activeIndex == 0) {
+						$('.documentView').addClass('basicPr');
+						//$('.documentView').css({'padding-top':'126px'});
+						$('.basicInfo').show();
+						$(".dTab span").removeClass("on");
+						$(".dTab span:first-child").addClass("on");
+						$('.sPhoto').animate({bottom:'-200px'});
+					}else if (swiper.activeIndex == 1) {
+						$('.documentView').removeClass('basicPr');
+						//$('.documentView').css({'padding-top':'40px'});
+						$('.basicInfo').hide();
+						$('.toggleArea').slideUp();
+						$(".dTab span").removeClass("on");
+						$(".dTab span:last-child").addClass("on");
+						$('.sPhoto').animate({bottom:'0'});
+					}
+				}
+			});
+			$(".docTab button").click(function () {
+				$(".docTab span").removeClass("on");
+				$(this).parents("span").addClass("on");
+				var activeTab = $(this).attr("data-name");
+				swiperDoc.slideTo(activeTab);
+			});
+			$(".docKindPop .close").click(function () {
+				$(".dimPop").hide();
+			});
+			$(".docKindPop .btnPhoto.action").click(function () {
+				$(".docKindPop").hide();
+				$("#samplePop1").show();
+			});
+			$("#samplePop1 .btnLB").click(function () {
+				$(".dimPop").hide();
+				$(".docKindPop").show();
+				$("#samplePop1").hide();
+			});
+			$(".dList .btnPhoto.action").click(function () {
+				$(".dimPop").show();
+				$(".docKindPop").hide();
+				$("#samplePop1").show();
+			});
+			$(".sPhoto").click(function () {
+				$(".dimPop").show();
+				$(".docKindPop").hide();
+				$("#samplePop1").hide();
+				$("#samplePop2").show();
+			});
+		});
+		
+		if( $(window).width() <= 680 ){
+			function openDocu(url) {
+				$(".dimPop").show();
+				if ( url == 'noSign'){
+					$(".docKindPop .btnSign").hide();
+				} else if ( url == 'contract'){
+					$(".docKindPop .btnSign").show();
+					$(".docKindPop .btnSign.action").attr("href", "contract_write.html");
+				} else {
+					$(".docKindPop .btnSign").show();
+					$(".docKindPop .btnSign.action").attr("href", "document_" + url +".html");
+				}
+				return true;
+			}// 모바일용 서류등록 선택팝업 설정
+		}else{
+			function openDocu(url) {
+				window.location.href = "../preview.html";
+				return true;
+			}// 탭,패드 일 경우
+		} 
+
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		
+        <!-- DimPopUp -->
+		<div class="dimPop" style="display:none">
+			<!-- 모바일용 서류등록 선택팝업 -->
+			<div class="docKindPop">
+				<button class="close">닫기</button>
+				<div class="pBack">
+					<a href="" class="btnSign action">서명</a>
+					<button class="action" onClick="location.href='../preview.html'">미리보기</button>
+					<a class="btnPhoto action">촬영</a>
+
+					<!---->
+					<div style="clear:left;width:100%;height:10px;"><!-- 본 div는 쓰지 말아주세요. --></div>
+					<a class="btnSign">서명</a>
+					<button>미리보기</button>
+					<a class="btnPhoto">촬영</a>
+					<!--비활성화 일 경우에는 class에서 action을 없애주세요.-->
+				</div>
+			</div>
+			<!-- //모바일용 서류등록 선택팝업 -->
+			<!-- 서류등록 촬영 이미지명 -->
+            <div class="popSMCase alertPop large hAuto" id="samplePop1" style="display:none;">
+                <div class="alertCnt">
+                    <h1 class="tit">서류등록</h1>
+                    <div class="cntTxt">
+						<dl class="dlMark">
+							<dt>5. 장애인 증명서를 촬영 하시겠습니까?</dt>
+							<dd>* 추가 서류명을 입력을 원하시면 아래에 입력해주세요. 예) 매수인명_신분증</dd>
+							<dd><input type="text" value="홍길동_서류등록" /></dd>
+						</dl>
+                    </div>
+                </div>
+				<div class="btn mt15">
+					<button class="btnLB">취소</button>
+					<button class="btnBY" onClick="location.href='../masking.html'">확인</button>
+				</div>
+			</div>
+			<!-- 매출할인서류 촬영 이미지명 -->
+            <div class="popSMCase alertPop large hAuto" id="samplePop2" style="display:none;">
+                <div class="alertCnt">
+                    <h1 class="tit">매출할인서류</h1>
+                    <div class="cntTxt">
+						<dl class="dlMark">
+							<dt>매출할인서류 촬영 하시겠습니까?</dt>
+							<dd>* 추가 서류명을 입력을 원하시면 아래에 입력해주세요. 예) 매수인명_신분증</dd>
+							<dd><input type="text" value="홍길동_서류등록" /></dd>
+						</dl>
+                    </div>
+                </div>
+				<div class="btn mt15">
+					<button class="btnLB">취소</button>
+					<button class="btnBY" onClick="location.href='../masking.html'">확인</button>
+				</div>
+			</div>
+			<!-- // -->
+        </div>
+        <!-- // DimPopUp -->
+
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 서브 생략 -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<!-- <button class="gnbOpen">GNB 열기</button> -->
+							<button class="goPrev" onclick="history.back()">뒤로가기</button> 
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="../main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2 class="sCase"><span>계출현황 &gt; </span>서류등록</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<!-- docLayout -->
+						<div class="docLayout">
+							<!-- summBox -->
+							<div class="summBoxBack">
+								<div class="summBox">
+									<span class="summTt">[11] 개인-일반개인판매 (과세)</span>
+									<div class="ttArea">
+										<strong>9000261364<i class="eIcon">전자계약</i><em>홍길동 님(이서언 님)</em></strong>
+									</div>
+									<div class="infoBtn">
+										<div class="left">
+											<dl>
+												<dt>계약상태</dt>
+												<dd>작성중</dd>
+												<dt>계약일자</dt>
+												<dd>2018-04-04</dd>
+											</dl>
+											<div>
+												<dl>
+													<dt>차종</dt>
+													<dd>QM6 1 8MY Dci 2wd re Signature</dd>
+												</dl>
+												<dl>
+													<dt>옵션</dt>
+													<dd>VGTIC</dd>
+												</dl>
+												<span>
+													<dl>
+														<dt>색상</dt>
+														<dd>어반그레이/블랙가죽시트</dd>
+													</dl>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--// summBox -->
+							<div class="docTab">
+								<div>
+									<span class="on"><strong><button data-name="0">서류등록 <em>20</em></button></strong></span>
+									<span><strong><button data-name="1">매출할인서류 <em>5</em></button></strong></span>
+								</div>
+							</div>
+							<!-- 서류등록 종류 -->
+							<div class="documentView">
+								<div class="swiper-container">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide">
+											<div class="dList docCase">
+												<ul>
+													<li>
+														<div onclick="openDocu('contract');"><em>1</em>개인정보 활용동의서<strong><span>99</span></strong></div> <!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn">
+															<a href="contract_write.html" class="btnSign action">서명</a>
+															<button class="btnPhoto">촬영</button>
+														</span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li>
+														<div onclick="openDocu('contract');"><em>2</em>계약서<strong><span>1</span></strong></div><!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn">
+															<a href="contract_write.html" class="btnSign action">서명</a>
+															<button class="btnPhoto">촬영</button>
+														</span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li>
+														<div onclick="openDocu('noSign');"><em>3</em>리스/렌트 계약서<strong><span>1</span></strong></div><!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn"><button class="btnPhoto action">촬영</button></span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li>
+														<div onclick="openDocu('noSign');"><em>4</em>신분증(법인등기부등본)<strong><span>1</span></strong></div><!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn"><button class="btnPhoto action">촬영</button></span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li>
+														<div onclick="openDocu('noSign');"><em>5</em>장애인 증명서<strong><span>1</span></strong></div><!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn"><button class="btnPhoto action">촬영</button></span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li>
+														<div onclick="openDocu('noSign');"><em>6</em>사업자등록증 사본<strong><span>1</span></strong></div><!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn"><button class="btnPhoto action">촬영</button></span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li>
+														<div onclick="openDocu('hipass');"><em>7</em>하이패스 가입신청서<strong><span>1</span></strong></div><!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn">
+															<a href="document_hipass.html" class="btnSign action">서명</a>
+															<button class="btnPhoto">촬영</button>
+														</span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li>
+														<div onclick="openDocu('point');"><em>8</em>선포인트 신청서<strong><span>1</span></strong></div><!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn">
+															<a href="document_point.html" class="btnSign action">서명</a>
+															<button class="btnPhoto">촬영</button>
+														</span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li>
+														<div onclick="openDocu('tax');"><em>9</em>면세 신고서<strong><span>1</span></strong></div><!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn">
+															<a href="document_tax.html" class="btnSign action">서명</a>
+															<button class="btnPhoto">촬영</button>
+														</span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li>
+														<div onclick="openDocu('receiptList');"><em>10</em>입금증(카드결제)<strong><span>1</span></strong></div><!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn">
+															<a href="document_receiptList.html" class="btnSign action">서명</a>
+															<button class="btnPhoto">촬영</button>
+														</span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li>
+														<div onclick="openDocu('noSign');"><em>11</em>등록비용정산서<strong><span>1</span></strong></div><!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn"><button class="btnPhoto action">촬영</button></span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li>
+														<div onclick="openDocu('noSign');"><em>12</em>등록비용 영수증(공채)<strong><span>1</span></strong></div><!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn"><button class="btnPhoto action">촬영</button></span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li>
+														<div onclick="openDocu('noSign');"><em>13</em>정산차액 송금영수증<strong><span>1</span></strong></div><!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn"><button class="btnPhoto action">촬영</button></span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li>
+														<div onclick="openDocu('noSign');"><em>14</em>차량등록증(등록원부)<strong><span>1</span></strong></div><!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn"><button class="btnPhoto action">촬영</button></span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li>
+														<div onclick="openDocu('noSign');"><em>15</em>위임장<strong><span>1</span></strong></div><!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn"><button class="btnPhoto action">촬영</button></span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li>
+														<div onclick="openDocu('noSign');"><em>16</em>인감증명서<strong><span>1</span></strong></div><!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn"><button class="btnPhoto action">촬영</button></span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li>
+														<div onclick="openDocu('takeover');"><em>17</em>인수증<strong><span>1</span></strong></div><!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn">
+															<a href="document_takeover.html" class="btnSign action">서명</a>
+															<button class="btnPhoto">촬영</button>
+														</span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li>
+														<div onclick="openDocu('return');"><em>18</em>반품신청서<strong><span>1</span></strong></div><!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn">
+															<a href="document_return.html" class="btnSign action">서명</a>
+															<button class="btnPhoto">촬영</button>
+														</span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li>
+														<div onclick="openDocu('recant');"><em>19</em>계약철회통지서<strong><span>1</span></strong></div><!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn">
+															<a href="document_recant.html" class="btnSign action">서명</a>
+															<button class="btnPhoto">촬영</button>
+														</span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li>
+														<div onclick="openDocu('noSign');"><em>20</em>기타<strong><span>1</span></strong></div><!-- 2019-04-12 숫자span 추가 -->
+														<span class="btn"><button class="btnPhoto action">촬영</button></span>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="swiper-slide">
+											<div class="dList saleCase">
+												<ul>
+													<li onClick="location.href='../preview.html'">
+														<div><em>1</em>개인정보수집동의서</div>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li onClick="location.href='../preview.html'">
+														<div><em>2</em>홍길동 입금증</div>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+													<li onClick="location.href='../preview.html'">
+														<div><em>3</em>촬영한 이미지</div>
+														<span class="date">2018-05-01 16:26</span>
+													</li>
+												</ul>
+												<div class="listNone"><span>등록한 매출할인서류가 없습니다.</span></div>
+												<input type="button" class="sPhoto" value="촬영" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- //서류등록 종류 -->
+						</div>
+						<!--// docLayout -->
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

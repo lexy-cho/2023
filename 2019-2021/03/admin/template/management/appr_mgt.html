@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/approval.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$(".tabNav li:not('.right') button").click(function () {
+				$(".tabNav li").removeClass("on");
+				$(this).parent("li:not('.right')").addClass("on");
+				var activeTab = $(this).attr("data-name");
+				$('.tabData').hide();
+				$('.tData' + activeTab).show();
+			});
+			/* 파일업로드 */
+			$('.fileSet input[type=file]').change(function() {
+				var fileValue = $(this).val().split("\\");
+				var fileName = fileValue[fileValue.length-1];
+				$('.fileSet .loadEnd em').text(fileName);
+				$('.fileSet .fileFind').hide();
+				$('.fileSet .loadIng').show();
+				setTimeout(function() {
+					$('.fileSet .loadIng').hide();
+					$('.fileSet .loadFail').show();
+				}, 3000);
+				setTimeout(function() {
+					$('.fileSet .loadFail').hide();
+					$('.fileSet .loadEnd').show();
+				}, 6000);
+			});
+			$('.fileSet .loadEnd button').click(function() {
+				$('.fileSet .fileFind').show();
+				$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+			});
+			/* end 파일업로드 */
+			/**/
+			$('.alertPop button, .basicPop button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			$('.btnDetail').click(function(){
+				$(this).toggleClass('on');
+				$(this).parents('tr').next('tr').toggle();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>결제 관리함</h2>
+					<div class="pagePos"><span>Home</span><span>전자결재</span><strong>결제 관리함</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="apprListLayout">
+						<div class="grayBox">
+							<dl>
+								<dt>기안자</dt>
+								<dd><input type="text"/></dd>
+							</dl>
+							<dl>
+								<dt>기안부서</dt>
+								<dd>
+									<span class="selectSet">
+										<select>
+											<option>전체</option>
+											<option></option>
+										</select>
+									</span>
+								</dd>
+							</dl>
+							<dl>
+								<dt>
+									<span class="selectSet">
+										<select>
+											<option>기안일</option>
+											<option>결재일</option>
+										</select>
+									</span>
+								</dt>
+								<dd>
+									<span class="calDupSet">
+										<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+										<em>~</em>
+										<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									</span>
+								</dd>
+							</dl>
+							<dl>
+								<dt>문서번호</dt>
+								<dd><input type="text"/></dd>
+							</dl>
+							<dl>
+								<dt>사유</dt>
+								<dd>
+									<span class="reasonSet">
+										<span class="selectSet">
+											<select>
+												<option>전체</option>
+												<option></option>
+											</select>
+										</span>
+										<input type="text"/>
+									</span>
+								</dd>
+							</dl>
+							<button class="btnM blue">검색</button>
+						</div>
+						<div class="boardTop">
+							<em>전체 00개</em>
+							<span class="right">
+								<button class="btnM white">진행중</button>
+								<button class="btnM white">완료</button>
+								<button class="btnM white">반려</button>
+							</span>
+						</div>
+						<div class="apprList">
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="40"/>
+										<col width="100"/>
+										<col width="60"/>
+										<col width="200"/>
+										<col width="320"/>
+										<col width="80"/>
+										<col width="100"/>
+										<col width="150"/>
+										<col width="150"/>
+										<col width="100"/>
+										<col width="120"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>NO</th>
+											<th>문서번호</th>
+											<th>구분</th>
+											<th>사유</th>
+											<th>기간</th>
+											<th>기안자</th>
+											<th>기안부서</th>
+											<th>기안일</th>
+											<th>결재일</th>
+											<th>문서상태</th>
+											<th>증빙서류</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>30</td>
+											<td>0000-00</td>
+											<td>휴가</td>
+											<td class="tL"><a href="appr_holiday_view2.html">refresh 휴가</a></td>
+											<td>2020-01-01 ~ 2020-01-01 (3일)</td>
+											<td>최미진</td>
+											<td>경영지원팀</td>
+											<td>2020-01-01 23:59</td>
+											<td>2020-01-01 23:59</td>
+											<td>진행중<button class="btnDetail">현황보기</button></td>
+											<td><button class="btnS white">발행</button></td>
+										</tr>
+										<tr class="noHover" style="display:none;">
+											<td colspan="11" class="apprListDetail">
+												<!-- tab-wrap -->
+												<div class="tabWrap" style="display:block;">
+													<!-- tab -->
+													<div class="tabBack">
+														<div class="tabNav">
+															<nav>
+																<ul>
+																	<li class="on"><button data-name="11">결재선</button></li>
+																	<li><button data-name="12">참조자</button></li>
+																</ul>
+															</nav>
+														</div>
+													</div>
+													<!--// tab -->
+													<div class="tabLayout">
+														<div class="tabData tData11" style="display:block;">
+															<div class="tls">
+																<table>
+																	<colgroup>
+																		<col width="40"/>
+																		<col width="120"/>
+																		<col width="80"/>
+																		<col width="80"/>
+																		<col width="200"/>
+																		<col width="200"/>
+																		<col width="200"/>
+																		<col width="300"/>
+																	</colgroup>
+																	<thead>
+																		<tr>
+																			<th>NO</th>
+																			<th>결재자</th>
+																			<th>결재유형</th>
+																			<th>결재</th>
+																			<th>배정일시</th>
+																			<th>확인일시</th>
+																			<th>결재일시</th>
+																			<th>결재의견</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<tr>
+																			<td>1</td>
+																			<td>김철수</td>
+																			<td>합의</td>
+																			<td>합의</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td class="tL"></td>
+																		</tr>
+																		<tr>
+																			<td>2</td>
+																			<td>김철수</td>
+																			<td>합의</td>
+																			<td>합의</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td class="tL"></td>
+																		</tr>
+																		<tr>
+																			<td>3</td>
+																			<td>김철수</td>
+																			<td>결재</td>
+																			<td>승인</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td class="tL"></td>
+																		</tr>
+																		<tr>
+																			<td>4</td>
+																			<td>김철수</td>
+																			<td>결재</td>
+																			<td></td>
+																			<td>2020-01-01 23:59</td>
+																			<td><button class="btnS green">결재요청 푸시발송</button></td>
+																			<td></td>
+																			<td class="tL"></td>
+																		</tr>
+																		<tr>
+																			<td>5</td>
+																			<td>이공수</td>
+																			<td>결재</td>
+																			<td></td>
+																			<td>2020-01-01 23:59</td>
+																			<td></td>
+																			<td></td>
+																			<td class="tL"></td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+														</div>
+														<div class="tabData tData12">
+															<div class="tls">
+																<table>
+																	<colgroup>
+																		<col width="40"/>
+																		<col width="200"/>
+																		<col span="2" width="220"/>
+																	</colgroup>
+																	<thead>
+																		<tr>
+																			<th>순번</th>
+																			<th>참조자</th>
+																			<th>공유일시</th>
+																			<th>확인일시</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<tr>
+																			<td>1</td>
+																			<td>김철수</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																		</tr>
+																		<tr>
+																			<td>2</td>
+																			<td>나철수</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																		</tr>
+																		<tr>
+																			<td>3</td>
+																			<td>홍철수</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!-- //tab-wrap -->
+											</td>
+										</tr>
+										<tr>
+											<td>29</td>
+											<td>0000-00</td>
+											<td>휴가</td>
+											<td class="tL"><a href="appr_holiday_view2.html">개인사유</a></td>
+											<td>2020-01-01 ~ 2020-01-01 (1일)</td>
+											<td>홍길동</td>
+											<td>개발팀</td>
+											<td>2020-01-01 23:59</td>
+											<td>2020-01-01 23:59</td>
+											<td>완료<button class="btnDetail">현황보기</button></td>
+											<td>
+												<button class="btnS white">재발행</button>
+												<button class="btnS white">미리보기</button>
+											</td>
+										</tr>
+										<tr class="noHover" style="display:none;">
+											<td colspan="11" class="apprListDetail">
+												<!-- tab-wrap -->
+												<div class="tabWrap" style="display:block;">
+													<!-- tab -->
+													<div class="tabBack">
+														<div class="tabNav">
+															<nav>
+																<ul>
+																	<li class="on"><button data-name="21">결재선</button></li>
+																	<li><button data-name="22">참조자</button></li>
+																</ul>
+															</nav>
+														</div>
+													</div>
+													<!--// tab -->
+													<div class="tabLayout">
+														<div class="tabData tData21" style="display:block;">
+															<div class="tls">
+																<table>
+																	<colgroup>
+																		<col width="40"/>
+																		<col width="120"/>
+																		<col width="80"/>
+																		<col width="80"/>
+																		<col width="200"/>
+																		<col width="200"/>
+																		<col width="200"/>
+																		<col width="300"/>
+																	</colgroup>
+																	<thead>
+																		<tr>
+																			<th>NO</th>
+																			<th>결재자</th>
+																			<th>결재유형</th>
+																			<th>결재</th>
+																			<th>배정일시</th>
+																			<th>확인일시</th>
+																			<th>결재일시</th>
+																			<th>결재의견</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<tr>
+																			<td>1</td>
+																			<td>김철수</td>
+																			<td>합의</td>
+																			<td>합의</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td class="tL"></td>
+																		</tr>
+																		<tr>
+																			<td>2</td>
+																			<td>김철수</td>
+																			<td>합의</td>
+																			<td>합의</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td class="tL"></td>
+																		</tr>
+																		<tr>
+																			<td>3</td>
+																			<td>김철수</td>
+																			<td>결재</td>
+																			<td>승인</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td class="tL"></td>
+																		</tr>
+																		<tr>
+																			<td>4</td>
+																			<td>김철수</td>
+																			<td>결재</td>
+																			<td>승인</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td class="tL"></td>
+																		</tr>
+																		<tr>
+																			<td>5</td>
+																			<td>이공수</td>
+																			<td>결재</td>
+																			<td>승인</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td class="tL"></td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+														</div>
+														<div class="tabData tData22">
+															<div class="tls">
+																<table>
+																	<colgroup>
+																		<col width="40"/>
+																		<col width="200"/>
+																		<col span="2" width="220"/>
+																	</colgroup>
+																	<thead>
+																		<tr>
+																			<th>순번</th>
+																			<th>참조자</th>
+																			<th>공유일시</th>
+																			<th>확인일시</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<tr>
+																			<td>1</td>
+																			<td>김철수</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																		</tr>
+																		<tr>
+																			<td>2</td>
+																			<td>나철수</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																		</tr>
+																		<tr>
+																			<td>3</td>
+																			<td>홍철수</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!-- //tab-wrap -->
+											</td>
+										</tr>
+										<tr>
+											<td>28</td>
+											<td>0000-00</td>
+											<td>휴가</td>
+											<td class="tL"><a href="appr_holiday_view2.html">기타</a></td>
+											<td>2020-01-01 ~ 2020-01-01 (1일)</td>
+											<td>최미진</td>
+											<td>경영지원팀</td>
+											<td>2020-01-01 23:59</td>
+											<td>2020-01-01 23:59</td>
+											<td>반려<button class="btnDetail">현황보기</button></td>
+											<td><button class="btnS white">발행</button></td>
+										</tr>
+										<tr class="noHover" style="display:none;">
+											<td colspan="11" class="apprListDetail">
+												<!-- tab-wrap -->
+												<div class="tabWrap" style="display:block;">
+													<!-- tab -->
+													<div class="tabBack">
+														<div class="tabNav">
+															<nav>
+																<ul>
+																	<li class="on"><button data-name="31">결재선</button></li>
+																	<li><button data-name="32">참조자</button></li>
+																</ul>
+															</nav>
+														</div>
+													</div>
+													<!--// tab -->
+													<div class="tabLayout">
+														<div class="tabData tData31" style="display:block;">
+															<div class="tls">
+																<table>
+																	<colgroup>
+																		<col width="40"/>
+																		<col width="120"/>
+																		<col width="80"/>
+																		<col width="80"/>
+																		<col width="200"/>
+																		<col width="200"/>
+																		<col width="200"/>
+																		<col width="300"/>
+																	</colgroup>
+																	<thead>
+																		<tr>
+																			<th>NO</th>
+																			<th>결재자</th>
+																			<th>결재유형</th>
+																			<th>결재</th>
+																			<th>배정일시</th>
+																			<th>확인일시</th>
+																			<th>결재일시</th>
+																			<th>결재의견</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<tr>
+																			<td>1</td>
+																			<td>김철수</td>
+																			<td>합의</td>
+																			<td>합의</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td class="tL"></td>
+																		</tr>
+																		<tr>
+																			<td>2</td>
+																			<td>김철수</td>
+																			<td>합의</td>
+																			<td>합의</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td class="tL"></td>
+																		</tr>
+																		<tr>
+																			<td>3</td>
+																			<td>김철수</td>
+																			<td>결재</td>
+																			<td>승인</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td class="tL"></td>
+																		</tr>
+																		<tr>
+																			<td>4</td>
+																			<td>김철수</td>
+																			<td>결재</td>
+																			<td>반려</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																			<td></td>
+																			<td class="tL">반려사유가 나옵니다.</td>
+																		</tr>
+																		<tr>
+																			<td>5</td>
+																			<td>이공수</td>
+																			<td>결재</td>
+																			<td></td>
+																			<td>2020-01-01 23:59</td>
+																			<td></td>
+																			<td></td>
+																			<td class="tL"></td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+														</div>
+														<div class="tabData tData32">
+															<div class="tls">
+																<table>
+																	<colgroup>
+																		<col width="40"/>
+																		<col width="200"/>
+																		<col span="2" width="220"/>
+																	</colgroup>
+																	<thead>
+																		<tr>
+																			<th>순번</th>
+																			<th>참조자</th>
+																			<th>공유일시</th>
+																			<th>확인일시</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<tr>
+																			<td>1</td>
+																			<td>김철수</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																		</tr>
+																		<tr>
+																			<td>2</td>
+																			<td>나철수</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																		</tr>
+																		<tr>
+																			<td>3</td>
+																			<td>홍철수</td>
+																			<td>2020-01-01 23:59</td>
+																			<td>2020-01-01 23:59</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!-- //tab-wrap -->
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="bpSet">
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+										<a class="on">1</a>
+										<a>2</a>
+										<a>3</a>
+										<a>4</a>
+										<a>5</a>
+									<a class="next">다음</a>
+								</span>
+								<span class="selectSet">
+									<select>
+										<option>10개</option>
+										<option>20개</option>
+										<option>50개</option>
+										<option>100개</option>
+									</select>
+								</span>
+							</div>
+						</div>
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Alert Popup -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop listDelPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>작성한 신청서 정보가 삭제됩니다.<br/>삭제 하시겠습니까?</p>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //Alert Popup -->
+    </body>
+</html>

@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('#outsideNewBtn').click(function(){
+				$('.popDim').show();
+				$('#newOutSidePop').show();
+			});
+			$('.tls a').click(function(){
+				$('.popDim').show();
+				$('#modifyOutSidePop').show();
+			});
+			$('.pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			/**/
+			$('#etcReasonsBtn').click(function(){
+				$('.popDim').show();
+				$('#etcReasonsPop1').show();
+			});
+			/**/
+			$(' #etcReasonsBtn2').click(function(){
+				$('.popDim').show();
+				$('#etcReasonsPop2').show();
+			});
+			/**/
+			$('.outSideOkBtn').click(function(){
+				$('.popDim').show();
+				$('#cancelCase').show();
+			});
+			/**/
+			$('#cancelCaseBtn').click(function(){
+				$('.popDim').show();
+				$('#cancelCase').show();
+			});
+			$('#cancelBtn').click(function(){
+				$('.alertDim').show();
+				$('#etcReasonsPop3').show();
+			});
+			$('#etcReasonsBtn3').click(function(){
+				$('.alertDim').show();
+				$('#etcReasonsPop4').show();
+			});
+			/**/
+			$(function() {
+				var availableTags = [
+				"이민균 (190201)",
+				"조명진 (160201)",
+				"홍길동 (200101)"
+				];
+				$( ".autoCom" ).autocomplete({
+				  source: availableTags
+				});
+			}); // 자동완성
+			/**/
+			$('.placeSet button').click(function(){
+				$('.placeSet div').show();
+				$(this).parent().hide();
+			});	// 2020-08-14
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>외근 관리</h2>
+					<div class="pagePos"><span>Home</span><span>영업 및 업무</span><strong>외근 관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div>
+						<div class="boardTop">
+							<em>전체 10,000건</em>
+							<span class="right">
+
+								<span class="calDupSet">
+									<span class="calSet"><input type="tel" placeholder="" /><button>달력열기</button></span>
+									<em>~</em>
+									<span class="calSet"><input type="tel" placeholder="" /><button>달력열기</button></span>
+								</span>
+								<span class="searchBasic">
+									<span class="selectSet">
+										<select>
+											<option selected>전체</option>
+											<option>참석자</option>
+											<option>방문업체</option>
+											<option>업체담당자</option>
+										</select>
+									</span>
+									<span class="searchSet">
+										<input type="text">
+										<input type="submit" value="검색" class="btnSearch">
+										<button class="btnReset">초기화</button>
+									</span>
+								</span>
+								<button class="btnM">엑셀 다운로드</button>
+							</span>
+						</div>
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="10"/>
+									<col width="100" />
+									<col width="110" />
+									<col width="260" /><!-- 2020-08-31 col width 조정 -->
+									<col width="180" /><!-- 2020-08-31 col width 조정 -->
+									<col width="100" />
+									<col width="140" />
+									<col span="4" width="95" />
+									<col width="120" />
+									<col width="125" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkall" />
+												<label for="chkall"><i></i></label>
+											</span>
+										</th>
+										<th>일자</th>
+										<th>참석자</th>
+										<th>프로젝트명</th>
+										<th>방문업체</th>
+										<th>담당자명(고객)</th>
+										<th>방문목적</th>
+										<th>이동시작</th>
+										<th>미팅<br/>시작시간</th>
+										<th>종료<br/>예정시간</th>
+										<th>복귀<br/>예정시간</th>
+										<th>승인자</th>
+										<th>작성일자</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk10" />
+												<label for="chk10"><i></i></label>
+											</span>
+										</td>
+										<td><a>20-06-08 (월)</a></td>
+										<td>홍길동 (200101)</td>
+										<td class="tL">프로젝트명선택</td>
+										<td class="tL">업체명선택</td>
+										<td>김담당</td>
+										<td>영업미팅</td>
+										<td>직출</td>
+										<td>09:00</td>
+										<td>11:00</td>
+										<td></td>
+										<td><span class="outSideOkBtn on">김철수 (200101)</span></td>
+										<td>20-06-05 (금) 18:30</td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk9" />
+												<label for="chk9"><i></i></label>
+											</span>
+										</td>
+										<td><a>20-06-05 (금)</a></td>
+										<td>조명진 (160201)</td>
+										<td class="tL">프로젝트명선택</td>
+										<td class="tL">르노삼성자동차(주)</td>
+										<td>정해욱</td>
+										<td>기타 <button class="btnS white" id="etcReasonsBtn">사유</button></td>
+										<td>13:00</td>
+										<td>14:00</td>
+										<td>15:30</td>
+										<td>16:00</td>
+										<td><span class="outSideOkBtn">김철수 (200101)</span></td>
+										<td>20-06-05 (금) 11:00</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk8" />
+												<label for="chk8"><i></i></label>
+											</span>
+										</td>
+										<td><a>20-06-04 (목)</a></td>
+										<td>오유진 (180904)</td>
+										<td class="tL">프로젝트명선택</td>
+										<td class="tL">알씨아이파이낸셜서비스코리아㈜</td>
+										<td>박종석</td>
+										<td>영업미팅 <button class="btnS white" id="etcReasonsBtn">사유</button></td>
+										<td>직출</td>
+										<td>10:00</td>
+										<td>12:00</td>
+										<td>직퇴</td>
+										<td><span class="outSideOkBtn">김철수 외 1인</span></td>
+										<td>20-06-03 (수) 20:00</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk8" />
+												<label for="chk8"><i></i></label>
+											</span>
+										</td>
+										<td><a>20-06-04 (목)</a></td>
+										<td>오유진 (180904)</td>
+										<td class="tL">프로젝트명선택</td>
+										<td class="tL">알씨아이파이낸셜서비스코리아㈜</td>
+										<td>박종석</td>
+										<td>영업미팅</td>
+										<td>직출</td>
+										<td>10:00</td>
+										<td>12:00</td>
+										<td>직퇴</td>
+										<td><span id="cancelCaseBtn">취소된 일정</span></td><!--2020-09-08-->
+										<td>20-06-03 (수) 20:00</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="bpSet">
+							<div class="btnArea">
+								<span class="left">
+									<button class="btnM" onclick="if(!confirm('선택한 외근일정을 삭제 하시겠습니끼?')){return false;}">선택삭제</button>
+									<button class="btnM" id="cancelBtn">선택취소</button><!-- 2020-09-08 -->
+								</span>
+								<span class="right">
+									<button class="btnM" id="outsideNewBtn">신규등록</button>
+								</span>
+							</div>
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+									<a class="on">1</a>
+									<a>2</a>
+									<a>3</a>
+									<a>4</a>
+									<a>5</a>
+									<a class="next">다음</a>
+								</span>
+								<span class="selectSet">
+									<select>
+										<option>10개</option>
+										<option>20개</option>
+										<option>50개</option>
+										<option>100개</option>
+									</select>
+								</span>
+							</div>
+						</div>
+						<!--//-->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 2020-09-08 승인자 확인여부 및 재요청 -->
+			<div class="basicPop outSideOkPop" id="cancelCase" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>승인자 확인여부</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tls">
+						<table>
+							<colgroup>
+								<col width="140"/>
+								<col width="150"/><!-- 2020-09-08 넓이변경되었어요 -->
+								<col width="200"/><!-- 2020-09-08 넓이변경되었어요 -->
+								<col width="80"/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>승인자</th>
+									<th>요청일시</th>
+									<th>승인일시</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>김철수 (200101)</td>
+									<td>2020-06-22 00:00</td>
+									<td>2020-06-23 00:00</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>김철수 (200101)</td>
+									<td>2020-06-22 00:00</td>
+									<td>[반려] 2020-06-23 00:00</td>
+									<td><button class="btnS white" id="etcReasonsBtn2">사유</button></td>
+								</tr>
+								<!-- 2020-09-08 -->
+								<tr>
+									<td>관리자명 (200101)</td>
+									<td>2020-06-22 00:00</td>
+									<td>[일정취소] 2020-06-23 00:00</td>
+									<td><button class="btnS white" id="etcReasonsBtn3">사유</button></td>
+								</tr>
+								<!-- //2020-09-08 -->
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //2020-09-08 승인자 확인여부 및 일정취소 -->
+			<!-- 승인자 확인여부 및 재요청 -->
+			<div class="basicPop outSideOkPop" id="basicCase" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>승인자 확인여부</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<!---->
+					<div class="tls">
+						<table>
+							<colgroup>
+								<col width="140"/>
+								<col width="150"/>
+								<col width="200"/>
+								<col width="80"/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>승인자</th>
+									<th>요청일시</th>
+									<th>승인일시</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>김철수 (200101)</td>
+									<td>2020-06-22 00:00</td>
+									<td>2020-06-23 00:00</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>김철수 (200101)</td>
+									<td>2020-06-22 00:00</td>
+									<td>[반려] 2020-06-23 00:00</td>
+									<td><button class="btnS white" id="etcReasonsBtn2">사유</button></td>
+								</tr>
+								<tr>
+									<td>김철수 (200101)</td>
+									<td>2020-06-22 00:00</td>
+									<td>
+										<button class="btnS green">승인요청 푸시발송</button>
+									</td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //승인자 확인여부 및 재요청 -->
+			<!--외근일정 기타사유-->
+			<div class="basicPop etcReasonsPop" id="etcReasonsPop1" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>외근일정 기타사유</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<p>사유가 나옵니다. 사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다 영문abcdefgabcdefgabcdefgabcdefg</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!--//외근일정 기타사유-->
+			<!--승인반려 사유-->
+			<div class="basicPop etcReasonsPop" id="etcReasonsPop2" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>승인반려 사유</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<p>사유가 나옵니다. 사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다 영문abcdefgabcdefgabcdefgabcdefg</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!--//승인반려 사유-->
+			<!-- 외근일정 신규등록 -->
+			<div class="basicPop outsidePop" id="newOutSidePop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>외근일정 신규등록</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="140"/>
+								<col width="250"/>
+								<col width="130"/>
+								<col width="250"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>프로젝트명 <sup>필수항목</sup></th>
+									<td colspan="3">
+										<span class="selectSet">
+											<select>
+												<option>선택하세요</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>외근일자 <sup>필수항목</sup></th>
+									<td>
+										<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									</td>
+									<th>참석자 <sup>필수항목</sup></th>
+									<td>
+										<input type="text" placeholder="자동입력완성 (다중선택)" value="조명진 (160201)" class="autoCom" />
+									</td>
+								</tr>
+								<tr>
+									<th>방문 업체 <sup>필수항목</sup></th>
+									<td><input type="text" placeholder="자동입력완성" value="" class="autoCom" /></td>
+									<th>업체 담당자 <sup>필수항목</sup></th>
+									<td>
+										<input type="text" placeholder="자동입력완성" value="" class="autoCom" />
+									</td>
+								</tr>
+								<tr>
+									<th>방문목적 <sup>필수항목</sup></th>
+									<td colspan="3" class="dup">
+										<span class="selectSet">
+											<select>
+												<option>선택하세요</option>
+												<option>영업미팅</option>
+												<option>기획협의</option>
+												<option>오픈준비</option>
+												<option>수정대응</option>
+												<option>장애대응</option>
+												<option>유지보수</option>
+												<option>기타</option>
+											</select>
+										</span>
+										<div><input type="text" /></div>
+									</td>
+								</tr>
+								<!--2020-08-14-->
+								<tr>
+									<th>장소 <sup>필수항목</sup></th>
+									<td colspan="3" class="placeSet">
+										<div>
+											<span class="selectSet">
+												<select>
+													<option>기본주소</option>
+													<option>추가주소</option>
+												</select>
+											</span>
+											<button class="btnM white">직접입력</button>
+										</div>
+										<div style="display:none;">
+											<input type="text"/>
+											<button class="btnM white">입력취소</button>
+										</div>
+									</td>
+								</tr>
+								<!--//2020-08-14-->
+								<tr>
+									<th>이동시작 <sup>필수항목</sup></th>
+									<td>
+										<input type="text" placeholder="00:00" class="wHalf" />
+										<span class="checkSet">
+											<input type="checkbox" id="chk00" />
+											<label for="chk00"><i></i>직출</label>
+										</span>
+									</td>
+									<th>미팅시작시간 <sup>필수항목</sup></th>
+									<td><input type="text" placeholder="00:00" class="wHalf" /></td>
+								</tr>
+								<tr>
+									<th>종료 예정시간 <sup>필수항목</sup></th>
+									<td><input type="text" placeholder="00:00" class="wHalf" /></td>
+									<th>복귀 예정시간 <sup>필수항목</sup></th>
+									<td>
+										<input type="text" placeholder="00:00" class="wHalf" />
+										<span class="checkSet">
+											<input type="checkbox" id="chk01" />
+											<label for="chk01"><i></i>직퇴</label>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>승인자</th>
+									<td colspan="3">
+										<input type="text" placeholder="자동입력완성 (다중선택)" value="조명진 (160201)" class="autoCom wHalf" />
+										<span class="checkSet ml1">
+											<input type="checkbox" id="chk01" checked />
+											<label for="chk01"><i></i>승인적용</label>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<div class="basicPop outsidePop case2" id="modifyOutSidePop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>외근일정 수정</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="140"/>
+								<col width="250"/>
+								<col width="130"/>
+								<col width="250"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>작성일자</th>
+									<td>2020-01-21 (목) 00:00</td>
+									<th>작성자</th>
+									<td>조명진 (160201)</td>
+								</tr>
+								<tr>
+									<th>프로젝트명 <sup>필수항목</sup></th>
+									<td colspan="3">
+										<span class="selectSet">
+											<select>
+												<option>선택하세요</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>외근일자 <sup>필수항목</sup></th>
+									<td>
+										<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									</td>
+									<th>참석자 <sup>필수항목</sup></th>
+									<td>
+										<input type="text" placeholder="자동입력완성 (다중선택)" value="조명진 (160201)" class="autoCom" />
+									</td>
+								</tr>
+								<tr>
+									<th>방문 업체 <sup>필수항목</sup></th>
+									<td><input type="text" placeholder="자동입력완성" value="" class="autoCom" /></td>
+									<th>업체 담당자 <sup>필수항목</sup></th>
+									<td>
+										<input type="text" placeholder="자동입력완성" value="" class="autoCom" />
+									</td>
+								</tr>
+								<tr>
+									<th>방문목적 <sup>필수항목</sup></th>
+									<td colspan="3" class="dup">
+										<span class="selectSet">
+											<select>
+												<option>선택하세요</option>
+												<option>영업미팅</option>
+												<option>기획협의</option>
+												<option>오픈준비</option>
+												<option>수정대응</option>
+												<option>장애대응</option>
+												<option>유지보수</option>
+												<option>기타</option>
+											</select>
+										</span>
+										<div><input type="text" /></div>
+									</td>
+								</tr>
+								<!--2020-08-14-->
+								<tr>
+									<th>장소 <sup>필수항목</sup></th>
+									<td colspan="3" class="placeSet">
+										<div>
+											<span class="selectSet">
+												<select>
+													<option>기본주소</option>
+													<option>추가주소</option>
+												</select>
+											</span>
+											<button class="btnM white">직접입력</button>
+										</div>
+										<div style="display:none;">
+											<input type="text"/>
+											<button class="btnM white">입력취소</button>
+										</div>
+									</td>
+								</tr>
+								<!--//2020-08-14-->
+								<tr>
+									<th>이동시작 <sup>필수항목</sup></th>
+									<td>
+										<input type="text" placeholder="00:00" class="wHalf" />
+										<span class="checkSet">
+											<input type="checkbox" id="chk00" />
+											<label for="chk00"><i></i>직출</label>
+										</span>
+									</td>
+									<th>미팅시작시간 <sup>필수항목</sup></th>
+									<td><input type="text" placeholder="00:00" class="wHalf" /></td>
+								</tr>
+								<tr>
+									<th>종료 예정시간 <sup>필수항목</sup></th>
+									<td><input type="text" placeholder="00:00" class="wHalf" /></td>
+									<th>복귀 예정시간 <sup>필수항목</sup></th>
+									<td>
+										<input type="text" placeholder="00:00" class="wHalf" />
+										<span class="checkSet">
+											<input type="checkbox" id="chk01" />
+											<label for="chk01"><i></i>직퇴</label>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>종료시간</th>
+									<td><input type="text" placeholder="00:00" class="wHalf" /></td>
+									<th>복귀시간</th>
+									<td><input type="text" placeholder="00:00" class="wHalf" /></td>
+								</tr>
+								<tr>
+									<th>담당PM 승인여부</th>
+									<td colspan="3">
+										<input type="text" placeholder="자동입력완성 (다중선택)" value="조명진 (160201)" class="autoCom wHalf" />
+										<span class="checkSet ml1">
+											<input type="checkbox" id="chk01" checked />
+											<label for="chk01"><i></i>승인적용</label>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- 2020-09-08 -->
+		<div class="alertDim" style="display:none;">
+			<!-- 취소사유 입력 -->
+			<div class="basicPop etcReasonsPop" id="etcReasonsPop3" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>일정취소 사유입력</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<textarea placeholder="일정취소 사유를 입력 해주세요" class="h11"></textarea>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">취소완료</button>
+				</div>
+			</div>
+			<!--//취소사유 입력-->
+			<!--취소사유 사유-->
+			<div class="basicPop etcReasonsPop" id="etcReasonsPop4" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>취소사유 사유</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<p>사유가 나옵니다. 사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다 영문abcdefgabcdefgabcdefgabcdefg</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!--//취소사유 사유-->
+		</div>
+		<!-- //2020-09-08 -->
+		<!-- //Popup -->
+    </body>
+</html>

@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+        <style>
+			body, html {overflow:auto !important;}
+			#container {position:relative;left:0;}
+			.componentLayout {padding:10px;}
+			.componentLayout table {width:100%;border:1px solid #eee;border-collapse:collapse;}
+			.componentLayout table th {border:1px solid #dddddd;padding:5px;text-align:center;}
+			.componentLayout table td {border:1px solid #dddddd;padding:14px;}
+		</style>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+            <!-- header -->
+            <div id="header"></div>
+            <!-- //header -->
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="componentLayout">
+					<table>
+						<tr>
+							<th>input</th>
+						</tr>
+						<tr>
+							<td>
+								<dl class="inputBox">
+			                        <dt>입항일</dt>
+			                        <dd><input type="text" placeholder="운송 요청사항"/></dd>
+			                    </dl>
+			                    <dl class="inputBox">
+			                        <dt>담당</dt>
+			                        <dd><input type="text" value="홍길동"/></dd>
+			                    </dl>
+								<dl class="inputBox">
+			                        <dt>담당</dt>
+			                        <dd>
+										<input type="text"/>
+										<button class="btnSearch">검색하기</button>
+									</dd>
+			                    </dl>
+			                    <input type="text" class="inputAuto" placeholder="서울시 마포구 매봉산로 37"/><br/>
+			                    <input type="text" class="inputAuto" value="서울시 마포구 매봉산로 37"/><br/>
+								<span class="calendarSet">
+									<span class="calDupSet">
+										<span class="calSet"><label for="searchDate">조회기간</label><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span>
+										<em>~</em>
+										<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									</span>
+									<span class="radioChoose">
+										<label for="lb1"><input type="radio" id="lb1" name="radio1" value="오늘" /><span>오늘</span></label>
+										<label for="lb2"><input type="radio" id="lb2" name="radio1" value="10일" /><span>10일</span></label>
+										<label for="lb3"><input type="radio" id="lb3" name="radio1" value="지난달" /><span>지난달</span></label>
+										<label for="lb4"><input type="radio" id="lb4" name="radio1" value="이번달" /><span>이번달</span></label>
+									</span>
+								</span><br/><br/>
+								<span class="checkSet">
+									<input type="checkbox" id="chk2" />
+									<label for="chk2"><i></i></label>
+								</span>
+								<span class="checkSet">
+									<input type="checkbox" id="chk1" checked/>
+									<label for="chk1"><i></i></label>
+								</span>
+								<span class="radioSet">
+									<input type="radio" id="rdo1" name="radio1" />
+									<label for="rdo1"><i></i></label>
+								</span>
+								<span class="radioSet">
+									<input type="radio" id="rdo2" name="radio1" checked/>
+									<label for="rdo2"><i></i></label>
+								</span>
+								<span class="radioSet">
+									<input type="radio" id="rdo21" checked disabled />
+									<label for="rdo21"><i></i></label>
+								</span>
+								<span class="agreeSet">
+									<input type="checkbox" id="chk3" />
+									<label for="chk3"><i></i></label>
+								</span>
+								<span class="agreeSet">
+									<input type="checkbox" id="chk4" checked/>
+									<label for="chk4"><i></i></label>
+								</span>
+								<span class="agreeSet all">
+									<input type="checkbox" id="chk5" />
+									<label for="chk5"><i></i></label>
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<th>tab</th>
+						</tr>
+						<tr>
+							<td>
+								<div class="tab">
+									<!-- tab -->
+									<div class="tabBack">
+										<div class="tabNav">
+											<nav>
+												<ul>
+													<li class="on"><button data-name="1">Tab Menu 1<span>완료</span></button></li>
+													<li><button data-name="2">Tab Menu 2<span>완료</span></button></li>
+													<li><button data-name="3">Tab Menu 3</button></li>
+													<li><button data-name="4">Tab Menu 4</button></li>
+												</ul>
+											</nav>
+										</div>
+									</div>
+									<!--// tab -->
+									<div class="tabLayout">
+										<div class="tabData tData1" style="display:block;">Tab Menu 1 Data</div>
+										<div class="tabData tData2">Tab Menu 2 Data</div>
+										<div class="tabData tData3">Tab Menu 3 Data</div>
+										<div class="tabData tData4">Tab Menu 4 Data</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>button</th>
+						</tr>
+						<tr>
+							<td>
+								<button class="searchCompany">회사검색</button>
+			                    <button class="searchUnipass">UNIPASS 검색</button><br/><br/>
+			                    <button class="btnM red">신규등록</button>
+								<button class="btnM whiteRed">신규등록</button>
+			                    <button class="btnM orange">선택 건 배차요청</button>
+			                    <button class="btnM whiteOrange">배차취소</button>
+			                    <button class="btnM blue">오더확정</button>
+			                    <button class="btnM whiteBlue">배차요청</button>
+			                    <button class="btnM whiteBlack">목록</button>
+			                    <button class="btnM black">조회</button>
+			                    <button class="btnM gray">오늘</button>
+								<button class="btnM" disabled>다음</button><br/><br/>
+			                    <button class="btnS lineRed">선택삭제</button>
+			                    <button class="btnS lineOrange">엑셀 다운로드</button><br/><br/>
+								<button class="btnOrderMini">오더접수</button>
+								<button class="btnAdress">주소검색</button>
+								<button class="btnRing">알림<span>2</span></button>
+								<button class="btnRing white" style="background-color:#222;">알림<span>2</span></button>
+							</td>
+						</tr>
+						<tr>
+							<th>icon</th>
+						</tr>
+						<tr>
+							<td>
+								<span class="statusSet receive">오더접수</span>
+								<span class="statusSet cancel">오더취소<span>(차주)</span></span>
+								<span class="statusSet confirm">오더확정</span>
+								<span class="statusSet request">배차요청중</span>
+								<span class="statusSet delay">배차지연</span><br/><br/>
+								<span class="port">인천항</span><br/><br/>
+								<div class="transType"><strong>수입</strong></div>
+								<div class="transType blue"><strong>수출</strong></div>
+								<div class="transType green"><strong>환적</strong></div>
+							</td>
+						</tr>
+						<tr>
+							<th>select</th>
+						</tr>
+						<tr>
+							<td>
+								<span class="selectSet">
+								    <select>
+								        <option selected>메뉴1</option>
+								        <option>메뉴2</option>
+								    </select>
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<th>팝업버튼</th>
+						</tr>
+						<tr>
+							<td>
+								<button class="btnS" id="popBtn1">alert팝업</button>
+								<button class="btnS" id="popBtn2">패스워드 재발급</button>
+								<button class="btnS" id="popBtn3">패스워드 변경</button>
+								<button class="btnS" id="popBtn4">선택 건 배차요청</button>
+								<button class="btnS" id="popBtn5">신규 오더</button>
+								<button class="btnS" id="popBtn6">신규 계약오더</button>
+								<button class="btnS" id="popBtn7">세금계산서 발행</button>
+								<button class="btnS" id="popBtn8">세금계산서</button>
+								<button class="btnS" id="popBtn9">이미지크게보기</button>
+								<button class="btnS" id="popBtn10">신규 코드</button>
+								<button class="btnS" id="popBtn11">신규 운영자</button>
+								<button class="btnS" id="popBtn12">주소검색</button>
+								<button class="btnS" id="popBtn13">회사검색</button>
+								<script>
+									$(document).ready(function() {
+										$('#popBtn1').click(function(){
+											$('.alertDim').show();
+											$('#samplePop1').show();
+										});
+										$('#popBtn2').click(function(){
+											$('.popDim').show();
+											$('#samplePop2').show();
+										});
+										$('#popBtn3').click(function(){
+											$('.popDim').show();
+											$('#samplePop3').show();
+										});
+										$('#popBtn4').click(function(){
+											$('.popDim').show();
+											$('#samplePop4').show();
+										});
+										$('#popBtn5').click(function(){
+											$('.popDim').show();
+											$('#samplePop5').show();
+										});
+										$('#popBtn6').click(function(){
+											$('.popDim').show();
+											$('#samplePop6').show();
+										});
+										$('#popBtn7').click(function(){
+											$('.popDim').show();
+											$('#samplePop7').show();
+										});
+										$('#popBtn8').click(function(){
+											$('.popDim').show();
+											$('#samplePop8').show();
+										});
+										$('#popBtn9').click(function(){
+											$('.popDim').show();
+											$('#samplePop9').show();
+										});
+										$('#popBtn10').click(function(){
+											$('.popDim').show();
+											$('#samplePop10').show();
+										});
+										$('#popBtn11').click(function(){
+											$('.popDim').show();
+											$('#samplePop11').show();
+										});
+										$('#popBtn12').click(function(){
+											$('.popDim').show();
+											$('#samplePop12').show();
+										});
+										$('#popBtn13').click(function(){
+											$('.popDim').show();
+											$('#samplePop13').show();
+										});
+										$('.alertPop .pBtn button, .basicPop .pBtn button, .pclose').click(function(){
+											$('.popDim, .alertDim').hide();
+											$('.alertPop, .basicPop, .bigImgPop').hide();
+										});
+									});
+								</script>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- alertPopup -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop" id="samplePop1" style="display:none;">
+				<div class="pBack">
+					<p>alert 팝업 샘플입니다. <br/> 여러줄일 경우엔 이렇게 나오면 됩니다</p>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //alertPopup -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none">
+			<!-- 패스워드 재발급 -->
+			<div class="basicPop pwReissuePop" id="samplePop2" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>패스워드 재발급</h1>
+				</div>
+				<div class="pBack">
+					<div class="chapter1">
+						<div class="before">
+							<dl class="inputBox iner wFull">
+								<dt>아이디 (ID)</dt>
+								<dd><input type="password" placeholder="아이디를 입력해주세요"/></dd>
+							</dl>
+							<dl class="inputBox iner wFull">
+								<dt>성명</dt>
+								<dd><input type="password" placeholder="성명을 입력해주세요"/></dd>
+							</dl>
+						</div>
+						<div class="joinDetail phonePass">
+							<div class="back">
+								<dl class="inputBox iner">
+									<dt>휴대전화</dt>
+									<dd><input type="tel" placeholder="‘ - ’ 없이 숫자로 입력"/></dd>
+								</dl>
+								<button class="btnM green">인증번호발송</button>
+								<!-- <button class="btnM gray">재발송</button> -->
+							</div>
+							<div class="back noTt">
+								<dl class="inputBox iner">
+									<dt>인증번호</dt>
+									<dd><input type="tel" placeholder="4자리"/></dd>
+									<dd>2:59</dd>
+								</dl>
+								<button class="btnM green" disabled>확인</button>
+							</div>
+						</div>
+					</div>
+					<div class="chapter2" style="display:none">
+						<div class="grayBox">
+							<dl class="inputBox iner wFull">
+								<dt>신규 패스워드</dt>
+								<dd><input type="password" placeholder="영,숫자 포함하여 8자리 이상"/></dd>
+							</dl>
+							<dl class="inputBox iner wFull">
+								<dt>신규 패스워드(확인)</dt>
+								<dd><input type="password" placeholder="영,숫자 포함하여 8자리 이상"/></dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//패스워드 재발급-->
+			<!-- 패스워드 변경 -->
+			<div class="basicPop pwChangePop" id="samplePop3" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>패스워드 변경</h1>
+				</div>
+				<div class="pBack">
+					<div class="before">
+						<dl class="inputBox iner wFull">
+							<dt>기존 패스워드</dt>
+							<dd><input type="password" placeholder="영,숫자 포함하여 8자리 이상"/></dd>
+						</dl>
+					</div>
+					<div class="grayBox">
+						<dl class="inputBox iner wFull">
+							<dt>신규 패스워드</dt>
+							<dd><input type="password" placeholder="영,숫자 포함하여 8자리 이상"/></dd>
+						</dl>
+						<dl class="inputBox iner wFull">
+							<dt>신규 패스워드(확인)</dt>
+							<dd><input type="password" placeholder="영,숫자 포함하여 8자리 이상"/></dd>
+						</dl>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//패스워드 변경-->
+			<!-- 선택 건 배차요청 -->
+			<div class="basicPop requestPop" id="samplePop4" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>선택 건 배차요청</h1>
+				</div>
+				<div class="pBack">
+					<div class="before">
+						<strong>선택한 오더(1건)을 배차요청 하시겠습니까?</strong>
+						<span class="radioSet">
+							<input type="radio" id="radiochk1" name="radioChk1" />
+							<label for="radiochk1"><i></i>전체 배포</label>
+						</span>
+						<span class="radioSet">
+							<input type="radio" id="radiochk2" name="radioChk1" checked/>
+							<label for="radiochk2"><i></i>특정 차주에게 추천</label>
+						</span>
+					</div>
+					<div class="tab">
+						<!-- tab -->
+						<div class="tabBack">
+							<div class="tabNav">
+								<nav>
+									<ul>
+										<li class="on"><button data-name="1">차주(전체)</button></li>
+										<li><button data-name="2">예약(공차)</button></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<!--// tab -->
+						<div class="tabLayout">
+							<div class="tabData tData1" style="display:block;">
+								<div class="optionArea">
+									<span class="selectSet">
+										<select>
+											<option selected>지역선택</option>
+											<option>메뉴2</option>
+										</select>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option selected>도시선택</option>
+											<option>메뉴2</option>
+										</select>
+									</span>
+								</div>
+								<div class="listBox">
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="50" />
+												<col width="100" />
+												<col width="150" />
+												<col width="300" />
+											</colgroup>
+											<thead>
+												<tr>
+													<th></th>
+													<th>No</th>
+													<th>회사명</th>
+													<th>위치</th>
+												</tr>
+											</thead>
+											<tbody>
+												<!--Loop-->
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chk1" />
+															<label for="chk1"><i></i></label>
+														</span>
+													</td>
+													<td>김철수</td>
+													<td>010-5555-6666</td>
+													<td class="tL">
+														<ol>
+															<li>경기/의왕</li>
+															<li>경기/안산</li>
+															<li>경기/전역</li>
+														</ol>
+													</td>
+												</tr>
+												<!--//Loop-->
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chk2" />
+															<label for="chk2"><i></i></label>
+														</span>
+													</td>
+													<td>김철수</td>
+													<td>010-5555-6666</td>
+													<td class="tL">
+														<ol>
+															<li>경기/의왕</li>
+															<li>경기/안산</li>
+															<li>경기/전역</li>
+														</ol>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chk3" />
+															<label for="chk3"><i></i></label>
+														</span>
+													</td>
+													<td>김철수</td>
+													<td>010-5555-6666</td>
+													<td class="tL">
+														<ol>
+															<li>경기/의왕</li>
+															<li>경기/안산</li>
+															<li>경기/전역</li>
+														</ol>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chk4" />
+															<label for="chk4"><i></i></label>
+														</span>
+													</td>
+													<td>김철수</td>
+													<td>010-5555-6666</td>
+													<td class="tL">
+														<ol>
+															<li>경기/의왕</li>
+															<li>경기/안산</li>
+															<li>경기/전역</li>
+														</ol>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chk5" />
+															<label for="chk5"><i></i></label>
+														</span>
+													</td>
+													<td>김철수</td>
+													<td>010-5555-6666</td>
+													<td class="tL">
+														<ol>
+															<li>경기/의왕</li>
+															<li>경기/안산</li>
+															<li>경기/전역</li>
+														</ol>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chk6" />
+															<label for="chk6"><i></i></label>
+														</span>
+													</td>
+													<td>김철수</td>
+													<td>010-5555-6666</td>
+													<td class="tL">
+														<ol>
+															<li>경기/의왕</li>
+															<li>경기/안산</li>
+															<li>경기/전역</li>
+														</ol>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="tabData tData2">
+								<div class="optionArea">
+									<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									<span class="selectSet">
+										<select>
+											<option selected>시간대 선택</option>
+											<option>메뉴2</option>
+										</select>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option selected>예약/공차</option>
+											<option>메뉴2</option>
+										</select>
+									</span>
+								</div>
+								<div class="listBox">
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="50" />
+												<col width="65" />
+												<col width="110" />
+												<col width="160" />
+												<col width="50" />
+												<col width="230" />
+											</colgroup>
+											<thead>
+												<tr>
+													<th></th>
+													<th>이름</th>
+													<th>연락처</th>
+													<th>예약 일시</th>
+													<th>예약/공차</th>
+													<th>예약 작업지</th>
+												</tr>
+											</thead>
+											<tbody>
+												<!--Loop-->
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chk6" />
+															<label for="chk6"><i></i></label>
+														</span>
+													</td>
+													<td>김철수</td>
+													<td>010-5555-6666</td>
+													<td>2020-03-10 / 모든 시간대</td>
+													<td>예약</td>
+													<td class="tL">
+														<ol>
+															<li>경기/의왕</li>
+															<li>경기/안산</li>
+															<li>경기/전역</li>
+														</ol>
+													</td>
+												</tr>
+												<!--//Loop-->
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chk7" />
+															<label for="chk7"><i></i></label>
+														</span>
+													</td>
+													<td>김철수</td>
+													<td>010-5555-6666</td>
+													<td>2020-03-10 / 모든 시간대</td>
+													<td>예약</td>
+													<td class="tL">
+														<ol>
+															<li>경기/의왕</li>
+															<li>경기/안산</li>
+															<li>경기/전역</li>
+														</ol>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chk8" />
+															<label for="chk8"><i></i></label>
+														</span>
+													</td>
+													<td>김철수</td>
+													<td>010-5555-6666</td>
+													<td>2020-03-10 / 모든 시간대</td>
+													<td>예약</td>
+													<td class="tL">
+														<ol>
+															<li>경기/의왕</li>
+															<li>경기/안산</li>
+															<li>경기/전역</li>
+														</ol>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chk9" />
+															<label for="chk9"><i></i></label>
+														</span>
+													</td>
+													<td>김철수</td>
+													<td>010-5555-6666</td>
+													<td>2020-03-10 / [새벽] 0 ~ 6시</td>
+													<td>예약</td>
+													<td class="tL">
+														<ol>
+															<li>경기/의왕</li>
+															<li>경기/안산</li>
+															<li>경기/전역</li>
+														</ol>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="chk10" />
+															<label for="chk10"><i></i></label>
+														</span>
+													</td>
+													<td>김철수</td>
+													<td>010-5555-6666</td>
+													<td>2020-03-10 / [오전] 6시 ~ 12시</td>
+													<td>공차</td>
+													<td class="tL">
+														<ol>
+															<li>경기/의왕</li>
+															<li>경기/안산</li>
+															<li>경기/전역</li>
+														</ol>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//선택 건 배차요청-->
+			<!-- 신규 오더 -->
+			<div class="basicPop newOrderPop" id="samplePop5" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>신규 오더</h1>
+				</div>
+				<div class="pBack">
+					<div class="tws">
+						<div class="tab">
+							<!-- tab -->
+							<div class="tabBack">
+								<div class="tabNav">
+									<nav>
+										<ul>
+											<li class="on"><button data-name="1">고객정보</button></li>
+											<li><button data-name="2">오더정보</button></li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+							<!--// tab -->
+							<div class="tabLayout">
+								<div class="tabData tData1" style="display:block;">
+									<div class="optionArea">
+										<span class="selectSet">
+											<select>
+												<option selected>오더선택</option>
+												<option>메뉴2</option>
+											</select>
+										</span>
+										<span class="selectSet">
+											<select>
+												<option selected>운송선택</option>
+												<option>메뉴2</option>
+											</select>
+										</span>
+									</div>
+									<div class="tws">
+										<div class="transType blue"><strong>수출</strong></div>
+										<table>
+											<colgroup>
+												<col width="100"/>
+												<col width="100"/>
+												<col width="160"/>
+												<col width="40"/>
+												<col width="100"/>
+												<col/>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th rowspan="5" class="thTit">발주자</th>
+													<th>회사명</th>
+													<td colspan="2"><span class="addressArea"><input type="text"><button class="searchCompany">회사검색</button></span></td>
+													<th>사업자번호</th>
+													<td><input type="text"></td>
+												</tr>
+												<tr>
+													<th>담당자(성명)</th>
+													<td colspan="2"><input type="text"></td>
+													<th>담당자 연락처</th>
+													<td><input type="text"></td>
+												</tr>
+												<tr>
+													<th rowspan="2">주소</th>
+													<td><span class="addressArea"><button class="btnAdress">주소검색</button><input type="text"/></span></td>
+													<td colspan="3"><input type="text"/></td>
+												</tr>
+												<tr>
+													<td colspan="5"><input type="text"/></td>
+												</tr>
+												<tr class="lastTr">
+													<th>업태</th>
+													<td colspan="2"><input type="text"/></td>
+													<th>연락처</th>
+													<td><input type="text"/></td>
+												</tr>
+												<tr>
+													<th rowspan="5" class="thTit">청구자</th>
+													<th>회사명</th>
+													<td colspan="2"><input type="text"/></td>
+													<th>사업자번호</th>
+													<td><input type="text"/></td>
+												</tr>
+												<tr>
+													<th>담당자(성명)</th>
+													<td colspan="2"><input type="text"/></td>
+													<th>담당자(연락처)</th>
+													<td><input type="text"/></td>
+												</tr>
+												<tr>
+													<th rowspan="2">주소</th>
+													<td><span class="addressArea"><button class="btnAdress">주소검색</button><input type="text"/></span></td>
+													<td colspan="3"><input type="text"/></td>
+												</tr>
+												<tr>
+													<td colspan="5"><input type="text"/></td>
+												</tr>
+												<tr class="lastTr">
+													<th>업태</th>
+													<td colspan="2"><input type="text"/></td>
+													<th>업종</th>
+													<td><input type="text"/></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="tabData tData2">
+									<div class="optionArea">
+										<span class="selectSet">
+											<select>
+												<option selected>오더선택</option>
+												<option>메뉴2</option>
+											</select>
+										</span>
+										<span class="selectSet">
+											<select>
+												<option selected>운송선택</option>
+												<option>메뉴2</option>
+											</select>
+										</span>
+									</div>
+									<div class="tws">
+										<div class="transType blue"><strong>수출</strong></div>
+										<table>
+											<colgroup>
+												<col width="90"/>
+												<col width="90"/>
+												<col width="200"/>
+												<col width="90"/>
+												<col/>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th rowspan="5" class="thTit">기본정보</th>
+													<th>B/L</th>
+													<td><span class="unipassArea"><input type="text"/><button class="searchUnipass">UNIPASS 검색</button></span></td>
+													<th>D/O</th>
+													<td><input type="text"/></td>
+												</tr>
+												<tr>
+													<th>입항일자</th>
+													<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+													<th>선사</th>
+													<td><input type="text"/></td>
+												</tr>
+												<tr>
+													<th>모선</th>
+													<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+													<th>항차</th>
+													<td><input type="text" value="항차정보표기"/></td>
+												</tr>
+												<tr>
+													<th>운송요청</th>
+													<td colspan="3"><input type="text" value="운송요청입력"/></td>
+												</tr>
+												<tr class="lastTr">
+													<th>기타메모</th>
+													<td colspan="3"><input type="text" value="기타메모입력"/></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="tws">
+										<table>
+											<colgroup>
+												<col width="90"/>
+												<col width="90"/>
+												<col width="200"/>
+												<col width="90"/>
+												<col/>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th rowspan="5" class="thTit">컨테이너정보</th>
+													<th>계약단가</th>
+													<td>
+														<span class="selectSet">
+															<select>
+																<option selected>[계약금액/종류] 출발지/작업지</option>
+																<option>수입</option>
+															</select>
+														</span>
+													</td>
+													<th>운송유형</th>
+													<td><input type="text"/></td>
+												</tr>
+												<tr>
+													<th>운송요청일자</th>
+													<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+													<th>유형</th>
+													<td><input type="text"/></td>
+												</tr>
+												<tr>
+													<th>크기(ft)</th>
+													<td><input type="text" value="모선정보표기"/></td>
+													<th>중량(ton)</th>
+													<td><input type="text" value="항차정보표기"/></td>
+												</tr>
+												<tr class="lastTr">
+													<th>컨테이너 번호</th>
+													<td><input type="text"/></td>
+													<th>Seal 번호</th>
+													<td><input type="text"/></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="tws">
+										<table>
+											<colgroup>
+												<col width="90"/>
+												<col width="90"/>
+												<col width="140"/>
+												<col width="60"/>
+												<col width="90"/>
+												<col/>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th rowspan="4" class="thTit">상차<span>(출발지)</span></th>
+													<th>출발일시</th>
+													<td colspan="4"><input type="text" value="2020-01-01 12:00:00"/></td>
+												</tr>
+												<tr>
+													<th rowspan="2">주소</th>
+													<td><span class="addressArea"><button class="btnAdress">주소검색</button><input type="text"/></span></td>
+													<td colspan="3"><input type="text" placeholder="인천광역시 중구 서해대로 366"/></td>
+												</tr>
+												<tr>
+													<td colspan="4"><input type="text"/></td>
+												</tr>
+												<tr class="lastTr">
+													<th>담당자명</th>
+													<td colspan="2"><input type="text"/></td>
+													<th>연락처</th>
+													<td><input type="text"/></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="tws">
+										<table>
+											<colgroup>
+												<col width="90"/>
+												<col width="90"/>
+												<col width="140"/>
+												<col width="60"/>
+												<col width="90"/>
+												<col/>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th rowspan="5" class="thTit">작업1<span>(작업지)</span></th>
+													<th>출발일시</th>
+													<td colspan="4"><input type="text"/></td>
+												</tr>
+												<tr>
+													<th>회사명</th>
+													<td colspan="2"><span class="addressArea"><input type="text"/><button class="searchCompany">회사검색</button></span></td>
+													<td colspan="3"><input type="text"/></td>
+												</tr>
+												<tr>
+													<th rowspan="2">주소</th>
+													<td><span class="addressArea"><button class="btnAdress">주소검색</button><input type="text"/></span></td>
+													<td colspan="4"><input type="text"/></td>
+												</tr>
+												<tr>
+													<td colspan="4"><input type="text"/></td>
+												</tr>
+												<tr class="lastTr">
+													<th>담당자명</th>
+													<td colspan="2"><input type="text"/></td>
+													<th>연락처</th>
+													<td><input type="text"/></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<button class="btnS whiteBlue" id="btnWorkspace">+ 작업지 추가</button>
+									<div class="tws">
+										<table>
+											<colgroup>
+												<col width="90"/>
+												<col width="90"/>
+												<col width="140"/>
+												<col width="60"/>
+												<col width="90"/>
+												<col/>
+											</colgroup>
+											<tbody>
+												<tr>
+													<th rowspan="4" class="thTit">반납<span>(도착지)</span></th>
+													<th>출발일시</th>
+													<td colspan="4"><input type="text"/></td>
+												</tr>
+												<tr>
+													<th rowspan="2">주소</th>
+													<td><span class="addressArea"><button class="btnAdress">주소검색</button><input type="text"/></span></td>
+													<td colspan="3"><input type="text"/></td>
+												</tr>
+												<tr>
+													<td colspan="4"><input type="text"/></td>
+												</tr>
+												<tr class="lastTr">
+													<th>담당자명</th>
+													<td colspan="2"><input type="text"/></td>
+													<th>연락처</th>
+													<td><input type="text"/></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="costBox">
+										<strong>컨테이너 운송비용</strong>
+										<dl class="inputBox">
+											<dt>총 예상비용</dt>
+											<dd class="tR"><input type="number">원</dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//신규 오더-->
+			<!-- 신규 계약오더 -->
+			<div class="basicPop newOrderPop" id="samplePop6" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>신규 계약오더</h1>
+				</div>
+				<div class="pBack">
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="100"/>
+								<col width="160"/>
+								<col width="170"/>
+								<col />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th class="thTit">계약일자</th>
+									<td colspan="3"><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+								</tr>
+								<tr>
+									<th class="thTit">계약기간</th>
+									<td colspan="3">
+										<span class="calDupSet">
+											<span class="calSet"><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span>
+											<em>~</em>
+											<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th class="thTit">운송타입</th>
+									<td colspan="3">
+										<span class="selectSet">
+										    <select>
+										        <option selected>선택</option>
+										        <option>수입</option>
+										        <option>수출</option>
+										        <option>환적</option>
+										    </select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th class="thTit">컨테이너 크기</th>
+									<td>
+										<span class="selectSet">
+										    <select>
+										        <option selected>20</option>
+										        <option>40</option>
+										        <option>40 High Cube</option>
+										        <option>45 High Cube</option>
+										    </select>
+										</span>
+									</td>
+									<th>컨테이너 타입</th>
+									<td>
+										<span class="selectSet">
+										    <select>
+										        <option selected>Dry</option>
+										        <option>Reefer</option>
+										        <option>Open Top. Sliding</option>
+										        <option>Open Top</option>
+										        <option>Flat Rack</option>
+										        <option>Super Rack</option>
+										    </select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th rowspan="5" class="thTit">계약회사</th>
+									<th>계약자 아이디</th>
+									<td colspan="2"><span class="addressArea"><input class="wHalf tL" type="text"><button class="searchCompany">회원검색</button></span></td>
+								</tr>
+								<tr>
+									<th>회사명</th>
+									<td colspan="2"><span class="addressArea"><input class="tL" type="text"><button class="searchCompany">회사검색</button></span></td>
+								</tr>
+								<tr>
+									<th>담당자(성명)</th>
+									<td colspan="2"><input type="text"/></td>
+								</tr>
+								<tr>
+									<th>담당자(직급)</th>
+									<td colspan="2"><input type="text"/></td>
+								</tr>
+								<tr class="lastTr">
+									<th>담당자(연락처)</th>
+									<td colspan="2"><input type="text" placeholder="'-'를 제외하고 입력"/></td>
+								</tr>
+								<tr>
+									<th rowspan="7" class="thTit">계약정보</th>
+									<th rowspan="2">출발지(주소)</th>
+									<td><span class="addressArea"><button class="btnAdress">주소검색</button><input type="text" placeholder="우편번호"/></span></td>
+									<td><div class="portArea"><input type="text" placeholder="기본주소"/><span class="port">도/시 주소</span></div></td>
+								</tr>
+								<tr>
+									<td colspan="2"><input type="text" placeholder="상세주소"/></td>
+								</tr>
+								<tr>
+									<th>작업지</th>
+									<td colspan="2"><input type="text" placeholder="작업지, 상/하차장"/></td>
+								</tr>
+								<tr>
+									<th rowspan="2">작업지(주소)</th>
+									<td><span class="addressArea"><button class="btnAdress">주소검색</button><input type="text" placeholder="우편번호"/></span></td>
+									<td><div class="portArea"><input type="text" placeholder="기본주소"/><span class="port">인천항</span></div></td>
+								</tr>
+								<tr>
+									<td colspan="3"><input type="text" placeholder="상세주소"/></td>
+								</tr>
+								<tr>
+									<th rowspan="2">도착지(주소)</th>
+									<td><span class="addressArea"><button class="btnAdress">주소검색</button><input type="text" placeholder="우편번호"/></span></td>
+									<td><div class="portArea"><input type="text" placeholder="기본주소"/><span class="port">인천항</span></div></td>
+								</tr>
+								<tr class="lastTr">
+									<td colspan="2"><input type="text" placeholder="상세주소"/></td>
+								</tr>
+								<tr>
+									<th class="thTit">계약금액</th>
+									<td colspan="3"><input class="wHalf" type="text"/>원</td>
+								</tr>
+								<tr>
+									<th class="thTit">계약거리</th>
+									<td colspan="2">
+										<span class="selectSet">
+										    <select>
+										        <option selected>선택</option>
+										        <option>메뉴2</option>
+										    </select>
+										</span>
+									</td>
+									<td>5종(4축이상 특수화물차) 기준</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//신규 계약오더-->
+			<!-- 세금계산서 발행 -->
+			<div class="basicPop taxBillPop" id="samplePop7" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>세금계산서를 발행하시겠습니까?</h1>
+				</div>
+				<div class="pBack">
+					<div class="alertList">
+						<ul>
+							<li>해당 세금계산서는 전자세금계산서는 아닙니다. 국세청 세금신고를 위해서는 별도의 신고절차가 필요합니다.</li>
+							<li>추가운임비용이 있다면 아래에 추가 항목을 입력한 후, [확인]버튼을 클릭해 주세요. 추가운임비용이 없다면 곧바로 [확인]버튼을 클릭해 주세요.</li>
+							<li>부가가치세액은 자동으로 입력되므로 세액을 빼고 입력해주세요.</li>
+						</ul>
+					</div>
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="80" />
+								<col width="140" />
+								<col width="30" />
+								<col width="70" />
+							</colgroup>
+							<thead>
+								<tr>
+									<th>일자</th>
+									<th>품목</th>
+									<th>수량</th>
+									<th>단가(원)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="tC"><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+									<td><input type="text" value="위탁운임단가"/></td>
+									<td><input type="number" class="tC" value="1"/></td>
+									<td><input type="text" class="tR" value="999,000"></td>
+								</tr>
+								<tr>
+									<td class="tC"><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+									<td><input type="text"/></td>
+									<td><input type="number" class="tC" placeholder="000"/></td>
+									<td><input type="text" class="tR" placeholder="000,000,000"></td>
+								</tr>
+								<tr>
+									<td class="tC"><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+									<td><input type="text"/></td>
+									<td><input type="number" class="tC" placeholder="000"/></td>
+									<td><input type="text" class="tR" placeholder="000,000,000"></td>
+								</tr>
+								<tr>
+									<td class="tC"><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+									<td><input type="text"/></td>
+									<td><input type="number" class="tC" placeholder="000"/></td>
+									<td><input type="text" class="tR" placeholder="000,000,000"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="20" />
+								<col width="20" />
+								<col width="20" />
+							</colgroup>
+							<thead>
+								<tr>
+									<th>발행일자</th>
+									<th>공급가액</th>
+									<th>세액</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="tC"><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+									<td class="tR">999,999,999</td>
+									<td class="tR">999,000</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM gray">취소</button>
+					<button class="btnM red">확인</button>
+				</div>
+			</div>
+			<!--//세금계산서 발행-->
+			<!-- 세금계산서 -->
+			<div class="basicPop pubTaxBillPop" id="samplePop8" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>세금계산서</h1>
+				</div>
+				<div class="pBack">
+					<div class="topSet">
+						<span class="left"><strong>계약번호 : M999999</strong></span>
+						<span class="right">
+							<button class="btnS gray">인쇄</button>
+							<button class="btnS green">다운로드</button>
+						</span>
+					</div>
+					<div class="taxImg">
+						<div class="centered">
+							<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/2pEM/image/pfA8B1fZYdX_1MsAy7bFcplNzSc.jpg">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--//세금계산서-->
+			<!-- 이미지크게보기 -->
+			<div class="bigImgPop" id="samplePop9" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="bigImg">
+					<div class="centered">
+						<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/2pEM/image/pfA8B1fZYdX_1MsAy7bFcplNzSc.jpg">
+					</div>
+				</div>
+			</div>
+			<!--//이미지크게보기-->
+			<!-- 신규 코드 -->
+			<div class="basicPop newCodePop" id="samplePop10" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>신규 코드</h1>
+				</div>
+				<div class="pBack">
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="100" />
+								<col width="200" />
+								<col width="100" />
+								<col width="*" />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>구분</th>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option selected>선택</option>
+												<option>운송</option>
+											</select>
+										</span>
+									</td>
+									<th>서비스</th>
+									<td>
+										<span class="radioSet">
+											<input type="radio" id="rdo1" name="radio1" />
+											<label for="rdo1"><i></i>공통</label>
+										</span>
+										<span class="radioSet">
+											<input type="radio" id="rdo2" name="radio1" checked/>
+											<label for="rdo2"><i></i>Web(화주용)</label>
+										</span>
+										<span class="radioSet">
+											<input type="radio" id="rdo3" name="radio1" checked/>
+											<label for="rdo3"><i></i>Mobile(차주용)</label>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>코드 분류</th>
+									<td><input type="text" placeholder="코드 분류를 입력해주세요"/></td>
+									<th>코드 설명</th>
+									<td><input type="text" placeholder="코드 설명을 입력해주세요"/></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tws codeData">
+						<table>
+							<colgroup>
+								<col width="90" />
+								<col width="180" />
+								<col width="300" />
+								<col width="100" />
+								<col width="60" />
+							</colgroup>
+							<thead>
+								<tr>
+									<th class="tC">코드값</th>
+									<th class="tC">코드명</th>
+									<th class="tC">상세 설명</th>
+									<th class="tC">사용여부</th>
+									<th class="tC">삭제</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type="text" placeholder="코드 값"/></td>
+									<td><input type="text" placeholder="코드명을 입력해주세요" /></td>
+									<td><input type="text" placeholder="코드 상세 설명을 입력해주세요"/></td>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option selected>Y</option>
+												<option>N</option>
+											</select>
+										</span>
+									</td>
+									<td><button class="btnTrash">삭제</button></td>
+								</tr>
+								<tr>
+									<td><input type="text" placeholder="코드 값"/></td>
+									<td><input type="text" placeholder="코드명을 입력해주세요" /></td>
+									<td><input type="text" placeholder="코드 상세 설명을 입력해주세요"/></td>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option selected>Y</option>
+												<option>N</option>
+											</select>
+										</span>
+									</td>
+									<td><button class="btnTrash">삭제</button></td>
+								</tr>
+								<tr>
+									<td><input type="text" placeholder="코드 값"/></td>
+									<td><input type="text" placeholder="코드명을 입력해주세요" /></td>
+									<td><input type="text" placeholder="코드 상세 설명을 입력해주세요"/></td>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option selected>Y</option>
+												<option>N</option>
+											</select>
+										</span>
+									</td>
+									<td><button class="btnTrash">삭제</button></td>
+								</tr>
+								<tr>
+									<td><input type="text" placeholder="코드 값"/></td>
+									<td><input type="text" placeholder="코드명을 입력해주세요" /></td>
+									<td><input type="text" placeholder="코드 상세 설명을 입력해주세요"/></td>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option selected>Y</option>
+												<option>N</option>
+											</select>
+										</span>
+									</td>
+									<td><button class="btnTrash">삭제</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="btnSet">
+						<button class="btnM wFull lineOrange btnCodeAdd">+ Add</button>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//신규 코드-->
+			<!-- 신규 운영자 -->
+			<div class="basicPop newOperatorPop" id="samplePop11" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>신규 운영자</h1>
+				</div>
+				<div class="pBack">
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="140">
+								<col width="*">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>성명</th>
+									<td><input type="text" placeholder="성명을 입력해주세요"/></td>
+								</tr>
+								<tr>
+									<th>아이디</th>
+									<td><input type="text" placeholder="영문과 숫자를 조합한 6~10자로 입력해주세요"/></td>
+								</tr>
+								<tr>
+									<th>패스워드</th>
+									<td><input type="text" placeholder="초기 패스워드는 아이디와 동일하게 등록됩니다." readonly/></td>
+								</tr>
+								<tr>
+									<th>핸드폰번호</th>
+									<td><input type="text" placeholder="'-' 을 제외하고 입력"/></td>
+								</tr>
+								<tr>
+									<th>이메일</th>
+									<td><input type="text" placeholder="이메일 주소"/></td>
+								</tr>
+								<tr>
+									<th>구분</th>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option selected>선택</option>
+												<option>관리자</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//신규 운영자-->
+			<!-- 주소검색 -->
+			<div class="basicPop searchPop" id="samplePop12" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>주소검색</h1>
+				</div>
+				<div class="pBack">
+					<div class="seachArea">
+						<div class="searchInput">
+							<input type="text" placeholder="도로명 + 번지로 검색"/>
+							<button class="btnSearch">조회</button>
+						</div>
+						<div class="tip">
+							<dl>
+								<dt><strong>Search tip</strong></dt>
+								<dd><span>도로명 + 건물번호</span>예) 세종대로 207,  매봉산로 37</dd>
+								<dd><span>지역명(동/리) + 번지</span>예) 역삼동 68-1,  상암동 1682</dd>
+							</dl>
+						</div>
+					</div>
+					<div class="listBox">
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="80" />
+									<col width="400" />
+									<col width="80" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>우편번호</th>
+										<th>회사명</th>
+										<th>위치</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr class="on">
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//주소검색-->
+			<!-- 회사검색 -->
+			<div class="basicPop searchPop" id="samplePop13" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>회사검색</h1>
+				</div>
+				<div class="pBack">
+					<div class="seachArea">
+						<div class="searchInput">
+							<input type="text" placeholder="회사명, 위치로 검색"/>
+							<button class="btnSearch">조회</button>
+						</div>
+					</div>
+					<div class="listBox">
+						<div class="tls comapySearch">
+							<table>
+								<colgroup>
+									<col width="50" />
+									<col width="350" />
+									<col width="70" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>No</th>
+										<th>회사명</th>
+										<th>위치</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td>99</td>
+										<td class="tL">주식회사 에비에스중공업</td>
+										<td>경남창원</td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td>98</td>
+										<td class="tL">마블소더비 주식회사</td>
+										<td>경기인천</td>
+									</tr>
+									<tr class="on">
+										<td>97</td>
+										<td class="tL">성원엔팍스</td>
+										<td>서울마포</td>
+									</tr>
+									<tr>
+										<td>96</td>
+										<td class="tL">주식회사 에비에스중공업</td>
+										<td>경남창원</td>
+									</tr>
+									<tr>
+										<td>95</td>
+										<td class="tL">마블소더비 주식회사</td>
+										<td>경기인천</td>
+									</tr>
+									<tr>
+										<td>94</td>
+										<td class="tL">성원엔팍스</td>
+										<td>서울마포</td>
+									</tr>
+									<tr>
+										<td>93</td>
+										<td class="tL">주식회사 에비에스중공업</td>
+										<td>경남창원</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//회사검색-->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

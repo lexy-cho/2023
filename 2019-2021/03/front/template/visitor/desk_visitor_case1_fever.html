@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ThinkTree Visitor</title>
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/navmenu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/jquery.toast.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('.entypo-popup').click(function(){
+				$('.mainGo').toggle();
+			});
+			$('.alertPop button, .basicPop button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+
+			var myTem;
+			var standardTem = 37.5;
+			$("#temInput1 input").on("blur", function() {
+				myTem = $(this).val();
+				if(myTem > standardTem) {
+					alert("적정 체온 이상입니다. 다시 한 번 측정해주세요.");
+					$("#temInput2").show();
+					$("#temInput2 input").on("blur", function() {
+						myTem = $(this).val();
+						if(myTem > standardTem) {
+							alert("적정 체온 이상입니다. 다시 한 번 측정해주세요.");
+							$("#temInput3").show();
+						}
+					});
+				}
+			});
+			/**/
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<button class="btnPrev" onclick="history.back()">이전</button>
+					<h1>Office Visitor Service</h1>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<div class="deskVisitorLayout">
+						<div class="first">
+							ㅇㅇㅇ님, 태블릿 근처에 있는 온도기를 들고 체온을 측정해주세요.
+						</div>
+                        <div class="dlstyle writeCase">
+							<div class="gridSet grid3">
+								<div class="gridItem">
+									<dl>
+										<dt>방문일자</dt>
+										<dd><div class="txtLine">2020-03-13</div></dd>
+									</dl>
+								</div>
+								<div class="gridItem">
+									<dl>
+										<dt>성함</dt>
+										<dd><div class="txtLine">홍길동</div></dd>
+									</dl>
+								</div>
+								<div class="gridItem">
+									<dl>
+										<dt>연락처</dt>
+										<dd><div class="txtLine">010-0000-0000</div></dd>
+									</dl>
+								</div>
+							</div>
+							<div class="gridSet grid3">
+								<div class="gridItem">
+									<dl id="temInput1">
+										<dt>체온 (1차)</dt>
+										<dd><input type="text" placeholder="체온을 입력해주세요" /></dd>
+									</dl>
+								</div>
+								<div class="gridItem">
+									<dl id="temInput2" style="display:none;">
+										<dt>체온 (2차)</dt>
+										<dd><input type="text" placeholder="체온을 입력해주세요" /></dd>
+									</dl>
+								</div>
+								<div class="gridItem">
+									<dl id="temInput3" style="display:none;">
+										<dt>체온 (3차)</dt>
+										<dd><input type="text" placeholder="체온을 입력해주세요" /></dd>
+									</dl>
+								</div>
+							</div>
+                        </div>
+						<div class="feverDetail">
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="192"/>
+										<col width="192"/>
+										<col width="192"/>
+										<col width="192"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>최근 2주사이 해외여행</th>
+											<th>발열 증상 유무</th>
+											<th>호흡기 증상 유무</th>
+											<th>마스크 착용</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<span class="toggleSet">
+													<input type="checkbox" id="feverChk1"/>
+													<label for="feverChk1">
+														<span>X</span>
+														<span>O</span>
+													</label>
+												</span>
+											</td>
+											<td>
+												<span class="toggleSet">
+													<input type="checkbox" id="feverChk2"/>
+													<label for="feverChk2">
+														<span>X</span>
+														<span>O</span>
+													</label>
+												</span>
+											</td>
+											<td>
+												<span class="toggleSet">
+													<input type="checkbox" id="feverChk3"/>
+													<label for="feverChk3">
+														<span>X</span>
+														<span>O</span>
+													</label>
+												</span>
+											</td>
+											<td>
+												<span class="toggleSet">
+													<input type="checkbox" id="feverChk4"/>
+													<label for="feverChk4">
+														<span>X</span>
+														<span>O</span>
+													</label>
+												</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<p><strong>호흡기 증상</strong>이란? 기침, 호흡곤란, 인후통(침이나 음식물 삼킬때의 목통증), 후각 및 미각소실 등의 코로나19 주요 임상증상.</p>
+							</div>
+							<div class="agreeArea">
+								<p>
+									본사에서는 코로나19 예방을 위해 문진표 작성을 실시하여 아래와 같이 개인정보를 수집 &middot; 이용 및 제3자에게 제공하고자 합니다. 내용을 자세히 읽으신 후 동의 여부를 결정하여 주십시오.
+									<span class="caution">* 개인정보 수집 &middot; 이용 및 제공에 대한 동의를 거부할 권리가 있습니다. 그러나 동의를 거부할 경우 방문에 제한을 받을 수 있습니다.</span>
+								</p>
+								<div class="agreeBox">
+									<div class="agreeChk">
+										<strong>개인정보 수집 &middot; 이용 동의</strong>
+										<div>
+											<span class="radioSet">
+												<input type="radio" id="agree11" name="agree1" />
+												<label for="agree11"><i></i>네</label>
+											</span>
+											<span class="radioSet">
+												<input type="radio" id="agree10" name="agree1" />
+												<label for="agree10"><i></i>아니오</label>
+											</span>
+										</div>
+									</div>
+									<div class="tws">
+										<table>
+											<colgroup>
+												<col width="250"/>
+												<col width="350"/>
+												<col width="168"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th>항목</th>
+													<th>수집목적</th>
+													<th>보유기간</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>성명, 연락처, 거주지</td>
+													<td>코로나19 감염 예방 및 확산 방지</td>
+													<td><strong class="txtYellow">1년</strong></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="agreeBox">
+									<div class="agreeChk">
+										<strong>개인정보 3자 제공 동의</strong>
+										<div>
+											<span class="radioSet">
+												<input type="radio" id="agree21" name="agree2" />
+												<label for="agree11"><i></i>네</label>
+											</span>
+											<span class="radioSet">
+												<input type="radio" id="agree20" name="agree2" />
+												<label for="agree20"><i></i>아니오</label>
+											</span>
+										</div>
+									</div>
+									<div class="tws">
+										<table>
+											<colgroup>
+												<col width="150"/>
+												<col width="230"/>
+												<col width="210"/>
+												<col width="178"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th>제공받는 기관</th>
+													<th>제공목적</th>
+													<th>제공하는 항목</th>
+													<th>보유기간</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>보건소, 질병관리본부</td>
+													<td>코로나19 관련 확진환자, 자가격리자, 유증상자 등 신분 확인</td>
+													<td>성명(홍OO처리), 연락처, 거주지, 해외방문 이력</td>
+													<td class="txtYellow">해당기관 내부 규정에 따름</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tC">
+							<a href="desk_visitor_case1_view4.html" class="btnM navy">확인</a>
+						</div>
+					</div>
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+	</body>
+</html>

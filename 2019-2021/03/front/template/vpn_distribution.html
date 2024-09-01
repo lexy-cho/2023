@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/approval.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.alertPop button, .miniPop button, .basicPop .pBtn button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .miniPop, .basicPop').hide();
+			});
+			$(".btnDist").on('click', function(){
+				$(".alertDim, .vpnDistPop").show();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<button class="btnPrev" onClick="location.href='network.html'">이전</button>
+					<h1>VPN 계정 배포</h1>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb">
+				<section>
+					<div class="c-menu c-menu--slide-left"><!-- 우측 Slide 일 경우 -->
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</section>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="vpnLayout">
+						<div class="mobileList">
+							<ul>
+								<!--Loop-->
+								<li>
+									<span class="date">2020-06-08 (월) 00:00</span>
+									<div class="tL">
+										<strong>홍길동 (개발팀)</strong>
+									</div>
+									<button class="btnDist">배포</button>
+								</li>
+								<!--//Loop-->
+								<li>
+									<span class="date">2020-06-08 (월) 00:00</span>
+									<div class="tL">
+										<strong>홍길동 (개발팀)</strong>
+									</div>
+									<button class="btnDist">배포</button>
+								</li>
+								<li>
+									<span class="date">2020-06-08 (월) 00:00</span>
+									<div class="tL">
+										<strong>홍길동 (개발팀)</strong>
+									</div>
+									<button class="btnDist">배포</button>
+								</li>
+								<li class="end">
+									<span class="date">2020-06-08 (월) 00:00</span>
+									<div class="tL">
+										<strong>홍길동 (개발팀)</strong>
+									</div>
+									<div class="time">
+										<p>배포시간 : 김철수(보안담당자}* 2020-01-01 00:00</p>
+									</div>
+								</li>
+								<li class="end">
+									<span class="date">2020-06-08 (월) 00:00</span>
+									<div class="tL">
+										<strong>홍길동 (개발팀)</strong>
+									</div>
+									<div class="time">
+										<p>배포시간 : 김철수(보안담당자}* 2020-01-01 00:00</p>
+									</div>
+								</li>
+								<li class="end">
+									<span class="date">2020-06-08 (월) 00:00</span>
+									<div class="tL">
+										<strong>홍길동 (개발팀)</strong>
+									</div>
+									<div class="time">
+										<p>배포시간 : 김철수(보안담당자}* 2020-01-01 00:00</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!--//-->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>상단으로</button></div>
+		</div>
+		<!-- //Wrap -->
+		<!-- Alert Popup -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop vpnDistPop" style="display:none;">
+				<div class="pBack">
+					<p class="tC">홍길동 [개발팀]에게<br/>VPN 계정정보가 배포되었습니다</p>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //Alert Popup -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+		</div>
+		<!-- //Popup -->
+	</body>
+</html>

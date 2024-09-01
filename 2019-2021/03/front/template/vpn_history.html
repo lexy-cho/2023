@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/approval.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.alertPop button, .miniPop button, .basicPop .pBtn button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .miniPop, .basicPop').hide();
+				$('.fullPop').removeClass('show');
+			});
+			$('.fullPop .pclose').click(function(){
+				$('.fullPop').removeClass('show');
+			});
+			/* vpn 사용 신청 */
+			$('.apply').click(function(){
+				$('.fullPop.useVpn').addClass('show');
+			});
+			$('.securityGo').click(function(){
+				$('.fullPop.security').addClass('show');
+				$('.fullPop.security .pclose, .fullPop.security .primary').click(function(){
+					$('.fullPop.security').removeClass('show');
+					$('.fullPop.useVpn').addClass('show');
+				});
+			});
+			$(".fullPop.useVpn .btnArea button").click(function(){
+				if($(this).hasClass("white")){
+					$(".alertDim, .vpnUseFinPop").show();
+				}else if($(this).hasClass("primary")){
+					$(".alertDim, .vpnUseFinPop").show();
+					setTimeout(function(){
+						$(".alertDim, .vpnUseFinPop").hide();
+						$('.fullPop').removeClass('show');
+					}, 1500);
+				}
+			});
+			$(".btnPrivateTerm").click(function(){
+				$(".private").toggle();
+			});
+			$(".systemSet > button").click(function(){
+				$(".systemSet span > *, .systemSet > button").toggle();
+			});
+			$(".selInput .selectSet select").on('change', function(){
+				$("#manageTp option:checked").text()
+				var txt = $(this).find('option:selected').text();
+				if(txt == "기타"){
+					$(this).parents(".selInput").addClass("other");
+				}else{
+					$(this).parents(".selInput").removeClass("other");
+				}
+			});
+			/* end vpn 사용 신청 */
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<button class="btnPrev" onClick="location.href='network.html'">이전</button>
+					<h1>VPN 사용 이력</h1>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb">
+				<section>
+					<div class="c-menu c-menu--slide-left"><!-- 우측 Slide 일 경우 -->
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</section>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<div class="basicCase">
+						<span class="left">00개</span>
+						<span class="right">
+							<span class="sortSet">
+								<span>
+									<input type="radio" id="chk000" name="period" checked/>
+									<label for="chk000">3개월</label>
+								</span>
+								<span>
+									<input type="radio" id="chk001" name="period" />
+									<label for="chk001">6개월</label>
+								</span>
+								<span>
+									<input type="radio" id="chk002" name="period" />
+									<label for="chk002">12개월</label>
+								</span>
+							</span>
+						</span>
+					</div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="vpnLayout">
+						<div class="mobileList">
+							<ul>
+								<!--Loop-->
+								<li>
+									<a href="vpn_history_view.html">
+										<span class="date">2020-06-08 (월) ~ 2020-06-08 (월)</span>
+										<div class="tL"><strong>홍길동 (개발팀)</strong></div>
+										<div class="system">접속시스템명은 프로젝트명 * 외근 근무지</div>
+										<div class="ing">승인 진행 중인 신청입니다</div>
+									</a>
+								</li>
+								<!--//Loop-->
+								<li>
+									<a href="vpn_history_view2.html">
+										<span class="date">2020-06-08 (월) 00:00</span>
+										<div class="tL"><strong>홍길동 (개발팀)</strong></div>
+										<div class="system">접속시스템명은 프로젝트명 * 현장 근무지</div>
+										<div class="reIng">반려된 신청입니다</div>
+									</a>
+								</li>
+								<li>
+									<a href="vpn_history_view3.html">
+										<span class="date">2020-06-08 (월) 00:00</span>
+										<div class="tL"><strong>홍길동 (개발팀)</strong></div>
+										<div class="system">접속시스템명은 프로젝트명 * 자택 근무지</div>
+										<div class="ing blue">승인된 신청입니다</div>
+									</a>
+								</li>
+								<li class="end">
+									<a href="">
+										<span class="date">2020-06-08 (월) 00:00</span>
+										<div class="tL"><strong>홍길동 (개발팀)</strong></div>
+										<div class="system">접속시스템명은 프로젝트명 * 기타 (기타장소 표기)</div>
+									</a>
+								</li>
+								<li class="end">
+									<a href="">
+										<span class="date">2020-06-08 (월) 00:00</span>
+										<div class="tL"><strong>홍길동 (개발팀)</strong></div>
+										<div class="system">접속시스템명은 프로젝트명 * 기타 (기타장소 표기)</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<span class="fab"><button class="apply">신청하기</button></span>
+					</div>
+					<!--//-->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>상단으로</button></div>
+		</div>
+		<!-- //Wrap -->
+		<!-- Alert Popup -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop notBtn vpnUseFinPop" style="display:none;">
+				<div class="pBack">
+					<p class="tC">VPN 사용신청이<br/>완료되었습니다.</p>
+				</div>
+			</div>
+		</div>
+		<!-- //Alert Popup -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+		</div>
+		<!-- //Popup -->
+		<!-- vpn 사용 신청 -->
+		<div class="fullPop ntFullPop useVpn">
+			<div class="tt">
+				<h1>VPN 사용 신청</h1>
+				<button class="pclose">닫기</button>
+			</div>
+			<div class="pBack">
+				<div class="dlstyle writeCase">
+					<div class="formBox">
+						<dl>
+							<dt>사용기간</dt>
+							<dd>
+								<div class="dateLine">
+									<strong>시작일 :</strong>
+									<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									<span class="selectSet">
+										<select>
+											<option>00</option>
+											<option>01</option>
+											<option>02</option>
+											<option>03</option>
+											<option>04</option>
+											<option>05</option>
+											<option>06</option>
+											<option>07</option>
+											<option>08</option>
+											<option>09</option>
+											<option>10</option>
+											<option>11</option>
+											<option>12</option>
+										</select>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option>00</option>
+											<option>30</option>
+										</select>
+									</span>
+								</div>
+								<div class="dateLine">
+									<strong>완료일 :</strong>
+									<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									<span class="selectSet">
+										<select>
+											<option>00</option>
+											<option>01</option>
+											<option>02</option>
+											<option>03</option>
+											<option>04</option>
+											<option>05</option>
+											<option>06</option>
+											<option>07</option>
+											<option>08</option>
+											<option>09</option>
+											<option>10</option>
+											<option>11</option>
+											<option>12</option>
+										</select>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option>00</option>
+											<option>30</option>
+										</select>
+									</span>
+								</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt>접속시스템명</dt>
+							<dd>
+								<div class="systemSet">
+									<span>
+										<span class="selectSet">
+											<select>
+												<option>프로젝트 명이 노출됩니다</option>
+											</select>
+										</span>
+										<input type="text" style="display:none;"/>
+									</span>
+									<button class="btnS gray">직접입력</button>
+									<button class="btnS white" style="display:none;">입력취소</button>
+								</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt>사용목적</dt>
+							<dd>
+								<span class="selInput">
+									<span class="selectSet">
+										<select>
+											<option>선택</option>
+											<option>긴급대응</option>
+											<option>외부개발</option>
+											<option>유지보수</option>
+											<option>기타</option>
+										</select>
+									</span>
+									<input type="text"/>
+								</span>
+							</dd>
+						</dl>
+						<dl>
+							<dt>사용장소</dt>
+							<dd>
+								<span class="selInput">
+									<span class="selectSet">
+										<select>
+											<option>현장근무지</option>
+											<option>외근지</option>
+											<option>자택</option>
+											<option>기타</option>
+										</select>
+									</span>
+									<input type="text"/>
+								</span>
+							</dd>
+						</dl>
+						<dl>
+							<dt>승인자</dt>
+							<dd><input type="text"/></dd>
+						</dl>
+					</div>
+					<dl>
+						<dt>개인정보 수집・이용 및 제공 동의
+							<span class="right"><button class="btnS white btnPrivateTerm">전문보기</button></span>
+						</dt>
+						<dd>
+							<div class="private" style="display:none;">
+								<div class="tws">
+									<table>
+										<colgroup>
+											<col width="125"/>
+											<col width="*"/>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th>수집・이용 목적</th>
+												<td>VPN 사용신청 위한 보안서약</td>
+											</tr>
+											<tr>
+												<th>수집・이용 항목</th>
+												<td>성명, 생년월일, 소속(직위), 성명, 주소</td>
+											</tr>
+											<tr>
+												<th>수집・이용  기간</th>
+												<td>수집,이용에 대한 동의일로부터 자료 파기 시</td>
+											</tr>
+											<tr>
+												<th>동의하지 않을 경우의 처리</th>
+												<td> VPN 사용신청 불가</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="agreeSet">
+									<p>위와 같이 개인정보 수집 · 이용 동의합니다.</p>
+									<div class="radioArea">
+										<span class="radioSet">
+											<input type="radio" id="privacy1" name="privacy" />
+											<label for="privacy1"><i></i>동의</label>
+										</span>
+										<span class="radioSet">
+											<input type="radio" id="privacy2" name="privacy" />
+											<label for="privacy2"><i></i>동의하지 않음</label>
+										</span>
+									</div>
+								</div>
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>정보보호 보안서약
+							<span class="right"><button class="btnS white securityGo">전문보기</button></span>
+						</dt>
+						<dd>
+							<p class="securityVow">개인정보 수집・이용 및 제공 동의 및 정보보호 보안서약은 필수항목으로 동의 및 서약서명을 하지 않을 경우 VPN 사용 신청에 불가합니다.</p>
+						</dd>
+					</dl>
+					<dl>
+						<dt>비고</dt>
+						<dd><textarea></textarea></dd>
+					</dl>
+				</div>
+				<p>VPN 사용 신청은 [승인자 > 보안담당자 > 보안책임자] 순으로 승인 절차가 진행됩니다. 반려된 경우 신규 신청해 주시기 바랍니다.</p>
+				<div class="btnArea tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">신청하기</button>
+				</div>
+			</div>
+		</div>
+		<!-- //vpn 사용 신청 -->
+		<!-- 정보보호 보안서약 -->
+		<div class="fullPop ntFullPop security">
+			<div class="tt">
+				<h1>정보보호 보안서약</h1>
+				<button class="pclose">닫기</button>
+			</div>
+			<div class="pBack">
+				<div class="tws">
+					<table>
+						<colgroup>
+							<col width="80"/>
+							<col width="120"/>
+							<col width="80"/>
+							<col width="120"/>
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>성명</th>
+								<td>홍길동</td>
+								<th>생년월일</th>
+								<td>0000년00월00일</td>
+							</tr>
+							<tr>
+								<th>소속부서</th>
+								<td>개발팀</td>
+								<th>직급</th>
+								<td>매니저</td>
+							</tr>
+							<tr>
+								<th>주소</th>
+								<td colspan="3">[00000] 서울시 마포구 매봉산로 개인주소 표기</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="securityTerm">
+					<p>주식회사 씽크트리 (이하 "회사"이라 함)의 임직원(협력업체 포함) 홍길동 (이하 "나"로 칭함) 으로서 “회사”와 업무를 추진(거래, 계약, 출입, 상주)하면서 재직 중 또는 퇴직 이후에도 상호신뢰를 바탕으로 “회사”의 영업비밀 보호를 위해 아래의 사항을 성실히 준수할 것을 서약합니다. 이를 위배할 경우 회사소정의 규정에 의거 받는 어떠한 처분도 이의가 없음을 서약합니다.</p>
+					<ol>
+						<li>나는 회사 내 정보보호 정책 및 지침을 성실히 준수하겠습니다.</li>
+						<li>나는 업무를 수행함에 있어서 취득한 모든 정보에 대한 권리는 회사 소유임을 확약합니다.</li>
+						<li>나는 업무 수행상 알게 된 고객에 관한 일체의 정보 및 회사의 영업비밀(경영정보, 재무정보, 고객정보 등)을 회사 및 고객의 승인 없이 제 3자에게 판매, 대여, 유용 등을 하지 않겠습니다.</li>
+						<li>나는 퇴사 후에도 회사에서 습득한 회사 고유의 기술과 경영노하우를 제3자에게 유출하지 않겠습니다.</li>
+						<li>나는 고객의 정보를 수집할 때에는 업무상 필요한 정보 이외의 것을 확인하지 않으며, 본인에게 접근이 허용되지 않은 정보에 대한 접근 통제 규칙을 철저하게 준수하겠습니다.</li>
+						<li>고객의 정보 유출이나 정보보호 위반사례를 발견할 시에는 이를 지체 없이 부서장 또는 정보보호 책임자에게 보고하겠습니다.</li>
+						<li>나는 업무 프로그램, 전산기기, 시설물 등을 훼손하거나 외부로 유출하는 일이 없도록 하고, 나에게 출입이 허용되지 않은 구역에 대한 접근 통제 규칙을 철저히 준수하겠습니다.</li>
+						<li>나는 정보통신망 이용촉진 및 정보보호 등에 관한 법률에 입각하여 회사의 정보보호 지침을 준수합니다.</li>
+					</ol>
+					<p>나는 상기 사항을 숙지하여 이를 준수할 것을 동의하며 만일, 본 서약을 위반할 경우 “부정경쟁방지 및 영업비밀 보호에 관한 법률","정보통신망이용촉진 및 정보보호법" “개인정보보호법”, "형법상의 업무상 배임죄","기타 제반 관계법률"에 따라 민. 형사상의 책임을 질 것을 서약합니다.</p>
+					<div class="lineBox">
+						<p class="tL">본인은 위 사항을 명확히 읽고, 설명 받아 이해하였으며, 미 준수 시 회사의 경영에 큰 영향을 미친다는 것을 알고 본인의 진정한 의지로 서명합니다.</p>
+					</div>
+					<div class="signSet">
+						<div class="btnArea">
+							<strong>※ 크게 서명해 주세요</strong>
+							<span class="right">
+								<button class="btnSign reset">초기화</button>
+								<button class="btnSign prev">이전 휙</button>
+							</span>
+						</div>
+						<div class="signArea">
+							<strong>서명</strong>
+							<div class="cvsArea">
+								<canvas></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="btnArea tC">
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //정보보호 보안서약 -->
+	</body>
+</html>

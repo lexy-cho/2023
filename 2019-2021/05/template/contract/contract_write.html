@@ -1,0 +1,2011 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<!-- <script type="text/javascript" src="js/jquery-ui.min.js"></script> -->
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			/*$(document).on('click tab', '.gnbOpen', function(e){
+				$('.gnbScroll').load('../gnb.html',function(){
+					funcGnbOpen();
+				});
+				return false;
+			});*/
+			//
+			var cTabConSwiper = new Swiper('.cTabCon .swiper-container', {
+				autoHeight: true,
+				spaceBetween: 14,
+				initialSlide: 0,
+				onSlideChangeStart: function (swiper) {
+					$('.cTab li').removeClass('on');
+					if (swiper.activeIndex == 0) {
+						$('.cTab li:eq(0)').addClass('on');
+					}else if (swiper.activeIndex == 1) {
+						$('.cTab li:eq(1)').addClass('on');
+					}else if (swiper.activeIndex == 2) {
+						$('.cTab li:eq(2)').addClass('on');
+					}else if (swiper.activeIndex == 3) {
+						$('.cTab li:eq(3)').addClass('on');
+					}else if (swiper.activeIndex == 4) {
+						$('.cTab li:eq(4)').addClass('on');
+					}
+				}
+			});
+			$(".cTab li button").click(function () {
+				$(".cTab li").removeClass("on");
+				$(this).parent("li").addClass("on");
+				var activeTab = $(this).attr("data-name");
+				cTabConSwiper.slideTo(activeTab);
+			});
+			$(".agreeBox dt button").click(function () {
+				if ($(this).hasClass("ok") == true){
+					$(this).parents("dt").next("dd").toggle();
+				} else {
+					$(this).parents("dt").next("dd").show();
+					$(this).hide();
+					$(this).next("button.ok").show();
+				}
+			});
+			
+			$("#clientSub" ).click(function() {
+				$(".dimPop ,  #samplePop1").show();
+			});
+			$(".popSMCase .btnLB , .popSMCase .btnBY").click(function() {
+				$(".dimPop ,  #samplePop1, .numberPop").hide();
+			});
+
+			$(".numBtn input[type='number']").click(function(){
+				$(".dimPop").show();
+				$("#samplePop1").hide();
+				$(".numberPop").show();
+			}); // 주민등록번호 팝업 OPEN
+			/*$(".numberPop .btnpSet").click(function(){
+				$(".numberPop").hide();
+				$("#blind_wrap").toggle();
+			}); // 주민등록번호 팝업 CLOSE
+			$(".numberPop .pBtn button ").click(function(){
+				$(".numberPop").hide();
+				$("#blind_wrap").toggle();
+			});*/
+
+			$('#agent01').change(function(){
+              if ($('#agent01').prop('checked')==true) {
+            	  $(".agentPerson").show();
+              }
+              else {
+            	  $(".agentPerson").hide();
+			  }
+       		});
+            $("#agentRelation select").on("change", function(){
+                if($(this).find("option:selected").val() == 0){
+                    $(this).parent().next('div').hide();
+                }else if($(this).find("option:selected").val() == 1){
+                    $(this).parent().next('div').show();
+                }
+            });
+
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		
+		<!--고객전송 BEST 발송-->
+		<div class="dimPop" style="display:none;">
+			<!-- 필수동의 안내팝업 -->
+			<div class="popSMCase alertPop" id="samplePop1" style="display:none;">
+				<div class="alertTable">
+					<p>개인정보수집동의의 <br/>필수 동의항목을 선택해 주셔야 전송이 가능합니다.</p>
+				</div>
+				<div class="btn">
+					<button class="btnLB">취소</button>
+					<button class="btnBY" onClick="location.href='../process/registration_staus.html'">확인</button>
+				</div>
+			</div>
+			<!-- //필수동의 안내팝업 -->
+			<!-- FAX번호 입력 팝업 -->
+			<div class="popMNCase alertPop" id="samplePop2" style="display:none;">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>팩스발송 번호입력</h1>
+				</div>
+				<div class="popBack">
+					<input type="number" placeholder="숫자로 입력해주세요" />
+				</div>
+				<div class="btn">
+					<button class="btnLB">취소</button>
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+			<!-- //FAX번호 입력 팝업 -->
+			<!-- 주민등록번호 입력 팝업 -->
+			<div class="popSMCase numberPop" style="display:none;">
+				<div class="popBack">
+					<div class="topBox">
+						<div class="pkSelect">
+							<div>
+								<span>
+									<input type="radio" value="pk1" id="pk1" name="pk" checked disabled /><label for="pk1">주민등록번호</label>
+								</span>
+								<span>
+									<input type="radio" value="pk2" id="pk2" name="pk" disabled /><label for="pk2">외국인 등록번호</label>
+								</span>
+							</div>
+						</div>
+						<div class="secret">
+							<span class="end"><input type="text" value="9"/></span>
+							<span class="end"><input type="text" value="4"/></span>
+							<span class="end"><input type="text" value="0"/></span>
+							<span class="now"><input type="text" value="" maxlength="1"/></span>
+							<span><input type="text" /></span>
+							<span><input type="text" /></span>
+							<em>-</em>
+							<strong><input type="password" value="9" /></strong>
+							<strong><input type="password" value="9" /></strong>
+							<strong><input type="password" value="9" /></strong>
+							<strong><input type="password" value="9" /></strong>
+							<strong><input type="password" value="9" /></strong>
+							<strong><input type="password" value="9" /></strong>
+							<strong><input type="password" value="9" /></strong>
+						</div>
+					</div>
+					<div class="keypad">
+						<div class="keyBack">
+							<ul>
+								<li><input type="button" class="number" value="1" /></li>
+								<li><input type="button" class="number" value="2" /></li>
+								<li><input type="button" class="number" value="3" /></li>
+								<li><input type="button" class="number" value="4" /></li>
+								<li><input type="button" class="number" value="5" /></li>
+								<li><input type="button" class="number" value="6" /></li>
+								<li><input type="button" class="number" value="7" /></li>
+								<li><input type="button" class="number" value="8" /></li>
+								<li><input type="button" class="number" value="9" /></li>
+								<li><input type="button" class="reset" value="초기화" /></li>
+								<li><input type="button" class="number" value="0" /></li>
+								<li><input type="button" class="back" value="지우기" /></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!---->
+				<div class="btn">
+					<button class="btnLB">취소</button>
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+			<!-- //주민등록번호 입력 팝업 -->
+		</div>
+		<!--고객전송 BEST 발송 End-->
+
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 서브 생략 -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<!-- <button class="gnbOpen">GNB 열기</button> -->
+							<button class="goPrev" onclick="history.back()">뒤로가기</button> 
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<button class="btnApproval"><span>전자계약서작성 취소</span></button>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2>전자계약</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<!-- contractLayout -->
+						<div class="contractLayout">
+							<!-- 2019-06-03 -->
+							<div class="attention"><!-- 일반계약정보 수정일 경우 class="attention blue" -->
+								<p><em class="exMark">!</em>본 계약서는 최초 작성 이후, 수정한 정보가 있습니다. 차량 인도 전에 반드시 변경된 계약서에 <strong>최종 고객서명</strong>을 해주세요. <button>닫기</button></p>
+							</div>
+							<!-- 2019-06-03 -->
+							<!-- summBox -->
+							<div class="summBoxBack">
+								<div class="summBox">
+									<span class="summTt">[11] 개인-일반개인판매 (과세)</span>
+									<div class="ttArea">
+										<strong>9000261364<i class="eIcon">전자계약</i><em>홍길동 님(이서언 님)</em></strong>
+									</div>
+									<div class="infoBtn">
+										<div class="left">
+											<dl>
+												<dt>계약상태</dt>
+												<dd>작성중</dd>
+												<dt>계약일자</dt>
+												<dd>2018-04-04</dd>
+											</dl>
+											<div>
+												<dl>
+													<dt>차종</dt>
+													<dd>QM6 1 8MY Dci 2wd re Signature</dd>
+												</dl>
+												<dl>
+													<dt>옵션</dt>
+													<dd>VGTIC</dd>
+												</dl>
+												<span>
+													<dl>
+														<dt>색상</dt>
+														<dd>어반그레이/블랙가죽시트</dd>
+													</dl>
+												</span>
+											</div>
+										</div>
+										<div class="right">
+											<button class="btnBY" id="clientSub">고객전송 및 BEST 발송</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--// summBox -->
+							<!-- tab-wrap -->
+							<div class="cTabWrap">
+								<!-- tab -->
+								<div class="cTabBack">
+									<div class="cTab">
+										<nav>
+											<ul>
+												<li class="on"><button data-name="0">개인정보수집동의서</button></li>
+												<li><button data-name="1">매매계약서</button></li>
+												<li><button data-name="2">계약조항</button></li>
+												<li><button data-name="3">레몬법</button></li>
+												<li><a href="../preview.html">미리보기</a></li>
+											</ul>
+										</nav>
+									</div>
+								</div>
+								<!--// tab -->
+								<div class="cTabCon">
+									<div class="swiper-container">
+										<div class="swiper-wrapper">
+											<!-------------------- 개인정보수집동의서 2019-09-16 -------------------->
+											<div class="swiper-slide step1">
+												<p class="agreeTxt">르노삼성자동차(주)가 매매계약과 관련하여 매수인으로부터 취득한 개인정보는 &lsqb;개인정보보호법&rsqb; 및 &lsqb;신용정보 이용 및 보호에 관한 법률&rsqb;의 규정에 따라 수집&middot;이용&middot;제공을 위하여 매수인의 동의를 얻어야 합니다. 이에 다음과 같이 개인정보의 수집, 이용 및 제3자 제공에 대한 동의를 구합니다.</p>
+												<!-------------------------------->
+												<h4 class="formTit mt0">[필수 동의사항]</h4>
+												<div class="agreeBox">
+													<dl>
+														<dt>
+															<div>
+																일반개인정보&middot;이용에 대한 동의
+																<button class="ok">확인</button>
+																<button>전문보기</button>
+															</div>
+														</dt>
+														<dd>
+															<div class="agreeDTBack">
+																<div class="listForm">
+																	<ul>
+																		<li>개인정보의 수집&middot;이용 목적 :자동차 매매계약상 의무 이행을 위한 재화 용역의 제공, 자동차 구매에 따른 탁송, 보증수리 및 차량관리 서비스 제공, 대금 청구 시 발송 대금결제 대금추심, 분쟁조정율 위한 기록보존, 불만처리 등 민원처리, 고지사항 전달</li>
+																		<li>수집하는 개인정보 항목 성명, 주소, 휴대전화, 이메일, 자택전화, 직장전화, 구입차량정보, 사업자번호, 상호 할부매매의 경우: ‘신용정보의 이용 및 보호에 관한 법률'상 개인신용정보</li>
+																		<li><strong>개인정보 보유 및 이용기간 르노삼성자동차(주)는 상법 등 관련 법령의 규정에 의하여 보존할 의무가 있는 경우가 아닌 한, 개인정보의 수집&middot;이용에 관한 동의 목적을 달성할 때까지만 본인의 개인정보를 보유·이용합니다.</strong></li>
+																		<li>개인정보 수집 이용&middot;제공 미동의시 불이익사항: 자동차 매매계약을 거절 할 수 있습니다.</li>
+																	</ul>
+																</div>
+																<div class="agreeBtm">
+																	<p>상기 목적으로 본인의 개인정보를 수집&middot;이용하는 것에 동의합니다.</p>
+																	<div>
+																		<span class="checkSet">
+																			<input type="radio" name="agree_01" id="chk_01" checked />
+																			<label for="chk_01"><i></i>동의함</label>
+																		</span>
+																		<span class="checkSet">
+																			<input type="radio" name="agree_01" id="chk_02">
+																			<label for="chk_02"><i></i>동의하지 않음</label>
+																		</span>
+																	</div>
+																</div>
+															</div>
+														</dd>
+													</dl>
+												</div>
+												<!---->
+												<div class="agreeBox">
+													<dl>
+														<dt>
+															<div>
+																개인정보의 제3자 제공에 대한 동의
+																<button class="ok">확인</button>
+																<button>전문보기</button>
+															</div>
+														</dt>
+														<dd>
+															<div class="agreeDTBack">
+																<div class="listForm">
+																	<ul>
+																		<li><strong>제공대상: 국토교통부, 국립환경과학원</strong></li>
+																		<li><strong>제공정보 이용목적: 자동차 신규등록관련 서비스 제공, 할부거래 이용자의 신용판단 및 본인확인</strong></li>
+																		<li><strong>제공하는 개인정보 항목: 성명, 상호, 사업자번호, 주소, 연락처, 휴대폰번호, 이메일, 구입차량정보</strong></li>
+																		<li><strong>보유 및 이용기한: 제공받은 기관의 이용목적 달성 후 폐기</strong></li>
+																		<li><strong>제공 미동의에 따른 불이익사항: 자동차 매매계약을 거절 할 수 있으며 신규등록 관련 서비스제공을 할 수 없습니다.</strong></li>
+																	</ul>
+																</div>
+																<div class="agreeBtm">
+																	<p>상기 목적으로 본인의 개인정보를 제3자 제공하는 것에 동의합니다.</p>
+																	<div>
+																		<span class="checkSet">
+																			<input type="radio" name="agree_02" id="chk_03" checked />
+																			<label for="chk_03"><i></i>동의함</label>
+																		</span>
+																		<span class="checkSet">
+																			<input type="radio" name="agree_02" id="chk_04">
+																			<label for="chk_04"><i></i>동의하지 않음</label>
+																		</span>
+																	</div>
+																</div>
+															</div>
+														</dd>
+													</dl>
+												</div>
+												<!---->
+												<div class="agreeBox">
+													<dl>
+														<dt class="bold">
+															<div>
+																고유식별 정보 수집 &middot;이용에 대한 동의
+																<button class="ok">확인</button>
+																<button>전문보기</button>
+															</div>
+														</dt>
+														<dd>
+															<div class="agreeDTBack">
+																<div class="listForm">
+																	<ul>
+																		<li><strong>고유식별정보 수집근거 <br/>▶「자동차관리법 시행령 제14조의 6」고유식별정보의 처리 및 개인정보보호법 법률 제24조에 따라 주민등록 번호, 여권번호, 운전면허번호, 외국인등록번호가 포함된 자료를 처리할 수 있습니다.</strong></li>
+																		<li><strong>수집하는 개인정보 항목: 고유식별정보(주민등록번호, 여권번호, 운전면허번호, 외국인등록번호)</strong></li>
+																		<li><strong>개인정보 보유 및 이용기간:르노삼성자동자(주)는 상법 등 관련 법령의 규정에 의하여 보존할 의무가 있는 경우가아닌 한, 개인정보의 수집&middot;이용에 관한 동의 목적을 달성할 때까지만 본인의 개인정보를 보유&middot;이용 합니다.</strong></li>
+																		<li><strong>고유식별정보 수집·이용&middot;제공 미동의시 불이익사항: 자동차 매매계약을 거절 할 수 있습니다.<br/>※ 단, 주민등록번호는 위 법률 근거에 의거 수집을 하고 있습니다.</strong></li>
+																	</ul>
+																</div>
+																<div class="agreeBtm">	
+																	<p>상기 목적으로 본인의 고유식별정보를 수집&middot;이용하는 것에 동의합니다.</p>
+																	<div>
+																		<span class="checkSet">
+																			<input type="radio" name="agree_05" id="chk_05" checked />
+																			<label for="chk_05"><i></i>동의함</label>
+																		</span>
+																		<span class="checkSet">
+																			<input type="radio" name="agree_05" id="chk_05_n">
+																			<label for="chk_05_n"><i></i>동의하지 않음</label>
+																		</span>
+																	</div>
+																</div>
+															</div>
+														</dd>
+													</dl>
+												</div>
+												<!---->
+												<div class="agreeBox">
+													<dl>
+														<dt>
+															<div>
+																민감정보 수집&middot;이용에 대한 동의
+																<button class="ok">확인</button>
+																<button>전문보기</button>
+															</div>
+														</dt>
+														<dd>
+															<div class="agreeDTBack">
+																<table class="agreeTable tabletVer">
+																	<colgroup>
+																		<col width="10%" />
+																		<col width="20%" />
+																		<col width="35%" />
+																		<col width="35%" />
+																	</colgroup>
+																	<thead>
+																		<tr>
+																			<th>수집항목</th>
+																			<th>수집·이용목적</th>
+																			<th>보유 및 이용 기간</th>
+																			<th>미 동의시 불이익사항</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<tr>
+																			<td class="tC"><strong>장애등급</strong></td>
+																			<td class="tC"><strong>면세할인</strong></td>
+																			<td class="tC"><strong>「필수 동의사항」에서 정하는 보유 및 이용기간과 동일</strong></td>
+																			<td class="tC"><strong>면세할인을 받을 수 없음</strong></td>
+																		</tr>
+																	</tbody>
+																</table>
+																<table class="agreeTable mobileVer" style="display:none;">
+																	<colgroup>
+																		<col width="50%" />
+																		<col width="50%" />
+																	</colgroup>
+																	<thead>
+																		<tr>
+																			<th>구분</th>
+																			<th>내용</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<tr>
+																			<th>수집항목</th>
+																			<td><strong>장애등급</strong></td>
+																		</tr>
+																		<tr>
+																			<th>수집·이용목적</th>
+																			<td><strong>면세할인</strong></td>
+																		</tr>
+																		<tr>
+																			<th>보유 및 이용 기간</th>
+																			<td><strong>「필수 동의사항」에서 정하는 보유 및 이용기간과 동일</strong></td>
+																		</tr>
+																		<tr>
+																			<th>미 동의시 불이익사항</th>
+																			<td><strong>면세할인을 받을 수 없음</strong></td>
+																		</tr>
+																	</tbody>
+																</table>
+																<div class="agreeBtm">	
+																	<p>민감정보 수집&middot;이용에 대해 매수인은 동의 합니다.</p>
+																	<div>
+																		<span class="checkSet">
+																			<input type="radio" name="agree_11" id="chk_11" checked />
+																			<label for="chk_11"><i></i>동의함</label>
+																		</span>
+																		<span class="checkSet">
+																			<input type="radio" name="agree_11" id="chk_11_n">
+																			<label for="chk_11_n"><i></i>동의하지 않음</label>
+																		</span>
+																	</div>
+																</div>
+															</div>
+														</dd>
+													</dl>
+												</div>
+												<!-------------------------------->
+												<h4 class="formTit">[선택 동의사항]</h4>
+												<!---->
+												<div class="agreeBox">
+													<dl>
+														<dt>
+															<div>
+																개인정보 수집&middot;이용에 대한 동의
+																<button class="ok">확인</button>
+																<button>전문보기</button>
+															</div>
+														</dt>
+														<dd>
+															<div class="agreeDTBack">
+																<table class="agreeTable tabletVer">
+																	<colgroup>
+																		<col width="20%"/>
+																		<col width="25%"/><!--2019-12-02-->
+																		<col width="33%"/><!--2019-12-02-->
+																		<col width="22%"/>
+																	</colgroup>
+																	<tbody>
+																		<tr>
+																			<th rowspan="2">광고성 정보 전달 및<br/>마케팅 활용 동의</th>
+																			<th>수집하는 개인정보 항목</th>
+																			<th>보유·이용 기간</th>
+																			<th>미 동의시 불이익사항</th>
+																		</tr>
+																		<tr>
+																			<td class="tC"><strong>성명, 생년월일, 주소, 연락처, 휴대폰번호, 이메일, 구입차량정보</strong></td><!--2019-12-02-->
+																			<td class="tC"><strong>「필수 동의사항」 에서 정하는보유 및 이용기간과 동일</strong></td>
+																			<td class="tC"><strong>없음</strong></td>
+																		</tr>
+																	</tbody>
+																</table>
+																<table class="agreeTable mobileVer" style="display:none;">
+																	<colgroup>
+																		<col width="35%"><!--2019-12-02-->
+																		<col>
+																	</colgroup>
+																	<tbody>
+																		<tr>
+																			<th colspan="2">광고성 정보 전달 및 마케팅 활용 동의</th>
+																		</tr>
+																		<tr>
+																			<th>수집하는 개인정보 항목</th>
+																			<td><strong>성명, 생년월일, 주소, 연락처, 휴대폰번호, 이메일, 구입차량정보</strong></td><!--2019-12-02-->
+																		</tr>
+																		<tr>
+																			<th>보유·이용 기간</th>
+																			<td><strong>「필수 동의사항」 에서 정하는보유 및 이용기간과 동일</strong></td>
+																		</tr>
+																		<tr>
+																			<th>미 동의시 불이익사항</th>
+																			<td><strong>없음</strong></td>
+																		</tr>
+																	</tbody>
+																</table>
+																<div class="agreeBtm">
+																	<p>선택적 개인정보 수집·이용에 대한 동의여부를 확인합니다.</p>
+																	<div>
+																		<span class="checkSet">
+																			<input type="radio" name="agree_06" id="chk_06" checked />
+																			<label for="chk_06"><i></i>동의함</label>
+																		</span>
+																		<span class="checkSet">
+																			<input type="radio" name="agree_06" id="chk_06_n">
+																			<label for="chk_06_n"><i></i>동의하지 않음</label>
+																		</span>
+																	</div>
+																</div>
+															</div>
+														</dd>
+													</dl>
+												</div>
+												<!---->
+												<div class="agreeBox">
+													<dl>
+														<dt class="bold">
+															<div>
+																개인정보 제3자 제공에 대한 동의
+																<button class="ok">확인</button>
+																<button>전문보기</button>
+															</div>
+														</dt>
+														<dd>
+															<div class="agreeDTBack">
+																<table class="agreeTable tabletVer">
+																	<colgroup>
+																		<col width="20%"/>
+																		<col width="20%"/>
+																		<col width="20%"/>
+																		<col width="15%"/>
+																		<col width="25%"/>
+																	</colgroup>
+																	<tbody>
+																		<tr>
+																			<th>제공받는자</th>
+																			<th>제공정보의 이용목적</th>
+																			<th>제공하는 개인정보 항목</th>
+																			<th>보유/이용기간</th>
+																			<th>미동의 시 불이익 사항</th>
+																		</tr>
+																		<tr>
+																			<td><strong>RCI Korea</strong></td>
+																			<td>자동차할부금융 서비스제공</td>
+																			<td rowspan="4" class="tC"><strong>성명, 상호, 생년월일, 사업자번호, 주소, 연락처, 휴대폰번호, 이메일, 구입차량정보</strong></td>
+																			<td rowspan="4" class="tC"><strong>제공받은 기관의 이용목적 달성 후 폐기</strong></td>
+																			<td>자동차 할부금융 서비스를 <br/>이용 할 수 없습니다</td>
+																		</tr>
+																		<tr>
+																			<td><strong>삼성카드</strong></td>
+																			<td>카드금융서비스 카드 <br/>포인트 제공</td>
+																			<td>카드금융서비스 제공을 할 수 없습니다.</td>
+																		</tr>
+																		<tr>
+																			<td><strong>() 보험사</strong></td>
+																			<td>매수자의 자동차 보험가입</td>
+																			<td>(	)보험사에 계약자 정보 및 차량정보를 제공 할 수 없습니다</td>
+																		</tr>
+																		<tr>
+																			<td><strong>한국도로공사(주)</strong></td>
+																			<td>하이패스등록 서비스 제공 목적</td>
+																			<td>한국도로공사(주)에 계약자 정보 및 차량정보를 제공 할 수 없습니다.</td>
+																		</tr>
+																	</tbody>
+																</table>
+																<table class="agreeTable mobileVer" style="display:none;">
+																	<colgroup>
+																		<col width="30%">
+																		<col>
+																	</colgroup>
+																	<tbody>
+																		<tr>
+																			<th>제공받는자</th>
+																			<td>RCI Korea</td>
+																		</tr>
+																		<tr>
+																			<th>제공정보의 이용목적</th>
+																			<td>자동차할부금융 서비스제공</td>
+																		</tr>
+																		<tr>
+																			<th>제공하는 개인정보 항목</th>
+																			<td>성명, 상호, 생년월일, 사업자번호, 주소, 연락처, 휴대폰번호, 이메일, 구입차량정보</td>
+																		</tr>
+																		<tr>
+																			<th>보유/이용기간</th>
+																			<td>제공받은 기관의 이용목적 달성 후 폐기</td>
+																		</tr>
+																		<tr>
+																			<th>미동의 시 불이익 사항</th>
+																			<td>자동차 할부금융 서비스를 <br>이용 할 수 없습니다</td>
+																		</tr>
+																	</tbody>
+																</table>
+																<div class="agreeBtm">
+																	<p>선택적 개인정보 제3자 제공에 동의합니다.(RCI Korea)</p>
+																	<div>
+																		<span class="checkSet">
+																			<input type="radio" name="agree_07" id="chk_07" checked />
+																			<label for="chk_07"><i></i>동의함</label>
+																		</span>
+																		<span class="checkSet">
+																			<input type="radio" name="agree_07" id="chk_07_n">
+																			<label for="chk_07_n"><i></i>동의하지 않음</label>
+																		</span>
+																	</div>
+																</div>
+																<table class="agreeTable mobileVer" style="display:none;">
+																	<colgroup>
+																		<col width="30%">
+																		<col>
+																	</colgroup>
+																	<tbody>
+																		<tr>
+																			<th>제공받는자</th>
+																			<td>삼성카드</td>
+																		</tr>
+																		<tr>
+																			<th>제공정보의 이용목적</th>
+																			<td>카드금융서비스 카드 포인트 제공</td>
+																		</tr>
+																		<tr>
+																			<th>제공하는 개인정보 항목</th>
+																			<td>성명, 상호, 생년월일, 사업자번호, 주소, 연락처, 휴대폰번호, 이메일, 구입차량정보</td>
+																		</tr>
+																		<tr>
+																			<th>보유/이용기간</th>
+																			<td>제공받은 기관의 이용목적 달성 후 폐기</td>
+																		</tr>
+																		<tr>
+																			<th>미동의 시 불이익 사항</th>
+																			<td>카드금융서비스 제공을 할 수 없습니다.</td>
+																		</tr>
+																	</tbody>
+																</table>
+																<div class="agreeBtm">
+																	<p>선택적 개인정보 제3자 제공에 동의합니다.(삼성카드)</p>
+																	<div>
+																		<span class="checkSet">
+																			<input type="radio" name="agree_08" id="chk_08" checked />
+																			<label for="chk_08"><i></i>동의함</label>
+																		</span>
+																		<span class="checkSet">
+																			<input type="radio" name="agree_08" id="chk_08_n">
+																			<label for="chk_08_n"><i></i>동의하지 않음</label>
+																		</span>
+																	</div>
+																</div>
+																<table class="agreeTable mobileVer" style="display:none;">
+																	<colgroup>
+																		<col width="30%">
+																		<col>
+																	</colgroup>
+																	<tbody>
+																		<tr>
+																			<th>제공받는자</th>
+																			<td>(&nbsp;) 보험사</td>
+																		</tr>
+																		<tr>
+																			<th>제공정보의 이용목적</th>
+																			<td>매수자의 자동차 보험가입</td>
+																		</tr>
+																		<tr>
+																			<th>제공하는 개인정보 항목</th>
+																			<td>성명, 상호, 생년월일, 사업자번호, 주소, 연락처, 휴대폰번호, 이메일, 구입차량정보</td>
+																		</tr>
+																		<tr>
+																			<th>보유/이용기간</th>
+																			<td>제공받은 기관의 이용목적 달성 후 폐기</td>
+																		</tr>
+																		<tr>
+																			<th>미동의 시 불이익 사항</th>
+																			<td>(	)보험사에 계약자 정보 및 차량정보를 제공 할 수 없습니다</td>
+																		</tr>
+																	</tbody>
+																</table>
+																<div class="agreeBtm">
+																	<p>선택적 개인정보 제3자 제공에 동의합니다.(() 보험사)</p>
+																	<div>
+																		<span class="checkSet">
+																			<input type="radio" name="agree_09" id="chk_09" checked />
+																			<label for="chk_09"><i></i>동의함</label>
+																		</span>
+																		<span class="checkSet">
+																			<input type="radio" name="agree_09" id="chk_09_n">
+																			<label for="chk_09_n"><i></i>동의하지 않음</label>
+																		</span>
+																	</div>
+																</div>
+																<table class="agreeTable mobileVer" style="display:none;">
+																	<colgroup>
+																		<col width="30%">
+																		<col>
+																	</colgroup>
+																	<tbody>
+																		<tr>
+																			<th>제공받는자</th>
+																			<td>한국도로공사(주)</td>
+																		</tr>
+																		<tr>
+																			<th>제공정보의 이용목적</th>
+																			<td>하이패스등록 서비스 제공 목적</td>
+																		</tr>
+																		<tr>
+																			<th>제공하는 개인정보 항목</th>
+																			<td>성명, 상호, 생년월일, 사업자번호, 주소, 연락처, 휴대폰번호, 이메일, 구입차량정보</td>
+																		</tr>
+																		<tr>
+																			<th>보유/이용기간</th>
+																			<td>제공받은 기관의 이용목적 달성 후 폐기</td>
+																		</tr>
+																		<tr>
+																			<th>미동의 시 불이익 사항</th>
+																			<td>한국도로공사(주)에 계약자 정보 및 차량정보를 제공 할 수 없습니다.</td>
+																		</tr>
+																	</tbody>
+																</table>
+																<div class="agreeBtm">
+																	<p>선택적 개인정보 제3자 제공에 동의합니다.(한국도로공사(주))</p>
+																	<div>
+																		<span class="checkSet">
+																			<input type="radio" name="agree_10" id="chk_10" checked />
+																			<label for="chk_10"><i></i>동의함</label>
+																		</span>
+																		<span class="checkSet">
+																			<input type="radio" name="agree_10" id="chk_10_n">
+																			<label for="chk_10_n"><i></i>동의하지 않음</label>
+																		</span>
+																	</div>
+																</div>
+															</div>
+														</dd>
+													</dl>
+												</div>
+												<!-------------------------------->
+												<p class="agreeTxt">&#8251; 상세한 내용은 르노삼성자동차(주) 홈페이지(http://www.renaultsamsungm.com) <a href="https://www.renaultsamsungm.com" target="_blank">개인정보 처리방침</a><!--2019-12-02-->에서 확인할 수 있습니다.</p>
+												<!-- privacySign -->
+												<div class="privacySign notPrxyCase">
+													<p class="dateBox">
+														본인은 본 동의서의 내용을 상세히 읽고 충분히 이해하여 이에 동의합니다.
+														<span>2018-05-16</span>
+													</p>
+													<div class="signBack">
+														<div class="paperCase" style="display:none;"><p>본 계약서는 종이계약서 형식으로 작성되었습니다.<br />전자계약서로 변경을 원하시면 BEST에서 계약요청을 다시 신청해주시기 바랍니다.</p></div><!-- 지류 계약일 경우 -->
+														<div class="paperCase"><p>서명활성화 버튼을 클릭하여 서명해주시기 바랍니다.</p></div><!-- 전자서명 비활성화 -->
+														<!---->
+														<div class="owners">
+															<em class="tt">매수인 1</em>
+															<div class="signSet">
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																		<span><canvas class="sign" id="canvas-buyer-sign1" style="width:100%;height:100%; touch-action:none;"></canvas></span>
+																		<strong><em>매수인 1</em>이름</strong>
+																	</div>
+																	<button class="btnLY">초기화</button><!--2019-07-23-->
+																	<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+																</div>
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																		<span><!-- 서명이미지가 들어올 영역 --></span> 
+																		<strong><em>매수인 1</em>서명</strong>
+																	</div>
+																	<button class="btnLY">초기화</button><!--2019-07-23-->
+																	<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+																</div>
+															</div>
+															<!---->
+															<em class="tt mt15">대리인 1</em>
+															<div class="signSet">
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																		<span><!-- 성명이미지가 들어올 영역 --></span>
+																		<strong><em>대리인 1</em>이름</strong>
+																	</div>
+																	<button class="btnLY">초기화</button><!--2019-07-23-->
+																	<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+																</div>
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																		<span><!-- 서명이미지가 들어올 영역 --></span> 
+																		<strong><em>대리인 1</em>서명</strong>
+																	</div>
+																	<button class="btnLY">초기화</button><!--2019-07-23-->
+																	<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+																</div>
+															</div>
+														</div>
+														<!-- 공통명의자 추가 되었을 경우
+														<div class="owners">
+															<em class="tt">매수인 2</em>
+															<div class="signSet">
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span>
+																		<span></span>
+																		<strong>이름</strong>
+																	</div>
+																	<button class="btnLY">초기화</button>
+																	<button class="btnLY singToggleBtn">서명활성화</button>
+																</div>
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span>
+																		<span></span>
+																		<strong>서명</strong>
+																	</div>
+																	<button class="btnLY">초기화</button>
+																	<button class="btnLY singToggleBtn">서명활성화</button>
+																</div>
+															</div> 
+															<em class="tt mt15">대리인 2</em>
+															<div class="signSet">
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span>
+																		<span></span>
+																		<strong>이름</strong>
+																	</div>
+																	<button class="btnLY">초기화</button>
+																	<button class="btnLY singToggleBtn">서명활성화</button>
+																</div>
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span>
+																		<span></span>
+																		<strong>서명</strong>
+																	</div>
+																	<button class="btnLY">초기화</button>
+																	<button class="btnLY singToggleBtn">서명활성화</button>
+																</div>
+															</div>
+														</div>
+														<div class="owners">
+															<em class="tt">매수인 3</em>
+															<div class="signSet">
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span>
+																		<span></span>
+																		<strong>이름</strong>
+																	</div>
+																	<button class="btnLY">초기화</button>
+																	<button class="btnLY singToggleBtn">서명활성화</button>
+																</div>
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span>
+																		<span></span>
+																		<strong>서명</strong>
+																	</div>
+																	<button class="btnLY">초기화</button>
+																	<button class="btnLY singToggleBtn">서명활성화</button>
+																</div>
+															</div>
+															<em class="tt mt15">대리인 3</em>
+															<div class="signSet">
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span>
+																		<span></span>
+																		<strong>이름</strong>
+																	</div>
+																	<button class="btnLY">초기화</button>
+																	<button class="btnLY singToggleBtn">서명활성화</button>
+																</div>
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span>
+																		<span></span>
+																		<strong>서명</strong>
+																	</div>
+																	<button class="btnLY">초기화</button>
+																	<button class="btnLY singToggleBtn">서명활성화</button>
+																</div>
+															</div>
+														</div>
+														<div class="owners">
+															<em class="tt">매수인 4</em>
+															<div class="signSet">
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span>
+																		<span></span>
+																		<strong>이름</strong>
+																	</div>
+																	<button class="btnLY">초기화</button>
+																	<button class="btnLY singToggleBtn">서명활성화</button>
+																</div>
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span>
+																		<span></span>
+																		<strong>서명</strong>
+																	</div>
+																	<button class="btnLY">초기화</button>
+																	<button class="btnLY singToggleBtn">서명활성화</button>
+																</div>
+															</div>
+															<em class="tt mt15">대리인 4</em>
+															<div class="signSet">
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span>
+																		<span></span>
+																		<strong>이름</strong>
+																	</div>
+																	<button class="btnLY">초기화</button>
+																	<button class="btnLY singToggleBtn">서명활성화</button>
+																</div>
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span>
+																		<span></span>
+																		<strong>서명</strong>
+																	</div>
+																	<button class="btnLY">초기화</button>
+																	<button class="btnLY singToggleBtn">서명활성화</button>
+																</div>
+															</div>
+														</div>
+														-->     
+													</div>
+												</div>
+												<!--// privacySign -->
+											</div>
+											<!------------------------ 매매계약서 ------------------------>
+											<div class="swiper-slide step2">
+												<!---->
+												<div class="personArea"> 
+													<span class="mr30 vMiddle">현 계약서 발송방법 선택</span>
+													<span class="checkSet">
+														<input type="checkbox" id="transmit_01">
+														<label for="transmit_01"><i></i>SMS</label>
+													</span>
+													<span class="checkSet">
+														<input type="checkbox" id="transmit_02">
+														<label for="transmit_02"><i></i>e-mail</label>
+													</span>
+													<span class="checkSet">
+														<input type="checkbox" id="transmit_03">
+														<label for="transmit_03"><i></i>e-Fax</label>
+													</span>
+													<span class="checkSet">
+														<input type="checkbox" id="transmit_04" checked disabled >
+														<label for="transmit_04"><i></i>카카오알림톡 (필수)</label>
+													</span>
+													<span class="checkSet mr0">
+														<input type="checkbox" id="transmit_05">
+														<label for="transmit_05" checked><i></i>영업담당 SMS</label>
+													</span>
+													<!---->
+													<p class="txtGuide">&#8251; 현 계약서를 매수인(1)에게 발송합니다. (공동명의시에도 매수인(1)에게만 발송됩니다.)</p>
+												</div>
+												<!-- topPlace -->
+												<div class="topPlace">
+													<div class="gridSet grid3">
+														<div class="gridItem">
+															<dl class="dlStyle">
+																<dt class="wideHide">대리점</dt>
+																<dd>강남지점</dd>
+															</dl>
+														</div>
+														<!---->
+														<div class="gridItem">
+															<dl class="dlStyle">
+																<dt>청약/계약일</dt>
+																<dd>2018-04-06</dd>
+															</dl>
+														</div>
+														<!--2019-04-19 변경-->
+														<div class="gridItem">
+															<dl class="dlStyle">
+																<dt>청약/계약 장소<sup>필수항목</sup></dt>
+																<dd class="noline inMust">
+																	<span class="selectSet">
+																		<select>
+																			<option>거점</option>
+																			<option>거점 외</option>
+																			<option>거점 / 거점 외</option>
+																			<option>거점 외 / 거점</option>
+																		</select>
+																	</span>
+																</dd>
+															</dl>
+														</div>
+														<!--//2019-04-19 변경-->
+													</div>
+												</div>
+												<!--// topPlace -->
+
+												<!-- 매수인 2,3,4 동일 Layout -->
+												<h4 class="formTit">매수인 1</h4>
+												<!---->
+												<div class="gridSet grid2">
+													<div class="gridItem">
+														<dl class="dlStyle">
+															<dt>
+																<strong>성명<sup>필수항목</sup></strong>
+																<span>(상호/대표이사)</span>
+															</dt>
+															<dd>윤윤제</dd>
+														</dl>
+													</div>
+													<!-- 2019-06-03 -->
+													<div class="gridItem">
+														<dl class="dlStyle">
+															<dt><!--공란--></dt>
+															<dd class="noline">
+																<div class="checkSet">
+																	<input type="checkbox" name="" id="agent01" />
+																	<label for="agent01"><i></i>대리인 <span>(위임장필수)</span></label>
+																</div>
+															</dd>
+														</dl>
+													</div>
+													<!--//2019-06-03 -->
+												</div>
+												<!-- 2019-06-03 대리인체크 시 변경 -->
+												<!---->
+												<div class="agentPerson" style="display:none;">
+													<div class="gridSet grid2">
+														<div class="gridItem">
+															<dl class="dlStyle">
+																<dt>
+																	<strong>수임자</strong>
+																	<span>(대리인)</span>
+																</dt>
+																<dd class="noline inMust"><input type="text" placeholder="이름을 입력해 주세요." class="wFull" /></dd>
+															</dl>
+															<dl class="dlStyle">
+																<dt>
+																	<strong>위임자와의 관계</strong>
+																</dt>
+																<dd class="noline inMust">
+																	<span class="selectSet wFull" id="agentRelation">
+																		<select>
+																			<option value="0">선택하세요.</option>
+																			<option value="0">부모</option>
+																			<option value="0">배우자</option>
+																			<option value="0">자녀</option>
+																			<option value="1">기타</option>
+																		</select>
+																	</span>
+																	<div class="mt7" style="display:none;"><input type="text" placeholder="10자 이내로 입력해주세요." class="wFull" /></div>
+																</dd>
+															</dl>
+														</div>
+														<div class="gridItem">
+															<dl class="dlStyle">
+																<dt>
+																	<strong>대리인 연락처</strong>
+																</dt>
+																<dd class="noline inMust"><input type="text" placeholder="숫자로 입력해 주세요." class="wFull" /></dd>
+															</dl>
+															<dl class="dlStyle txtBox">
+																<dt>
+																	<strong>위임자</strong>
+																	<span>(상호/대표이사)</span>
+																</dt>
+																<dd>
+																	&lt;첨부 필수제출&gt;<br/>
+																	* 위임장 별도 징구 <br/>
+																	* 위임자 (매수인) : (법인) 인감증명서 <br/>
+																	* 수임자(대리인) : 신분증사본
+																</dd>
+															</dl>
+														</div>
+													</div>
+													<div class="gridSet">
+														<div class="gridItem">
+															<dl class="dlStyle">
+																<dt>
+																	<strong>대리인 주소</strong>
+																	<span>(사업자주소)</span>
+																</dt>
+																<dd class="noline inMust"><input type="text" placeholder="주소를 입력해 주세요." class="wFull" /></dd>
+															</dl>
+														</div>
+													</div>
+												</div>
+												<!-- //2019-06-03 대리인체크 시 변경 -->
+												<!---->
+												<div class="gridSet grid2">
+													<div class="gridItem">
+														<dl class="dlStyle hBox2">
+															<dt>
+																<strong>
+																	주민등록주소<sup>필수항목</sup>
+																	<span>(사업자주소)</span>
+																</strong>
+															</dt>
+															<dd>
+																[03878] 서울특별시 강남구 강남대로 298<br />
+																푸르덴셜타워  12층
+															</dd>
+														</dl>
+													</div>
+													<div class="gridItem">
+														<dl class="dlStyle">
+															<dt><strong>휴대전화</strong></dt>
+															<dd>010-2345-6789</dd>
+														</dl>
+														<dl class="dlStyle">
+															<dt><strong>자택전화</strong></dt>
+															<dd>010-2345-6789</dd>
+														</dl>
+													</div>
+												</div>
+												<div class="gridSet grid2">
+													<div class="gridItem">
+														<dl class="dlStyle hBox2 buyType">
+															<dt>
+																<strong>매수인 유형<sup>필수항목</sup></strong>
+															</dt>
+															<dd>
+																<div class="checkSet">
+																	<input type="checkbox" name="" id="buyertype_01" checked disabled />
+																	<label for="buyertype_01"><i></i>개인 명의 구입 시 영수증 발급</label>
+																</div>
+																<div class="checkSet">
+																	<input type="checkbox" name="" id="buyertype_02" disabled />
+																	<label for="buyertype_02"><i></i>사업자 명의 구입 시 세금계산서 발급</label>
+																</div>
+																<p class="txtGuide">구입 이후, 개인명의에서 사업자명의로 변경, 법인사업자  등록번호 수정은 출고일 기준 다음달 10일까지만 가능합니다.</p>
+															</dd>
+														</dl>
+													</div>
+													<div class="gridItem">
+														<dl class="dlStyle">
+															<dt><strong>직장전화</strong></dt>
+															<dd>010-2345-6789</dd>
+														</dl>
+														<dl class="dlStyle">
+															<dt><strong>e-mail</strong></dt>
+															<dd>youn123&commat;korea.co.kr</dd>
+														</dl>
+													</div>
+												</div>
+												<div class="gridSet grid2">
+													<div class="gridItem">
+														<dl class="dlStyle">
+															<dt>
+																<strong>주민등록번호<sup>필수항목</sup></strong>
+																<span>(외국인등록번호)</span>
+															</dt>
+															<dd class="noline inMust numBtn"><input type="number" placeholder="숫자로 입력해주세요." class="wFull" readonly /></dd>
+														</dl><!-- 2019-04-19 dl&dd class변경 -->
+													</div>
+													<div class="gridItem blockCase"><!--공란--></div>
+												</div>
+												<div class="signBack mt1">
+													<div class="paperCase" style="display:none;"><p>본 계약서는 종이계약서 형식으로 작성되었습니다.<br />전자계약서로 변경을 원하시면 BEST에서 계약요청을 다시 신청해주시기 바랍니다.</p></div><!-- 지류 계약일 경우 -->
+													<div class="paperCase" style=""><p>서명활성화 버튼을 클릭하여 서명해주시기 바랍니다.</p></div><!-- 2019-06-03 서명패드 가리는 (비활성화) dim은 지류계약과동일 단, text만 변경 -->
+													<!---->
+													<div class="signSet">
+														<div class="signItem">
+															<div>
+																<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																<span><!-- 성명이미지가 들어올 영역 --></span>
+																<strong><em>매수인 1</em>이름</strong>
+															</div>
+															<button class="btnLY">초기화</button><!--2019-07-23-->
+															<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+														</div>
+														<div class="signItem">
+															<div>
+																<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																<span><!-- 서명이미지가 들어올 영역 --></span> 
+																<strong><em>매수인 1</em>서명</strong>
+															</div>
+															<button class="btnLY">초기화</button><!--2019-07-23-->
+															<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+														</div>
+													</div>
+												</div>
+												<!--// 매수인 2,3,4 동일 Layout -->
+												<!-- 차량사항 -->
+												<h4 class="formTit">차량사항</h4>
+												<div class="gridSet grid2">
+													<div class="gridItem">
+														<dl class="dlStyle">
+															<dt><strong>차종</strong></dt>
+															<dd>SM6 2.0 GD3 PE</dd>
+														</dl>
+														<dl class="dlStyle">
+															<dt><strong>색상</strong></dt>
+															<dd>울트라 실버 (내장색 : 블랙 가죽)</dd>
+														</dl>
+														<dl class="dlStyle">
+															<dt><strong>수량</strong></dt>
+															<dd>1대</dd>
+														</dl>
+													</div>
+													<div class="gridItem">
+														<dl class="dlStyle hBox3">
+															<dt><strong>선택용품</strong></dt>
+															<dd>스마트 커넥트</dd>
+														</dl>
+													</div>
+												</div>
+												<div class="gridSet grid2">
+													<div class="gridItem">
+														<dl class="dlStyle">
+															<dt><strong>면세여부</strong></dt>
+															<dd>
+																<span class="radioSet">
+																	<input type="radio" id="tax_01" name="tax" checked  disabled />
+																	<label for="tax_01"><i></i>과세</label>
+																</span>
+																<span class="radioSet">
+																	<input type="radio" id="tax_02" name="tax" disabled />
+																	<label for="tax_02"><i></i>감세</label>
+																</span>
+																<span class="radioSet">
+																	<input type="radio" id="tax_03" name="tax" disabled />
+																	<label for="tax_03"><i></i>면세</label>
+																</span>
+																<span class="radioSet">
+																	<input type="radio" id="tax_04" name="tax" disabled />
+																	<label for="tax_04"><i></i>영세</label>
+																</span>
+															</dd>
+														</dl>
+														<dl class="dlStyle">
+															<dt><strong>자동차등록</strong></dt>
+															<dd>
+																<span class="radioSet">
+																	<input type="radio" id="rg_01" name="registration" checked disabled />
+																	<label for="rg_01"><i></i>위탁</label>
+																</span>
+																<span class="radioSet">
+																	<input type="radio" id="rg_02" name="registration" disabled />
+																	<label for="rg_02"><i></i>본인</label>
+																</span>
+															</dd>
+														</dl>
+														<dl class="dlStyle">
+															<dt><strong>인도예정일</strong></dt>
+															<dd>2018-05-01</dd>
+														</dl>
+														<dl class="dlStyle">
+															<dt><strong>인도장소</strong></dt>
+															<dd>
+																<span class="radioSet">
+																	<input type="radio" id="lc_01" name="location" checked disabled />
+																	<label for="lc_01"><i></i>지점</label>
+																</span>
+																<span class="radioSet">
+																	<input type="radio" id="lc_02" name="location" disabled />
+																	<label for="lc_02"><i></i>기타 &colon; 자택</label>
+																</span>
+															</dd>
+														</dl>
+													</div>
+													<div class="gridItem">
+														<dl class="dlStyle hBox4">
+															<dt><strong>선택사양</strong></dt>
+															<dd>L47 알루미늄 페달, AVM 세트 + AXS 네비 본체 (샤크), 용품사양 추가 정보가 노출되는 영역 L47 알루미늄 페달, AVM 세트 + AXS 네비 본체 (샤크), 용품사양 추가 정보가 노출되는 영역 </dd>
+														</dl>
+													</div>
+												</div>
+												<!--// 차량사항 -->
+												<!-- 판매가격 -->
+												<h4 class="formTit">판매가격</h4>
+												<div class="gridSet grid2">
+													<div class="gridItem">
+														<div class="balloon">
+															<dl class="dlStyle">
+																<dt><strong>기본가격 (원)</strong></dt>
+																<dd class="price">30,000,000</dd>
+															</dl>
+															<dl class="dlStyle">
+																<dt><strong>선택사양 (원)</strong></dt>
+																<dd class="price">4,080,000</dd>
+															</dl>
+															<dl class="dlStyle">
+																<dt><strong>선택용품 (원)</strong></dt>
+																<dd class="price">1,500,000</dd>
+															</dl>
+															<dl class="dlStyle multi">
+																<dt><strong>해피케어상품</strong></dt>
+																<dd>
+																	<span class="checkSet">
+																		<input type="checkbox" id="happy_01" name="happy" disabled />
+																		<label for="happy_01"><i></i>보증연장</label>
+																	</span>
+																	<span class="checkSet">
+																		<input type="checkbox" id="happy_02" name="happy" disabled />
+																		<label for="happy_02"><i></i>안심관리</label>
+																	</span>
+																	<span class="checkSet mr0">
+																		<input type="checkbox" id="happy_03" name="happy" checked disabled />
+																		<label for="happy_03"><i></i>프리미엄</label>
+																	</span>
+																	<div class="price">1,000,000</div>
+																</dd>
+															</dl>
+														</div>
+													</div>
+													<div class="gridItem rightBox">
+														<dl class="dlStyle carPrice">
+															<dt><strong>차량가격 (계)</strong></dt>
+															<dd class="price">33,200,000</dd>
+														</dl>
+														<div class="markArea">
+															<dl class="dlStyle plus">
+																<dt><strong>탁송료</strong></dt>
+																<dd class="price">150,000</dd>
+															</dl>
+															<dl class="dlStyle minus">
+																<dt><strong>매출 A/C (할인)</strong></dt>
+																<dd class="price">3,530,000</dd>
+															</dl>
+															<dl class="dlStyle total">
+																<dt><strong>판매가격 (계)</strong></dt>
+																<dd class="price ft30">29,820,000</dd>
+															</dl>
+														</div>
+													</div>
+												</div>
+												<!--// 판매가격 -->
+												<!-- 지불조건 -->
+												<h4 class="formTit">지불조건</h4>
+												<div class="priceSet">
+													<div class="balloon yell">
+														<dl class="dlStyle">
+															<dt><strong>계약금 (원)</strong></dt>
+															<dd class="price">30,000,000</dd>
+														</dl>
+														<dl class="dlStyle">
+															<dt><strong>인도금 (원)</strong></dt>
+															<dd class="price">4,080,000</dd>
+														</dl>
+														<dl class="dlStyle payKind">
+															<dt><strong>지불수단</strong></dt>
+															<dd class="tLeft">
+																<span class="checkSet">
+																	<input type="checkbox" id="pay_01" name="pay" disabled />
+																	<label for="pay_01"><i></i>현금</label>
+																</span>
+																<span class="checkSet">
+																	<input type="checkbox" id="pay_02" name="pay" checked="checked" disabled />
+																	<label for="pay_02"><i></i>할부</label>
+																</span>
+																<span class="checkSet">
+																	<input type="checkbox" id="pay_03" name="pay" disabled />
+																	<label for="pay_03"><i></i>리스</label>
+																</span>
+															</dd>
+														</dl>
+														<dl class="dlStyle on"> <!-- 할부일 경우 on class 추가 -->
+															<dt><strong>할부금 (원)</strong></dt>
+															<dd class="price">20,230,000</dd>
+														</dl>
+														<div class="payKindInfo">
+															<!-- 외상일 경우 현금으로 처리 -->
+															<!-- 할부일 경우 표출 -->
+															<dl class="vrtStyle">
+																<dt><strong>할부정보</strong></dt>
+																<dd>
+																	<dl>
+																		<dt>금융사명</dt>
+																		<dd>삼성캐피탈</dd>
+																	</dl>
+																	<dl>
+																		<dt>상품명</dt>
+																		<dd>해피라이프플랜3(36개월, 5.5&percnt;)</dd>
+																	</dl>
+																	<dl>
+																		<dt>할부원금 (원)</dt>
+																		<dd class="price">
+																			20,230,000<br />
+																			36개월<br />
+																			5.5&percnt;
+																		</dd>
+																	</dl>
+																	<dl>
+																		<dt>월할부금 (원)</dt>
+																		<dd class="price txtLine">365,000</dd>
+																	</dl>
+																	<dl>
+																		<dt>할부총액 (계)</dt>
+																		<dd class="price">26,810,000</dd>
+																	</dl>
+																</dd>
+															</dl>
+															<!-- //할부일 경우 표출 -->
+															<!-- 리스일 경우 표출 -->
+															<dl class="vrtStyle" style="display:none;">
+																<dt><strong>리스정보</strong></dt>
+																<dd>
+																	<dl>
+																		<dt>금융사명</dt>
+																		<dd>RCI 파이낸셜서비스코리아(주)</dd>
+																	</dl>
+																	<dl>
+																		<dt>상품명</dt>
+																		<dd>리스</dd>
+																	</dl>
+																	<dl>
+																		<dt>할부원금 (원)</dt>
+																		<dd class="price">
+																			20,230,000
+																		</dd>
+																	</dl>
+																</dd>
+															</dl>
+															<!-- //리스일 경우 표출 -->
+														</div>
+														<dl class="dlStyle pointCase">
+															<dt><strong>선포인트 할인 (원)</strong></dt> 
+															<dd class="price">1,250,000</dd>
+														</dl>
+														<dl class="dlStyle pointCase">
+															<dt><strong>적립카드포인트 (원)</strong></dt> 
+															<dd class="price">1,500,000</dd>
+														</dl>
+														<dl class="dlStyle total">
+															<dt><strong class="blackColor">지불총액 (계)</strong></dt>
+															<dd class="price ft30">33,200,000</dd>
+														</dl>
+													</div>
+												</div>
+												<!-- // 지불조건 -->
+												<!-- 계약금 영수증 -->
+												<h4 class="formTit">계약금 영수증</h4>
+												<div class="gridSet grid2">
+													<div class="gridItem">
+														<dl class="dlStyle">
+															<dt><strong>영수금액 (원)</strong></dt>
+															<dd class="noline inMust">
+																<span class="selectSet wFull">
+																	<select>
+																		<option>없음</option>
+																		<option>100,000</option>
+																		<option>150,000(EV)</option>
+																		<option>200,000 (SM7)</option>
+																	</select>
+																</span> <!-- 2019-04-17 select 스크립트 삭제 -->
+															</dd>
+														</dl><!-- 2019-04-19 dl&dd class변경 -->
+													</div>
+													<div class="gridItem blockCase"><!--공란--></div>
+												</div>
+												<div class="signBack mt1">
+													<div class="paperCase" style="display:none;"><p>현금 영수금액이 없을 경우 <br/>성명 및 서명 작성을 하지 않습니다.</p></div><!-- 영수금액 0일 경우 -->
+													<div class="paperCase"><p>서명활성화 버튼을 클릭하여 서명해주시기 바랍니다.</p></div><!-- 전자서명 비활성화 -->
+													<!---->
+													<div class="signSet">
+														<div class="signItem">
+															<div>
+																<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																<span><!-- 성명이미지가 들어올 영역 --></span>
+																<strong><em>영업담당</em>이름</strong>
+															</div>
+															<button class="btnLY">초기화</button><!--2019-07-23-->
+															<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+														</div>
+														<div class="signItem">
+															<div>
+																<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																<span><!-- 서명이미지가 들어올 영역 --></span> 
+																<strong><em>영업담당</em>서명</strong>
+															</div>
+															<button class="btnLY">초기화</button><!--2019-07-23-->
+															<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+														</div>
+													</div>
+												</div>
+												<!--// 계약금 영수증 -->
+												<!-- 고객 안내 사항 -->
+												<div class="noticeSign">
+													<strong class="pointTt">고객께서 꼭 알아 두셔야 할 사항</strong>
+													<ol>
+														<li>
+															차량 인도금 및 부대 비용은 거래안전을 위해 반드시 매수인 명의로 아래 르노삼성자동차㈜ 계좌로 송금하셔야 합니다.
+															<dl class="bank">
+																<dt>은행명</dt>
+																<dd>KEB 하나은행</dd>
+																<dt>계좌번호</dt>
+																<dd>103-594684-16532</dd>
+																<dt>예금주</dt>
+																<dd>르노강남지점</dd>
+															</dl>
+														</li>
+														<li>&lsquo;선포인트 할인&rsquo;은 제휴카드와 매수인의 별도 약정에 따라 매수인은 향후 카드 적립포인트로 상환할 의무가 있습니다.</li>
+														<li>&lsquo;선택용품&rsquo;은 완성차량에 부착하는 액세사리로 별도의 보증서 및 보증조건에 의하여 품질을 보증합니다.</li>
+														<li>&lsquo;해피케어상품&rsquo;의 보증조건 등 중요사항은 별도의 약관에 따릅니다.</li>
+														<li>&lt;공동명의건에 한함&gt; 공동명의자 전원이 아래에 서명하는 경우 공동명의자 중 1인이 단독으로 차량인수를 요청할 수 있습니다. </li>
+													</ol>
+													<!---->
+													<div class="signBack">
+														<div class="paperCase" style="display:none;"><p>본 계약서는 종이계약서 형식으로 작성되었습니다.<br />전자계약서로 변경을 원하시면 BEST에서 계약요청을 다시 신청해주시기 바랍니다.</p></div><!-- 지류 계약일 경우 -->
+														<!---->
+														<div class="paperCase"><p>서명활성화 버튼을 클릭하여 서명해주시기 바랍니다.</p></div><!-- 전자서명 비활성화 -->
+														<div class="owners">
+															<div class="signSet">
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																		<span><!-- 성명이미지가 들어올 영역 --></span>
+																		<strong><em>매수인 1</em>이름</strong>
+																	</div>
+																	<button class="btnLY">초기화</button><!--2019-07-23-->
+																	<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+																</div>
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																		<span><!-- 서명이미지가 들어올 영역 --></span> 
+																		<strong><em>매수인 1</em>서명</strong>
+																	</div>
+																	<button class="btnLY">초기화</button><!--2019-07-23-->
+																	<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+																</div>
+															</div>
+														</div>
+														<div class="owners">
+															<div class="signSet">
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																		<span></span>
+																		<strong><em>매수인 2</em>이름</strong>
+																	</div>
+																	<button class="btnLY">초기화</button><!--2019-07-23-->
+																	<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+																</div>
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																		<span></span>
+																		<strong><em>매수인 2</em>서명</strong>
+																	</div>
+																	<button class="btnLY">초기화</button><!--2019-07-23-->
+																	<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+																</div>
+															</div> 
+														</div>
+														<!-- 공통명의자 추가 되었을 경우
+														<div class="owners">
+															<div class="signSet">
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span>
+																		<span></span>
+																		<strong><em>매수인 3</em>이름</strong>
+																	</div>
+																	<button class="btnLY">초기화</button>
+																	<button class="btnLY singToggleBtn">서명활성화</button>
+																</div>
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span>
+																		<span></span>
+																		<strong><em>매수인 3</em>서명</strong>
+																	</div>
+																	<button class="btnLY">초기화</button>
+																	<button class="btnLY singToggleBtn">서명활성화</button>
+																</div>
+															</div>
+														</div>
+														<div class="owners">
+															<div class="signSet">
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span>
+																		<span></span>
+																		<strong><em>매수인 4</em>이름</strong>
+																	</div>
+																	<button class="btnLY">초기화</button>
+																	<button class="btnLY singToggleBtn">서명활성화</button>
+																</div>
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span>
+																		<span></span>
+																		<strong><em>매수인 4</em>서명</strong>
+																	</div>
+																	<button class="btnLY">초기화</button>
+																	<button class="btnLY singToggleBtn">서명활성화</button>
+																</div>
+															</div>
+														</div>
+														-->     
+													</div>
+													<!---->
+												</div>	
+												<!--// 고객 안내 사항 -->
+												<!-- 개별소비세율 인하 2019-11-21 -->
+												<div class="taxMustEtc">
+													<h4 class="formTit">개별소비세율 인하 특약사항</h4>
+													<p class="info">
+														본인은 본 계약 체결 후 차량 인수 전 관련 세금의 변동 및 당사 제품변경에 따른 자동차 가격 변동이 불가피하게 발생할 경우 변동된 가격으로 인수할 것을 특약합니다.
+													</p>
+													<div class="signBack">
+														<div class="paperCase" style="display:none;"><p>본 계약서는 종이계약서 형식으로 작성되었습니다.<br />전자계약서로 변경을 원하시면 BEST에서 계약요청을 다시 신청해주시기 바랍니다.</p></div><!-- 지류 계약일 경우 -->
+														<!---->
+														<div class="paperCase" style="display:none;"><p>서명활성화 버튼을 클릭하여 서명해주시기 바랍니다.</p></div><!-- 전자서명 비활성화 -->
+														<div class="signSet">
+															<div class="signItem">
+																<div>
+																	<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span>
+																	<span><!-- 성명이미지가 들어올 영역 --></span>
+																	<strong><em>매수인 1</em>이름</strong>
+																</div>
+																<button class="btnLY">초기화</button>
+																<button class="btnLY singToggleBtn">서명활성화</button>
+															</div>
+															<div class="signItem">
+																<div>
+																	<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span>
+																	<span><!-- 서명이미지가 들어올 영역 --></span> 
+																	<strong><em>매수인 1</em>서명</strong>
+																</div>
+																<button class="btnLY">초기화</button>
+																<button class="btnLY singToggleBtn">서명활성화</button>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!--// 개별소비세율 인하 2019-11-21 -->
+												<!-- 매도인, 대리점 -->
+												<div class="gridSet grid2">
+													<div class="gridItem">
+														<h4 class="formTit">매도인</h4>
+														<div class="sellerRep">
+															부산시 강서구 르노삼성대로 61<br />르노삼성자동차주식회사<br />대표이사 도미닉 시뇨라
+															<img src="../../images/img_stamp.png" alt="르노삼성자동차주식회사 날인" class="right" />
+														</div>
+													</div>
+													<!-- 개인일 경우 -->
+													<div class="gridItem">
+														<h4 class="formTit">대리점</h4>
+														<div class="sellerBelong">
+															<dl>
+																<dt>주소 :</dt>
+																<dd>[03878] 서울특별시 강남구 강남대로 298 푸르덴셜타워 1층 르노삼성자동차 강남지점</dd>
+															</dl>
+															<dl>
+																<dt>개인 :</dt>
+																<dd>강남대리점 대표 홍길동</dd>
+															</dl>
+															<dl>
+																<dt>Tel :</dt>
+																<dd>02-000-0000</dd>
+															</dl>
+														</div>
+													</div>
+													<!-- 법인 일 경우
+													<div class="gridItem">
+														<h4 class="formTit">대리점</h4>
+														<div class="sellerBelong">
+															<dl>
+																<dt>주소 :</dt>
+																<dd>[03878] 서울특별시 강남구 강남대로 298 푸르덴셜타워  1층 르노삼성자동차 강남지점</dd>
+															</dl>
+															<dl>
+																<dt>법인 :</dt>
+																<dd>IWTR<br/> 대표이사 홍길동</dd>
+															</dl>
+															<dl>
+																<dt>Tel :</dt>
+																<dd>02-000-0000</dd>
+															</dl>
+														</div>
+													</div> -->
+													<!---->
+												</div>
+												<!-- //매도인, 대리점 -->
+												<!-- 신용제공자 -->
+												<div class="gridSet grid2">
+													<div class="gridItem">
+														<h4 class="formTit">신용제공자</h4>
+														<div class="sellerBelong">
+															<dl>
+																<dt>주소 :</dt>
+																<dd>[08592] 서울특별시 금천구 가산디지털2로 30 (가산동, RSM타워 9층)</dd>
+															</dl>
+															<dl>
+																<dt>법인 :</dt>
+																<dd>RCI 파이낸셜서비스코리아㈜ <br/> 대표이사 피에르보피스</dd>
+															</dl>
+														</div>
+													</div>
+													<!---->
+													<div class="gridItem blockCase"><!--공란--></div>
+												</div>
+												<!-- //신용제공자 -->
+												<!-- 영업담당 -->
+												<h4 class="formTit">영업담당</h4>
+												<div class="gridSet grid2">
+													<div class="gridItem">
+														<dl class="dlStyle">
+															<dt><strong>영업담당 연락처</strong></dt>
+															<dd>02-3535-5564</dd>
+														</dl>
+													</div>
+													<!---->
+													<div class="gridItem hadd"><p>매수인 필수 기재사항은 매수인의 서명(날인)임을 확인함</p></div>
+												</div>
+												<div class="signBack mt1 mb3"><!-- 2019-10-21 -->
+													<div class="paperCase" style="display:none;"><p>본 계약서는 종이계약서 형식으로 작성되었습니다.<br />전자계약서로 변경을 원하시면 BEST에서 계약요청을 다시 신청해주시기 바랍니다.</p></div><!-- 지류 계약일 경우 -->
+													<!---->
+													<div class="paperCase"><p>서명활성화 버튼을 클릭하여 서명해주시기 바랍니다.</p></div><!-- 전자서명 비활성화 -->
+													<div class="signSet">
+														<div class="signItem">
+															<div>
+																<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																<span><!-- 성명이미지가 들어올 영역 --></span>
+																<strong><em>영업담당</em>이름</strong>
+															</div>
+															<button class="btnLY">초기화</button><!--2019-07-23-->
+															<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+														</div>
+														<div class="signItem">
+															<div>
+																<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																<span><!-- 서명이미지가 들어올 영역 --></span> 
+																<strong><em>영업담당</em>서명</strong>
+															</div>
+															<button class="btnLY">초기화</button><!--2019-07-23-->
+															<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+														</div>
+													</div>
+												</div>
+												<!--// 영업담당 -->
+											</div>
+											<!-------------------------- 계약조항 ------------------------>
+											<div class="swiper-slide step3">
+												<img src="../../images/img_sample_document2.png" alt="동의서 이미지" class="wFull" />
+											</div>
+											<!-------------------------- 레몬법 -------------------------->
+											<div class="swiper-slide step4">
+												<div class="lemonLawDetail">
+													<h2>자동차 교환·환불 중재제도 설명에 대한 이해 및 동 규정 수락여부 확인서</h2>
+													<div class="back">
+														<h3>자동차 교환·환불 중재제도 요지 및 중요 안내사항</h3>
+														<h4>[교환·환불 중재제도 요지]</h4>
+														<ul>
+															<li>(중재의 정의) “중재”는 분쟁당사자들 간의 합의로 그들의 분쟁을 중립적 사람(중재위원) 또는 중재부(중재판정부)의 결성(중재판정)에 의하여 해결하고 고 결성에 구속되는 분쟁해결절차를 말합니다.</li>
+															<li>(중재합의) ① “중재합의”는 당사자 간에 이미 발생했거나 발생이 예상되는 분쟁의 전부 또는 일부를 중재에 의하여 해결하도록 하는 당사자 간의 합의를 말합니다.<br/>
+															<div>② 자동차 교환·환불중재 규정(이하”중재규정”이라 합니다)이 적용되는 중재합의는 앙 당사자 모두가 자동차관리법 제47조의4 제1항에 따라 중재규정을 수락했을 때 성립합니다.</div></li>
+															<li>(중재합의의 성립과 효과) ① 자동차관리법 제47조의4 제1항에 따라 제작자가 사선에 중재규정을 수락하였고 또한 동 제작자가 제작한 차량의 구매자가 매매계약을 체결할 때 또는 교환·환불중재를 신청할 때 중재규정을 수락한 경우, 자동차 교환·환불 중재합의가 성립된 것으로 간주됩니다.
+															<div>② 제1항에 따라 자동차 교환·환불 중재합의가 성립되면 양 당사자는 동일한 내용의 교환·환불을 이유로 법원에 소송을 제기할 수 없습니다.</div>
+															<div>③ 제1항에 따라 자동차 교환·환불 중재합의가 성립되면 1958년 ‘외국중재판정의 승인 및 집행에 관한 뉴욕협약’ 제2조에 규정된 승인 및 집행의 요건으로서 중재에 대한 서면 합의 요건을 충족하는 것으로 봅니다.</div></li>
+															<li>(중재판정의 효력) 중재판정은 제작자와 소유자에 대하여 법원의 확정판결과 동일한 효력이 있습니다.<br/>
+															※ 자동차매매계약서에 중재규정 전문이 첨부되어 있으므로 반드시 해당 내용을 확인하시기 바랍니다.</li>
+														</ul>
+														<h4>[중요안내사항]</h4>
+														<ul>
+															<li>(자동차 교환·환불중재 규정 수락 사실) 르노삼성자동차(주)는 자동차 관리법 제47조의4 제1항 및 동법 제47조의7 제2항에 따라 자동차 안전 하자심의위원회가 제정한 중재규정을 수락하였음을 알려드립니다.</li>
+															<li>(신차로의 교환·환불 보장) 르노삼성자동차(주)는 자동차관리법 제47조의2 내지 6에 따라 자동차에 하자 발생 시 신차로의 교환 또는 환불을 보장하고 서면계약의 특약 등으로 교환·환불을 배제하지 많습니다.</li>
+															<li>(인도날짜) ① 인도날짜는 자동차관리법 제47조의2 제1항 제1호에 따른 서면계약의 날짜로 하며, 인도차량인수증 등을 통해 실제 인도를 증명할 수 있는 날짜 또는 제작자와 소유자가 합의하는 날짜로 갈음할 수 있습니다.
+															<div>② 인도날짜는 자동차관리법 제47조의2 자동차 교환 또는 환불 요건의 소유자의 중재신청 기한. 하자 재발 시점 및 누적수리기간 산정, 대상자동차의 사용기간 등에 대한 기산 기준이 됩니다.</div></li>
+															<li>(통지 방법) 중재규정에 따른 통지 또는 그 밖의 연락은 수신인이 동의하는 경우 전자우편, 문자메시지, 팩스 기타 합리적인 방법에 의할 수 있습니다.</li>
+															<li>(하자재발통보 수령 주소 및 대표자) 자동차관리법 제47조의2제2항에 따른 하자재발 통보 수령 주소 및 대표자는 다음과 같습니다.<br/> 
+															口 주소<br/>
+															- 등기우편 : 부산광역시 강서구 르노삼성대로 61 르노삼성자동차 고객지원센터<br/>
+															- 전자우편 : webmaster@renaultsamsungM.com<br/>
+															口 대표(수신인) : 르노삼성자동차 고객지원센터
+															</li>
+														</ul>
+													</div>
+												</div>
+												<!-------------------------------->
+												<h4 class="formTit">신청인 확인</h4>
+												<div class="lemonLawSign">
+													<div class="gridSet grid2">
+														<div class="gridItem">
+															<dl class="dlStyle">
+																<dt>신청일</dt>
+																<dd>2019년 03월 20일</dd>
+															</dl>
+														</div>
+														<div class="gridItem">
+															<button class="btnBlack">보증서 확인</button>
+														</div>
+													</div>
+													<div class="lLSBack">
+														<p>본인은 귀사로부터 자동차 교환 환불중재 제도 요지 및 중요 안내사항에 대한 설명을 듣고 충분히 이해하였음을 확인합니다.</p>
+														<div>
+															<span class="checkSet">
+																<input type="radio" name="rm_01" id="rm_011" checked />
+																<label for="rm_011"><i></i>설명을 듣고 이해하였음.</label>
+															</span>
+														</div>
+													</div>
+													<div class="lLSBack">
+														<p>본인은 자동차 교환 환불중재 규정을</p>
+														<div>
+															<span class="checkSet">
+																<input type="radio" name="rm_02" id="rm_021" checked />
+																<label for="rm_021"><i></i>추후 중재 신청 시 수락하겠습니다.</label>
+															</span>
+															<span class="checkSet">
+																<input type="radio" name="rm_02" id="rm_022">
+																<label for="rm_022"><i></i>지금 수락하겠습니다. (수락시점 이후 법원에 소송제기 불가)</label>
+															</span>
+														</div>
+													</div>
+													<div class="lLSBack">
+														<p>본인은 자동차 교환 환불중재 규정에 따른 통지/연락을</p>
+														<div>
+															<span class="checkSet">
+																<input type="radio" name="rm_03" id="rm_031" checked />
+																<label for="rm_031"><i></i>전자우편, 문자메시지, 팩스 등을 통해 받겠습니다.</label>
+															</span>
+														</div>
+													</div>
+													<!---->
+													<div class="privacySign">
+														<div class="signBack">
+															<div class="paperCase" style="display:none;"><p>본 계약서는 종이계약서 형식으로 작성되었습니다.<br />전자계약서로 변경을 원하시면 BEST에서 계약요청을 다시 신청해주시기 바랍니다.</p></div><!-- 지류 계약일 경우 -->
+															<!---->
+															<div class="paperCase"><p>서명활성화 버튼을 클릭하여 서명해주시기 바랍니다.</p></div><!-- 전자서명 비활성화 -->
+															<em class="tt">매수인 1</em>
+															<div class="signSet">
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																		<span><!-- 성명이미지가 들어올 영역 --></span>
+																		<strong><em>매수인 1</em>이름</strong>
+																	</div>
+																	<button class="btnLY">초기화</button><!--2019-07-23-->
+																	<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+																</div>
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																		<span><!-- 서명이미지가 들어올 영역 --></span> 
+																		<strong><em>매수인 1</em>서명</strong>
+																	</div>
+																	<button class="btnLY">초기화</button><!--2019-07-23-->
+																	<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+																</div>
+															</div>
+															<!---->
+															<em class="tt mt15">대리인 1</em>
+															<div class="signSet">
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																		<span><!-- 성명이미지가 들어올 영역 --></span>
+																		<strong><em>대리인 1</em>이름</strong>
+																	</div>
+																	<button class="btnLY">초기화</button><!--2019-07-23-->
+																	<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+																</div>
+																<div class="signItem">
+																	<div>
+																		<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																		<span><!-- 서명이미지가 들어올 영역 --></span> 
+																		<strong><em>대리인 1</em>서명</strong>
+																	</div>
+																	<button class="btnLY">초기화</button><!--2019-07-23-->
+																	<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+																</div>
+															</div>
+															<!---->
+															<div class="owners">
+																<em class="tt">매수인 2</em>
+																<div class="signSet">
+																	<div class="signItem">
+																		<div>
+																			<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																			<span><!-- 성명이미지가 들어올 영역 --></span>
+																			<strong><em>매수인 2</em>이름</strong>
+																		</div>
+																		<button class="btnLY">초기화</button><!--2019-07-23-->
+																		<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+																	</div>
+																	<div class="signItem">
+																		<div>
+																			<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																			<span><!-- 서명이미지가 들어올 영역 --></span> 
+																			<strong><em>매수인 2</em>서명</strong>
+																		</div>
+																		<button class="btnLY">초기화</button><!--2019-07-23-->
+																		<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+																	</div>
+																</div>
+																<!---->
+																<em class="tt mt15">대리인 2</em>
+																<div class="signSet">
+																	<div class="signItem">
+																		<div>
+																			<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																			<span><!-- 성명이미지가 들어올 영역 --></span>
+																			<strong><em>대리인 2</em>이름</strong>
+																		</div>
+																		<button class="btnLY">초기화</button><!--2019-07-23-->
+																		<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+																	</div>
+																	<div class="signItem">
+																		<div>
+																			<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+																			<span><!-- 서명이미지가 들어올 영역 --></span> 
+																			<strong><em>대리인 2</em>서명</strong>
+																		</div>
+																		<button class="btnLY">초기화</button><!--2019-07-23-->
+																		<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+																	</div>
+																</div>
+															</div>
+															<!---->
+														</div>
+													</div>
+													<!---->
+												</div>
+											</div>
+											<!---------------- 미리보기보기 - 네이티브 팝업 -------------->
+										</div>
+									</div>
+								</div>
+								<!---->
+								<div class="showSignArea">
+									<button>전자서명 활성화</button>
+									<span> 
+										<em>&#8251; 계약정보가 변경되었을 경우 전자서명 활성화 버튼을 <br/>클릭하여 전자서명을 재서명 하시기 바랍니다.</em>
+										<em>&#8251; 고객 및 영업담당 모두 재서명 하시기 바랍니다.</em>
+									</span>
+								</div>
+                                <!-- Btn Contract Bottom -->
+                                <div class="bottomContBtn" style="display: none;">
+                                    <button class="btnPrev gray"><i>이전페이지</i></button>
+                                    <button class="btnNext"><i>다음페이지</i></button>
+                                    <button class="btnSign">전자서명 활성화</button>
+                                    <button class="btnDocumt">미리보기</button>
+                                </div>
+                                <!-- // Btn Contract Bottom -->
+							</div>
+							<!--// tab-wrap -->
+						</div>
+						<!-- //contractLayout -->
+					</section>
+                    <button class="pageTop">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

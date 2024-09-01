@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$('.callOrder .tls tbody tr td:first, .callOrder .tls tbody tr td:nth-child(n+3)').click(function(){
+				location.href = 'order_view.html';
+			}); // 2020-07-08 오더번호 라인 외 페이지 이동 액션
+			$('.callOrder .tls tbody tr td:first, .callOrder .tls tbody tr#goBlue td:nth-child(n+3)').click(function(){
+				location.href = 'order_view2.html';
+			}); // 2020-07-08 오더번호 라인 외 페이지 이동 액션
+			$('.callOrder .tls tbody tr td:first, .callOrder .tls tbody tr#notSubmitGo td:nth-child(n+3)').click(function(){
+				location.href = 'order_write2.html';
+			}); // 2020-07-08 오더번호 라인 외 페이지 이동 액션
+			$('.btnDoor.mult1').click(function(){
+				$(this).toggleClass("on");
+				$('tbody tr.mult1').toggle();
+			});
+			$('.btnDoor.mult2').click(function(){
+				$(this).toggleClass("on");
+				$('tbody tr.mult2').toggle();
+			});
+			$('.btnDoor.mult3').click(function(){
+				$(this).toggleClass("on");
+				$('tbody tr.mult3').toggle();
+			});
+			$('.btnDoor.mult4').click(function(){
+				$(this).toggleClass("on");
+				$('tbody tr.mult4').toggle();
+			});
+			$('.btnDoor.mult5').click(function(){
+				$(this).toggleClass("on");
+				$('tbody tr.mult5').toggle();
+			});
+			$('.statusSet.confirm').click(function(){
+				$('.popDim').show();
+				$('.orderPop').show();
+			});
+		</script>
+	</head>
+	<body>
+		<div class="grayBox searchArea">
+			<fieldset>
+				<span class="calendarSet">
+					<span class="calDupSet">
+						<span class="calSet"><label for="searchDate">운송일자</label><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span><!-- 2020-07-08 label 수정 -->
+						<em>~</em>
+						<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+					</span>
+					<span class="radioChoose">
+						<label for="lb1"><input type="radio" id="lb1" name="radio1" value="오늘" checked/><span>오늘</span></label>
+						<label for="lb2"><input type="radio" id="lb2" name="radio1" value="7일" /><span>7일</span></label>
+						<label for="lb3"><input type="radio" id="lb3" name="radio1" value="1개월" /><span>1개월</span></label>
+						<label for="lb4"><input type="radio" id="lb4" name="radio1" value="3개월" /><span>3개월</span></label>
+					</span>
+				</span>
+				<dl class="inputBox">
+					<dt>오더상태</dt>
+					<dd>
+						<span class="selectSet">
+							<select>
+								<option selected>전체</option>
+								<option>작성중</option>
+								<option>오더제출</option>
+								<option>오더취소</option>
+								<option>배차확정</option>
+							</select>
+						</span>
+					</dd>
+				</dl>
+				<dl class="inputBox">
+					<dt>운송유형</dt>
+					<dd>
+						<span class="selectSet">
+							<select>
+								<option selected>전체</option>
+								<option>수입</option>
+								<option>수출</option>
+							</select>
+						</span>
+					</dd>
+				</dl>
+				<!-- 2020-06-26 작업지 검색 영역 추가 -->
+				<dl class="inputBox">
+					<dt>작업지</dt>
+					<dd>
+						<span class="selectSet">
+							<select>
+								<option selected>전체</option>
+							</select>
+						</span>
+					</dd>
+				</dl>
+				<!-- //2020-06-26 작업지 검색 영역 추가 -->
+				<!-- 2020-07-08 키워드검색 삭제 -->
+			</fieldset>
+		</div>
+		<div class="pd2">
+			<div class="tls">
+				<table>
+					<colgroup>
+						<!-- 2020-07-08 체크박스 행 삭제 -->
+						<col width="205" />
+						<col width="140" />
+						<col width="180" />
+						<col width="100" />
+						<col width="100" />
+						<col width="150" />
+						<col width="100" />
+						<col width="100" />
+						<col width="100" />
+						<col width="100" />
+					</colgroup>
+					<thead>
+						<tr>
+							<!-- 2020-07-08 체크박스 행 삭제 -->
+							<th>운송일시</th><!--2020-06-26 텍스트 수정 -->
+							<th>오더번호</th>
+							<th>오더상태</th>
+							<th>운송유형</th>
+							<th>형태</th>
+							<th>운송비용</th>
+							<th>종류</th>
+							<th>출발지</th>
+							<th>작업지</th>
+							<th>도착지</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!--Loop-->
+						<tr id="notSubmitGo">
+							<!-- 2020-07-08 체크박스 행 삭제 -->
+							<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+							<td>-</td>
+							<td><span class="statusSet request">작성중</span></td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td class="tR">9,999,999</td>
+							<td>20ft</td>
+							<td>XX CY</td>
+							<td>경남부산</td>
+							<td>경남부산</td>
+						</tr>
+						<!--//Loop-->
+						<tr>
+							<!-- 2020-07-08 체크박스 행 삭제 -->
+							<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+							<td>C999999</td>
+							<td><span class="statusSet receive">오더제출</span></td>
+							<td class="ftRed">수입</td>
+							<td>편도</td>
+							<td class="tR">9,999,999</td>
+							<td>20ft</td>
+							<td>XX CY</td>
+							<td>경남부산</td>
+							<td>경남부산</td>
+						</tr>
+						<tr>
+							<!-- 2020-07-08 체크박스 행 삭제 -->
+							<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+							<td>P999999 <button class="btnDoor mult1">여닫기</button></td>
+							<td><span class="statusSet cancel">오더취소</span></td>
+							<td class="ftRed">수입</td>
+							<td>환적</td>
+							<td class="tR">9,999,999</td>
+							<td>20ft</td>
+							<td>XX CY</td>
+							<td></td><!-- 2020-06-26 형태가 환적일 때 작업지 없음 -->
+							<td>경남부산</td>
+						</tr>
+						<tr class="mult mult1" style="display:none">
+							<td><span class="arrow">상세목록</span></td>
+							<!-- 2020-06-07 열 하나 삭제 -->
+							<td class="tR">C999999</td>
+							<td><span class="statusSet bracket">오더제출</span></td>
+							<td></td>
+							<td>왕복</td>
+							<td class="tR">+ 3,433,333</td>
+							<td>20ft</td>
+							<td></td>
+							<td>경남울산</td>
+							<td>경남부산</td>
+						</tr>
+						<tr class="mult mult1" style="display:none">
+							<td><span class="arrow">상세목록</span></td>
+							<!-- 2020-06-07 열 하나 삭제 -->
+							<td class="tR">C999999</td>
+							<td><span class="statusSet bracket">오더제출</span></td>
+							<td></td>
+							<td>왕복</td>
+							<td class="tR">+ 3,433,333</td>
+							<td>15ft</td>
+							<td></td>
+							<td>경남울산</td>
+							<td>경남부산</td>
+						</tr>
+						<tr>
+							<!-- 2020-07-08 체크박스 행 삭제 -->
+							<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+							<td>C999999 <button class="btnDoor mult2">여닫기</button></td>
+							<td><span class="statusSet">배차확정</span></td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td><!-- 2020-06-26 텍스트 수정 -->
+							<td class="tR">9,999,999</td>
+							<td>복합</td><!-- 2020-06-26 복합 case로 변경 -->
+							<td>XX CY</td>
+							<td>경남부산</td>
+							<td>경남부산</td>
+						</tr>
+						<tr class="mult mult2" style="display:none">
+							<td><span class="arrow">상세목록</span></td>
+							<!-- 2020-06-07 열 하나 삭제 -->
+							<td class="tR">C999999</td>
+							<td><span class="statusSet bracket">오더제출</span></td>
+							<td></td>
+							<td>왕복</td>
+							<td class="tR">+ 3,433,333</td>
+							<td>20ft</td>
+							<td></td>
+							<td>경남울산</td>
+							<td>경남부산</td>
+						</tr>
+						<tr class="mult mult2" style="display:none">
+							<td><span class="arrow">상세목록</span></td>
+							<!-- 2020-06-07 열 하나 삭제 -->
+							<td class="tR">C999999</td>
+							<td><span class="statusSet bracket">오더제출</span></td>
+							<td></td>
+							<td>왕복</td>
+							<td class="tR">+ 3,433,333</td>
+							<td>15ft</td><!-- 2020-06-26 텍스트 수정 -->
+							<td></td>
+							<td>경남울산</td>
+							<td>경남부산</td>
+						</tr>
+						<tr class="mult mult2" style="display:none">
+							<td><span class="arrow">상세목록</span></td>
+							<!-- 2020-06-07 열 하나 삭제 -->
+							<td class="tR">C999999</td>
+							<td><span class="statusSet bracket">오더제출</span></td>
+							<td></td>
+							<td>왕복</td>
+							<td class="tR">+ 3,433,333</td>
+							<td>15ft</td><!-- 2020-06-26 텍스트 수정 -->
+							<td></td>
+							<td>경남울산</td>
+							<td>경남부산</td>
+						</tr>
+						<tr>
+							<!-- 2020-07-08 체크박스 행 삭제 -->
+							<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+							<td>C999999 <button class="btnDoor mult3">여닫기</button></td>
+							<td><span class="statusSet">배차확정</span></td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td class="tR">9,999,999</td>
+							<td>20ft</td>
+							<td>XX CY</td>
+							<td>경남부산</td>
+							<td>경남부산</td>
+						</tr>
+						<tr class="mult mult3" style="display:none">
+							<td><span class="arrow">상세목록</span></td>
+							<!-- 2020-06-07 열 하나 삭제 -->
+							<td class="tR">C999999</td>
+							<td><span class="statusSet bracket">오더제출</span></td>
+							<td></td>
+							<td>왕복</td>
+							<td class="tR">+ 3,433,333</td>
+							<td>20ft</td>
+							<td></td>
+							<td>경남울산</td>
+							<td>경남부산</td>
+						</tr>
+						<tr class="mult mult3" style="display:none">
+							<td><span class="arrow">상세목록</span></td>
+							<!-- 2020-06-07 열 하나 삭제 -->
+							<td class="tR">C999999</td>
+							<td><span class="statusSet bracket">오더제출</span></td>
+							<td></td>
+							<td>왕복</td>
+							<td class="tR">+ 3,433,333</td>
+							<td>20ft</td>
+							<td></td>
+							<td>경남울산</td>
+							<td>경남부산</td>
+						</tr>
+						<tr id="goBlue">
+							<!-- 2020-07-08 체크박스 행 삭제 -->
+							<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+							<td>C999999</td>
+							<td><span class="statusSet">배차확정</span></td>
+							<td class="ftBlue">수출</td>
+							<td>왕복</td>
+							<td class="tR">9,999,999</td>
+							<td>20ft</td>
+							<td>XX CY</td>
+							<td>경남부산</td>
+							<td>경남부산</td>
+						</tr>
+						<tr>
+							<!-- 2020-07-08 체크박스 행 삭제 -->
+							<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+							<td>C999999 <button class="btnDoor mult4">여닫기</button></td>
+							<td><span class="statusSet">배차확정</span></td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td class="tR">9,999,999</td>
+							<td>20ft</td>
+							<td>XX CY</td>
+							<td>경남부산</td>
+							<td>경남부산</td>
+						</tr>
+						<tr class="mult mult4" style="display:none">
+							<td><span class="arrow">상세목록</span></td>
+							<!-- 2020-06-07 열 하나 삭제 -->
+							<td class="tR">C999999</td>
+							<td><span class="statusSet bracket">오더제출</span></td>
+							<td></td>
+							<td>왕복</td>
+							<td class="tR">+ 3,433,333</td>
+							<td>20ft</td>
+							<td></td>
+							<td>경남울산</td>
+							<td>경남부산</td>
+						</tr>
+						<tr class="mult mult4" style="display:none">
+							<td><span class="arrow">상세목록</span></td>
+							<!-- 2020-06-07 열 하나 삭제 -->
+							<td class="tR">C999999</td>
+							<td><span class="statusSet bracket">오더제출</span></td>
+							<td></td>
+							<td>왕복</td>
+							<td class="tR">+ 3,433,333</td>
+							<td>20ft</td>
+							<td></td>
+							<td>경남울산</td>
+							<td>경남부산</td>
+						</tr>
+						<tr>
+							<!-- 2020-07-08 체크박스 행 삭제 -->
+							<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+							<td>C999999</td>
+							<td><span class="statusSet receive">오더제출</span></td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td class="tR">9,999,999</td>
+							<td>20ft</td>
+							<td>XX CY</td>
+							<td>경남부산</td>
+							<td>경남부산</td>
+						</tr>
+						<tr>
+							<!-- 2020-07-08 체크박스 행 삭제 -->
+							<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+							<td>C999999</td>
+							<td><span class="statusSet">배차확정</span></td><!-- 2020-06-26 오더상태 수정 -->
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td class="tR">9,999,999</td>
+							<td>20ft</td>
+							<td>XX CY</td>
+							<td>경남부산</td>
+							<td>경남부산</td>
+						</tr>
+						<tr>
+							<!-- 2020-07-08 체크박스 행 삭제 -->
+							<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+							<td>C999999 <button class="btnDoor mult5">여닫기</button></td>
+							<td><span class="statusSet">배차확정</span></td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td class="tR">9,999,999</td>
+							<td>20ft</td>
+							<td>XX CY</td>
+							<td>경남부산</td>
+							<td>경남부산</td>
+						</tr>
+						<tr class="mult mult5" style="display:none">
+							<td><span class="arrow">상세목록</span></td>
+							<!-- 2020-06-07 열 하나 삭제 -->
+							<td class="tR">C999999</td>
+							<td><span class="statusSet bracket">오더제출</span></td>
+							<td></td>
+							<td>왕복</td>
+							<td class="tR">+ 3,433,333</td>
+							<td>20ft</td>
+							<td></td>
+							<td>경남울산</td>
+							<td>경남부산</td>
+						</tr>
+						<tr class="mult mult5" style="display:none">
+							<td><span class="arrow">상세목록</span></td>
+							<!-- 2020-06-07 열 하나 삭제 -->
+							<td class="tR">C999999</td>
+							<td><span class="statusSet bracket">오더제출</span></td>
+							<td></td>
+							<td>왕복</td>
+							<td class="tR">+ 3,433,333</td>
+							<td>20ft</td>
+							<td></td>
+							<td>경남울산</td>
+							<td>경남부산</td>
+						</tr>
+						<tr>
+							<!-- 2020-07-08 체크박스 행 삭제 -->
+							<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+							<td>C999999</td>
+							<td><span class="statusSet">배차확정</span></td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td class="tR">9,999,999</td>
+							<td>20ft</td>
+							<td>XX CY</td>
+							<td>경남부산</td>
+							<td>경남부산</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- btn Area & paginate Set -->
+			<div class="bpSet">
+				<div class="btnArea">
+					<span class="left">
+						<button class="btnS lineRed">선택삭제</button>
+					</span>
+					<span class="right">
+						<button class="btnS lineOrange">엑셀 다운로드</button>
+					</span>
+				</div>
+				<div class="paginate">
+					<span>
+						<a class="first">처음</a>
+						<a class="prev">이전</a>
+						<a class="on">1</a>
+						<a>2</a>
+						<a>3</a>
+						<a>4</a>
+						<a>5</a>
+						<a>6</a>
+						<a>7</a>
+						<a>8</a>
+						<a>9</a>
+						<a class="next">다음</a>
+						<a class="last">마지막</a>
+					</span>
+					<span class="selectSet">
+						<select>
+							<option selected>20</option>
+							<option>50</option>
+							<option>100</option>
+						</select>
+					</span>
+				</div>
+			</div>
+		</div>
+		<!-- popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 오더정보 -->
+			<div class="basicPop orderPop" id="samplePop10" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>오더 번호: A00001</h1>
+				</div>
+				<div class="pBack">
+					<div class="tab02">
+						<!-- tab -->
+						<div class="tabBack">
+							<div class="tabNav">
+								<nav>
+									<ul>
+										<li class="on"><button data-name="1">오더~배차현황<span>완료</span></button></li>
+										<li><button data-name="2">배차 ~ 운송현황<span>완료</span></button></li>
+										<li><button data-name="3">차량정보</button></li>
+										<li><button data-name="4">고객정보</button></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<!--// tab -->
+						<div class="tabLayout">
+							<p class="orderKind">
+								<span class="orderType">계약오더</span>
+								<span class="transType red">수입</span>
+							</p>
+							<div class="tabData tData1" style="display:block;">
+								<div class="orderInfoList">
+									<ul class="thead">
+										<li>
+											<div>진행 현황</div>
+											<span>비고(증빙자료)</span>
+										</li>
+									</ul>
+									<ul class="tbody">
+										<li>
+											<span class="status">오더</span>
+											<div class="dlistBack">
+												<div class="status2">
+													<table>
+														<tbody>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">오더접수(제출)</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">ㄴ 오더취소</td>
+																<td class="date"></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="etc">
+													<table>
+														<tbody>
+															<tr>
+																<td></td>
+															</tr>
+															<tr>
+																<td></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</li>
+										<li>
+											<span class="status">배차</span>
+											<div class="dlistBack">
+												<div class="status2">
+													<table>
+														<tbody>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">배차접수(오더확정)</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">배차요청</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">ㄴ배차지연</td>
+																<td class="date"></td>
+															</tr>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">ㄴ배차거절</td>
+																<td class="date"></td>
+															</tr>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">ㄴ배차취소(차주)</td>
+																<td class="date"></td>
+															</tr>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">ㄴ배차취소(고객)</td>
+																<td class="date"></td>
+															</tr>
+															<tr class="on">
+																<td class="p"><span></span></td>
+																<td class="txt">ㄴ배차취소(고객)</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="etc">
+													<table>
+														<tbody>
+															<tr>
+																<td></td>
+															</tr>
+															<tr>
+																<td></td>
+															</tr>
+															<tr>
+																<td></td>
+															</tr>
+															<tr>
+																<td></td>
+															</tr>
+															<tr>
+																<td></td>
+															</tr>
+															<tr>
+																<td></td>
+															</tr>
+															<tr>
+																<td></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="tabData tData2">
+								<!-- 계약오더 case-->
+								<div class="orderInfoList contractOrderCase">
+									<ul class="thead">
+										<li>
+											<div>진행 현황</div>
+											<span>비고(증빙자료)</span>
+										</li>
+									</ul>
+									<ul class="tbody">
+										<li>
+											<span class="status">운송시작(출발지)</span>
+											<div class="dlistBack">
+												<div class="status2">
+													<table>
+														<tbody>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">출발지로 이동</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">반출신고</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="etc">
+													<table>
+														<tbody>
+															<tr>
+																<td>푸시?</td>
+															</tr>
+															<tr>
+																<td><strong>반출신고 완료</strong></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</li>
+										<li>
+											<span class="status">출발지</span>
+											<div class="dlistBack">
+												<div class="status2">
+													<table>
+														<tbody>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">출발지 도착</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">적재컨테이너 상차</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="etc">
+													<table>
+														<tbody>
+															<tr>
+																<td></td>
+															</tr>
+															<tr>
+																<td><span class="thum"><em><img src="../images/sample1.png" alt="예시 이미지"/></em></span></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</li>
+										<li>
+											<span class="status">이동(작업지)</span>
+											<div class="dlistBack">
+												<div class="status2">
+													<table>
+														<tbody>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">작업지로 이동</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="etc">
+													<table>
+														<tbody>
+															<tr>
+																<td></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</li>
+										<li>
+											<span class="status">작업지</span>
+											<div class="dlistBack">
+												<div class="status2">
+													<table>
+														<tbody>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">작업지로 이동</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+															<tr class="on">
+																<td class="p"><span></span></td>
+																<td class="txt">적재컨테이너 하역</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+															<tr>
+																<td class="p"><span></span></td>
+																<td class="txt">반입신고</td>
+																<td class="date"></td>
+															</tr>
+															<tr>
+																<td class="p"><span></span></td>
+																<td class="txt">빈 컨테이너 픽업</td>
+																<td class="date"></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="etc">
+													<table>
+														<tbody>
+															<tr>
+																<td><span class="thum"><em><img src="../images/sample2.png" alt="예시 이미지"/></em></span></td>
+															</tr>
+															<tr>
+																<td><span class="taking"><strong>인계확인</strong></span></td>
+															</tr>
+															<tr>
+																<td>반입신고 미완료</td>
+															</tr>
+															<tr>
+																<td></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</li>
+										<li>
+											<span class="status">이동(반납지)</span>
+											<div class="dlistBack">
+												<div class="status2">
+													<table>
+														<tbody>
+															<tr>
+																<td class="p"><span></span></td>
+																<td class="txt">반납지로 이동</td>
+																<td class="date"></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="etc">
+													<table>
+														<tbody>
+															<tr>
+																<td></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</li>
+										<li>
+											<span class="status">도착지</span>
+											<div class="dlistBack">
+												<div class="status2">
+													<table>
+														<tbody>
+															<tr>
+																<td class="p"><span></span></td>
+																<td class="txt">반납지 도착</td>
+																<td class="date"></td>
+															</tr>
+															<tr>
+																<td class="p"><span></span></td>
+																<td class="txt">빈 컨테이너 반납</td>
+																<td class="date"></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="etc">
+													<table>
+														<tbody>
+															<tr>
+																<td></td>
+															</tr>
+															<tr>
+																<td></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<!-- //계약오더 case -->
+								<!-- 콜오더 case -->
+								<div class="orderInfoList callOrderCase" style="display:none;">
+									<ul class="thead">
+										<li>
+											<div>진행 현황</div>
+											<span>비고(증빙자료)</span>
+										</li>
+									</ul>
+									<ul class="tbody">
+										<li>
+											<span class="status">운송시작(출발지)</span>
+											<div class="dlistBack">
+												<div class="status2">
+													<table>
+														<tbody>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">출발지로 이동</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">반출신고</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="etc">
+													<table>
+														<tbody>
+															<tr>
+																<td>푸시?</td>
+															</tr>
+															<tr>
+																<td><strong>반출신고 완료</strong></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</li>
+										<li>
+											<span class="status">출발지</span>
+											<div class="dlistBack">
+												<div class="status2">
+													<table>
+														<tbody>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">출발지 도착</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">적재컨테이너 상차</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="etc">
+													<table>
+														<tbody>
+															<tr>
+																<td></td>
+															</tr>
+															<tr>
+																<td><span class="thum"><em><img src="../images/sample1.png" alt="예시 이미지"/></em></span></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</li>
+										<li>
+											<span class="status">이동(작업지)</span>
+											<div class="dlistBack">
+												<div class="status2">
+													<table>
+														<tbody>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">작업지로 이동</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="etc">
+													<table>
+														<tbody>
+															<tr>
+																<td></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</li>
+										<li>
+											<span class="status">작업지</span>
+											<div class="dlistBack">
+												<div class="status2">
+													<table>
+														<tbody>
+															<tr class="past">
+																<td class="p"><span></span></td>
+																<td class="txt">작업지로 이동</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+															<tr class="on">
+																<td class="p"><span></span></td>
+																<td class="txt">상차/실링</td>
+																<td class="date">2019-11-29  00:00:00</td>
+															</tr>
+															<tr>
+																<td class="p"><span></span></td>
+																<td class="txt">반입신고</td>
+																<td class="date"></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="etc">
+													<table>
+														<tbody>
+															<tr>
+																<td><span class="thum"><em><img src="../images/sample2.png" alt="예시 이미지"/></em></span></td>
+															</tr>
+															<tr>
+																<td><span class="taking"><strong>인계확인</strong></span></td>
+															</tr>
+															<tr>
+																<td>반입신고 미완료</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</li>
+										<li>
+											<span class="status">이동(반납지)</span>
+											<div class="dlistBack">
+												<div class="status2">
+													<table>
+														<tbody>
+															<tr>
+																<td class="p"><span></span></td>
+																<td class="txt">하차지 이동</td>
+																<td class="date"></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="etc">
+													<table>
+														<tbody>
+															<tr>
+																<td></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</li>
+										<li>
+											<span class="status">도착지</span>
+											<div class="dlistBack">
+												<div class="status2">
+													<table>
+														<tbody>
+															<tr>
+																<td class="p"><span></span></td>
+																<td class="txt">하차지 도착</td>
+																<td class="date"></td>
+															</tr>
+															<tr>
+																<td class="p"><span></span></td>
+																<td class="txt">적재 컨테이너 하차</td>
+																<td class="date"></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="etc">
+													<table>
+														<tbody>
+															<tr>
+																<td></td>
+															</tr>
+															<tr>
+																<td></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<!-- //콜오더 case -->
+							</div>
+							<div class="tabData tData3">Tab Menu 3 Data</div>
+							<div class="tabData tData4">Tab Menu 4 Data</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--//오더정보-->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

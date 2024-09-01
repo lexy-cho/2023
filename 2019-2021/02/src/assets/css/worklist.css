@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+/* ====================== */
+/* Worklist */
+/* ====================== */
+#workListwrap {padding:10px;}
+#workListwrap * {font-size:12px}
+#workListwrap h1 {padding:10px;border:2px solid #999;}
+#workListwrap h1 span {font-size:150%;color:#333;}
+#workListwrap h1 em {float:right;font:normal 100%/normal Dotum;}
+
+#workListwrap table {border-collapse:collapse;table-layout:fixed;border-spacing:0;width:100%;border-top:2px solid #aabdd0;margin-bottom:10px;}
+#workListwrap th {padding:6px 3px 5px;color:#1f4b77;border:1px solid #aabdd0;background:#d1dde9;box-sizing:border-box;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
+#workListwrap tbody th {text-align:left;color:#1f6314;background:#f5f6f6;}
+#workListwrap tbody th.title {background:#d8f1d4;}
+#workListwrap td {padding:2px 3px 0;line-height:18px;border:1px solid #aabdd0;background:#ffffff;box-sizing:border-box;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
+#workListwrap td.first {text-align:center;}
+#workListwrap td em {font:normal 100%/normal Dotum;}
+#workListwrap td .line {text-decoration:line-through;}
+#workListwrap tr.dim td {color:#aabdd0;background:#ececec}
+#workListwrap table caption {padding:5px;text-align:left;border:1px solid #aabdd0;border-bottom:0;}
+#workListwrap table caption span {display:inline-block;margin-left:4px;width:10px;height:10px;font-size:11px;}
+#workListwrap table caption span.red {background:red;}
+#workListwrap table caption span.gray {background:#aaa6a8;}
+#workListwrap table caption span.pink {background:#ffc0c0;}
+#workListwrap table caption span.new {background:#fb00ff;}
+
+#workListwrap td strong {display:inline-block;margin-left:5px;vertical-align:middle;font-size:11px;font-family:arial;}
+#workListwrap td strong.red {color:red;}
+#workListwrap td strong.pink {color:#ffc0c0;font-weight:normal;}
+#workListwrap td strong.new {color:#fb00ff;font-size:11px;}
+#workListwrap td strong.gray {color:#999396;font-weight:normal;}
+
+#workListwrap a {color:blue !important;}
+#workListwrap a.window {color:green !important;}
+#workListwrap .tr {text-align:center;}
+
+#workListwrap h2 {margin:0;padding:5px 0;width:100%;text-align:center;font-weight:normal;color:#666;border:1px solid #aaa;background:#eee;}
+#workListwrap ol {margin:0;padding:5px 0;width:100%;border:1px solid #aaa;border-top:none;}
+#workListwrap ol li {margin:0 0 0 30px;padding:5px 15px 5px 0;word-break:break-all;}
+#workListwrap ul {margin:0;padding:10px 0 10px 20px;line-height:20px;}
+#workListwrap ul li {list-style:disc;margin:0;}

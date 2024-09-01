@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/customer.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){            
+			// 2019-03-15 달력형식 변경, 공통으로 사용
+            $('.calendarSet button').duDatepicker({
+                format: 'yyyy-mm-dd', // Determines the date format
+                theme: 'yellow',        // Determines the color theme of the date picker
+				readOnly: true,       // Determines if input element is readonly (key input is disabled)
+				clearBtn: false,      // Determines if Clear button is displayed
+				cancelBtn: true,     // Determines if Cancel button is displayed
+				overlayClose: true    // Determines if clicking the overlay will close the date picker
+			}).on('datechanged', function(event){
+                $(this).prev().val(event.date);
+            });
+            
+            // 스크롤 영역 외 높이
+            //var nonSclHeight = $("#header").height() + $(".searchField").outerHeight(true) + $(".dtTopBtn").outerHeight(true) + $(".custDtlTbHead").outerHeight(true) + 20;
+            var nonSclHeight = $("#header").height() + $(".dtTopBtn").outerHeight(true) + $(".custDtlTbHead").outerHeight(true) + 20;
+            
+            // 테이블 스크롤 - 모바일이 아닐때는 스크롤 적용 안함
+            if(window.matchMedia("(max-width:420px), (orientation : landscape) and (max-width:820px)").matches){
+               // 2019-04-17 스크롤 plugin 삭제 $(".custDtlTbBody").mCustomScrollbar("destroy");
+            }else{
+                /* 2019-04-17 스크롤 plugin 삭제 $(".custDtlTbBody").css({
+                    "height" : $(window).height() - nonSclHeight
+                }).mCustomScrollbar({
+                    axis:"yx",
+                    theme:"dark",
+                    contentTouchScroll:true
+                }); */
+				$(".custDtlTbBody").css({"height" : $(window).height() - nonSclHeight});
+            }
+            
+            // bottom PopUp
+            function bottomPop(id, index) {
+                $(".subDtlBox").css({
+                    "transform" : "translateY(800px)"
+                });
+                $(id).css({
+                    "transform" : "translateY(0)"
+                });
+                
+                if(window.matchMedia("(max-width:420px), (orientation : landscape) and (max-width:820px)").matches){ // 모바일일때 dim show
+                    $("body").append("<div class='subDtlBoxDim'></div>");
+                }else{
+                    $(".custDtlTbBody").css({ // 그 외 팝업 크기에 맞춰 테이블 높이 조정
+                        "height" : ($(window).height() - ($(id).outerHeight(true) + nonSclHeight + 20))
+                    });
+                }
+                
+                if(index == 1){ // 예외처리
+                    /* 2019-04-17 스크롤 plugin 삭제 $(id).find(".subDtlBoxBody").mCustomScrollbar({
+                        axis:"yx",
+                        theme:"dark",
+                        contentTouchScroll:true
+                    }); */
+                }else{ // 팝업높이 보다 컨텐츠 내용이 길 경우 스크롤 생성
+                    if($(id).find(".subDtlMain").height() > $(id).find(".subDtlBoxBody").height()){
+                        /* 2019-04-17 스크롤 plugin 삭제 $(id).find(".subDtlBoxBody").mCustomScrollbar({
+                            axis:"yx",
+                            theme:"dark",
+                            contentTouchScroll:true
+                        }); */
+                    }   
+                }
+            }
+            
+            // 시승정보입력
+            $(".newInsert").click(function(){
+                bottomPop("#testInsert");
+            });
+            
+            // 시승정보보기
+            $(".custDtlTbBody tbody tr").click(function(){
+                bottomPop("#testView");
+            });
+            
+            // 닫기
+            $(".boxClose").click(function(){
+                $(this).parent(".subDtlBox").css({
+                    "transform" : "translateY(800px)"
+                });
+                $(".custDtlTbBody").css({
+                    "height" : $(window).height() - nonSclHeight
+                });
+                $(".subDtlBoxDim").remove();
+            });
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<!--<button class="gnbOpen">GNB 열기</button>-->
+							<button class="goPrev" onclick="history.back()">뒤로가기</button>
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="../main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<!-- <h2>1Depth title</h2> -->
+						<h2 class="sCase"><span>고객 조회 &gt; </span>시승정보</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<div class="custDetail">
+                            <div class="dtTopBtn type2">
+                                <button class="btnBY newInsert">신규등록</button>
+                            </div>
+                            
+                            <div class="custDtlTbScroll">
+                                <!-- table header -->
+                                <div class="custDtlTbHead">
+                                    <table>
+                                        <colgroup>
+                                            <col style="width:10%;">
+                                            <col style="width:18%;">
+                                            <col style="width:18%;">
+                                            <col style="width:18%;">
+                                            <col style="width:*;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>신청경로</th>
+                                                <th>신청일자<button class="sort"><i></i>정렬</button></th>
+                                                <th>시승일자<button class="sort"><i></i>정렬</button></th>
+                                                <th>시승차종</th>
+                                                <th>메모</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <!-- // table header -->
+                                
+                                <!-- table list -->
+                                <div class="custDtlTbBody">
+                                    <table>
+                                        <colgroup>
+                                            <col style="width:10%;">
+                                            <col style="width:18%;">
+                                            <col style="width:18%;">
+                                            <col style="width:18%;">
+                                            <col style="width:*;">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td>지점</td>
+                                                <td>2019-01-26</td>
+                                                <td>2019-01-31</td>
+                                                <td>All New SM7</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td>지점</td>
+                                                <td>2019-01-26</td>
+                                                <td>2019-01-31</td>
+                                                <td>All New SM7</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td>지점</td>
+                                                <td>2019-01-26</td>
+                                                <td>2019-01-31</td>
+                                                <td>All New SM7</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td>지점</td>
+                                                <td>2019-01-26</td>
+                                                <td>2019-01-31</td>
+                                                <td>All New SM7</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td>지점</td>
+                                                <td>2019-01-26</td>
+                                                <td>2019-01-31</td>
+                                                <td>All New SM7</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td>지점</td>
+                                                <td>2019-01-26</td>
+                                                <td>2019-01-31</td>
+                                                <td>All New SM7</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5" class="listNone">
+                                                    <span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- // table list -->
+                            </div>
+                            
+                            <!-- 2019-06-14 시승정보보기 -->
+                            <div id="testView" class="subDtlBox">
+                                <button class="boxClose">닫기</button>
+                                <h2 class="sdBoxTit">시승정보</h2>
+                                <div class="subDtlBoxBody">
+                                    <div class="subDtlMain">
+                                        <div class="sdMainHead">
+                                            <h3 class="sdMainTit"><i class="iCar"></i>시승정보보기</h3> <!-- 2019-06-14 목록에서 선택 시 이름변경 -->
+                                            <div class="sdBtnRight">
+                                                <button class="btnLB">삭제</button>
+                                                <button class="btnBY">저장</button>
+                                            </div>
+                                        </div>
+                                        <div class="gridContainer listViewCase"> <!-- 2019-06-14 목록에서 선택 시 class 변경 -->
+                                           <div class="gridSet grid3"><!-- 2019-09-01 -->
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>신청경로</dt>
+                                                        <dd>
+                                                            <input type="text" id="" name="" placeholder="지점명" />
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>신청일자<sup>필수입력</sup></dt>
+                                                        <dd class="inMust"> <!--2019-04-18 필수class추가-->
+                                                            <div class="calendarSet gray"><input type="tel" id="" name=""><button>달력열기</button></div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+												<!--2019-09-01-->
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>시승완료여부</dt>
+                                                        <dl>
+															<div class="ddTxt">
+																<span class="radioSet"><input type="radio" id="instantInsertY" name="instantInsert" checked /><label for="instantInsertY"><i></i>Y</label></span>
+																<span class="radioSet"><input type="radio" id="instantInsertN" name="instantInsert" /><label for="instantInsertN"><i></i>N</label></span>
+															</div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+												<!--//2019-09-01-->
+                                            </div>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>시승일자<sup>필수입력</sup></dt>
+                                                        <dd class="inMust"> <!--2019-04-18 필수class추가-->
+                                                            <div class="calendarSet gray"><input type="tel" id="" name=""><button>달력열기</button></div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>시승차종<sup>필수입력</sup></dt>
+                                                        <dd class="inMust"> <!--2019-04-18 필수class추가-->
+                                                            <span class="selectSet">
+                                                                <select>
+                                                                    <option>선택해 주세요</option>
+                                                                    <option>SM3</option>
+                                                                    <option>SM5</option>
+                                                                    <option>SM5 Taxi</option>
+                                                                    <option>SM6</option>
+                                                                    <option>All New SM7</option>
+                                                                    <option>SM7 LPe</option>
+                                                                    <option>QM6</option>
+                                                                    <option>QM3</option>
+                                                                    <option>SM3 ZW</option>
+                                                                    <option>TWIZY</option>
+                                                                    <option>CLIO</option>
+                                                                    <option>MASTER</option>
+                                                                </select>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>메모</dt>
+                                                        <dd><textarea id="" name="" placeholder="내용을 입력해 주세요" ></textarea></dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // 2019-06-14 시승정보보기 -->
+                            
+                            <!-- 시승정보입력 -->
+                            <div id="testInsert" class="subDtlBox">
+                                <button class="boxClose">닫기</button>
+                                <h2 class="sdBoxTit">시승정보</h2>
+                                <div class="subDtlBoxBody">
+                                    <div class="subDtlMain">
+                                        <div class="sdMainHead">
+                                            <h3 class="sdMainTit"><i class="iCar"></i>시승정보입력</h3>
+                                            <div class="sdBtnRight">
+                                                <!-- 2019-06-14 삭제는 목록에서 선택했을 때만 -->
+                                                <button class="btnBG reflesh">새로고침</button>
+                                                <button class="btnBY">저장</button>
+                                            </div>
+                                        </div>
+                                        <div class="gridContainer tbType">
+                                            <div class="gridSet grid3"><!-- 2019-09-01 -->
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>신청경로</dt>
+                                                        <dd>
+                                                            <input type="text" id="" name="" placeholder="지점명" />
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>신청일자<sup>필수입력</sup></dt>
+                                                        <dd class="inMust"> <!--2019-04-18 필수class추가-->
+                                                            <div class="calendarSet gray"><input type="tel" id="" name=""><button>달력열기</button></div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+												<!--2019-09-01-->
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>시승완료여부</dt>
+                                                        <dd>
+                                                            <span class="radioSet"><input type="radio" id="instantInsertY" name="instantInsert" checked /><label for="instantInsertY"><i></i>Y</label></span>
+                                                            <span class="radioSet"><input type="radio" id="instantInsertN" name="instantInsert" /><label for="instantInsertN"><i></i>N</label></span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+												<!--//2019-09-01-->
+                                            </div>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>시승일자<sup>필수입력</sup></dt>
+                                                        <dd class="inMust"> <!--2019-04-18 필수class추가-->
+                                                            <div class="calendarSet gray"><input type="tel" id="" name=""><button>달력열기</button></div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>시승차종<sup>필수입력</sup></dt>
+                                                        <dd class="inMust"> <!--2019-04-18 필수class추가-->
+                                                            <span class="selectSet">
+                                                                <select>
+                                                                    <option>선택해 주세요</option>
+                                                                    <option>SM3</option>
+                                                                    <option>SM5</option>
+                                                                    <option>SM5 Taxi</option>
+                                                                    <option>SM6</option>
+                                                                    <option>All New SM7</option>
+                                                                    <option>SM7 LPe</option>
+                                                                    <option>QM6</option>
+                                                                    <option>QM3</option>
+                                                                    <option>SM3 ZW</option>
+                                                                    <option>TWIZY</option>
+                                                                    <option>CLIO</option>
+                                                                    <option>MASTER</option>
+                                                                </select>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>메모</dt>
+                                                        <dd><textarea id="" name="" placeholder="내용을 입력해 주세요" ></textarea></dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // 시승정보입력 -->
+                        </div>  
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../js/menu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$(document).on('click tab', '.gnbOpen', function(e){
+				$('.gnbScroll').load('gnb.html',function(){
+					funcGnbOpen();
+				});
+				return false;
+			});// 2019-03-15 gnb html load (퍼블리시용)
+            
+            // 2019-03-15 달력형식 변경, 공통으로 사용
+            $('.calendarSet button').duDatepicker({
+                format: 'yyyy-mm-dd', // Determines the date format
+                theme: 'yellow',        // Determines the color theme of the date picker
+				readOnly: true,       // Determines if input element is readonly (key input is disabled)
+				clearBtn: false,      // Determines if Clear button is displayed
+				cancelBtn: true,     // Determines if Cancel button is displayed
+				overlayClose: true    // Determines if clicking the overlay will close the date picker
+			}).on('datechanged', function(event){
+                $(this).prev().val(event.date);
+            });
+            
+            // 헤더 컨텐츠 고정 값만큼 컨텐츠에 padding-top 설정, 목록은 모두 공통 <!--2019-03-15--->
+            $(window).resize(function(){
+                $(".postList").css({
+                    "padding-top" : $(".headFixed").height()
+                });
+            }).resize();
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button>
+							<!-- <button class="goPrev" onclick="history.back()">뒤로가기</button> -->
+						</span>
+						<h1><img src="../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2>전자계약 이용</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<div class="postList">
+                            <!-- fixed -->
+                            <div class="headFixed">
+                                <!-- 검색 -->
+                                <div class="searchField type4">
+                                	<div class="twoCalendar">
+ 	                                	<div class="calendarSet left"><input type="tel" id="" name="" /><button>달력열기</button></div>
+                                    	<div class="calendarSet right"><input type="tel" id="" name="" /><button>달력열기</button></div>
+                                	</div>
+                                    <ul class="srhGrpLine">
+                                        <li>
+                                            <span class="selectSet">
+                                                <select>
+                                                    <option>차종선택</option>
+                                                    <option>SM7-L47</option>
+                                                    <option>SM6-LFD</option>
+                                                    <option>SM5-L43</option>
+                                                </select>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="selectSet">
+                                                <select>
+                                                    <option>본부선택</option>
+                                                    <option>전체</option>
+                                                    <option>영업본부</option>
+                                                    <option>동부 DB</option>
+                                                </select>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="selectSet">
+                                                <select>
+                                                    <option>지점선택</option>
+                                                    <option>강릉지점</option>
+                                                    <option>구성지점</option>
+                                                    <option>북수원지점</option>
+                                                </select>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    <button class="btnBY">조회</button>
+                                </div>
+                                <!-- // 검색 -->
+                                <div class="tbContainer fixedTitCase">
+                                    <div class="tbScroll" id="listHeader">
+                                        <table class="tbStaus line ver2">
+                                            <colgroup>
+                                                <col style="width:30px;">
+                                                <col style="width:65px;">
+                                                <col style="width:41px;">
+                                                <col style="width:37px;">
+                                                <col style="width:47px;">
+                                                <col style="width:34px;">
+                                                <col style="width:41px;">
+                                                <col style="width:37px;">
+                                                <col style="width:47px;">
+                                                <col style="width:34px;">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th scope="row" colspan="2" rowspan="3">구분</th>
+                                                    <th scope="col" colspan="4" class="divLine">계약</th>
+                                                    <th scope="col" colspan="4" class="divLine">출고</th>
+                                                </tr>
+                                                <tr>
+                                                	<th colspan="4">전자계약 비율</th>
+                                                	<th colspan="4">전자계약 비율</th>
+                                                </tr>
+                                                <tr class="sub">
+                                                    <th scope="col">전자</th>
+                                                    <th scope="col">종이</th>
+                                                    <th scope="col">합</th>
+                                                    <th scope="col" class="divLine">%</th>
+                                                    <th scope="col">전자</th>
+                                                    <th scope="col">종이</th>
+                                                    <th scope="col">합</th>
+                                                    <th scope="col" class="divLine">%</th>
+                                                </tr>
+                                            </thead>
+										</table>
+									</div>
+								</div>
+                            </div>
+                            <!-- // fixed -->
+                            <div class="postListBody">
+                                <!-- 목록 -->
+                                <div class="tbContainer fixedDataCase"> 
+                                    <div class="tbScroll" id="listWrap" onScroll="javascript:document.getElementById('listHeader').scrollLeft = document.getElementById('listWrap').scrollLeft">
+                                        <table class="tbStaus">
+                                            <colgroup>
+                                                <col style="width:30px;">
+                                                <col style="width:65px;">
+                                                <col style="width:41px;">
+                                                <col style="width:37px;">
+                                                <col style="width:47px;">
+                                                <col style="width:34px;">
+                                                <col style="width:41px;">
+                                                <col style="width:37px;">
+                                                <col style="width:47px;">
+                                                <col style="width:34px;">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row" class="tCenter">순위</th>
+                                                    <th scope="row" class="tLeft divLine short">전체</th>
+                                                    <td>17,251</td>
+                                                    <td>2</td>
+                                                    <td>4</td>
+                                                    <td class="skBu">2.8</td>
+                                                    <td>2</td>
+                                                    <td>4</td>
+                                                    <td>6</td>
+                                                    <td class="skBu">4.0</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="tCenter">1</th>
+                                                    <th scope="row" class="tLeft divLine short">동부</th>
+                                                    <td>1</td>
+                                                    <td>2</td>
+                                                    <td>4</td>
+                                                    <td class="skBu">2.8</td>
+                                                    <td>2</td>
+                                                    <td>4</td>
+                                                    <td>6</td>
+                                                    <td class="skBu">4.0</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="tCenter">2</th>
+                                                    <th scope="row" class="tLeft divLine short">동부</th>
+                                                    <td>1</td>
+                                                    <td>2</td>
+                                                    <td>4</td>
+                                                    <td class="skBu">2.8</td>
+                                                    <td>2</td>
+                                                    <td>4</td>
+                                                    <td>6</td>
+                                                    <td class="skBu">4.0</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="tCenter">3</th>
+                                                    <th scope="row" class="tLeft divLine short">대리점 이름이 들어갈</th>
+                                                    <td>1</td>
+                                                    <td>2</td>
+                                                    <td>4</td>
+                                                    <td class="skBu">99.8</td>
+                                                    <td>2</td>
+                                                    <td>4</td>
+                                                    <td>6</td>
+                                                    <td class="skBu">4.0</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="tCenter">4</th>
+                                                    <th scope="row" class="tLeft divLine short">서부</th>
+                                                    <td>1</td>
+                                                    <td>2</td>
+                                                    <td>17,251</td>
+                                                    <td class="skBu">2.8</td>
+                                                    <td>2</td>
+                                                    <td>4</td>
+                                                    <td>6</td>
+                                                    <td class="skBu">4.0</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="tCenter">5</th>
+                                                    <th scope="row" class="tLeft divLine short">남부</th>
+                                                    <td>1</td>
+                                                    <td>2</td>
+                                                    <td>178,998</td>
+                                                    <td class="skBu">2.8</td>
+                                                    <td>2</td>
+                                                    <td>4</td>
+                                                    <td>6</td>
+                                                    <td class="skBu">4.0</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="tCenter">6</th>
+                                                    <th scope="row" class="tLeft divLine short">북부</th>
+                                                    <td>1</td>
+                                                    <td>2</td>
+                                                    <td>4</td>
+                                                    <td class="skBu">2.8</td>
+                                                    <td>2</td>
+                                                    <td>4</td>
+                                                    <td>6</td>
+                                                    <td class="skBu">99.8</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="tCenter">7</th>
+                                                    <th scope="row" class="tLeft divLine short">북부</th>
+                                                    <td>1</td>
+                                                    <td>2</td>
+                                                    <td>4</td>
+                                                    <td class="skBu">2.8</td>
+                                                    <td>2</td>
+                                                    <td>4</td>
+                                                    <td>6</td>
+                                                    <td class="skBu">4.0</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="tCenter">8</th>
+                                                    <th scope="row" class="tLeft divLine short">북부</th>
+                                                    <td>1</td>
+                                                    <td>2</td>
+                                                    <td>4</td>
+                                                    <td class="skBu">2.8</td>
+                                                    <td>2</td>
+                                                    <td>4</td>
+                                                    <td>6</td>
+                                                    <td class="skBu">4.0</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- // 목록 -->
+                            </div>
+                        </div>  
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

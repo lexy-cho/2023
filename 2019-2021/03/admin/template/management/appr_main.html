@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/approval.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/jstree.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/basicTree.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$(".tabNav li button").click(function () {
+				$(".tabNav li").removeClass("on");
+				$(this).parent("li").addClass("on");
+				var activeTab = $(this).attr("data-name");
+				$('.tabData').hide();
+				$('.tData' + activeTab).show();
+			});
+			/* 파일업로드 */
+			$('.fileSet input[type=file]').change(function() {
+				var fileValue = $(this).val().split("\\");
+				var fileName = fileValue[fileValue.length-1];
+				$('.fileSet .loadEnd em').text(fileName);
+				$('.fileSet .fileFind').hide();
+				$('.fileSet .loadIng').show();
+				setTimeout(function() {
+					$('.fileSet .loadIng').hide();
+					$('.fileSet .loadFail').show();
+				}, 3000);
+				setTimeout(function() {
+					$('.fileSet .loadFail').hide();
+					$('.fileSet .loadEnd').show();
+				}, 6000);
+			});
+			$('.fileSet .loadEnd button').click(function() {
+				$('.fileSet .fileFind').show();
+				$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+			});
+			/* end 파일업로드 */
+			/**/
+			$('.alertPop button, .basicPop button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			$('.apprList .apprKind').click(function(){
+				$('.popDim, .apprKindPop').show();
+			});
+			$('#spholiday a').click(function(){
+				$('.alertDim, .spholidayAlertPop').show();
+			});
+			$('.apprKindPop .pBtn .primary').click(function(){
+				if($("input:radio[id='apprKind1']").is(':checked')){
+					location.href = 'appr_holiday_write.html';
+				}else if($("input:radio[id='apprKind2']").is(':checked')){
+					location.href = 'appr_education_write.html';
+				}else if($("input:radio[id='apprKind3']").is(':checked')){
+					location.href = 'appr_fmevent_write.html';
+				}else if($("input:radio[id='apprKind4']").is(':checked')){
+					location.href = 'appr_spholiday_write.html';
+				}
+			});
+
+			$('.sortBar .sortItem').click(function(){
+				$('.sortBar .sortItem').removeClass('on');
+				$(this).addClass('on');
+				$('.apprList li').hide();
+				$('.apprList li.applyCase').show();
+
+				if($(this).hasClass('all')){
+					$('.apprList li').show();
+				}else if($(this).hasClass('wait')){
+					$(".apprList li:has('.state .red')").show();
+				}else if($(this).hasClass('going')){
+					$(".apprList li:has('.state .green')").show();
+				}
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>전자결재</h2>
+					<div class="pagePos"><span>Home</span><strong>전자결재</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="approvalLayout">
+						<div class="sortBar">
+							<button class="sortItem wait">결재 대기중<em>01</em></button>
+							<button class="sortItem going">상신 진행중<em>02</em></button>
+							<button class="sortItem all on">전체<em>06</em></button>
+						</div>
+						<!-- tab-wrap -->
+						<span class="right">
+							<div class="captionArea">
+								<ul>
+									<li class="caption on">진행중</li>
+									<li class="caption end">완료</li>
+									<li class="caption cancel">반려</li>
+								</ul>
+							</div>
+						</span>
+						<div class="apprList">
+							<ul>
+								<li class="applyCase apprKind"><strong>결재 신청</strong></li>
+								<li class="applyCase"><a href="appr_holiday_write.html"><strong>휴가 신청</strong></a></li>
+								<li class="applyCase"><a href="appr_education_write.html"><strong>교육 신청</strong></a></li>
+								<li class="applyCase"><a href="appr_fmevent_write.html"><strong>경조사 신청</strong></a></li>
+								<li class="applyCase" id="spholiday"><a href="appr_spholiday_write.html"><strong>특별휴가 신청</strong></a></li>
+								<li>
+									<a href="appr_holiday_view2.html">
+										<div class="state">
+											<span class="red">[결제대기]</span>
+											<span class="caption on">진행중</span>
+										</div>
+										<strong>[휴가] refresh 휴가</strong>
+										<span class="name on">홍길동 [개발팀]</span>
+										<div class="date">
+											<em>기안일 : 2020-01-01 23:59</em>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="appr_education_view2.html">
+										<div class="state">
+											<span class="green">[진행중]</span>
+											<span class="caption on">진행중</span>
+										</div>
+										<strong>[교육] 예비군</strong>
+										<span class="name on">김민철 [개발팀]</span>
+										<div class="date">
+											<em>기안일 : 2020-01-01 23:59</em>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="appr_education_view2.html">
+										<div class="state">
+											<span class="green">[진행중]</span>
+											<span class="caption on">진행중</span>
+										</div>
+										<strong>[교육] 예비군</strong>
+										<span class="name on">김민철 [개발팀]</span>
+										<div class="date">
+											<em>기안일 : 2020-01-01 23:59</em>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="appr_holiday_view.html">
+										<div class="state">
+											<span class="caption end">완료</span>
+										</div>
+										<strong>[휴가] 개인사유</strong>
+										<span class="name">최미진 [경영지원팀]</span>
+										<div class="date">
+											<em>기안일 : 2020-01-01 23:59</em>
+											<em>완료일 : 2020-01-01 23:59</em>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="appr_holiday_view.html">
+										<div class="state">
+											<span class="caption end">완료</span>
+										</div>
+										<strong>[휴가] 개인사유</strong>
+										<span class="name">최미진 [경영지원팀]</span>
+										<div class="date">
+											<em>기안일 : 2020-01-01 23:59</em>
+											<em>완료일 : 2020-01-01 23:59</em>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="appr_spholiday_view.html">
+										<div class="state">
+											<span class="caption cancel">반려</span>
+										</div>
+										<strong>[특별휴가] 김미철 대상</strong>
+										<span class="name">최미진 [경영지원팀]</span>
+										<div class="date">
+											<em>기안일 : 2020-01-01 23:59</em>
+											<em>완료일 : 2020-01-01 23:59</em>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="btnArea tC">
+							<button class="btnM">더보기</button>
+						</div>
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Alert Popup -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop spholidayAlertPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>프로젝트 별 PM만 신청 가능합니다.</p>
+					<!--//-->
+				</div>
+			</div>
+		</div>
+		<!-- //Alert Popup -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!--기안문 유형 선택 팝업 -->
+			<div class="basicPop apprKindPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<strong>신청서 종류를 선택하세요.</strong>
+					<span class="radioSet">
+						<input type="radio" id="apprKind1" name="apprKind" />
+						<label for="apprKind1"><i></i>휴가</label>
+					</span>
+					<span class="radioSet">
+						<input type="radio" id="apprKind2" name="apprKind" />
+						<label for="apprKind2"><i></i>교육</label>
+					</span>
+					<span class="radioSet">
+						<input type="radio" id="apprKind3" name="apprKind" />
+						<label for="apprKind3"><i></i>경조사</label>
+					</span>
+					<span class="radioSet">
+						<input type="radio" id="apprKind4" name="apprKind" />
+						<label for="apprKind4"><i></i>특별휴가</label>
+					</span>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<!--//기안문 유형 선택 팝업-->
+			<!-- 엑셀다운로드 사유 입력 -->
+			<div class="basicPop excelReasonsPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>엑셀다운로드 사유입력</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<p>※ 개인정보보호법에 따라 엑셀다운로드 시 사유를 입력해주시기 바랍니다.</p>
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="110" />
+								<col width="200" />
+								<col width="110" />
+								<col width="200" />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>이름</th>
+									<td>홍길동 (000000)</td>
+									<th>일시</th>
+									<td>2020-06-30 00:00</td>
+								</tr>
+								<tr>
+									<td colspan="4">
+										<textarea placeholder="엑셀다운로드 사유를 입력 해주세요"></textarea>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<em>* 사유는 최소 15글자 이상 입력해주시기 바랍니다. <span>(0/30byte)</span></em>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">다운로드</button>
+				</div>
+			</div>
+			<!--//엑셀다운로드 사유 입력-->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

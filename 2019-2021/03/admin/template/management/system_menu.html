@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/jstree.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/fullTree.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$('.treeBox .allOpen').click(function () {
+				$(this).hide();
+				$('.treeBox .allClose').show();
+			});
+			$('.treeBox .allClose').click(function () {
+				$(this).hide();
+				$('.treeBox .allOpen').show();
+			}); // jstree 그룹 열기닫기 토글
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>메뉴관리</h2>
+					<div class="pagePos"><span>Home</span><span>시스템관리</span><strong>메뉴관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="menuLayout">
+						<!-- 조직도 -->
+						<div class="treeBox left">
+							<div class="jstreeBack">
+								<div id="jstree" style="width:100%"></div>
+							</div>
+							<div class="bottom">
+								<button onclick="groupAdd()" class="btnM">그룹 추가</button>
+							</div>
+						</div>
+						<!-- //조직도 -->
+						<!-- 메뉴정보 -->
+						<div class="menuList right" id="div-menu-detail" style=""><h3 class="firstH3">메뉴 정보</h3>
+							<form id="form_menuInfo" novalidate="novalidate">
+								<div class="tws">
+									<table>
+										<colgroup>
+											<col width="120">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th>메뉴명</th>
+												<td colspan="3"><input type="text" class="wHalf" name="text" value="경영지원" maxlength="50" required=""></td>
+											</tr>
+											<tr>
+												<th>URI</th>
+												<td colspan="3"><input type="text" class="wHalf" name="uri" value="/bo/mgrSupport"></td>
+											</tr>
+											<tr>
+												<th>표시여부</th>
+												<td colspan="3">
+													<span class="selectSet wFull">
+														<select name="useYn">
+															<option value="Y" selected="selected">Y</option>
+															<option value="N">N</option>
+														</select>
+													</span>
+												</td>
+											</tr>
+											<tr>
+												<th>로깅여부</th>
+												<td colspan="3">
+													<span class="selectSet wFull">
+														<select name="loggingYn">
+															<option value="Y">Y</option>
+															<option value="N" selected="selected">N</option>
+														</select>
+													</span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="bottom tR">
+										<button class="btnM" type="button" onclick="saveMenu();">저장</button>
+										<button class="btnM" type="button" onclick="deleteMenu();">삭제</button>
+									</div>
+								</div>
+							</form>
+						</div>
+						<!-- //메뉴정보 -->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		</div>
+    </body>
+</html>

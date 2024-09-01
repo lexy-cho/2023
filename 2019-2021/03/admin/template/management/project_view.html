@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			/* 파일업로드 */
+			$('.fileSet input[type=file]').change(function() {
+				var fileValue = $(this).val().split("\\");
+				var fileName = fileValue[fileValue.length-1];
+				$('.fileSet .loadEnd em').text(fileName);
+				$('.fileSet .fileFind').hide();
+				$('.fileSet .loadIng').show();
+				setTimeout(function() { 
+					$('.fileSet .loadIng').hide();
+					$('.fileSet .loadFail').show();
+				}, 3000);
+				setTimeout(function() { 
+					$('.fileSet .loadFail').hide();
+					$('.fileSet .loadEnd').show();
+				}, 6000);
+			});
+			$('.fileSet .loadEnd button').click(function() {
+				$('.fileSet .fileFind').show();
+				$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+			});
+			$('.alertPop button, .basicPop button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			/**/
+			$('#ownershipBtn').click(function(){
+				$('.popDim').show();
+				$('.ownershipPop').show();
+			});
+			$("#disabled11").change(function(){
+				if($(this).is(":checked")){
+				}else{
+					alert("프로젝트가 비활성화 되었습니다. 참여자의 접근이 되지 않도록 변경됩니다.");
+				}
+			});
+			/**/
+			$('#endBtn').click(function(){
+				var result = confirm('금일 날짜가 프로젝트 완료일이 됩니다.\n완료된 프로젝트는 활성화되지 않습니다.\n완료하시겠습니까?'); 
+				if(result) { 
+					$(this).hide();
+					$(this).parent().text('2020-09-09');
+					$('#disabled11').attr('checked', false).attr('disabled', 'disabled');
+				} else { 
+					//no 
+				}
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>프로젝트 관리</h2>
+					<div class="pagePos"><span>Home</span><span>관리자</span><strong>프로젝트 관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="projectViewLayout">
+						<!---->
+						<h3 class="firstH3">기본정보</h3>
+						<div class="tws">
+							<table>
+								<colgroup>
+									<col width="120"/>
+									<col width="250"/>
+									<col width="110"/>
+									<col width="250"/>
+									<col width="110"/>
+									<col width="250"/>
+									<col width="110"/>
+									<col width="250"/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>프로젝트 관리 코드</th>
+										<td>TT191121_scanit(TT)(04)_TSI</td>
+										<th>프로젝트 명</th>
+										<td>AndU</td>
+										<th>생성일 (완료일)</th>
+										<td>2020-06-30 (<span><button class="btnS white" id="endBtn">완료</button></span>)</td>
+										<th>프로젝트 활성화</th>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="disabled11" checked />
+												<label for="disabled11"></label>
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<th>발주처</th>
+										<td>씽크트리</td>
+										<th>고객사</th>
+										<td>씽크트리</td>
+										<th>고객사 담당자</th>
+										<td>홍길동</td>
+										<th>고객사 로고</th>
+										<td>
+											<strong class="loadEnd thumbnailCase" style="display:block;">
+												<span><img src="../../images/img_library_thumbnail.png" alt="" /></span>
+											</strong>
+										</td>
+									</tr>
+									<tr>
+										<th>계약일</th>
+										<td>2020-01-21</td>
+										<th>계약기간</th>
+										<td>2020-01-21 ~ 2020-01-21</td>
+										<th>검수완료 예정일자</th>
+										<td>2020-01-21</td>
+										<th>검수완료 일자</th>
+										<td><span class="calSet"><input type="tel"/><button>달력열기</button></span></td><!-- 2020-09-15 -->
+									</tr>
+									<tr>
+										<th>대상 디바이스</th>
+										<td>PC, 모바일</td>
+										<th>대상 브라우져</th>
+										<td colspan="5">IE, 엣지, 크롬, 모바일 크롬, 모바일 사파리</td>
+									</tr>
+									<tr>
+										<th>업무내용</th>
+										<td colspan="7">업무내용이 나올 영역입니다</td>
+									</tr>
+								</tbody>
+							</table>
+						</div> 
+						<!---->
+						<h3>프로젝트 기간정보  <button class="btnS white right">기간정보 저장</button></h3><!--2020-10-14 문구변경-->
+						<div class="tws">
+							<table>
+								<colgroup>
+									<col width="120"/>
+									<col width="200"/>
+									<col />
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>계약기간</th>
+										<td>2020-01-21 ~ 2020-01-21</td>
+										<td>
+											<ul class="dateAddList">
+												<li>
+													<div><label>기본 계약기간 : </label>2020-01-21 ~ 2020-01-21 <button class="btnS white">계약기간 연장추가</button></div>
+												</li>
+												<li>
+													<div>
+													    <label>연장 계약기간 : </label> 
+														2020-01-21 ~ 2020-01-21
+														<span>(변경사유가 나옵니다)</span>
+														<span class="checkSet">
+															<input type="checkbox" id="chk2" />
+															<label for="chk2"><i></i>확정지정</label>
+														</span>
+														<button class="btnM pink">X</button>
+													</div>
+												</li>
+												<li>
+													<div>
+													    <label>연장 계약기간 : </label>
+														<span class="calDupSet">
+															<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+															<em>~</em>
+															<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+														</span>
+														<input type="text" class="w30p" />
+														<span class="checkSet">
+															<input type="checkbox" id="chk2" />
+															<label for="chk2"><i></i>확정지정</label>
+														</span>
+														<button class="btnM pink">X</button>
+													</div>
+												</li>
+											</ul>
+										</td>
+									</tr>
+									<tr>
+										<th>검수완료<br/>예정일자</th>
+										<td>2020-01-21</td>
+										<td>
+											<ul class="dateAddList">
+												<li>
+													<div>
+														<label>검수완료 예정일자 : </label>2020-01-21 
+														<button class="btnS white">변경추가</button>
+													</div>
+												</li>
+												<li>
+													<div>
+														<label>변경 검수완료 예정일자 : </label>
+														2020-01-21
+														<span>(변경사유가 나옵니다)</span>
+														<span class="checkSet">
+															<input type="checkbox" id="chk2" />
+															<label for="chk2"><i></i>확정지정</label>
+														</span>
+														<button class="btnM pink">X</button>
+													</div>
+												</li>
+												<li>
+													<div>
+														<label>변경 검수완료 예정일자 : </label>
+														<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+														<input type="text" class="w30p" />
+														<span class="checkSet">
+															<input type="checkbox" id="chk2" />
+															<label for="chk2"><i></i>확정지정</label>
+														</span>
+														<button class="btnM pink">X</button>
+													</div>
+												</li>
+											</ul>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div> 
+						<!---->
+						<h3>프로젝트 투입인력 정보  <button class="btnS white right">새로고침</button></h3><!--2020-10-14 버튼추가-->
+						<div class="pb1">
+							실제업무기간 : 
+							<span class="calDupSet">
+								<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+								<em>~</em>
+								<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+							</span>
+						</div>
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="50">
+									<col width="80">
+									<col width="150">
+									<col width="100">
+									<col width="100">
+									<col width="120">
+									<col>
+									<col width="120">
+								</colgroup>
+								<thead>
+									<tr>
+										<th>No.</th>
+										<th>구분</th>
+										<th>이름 (사번)</th>
+										<th>시작일</th>
+										<th>종료일</th>
+										<th>종료사유</th>
+										<th>업무내용</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td>5</td>
+										<td>PM</td>
+										<td>홍길동 (000000)</td>
+										<td>2020-06-30</td>
+										<td>2020-06-30</td>
+										<td></td>
+										<td class="tL">모든 관리 업무를 책임지며 사람으로 외부 팀과 인터페이스를 및 커뮤니케이션 담당하고 의견을 조율합니다.</td>
+										<td><button class="btnM white" id="ownershipBtn">변경</button></td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td>4</td>
+										<td>PL</td>
+										<td>홍길동2 (000000)</td>
+										<td>2020-06-30</td>
+										<td>2020-06-30</td>
+										<td></td>
+										<td class="tL">PL의 PM의 작은 역활이라고 생각하며은 쉽게생각하게 됩니다.</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>PE</td>
+										<td>홍길동2 (000000)</td>
+										<td>2020-06-30</td>
+										<td>2020-06-30</td>
+										<td></td>
+										<td class="tL">프로젝트 엔지니어 말그대로 입니다. 그 프로젝트의 실무자입니다.</td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="btnArea tC">
+							<span class="left">
+								<a href="/tCommon/template/project/project.html" class="btnM" target="_blank">프로젝트 현황</a>
+							</span>
+							<a href="project_list.html" class="btnM">목록</a>
+							<button class="btnM" onclick="if(confirm('현재 활성화된 프로젝트 입니다. 삭제 시 프로젝트 참여자 이력도 삭제됩니다. 삭제하시겠습니까?')){location.href = 'project_list.html'; return false;}">삭제</button>
+							<span class="right">
+								<a href="project_write.html" class="btnM">기본정보 수정</a>
+							</span>
+						</div> 
+						<!--//-->
+
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">		
+			<!---->
+			<div class="basicPop ownershipPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>담당PM 이관</h1>
+				</div>
+				<div class="pBack">
+					<div class="receiver">
+						<dl>
+							<dt>변경 담당자 : </dt>
+							<dd>
+								<span class="receiveSet">
+									<input type="text">
+									<button class="btnM orange">선택</button>
+								</span>
+								<div class="workerWrap">
+									<span class="worker"><strong>[999999999] 홍길동</strong><button class="btnDel">삭제</button></span>
+								</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt>변경 사유 : </dt>
+							<dd><input type="text" /></dd>
+						</dl>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!---->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

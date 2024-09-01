@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.tls tbody tr').click(function(){
+					location.href = 'freight_calculate_detail.html';
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="grayBox searchArea">
+			<fieldset>
+				<!-- 2020-08-04 선택삭제 버튼 삭제 -->
+				<button class="btnM lineOrange">엑셀다운로드</button>
+				<span class="right">
+					<!-- 2020-08-04 업체명 선택콤보 삭제 -->
+					<span class="inputKeyword">
+						<input type="text" placeholder="업체명 검색">
+						<input type="submit" class="btnM black" value="조회">
+					</span>
+				</span>
+			</fieldset>
+		</div>
+		<div class="pd2">
+			<div class="tls selling">
+				<table>
+					<colgroup>
+						<!-- 2020-08-04 체크박스 열 삭제 -->
+						<col width="100" />
+						<col width="240" />
+						<col width="100" />
+						<col width="150" />
+						<col width="100" />
+						<col width="150" />
+						<col width="100" />
+						<col width="150" />
+					</colgroup>
+					<thead>
+						<tr>
+							<!-- 2020-08-04 체크박스 열 삭제 -->
+							<th>구분</th>
+							<th>업체명</th>
+							<th colspan="2">운송실행</th>
+							<th colspan="2">발행 계산서</th>
+							<th colspan="2">미발행 계산서</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="total">
+							<td colspan="2">Total</td><!-- 2020-08-04 colspan 수정 -->
+							<td>70건</td>
+							<td class="tR">48,800,000</td>
+							<td>40건</td>
+							<td class="tR">28,800,000</td>
+							<td>30건</td>
+							<td class="tR">20,000,000</td>
+						</tr>
+						<!--Loop-->
+						<tr>
+							<!-- 2020-08-04 체크박스 열 삭제 -->
+							<td><span class="calCaption tHE">tHE</span></td>
+							<td>구로산업㈜</td>
+							<td>7건</td>
+							<td class="tR">4,880,000</td>
+							<td>4건</td>
+							<td class="tR">2,880,000</td>
+							<td>3건</td>
+							<td class="tR">2,000,000</td>
+						</tr>
+						<!--//Loop-->
+						<tr>
+							<!-- 2020-08-04 체크박스 열 삭제 -->
+							<td><span class="calCaption tHE">tHE</span></td>
+							<td>달려24시㈜</td>
+							<td>7건</td>
+							<td class="tR">4,880,000</td>
+							<td>7건</td>
+							<td class="tR">2,880,000</td>
+							<td>0건</td>
+							<td class="tR">-</td>
+						</tr>
+						<tr>
+							<!-- 2020-08-04 체크박스 열 삭제 -->
+							<td>자체접수</td>
+							<td>대림물류㈜</td>
+							<td>7건</td>
+							<td class="tR">4,880,000</td>
+							<td>4건</td>
+							<td class="tR">2,880,000</td>
+							<td>3건</td>
+							<td class="tR">2,000,000</td>
+						</tr>
+						<tr>
+							<!-- 2020-08-04 체크박스 열 삭제 -->
+							<td>자체접수</td>
+							<td>미화중공업㈜</td>
+							<td>7건</td>
+							<td class="tR">4,880,000</td>
+							<td>4건</td>
+							<td class="tR">2,880,000</td>
+							<td>3건</td>
+							<td class="tR">2,000,000</td>
+						</tr>
+						<tr>
+							<!-- 2020-08-04 체크박스 열 삭제 -->
+							<td>자체접수</td>
+							<td>백운전기</td>
+							<td>7건</td>
+							<td class="tR">4,880,000</td>
+							<td>4건</td>
+							<td class="tR">2,880,000</td>
+							<td>3건</td>
+							<td class="tR">2,000,000</td>
+						</tr>
+						<tr>
+							<!-- 2020-08-04 체크박스 열 삭제 -->
+							<td><span class="calCaption tHE">tHE</span></td>
+							<td>백운전기</td>
+							<td>7건</td>
+							<td class="tR">4,880,000</td>
+							<td>4건</td>
+							<td class="tR">2,880,000</td>
+							<td>3건</td>
+							<td class="tR">2,000,000</td>
+						</tr>
+						<tr>
+							<!-- 2020-08-04 체크박스 열 삭제 -->
+							<td>자체접수</td>
+							<td>백운전기</td>
+							<td>7건</td>
+							<td class="tR">4,880,000</td>
+							<td>4건</td>
+							<td class="tR">2,880,000</td>
+							<td>3건</td>
+							<td class="tR">2,000,000</td>
+						</tr>
+						<tr>
+							<!-- 2020-08-04 체크박스 열 삭제 -->
+							<td>자체접수</td>
+							<td>백운전기</td>
+							<td>7건</td>
+							<td class="tR">4,880,000</td>
+							<td>4건</td>
+							<td class="tR">2,880,000</td>
+							<td>3건</td>
+							<td class="tR">2,000,000</td>
+						</tr>
+						<tr>
+							<!-- 2020-08-04 체크박스 열 삭제 -->
+							<td>자체접수</td>
+							<td>백운전기</td>
+							<td>7건</td>
+							<td class="tR">4,880,000</td>
+							<td>4건</td>
+							<td class="tR">2,880,000</td>
+							<td>3건</td>
+							<td class="tR">2,000,000</td>
+						</tr>
+						<tr>
+							<!-- 2020-08-04 체크박스 열 삭제 -->
+							<td><span class="calCaption tHE">tHE</span></td>
+							<td>백운전기</td>
+							<td>7건</td>
+							<td class="tR">4,880,000</td>
+							<td>4건</td>
+							<td class="tR">2,880,000</td>
+							<td>3건</td>
+							<td class="tR">2,000,000</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+    </body>
+</html>

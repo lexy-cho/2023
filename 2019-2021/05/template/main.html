@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<!-- <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/swiper.min.js"></script> -->
+		<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../js/menu.js"></script>
+		<!-- <script type="text/javascript" src="js/duDatepicker.js"></script> -->
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(window).ready(function(){
+				$(document).on('click tab', '.gnbOpen', function(e){
+					$('.gnbScroll').load('gnb.html',function(){
+						funcGnbOpen();
+					});
+					return false;
+				});
+
+				$(document).on('click tab', '.pwChangePop button', function(e){
+					$('.dimPop').hide();
+					return false;
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		
+		<!-- DimPopUp -->
+		<div class="dimPop" style="">
+			<div class="pwChangePop" style="">
+				<p>
+					<em>김르노 님</em>의 <br/>비밀번호 만기일은 <strong>2019-07-24</strong>일 입니다.<br/>
+					마이페이지 > 비밀번호 변경에서 <br/>수정해주시기 바랍니다.
+				</p>
+				<div class="btn">
+					<button>다음에 변경하기</button>
+					<a href="mypage.html">지금 변경하기</a>
+				</div>
+			</div>
+		</div>
+		<!-- //DimPopUp -->
+
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button>
+							<!-- <button class="goPrev" onclick="history.back()">뒤로가기</button> -->
+						</span>
+						<h1><img src="../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2 class="mCase"><img src="../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h2>
+						<!-- <h2>1Depth title</h2>
+						<h2 class="sCase"><span>1Depth title &gt; </span>2Depth title</h2> -->
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<!-- main 2019-04-24 본 버전이 최종입니다 -->
+						<div class="mainLayout">
+							<div class="mainImg">
+								<img src="../images/mainImg.png" alt=""/>
+							</div>
+							<!-- 2019-10-28 추가 -->
+							<div class="mainImgPC">
+								<img src="../images/mainImgPC.png" alt=""/>
+							</div>
+							<!-- //2019-10-28 추가 -->
+							<div class="edgeLayout1"><!--2019-10-22 div 추가 -->
+								<div class="mainBox">
+									<div>
+										<ul>
+											<li><span><a href="process/new_step.html" class="icon1">신규견적</a></span></li>
+											<li><span><a href="process/registration_staus.html" class="icon2">계출현황</a></span></li>
+											<li><span><a href="available_inventory.html" class="icon3">가용재고</a></span></li>
+											<li><span><a href="delivery_inquiry.html" class="icon4">납기문의</a></span></li>
+											<li><span><a href="process/estimate_list.html" class="icon5">견적조회</a></span></li>
+											<li><span><a onclick="funcGoURL3('할부계산기');" class="icon6">할부계산</a></span></li>
+											<li class="notUsing"><span><!--공란--></span></li>
+											<li class="notUsing"><span><!--공란--></span></li>
+										</ul>				
+									</div>			
+								</div>
+								<div class="mainBox">
+									<div class="line2">
+										<ul>
+											<li><span><a href="contract/possibility_start.html" class="icon21">가망고객등록</a></span></li>
+											<li><span><a href="customer/sms_send_regist.html" class="icon22">SMS발송</a></span></li>
+											<li><span><a href="customer/email_send_regist.html" class="icon23">E-MAIL발송</a></span></li>
+											<li><span><a onclick="funcGoURL('판매조건');" class="icon24">판매조건</a></span></li>
+											<li><span><a href="https://www.renaultsamsungm.com/2017/side/catalog_download.jsp" class="icon25">카달로그&가격표</a></span></li>
+											<li><span><a href="customer/customer_list.html" class="icon26">고객검색</a></span></li>
+											<li class="notUsing"><span><!--공란--></span></li>
+											<li class="notUsing"><span><!--공란--></span></li>
+										</ul>		
+									</div>			
+								</div>
+							</div>
+							<div class="edgeLayout2"><!--2019-10-22 div 추가 -->
+								<div class="mainGo">
+									<ul>
+										<li><a onclick="funcGoURL('개인 e-mail');"class="per"><span>개인 <em>E-MAIL함</em></span></a></li>
+										<li><a onclick="funcGoURL('터치 클래스');"class="tou"><span>터치 클래스</span></a></li>
+										<li><a onclick="funcGoURL('G.N.T');"class="gn"><span>G.N.T</span></a></li>
+									</ul>
+								</div>
+								<div class="mainBbs">
+									<h3><strong>통합게시판</strong></h3>
+									<ul>
+										<li>
+											<a href="notice.html"><span>공지사항<em>new</em></span></a>
+										</li>
+										<li>
+											<a href="data.html"><span>자료실<em>new</em></span></a>					
+										</li>
+										<li>
+											<a onclick="funcGoURL2('용품 정보 및 A/S');"><span>용품정보 및 A/S<em>new</em></span></a>				
+										</li>
+										<li>
+											<a onclick="funcGoURL2('월간공지');"><span>월간공지<em>new</em></span></a>				
+										</li>
+										<li>
+											<a onclick="funcGoURL2('납기정보');"><span>납기정보<em>new</em></span></a>				
+										</li>
+										<li><!--공란--></li>
+									</ul>
+								</div>
+							</div>
+							<div class="mainCopy">
+								<p><a>홈페이지 바로가기</a><span>Copyright ⓒ 2018 RENAULT SAMSUNG MOTORS. <span>ALL RIGHTS RESERVED</span></span></p>
+							</div>
+						</div>
+						<!-- //main -->
+					</section>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->		
+
+		<!-- 퍼블리싱용입니다. --> 
+		<script>
+			function funcGoURL(s){
+				alert( s + " 서비스로 이동");
+			}
+			function funcGoURL2(s){
+				alert( s + " 페이지로 이동");
+			}
+			function funcGoURL3(s){
+				alert( s + " 팝업 노출");
+			}
+		</script>
+		<!-- //퍼블리싱용입니다. --> 
+	</body>
+</html>

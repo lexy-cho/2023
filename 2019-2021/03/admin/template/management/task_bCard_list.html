@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('#shareAddBtn').click(function(){
+				$('.popDim').show();
+				$('.educationPop').show();
+			});
+			$('#ownershipBtn').click(function(){
+				$('.popDim').show();
+				$('.ownershipPop').show();
+			});
+			$('.pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>명함 관리</h2>
+					<div class="pagePos"><span>Home</span><span>영업 및 업무</span><strong>명함 관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div>
+						<div class="boardTop">
+							<em>전체 10,000건</em>
+							<span class="right">
+								<span class="searchBasic">
+									<span class="selectSet">
+										<select>
+											<option selected>전체</option>
+											<option>업체명</option>
+											<option>이름</option>
+											<option>등록자</option>
+										</select>
+									</span>
+									<span class="searchSet">
+										<input type="text">
+										<input type="submit" value="검색" class="btnSearch">
+										<button class="btnReset">초기화</button>
+									</span>
+								</span>
+								<button class="btnM">엑셀 다운로드</button>
+							</span>
+						</div>
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="10"/>
+									<col width="200" />
+									<col width="200" />
+									<col width="250" />
+									<col width="200" />
+									<col width="200" />
+									<col width="200" />
+									<col width="200" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkall" />
+												<label for="chkall"><i></i></label>
+											</span>
+										</th>
+										<th>이름</th>
+										<th>호칭/직책/부서</th>
+										<th>업체명</th>
+										<th>소유자</th>
+										<th>등록일자</th>
+										<th>수정일자</th>
+										<th>공유맴버</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr class="noti">
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk8" />
+												<label for="chk8"><i></i></label>
+											</span>
+										</td>
+										<td><span class="new">NEW</span><a href="task_bCard_view.html">미입력</a></td>
+										<td></td>
+										<td></td>
+										<td>김철수</td>
+										<td>2020-04-25 00:00</td>
+										<td></td>
+										<td></td>
+									</tr>
+									<!--//Loop-->
+									<tr class="noti">
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk8" />
+												<label for="chk8"><i></i></label>
+											</span>
+										</td>
+										<td><span class="rePhoto">RE</span><a href="task_bCard_view.html">미입력</a></td>
+										<td></td>
+										<td></td>
+										<td>김철수</td>
+										<td>2020-04-25 00:00</td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk7" />
+												<label for="chk7"><i></i></label>
+											</span>
+										</td>
+										<td><a href="task_bCard_view.html">정해욱</a></td>
+										<td>-/과장/IST</td>
+										<td>르노삼성자동차</td>
+										<td>김철수</td>
+										<td>2020-04-25 00:00</td>
+										<td>2020-04-25 00:00</td>
+										<td>홍길동</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk6" />
+												<label for="chk6"><i></i></label>
+											</span>
+										</td>
+										<td><a href="task_bCard_view.html">김원철</a></td>
+										<td>-/차장/IST</td>
+										<td>르노삼성자동차</td>
+										<td>김철수</td>
+										<td>2020-04-25 00:00</td>
+										<td>2020-04-25 00:00</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk5" />
+												<label for="chk5"><i></i></label>
+											</span>
+										</td>
+										<td><a href="task_bCard_view.html">김복희</a></td>
+										<td>책임/책임 컨설턴트 / 다복솔시스템</td>
+										<td>KB 금융그룹</td>
+										<td>김철수</td>
+										<td>2020-04-25 00:00</td>
+										<td>2020-04-25 00:00</td>
+										<td>홍길동 외 1명</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="bpSet">
+							<div class="btnArea">
+								<span class="left">
+									<button class="btnM" id="deleteBtn">선택삭제</button>
+									<button class="btnM white" id="shareAddBtn">선택 공유</button>
+									<button class="btnM white" id="ownershipBtn">선택 소유권 이관</button>
+								</span>
+								<span class="right">
+									<a href="task_bCard_write.html" class="btnM">신규등록</a>
+								</span>
+							</div>
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+									<a class="on">1</a>
+									<a>2</a>
+									<a>3</a>
+									<a>4</a>
+									<a>5</a>
+									<a class="next">다음</a>
+								</span>
+								<span class="selectSet">
+									<select>
+										<option>10개</option>
+										<option>20개</option>
+										<option>50개</option>
+										<option>100개</option>
+									</select>
+								</span>
+							</div>
+						</div>
+						<!--//-->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!---->
+			<div class="basicPop educationPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>공유맴버 편집</h1>
+				</div>
+				<div class="pBack">
+					<div class="receiver">
+						<div class="grayBox">
+							<span class="receiveSet">
+								<input type="text">
+								<button class="btnM orange">추가</button>
+							</span>
+							<div class="workerWrap">
+								<span class="worker"><strong>[999999999] 홍길동</strong><button class="btnDel">삭제</button></span>
+								<span class="worker"><strong>[999999999] 홍길동</strong><button class="btnDel">삭제</button></span>
+								<span class="worker"><strong>[999999999] 홍길동</strong><button class="btnDel">삭제</button></span>
+								<span class="worker"><strong>[999999999] 홍길동</strong><button class="btnDel">삭제</button></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!---->
+			<div class="basicPop ownershipPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>소유권 이관</h1>
+				</div>
+				<div class="pBack">
+					<div class="receiver">
+						<dl>
+							<dt>변경 소유자 : </dt>
+							<dd>
+								<span class="receiveSet">
+									<input type="text">
+									<button class="btnM orange">선택</button>
+								</span>
+								<div class="workerWrap">
+									<span class="worker"><strong>[999999999] 홍길동</strong><button class="btnDel">삭제</button></span>
+								</div>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!---->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

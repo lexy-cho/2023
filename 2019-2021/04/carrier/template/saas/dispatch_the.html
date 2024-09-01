@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/push.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.dispatchLayout table td').click(function(){
+					$('.dispatchLayout table td').removeClass('on');
+					$(this).addClass('on');
+					$('.dispatchLayout').addClass('on');
+					$('.fullSizeCase').addClass('circleCase');
+				}); //2020-07-16 메인 캘린더 날짜 선택
+				$('.calenderDetail button').click(function(){
+					$('.dispatchLayout table td').removeClass('on');
+					$('.dispatchLayout').removeClass('on');
+					$('.fullSizeCase').removeClass('circleCase');
+				});
+				$('.btnDriverReserv').click(function(){
+					$('.popDim').show();
+					$('#driverReservPop1').show();
+				});
+				$('.driverReservPop .calenderArea table td').click(function(){
+					$('.driverReservPop .calenderArea table td').removeClass('choice');
+					$(this).toggleClass('choice');
+				}); //2020-07-02 배차예약 날짜 선택 (기존 삭제)
+				$('.info.reservCase').click(function(){
+					$('.popDim').show();
+					$('#driverReservPop2').show();
+				}); // 2020-06-16 배차예약 확인
+				$('.calGuide .calCaption').click(function(){
+					$(this).toggleClass('off');
+					if($(this).hasClass('deviation')){
+						$('.calenderArea .calCaption.deviation').toggle();
+					} else if($(this).hasClass('busiCar')){
+						$('.calenderArea .calCaption.busiCar').toggle();
+					} else if($(this).hasClass('reservation')){
+						$('.calenderArea .calCaption.reservation').toggle();
+					}
+				}); // 2020-07-16 캘린더 캡션 on/off
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back">
+						<div data-include="../include/saas_snb.html"></div>
+					</div>
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<!-- mobile Menu -->
+			<div id="headerM">
+				<div data-include="../include/saas_headM.html"></div>
+			</div>
+			<!-- //mobile Menu -->
+			<!-- mobile push -->
+			<div id="push">
+				<aside>
+					<div class="panelBack c-menu--slide-right" data-include="../push.html"></div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</aside>
+			</div>
+			<!-- //mobile push -->
+			<hr/>
+			<div id="containerBack">
+				<!-- header -->
+				<div id="header" class="changeList"><!-- 2020-06-16 class 추가 -->
+					<header>
+						 <span class="left">
+							<strong class="switchTit own">물류플랫폼<!-- 2020-10-29 텍스트 변경 --> <strong>물량 캘린더</strong></strong>
+							<a class="btnM btnListSwitch" href="dispatch.html">캘린더 전환</a><!-- 2020-06-16 위치변경 -->
+						 </span>
+						 <div class="calNavigation">
+							<button class="btnCalNavi before">이전</button>
+							<strong>2020-04</strong>
+							<button class="btnCalNavi after">다음</button>
+						</div>
+						 <span class="right">
+							<button class="btnM black btnDriverReserv">배차예약</button><!-- 2020-06-16 class 변경 -->
+						 </span>
+					</header>
+				</div>
+				<!-- //header -->
+				<hr/>
+				<!-- container -->
+				<div id="container">
+				<section>
+					<div class="content">
+					<article>
+						<!-- Page Layout -->
+						<div class="dispatchLayout pd2">
+							<div class="calGuide">
+								<div>
+									<strong>사내운송</strong>
+									<span class="calCaption deviation"></span> 자차
+									<span class="calCaption busiCar"></span> 지입
+									<span class="calCaption reservation"></span> 예약
+								</div>
+							</div>
+							<div class="calenderArea">
+								<table>
+									<thead>
+										<tr>
+											<th>일</th>
+											<th>월</th>
+											<th>화</th>
+											<th>수</th>
+											<th>목</th>
+											<th>금</th>
+											<th>토</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="notThisMonth">
+												<strong class="num"><em>29</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li><span class="calCaption deviation">자차<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption busiCar">지입<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption reservation">예약<strong><i>12</i><em>건</em></strong></span></li>
+													</ul>
+												</div>
+											</td>
+											<td class="notThisMonth">
+												<strong class="num"><em>30</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li><span class="calCaption deviation">자차<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption busiCar">지입<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption reservation">예약<strong><i>12</i><em>건</em></strong></span></li>
+													</ul>
+												</div>
+											</td>
+											<td class="notThisMonth">
+												<strong class="num"><em>31</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li><span class="calCaption deviation">자차<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption busiCar">지입<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption reservation">예약<strong><i>12</i><em>건</em></strong></span></li>
+													</ul>
+												</div>
+											</td>
+											<td class="today">
+												<strong class="num"><em>1</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li><span class="calCaption deviation">자차<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption busiCar">지입<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption reservation">예약<strong><i>12</i><em>건</em></strong></span></li>
+													</ul>
+												</div>
+											</td>
+											<td>
+												<strong class="num"><em>2</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li><span class="calCaption deviation">자차<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption busiCar">지입<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption reservation">예약<strong><i>12</i><em>건</em></strong></span></li>
+													</ul>
+												</div>
+											</td>
+											<td>
+												<strong class="num"><em>3</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li><span class="calCaption deviation">자차<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption busiCar">지입<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption reservation">예약<strong><i>12</i><em>건</em></strong></span></li>
+													</ul>
+												</div>
+											</td>
+											<td>
+												<strong class="num"><em>4</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li><span class="calCaption deviation">자차<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption busiCar">지입<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption reservation">예약<strong><i>12</i><em>건</em></strong></span></li>
+													</ul>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td><strong class="num"><em>5</em></strong></td>
+											<td><strong class="num"><em>6</em></strong></td>
+											<td><strong class="num"><em>7</em></strong></td>
+											<td><strong class="num"><em>8</em></strong></td>
+											<td><strong class="num"><em>9</em></strong></td>
+											<td><strong class="num"><em>10</em></strong></td>
+											<td><strong class="num"><em>11</em></strong></td>
+										</tr>
+										<tr>
+											<td><strong class="num"><em>12</em></strong></td>
+											<td><strong class="num"><em>13</em></strong></td>
+											<td><strong class="num"><em>14</em></strong></td>
+											<td><strong class="num"><em>15</em></strong></td>
+											<td><strong class="num"><em>16</em></strong></td>
+											<td><strong class="num"><em>17</em></strong></td>
+											<td><strong class="num"><em>18</em></strong></td>
+										</tr>
+										<tr>
+											<td><strong class="num"><em>19</em></strong></td>
+											<td><strong class="num"><em>20</em></strong></td>
+											<td><strong class="num"><em>21</em></strong></td>
+											<td><strong class="num"><em>22</em></strong></td>
+											<td><strong class="num"><em>23</em></strong></td>
+											<td><strong class="num"><em>24</em></strong></td>
+											<td><strong class="num"><em>25</em></strong></td>
+										</tr>
+										<tr>
+											<td><strong class="num"><em>26</em></strong></td>
+											<td><strong class="num"><em>27</em></strong></td>
+											<td><strong class="num"><em>28</em></strong></td>
+											<td><strong class="num"><em>29</em></strong></td>
+											<td><strong class="num"><em>30</em></strong></td>
+											<td class="notThisMonth"><strong class="num"><em>1</em></strong></td>
+											<td class="notThisMonth"><strong class="num"><em>2</em></strong></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="calenderDetail">
+								<h3>
+									2020-04-02 (목)
+									<button class="btnClose">닫기</button>
+								</h3>
+								<div class="calListArea">
+									<div class="gridSet grid2">
+										<div class="gridItem">
+											<h4>배차현황</h4>
+											<ul>
+												<li>
+													<div class="info">
+														<span class="simpleTit">
+															<div><span class="calCaption deviation">자차</span>홍길동<i>222호 2222</i></div>
+															<em>[<span class="red">수입</span> / 왕복]</em>
+															<span class="disCode">배차번호 200100001</span> <!-- 2020-06-16 날짜대신 교체 -->
+														</span>
+														<div class="listMap">
+															부산항(05:00) – <strong>충북/안산(09:00)</strong> – 부산항(15:00)
+														</div>
+													</div>
+													<div class="go">
+														<a class="btnM whiteBlue" href="trans_execution_the_view.html">운송실행 상세보기</a>
+													</div>
+												</li>
+												<li>
+													<div class="info">
+														<span class="simpleTit">
+															<div><span class="calCaption deviation">자차</span>홍길동<i>222호 2222</i></div>
+															<em>[<span class="red">수입</span> / 왕복]</em>
+															<span class="disCode">배차번호 200100001</span> <!-- 2020-06-16 날짜대신 교체 -->
+														</span>
+														<div class="listMap">
+															부산항(05:00) – <strong>충북/안산(09:00)</strong> – 부산항(15:00)
+														</div>
+													</div>
+													<div class="go">
+														<a class="btnM whiteBlue" href="trans_execution_the_view.html">운송실행 상세보기</a>
+													</div>
+												</li>
+												<li>
+													<div class="info">
+														<span class="simpleTit">
+															<div><span class="calCaption deviation">자차</span>홍길동<i>222호 2222</i></div>
+															<em>[<span class="red">수입</span> / 왕복]</em>
+															<span class="disCode">배차번호 200100001</span> <!-- 2020-06-16 날짜대신 교체 -->
+														</span>
+														<div class="listMap">
+															부산항(05:00) – <strong>충북/안산(09:00)</strong> – 부산항(15:00)
+														</div>
+													</div>
+													<div class="go">
+														<a class="btnM whiteBlue" href="trans_execution_the_view.html">운송실행 상세보기</a>
+													</div>
+												</li>
+												<li>
+													<div class="info">
+														<span class="simpleTit">
+															<div><span class="calCaption busiCar">지입</span>홍길동<i>222호 2222</i></div>
+															<em>[<span class="blue">수출</span> / 왕	복]</em>
+															<span class="disCode">배차번호 200100001</span> <!-- 2020-06-16 날짜대신 교체 -->
+														</span>
+														<div class="listMap">
+															부산항(05:00) – <strong>충북/안산(09:00)</strong> – 부산항(15:00)
+														</div>
+													</div>
+													<div class="go">
+														<a class="btnM whiteBlue" href="trans_execution_the_view.html">운송실행 상세보기</a>
+													</div>
+												</li>
+												<li class="none">배차 내역이 없습니다.</li> <!-- 2020-06-24 추가 -->
+											</ul>
+										</div>
+										<div class="gridItem">
+											<h4>예약현황 [주간] 06 ~ 22시 / [심야] 22 ~ 06시</h4>
+											<ul>
+												<li>
+													<div class="info reservCase">
+														<span class="simpleTit">
+															<div><span class="calCaption reservation"></span>주간/심야<i>박주작 (010-1234-5678)</i></div><!-- 2020-07-02 차량번호 삭제 -->
+														</span>
+														<div class="setLoal"><span>경기/의왕</span><span>경기/안산</span><span>경기/전역</span></div><!-- 2020-07-02 지역추가 -->
+													</div>
+												</li>
+												<li>
+													<div class="info reservCase">
+														<span class="simpleTit">
+															<div><span class="calCaption reservation"></span>심야<i>박주작 (010-1234-5678)</i></div><!-- 2020-07-02 차량번호 삭제 -->
+														</span>
+														<div class="setLoal"><span>경기/의왕</span><span>경기/안산</span><span>경기/전역</span></div><!-- 2020-07-02 지역추가 -->
+													</div>
+												</li>
+												<li>
+													<div class="info reservCase">
+														<span class="simpleTit">
+															<div><span class="calCaption reservation"></span>주간<i>박주작 (010-1234-5678)</i></div><!-- 2020-07-02 차량번호 삭제 -->
+														</span>
+														<div class="setLoal"><span>경기/의왕</span><span>경기/안산</span><span>경기/전역</span></div><!-- 2020-07-02 지역추가 -->
+													</div>
+												</li>
+												<li class="none">예약 내역이 없습니다.</li> <!-- 2020-06-24 추가 -->
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- //page Layout -->
+					</article>
+					</div>
+				</section>
+				</div>
+				<!-- //container -->
+			</div>
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none">
+			<!-- 배차예약하기 -->
+			<div class="basicPop driverReservPop" id="driverReservPop1" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>배차예약 <strong>2020년 07월</strong></h1><!-- 2020-07-02 타이틀 변경 -->
+				</div>
+				<div class="pBack">
+					<span class="selectSet choicePs"><!-- 2020-07-02 select 추가 -->
+						<select>
+							<option selected>드라이버 선택</option>
+							<option>홍길동(010-1234-5678)</option>
+							<option>박주작(010-2345-6789)</option>
+						</select>
+					</span>
+					<!-- 달력 -->
+					<div class="calenderArea writeCase"><!-- 2020-06-16 class 추가 -->
+						<table>
+							<thead>
+								<tr>
+									<th>일</th>
+									<th>월</th>
+									<th>화</th>
+									<th>수</th>
+									<th>목</th>
+									<th>금</th>
+									<th>토</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="on notThisMonth"><strong class="num"><em>29</em></strong></td>
+									<td class="notThisMonth"><strong class="num"><em>30</em></strong></td>
+									<td class="notThisMonth"><strong class="num"><em>31</em></strong></td>
+									<td class="on"><strong class="num"><em>1</em></strong></td><!-- 2020-07-02 이미 예약이 있을 경우, on / 날짜 선택은 choice -->
+									<td class="holiday"><strong class="num"><em>2</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td><strong class="num"><em>3</em></strong></td>
+									<td><strong class="num"><em>4</em></strong></td>
+								</tr>
+								<tr>
+									<td class="on"><strong class="num"><em>5</em></strong></td>
+									<td><strong class="num"><em>6</em></strong></td>
+									<td><strong class="num"><em>7</em></strong></td>
+									<td class="on"><strong class="num"><em>8</em></strong></td>
+									<td class="holiday"><strong class="num"><em>9</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td><strong class="num"><em>10</em></strong></td>
+									<td><strong class="num"><em>11</em></strong></td>
+								</tr>
+								<tr>
+									<td><strong class="num"><em>12</em></strong></td>
+									<td><strong class="num"><em>13</em></strong></td>
+									<td><strong class="num"><em>14</em></strong></td>
+									<td><strong class="num"><em>15</em></strong></td>
+									<td class="holiday"><strong class="num"><em>16</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td><strong class="num"><em>17</em></strong></td>
+									<td><strong class="num"><em>18</em></strong></td>
+								</tr>
+								<tr>
+									<td><strong class="num"><em>19</em></strong></td>
+									<td class="on"><strong class="num"><em>20</em></strong></td>
+									<td><strong class="num"><em>21</em></strong></td>
+									<td><strong class="num"><em>22</em></strong></td>
+									<td class="holiday"><strong class="num"><em>23</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td><strong class="num"><em>24</em></strong></td>
+									<td><strong class="num"><em>25</em></strong></td>
+								</tr>
+								<tr>
+									<td><strong class="num"><em>26</em></strong></td>
+									<td><strong class="num"><em>27</em></strong></td>
+									<td class="on"><strong class="num"><em>28</em></strong></td>
+									<td><strong class="num"><em>29</em></strong></td>
+									<td class="holiday"><strong class="num"><em>30</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td class="notThisMonth"><strong class="num"><em>1</em></strong></td>
+									<td class="on notThisMonth"><strong class="num"><em>2</em></strong></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- //달력 -->
+					<!-- 예약정보 -->
+					<div class="reservDetail">
+						<!-- 2020-08-04 예약시간 항목 위치 이동 -->
+						<!-- 2020-07-02 소속운송사/드라이버/배차차량 삭제 -->
+						<dl class="inputBox wFull">
+							<dt>희망권역 1</dt>
+							<dd>
+								<span class="selectSet dis"><!-- 2020-06-24 신규선택일 경우 -->
+									<select>
+										<option selected>선택해주세요</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<dl class="inputBox wFull">
+							<dt>희망권역 2</dt>
+							<dd>
+								<span class="selectSet dis"><!-- 2020-06-24 신규선택일 경우 -->
+									<select>
+										<option selected>선택해주세요</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<dl class="inputBox wFull">
+							<dt>희망권역 3</dt>
+							<dd>
+								<span class="selectSet dis"><!-- 2020-06-24 신규선택일 경우 -->
+									<select>
+										<option selected>선택해주세요</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<!-- 2020-08-04 예약시간 항목 위치 이동 -->
+						<dl class="inputBox notInput wFull">
+							<dt>예약시간</dt>
+							<dd>
+								<span class="checkSet">
+									<input type="checkbox" id="chk1" />
+									<label for="chk1"><i></i>[주간] 06 ~ 22시</label>
+								</span>
+								<span class="checkSet">
+									<input type="checkbox" id="chk2" />
+									<label for="chk2"><i></i>[심야] 22 ~ 6시</label>
+								</span>
+							</dd>
+						</dl>
+						<!-- //2020-08-04 예약시간 항목 위치 이동 -->
+					</div>
+					<!-- //예약정보 -->
+				</div>
+				<!-- 2020-08-04 저장버튼, 영역 삭제 -->
+			</div>
+			<!--//예약하기-->
+			<!-- 2020-06-16 예약상세 -->
+			<div class="basicPop driverReservPop" id="driverReservPop2" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>배차예약 <strong>2020년 07월</strong></h1><!-- 2020-07-02 타이틀 변경 -->
+				</div>
+				<div class="pBack">
+					<span class="selectSet choicePs"><!-- 2020-07-02 select 추가 -->
+						<select>
+							<option>드라이버 선택</option>
+							<option selected>홍길동(010-1234-5678)</option>
+							<option>박주작(010-2345-6789)</option>
+						</select>
+					</span>
+					<!-- 달력 -->
+					<div class="calenderArea writeCase"><!-- 2020-06-16 class 추가 -->
+						<table>
+							<thead>
+								<tr>
+									<th>일</th>
+									<th>월</th>
+									<th>화</th>
+									<th>수</th>
+									<th>목</th>
+									<th>금</th>
+									<th>토</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="notThisMonth"><strong class="num"><em>29</em></strong></td>
+									<td class="notThisMonth"><strong class="num"><em>30</em></strong></td>
+									<td class="notThisMonth"><strong class="num"><em>31</em></strong></td>
+									<td class="on choice"><strong class="num"><em>1</em></strong></td><!-- 2020-07-02 이미 예약이 있을 경우, on / 날짜 선택은 choice -->
+									<td class="holiday"><strong class="num"><em>2</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td><strong class="num"><em>3</em></strong></td>
+									<td><strong class="num"><em>4</em></strong></td>
+								</tr>
+								<tr>
+									<td><strong class="num"><em>5</em></strong></td>
+									<td><strong class="num"><em>6</em></strong></td>
+									<td><strong class="num"><em>7</em></strong></td>
+									<td class="on"><strong class="num"><em>8</em></strong></td>
+									<td class="holiday"><strong class="num"><em>9</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td><strong class="num"><em>10</em></strong></td>
+									<td><strong class="num"><em>11</em></strong></td>
+								</tr>
+								<tr>
+									<td><strong class="num"><em>12</em></strong></td>
+									<td><strong class="num"><em>13</em></strong></td>
+									<td><strong class="num"><em>14</em></strong></td>
+									<td><strong class="num"><em>15</em></strong></td>
+									<td class="holiday"><strong class="num"><em>16</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td><strong class="num"><em>17</em></strong></td>
+									<td><strong class="num"><em>18</em></strong></td>
+								</tr>
+								<tr>
+									<td><strong class="num"><em>19</em></strong></td>
+									<td class="on"><strong class="num"><em>20</em></strong></td>
+									<td><strong class="num"><em>21</em></strong></td>
+									<td><strong class="num"><em>22</em></strong></td>
+									<td class="holiday"><strong class="num"><em>23</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td><strong class="num"><em>24</em></strong></td>
+									<td><strong class="num"><em>25</em></strong></td>
+								</tr>
+								<tr>
+									<td><strong class="num"><em>26</em></strong></td>
+									<td><strong class="num"><em>27</em></strong></td>
+									<td class="on"><strong class="num"><em>28</em></strong></td>
+									<td><strong class="num"><em>29</em></strong></td>
+									<td class="holiday"><strong class="num"><em>30</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td class="notThisMonth"><strong class="num"><em>1</em></strong></td>
+									<td class="notThisMonth"><strong class="num"><em>2</em></strong></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- //달력 -->
+					<!-- 예약정보 -->
+					<div class="reservDetail">
+						<!-- 2020-08-04 예약시간 항목 위치 이동 -->
+						<!-- 2020-07-02 소속운송사/드라이버/배차차량 삭제 -->
+						<dl class="inputBox wFull">
+							<dt>희망권역 1</dt>
+							<dd>
+								<span class="selectSet">
+									<select>
+										<option>선택해주세요</option>
+										<option selected>경기/인천권</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<dl class="inputBox wFull">
+							<dt>희망권역 2</dt>
+							<dd>
+								<span class="selectSet">
+									<select>
+										<option>선택해주세요</option>
+										<option selected>충청권</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<dl class="inputBox wFull">
+							<dt>희망권역 3</dt>
+							<dd>
+								<span class="selectSet dis"><!-- 2020-06-24 신규선택일 경우 -->
+									<select>
+										<option selected>선택해주세요</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<!-- 2020-08-04 예약시간 항목 위치 이동 -->
+						<dl class="inputBox notInput wFull">
+							<dt>예약시간</dt>
+							<dd>
+								<span class="checkSet">
+									<input type="checkbox" id="chk1" checked />
+									<label for="chk1"><i></i>[주간] 06 ~ 22시</label>
+								</span>
+								<span class="checkSet">
+									<input type="checkbox" id="chk2" />
+									<label for="chk2"><i></i>[심야] 22 ~ 6시</label>
+								</span>
+							</dd>
+						</dl>
+						<!-- //2020-08-04 예약시간 항목 위치 이동 -->
+					</div>
+					<!-- //예약정보 -->
+					<p class="errorMsg" style="/*display:none;*/">본인이 등록한 예약만 수정할 수 있습니다. </p>
+				</div>
+				<!-- 2020-08-04 저장버튼, 영역 삭제 -->
+			</div>
+			<!--//2020-06-16 예약상세 -->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.primary').click(function(){
+				$(location).attr('href','main.html');
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- Login Wrap -->
+		<div id="loginWrap">
+			<div class="loginTit">
+				<!--2021-02-02 문구 변경 -->
+				<div>
+					<span><img src="../images/i_logoting.svg" alt="" /></span>
+					<h1><img src="../images/img_logoTit.png" alt="ANDU:OFFICE LIF" /></h1><!--2021-02-10 네임 변경-->
+					<p><em>비대면 업무협업 서비스</em></p>
+				</div>
+				<!--2021-02-02 문구 변경 -->
+			</div>
+			<div class="loginForm">
+				<div class="formBack pwChange">
+					<p>
+						<strong>패스워드를 변경해 주세요</strong>
+						현재 패스워드는 30일 이상 사용하였습니다. <br/>개인정보 보호를 위해 패스워드를 변경해주세요.
+					</p>
+					<form id="" action="" method="post">
+						<div class="inputBox pwCase">
+							<label>신규 비밀번호</label>
+							<div class="pwSet"><!-- 2020-05-29 pwSet class 추가 -->
+								<input type="password" id="" name="" placeholder="영문, 숫자, 특수기호 8~20자 이내" /><!-- 2020-04-08 placeholder 수정 -->
+								<i></i><!-- 2020-05-29 i 추가 (클릭 토클 class off) -->
+							</div>
+						</div>
+						<div class="inputBox pwCase">
+							<label>비밀번호 확인</label>
+							<div class="pwSet"><!-- 2020-05-29 pwSet class 추가 -->
+								<input type="password" id="" name="" placeholder="영문, 숫자, 특수기호 8~20자 이내" /><!-- 2020-04-08 placeholder 수정 -->
+								<i class="off"></i><!-- 2020-05-29 i 추가 (클릭 토클 class off) -->
+							</div>
+						</div>
+						<div class="btnArea">
+							<button type="button" class="btnL white">다음에 변경하기</button>
+							<button type="button" class="btnL primary">확인</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- //Login Wrap -->
+    </body>
+</html>

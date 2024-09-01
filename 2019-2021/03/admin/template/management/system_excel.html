@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>엑셀다운로드 로그관리</h2>
+					<div class="pagePos"><span>Home</span><span>관리자</span><strong>엑셀다운로드 로그관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div>
+						<!---->
+						<div class="boardTop">
+							<em>전체 10,000건</em>
+							<span class="right">
+								<span class="searchBasic">
+									<span class="selectSet">
+										<select>
+											<option>전체</option>
+											<option>1Depth</option>
+										</select>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option>전체</option>
+											<option>2Depth</option>
+										</select>
+									</span>
+									<input type="text" placeholder="다운로드 사유" />
+									<input type="submit" value="검색" class="btnSearch" />
+									<button class="btnReset">초기화</button>
+								</span>
+								<button class="btnM">엑셀다운로드</button>
+							</span>
+						</div>
+						<!---->
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="70" />
+									<col width="120" />
+									<col width="150" />
+									<col width="150" />
+									<col />
+									<col width="140" />
+									<col width="100" />
+									<col width="180" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>번호</th>
+										<th>1Depth</th>
+										<th>2Depth</th>
+										<th>3Depth</th>
+										<th>다운로드 사유</th>
+										<th>계정정보</th>
+										<th>권한</th>
+										<th>다운로드 일시</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!-- Loop -->
+									<tr>
+										<td>10</td>
+										<td>대메뉴</td>
+										<td>중메뉴</td>
+										<td>소메뉴</td>
+										<td class="tL">컨텐츠 삭제</td>
+										<td>홍길동 (170301)</td>
+										<td>관리자</td>
+										<td>2016-12-31 00:00:00</td>
+									</tr>
+									<!-- //Loop -->
+									<tr>
+										<td>9</td>
+										<td>대메뉴</td>
+										<td>중메뉴</td>
+										<td>소메뉴</td>
+										<td class="tL">컨텐츠 수정</td>
+										<td>홍길동 (170301)</td>
+										<td>관리자</td>
+										<td>2016-12-31 00:00:00</td>
+									</tr>
+									<tr>
+										<td>8</td>
+										<td>대메뉴</td>
+										<td>중메뉴</td>
+										<td>소메뉴</td>
+										<td class="tL">컨텐츠 수정</td>
+										<td>홍길동 (170301)</td>
+										<td>관리자</td>
+										<td>2016-12-31 00:00:00</td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td>대메뉴</td>
+										<td>중메뉴</td>
+										<td>소메뉴</td>
+										<td class="tL">컨텐츠 신규등록</td>
+										<td>홍길동 (170301)</td>
+										<td>일반 사용자</td>
+										<td>2016-12-31 00:00:00</td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td>대메뉴</td>
+										<td>중메뉴</td>
+										<td>소메뉴</td>
+										<td class="tL">컨텐츠 신규등록</td>
+										<td>홍길동 (170301)</td>
+										<td>일반 사용자</td>
+										<td>2016-12-31 00:00:00</td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td>대메뉴</td>
+										<td>중메뉴</td>
+										<td>소메뉴</td>
+										<td class="tL">컨텐츠 신규등록</td>
+										<td>홍길동 (170301)</td>
+										<td>일반 사용자</td>
+										<td>2016-12-31 00:00:00</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>대메뉴</td>
+										<td>중메뉴</td>
+										<td>소메뉴</td>
+										<td class="tL">컨텐츠 신규등록</td>
+										<td>홍길동 (170301)</td>
+										<td>일반 사용자</td>
+										<td>2016-12-31 00:00:00</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>대메뉴</td>
+										<td>중메뉴</td>
+										<td>소메뉴</td>
+										<td class="tL">컨텐츠 신규등록</td>
+										<td>고객사 (170301)</td>
+										<td>고객사 사용자</td>
+										<td>2016-12-31 00:00:00</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>대메뉴</td>
+										<td>중메뉴</td>
+										<td>소메뉴</td>
+										<td class="tL">로그인</td>
+										<td>고객사 (170301)</td>
+										<td>고객사 사용자</td>
+										<td>2016-12-31 00:00:00</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="paginate">
+							<span>
+								<a class="first">이전</a>
+									<a class="on">1</a>
+									<a>2</a>
+									<a>3</a>
+									<a>4</a>
+									<a>5</a>
+								<a class="next">다음</a>
+							</span>
+							<span class="selectSet">
+								<select>
+									<option>10개</option>
+									<option>20개</option>
+									<option>50개</option>
+									<option>100개</option>
+								</select>
+							</span>
+						</div>
+						<!--//-->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		</div>
+    </body>
+</html>

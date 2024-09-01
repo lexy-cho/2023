@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../css/inview.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/preview.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../js/menu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>  
+			$(document).ready(function(){
+				var fileViewSwiper = new Swiper('.fileView .swiper-container', {
+					spaceBetween: 14,
+					initialSlide: 0,
+					zoom:true,
+					pagination: '.fileView .swiper-pagination',
+					paginationClickable: true,
+					paginationBulletRender: function (swiper, index, className) {
+						return '<span class="' + className + '">' + (index + 1) + '</span>';
+					},
+					nextButton: '.fileView .swiper-button-next',
+					prevButton: '.fileView .swiper-button-prev',
+					onSlideChangeEnd: function (swiper) {
+						if (swiper.activeIndex == 0) {
+							$('.swTt').text('개인정보 수집·이용·제공 동의서');
+						}else if (swiper.activeIndex == 1) {
+							$('.swTt').text('전자계약서 (회사용)');
+						}else if (swiper.activeIndex == 2) {
+							$('.swTt').text('전자계약서 (고객용)');
+						}else if (swiper.activeIndex == 3) {
+							$('.swTt').text('계약조항');
+						}
+					}
+				});
+			});
+		</script>
+	</head>
+	<body class="fileViewCase">
+		<!-- 미리보기 -->
+		<!-- 헤더 샘플 / Native 개발진행 시 삭제 필요 -->
+		<!-- <a  style="display:block;text-align:center;background:#53565b;"><img src="../images/img_preview_hd_sample.jpg" alt="" style="max-width: 100%;"></a> -->
+		<div class="fileViewTit">미리보기 <a onclick="history.back()">닫기</a></div><!--2019-10-31-->
+		<!-- // 헤더 샘플 / Native 개발진행 시 삭제 필요 -->
+		<div class="fileView">
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<div class="swiper-zoom-container">
+							<img src="../images/img_terms.jpg" alt="">
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="swiper-zoom-container">
+							<iframe name="pdfViewer_0" style="display:block;width:100%;height:100%;background:red;" src="" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"></iframe>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="swiper-zoom-container">
+							<img src="../images/img_terms.jpg" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- preBottomBtn -->
+			<div class="preBottomBtn">
+				<div class="swiper-button-prev">이전</div>
+				<strong class="swTt">개인정보 수집·이용·제공 동의서</strong>
+				<div class="swiper-pagination"></div>
+				<div class="swiper-button-next">다음</div>
+			</div>
+			<!--// preBottomBtn -->
+		</div>
+		<!-- // 미리보기 -->
+	</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.btnPwReset').click(function(){
+					$('.popDim').show();
+					$('.pwResetPop').show();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Page Layout -->
+		<div class="operatorDetail">
+			<!-- 2020-07-13 top 영역 삭제 -->
+			<div class="tab">
+				<!-- tab -->
+				<div class="tabBack">
+					<div class="tabNav">
+						<nav>
+							<ul>
+								<li class="on"><button data-name="1">gildong2020</button></li><!-- 2020-07-13 정보상세 화면 -->
+								<li><button data-name="2">신규등록</button></li><!-- 2020-07-13 신규등록 화면 -->
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<!--// tab -->
+				<div class="tabLayout">
+					<!-- 2020-07-13 정보상세 화면 -->
+					<div class="tabData tData1" style="display:block;">
+						<div class="detailContents">
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="95"/><!-- 2020-07-13 col width 수정 -->
+										<col width="655"/><!-- 2020-07-16 col width 수정 -->
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>성명</th>
+											<td><input type="text" value="홍길동"/></td>
+										</tr>
+										<tr>
+											<th>아이디</th>
+											<td><input type="text" value="gildong2020"/></td>
+										</tr>
+										<tr>
+											<th>패스워드</th>
+											<td><button class="btnS blue btnPwReset">패스워드 변경</button></td><!-- 2020-07-13 -->
+										</tr>
+										<tr>
+											<th>핸드폰번호</th>
+											<td><input type="text" value="010-1234-1234"/></td>
+										</tr>
+										<tr>
+											<th>이메일</th>
+											<td><input type="text" value="honggildong1234@gmail.com"/></td>
+										</tr>
+										<tr>
+											<th>구분</th>
+											<td>
+												<span class="selectSet">
+													<select>
+														<option selected>마스터 관리자</option>
+														<option>플랫폼 관리자</option>
+													</select>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th>등록일자</th>
+											<td><span class="calSet"><input type="tel" value="2020-01-21" /><button>달력열기</button></span></td>
+										</tr>
+										<tr>
+											<th>활성화 구분</th>
+											<td>
+												<span class="toggleSet">
+													<input type="checkbox" id="tg1" />
+													<label for="tg1"><span>활성화</span><span>비활성화</span></label>
+												</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btnArea">
+								<span class="left"><button class="btnM red">운영자삭제</button></span>
+							</div>
+						</div>
+					</div>
+					<!-- //2020-07-13 정보상세 화면 -->
+					<!-- 2020-07-13 신규등록 화면 -->
+					<div class="tabData tData2">
+						<div class="detailContents">
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="95"/><!-- 2020-07-13 col width 수정 -->
+										<col width="655"/><!-- 2020-07-16 col width 수정 -->
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>성명<sup>필수</sup></th>
+											<td><input type="text" placeholder="성명을 입력해주세요"/></td>
+										</tr>
+										<tr>
+											<th>아이디<sup>필수</sup></th>
+											<td><input type="text" placeholder="영문과 숫자를 조합한 6~10자로 입력해주세요"/></td>
+										</tr>
+										<tr>
+											<th>패스워드<sup>필수</sup></th>
+											<td>초기 패스워드는 아이디와 동일하게 등록됩니다.</td>
+										</tr>
+										<tr>
+											<th>핸드폰번호<sup>필수</sup></th>
+											<td><input type="text" placeholder="“-” 을 제외하고 입력"/></td>
+										</tr>
+										<tr>
+											<th>이메일<sup>필수</sup></th>
+											<td><input type="text" placeholder="이메일 주소"/></td>
+										</tr>
+										<tr>
+											<th>구분</th>
+											<td>
+												<span class="selectSet">
+													<select>
+														<option>선택</option>
+														<option>마스터 관리자</option>
+														<option>플랫폼 관리자</option>
+													</select>
+												</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btnArea">
+								<span class="left"><button class="btnM red">취소</button></span>
+								<span class="right"><button class="btnM black">확인</button></span>
+							</div>
+							<div class="tws operatorGuide">
+								<strong>&lt;운영자 구분&gt;</strong>
+								<table>
+									<colgroup>
+										<col width="200"/>
+										<col width="85"/>
+										<col width="85"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th></th>
+											<th>마스터 관리자</th>
+											<th>플랫폼 관리자</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>배차관리</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+										<tr>
+											<td>매칭 수수료</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+										<tr>
+											<td>화주회원</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+										<tr>
+											<td>운송사회원</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+										<tr>
+											<td>차주회원</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+										<tr>
+											<td>통계관리</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+										<tr>
+											<td>광고관리</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+										<tr>
+											<td>공지사항관리</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+										<tr>
+											<td>운영자관리</td>
+											<td><span class="circle">가능</span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>푸시서비스</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+										<tr>
+											<td>코드관리</td>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>운송사별 시스템<br/>(운송사의 Super Admin 권한부여)</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- //2020-07-13 신규등록 화면 -->
+				</div>
+			</div>
+		</div>
+		<!-- //page Layout -->
+		<!-- popup -->
+		<div class="popDim" style="display:none">
+			<!-- 신규 운영자 -->
+			<div class="basicPop newOperatorPop" id="samplePop11" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>운영자 [신규등록]</h1>
+				</div>
+				<div class="pBack">
+					<div class="gridSet grid2">
+						<div class="gridItem">
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="100">
+										<col width="*">
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>성명<sup>필수항목</sup></th>
+											<td><input type="text" placeholder="성명을 입력해주세요"/></td>
+										</tr>
+										<tr>
+											<th>아이디<sup>필수항목</sup></th>
+											<td><input type="text" placeholder="영문과 숫자를 조합한 6~10자로 입력해주세요"/></td>
+										</tr>
+										<tr>
+											<th>패스워드<sup>필수항목</sup></th>
+											<td><input type="text" placeholder="초기 패스워드는 아이디와 동일하게 등록됩니다." readonly/></td>
+										</tr>
+										<tr>
+											<th>휴대전화<sup>필수항목</sup></th>
+											<td><input type="text" placeholder="'-' 을 제외하고 입력"/></td>
+										</tr>
+										<tr>
+											<th>이메일<sup>필수항목</sup></th>
+											<td><input type="text"/></td>
+										</tr>
+										<tr>
+											<th>구분</th>
+											<td>
+												<span class="selectSet">
+													<select>
+														<option selected>선택</option>
+														<option>마스터 관리자</option>
+														<option>플랫폼 관리자</option>
+													</select>
+												</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="gridItem">
+							<div class="tws operatorGuide">
+								<strong>&lt;운영자 구분&gt;</strong>
+								<table>
+									<colgroup>
+										<col width="40"/>
+										<col width="80"/>
+										<col width="80"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th></th>
+											<th>마스터 관리자</th>
+											<th>플랫폼 관리자</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>배차관리</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+										<tr>
+											<td>매칭 수수료</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+										<tr>
+											<td>화주회원</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+										<tr>
+											<td>운송사회원</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+										<tr>
+											<td>차주회원</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+										<tr>
+											<td>통계관리</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+										<tr>
+											<td>광고관리</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+										<tr>
+											<td>공지사항관리</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+										<tr>
+											<td>운영자관리</td>
+											<td><span class="circle">가능</span></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>푸시서비스</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+										<tr>
+											<td>코드관리</td>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>운송사별 Admin</td>
+											<td><span class="circle">가능</span></td>
+											<td><span class="circle">가능</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//신규 운영자-->
+			<!-- 패스워드 초기화 -->
+			<div class="basicPop pwResetPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>패스워드 초기화</h1>
+				</div>
+				<div class="pBack">
+					<div class="grayBox">
+						<p>임시 패스워드를 사용자의 휴대전화(SMS)로 발송합니다. 패스워드를 초기화 하시겠습니까?</p>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!-- //패스워드 초기화 -->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

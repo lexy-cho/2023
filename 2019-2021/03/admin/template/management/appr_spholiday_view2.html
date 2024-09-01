@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/approval.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/jstree.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/basicTree.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/* 파일업로드 */
+			$('.fileSet input[type=file]').change(function() {
+				var fileValue = $(this).val().split("\\");
+				var fileName = fileValue[fileValue.length-1];
+				$('.fileSet .loadEnd em').text(fileName);
+				$('.fileSet .fileFind').hide();
+				$('.fileSet .loadIng').show();
+				setTimeout(function() {
+					$('.fileSet .loadIng').hide();
+					$('.fileSet .loadFail').show();
+				}, 3000);
+				setTimeout(function() {
+					$('.fileSet .loadFail').hide();
+					$('.fileSet .loadEnd').show();
+				}, 6000);
+			});
+			$('.fileSet .loadEnd button').click(function() {
+				$('.fileSet .fileFind').show();
+				$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+			});
+			/* end 파일업로드 */
+			/**/
+			$('.alertPop button, .basicPop button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			$('.apprLine .btnM').click(function(){
+				$('.popDim, .apprPop').show();
+				$('.apprPop .pBtn button').click(function(){
+					location.href='appr_main.html';
+				});
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>전자결재</h2>
+					<div class="pagePos"><span>Home</span><strong>전자결재</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="apprWriteLayout">
+						<h3>특별휴가 신청서</h3>
+						<div class="apprTop gridSet grid2">
+							<div class="gridItem">
+								<div class="btnArea">
+									<button class="btnM white">인쇄</button>
+									<a href="appr_reference.html" class="btnM white">목록</a>
+								</div>
+							</div>
+							<div class="gridItem">
+								<div class="apprLine">
+									<span>
+										<table>
+											<colgroup>
+												<col width="40"/>
+												<col width="100"/>
+												<col width="100"/>
+												<col width="100"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th rowspan="2">결재</th>
+													<th>팀원</th>
+													<th>파트장</th>
+													<th>부서장</th>
+												</tr>
+												<tr>
+													<td>
+														<div class="sign">
+															<strong>홍길동</strong>
+															<em>승인</em>
+														</div>
+														<div class="date">08-01 00:00</div>
+													</td>
+													<td>
+														<div class="sign">
+															<span><img src="../../images/img_sign_example.png" alt=""/></span>
+														</div>
+														<div class="date">08-01 00:00</div>
+													</td>
+													<td><button class="btnM white">결재</button></td>
+												</tr>
+											</thead>
+										</table>
+									</span>
+									<span>
+										<table>
+											<colgroup>
+												<col width="40"/>
+												<col width="100"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th rowspan="2">합의</th>
+													<th>팀원</th>
+												</tr>
+												<tr>
+													<td>
+														<div class="sign">
+															<strong>김남이</strong>
+															<em>협의</em>
+														</div>
+														<div class="date">08-01 00:00</div>
+													</td>
+												</tr>
+											</thead>
+										</table>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="grayBox">
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="150"/>
+										<col width="490"/>
+										<col width="150"/>
+										<col width="490"/>
+										<col width="150"/>
+										<col width="490"/>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>문서번호</th>
+											<td>자동채번</td>
+											<th>기안일자</th>
+											<td>2020-00-00 23:59</td>
+											<th>기안자</th>
+											<td>홍길동</td>
+										</tr>
+										<tr>
+											<th>참조자</th>
+											<td colspan="3">참조자명</td>
+											<th>기안부서</th>
+											<td>개발팀</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="tws">
+							<table>
+								<colgroup>
+									<col width="150"/>
+									<col width="1770"/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>휴가대상자</th>
+										<td>대상자명</td>
+									</tr>
+									<tr>
+										<th>휴가기간</th>
+										<td>2019-12-19 ~ 2019-12-19 (일수 : 1)</td>
+									</tr>
+									<tr>
+										<th>휴가사유</th>
+										<td>특별 휴가 사유가 나오는 영역입니다.</td>
+									</tr>
+									<tr>
+										<th>업무백업</th>
+										<td>김철수(개발팀) – 업무백업내용이 표기되는 영역입니다.</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="fileBox">
+							<div>
+								<strong>[첨부파일] <em>00개</em></strong>
+								<button class="btnS white">전체 다운로드</button>
+							</div>
+							<ul>
+								<li>
+									<a href="../../images/btn_close.svg" target="_blank" download>
+										<span class="fileSet">
+											<strong class="loadEnd">
+												<em>sample.png</em>
+											</strong>
+										</span>
+										<em>[2.0KB]</em>
+									</a>
+								</li>
+								<li>
+									<a href="../../images/btn_close.svg" target="_blank" download>
+										<span class="fileSet">
+											<strong class="loadEnd">
+												<em>sample.png</em>
+											</strong>
+										</span>
+										<em>[2.0KB]</em>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="apprStatus">
+							<strong>결재 진행 현황</strong>
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="40"/>
+										<col width="100"/>
+										<col width="100"/>
+										<col width="100"/>
+										<col width="200"/>
+										<col width="600"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>순번</th>
+											<th>결재자</th>
+											<th>결재유형</th>
+											<th>결재</th>
+											<th>결재일시</th>
+											<th>결재의견</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>김철수</td>
+											<td>결재</td>
+											<td>결재</td>
+											<td>2020-01-01 23:59</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>김남이</td>
+											<td>합의</td>
+											<td>합의</td>
+											<td>2020-01-01 23:59</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>최미진</td>
+											<td>결재</td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<div class="basicPop apprPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="40">
+								<col width="150">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>구분</th>
+									<td>
+										<span class="radioSet">
+											<input type="radio" id="appr1" name="appr" />
+											<label for="appr1"><i></i>승인</label>
+										</span>
+										<span class="radioSet">
+											<input type="radio" id="appr2" name="appr" />
+											<label for="appr2"><i></i>반려</label>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>결재의견</th>
+									<td><textarea></textarea></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

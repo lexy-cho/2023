@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$(".btnGuide").click(function(){
+				$(".guideDim, .guidePop").show();
+			});
+			$(".gClose").click(function(){
+				$(".guideDim, .guidePop").hide();
+			});
+			var swiper2 = new Swiper('.guidePop .swiper-container', {
+				pagination: {
+					el: '.swiper-pagination',
+				},
+				autoplay: false,
+		    });
+			/**/
+			$('.resList li a').click(function(){
+				$('.popDim').show();
+				$('.reviewPop').show();
+			});
+			$('.reviewPop .pclose').click(function(){
+				$('.popDim').hide();
+				$('.reviewPop').hide();
+			});
+			/**/
+			$('.boxList li a').click(function(){
+				$('.alertDim, .otpSendPop').show();
+			}); // OTP 발행
+			$('.otpSendPop .pBtn .blue').click(function(){
+				$('.alertDim, .otpSendPop').hide();
+				$('.popDim, .otpChkPop').show();
+			}); // OTP 인증
+			$('.otpSendPop .pBtn .white').click(function(){
+				$('.alertDim, .otpSendPop').hide();
+			}); // OTP 발행 닫기
+			$('.otpChkPop .white, .otpChkPop .blue').click(function(){
+				$('.popDim, .otpChkPop').hide();
+			}); // OTP 인증 닫기
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<h1>급여명세서<span class="btnGuide">가이드 보기</span></h1>
+					<button class="btnNav">햄버거</button>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+
+			<div id="snb">
+				<section>
+					<div class="c-menu c-menu--slide-left"><!-- 우측 Slide 일 경우 -->
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</section>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<span class="selectSet">
+						<select>
+							<option>2020</option>
+							<option>2019</option>
+							<option>2018</option>
+						</select>
+					</span>
+					<span class="right">00개</span>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="salaryLayout">
+						<div class="boxList">
+							<ul>
+								<!--Loop -->
+								<li>
+									<div>
+										<strong>4월</strong>
+										<em>기본 급여명세서</em>
+										<a>명세서 보기</a>
+									</div>
+									<span>04.01 ~ 04.30</span>
+								</li>
+								<!--//Loop -->
+								<li>
+									<div>
+										<strong>3월</strong>
+										<em>기본 급여명세서</em>
+										<a>명세서 보기</a>
+									</div>
+									<span>03.01 ~ 03.31</span>
+								</li>
+								<li>
+									<div>
+										<strong>2월</strong>
+										<em>연말 추가보너스</em>
+										<a>명세서 보기</a>
+									</div>
+									<span>02.01 ~ 02.29</span>
+								</li>
+								<li>
+									<div>
+										<strong>2월</strong>
+										<em>기본 급여명세서</em>
+										<a>명세서 보기</a>
+									</div>
+									<span>02.01 ~ 02.29</span>
+								</li>
+								<li>
+									<div>
+										<strong>1월</strong>
+										<em>기본 급여명세서</em>
+										<a>명세서 보기</a>
+									</div>
+									<span>01.01 ~ 01.31</span>
+								</li>
+								<!---->
+								<li class="notList">
+									<div>
+										발송된 급여명세서가 없습니다
+									</div>
+								</li>
+								<!--//-->
+							</ul>
+						</div>
+					</div>
+					<!--//-->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>상단으로</button></div>
+		</div>
+		<!-- //Wrap -->
+		<!-- guide -->
+		<div class="guideDim">
+			<div class="guideDimAlign">
+				<div class="guidePop">
+					<div class="gBack">
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="gImg"><img src="../images/guide_salary_step01.png" alt=""></div>
+									<div class="gText">
+										<span class="number">1</span>
+										<strong>확인하려는 급여명세서를 선택합니다.</strong>
+										<p>최초인 경우 QR코드 인증을 진행합니다.<br/>팝업에서 신규 발행을 클릭해 메일을 확인해주세요.</p>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="gImg"><img src="../images/guide_salary_step02.png" alt=""></div>
+									<div class="gText">
+										<span class="number">2</span>
+										<strong>구글 OTP 어플리케이션을 설치합니다.</strong>
+										<p>
+											설치 후 메일로 발송된 QR코드를 인증하면<br/>OTP 번호를 확인 할 수 있습니다.
+											<a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=ko&gl=US" target="_blank">구글 OTP 설치하기</a>
+										</p>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="gImg"><img src="../images/guide_salary_step03_3.png" alt=""></div>
+									<div class="gText">
+										<span class="number">3</span>
+										<strong>생성된 OTP 번호를 팝업에 입력합니다.</strong>
+										<p>OTP 인증 후, PDF 뷰어가 열리며 2차 비밀번호를 입력합니다.<br/>(2차 비밀번호는 본인의 주민등록번호 뒷번호 입니다.)</p>
+									</div>
+								</div>
+							</div>
+							<!-- Add Pagination -->
+							<div class="swiper-pagination"></div>
+						</div>
+					</div>
+					<div class="gFooter">
+						<span class="checkSet">
+							<input type="checkbox" id="chk1">
+							<label for="chk1"><i></i>다시 안보기</label>
+						</span>
+						<button class="gClose">닫기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //guide -->
+		<!-- alertPop -->
+		<!-- 2020-08-24 OTP 발행 -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop otpSendPop" style="display:none;">
+				<div class="pBack">
+					<p class="tL">
+						본 파일은 개인정보 및 민감 정보가 포함되어 있습니다.<br/>
+						OTP 인증 후 파일 확인이 가능합니다.<br/><br/>
+						OTP 인증을 위해 QR코드 등록 후 이용해주시기 바랍니다.<br/>
+						QR코드 정보는  하기의 [신규 발행] 버튼을 클릭하면 이메일을 통해 발송됩니다.
+					</p>
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">QR코드 신규 발행</button>
+				</div>
+			</div>
+		</div>
+		<!-- //2020-08-24 OTP 발행 -->
+		<!-- //alertPop -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<div class="basicPop reviewPop" style="display:none;">
+				<div class="tt">
+					<h1>4월 급여명세서</h1>
+					<button class="pclose">닫기</button>
+				</div>
+				<div class="pBack">
+					<!---->
+					<iframe frameborder="1" scrolling="yes" align="left"></iframe>
+					<!--//-->
+				</div>
+			</div>
+			<!-- 2020-08-24 OTP 인증 -->
+			<div class="miniPop otpChkPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p class="tC">본 파일은 개인정보 및 민감정보가 포함하고 있습니다.<br/>OTP 인증 후 파일 확인이 가능합니다.</p>
+					<div class="dlstyle deviceSame">
+						<dl>
+							<dt>OTP CODE :</dt>
+							<dd><input type="text"/></dd>
+						</dl>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn tC"><!-- 2020-09-01 -->
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+					<div class="guideMsg">
+						<button class="btnReOtp">신규 OTP 재발행</button><!-- 2020-09-01 -->
+					</div>
+				</div>
+			</div>
+			<!-- //2020-08-24 OTP 인증 -->
+		</div>
+		<!-- //Popup -->
+	</body>
+</html>

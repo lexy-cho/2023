@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.highcharts.com/highcharts.src.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$(".basicPop .pclose").click(function(){
+				$(".popDim, .basicPop").hide();
+			});
+			$(".tabNav li:not('.right') button").click(function () {
+				$(".tabNav li").removeClass("on");
+				$(this).parent("li:not('.right')").addClass("on");
+				var activeTab = $(this).attr("data-name");
+				$('.tabData').hide();
+				$('.tData' + activeTab).show();
+			});
+			/* 파일업로드 */
+			$('.fileSet input[type=file]').change(function() {
+				var fileValue = $(this).val().split("\\");
+				var fileName = fileValue[fileValue.length-1];
+				$('.fileSet .loadEnd em').text(fileName);
+				$('.fileSet .fileFind').hide();
+				$('.fileSet .loadIng').show();
+				setTimeout(function() {
+					$('.fileSet .loadIng').hide();
+					$('.fileSet .loadFail').show();
+				}, 3000);
+				setTimeout(function() {
+					$('.fileSet .loadFail').hide();
+					$('.fileSet .loadEnd').show();
+				}, 6000);
+			});
+			$('.fileSet .loadEnd button').click(function() {
+				$('.fileSet .fileFind').show();
+				$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+			});
+			/* end 파일업로드 */
+
+			/* 사내망 신규 등록 팝업 관련 */
+			$(".btnNewRig").click(function(){
+				$(".popDim, .inNtWritePop").show();
+			});
+			$("input[name=userKind]").change(function() {
+				var radioValue = $(this).attr('id');
+				if(radioValue == "userKind3"){
+					$(".inNtWritePop").addClass('case2');
+				}else{
+					$(".inNtWritePop").removeClass('case2');
+				}
+			});
+			$(".eqSet .toggleSet input").change(function() {
+				var addressInput = $(this).parents('.eqSet').children('input');
+				if($(this).is(":checked") == true){
+					$(addressInput).attr('disabled', false);
+				}else{
+					$(addressInput).attr('disabled', true);
+				}
+			});
+			$(".inNtWritePop .pBtn button").click(function() {
+				if($(this).index() == 0){
+					$(".alertDim, .alertOutPop").show();
+			    }else if($(this).index() == 1){
+					$(".alertDim, .inNtWriteEndPop").show();
+				}
+				$(".alertPop button").click(function(){
+					$(".popDim, .basicPop, .alertDim, .alertPop").hide();
+				});
+			});
+			/* end 사내망 신규 등록 팝업 관련 */
+			/* 사내망 등록 정보 팝업 관련 */
+			$(".inNtViewPop.approval .pBtn button").click(function() {
+				if($(this).index() == 0){
+					$(".alertDim, .alertOutPop").show();
+			    }else if($(this).index() == 1){
+					$(".alertDim, .inNtSavePop").show();
+				}
+				$(".alertPop button").click(function(){
+					$(".popDim, .basicPop, .alertDim, .alertPop").hide();
+				});
+			});
+			$(".inNtViewPop.issue .pBtn span.left button").click(function() {
+				$(".alertDim, .inNtStopPop").show();
+				$(".inNtStopPop button").click(function() {
+					$(".inNtStopPop").hide();
+					$(".alertDim, .inNtStopPop2").show();
+					$(".inNtStopPop2 button").click(function(){
+						$(".popDim, .basicPop, .alertDim, .alertPop").hide();
+					});
+				});
+			});
+			$(".inNtViewPop.waiting .pBtn .blue").click(function() {
+				$(".alertDim, .inNtSavePop").show();
+				$(".alertPop button").click(function(){
+					$(".popDim, .basicPop, .alertDim, .alertPop").hide();
+				});
+			});
+			$(".inNtViewPop.issue .pBtn > .blue, .inNtViewPop.waiting .pBtn > button").click(function() {
+				$(".popDim, .basicPop").hide();
+			});
+			/* end 사내망 등록 정보 팝업 관련 */
+
+			function alertClose(){
+				$(".alertPop .pBtn button").click(function(){
+					$(".alertDim, .alertPop").hide();
+				});
+			}
+			$(".btnChkDel").click(function(){
+				$(".alertDim, .chkDelPop").show();
+				$(".chkDelPop button").click(function(){
+					$(".alertDim, .chkDelPop").hide(),
+					confirm('선택한 정보를 삭제 하시겠습니까?');
+				});
+			});
+			$(".btnIpStop").click(function(){
+				$(".alertDim, .inNtStopPop").show();
+				alertClose();
+			});
+			$(".btnReInt").click(function(){
+				$(".alertDim, .reIntPop").show();
+				alertClose();
+			});
+			$(".ntReasonPop button").click(function(){
+				$(".popDim, .basicPop").hide();
+			});
+			$(".btnReject").click(function(){
+				$(".popDim, .ntReasonPop.writeCase").show();
+			});
+			$(".btnReason").click(function(){
+				$(".popDim, .ntReasonPop.viewCase").show();
+			});
+			$(".btnGiveIp").click(function(){
+				$(".popDim, .inNtViewPop.ethernet.approval").show();
+			});
+			$(".btnGiveWifi").click(function(){
+				$(".popDim, .inNtViewPop.wifi.approval").show();
+			});
+			$(".tls a").on('click',function(){
+				var className = $(this).attr('class');
+				if(className == "ethernet1"){
+					$(".popDim, .inNtViewPop.ethernet.waiting").show();
+				}else if(className == "ethernet2"){
+					$(".popDim, .inNtViewPop.ethernet.approval").show();
+				}else if(className == "ethernet3"){
+					$(".popDim, .inNtViewPop.ethernet.issue").show();
+				}else if(className == "wifi1"){
+					$(".popDim, .inNtViewPop.wifi.waiting").show();
+				}else if(className == "wifi2"){
+					$(".popDim, .inNtViewPop.wifi.approval").show();
+				}else if(className == "wifi3"){
+					$(".popDim, .inNtViewPop.wifi.issue").show();
+				}
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>사내망 등록 관리</h2>
+					<div class="pagePos"><span>Home</span><span>전자결재</span><strong>사내망 등록 관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="appriNtLayout">
+						<div class="tabWrap">
+							<!-- tab -->
+							<div class="tabBack">
+								<div class="tabNav">
+									<nav>
+										<ul>
+											<li class="on"><button data-name="0">이더넷</button></li>
+											<li><button data-name="1">Wifi</button></li>
+											<li class="right">
+												<button class="btnS white btnReInt">사내망 갱신 요청</button>
+												<button class="btnS white btnNewRig">신규 등록</button>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+							<!--// tab -->
+							<div class="tabLayout">
+								<!-- 이더넷 -->
+								<div class="tabData tData0" style="display:block;">
+									<!---->
+									<div class="boardTop">
+										<span class="selectSet">
+											<select>
+												<option>2020</option>
+											</select>
+										</span>
+										<em>전체 : 00건</em>
+										<span class="right">
+											<span class="searchBasic">
+												<span class="selectSet">
+													<select>
+														<option>전체</option>
+														<option>정규직</option>
+														<option>계약직</option>
+														<option>임시</option>
+														<option>퇴사자</option>
+													</select>
+												</span>
+												<input type="text" placeholder="이름, 사번, IP 입력" />
+												<input type="submit" value="검색" class="btnSearch" />
+												<button class="btnReset">초기화</button>
+											</span>
+											<button class="btnM">엑셀 다운로드</button>
+										</span>
+									</div>
+									<!---->
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="20"/>
+												<col width="60"/>
+												<col width="100"/>
+												<col width="90"/>
+												<col width="150"/>
+												<col width="70"/>
+												<col width="80"/>
+												<col width="120"/>
+												<col width="120"/>
+												<col width="120"/>
+												<col width="120"/>
+												<col width="120"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="ethernetAll" />
+															<label for="ethernetAll"><i></i></label>
+														</span>
+													</th>
+													<th>구분</th>
+													<th>이름 (사번)</th>
+													<th>신청일</th>
+													<th>사용기간</th>
+													<th>장비</th>
+													<th>신청장비</th>
+													<th>맥어드레스</th>
+													<th>보안담당자</th>
+													<th>보안책임자</th>
+													<th>발행 IP</th>
+													<th>증빙서류</th>
+												</tr>
+											</thead>
+											<tbody>
+												<!--Loop-->
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="ethernet1" />
+															<label for="ethernet1"><i></i></label>
+														</span>
+													</td>
+													<td>정규직</td>
+													<td><a class="ethernet1">홍길동 (000000)</a></td>
+													<td>2020-01-01</td>
+													<td>-</td>
+													<td>지급</td>
+													<td>테스크톱</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>
+														<button class="btnS white">승인</button>
+														<button class="btnS white btnReject">반려</button>
+													</td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<!--//Loop-->
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="ethernet2" />
+															<label for="ethernet2"><i></i></label>
+														</span>
+													</td>
+													<td>정규직</td>
+													<td><a class="ethernet1">홍길동 (000000)</a></td>
+													<td>2020-01-01</td>
+													<td>-</td>
+													<td>지급</td>
+													<td>테스크톱</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>2020-01-01</td>
+													<td>
+														<button class="btnS white">승인</button>
+														<button class="btnS white btnReject">반려</button>
+													</td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="ethernet3" />
+															<label for="ethernet3"><i></i></label>
+														</span>
+													</td>
+													<td>정규직</td>
+													<td><a class="ethernet1">홍길동 (000000)</a></td>
+													<td>2020-01-01</td>
+													<td>-</td>
+													<td>개인</td>
+													<td>노트북</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>
+														<em class="endDate">2020-01-01</em>
+														<button class="btnS btnReason">사유</button>
+													</td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="ethernet4" />
+															<label for="ethernet4"><i></i></label>
+														</span>
+													</td>
+													<td>정규직</td>
+													<td><a class="ethernet1">홍길동 (000000)</a></td>
+													<td>2020-01-01</td>
+													<td>-</td>
+													<td>개인</td>
+													<td>노트북</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>2020-01-01</td>
+													<td>
+														<em class="endDate">2020-01-01</em>
+														<button class="btnS btnReason">사유</button>
+													</td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="ethernet5" />
+															<label for="ethernet5"><i></i></label>
+														</span>
+													</td>
+													<td>정규직</td>
+													<td><a class="ethernet2">홍길동 (000000)</a></td>
+													<td>2020-01-01</td>
+													<td>-</td>
+													<td>지급</td>
+													<td>노트북</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>2020-01-01</td>
+													<td>2020-01-01</td>
+													<td><button class="btnS white btnGiveIp">IP 부여</button></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="ethernet6" />
+															<label for="ethernet6"><i></i></label>
+														</span>
+													</td>
+													<td>정규직</td>
+													<td><a class="ethernet3">홍길동 (000000)</a></td>
+													<td>2020-01-01</td>
+													<td>2020-01-01 ~ 2020-01-01</td>
+													<td>지급</td>
+													<td>노트북</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>2020-01-01</td>
+													<td>2020-01-01</td>
+													<td>192.168.10.XX</td>
+													<td><button class="btnS white">발행</button></td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="ethernet7" />
+															<label for="ethernet7"><i></i></label>
+														</span>
+													</td>
+													<td>계약직</td>
+													<td><a class="ethernet3">홍길동 (000000)</a></td>
+													<td>2020-01-01</td>
+													<td>2020-01-01 ~ 2020-01-01</td>
+													<td>개인</td>
+													<td>노트북</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>2020-01-01</td>
+													<td>2020-01-01</td>
+													<td>192.168.10.XX</td>
+													<td>
+														<button class="btnS white">재발행</button>
+														<button class="btnS white">미리보기</button>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="ethernet7" />
+															<label for="ethernet7"><i></i></label>
+														</span>
+													</td>
+													<td>임시</td>
+													<td><a class="ethernet3">최지수</a></td>
+													<td>2020-01-01</td>
+													<td><em class="endDate">2020-01-01 ~ 2020-01-01</em></td>
+													<td>개인</td>
+													<td>노트북</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>2020-01-01</td>
+													<td>2020-01-01</td>
+													<td>192.168.10.XX</td>
+													<td>
+														<button class="btnS white">재발행</button>
+														<button class="btnS white">미리보기</button>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="ethernet7" />
+															<label for="ethernet7"><i></i></label>
+														</span>
+													</td>
+													<td>퇴사자</td>
+													<td><a class="ethernet3">김철수 (000000)</a></td>
+													<td>2020-01-01</td>
+													<td>2020-01-01 ~ 2020-01-01</td>
+													<td>개인</td>
+													<td>노트북</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>2020-01-01</td>
+													<td>2020-01-01</td>
+													<td>192.168.10.XX</td>
+													<td>
+														<button class="btnS white">재발행</button>
+														<button class="btnS white">미리보기</button>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="ethernet7" />
+															<label for="ethernet7"><i></i></label>
+														</span>
+													</td>
+													<td>퇴사자</td>
+													<td><a class="ethernet3">김철수 (000000)</a></td>
+													<td>2020-01-01</td>
+													<td><em class="blueTxt">2020-01-01 ~ 2020-01-01</em></td>
+													<td>개인</td>
+													<td>노트북</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>2020-01-01</td>
+													<td>2020-01-01</td>
+													<td><em class="orangeTxt">중지</em></td>
+													<td>
+														<button class="btnS white">재발행</button>
+														<button class="btnS white">미리보기</button>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<!---->
+									<div class="bpSet">
+										<div class="btnArea">
+											<span class="left">
+												<button class="btnM white btnChkDel">선택 삭제</button>
+												<button class="btnM white btnIpStop">선택 IP 사용 중지</button>
+											</span>
+										</div>
+										<div class="paginate">
+											<span>
+												<a class="first">이전</a>
+													<a class="on">1</a>
+													<a>2</a>
+													<a>3</a>
+													<a>4</a>
+													<a>5</a>
+												<a class="next">다음</a>
+											</span>
+											<span class="selectSet">
+												<select>
+													<option>10개</option>
+													<option>20개</option>
+													<option>50개</option>
+													<option>100개</option>
+												</select>
+											</span>
+										</div>
+									</div>
+									<!--//-->
+								</div>
+								<!-- //이더넷 -->
+								<!-- Wifi -->
+								<div class="tabData tData1">
+									<!---->
+									<div class="boardTop">
+										<span class="selectSet">
+											<select>
+												<option>2020</option>
+											</select>
+										</span>
+										<em>전체 : 00건</em>
+										<span class="right">
+											<span class="searchBasic">
+												<span class="selectSet">
+													<select>
+														<option>전체</option>
+														<option>정규직</option>
+														<option>계약직</option>
+														<option>임시</option>
+														<option>퇴사자</option>
+													</select>
+												</span>
+												<input type="text" placeholder="이름, 사번 입력" />
+												<input type="submit" value="검색" class="btnSearch" />
+												<button class="btnReset">초기화</button>
+											</span>
+											<button class="btnM">엑셀 다운로드</button>
+										</span>
+									</div>
+									<!---->
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="20"/>
+												<col width="60"/>
+												<col width="100"/>
+												<col width="90"/>
+												<col width="150"/>
+												<col width="70"/>
+												<col width="80"/>
+												<col width="120"/>
+												<col width="120"/>
+												<col width="120"/>
+												<col width="120"/>
+												<col width="120"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="wifiAll" />
+															<label for="wifiAll"><i></i></label>
+														</span>
+													</th>
+													<th>구분</th>
+													<th>이름  (사번)</th>
+													<th>신청일</th>
+													<th>사용기간</th>
+													<th>구분</th>
+													<th>신청장비</th>
+													<th>맥어드레스</th>
+													<th>보안담당자</th>
+													<th>보안책임자</th>
+													<th>발행 Wifi</th>
+													<th>증빙서류</th>
+												</tr>
+											</thead>
+											<tbody>
+												<!--Loop-->
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="wifi1" />
+															<label for="wifi1"><i></i></label>
+														</span>
+													</td>
+													<td>정규직</td>
+													<td><a class="wifi1">홍길동 (000000)</a></td>
+													<td>2020-01-01</td>
+													<td>-</td>
+													<td>지급</td>
+													<td>노트북</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>
+														<button class="btnS white">승인</button>
+														<button class="btnS white btnReject">반려</button>
+													</td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<!--//Loop-->
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="wifi2" />
+															<label for="wifi2"><i></i></label>
+														</span>
+													</td>
+													<td>정규직</td>
+													<td><a class="wifi1">홍길동 (000000)</a></td>
+													<td>2020-01-01</td>
+													<td>-</td>
+													<td>지급</td>
+													<td>휴대폰</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>2020-01-01</td>
+													<td>
+														<button class="btnS white">승인</button>
+														<button class="btnS white btnReject">반려</button>
+													</td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="wifi3" />
+															<label for="wifi3"><i></i></label>
+														</span>
+													</td>
+													<td>정규직</td>
+													<td><a class="wifi1">홍길동 (000000)</a></td>
+													<td>2020-01-01</td>
+													<td>-</td>
+													<td>개인</td>
+													<td>휴대폰</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>
+														<em class="endDate">2020-01-01</em>
+														<button class="btnS btnReason">사유</button>
+													</td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="wifi4" />
+															<label for="wifi4"><i></i></label>
+														</span>
+													</td>
+													<td>정규직</td>
+													<td><a class="wifi1">홍길동 (000000)</a></td>
+													<td>2020-01-01</td>
+													<td>-</td>
+													<td>개인</td>
+													<td>노트북</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>2020-01-01</td>
+													<td>
+														<em class="endDate">2020-01-01</em>
+														<button class="btnS btnReason">사유</button>
+													</td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="wifi5" />
+															<label for="wifi5"><i></i></label>
+														</span>
+													</td>
+													<td>정규직</td>
+													<td><a class="wifi2">홍길동 (000000)</a></td>
+													<td>2020-01-01</td>
+													<td>-</td>
+													<td>지급</td>
+													<td>노트북</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>2020-01-01</td>
+													<td>2020-01-01</td>
+													<td><button class="btnS white btnGiveWifi">부여</button></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="wifi6" />
+															<label for="wifi6"><i></i></label>
+														</span>
+													</td>
+													<td>정규직</td>
+													<td><a class="wifi3">홍길동 (000000)</a></td>
+													<td>2020-01-01</td>
+													<td>2020-01-02 ~ 2020-12-31</td>
+													<td>지급</td>
+													<td>노트북</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>2020-01-01</td>
+													<td>2020-01-01</td>
+													<td>thinktree2</td>
+													<td><button class="btnS white">발행</button></td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="wifi7" />
+															<label for="wifi7"><i></i></label>
+														</span>
+													</td>
+													<td>계약직</td>
+													<td><a class="wifi3">홍길동 (000000)</a></td>
+													<td>2020-01-01</td>
+													<td>2020-01-02 ~ 2020-12-31</td>
+													<td>개인</td>
+													<td>노트북</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>2020-01-01</td>
+													<td>2020-01-01</td>
+													<td>thinktree2</td>
+													<td>
+														<button class="btnS white">재발행</button>
+														<button class="btnS white">미리보기</button>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="wifi8" />
+															<label for="wifi8"><i></i></label>
+														</span>
+													</td>
+													<td>임시</td>
+													<td><a class="wifi3">최치수</a></td>
+													<td>2020-01-01</td>
+													<td><em class="endDate">2020-10-01 ~ 2020-10-31</em></td>
+													<td>개인</td>
+													<td>휴대폰</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>2020-01-01</td>
+													<td>2020-01-01</td>
+													<td>thinktree1</td>
+													<td>
+														<button class="btnS white">재발행</button>
+														<button class="btnS white">미리보기</button>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="wifi8" />
+															<label for="wifi8"><i></i></label>
+														</span>
+													</td>
+													<td>퇴사자</td>
+													<td><a class="wifi3">김철수 (000000)</a></td>
+													<td>2020-01-01</td>
+													<td>2020-01-02 ~ 2020-12-31</td>
+													<td>개인</td>
+													<td>노트북</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>2020-01-01</td>
+													<td>2020-01-01</td>
+													<td>thinktree1</td>
+													<td>
+														<button class="btnS white">재발행</button>
+														<button class="btnS white">미리보기</button>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="wifi8" />
+															<label for="wifi8"><i></i></label>
+														</span>
+													</td>
+													<td>퇴사자</td>
+													<td><a class="wifi3">김철수 (000000)</a></td>
+													<td>2020-01-01</td>
+													<td><em class="blueTxt">2020-01-02 ~ 2020-10-01</em></td>
+													<td>개인</td>
+													<td>노트북</td>
+													<td>XX:XX:XX:XX:XX:XX</td>
+													<td>2020-01-01</td>
+													<td>2020-01-01</td>
+													<td><em class="orangeTxt">중지</em></td>
+													<td>
+														<button class="btnS white">재발행</button>
+														<button class="btnS white">미리보기</button>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<!---->
+									<div class="bpSet">
+										<div class="btnArea">
+											<span class="left">
+												<button class="btnM white btnChkDel">선택 삭제</button>
+												<button class="btnM white btnIpStop">선택 wifi 사용중지</button>
+											</span>
+										</div>
+										<div class="paginate">
+											<span>
+												<a class="first">이전</a>
+													<a class="on">1</a>
+													<a>2</a>
+													<a>3</a>
+													<a>4</a>
+													<a>5</a>
+												<a class="next">다음</a>
+											</span>
+											<span class="selectSet">
+												<select>
+													<option>10개</option>
+													<option>20개</option>
+													<option>50개</option>
+													<option>100개</option>
+												</select>
+											</span>
+										</div>
+									</div>
+									<!--//-->
+								</div>
+								<!-- //Wifi -->
+							</div>
+						</div>
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Alert Popup -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop chkDelPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p class="tC">발행 IP가 없거나, 중지된 정보만<br/>삭제 가능합니다.</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<div class="alertPop reIntPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>00명에게 사내망 사용<br/>갱신 요청을 하시겠습니까?</p>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<div class="alertPop alertOutPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>입력한 정보가 저장되지 않습니다.<br/>취소하시겠습니까?</p>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<div class="alertPop inNtWriteEndPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>사내망 등록신청이 완료되었습니다.</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<div class="alertPop inNtSavePop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>수정된 정보가 저장되었습니다.</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<div class="alertPop inNtStopPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p class="tC">사내망 사용중지를 하여도,<br/>실제 네트워크 설정을 변경해<br/>주시기 바랍니다.<br/>사용중지 하시겠습니까?</p>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<div class="alertPop inNtStopPop2" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>해당 사내망 정보는 사용중지 되었습니다.</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //Alert Popup -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 반려사유 입력 -->
+			<div class="basicPop ntReasonPop writeCase" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>반려사유 입력</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<textarea placeholder="반려사유를 입력하세요"></textarea>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!--//반려사유 입력 -->
+			<!-- 반려사유 보기 -->
+			<div class="basicPop ntReasonPop viewCase" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>반려사유</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<strong>보안책임자 – 김철수 [경영지원팀]</strong>
+					<p>반려사유가 표출됩니다. 반려사유가 표출됩니다. 반려사유가 표출됩니다.</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!--//반려사유 보기 -->
+			<!-- 사내망 신규 등록 -->
+			<div class="basicPop inNtWritePop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>사내망 신규 등록</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws pb1">
+						<table>
+							<colgroup>
+								<col width="80"/>
+								<col width="250"/>
+								<col width="80"/>
+								<col width="250"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>구분</th>
+									<td>
+										<span class="radioSet">
+											<input type="radio" id="userKind1" name="userKind" checked/>
+											<label for="userKind1"><i></i>정규직</label>
+										</span>
+										<span class="radioSet">
+											<input type="radio" id="userKind2" name="userKind" />
+											<label for="userKind2"><i></i>계약직</label>
+										</span>
+										<span class="radioSet">
+											<input type="radio" id="userKind3" name="userKind" />
+											<label for="userKind3"><i></i>임시</label>
+										</span>
+									</td>
+									<th>이름/사번</th>
+									<td>
+										<div class="case1 receiver">
+											<input type="text" placeholder="자동완성"/>
+											<span class="workerWrap">
+												<span class="worker">김순자 (0000000) <button class="btnDel">삭제</button></span>
+											</span>
+										</div>
+										<input type="text" class="case2" placeholder="이름 입력"/>
+									</td>
+								</tr>
+								<tr>
+									<th>연락처</th>
+									<td>
+										<span class="case1">- 01023332222</span>
+										<div class="case2">
+											<input type="text" placeholder="연락처 입력('-' 제외)">
+										</div>
+									</td>
+									<th>이메일</th>
+									<td>
+										<span class="case1">- zoe.kim@think-tree.co.kr</span>
+										<div class="emailForm case2">
+											<input type="text" />
+											<span class="emailDomain">
+												<em>@</em>
+												<span class="selectSet">
+													<select>
+														<option>선택해주세요</option>
+														<option>nave.com</option>
+														<option>gmail.com</option>
+														<option>hanmail.net</option>
+														<option>직접입력</option>
+													</select>
+												</span>
+											</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th>신청일</th>
+									<td colspan="3">2020-10-09</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="gridSet grid2 pb1">
+						<div class="gridItem">
+							<div class="equipment">
+								<div class="eqTit">
+									<strong>지급장비</strong>
+								</div>
+								<div class="eqContents">
+									<div class="tws case1">
+										<table>
+											<colgroup>
+												<col width="*"/>
+											</colgroup>
+											<tbody>
+												<tr>
+													<td>
+														<div class="eqItem">
+															<div class="eqName">
+																<strong>데스크톱</strong>
+															</div>
+															<div class="eqSet">
+																<span>
+																	<span class="toggleSet">
+																		<input type="checkbox" id="item10" checked/>
+																		<label for="item10"></label>
+																	</span>
+																	<strong>이더넷</strong>
+																</span>
+																<input type="text" value="XX:XX:XX:XX:XX:XX"/>
+															</div>
+															<div class="eqSet">
+																<span>
+																	<span class="toggleSet">
+																		<input type="checkbox" id="item11" />
+																		<label for="item11"></label>
+																	</span>
+																	<strong>Wifi</strong>
+																</span>
+																<input type="text" placeholder="맥어드레스 입력 (XX:XX:XX:XX:XX:XX)" disabled/>
+															</div>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<div class="eqItem">
+															<div class="eqName">
+																<strong>노트북</strong>
+															</div>
+															<div class="eqSet">
+																<span>
+																	<span class="toggleSet">
+																		<input type="checkbox" id="item20"/>
+																		<label for="item20"></label>
+																	</span>
+																	<strong>이더넷</strong>
+																</span>
+																<input type="text" placeholder="맥어드레스 입력 (XX:XX:XX:XX:XX:XX)" disabled/>
+															</div>
+															<div class="eqSet">
+																<span>
+																	<span class="toggleSet">
+																		<input type="checkbox" id="item21" />
+																		<label for="item21"></label>
+																	</span>
+																	<strong>Wifi</strong>
+																</span>
+																<input type="text" placeholder="맥어드레스 입력 (XX:XX:XX:XX:XX:XX)" disabled/>
+															</div>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<div class="eqItem">
+															<div class="eqName">
+																<strong>타블렛</strong>
+															</div>
+															<div class="eqSet">
+																<span>
+																	<span class="toggleSet">
+																		<input type="checkbox" id="item30"/>
+																		<label for="item30"></label>
+																	</span>
+																	<strong>이더넷</strong>
+																</span>
+																<input type="text" placeholder="맥어드레스 입력 (XX:XX:XX:XX:XX:XX)" disabled/>
+															</div>
+															<div class="eqSet">
+																<span>
+																	<span class="toggleSet">
+																		<input type="checkbox" id="item31" />
+																		<label for="item31"></label>
+																	</span>
+																	<strong>Wifi</strong>
+																</span>
+																<input type="text" placeholder="맥어드레스 입력 (XX:XX:XX:XX:XX:XX)" disabled/>
+															</div>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="null case2">등록된 지급장비가 없습니다</div>
+								</div>
+							</div>
+						</div>
+						<div class="gridItem">
+							<div class="equipment">
+								<div class="eqTit">
+									<strong>개인장비</strong>
+									<span class="right">
+										<button class="btnS white">추가</button>
+									</span>
+								</div>
+								<div class="eqContents">
+									<div class="null case1">등록된 개인장비가 없습니다</div>
+									<div class="tws case2">
+										<table>
+											<colgroup>
+												<col width="80"/>
+												<col width="*"/>
+											</colgroup>
+											<tbody>
+												<tr>
+													<td>
+														<div class="eqItem">
+															<div class="eqName">
+																<input type="text" placeholder="장비명"/>
+																<span class="right"><button class="btnS white">X</button></span>
+															</div>
+															<div class="eqSet">
+																<span>
+																	<span class="toggleSet">
+																		<input type="checkbox" id="item40" checked/>
+																		<label for="item40"></label>
+																	</span>
+																	<strong>이더넷</strong>
+																</span>
+																<input type="text" value="XX:XX:XX:XX:XX:XX"/>
+															</div>
+															<div class="eqSet">
+																<span>
+																	<span class="toggleSet">
+																		<input type="checkbox" id="item41" />
+																		<label for="item41"></label>
+																	</span>
+																	<strong>Wifi</strong>
+																</span>
+																<input type="text" placeholder="맥어드레스 입력 (XX:XX:XX:XX:XX:XX)" disabled/>
+															</div>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<div class="eqItem">
+															<div class="eqName">
+																<input type="text" placeholder="장비명"/>
+																<span class="right"><button class="btnS white">X</button></span>
+															</div>
+															<div class="eqSet">
+																<span>
+																	<span class="toggleSet">
+																		<input type="checkbox" id="item50"/>
+																		<label for="item50"></label>
+																	</span>
+																	<strong>이더넷</strong>
+																</span>
+																<input type="text" placeholder="맥어드레스 입력 (XX:XX:XX:XX:XX:XX)" disabled/>
+															</div>
+															<div class="eqSet">
+																<span>
+																	<span class="toggleSet">
+																		<input type="checkbox" id="item51" />
+																		<label for="item51"></label>
+																	</span>
+																	<strong>Wifi</strong>
+																</span>
+																<input type="text" placeholder="맥어드레스 입력 (XX:XX:XX:XX:XX:XX)" disabled/>
+															</div>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="80">
+								<col width="*">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>비고</th>
+									<td><textarea></textarea></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!--//사내망 신규 등록 -->
+			<!-- 이더넷 등록 정보 승인 전 -->
+			<div class="basicPop inNtViewPop waiting ethernet" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>이더넷 등록 정보</h1>
+				</div>
+				<div class="pBack">
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="80"/>
+								<col width="*"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>구분</th>
+									<td>정규직</td>
+								</tr>
+								<tr>
+									<th>이름/사번</th>
+									<td>김미나 [기획팀]</td>
+								</tr>
+								<tr>
+									<th>신청일</th>
+									<td>2020-10-09</td>
+								</tr>
+								<tr>
+									<th>연락처</th>
+									<td>010-0000-0000<br/>abcdefg@abcd.co.kr</td>
+								</tr>
+								<tr>
+									<th>데스크톱</th>
+									<td>이더넷 맥어드레스 XX:XX:XX:XX:XX:XX</td>
+								</tr>
+								<tr>
+									<th>비고</th>
+									<td><textarea></textarea></td>
+								</tr>
+								<tr>
+									<th>IP 발행</th>
+									<td><strong class="waiting">보안담당자/책임자 승인 진행중입니다</strong></td>
+								</tr>
+								<tr>
+									<th>사용기간</th>
+									<td><strong class="waiting">보안담당자/책임자 승인 진행중입니다</strong></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //이더넷 등록 정보 승인 전 -->
+			<!-- Wifi 등록 정보 승인 전 -->
+			<div class="basicPop inNtViewPop waiting wifi" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>Wifi 등록 정보</h1>
+				</div>
+				<div class="pBack">
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="80"/>
+								<col width="*"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>구분</th>
+									<td>정규직</td>
+								</tr>
+								<tr>
+									<th>이름/사번</th>
+									<td>김미나 [기획팀]</td>
+								</tr>
+								<tr>
+									<th>신청일</th>
+									<td>2020-10-09</td>
+								</tr>
+								<tr>
+									<th>연락처</th>
+									<td>010-0000-0000<br/>abcdefg@abcd.co.kr</td>
+								</tr>
+								<tr>
+									<th>핸드폰</th>
+									<td>Wifi 맥어드레스 XX:XX:XX:XX:XX:XX</td>
+								</tr>
+								<tr>
+									<th>비고</th>
+									<td><textarea></textarea></td>
+								</tr>
+								<tr>
+									<th>Wifi</th>
+									<td><strong class="waiting">보안담당자/책임자 승인 진행중입니다</strong></td>
+								</tr>
+								<tr>
+									<th>사용기간</th>
+									<td><strong class="waiting">보안담당자/책임자 승인 진행중입니다</strong></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //Wifi 등록 정보 승인 전 -->
+			<!-- 이더넷 등록 정보 승인 후 -->
+			<div class="basicPop inNtViewPop approval ethernet" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>이더넷 등록 정보</h1>
+				</div>
+				<div class="pBack">
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="80"/>
+								<col width="*"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>구분</th>
+									<td>정규직</td>
+								</tr>
+								<tr>
+									<th>이름/사번</th>
+									<td>김미나 [기획팀]</td>
+								</tr>
+								<tr>
+									<th>신청일</th>
+									<td>2020-10-09</td>
+								</tr>
+								<tr>
+									<th>연락처</th>
+									<td>010-0000-0000<br/>abcdefg@abcd.co.kr</td>
+								</tr>
+								<tr>
+									<th>데스크톱</th>
+									<td>이더넷 맥어드레스 XX:XX:XX:XX:XX:XX</td>
+								</tr>
+								<tr>
+									<th>비고</th>
+									<td><textarea></textarea></td>
+								</tr>
+								<tr>
+									<th>IP 발행</th>
+									<td>
+										<span class="ipIssue">
+											<input type="text" class="ipInput" value="XX:XX:XX:XX:XX:XX"/>
+											<button class="btnM white">중복체크</button>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>사용기간</th>
+									<td>
+										<span class="calDupSet">
+											<span class="calSet"><input type="tel" placeholder="2006-01-01" value="2006-01-01" /><button>달력열기</button></span>
+											<em>~</em>
+											<span class="calSet"><input type="tel" placeholder="2020-06-22" value="2020-06-22" /><button>달력열기</button></span>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //이더넷 등록 정보 승인 후 -->
+			<!-- Wifi 등록 정보 승인 후 -->
+			<div class="basicPop inNtViewPop approval wifi" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>Wifi 등록 정보</h1>
+				</div>
+				<div class="pBack">
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="80"/>
+								<col width="*"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>구분</th>
+									<td>정규직</td>
+								</tr>
+								<tr>
+									<th>이름/사번</th>
+									<td>김미나 [기획팀]</td>
+								</tr>
+								<tr>
+									<th>신청일</th>
+									<td>2020-10-09</td>
+								</tr>
+								<tr>
+									<th>연락처</th>
+									<td>010-0000-0000<br/>abcdefg@abcd.co.kr</td>
+								</tr>
+								<tr>
+									<th>핸드폰</th>
+									<td>Wifi 맥어드레스 XX:XX:XX:XX:XX:XX</td>
+								</tr>
+								<tr>
+									<th>비고</th>
+									<td><textarea></textarea></td>
+								</tr>
+								<tr>
+									<th>Wifi</th>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option>선택하세요</option>
+												<option>thinktree1</option>
+												<option>thinktree2</option>
+												<option>thinktree3</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>사용기간</th>
+									<td>
+										<span class="calDupSet">
+											<span class="calSet"><input type="tel" placeholder="2006-01-01" value="2006-01-01" /><button>달력열기</button></span>
+											<em>~</em>
+											<span class="calSet"><input type="tel" placeholder="2020-06-22" value="2020-06-22" /><button>달력열기</button></span>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //Wifi 등록 정보 승인 후 -->
+			<!-- 이더넷 등록 정보 발행 후 -->
+			<div class="basicPop inNtViewPop issue ethernet" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>이더넷 등록 정보</h1>
+				</div>
+				<div class="pBack">
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="80"/>
+								<col width="*"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>구분</th>
+									<td>정규직</td>
+								</tr>
+								<tr>
+									<th>이름/사번</th>
+									<td>김미나 [기획팀]</td>
+								</tr>
+								<tr>
+									<th>신청일</th>
+									<td>2020-10-09</td>
+								</tr>
+								<tr>
+									<th>연락처</th>
+									<td>010-0000-0000<br/>abcdefg@abcd.co.kr</td>
+								</tr>
+								<tr>
+									<th>데스크톱</th>
+									<td>이더넷 맥어드레스 XX:XX:XX:XX:XX:XX</td>
+								</tr>
+								<tr>
+									<th>비고</th>
+									<td><textarea></textarea></td>
+								</tr>
+								<tr>
+									<th>IP 발행</th>
+									<td>XX:XX:XX:XX:XX:XX</td>
+								</tr>
+								<tr>
+									<th>사용기간</th>
+									<td>2020-10-09 ~ 2020-12-31</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn tC">
+					<span class="left">
+						<button class="btnM white">IP 사용중지</button>
+					</span>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //이더넷 등록 정보 발행 후 -->
+			<!-- Wifi 등록 정보 승인 후 -->
+			<div class="basicPop inNtViewPop issue wifi" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>Wifi 등록 정보</h1>
+				</div>
+				<div class="pBack">
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="80"/>
+								<col width="*"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>구분</th>
+									<td>정규직</td>
+								</tr>
+								<tr>
+									<th>이름/사번</th>
+									<td>김미나 [기획팀]</td>
+								</tr>
+								<tr>
+									<th>신청일</th>
+									<td>2020-10-09</td>
+								</tr>
+								<tr>
+									<th>연락처</th>
+									<td>010-0000-0000<br/>abcdefg@abcd.co.kr</td>
+								</tr>
+								<tr>
+									<th>핸드폰</th>
+									<td>Wifi 맥어드레스 XX:XX:XX:XX:XX:XX</td>
+								</tr>
+								<tr>
+									<th>비고</th>
+									<td><textarea></textarea></td>
+								</tr>
+								<tr>
+									<th>Wifi</th>
+									<td>thinktree1</td>
+								</tr>
+								<tr>
+									<th>사용기간</th>
+									<td>2020-10-09 ~ 2020-12-31</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn tC">
+					<span class="left">
+						<button class="btnM white">Wifi 사용중지</button>
+					</span>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //Wifi 등록 정보 승인 후 -->
+			<!-- 이미지 증빙서류 보기 -->
+			<div class="basicPop imgViewPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>증빙서류 보기</h1>
+				</div>
+				<div class="pBack">
+					<div><img src="../../images/sample6.jpg" alt="" /></div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM red">다운로드</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //이미지 증빙서류 보기 -->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.tls td .btnS.blue').click(function(){
+					location.href = 'freight_calculate_single.html';
+				});
+				$('.tls td .btnS.red').click(function(){
+					var me = $(this);
+					$('.alertDim').show();
+					$('.singleBillCancelPop').show();
+					$('.singleBillCancelPop button').click(function(){
+						$('.alertDim').show();
+						$('.batchBillCancelPop').show();
+					});
+					$('.batchBillCancelPop button').click(function(){
+						$(me).parent('td').find('.btnS').hide();
+						$(me).parent('td').find('.btnS.blue').show();
+						$(me).parents('tr').find('.issuedColor').text('미발행').removeClass('issuedColor');
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="grayBox searchArea">
+			<fieldset>
+				<span class="basicBtn">
+					<button class="btnM green btnIssue" onclick="location.href='freight_calculate_batch.html'">세금계산서 일괄 발행</button><!-- 2020-08-04 링크 연결 -->
+					<!-- 2020-08-04 선택삭제 버튼 삭제 -->
+					<!-- 2020-07-16 엑셀다운로드 버튼 삭제 -->
+				</span>
+				<!-- 2020-08-04 choiceBtn 영역 삭제 -->
+				<span class="right">
+					<!-- 2020-08-04 작업지~선택지 선택콤보 삭제 -->
+					<span class="inputKeyword">
+						<input type="text" placeholder="작업지 검색">
+						<input type="submit" class="btnM black" value="조회">
+					</span>
+				</span>
+			</fieldset>
+		</div>
+		<div class="pd2">
+			<div class="tls detail">
+				<table>
+					<colgroup>
+						<col width="50" />
+						<col width="80" />
+						<col width="160" />
+						<col width="150" />
+						<col width="100" />
+						<col width="100" />
+						<col width="150" />
+						<col width="150" />
+						<col width="150" />
+						<col width="150" />
+						<col width="150" />
+						<col width="150" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chkAll" />
+									<label for="chkAll"><i></i></label>
+								</span>
+							</th>
+							<th colspan="2">구분</th>
+							<th>운송일</th>
+							<th>운송유형</th>
+							<th>형태</th>
+							<th>운임</th>
+							<th>운임 외</th>
+							<th>출발지</th>
+							<th>작업지</th>
+							<th>도착지</th>
+							<th>컨테이너 정보</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="total">
+							<td colspan="3">Total</td>
+							<td colspan="4" class="tL">
+								<dl>
+									<dt>[운송실행]</dt>
+									<dd>7건 / 4,880,000원</dd>
+								</dl>
+							</td>
+							<td colspan="5" class="tL">
+								<dl>
+									<dt>[발행 계산서]</dt>
+									<dd>4건 / 2,880,000원</dd>
+								</dl>
+								<dl>
+									<dt>[미발행 계산서]</dt>
+									<dd>3건 / 2,000,000원</dd>
+								</dl>
+							</td>
+						</tr>
+						<!--Loop-->
+						<tr>
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk1" />
+									<label for="chk1"><i></i></label>
+								</span>
+							</td>
+							<td>미발행</td>
+							<td><button class="btnS blue">계산서 발행</button></td>
+							<td>2020-01-26</td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td class="tR">560,000</td>
+							<td class="tR">185,000</td>
+							<td>부산항 (05:00)</td>
+							<td>충북/안산 (09:00)</td>
+							<td>부산항 (15:00)</td>
+							<td>
+								<!-- 2020-06-22 형식 수정 -->
+								<div>Open Top</div>
+								<div>40ft High Cube</div>
+								<div>30ton</div>
+								<!-- //2020-06-22 형식 수정 -->
+							</td>
+						</tr>
+						<!--//Loop-->
+						<tr>
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk2" />
+									<label for="chk2"><i></i></label>
+								</span>
+							</td>
+							<td>미발행</td>
+							<td><button class="btnS blue">계산서 발행</button></td>
+							<td>2020-01-26</td>
+							<td class="ftBlue">수출</td>
+							<td>왕복</td>
+							<td class="tR">560,000</td>
+							<td class="tR">185,000</td>
+							<td>부산항 (05:00)</td>
+							<td>충북/안산 (<span class="ftRed">익</span> 09:00)</td>
+							<td>부산항 (15:00)</td>
+							<td>
+								<!-- 2020-06-22 형식 수정 -->
+								<div>Open Top</div>
+								<div>40ft High Cube</div>
+								<div>30ton</div>
+								<!-- //2020-06-22 형식 수정 -->
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk3" />
+									<label for="chk3"><i></i></label>
+								</span>
+							</td>
+							<td>미발행</td>
+							<td><button class="btnS blue">계산서 발행</button></td>
+							<td>2020-01-26</td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td class="tR">560,000</td>
+							<td>-</td>
+							<td>부산항 (05:00)</td>
+							<td>충북/안산 (09:00)</td>
+							<td>부산항 (15:00)</td>
+							<td>
+								<!-- 2020-06-22 형식 수정 -->
+								<div>Open Top</div>
+								<div>40ft High Cube</div>
+								<div>30ton</div>
+								<!-- //2020-06-22 형식 수정 -->
+							</td>
+						</tr>
+						<tr class="issued">
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk4" />
+									<label for="chk4"><i></i></label>
+								</span>
+							</td>
+							<td class="issuedColor">발행됨</td><!-- 2020-06-22 class 수정 -->
+							<td>
+								<button class="btnS blue" style="display:none;">계산서 발행</button>
+								<button class="btnS black" onclick="location.href='freight_calculate_batch_view.html'">확인하기</button>
+								<button class="btnS red">발행취소</button>
+							</td>
+							<td>2020-01-26</td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td class="tR">560,000</td>
+							<td>-</td>
+							<td>부산항 (05:00)</td>
+							<td>충북/안산 (09:00)</td>
+							<td>부산항 (15:00)</td>
+							<td>
+								<!-- 2020-06-22 형식 수정 -->
+								<div>Open Top</div>
+								<div>40ft High Cube</div>
+								<div>30ton</div>
+								<!-- //2020-06-22 형식 수정 -->
+							</td>
+						</tr>
+						<tr class="issued">
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk5" />
+									<label for="chk5"><i></i></label>
+								</span>
+							</td>
+							<td class="issuedColor">발행됨</td><!-- 2020-06-22 class 수정 -->
+							<td>
+								<button class="btnS blue" style="display:none;">계산서 발행</button>
+								<button class="btnS black" onclick="location.href='freight_calculate_single_view.html'">확인하기</button>
+								<button class="btnS red">발행취소</button>
+							</td>
+							<td>2020-01-26</td>
+							<td class="ftBlue">수출</td>
+							<td>왕복</td>
+							<td class="tR">560,000</td>
+							<td>-</td>
+							<td>부산항 (05:00)</td>
+							<td>충북/안산 (09:00)</td>
+							<td>부산항 (15:00)</td>
+							<td>
+								<!-- 2020-06-22 형식 수정 -->
+								<div>Open Top</div>
+								<div>40ft High Cube</div>
+								<div>30ton</div>
+								<!-- //2020-06-22 형식 수정 -->
+							</td>
+						</tr>
+						<tr class="issued">
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk6" />
+									<label for="chk6"><i></i></label>
+								</span>
+							</td>
+							<td class="issuedColor">발행됨</td><!-- 2020-06-22 class 수정 -->
+							<td>
+								<button class="btnS blue" style="display:none;">계산서 발행</button>
+								<button class="btnS black" onclick="location.href='freight_calculate_single_view.html'">확인하기</button>
+								<button class="btnS red">발행취소</button>
+							</td>
+							<td>2020-01-26</td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td class="tR">560,000</td>
+							<td>-</td>
+							<td>부산항 (05:00)</td>
+							<td>충북/안산 (09:00)</td>
+							<td>부산항 (15:00)</td>
+							<td>
+								<!-- 2020-06-22 형식 수정 -->
+								<div>Open Top</div>
+								<div>40ft High Cube</div>
+								<div>30ton</div>
+								<!-- //2020-06-22 형식 수정 -->
+							</td>
+						</tr>
+						<tr class="issued">
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk7" />
+									<label for="chk7"><i></i></label>
+								</span>
+							</td>
+							<td class="issuedColor">발행됨</td><!-- 2020-06-22 class 수정 -->
+							<td>
+								<button class="btnS blue" style="display:none;">계산서 발행</button>
+								<button class="btnS black" onclick="location.href='freight_calculate_single_view.html'">확인하기</button>
+								<button class="btnS red">발행취소</button>
+							</td>
+							<td>2020-01-26</td>
+							<td class="ftRed">수입</td>
+							<td>환적</td>
+							<td class="tR">560,000</td>
+							<td class="tR">185,000</td>
+							<td>부산항 (05:00)</td>
+							<td>-</td>
+							<td>부산항 (15:00)</td>
+							<td>
+								<!-- 2020-06-22 형식 수정 -->
+								<div>Open Top</div>
+								<div>40ft High Cube</div>
+								<div>30ton</div>
+								<!-- //2020-06-22 형식 수정 -->
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 2020-06-22 alertPop 영역 추가 -->
+		<!-- alertPopup -->
+		<div class="alertDim" style="display:none;">
+			<!-- 단일 세금계산서 발행 취소 -->
+			<div class="alertPop singleBillCancelPop" style="display:none;">
+				<div class="pBack">
+					<p>해당 세금계산서를 발행 취소하시겠습니까?</p>
+				</div>
+				<div class="pBtn">
+					<button class="btnM black">취소</button>
+					<button class="btnM red">확인</button>
+				</div>
+			</div>
+			<!-- 단일 세금계산서 발행 취소 -->
+			<!-- 일괄 세금계산서 발행 취소 -->
+			<div class="alertPop batchBillCancelPop" style="display:none;">
+				<div class="pBack">
+					<p>해당 세금계산서는 타 운송건과 일괄 발행된 건으로, 발행 취소 시 일괄 발행 취소됩니다. 발행 취소하시겠습니까?</p>
+				</div>
+				<div class="pBtn">
+					<button class="btnM black">취소</button>
+					<button class="btnM red">확인</button>
+				</div>
+			</div>
+			<!-- 일괄 세금계산서 발행 취소 -->
+		</div>
+		<!-- //alertPopup -->
+		<!-- //2020-06-22 alertPop 영역 추가 -->
+    </body>
+</html>

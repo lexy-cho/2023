@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+		<!-- <script type="text/javascript" src="js/swiper.min.js"></script> -->
+		<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../js/menu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$("input[name=pl]").change(function() {
+				var radioValue = $(this).val();
+				if (radioValue == "01") {
+					$('.penCase').show();
+					$('.eraserCase').hide();
+				} else if (radioValue == "02") {
+					$('.eraserCase').show();
+					$('.penCase').hide();
+				} else if (radioValue == "03") {
+					$('.eraserCase').hide();
+					$('.penCase').hide();
+				}
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+
+			<!-- camLayout -->
+			<div class="camLayout">
+				<div class="camBox">
+					<span class="guideLtop">좌측 위 가이드</span>
+					<span class="guideRtop">우측 위 가이드</span>
+					<span class="guideLbtm">좌측 아래 가이드</span>
+					<span class="guideRbtm">우측 위 가이드</span>
+					<span class="guideA4"><strong>위</strong><em>A4<br/><i>촬영 시 종이 방향을 맞춰주세요.</i></em><strong>아래</strong></span>
+					<canvas id="camera"></canvas>
+				</div>
+				<div class="btnBox">
+					<button class="btnCam" onclick="location.href='document_masking.html'">촬영</button>
+					<button class="btnCancel" onclick="location.href='document_view.html'">취소</button>
+				</div>
+			</div>
+			<!--// camLayout -->
+
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/jstree.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/basicTree.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.userList .tls tr td, #newUserBtn').click(function () {
+				$('.tls tr').removeClass('on');
+				$(this).parent().addClass('on');
+				$('.tabWrap').show();
+			});
+			$(".tabNav li button").click(function () {
+				$(".tabNav li").removeClass("on");
+				$(this).parent("li").addClass("on");
+				var activeTab = $(this).attr("data-name");
+				$('.tabData').hide();
+				$('.tData' + activeTab).show();
+			});
+			$('.tabWrap .btnArea').click(function () {
+				$('.tls tr').removeClass('on');
+				$('.tabWrap').hide();
+			});
+			/* 파일업로드 */
+			$('.fileSet input[type=file]').change(function() {
+				var fileValue = $(this).val().split("\\");
+				var fileName = fileValue[fileValue.length-1];
+				$('.fileSet .loadEnd em').text(fileName);
+				$('.fileSet .fileFind').hide();
+				$('.fileSet .loadIng').show();
+				setTimeout(function() {
+					$('.fileSet .loadIng').hide();
+					$('.fileSet .loadFail').show();
+				}, 3000);
+				setTimeout(function() {
+					$('.fileSet .loadFail').hide();
+					$('.fileSet .loadEnd').show();
+				}, 6000);
+			});
+			$('.fileSet .loadEnd button').click(function() {
+				$('.fileSet .fileFind').show();
+				$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+			});
+			/* end 파일업로드 */
+			/*
+			$('.alertPop button, .basicPop button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});*/
+			$('.openView').click(function(){
+				$('.popDim').show();
+				$('.evidenceViewPop').show();
+			});
+			$('.btnExcel').click(function(){
+				$('.popDim').show();
+				$('.excelReasonsPop').show();
+			});
+			$('#userBatchBtn').click(function(){
+				$('.popDim').show();
+				$('.userFileUploadPop').show();
+			});
+			$('#userBatchAddNo').click(function(){
+				$('.popDim').hide();
+				$('.userFileUploadPop').hide();
+			});
+			$('#userBatchAddOK').click(function(){
+				$('.alertDim').show();
+				$('.alertPop').show();
+				setTimeout(function() {
+					$('.alertDim').hide();
+					$('.alertPop').hide();
+					$('.popDim').hide();
+					$('.userFileUploadPop').hide();
+				}, 6000);
+			});
+
+			/**/
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>정직원 정보</h2>
+					<div class="pagePos"><span>Home</span><span>사용자관리</span><strong>정규직</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="userLayout">
+						<div class="userList">
+							<!---->
+							<div class="boardTop">
+								<em>전체 10,000건</em>
+								<span class="right">
+									<span class="searchBasic">
+										<span class="selectSet">
+											<select>
+												<option selected>전체 (퇴사자 제외)</option>
+												<option>재직자</option>
+												<option>휴직자</option>
+												<option>퇴사자</option>
+												<option>전체 (퇴사자 포함)</option>
+											</select>
+										</span>
+										<input type="text" placeholder="이름, 사번 입력" />
+										<input type="submit" value="검색" class="btnSearch" />
+										<button class="btnReset">초기화</button>
+									</span>
+									<button class="btnM btnExcel">엑셀다운로드</button>
+								</span>
+							</div>
+							<!---->
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="70"/>
+										<col width="70"/>
+										<col width="80"/>
+										<col width="150"/>
+										<col width="70"/>
+										<col width="80"/>
+										<col width="80"/>
+										<col width="100"/>
+										<col width="180"/>
+										<col />
+									</colgroup>
+									<thead>
+										<tr>
+											<th>사번</th>
+											<th>이름</th>
+											<th>닉네임</th>
+											<th>소속팀</th>
+											<th>직급</th>
+											<th>입사일자</th>
+											<th>퇴사일자</th>
+											<th>핸드폰</th>
+											<th>회사이메일</th>
+											<th>자택주소</th>
+										</tr>
+									</thead>
+									<tbody>
+										<!--Loop-->
+										<tr>
+											<td>190101</td>
+											<td>홍길동</td>
+											<td>spencer</td>
+											<td>개발사업본부 개발1팀</td>
+											<td>차장</td>
+											<td>2020-02-11</td>
+											<td></td>
+											<td>000-0000-0000</td>
+											<td class="tL">dasdasadsasdasd@naver.com</td>
+											<td class="tL"><button class="btnM white entypo-location" onclick="window.open('https://map.naver.com/')">지도</button> 서울특별시 성동구 연무장5가길 7 W1404호(성수동2가, 성수역 현대테라스타워)</td>
+										</tr>
+										<!--//Loop-->
+										<tr>
+											<td>190102</td>
+											<td>홍길동2</td>
+											<td>spencer</td>
+											<td>개발사업본부 퍼블리싱팀</td>
+											<td>사원</td>
+											<td>2020-02-11</td>
+											<td></td>
+											<td>000-0000-0000</td>
+											<td class="tL">spencer.kim@think-tree.co.kr</td>
+											<td class="tL"><button class="btnM white entypo-location" onclick="window.open('https://map.naver.com/')">지도</button> 서울특별시 성동구 연무장5가길 7 W1404호(성수동2가, 성수역 현대테라스타워)</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!---->
+							<div class="bpSet">
+								<div class="btnArea">
+									<span class="right">
+										<button class="btnM green" id="userBatchBtn">일괄등록</button>
+										<button class="btnM" id="newUserBtn">신규등록</button>
+									</span>
+								</div>
+								<div class="paginate">
+									<span>
+										<a class="first">이전</a>
+											<a class="on">1</a>
+											<a>2</a>
+											<a>3</a>
+											<a>4</a>
+											<a>5</a>
+										<a class="next">다음</a>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option>10개</option>
+											<option>20개</option>
+											<option>50개</option>
+											<option>100개</option>
+										</select>
+									</span>
+								</div>
+							</div>
+							<!--//-->
+						</div>
+						<!-- tab-wrap -->
+						<div class="tabWrap" style="display:block;">
+							<!-- tab -->
+							<div class="tabBack">
+								<div class="tabNav">
+									<nav>
+										<ul>
+											<li class="on"><button data-name="0">인적사항</button></li>
+											<li><button data-name="1">학력정보</button></li>
+											<li><button data-name="2">자격증</button></li>
+											<li><button data-name="3">경력정보</button></li>
+											<li><button data-name="4">사내경력정보</button></li>
+											<li class="right"><button class="btnS blue" onclick="location.href='/tCommon/email/welcome.html'">welcome 메일발송</button></li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+							<!--// tab -->
+							<div class="tabLayout">
+								<!-- 인적사항 -->
+								<div class="tabData tData0" style="display:block;">
+									<div class="tws userArea">
+										<div class="left">
+											<div class="userImg">
+												<!-- <img src="../../images/sample5.png" alt=""/> -->
+											</div>
+											<span class="fileSet">
+												<span class="fileFind">
+													<input type="file" id="file1" />
+													<label for="file1">파일찾기</label>
+												</span> <!--파일선택:버튼만있는형식:초록색버전-->
+												<span class="loadIng" style="display:none;">업로드 중</span>
+												<strong class="loadEnd" style="display:none;">
+													<em>샘플 데이터.png</em>
+													<button>취소</button>
+												</strong>
+												<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+											</span>
+										</div>
+										<div class="right">
+											<table>
+												<colgroup>
+													<col width="120" />
+													<col width="350" />
+													<col width="120" />
+													<col width="350" />
+												</colgroup>
+												<tbody>
+													<tr>
+														<th>사원번호 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+														<td>
+															<div class="duplyForm">
+																<input type="text" />
+																<button class="btnM">중복확인</button>
+															</div>
+														</td>
+														<th>권한 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+														<td><input type="text" /></td>
+													</tr>
+													<tr>
+														<th>부서/소속팀 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+														<td><input type="text" /></td>
+														<th>직급 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+														<td><input type="text" /></td>
+													</tr>
+													<tr>
+														<th>직책 <sup>필수항목</sup></th>
+														<td><input type="text" /></td>
+														<th>담당업무</th>
+														<td>
+															<span class="selectSet">
+																<select>
+																	<option>선택하세요</option>
+																</select>
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<th>성명 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+														<td><input type="text" class="wHalf" /></td>
+														<th>영문닉네임</th>
+														<td><input type="text" class="wHalf" /></td>
+													</tr>
+													<tr>
+														<th>성명(영문)</th>
+														<td><input type="text" class="wHalf" /></td>
+														<th>성명(한자)</th>
+														<td><input type="text" class="wHalf" /></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<div class="pt1">
+											<table>
+												<colgroup>
+													<col width="120">
+													<col>
+													<col width="120">
+													<col>
+												</colgroup>
+												<tbody>
+													<tr>
+														<th>비밀번호</th>
+														<td colspan="3">
+															<button class="btnM">비밀번호 재설정</button>
+															신규등록 혹은 비밀번호 재설정시에는 아이디와 동일하게 변경됩니다
+														</td>
+													</tr>
+													<tr>
+														<th>생년월일 / 성별</th>
+														<td>
+															<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+															<span class="radioSet">
+																<input type="radio" id="radio5" name="rd3" />
+																<label for="radio5"><i></i>남</label>
+															</span>
+															<span class="radioSet">
+																<input type="radio" id="radio6" name="rd3" />
+																<label for="radio6"><i></i>여</label>
+															</span>
+														</td>
+														<th>핸드폰번호 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+														<td>
+															<!-- phoneNum -->
+															<div class="phoneNum w240"> <!-- 2020-05-27 넓이조절 -->
+																<span class="selectSet">
+																	<select>
+																		<option>010</option>
+																		<option>011</option>
+																		<option>017</option>
+																		<option>018</option>
+																		<option>019</option>
+																	</select>
+																</span>
+																<span class="txt">-</span>
+																<input type="tel" class="middleNum" />
+																<span class="txt">-</span>
+																<input type="tel" class="lastNum" />
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<th>회사이메일 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+														<td>
+															<!-- email -->
+															<div class="emailForm duplicateCase">
+																<input type="text">
+																<span class="emailDomain">
+																	<em>@</em>
+																	<span class="selectSet">
+																		<select>
+																			<option>선택해주세요</option>
+																			<option>nave.com</option>
+																			<option>gmail.com</option>
+																			<option>hanmail.net</option>
+																			<option>직접입력</option>
+																		</select>
+																	</span>
+																	<input type="text">
+																</span>
+															</div>
+															<button class="btnM">중복확인</button>
+														</td>
+														<th>외부이메일</th>
+														<td>
+															<!-- email -->
+															<div class="emailForm">
+																<input type="text" />
+																<span class="emailDomain">
+																	<em>@</em>
+																	<span class="selectSet">
+																		<select>
+																			<option>선택해주세요</option>
+																			<option>nave.com</option>
+																			<option>gmail.com</option>
+																			<option>hanmail.net</option>
+																			<option>직접입력</option>
+																		</select>
+																	</span>
+																	<input type="text" />
+																</span>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<th>자택주소</th>
+														<td colspan="3">
+															<!-- address -->
+															<div class="addressForm">
+																<input type="tel" readonly />
+																<button class="btnM">우편번호 찾기</button>
+																<span class="gps">
+																	<button class="btnM">GPS</button>
+																	<span class="gpsInput">
+																		<input type="text"/>
+																		<em class="txt">,</em>
+																		<input type="text"/>
+																	</span>
+																</span>
+																<div>
+																	<input type="text" readonly />
+																	<input type="text" />
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<th>비상연락망</th>
+														<td>
+															<!-- phoneNum -->
+															<div class="phoneNum w240"> <!-- 2020-05-27 넓이조절 -->
+																<span class="selectSet">
+																	<select>
+																		<option>010</option>
+																		<option>011</option>
+																		<option>017</option>
+																		<option>018</option>
+																		<option>019</option>
+																	</select>
+																</span>
+																<span class="txt">-</span>
+																<input type="tel" class="middleNum" />
+																<span class="txt">-</span>
+																<input type="tel" class="lastNum" />
+															</div>
+														</td>
+														<th>비상연락망 관계</th>
+														<td>
+															<span class="selectSet">
+																<select>
+																	<option>선택해주세요</option>
+																	<option>배우자</option>
+																	<option>부모님</option>
+																	<option>형제</option>
+																	<option>자녀</option>
+																	<option>기타</option><!--2020-03-16-->
+																</select>
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<th>계정 생성일</th>
+														<td>2020-02-06</td>
+														<th>구분</th>
+														<td>
+															<span class="selectSet">
+																<select>
+																	<option>재직자</option>
+																	<option>휴직자</option>
+																	<option>퇴사자</option>
+																</select>
+															</span>
+															<span class="selectSet">
+																<select>
+																	<option>정규직</option>
+																	<option>장기계약직</option>
+																</select>
+															</span>
+														</td>
+													</tr>
+													<tr>
+														<th>입사일 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+														<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+														<th>퇴사일</th>
+														<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+													</tr>
+													<tr>
+														<th>근무지</th>
+														<td>
+															<span class="selectSet">
+																<select>
+																	<option></option>
+																</select>
+															</span>
+														</td>
+														<th>마지막 접속일자</th>
+														<td>YY-MM-DD 00:00:00</td>
+													</tr>
+													<tr>
+														<!--2020-05-13-->
+														<th>주민등록등본</th>
+														<td>
+															<span class="fileSet">
+																<span class="fileFind">
+																	<input type="file" id="file1" />
+																	<label for="file1">증빙서류 첨부</label>
+																</span> <!--파일선택:버튼만있는형식:초록색버전-->
+																<span class="loadIng" style="display:none;">업로드 중</span>
+																<strong class="loadEnd" style="display:none;">
+																	<em>샘플 데이터.png</em>
+																	<button>취소</button>
+																</strong>
+																<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+															</span>
+															<button class="btnM white">미리보기</button>
+														</td>
+														<th>가족관계증명원</th>
+														<td>
+															<span class="fileSet">
+																<span class="fileFind">
+																	<input type="file" id="file1" />
+																	<label for="file1">증빙서류 첨부</label>
+																</span> <!--파일선택:버튼만있는형식:초록색버전-->
+																<span class="loadIng" style="display:none;">업로드 중</span>
+																<strong class="loadEnd" style="display:none;">
+																	<em>샘플 데이터.png</em>
+																	<button>취소</button>
+																</strong>
+																<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+															</span>
+															<button class="btnM white">미리보기</button>
+														</td>
+														<!--//2020-05-13-->
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+								<!-- //인적사항 -->
+								<!-- 학력정보 -->
+								<div class="tabData tData1">
+									<!---->
+									<div class="boardTop">
+										<span class="right">
+											<button class="btnM">업로드 양식</button>
+											<button class="btnM">엑셀업로드</button>
+											<button class="btnM">신규등록</button>
+											<button class="btnM">선택삭제</button>
+										</span>
+									</div>
+									<!---->
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="40"/>
+												<col width="100"/>
+												<col width="100"/>
+												<col width="160"/>
+												<col width="200"/>
+												<col width="100"/>
+												<col width="100"/>
+												<col width="100"/>
+												<col width="100"/><!-- 2020-04-23 -->
+												<col />
+											</colgroup>
+											<thead>
+												<tr>
+													<th>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="edu0" />
+															<label for="edu0"><i></i></label>
+														</span>
+													</th>
+													<th>입학년월</th>
+													<th>졸업년월</th>
+													<th>학교명</th>
+													<th>전공학과</th>
+													<th>학위</th>
+													<th>졸업구분</th>
+													<th>증빙서류</th>
+													<th>미리보기</th><!-- 2020-04-23 -->
+													<th>소재지</th>
+												</tr>
+											</thead>
+											<tbody>
+												<!--Loop-->
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="edu1" />
+															<label for="edu1"><i></i></label>
+														</span>
+													</td>
+													<td>
+														<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+													</td>
+													<td>
+														<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+													</td>
+													<td><input type="text" placeholder="학교명을 입력해주세요" /></td>
+													<td><input type="text" placeholder="전공학과를 입력해주세요" /></td>
+													<td>
+														<span class="selectSet">
+															<select>
+																<option selected>선택하세요</option>
+																<option>고등학교</option><!--2020-03-16-->
+																<option>학사</option>
+																<option>석사</option>
+																<option>박사</option>
+															</select>
+														</span>
+													</td>
+													<td>
+														<span class="selectSet">
+															<select>
+																<option selected>선택하세요</option>
+															</select>
+														</span>
+													</td>
+													<td>
+														<span class="fileSet">
+															<span class="fileFind">
+																<input type="file" id="file1" />
+																<label for="file1">증빙서류 첨부</label>
+															</span> <!--파일선택:버튼만있는형식:초록색버전-->
+															<span class="loadIng" style="display:none;">업로드 중</span>
+															<strong class="loadEnd" style="display:none;">
+																<em>샘플 데이터.png</em>
+																<button>취소</button>
+															</strong>
+															<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+														</span>
+													</td>
+													<td>
+														<button class="btnS white openView">미리보기</button>
+													</td><!-- 2020-04-23 -->
+													<td><input type="text" placeholder="소재지를 입력해주세요" /></td>
+												</tr>
+												<!--//Loop-->
+											</tbody>
+										</table>
+									</div>
+									<!--//-->
+								</div>
+								<!-- //학력정보 -->
+								<!-- 자격증 -->
+								<div class="tabData tData2">
+									<!---->
+									<div class="boardTop">
+										<span class="right">
+											<button class="btnM">신규등록</button>
+											<button class="btnM">선택삭제</button>
+										</span>
+									</div>
+									<!---->
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="40"/>
+												<col />
+												<col width="220"/>
+												<col width="100"/>
+												<col width="100"/>
+												<col width="200"/>
+												<col width="100"/>
+												<col width="100"/><!-- 2020-04-23 -->
+											</colgroup>
+											<thead>
+												<tr>
+													<th>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="edu2" />
+															<label for="edu2"><i></i></label>
+														</span>
+													</th>
+													<th>자격증명</th>
+													<th>발급기관</th>
+													<th>취득일자</th>
+													<th>유효일자</th>
+													<th>자격증번호</th>
+													<th>증빙서류</th>
+													<th>미리보기</th><!-- 2020-04-23 -->
+												</tr>
+											</thead>
+											<tbody>
+												<!--Loop-->
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="edu3" />
+															<label for="edu3"><i></i></label>
+														</span>
+													</td>
+													<td><input type="text" placeholder="자격증명을 입력해주세요" /></td>
+													<td><input type="text" placeholder="발급기관를 입력해주세요" /></td>
+													<td>
+														<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+													</td>
+													<td>
+														<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+													</td>
+													<td><input type="text" placeholder="자격증번호를 입력해주세요" /></td>
+													<td>
+														<span class="fileSet">
+															<span class="fileFind">
+																<input type="file" id="file1" />
+																<label for="file1">증빙서류 첨부</label>
+															</span> <!--파일선택:버튼만있는형식:초록색버전-->
+															<span class="loadIng" style="display:none;">업로드 중</span>
+															<strong class="loadEnd" style="display:none;">
+																<em>샘플 데이터.png</em>
+																<button>취소</button>
+															</strong>
+															<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+														</span>
+													</td>
+													<td>
+														<button class="btnS white openView">미리보기</button>
+													</td><!-- 2020-04-23 -->
+												</tr>
+												<!--//Loop-->
+											</tbody>
+										</table>
+									</div>
+									<!--//-->
+								</div>
+								<!-- //자격증 -->
+								<!-- 경력정보 -->
+								<div class="tabData tData3">
+									<!---->
+									<div class="boardTop">
+										<span class="right">
+											<button class="btnM">신규등록</button>
+											<button class="btnM">선택삭제</button>
+										</span>
+									</div>
+									<!---->
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="40"/>
+												<col width="230"/>
+												<col width="100"/>
+												<col width="100"/>
+												<col width="150"/>
+												<col width="200"/>
+												<col />
+												<col width="100"/>
+												<col width="100"/><!-- 2020-04-23 -->
+											</colgroup>
+											<thead>
+												<tr>
+													<th>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="edu4" />
+															<label for="edu4"><i></i></label>
+														</span>
+													</th>
+													<th>회사명</th>
+													<th>입사일자</th>
+													<th>퇴직일자</th>
+													<th>직책</th>
+													<th>근무부서</th>
+													<th>퇴직사유</th>
+													<th>증빙서류</th>
+													<th>미리보기</th><!-- 2020-04-23 -->
+												</tr>
+											</thead>
+											<tbody>
+												<!--Loop-->
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="edu5" />
+															<label for="edu5"><i></i></label>
+														</span>
+													</td>
+													<td><input type="text" placeholder="회사명을 입력해주세요" /></td>
+													<td>
+														<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+													</td>
+													<td>
+														<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+													</td>
+													<td><input type="text" placeholder="직책를 입력해주세요" /></td>
+													<td><input type="text" placeholder="근무부서를 입력해주세요" /></td>
+													<td><input type="text" placeholder="퇴직사유를 입력해주세요" /></td>
+													<td>
+														<span class="fileSet">
+															<span class="fileFind">
+																<input type="file" id="file1" />
+																<label for="file1">증빙서류 첨부</label>
+															</span> <!--파일선택:버튼만있는형식:초록색버전-->
+															<span class="loadIng" style="display:none;">업로드 중</span>
+															<strong class="loadEnd" style="display:none;">
+																<em>샘플 데이터.png</em>
+																<button>취소</button>
+															</strong>
+															<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+														</span>
+													</td>
+													<td>
+														<button class="btnS white openView">미리보기</button>
+													</td><!-- 2020-04-23 -->
+												</tr>
+												<!--//Loop-->
+											</tbody>
+										</table>
+									</div>
+									<!--//-->
+								</div>
+								<!-- //경력정보 -->
+								<!-- 사내경력정보 -->
+								<div class="tabData tData4">
+									<!---->
+									<div class="boardTop">
+										<span class="right">
+											<button class="btnM">신규등록</button>
+											<button class="btnM">선택삭제</button>
+										</span>
+									</div>
+									<!---->
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="40"/>
+												<col width="230"/>
+												<col width="100"/>
+												<col width="100"/>
+												<col width="150"/>
+												<col width="200"/>
+												<col />
+											</colgroup>
+											<thead>
+												<tr>
+													<th>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="edu6" />
+															<label for="edu6"><i></i></label>
+														</span>
+													</th>
+													<th>프로젝트명</th>
+													<th>시작일</th>
+													<th>종료일</th>
+													<th>직책</th>
+													<th>내용</th>
+													<th>비고</th>
+												</tr>
+											</thead>
+											<tbody>
+												<!--Loop-->
+												<tr>
+													<td>
+														<span class="checkSet noLabel">
+															<input type="checkbox" id="edu7" />
+															<label for="edu7"><i></i></label>
+														</span>
+													</td>
+													<td><input type="text" placeholder="프로젝트명을 입력해주세요" /></td>
+													<td>
+														<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+													</td>
+													<td>
+														<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+													</td>
+													<td><input type="text" placeholder="직책를 입력해주세요" /></td>
+													<td><input type="text" placeholder="내용을 입력해주세요" /></td>
+													<td><input type="text" placeholder="비고를 입력해주세요" /></td>
+												</tr>
+												<!--//Loop-->
+											</tbody>
+										</table>
+									</div>
+									<!--//-->
+								</div>
+								<!-- //사내경력정보 -->
+							</div>
+							<div class="btnArea tC">
+								<button class="btnM">저장</button>
+								<button class="btnM">삭제</button>
+							</div>
+						</div>
+						<!-- //tab-wrap -->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!--미리보기-->
+			<div class="basicPop evidenceViewPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>증빙서류 미리보기</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<iframe frameborder="1" scrolling="yes" align="left"></iframe>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!--//미리보기-->
+			<!-- 엑셀다운로드 사유 입력 -->
+			<div class="basicPop excelReasonsPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>엑셀다운로드 사유입력</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<p>※ 개인정보보호법에 따라 엑셀다운로드 시 사유를 입력해주시기 바랍니다.</p>
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="110" />
+								<col width="200" />
+								<col width="110" />
+								<col width="200" />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>이름</th>
+									<td>홍길동 (000000)</td>
+									<th>일시</th>
+									<td>2020-06-30 00:00</td>
+								</tr>
+								<tr>
+									<td colspan="4">
+										<textarea placeholder="엑셀다운로드 사유를 입력 해주세요"></textarea>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<em>* 사유는 최소 15글자 이상 입력해주시기 바랍니다. <span>(0/30byte)</span></em>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">다운로드</button>
+				</div>
+			</div>
+			<!--//엑셀다운로드 사유 입력-->
+			<!-- 엑셀업로드 일괄등록 -->
+			<div class="basicPop userFileUploadPop" style="display:none;">
+				<div class="tt">
+					<h1>신규사용자 일괄등록</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<span class="fileSet">
+						<span class="fileFind">
+							<input type="file" id="file7" />
+							<label for="file7">일괄등록 엑셀첨부</label>
+						</span> <!--파일선택:버튼만있는형식:초록색버전-->
+						<span class="loadIng" style="display:none;">업로드 중</span>
+						<strong class="loadEnd" style="display:none;">
+							<em>샘플 데이터.png</em>
+							<button>취소</button>
+						</strong>
+						<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+					</span>
+					<div class="info">
+						<p>일괄등록 시 정해진 형식을 기준으로 작성하여 첨부한 후 등록해주시기 바랍니다.</p>
+						<button>형식 엑셀 다운로드</button>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM" id="userBatchAddNo">취소</button>
+					<button class="btnM blue" id="userBatchAddOK">등록</button>
+				</div>
+			</div>
+			<!-- //엑셀업로드 일괄등록 -->
+		</div>
+		<!-- PDF 다운로드 -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop" style="display:block;">
+				<div class="pBack">
+					<!---->
+					<p>사용자 정보 일괄등록 진행중입니다. <br/>완료 시 본 팝업은 자동으로 없어집니다.</p>
+					<!--//-->
+				</div>
+			</div>
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

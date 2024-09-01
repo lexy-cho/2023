@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$(document).on('click tab', '.gnbOpen', function(e){
+				$('.gnbScroll').load('../gnb.html',function(){
+					funcGnbOpen();
+				});
+				return false;
+			});// 2019-03-15 gnb html load (퍼블리시용)
+            
+            // 헤더 컨텐츠 고정 값만큼 컨텐츠에 padding-top 설정, 목록은 모두 공통 <!--2019-03-15--->
+            $(window).resize(function(){
+                $(".postList").css({
+                    "padding-top" : $(".headFixed").height()
+                });
+            }).resize();
+            
+            // mobile 한정 - 검색영역 확장 버튼, 목록은 공통으로 사용 <!--2019-03-15--->
+            $(".btnSchOpen").click(function(){
+                if($(this).hasClass("active")){
+                    $(this).removeClass("active");
+                    $(this).parent(".searchField").removeClass("on");
+                    $(".postList").css({
+                        "padding-top" : $(".headFixed").height()
+                    });
+                }else{
+                    $(this).addClass("active");
+                    $(this).parent(".searchField").addClass("on");
+                    $(".postList").css({
+                        "padding-top" : $(".headFixed").height()
+                    });
+                }
+            });
+            
+            // 상세조회
+            $(".showingInfo").click(function(){
+				$('.dimPop, #showingInfoLayer').show();
+			});
+            
+            // 정비업체조회
+            $(".maintenanceOpen").click(function(){
+				$('.dimPop, #maintenance').show();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button>
+							<!-- <button class="goPrev" onclick="history.back()">뒤로가기</button> -->
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="../main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2>OTS 조회</h2> <!-- 2019-04-17 타이틀변경 -->
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<div class="postList ots"> <!--2019-03-15 클래스명 변경--->
+                            <!-- fixed -->
+                            <div class="headFixed">
+                                <!-- 검색 -->
+                                <div class="searchField">
+                                   <!--  <ul class="srhGrpLine">
+                                        <li class="mustSelect">
+                                            <span class="requiredMark">필수</span>
+                                            <span class="selectSet">
+                                                <select>
+                                                    <option>연식</option>
+                                                    <option>전체</option>
+                                                    <option>영업본부</option>
+                                                    <option>동부 DB</option>
+                                                </select>
+                                            </span>
+                                        </li>
+                                        <li class="mustSelect">
+                                            <span class="requiredMark">필수</span>
+                                            <span class="selectSet">
+                                                <select>
+                                                    <option>차종</option>
+                                                    <option>강릉지점</option>
+                                                    <option>구성지점</option>
+                                                    <option>북수원지점</option>
+                                                </select>
+                                            </span>
+                                        </li>
+                                    </ul> -->
+                                    <div class="iptGrpLine">
+                                        <span class="checkSet"><input type="checkbox" id="myCustomer" /><label for="myCustomer"><i></i>나의 대상 고객 LIST</label></span>
+                                        <div class="iptSearch">
+                                            <input type="text" id="searchWord" class="searchInp" placeholder="고객명, 차대번호, 차량번호" />
+                                            <button class="btnBY">조회</button>
+                                            <button class="btnRBG maintenanceOpen">정비업체조회</button>
+                                        </div>
+                                    </div>
+                                    <button class="mbView btnSchOpen">열기</button>
+                                </div>
+                                <!-- // 검색 -->
+                                
+                                <!-- table header -->
+                                <div class="tablet"> <!-- 2019-03-15 tab > tablet -->
+                                    <div class="tbContainer">
+                                        <ul class="tbList tbHead">
+                                            <li>
+                                                <span>차량번호</span>
+                                                <span>모델</span>
+                                                <span>연식</span>
+                                                <span>차종</span>
+                                                <span>고객명</span>
+                                                <span>휴대폰</span>
+                                                <span>출고일</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- // table header -->
+                            </div>
+                            <!-- // fixed -->
+                            
+                            <div class="postListBody"> <!--2019-03-15 클래스명 변경--->
+                                <!-- table list -->
+                                <div class="tbContainer">
+                                    <ul class="tbList tbBody">
+                                        <li>
+                                            <span class="carNum">10가1234</span>
+                                            <span class="carModel">SM6-LFD</span>
+                                            <span class="carYear">18MY</span>
+                                            <span class="carType">GdeRE</span>
+                                            <span class="custmNm"><button class="showingInfo">홍길동</button></span>
+                                            <span class="tel">010-1235-5268</span>
+                                            <span class="deliDate"><span class="mTxt">출고일 : </span>2019-03-12</span>
+                                        </li>
+                                        <li>
+                                            <span class="carNum">10가1234</span>
+                                            <span class="carModel">SM6-LFD</span>
+                                            <span class="carYear">18MY</span>
+                                            <span class="carType">GdeRE</span>
+                                            <span class="custmNm"><button class="showingInfo">홍길동</button></span>
+                                            <span class="tel">010-1235-5268</span>
+                                            <span class="deliDate"><span class="mTxt">출고일 : </span>2019-03-12</span>
+                                        </li>
+                                        <li>
+                                            <span class="carNum">10가1234</span>
+                                            <span class="carModel">SM6-LFD</span>
+                                            <span class="carYear">18MY</span>
+                                            <span class="carType">GdeRE</span>
+                                            <span class="custmNm"><button class="showingInfo">홍길동</button></span>
+                                            <span class="tel">010-1235-5268</span>
+                                            <span class="deliDate"><span class="mTxt">출고일 : </span>2019-03-12</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- // table list -->
+                            </div>
+                        </div>  
+					</section>
+                    <button class="pageTop list type2">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+        
+        <!-- DimPopUp -->
+        <div class="dimPop" style="display: none;">
+            <!-- 상세조회 -->
+			<div class="popLGCase showingInfoLayer hAuto" id="showingInfoLayer" style="display: none;">
+				<button class="close">닫기</button>
+                <div class="tt">
+                    <h1>상세조회</h1>
+                </div>
+                <div class="popBack">
+                    <div class="popScrollArea">
+                        <table>
+                            <colgroup>
+                                <col width="80px" />
+                                <col width="*" />
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>VIN</th>
+                                    <td>KMNA4C2BMGP024377</td>
+                                </tr>
+                                <tr>
+                                    <th>캠페인1</th>
+                                    <td>워터펌프</td>
+                                </tr>
+                                <tr>
+                                    <th>캠페인2</th>
+                                    <td>제동 등</td>
+                                </tr>
+                                <tr>
+                                    <th>캠페인3</th>
+                                    <td>언더커버</td>
+                                </tr>
+                                <tr>
+                                    <th>캠페인4</th>
+                                    <td>차일드 락</td>
+                                </tr>
+                                <tr>
+                                    <th>리콜조치여부1</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>리콜조치여부2</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>리콜조치여부3</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>리콜조치여부4</th>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+			</div>
+			<!-- //상세조회 -->
+            
+            <!-- 정비업체 조회 -->
+            <div class="popLGCase searchPop" id="maintenance" style="display: none;">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>정비업체 조회</h1>
+				</div>
+				<div class="popBack">
+					<div class="popSearch sltOnlyCase">
+						<div>
+							<span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+								<select>
+									<option>시/도</option>
+									<option>강원</option>
+									<option>경기</option>
+									<option>경남</option>
+									<option>경북</option>
+									<option>광주</option>
+									<option>대구</option>
+									<option>대전</option>
+									<option>부산</option>
+									<option>서울</option>
+									<option>세종</option>
+									<option>울산</option>
+									<option>인천</option>
+									<option>전남</option>
+									<option>전북</option>
+									<option>제주</option>
+									<option>충남</option>
+									<option>충북</option>
+								</select>
+							</span>
+							<span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+								<select>
+									<option>군/구</option>
+								</select>
+							</span>
+							<button class="btnBY">조회</button>
+						</div>
+					</div>
+					<div class="poplist uCase">
+						<table>
+							<colgroup>
+								<col width="17%" /><col width="40%"/><col/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>코드</th>
+									<th class="tInGrid">
+										<div class="listGrid">
+											<div class="lgTd">정비점 <em class="pHide">및 전화번호</em></div>
+											<span class="lgTd mHide">전화번호</span>
+										</div>
+									</th>
+									<th>주소</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="popScrollArea notBtn"><!-- 2019-04-16 class 추가-->
+							<table>
+								<colgroup>
+									<col width="17%" /><col width="39%"/><col/>
+								</colgroup>
+								<tbody>
+									<!-- Loop -->
+									<tr>
+										<td>K0101</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<div class="lgTd">성광자동차공업사</div>
+												<span class="lgTd">02-375-0765</span>
+											</div>
+										</td>
+										<td>서울 마포구 성산2동 591-5</td>
+									</tr>
+									<tr>
+										<td>K0101</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<div class="lgTd">성광자동차공업사</div>
+												<span class="lgTd">02-375-0765</span>
+											</div>
+										</td>
+										<td>서울 마포구 성산2동 591-5</td>
+									</tr>
+									<!-- //Loop -->
+									<tr class="on">
+										<td>K013</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<div class="lgTd">지정정비코너 용강점</div>
+												<span class="lgTd">02-717-0666</span>
+											</div>
+										</td>
+										<td>서울특별시 마포구 대흥로 22 (마포구)</td>
+									</tr>
+									<tr>
+										<td>K0101</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<div class="lgTd">성광자동차공업사</div>
+												<span class="lgTd">02-375-0765</span>
+											</div>
+										</td>
+										<td>서울 마포구 성산2동 591-5</td>
+									</tr>
+									<tr>
+										<td>K0101</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<div class="lgTd">성광자동차공업사</div>
+												<span class="lgTd">02-375-0765</span>
+											</div>
+										</td>
+										<td>서울 마포구 성산2동 591-5</td>
+									</tr>
+									<tr>
+										<td>K0101</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<div class="lgTd">성광자동차공업사</div>
+												<span class="lgTd">02-375-0765</span>
+											</div>
+										</td>
+										<td>서울 마포구 성산2동 591-5</td>
+									</tr>
+									<tr>
+										<td colspan="3" class="listNone">
+											<span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+            <!-- // 정비업체 조회 -->
+        </div>
+        <!-- // DimPopUp -->
+	</body>
+</html>

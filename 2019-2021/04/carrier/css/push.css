@@ -1,0 +1,66 @@
+.panelBack {
+  position:fixed;
+  z-index:300;
+  background-color:#fff;
+  -webkit-transition: -webkit-transform 0.3s;
+		  transition: transform 0.3s;
+}
+/**/
+.c-menu--slide-right,
+.c-menu--push-right {
+  width: 75%;
+  height: 100%;
+  /*overflow-y: auto;*/
+}
+/* .pushback.c-menu--slide-right,
+.pushback.c-menu--push-right {
+	width: calc(75%);
+} */
+.c-menu--slide-right,
+.c-menu--push-right {
+  top: 0;
+  right: 0;
+  -webkit-transform: translateX(100%);
+	  -ms-transform: translateX(100%);
+		  transform: translateX(100%);
+}
+/* .pushback.c-menu--slide-right,
+.pushback.c-menu--push-right {
+    -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+            transform: translateX(-100%);
+} */
+.c-menu--slide-right.is-active,
+.c-menu--push-right.is-active {
+  -webkit-transform: translateX(0);
+	  -ms-transform: translateX(0);
+		  transform: translateX(0);
+}
+/* Body states */
+body.has-active-menu {overflow:hidden;}
+/* #header {left:0;}
+#container {padding-left:0;} */
+.c-close {display:inline-block;}
+.c-button {display:inline-block;}
+/* -----------------------------------------------------------------------------
+  MASK COMPONENT
+----------------------------------------------------------------------------- */
+.c-mask {position:fixed;z-index:250;top:0;left:0;overflow:hidden;width:0;height:0;background-color:#000;opacity:0;
+  -webkit-transition: opacity 0.3s, width 0s 0.3s, height 0s 0.3s;
+		  transition: opacity 0.3s, width 0s 0.3s, height 0s 0.3s;
+}
+.c-mask.is-active {width:100%;height:100%;opacity:0.7;
+  -webkit-transition: opacity 0.3s;
+		  transition: opacity 0.3s;
+}
+/* push */
+.panelTit {position:absolute;top:0;left:0;width:100%;height:40px;border-bottom:1px solid #bbb;background:#fff;}
+.panelTit span {position:relative;z-index:2;}
+.panelTit strong {display:block;position:absolute;z-index:1;top:0;width:100%;text-align:center;line-height:3;}
+.panelArea {position:absolute;top:40px;bottom:0;left:0;width:100%;overflow-y:auto;}
+.push ul li .pushBox {padding:0.8rem 1rem;border-bottom:1px solid #ddd;}
+.push ul li .pushBox .disCode {margin-bottom:0.5rem;}
+.push ol li .pushBox {padding:0.8rem 1rem 0.8rem 2rem;background:#fefaf4;}
+.push ul li p span {display:inline-block;padding-top:0.3rem;width:100%;color:#999;font-size:0.92rem;}
+.push .pushBox p {font-size:0.92rem;line-height:1.35;word-break:break-all;}
+.push .pushBox em {display:block;padding-bottom:0.3rem;}

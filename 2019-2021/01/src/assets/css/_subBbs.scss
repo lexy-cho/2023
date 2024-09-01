@@ -1,0 +1,86 @@
+/*===================================================================
+* INFORMATION
+* -------------------------------------------------------------------
+* @File Name: _sub.scss
+* @Description : 각 화면별 정의
+* @Create Date: 2021-06-23
+* @Last Update Date: N/A
+* @History: N/A
+* ====================================================================*/
+/* 공지사항 */
+.notice {
+  .resTls {
+    .item0 {padding-left:20px;}
+    .item1 {width:80px;}
+    .item2 {width:137px;}
+    .item3 {width:140px;padding-right:50px;}
+    .tbody {
+      .item2,
+      .item3 {font-family:'Roboto';}
+    }
+  }
+}
+/* 첨삭게시판 */
+.testBbs {
+  .resTls {
+    .item0 {width:85px;}
+    .item1 {width:70px;}
+    .item2 {width:120px;}
+    .item3 {width:180px;}
+    .tbody {
+      .item3 {font-family:'Roboto';}
+    }
+  }
+}
+/* 강의자료 */
+.lecDataBbs{
+  .resTls {
+    .item0 {width:115px;}
+    .item1 {width:70px;}
+    .item2 {width:122px;}
+    .item3 {width:118px;}
+    .item4 {width:85px;}
+    .tbody {
+      .item0,
+      .item2,
+      .item3,
+      .item4 {font-family:'Roboto';}
+    }
+  }
+}
+/* 학습 Q&A */
+.counselBbs {
+  .resTls {
+    .item0 {width:92px;}
+    .item1 {width:70px;}
+    .item2 {width:130px;}
+    .tbody {
+      .item2 {font-family:'Roboto';}
+    }
+  }
+}
+/* 이벤트 - 당첨자 발표 */
+.eventTabwrap {
+  .tabLayout {padding-top:0;}
+  .thumbnailList {padding-top:25px;}
+}
+.eventPast {
+  li {
+    a {position:relative;
+      &:after {content:"종료";position:absolute;display:inline-block;top:12px;left:13px;width:67px;height:67px;font-size:$txtSizeP4;line-height:3.8;color:$whiteColor;text-align:center;border-radius:67px;z-index:2;background:rgba(0, 0, 0, 0.7);}
+      img {mix-blend-mode:luminosity;opacity:.5;}
+    }
+  }
+}
+.eventWinner {
+  .resTls {
+    .item0 {width:140px;padding-right:25px;}
+    .item1 {width:90px;}
+    .item2 {width:235px;padding-right:15px;}
+    .tbody {
+      .item0,
+      .item2 {font-family:'Roboto';}
+      .item2 em {color:#666;font-weight:200;}
+    }
+  }
+}

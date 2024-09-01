@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('#deleteBtn').click(function(){
+				$('.popDim').show();
+				$('.alertPop').show();
+			});
+			$('#educationBtn').click(function(){
+				$('.popDim').show();
+				$('.educationGoPop').show();
+			});
+			$('.pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			/**/
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>직급/역할 별 정의</h2>
+					<div class="pagePos"><span>Home</span><span>경영지원</span><span>교육 관리</span><strong>직급/역할 별 정의</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="educationView">
+						<div class="tvs">
+                            <div class="tvsHead">
+								<strong>소프트웨어 비즈니스란? (성공하는 IT개발자가 갖추어야 할 역량들)</strong>
+							</div>
+                            <div class="tvsInfo">
+                                <dl class="left">
+                                    <dt>작성자 :</dt>
+                                    <dd class="pr1">홍길동 (000000)</dd>
+                                    <dt>최신변경일자 :</dt>
+                                    <dd>2020-01-02 18:00:00</dd>
+                                </dl>
+                            </div>
+                            <div class="tvsContents">
+								<ul>
+									<li>
+										<strong>1. 소프트웨어 비즈니스와 사람</strong>
+										<p>
+											프로그래머란 단지 새로운 기능을 코드로 짜고(가끔씩) 버그도 잡는 사람을 일컫는다. 그들은 스펙을 정의하지도 않고, 테스트 자동화 프로그램을 만들 생각도 하지 않고, 고객의 문제를 전혀 도와
+											주려고 하지도 않는다. 또한 기술 문서 작성이나 테스트에 대해 전혀 신경 쓰지 않는다. 심지어 기존의 코드를 보지도 않는다, 오로지 그들이 하는 일은 새로운 코드를 짜는 것이다.
+											여러분에게 필요한 사람들은 이러한 프로그래머들(코드만 짜는 사람들)이 아니라 바로 개발자들
+											즉, 다양한 방법들로 제품의 성공에 기여하는 사람들이다.
+											소규모 ISV (Independent SW Vendor) 내에는 ‘내 역할은 오직 프로그램만 짜는 것’ 이라고 생각하는 사람들과 함께 일할 여유가 없다. 성공적인 제품을 내놓기 위해서는 그 밖에도 아주 많은 일들
+											이 뒷받침되어야 하기 때문이다. 소규모 ISV는 어떤 일도 척척 해치울 수 있는 소수의 정예 인력이 필요하다.
+											소규모 회사에는 회사의 성공을 위해서라면 뭐든지 할 수 있는 팔방미인들이 필요하다.
+											소규모 ISV에서는 모든 개발자들이 프로그래머의 역할을 해야 한다. 모든 개발자들은 코드를 짜고 버그를 잡는 일뿐만 아니라 또한 아래와 같은 분야에도 참여할 필요가 있다. 개발자는 훨씬 넓은
+											시야와 큰 그림을 볼 수 있는 능력을 갖고 있다. <프로그래머>는 코드를 작성해서 테스터에게 코드를 넘기고, 그들이 버그를 찾아주기를 바란다. <개발자들>은 자기가 직접 버그를 찾아 고치는 것이
+											낫다는 것을 안다. 왜냐하면 바로 자신이 나중에 고객들과 직접 이야기를 해야 할지도 모르기 때문이다. 프로그래머들이 개발자로 진화해야 한다. 뛰어난 능력을 가진 프로그래머라고 하더라도 개발
+											자로서는 아주 형편없을 수도 있다.
+											소규모 ISV는 규모가 작기 때문에 프로그래머가 좁은 시야를 가지고 일하기에는 그들이 끼치는 영향이 너무 크다. 그들을 사용자의 입장에서 움직이도록 만들자. 심각한 문제를 가지고 있는 고객과
+											직접 전화통화를 하게 하자. 그들을 가르쳐야 한다. 체계화된 훈련도 도움이 되지만 가장 좋은 방법은 뭐니뭐니해도 경험을 통해 배우는 것이다. 개발자들은 나이키의 충고를 새겨들어야 한다. “일단
+											질러봐(just do it)!” 그리고 그들이 혹시 실수를 저질러도 묵인하자. 실패를 통해 배우게 하자.
+											(중략)
+										</p>
+									</li>
+								</ul>
+							</div>
+							<div class="tvsFile">
+								<div class="fileBasket">
+									<span class="files"><span class="file pdf">PDF</span><strong>C_30_11. (ProjectCode_Aliasname) 스토리보드 (part. 사용자)_ver0.1.pdf</strong></span>
+								</div>
+							</div>
+						</div>
+						<!---->
+						<div class="btnArea tC">
+							<button class="btnM left white">html 미리보기</button><!-- 2020-05-12 -->
+							<a href="board_education_role_write.html" class="btnM">수정</a>
+							<a href="board_education_role.html" class="btnM">목록</a>
+							<a href="board_education_role.html" class="btnM">삭제</a>
+						</div>
+						<!---->
+						<div class="chkHistory">
+							<div class="chkHead">
+								<strong>교육 실행 이력</strong>
+								<button class="btnM blue" id="educationBtn">발송</button>
+							</div>
+							<div class="chkBody">
+								<dl>
+									<dt>
+										<strong>[2회차 2020-02-01] 성공하는 IT개발자가 갖추어야 할 역량들</strong>
+										<span class="right">
+											<button class="btnS blue">PDF생성</button>
+											<button class="btnS white">미리보기</button>
+										</span>
+									</dt>
+									<dd>
+										<div class="workerWrap">
+											<span class="worker"><strong>[999999999] 홍길동</strong></span>
+											<span class="worker on"><strong>[999999999] 홍길동</strong></span>
+											<span class="worker"><strong>[999999999] 홍길동</strong></span>
+											<span class="worker on"><strong>[999999999] 홍길동</strong></span>
+											<span class="worker"><strong>[999999999] 홍길동</strong></span>
+											<span class="worker on"><strong>[999999999] 홍길동</strong></span>
+										</div>
+									</dd>
+								</dl>
+								<dl>
+									<dt>
+										<strong>[2회차 2020-02-01] 성공하는 IT개발자가 갖추어야 할 역량들</strong>
+										<span class="right">
+											<button class="btnS blue">PDF생성</button>
+											<button class="btnS white">미리보기</button>
+										</span>
+									</dt>
+									<dd>
+										<div class="workerWrap">
+											<span class="worker"><strong>[999999999] 홍길동</strong></span>
+											<span class="worker on"><strong>[999999999] 홍길동</strong></span>
+											<span class="worker"><strong>[999999999] 홍길동</strong></span>
+											<span class="worker on"><strong>[999999999] 홍길동</strong></span>
+											<span class="worker"><strong>[999999999] 홍길동</strong></span>
+											<span class="worker on"><strong>[999999999] 홍길동</strong></span>
+										</div>
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<div class="alertPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>입력한 정보가 삭제됩니다.<br/>삭제하시겠습니까?</p>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<div class="basicPop educationPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>교육 실행 이력</h1>
+				</div>
+				<div class="pBack">
+					발송일시: 2020-04-27
+					<dl>
+						<dt>성공하는 IT개발자가 갖추어야 할 역량들</dt>
+						<dd><textarea name="name" rows="5" cols="10"></textarea><!-- 2020-06-02 --></dd>
+					</dl>
+					<div class="receiver">
+						<strong>수신자 추가:</strong>
+						<div class="grayBox">
+							<span class="receiveSet">
+								<input type="text">
+								<button class="btnM orange">추가</button>
+							</span>
+							<div class="workerWrap">
+								<span class="worker"><strong>[999999999] 홍길동</strong><button class="btnDel">삭제</button></span>
+								<span class="worker"><strong>[999999999] 홍길동</strong><button class="btnDel">삭제</button></span>
+								<span class="worker"><strong>[999999999] 홍길동</strong><button class="btnDel">삭제</button></span>
+								<span class="worker"><strong>[999999999] 홍길동</strong><button class="btnDel">삭제</button></span>
+							</div>
+						</div>
+					</div>
+					<!-- 2020-06-02 -->
+					<div class="pt1">
+						<strong>Push 발송 : </strong>
+						<span class="toggleSet">
+							<input type="checkbox" id="write15" />
+							<label for="write15"></label>
+						</span>
+					</div>
+					<!-- //2020-06-02 -->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- 2020-11-06 교육실행이력 -->
+			<div class="basicPop educationGoPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>교육 실행 이력</h1>
+				</div>
+				<div class="pBack">
+					<span>발송일시: 2020-04-27</span>
+					<textarea></textarea>
+					<div class="receiver">
+						<div class="optionBox">
+						<span class="selectSet">
+							<select>
+								<option>부서 선택</option>
+								<option>메뉴2</option>
+							</select>
+						</span>
+						<input type="text" placeholder="성명 혹은 사변을 입력하세요"/>
+						<input class="btnSearch" type="submit" value="검색" />
+					</div>
+					<div class="tls">
+						<table>
+							<colgroup>
+								<col width="50"/>
+								<col width="120"/>
+								<col/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chkAll" />
+											<label for="chkAll"><i></i></label>
+										</span>
+									</th>
+									<th>부서</th>
+									<th>성명(사번)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk1" />
+											<label for="chk1"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk2" />
+											<label for="chk2"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk3" />
+											<label for="chk3"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk4" />
+											<label for="chk4"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk5" />
+											<label for="chk5"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk6" />
+											<label for="chk6"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					</div>
+					<div class="pt1">
+						<strong>Push 발송 : </strong>
+						<span class="toggleSet">
+							<input type="checkbox" id="write15" />
+							<label for="write15"></label>
+						</span>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //2020-11-06 교육실행이력 -->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

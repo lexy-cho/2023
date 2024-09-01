@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/editor/ckeditor.js"></script>
+		<script type="text/javascript" src="../../js/editor/sample.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>사내 갤러리</h2>
+					<div class="pagePos"><span>Home</span><span>게시판관리</span><span>AndU 게시판</span><strong>사내 갤러리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div>
+						<!---->
+                        <div class="tvs">
+                            <div class="tvsHead"><span class="new">신규</span><strong>[카테고리] 글제목이 노출할 영역입니다 글제목은 최대 2줄까지 고려하여 게시판 높이를 정했습니다 글제목이 노출할 영역입니다 글제목은 최대 2줄까지 고려하여 게시판 높이를 정했습니다</strong></div>
+                            <div class="tvsInfo">
+                                <dl>
+                                    <dt>작성자 :</dt>
+                                    <dd class="pr1">홍길동 (000000)</dd>
+                                    <dt>마지막 수정자 :</dt>
+                                    <dd>홍길동 (000000)</dd>
+                                </dl>
+                                <dl>
+                                    <dt>등록일자 :</dt>
+                                    <dd class="pr1">2020-01-01 00:00</dd>
+                                    <dt>수정일자 :</dt>
+                                    <dd>2020-01-01 00:00</dd>
+                                </dl>
+                            </div>
+                            <div class="tvsInfo">
+                                <dl class="left">
+                                    <dt>게시글 옵션정보 :</dt>
+									<dd>댓글사용여부(O) / 개시중지(X)</dd>
+                                </dl>
+							</div>
+                            <div class="tvsInfo thumbnailCase">
+                                <dl class="left">
+                                    <dt>썸네일이미지</dt>
+									<dd class="">
+										<img src="../../images/img_library_thumbnail.png" alt="" />
+									</dd>
+                                </dl>
+							</div>
+                            <div class="tvsContents"><p>글 내용이 나온다면 이 부분에서 표기됩니다. 글 내용이 나온다면 이 부분에서 표기됩니다. 글 내용이 나온다면 이 부분에서 표기됩니다. 글 내용이 나온다면 이 부분에서 표기됩니다. 글 내용이 나온다면 이 부분에서 표기됩니다. 글 내용이 나온다면 이 부분에서 표기됩니다. 글 내용이 나온다면 이 부분에서 표기됩니다.</p></div>
+							<div>
+                        </div>
+						<!--comment-->
+						<script>
+						$(document).ready(function(){
+							$(".commentInfo").click(function(){
+								$(this).toggleClass('on');
+								$(".commentList").toggle();
+							});
+							$(".btnPost").click(function(){
+								$(".sampleComment").show();
+							});
+							$(".btnModify").click(function(){
+								$('.reEditor').hide();
+								$(this).next('p').toggle();
+								$(this).next().next('.commentEditor').toggle();
+							});
+							$(".btnReAdd").click(function(){
+								$('.commentEditor').hide();
+								$(this).next().next().next().next('.reEditor').toggle();
+							});
+							$(".btnReModify").click(function(){
+								$(this).next('p').toggle();
+								$(this).next().next('.reEditor').toggle();
+							});
+						});
+						</script>
+						<div class="commentSet">
+							<div class="commentWrite">
+								<div>
+									<textarea placeholder="Write a comment..."></textarea>
+									<input type="button" value="등록" class="btnPost">
+								</div>
+							</div>
+							<!---->
+							<div class="commentInfo"> <!-- 2020-08-13 여닫기 토글 on 추가 --> 
+								댓글 4개 <span>여닫기</span> <!-- 2020-08-13 span 감싸기 --> 
+							</div>
+							<!---->
+							<div class="commentList">
+								<ul>
+									<li style="display:none;" class="sampleComment">
+										<div class="commentBox">
+											<span class="name">조명진 (160201)</span>
+											<span class="time">2020-02-06 13:20</span>
+											<button class="btnReAdd">답글</button>
+											<button class="btnModify">편집</button>
+											<p>새로 등록한 댓글입니다</p>
+											<div class="commentEditor">
+												<textarea></textarea>
+												<button class="btnSave">저장</button>
+												<button class="btnDelete">삭제</button>
+											</div>
+											<div class="reEditor">
+												<textarea></textarea>
+												<button class="btnReSave">등록</button>
+												<button class="btnReCancel">취소</button>
+											</div>
+										</div>
+									</li>
+									<!-- Comment Loop -->
+									<li>
+										<div class="commentBox">
+											<span class="name">홍길동 (000000)</span>
+											<span class="time">2020-02-05 00:00</span>
+											<button class="btnReAdd">답글</button>
+											<button class="btnModify">편집</button>
+											<p>Do I like musicals? Not really... but damn, 'La La Land' is a nostalgic, colourful, joyful marvel! Do I like musicals? Not really... but damn, 'La La Land' is a nostalgic, colourful, joyful marvel!</p>
+											<div class="commentEditor">
+												<textarea></textarea>
+												<button class="btnSave">저장</button>
+												<button class="btnDelete">삭제</button>
+											</div>
+											<div class="reEditor">
+												<textarea></textarea>
+												<button class="btnReSave">등록</button>
+												<button class="btnReCancel">취소</button>
+											</div>
+										</div>
+									</li>
+									<!-- //Comment Loop -->
+									<li>
+										<div class="commentBox">
+											<span class="name">홍길동 (000000)</span>
+											<span class="time">2020-02-05 00:00</span>
+											<button class="btnReAdd">답글</button>
+											<button class="btnModify">편집</button>
+											<p>Do I like musicals? Not really... but damn, 'La La Land' is a nostalgic, colourful, joyful marvel! Do I like musicals? Not really... but damn, 'La La Land' is a nostalgic, colourful, joyful marvel!</p>
+											<div class="commentEditor">
+												<textarea></textarea>
+												<button class="btnSave">저장</button>
+												<button class="btnDelete">삭제</button>
+											</div>
+											<div class="reEditor">
+												<textarea></textarea>
+												<button class="btnReSave">등록</button>
+												<button class="btnReCancel">취소</button>
+											</div>
+										</div>
+										<!-- Reply List -->
+										<ol>
+											<!-- Reply Loop -->
+											<li>
+												<div class="commentBox">
+													<span class="name">홍길동 (000000)</span>
+													<span class="time">2020-02-05 00:00</span>
+													<button class="btnReModify">편집</button>
+													<p>Do I like musicals? Not really... but damn, 'La La Land' is a nostalgic, colourful, joyful marvel! Do I like musicals? Not really... but damn, 'La La Land' is a nostalgic, colourful, joyful marvel!</p>
+													<div class="reEditor">
+														<textarea></textarea>
+														<button class="btnReSave">저장</button>
+														<button class="btnReDelete">삭제</button>
+													</div>
+												</div>
+											</li>
+											<!-- //Reply Loop -->
+											<li>
+												<div class="commentBox">
+													<span class="name">홍길동 (000000)</span>
+													<span class="time">2020-02-05 00:00</span>
+													<button class="btnReModify">편집</button>
+													<p>Do I like musicals? Not really... but damn, 'La La Land' is a nostalgic, colourful, joyful marvel! Do I like musicals? Not really... but damn, 'La La Land' is a nostalgic, colourful, joyful marvel!</p>
+													<div class="reEditor">
+														<textarea></textarea>
+														<button class="btnReSave">저장</button>
+														<button class="btnReDelete">삭제</button>
+													</div>
+												</div>
+											</li>
+										</ol>
+										<!-- //Reply List -->
+									</li>
+								</ul>
+							</div>
+							<!---->
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+										<a class="on">1</a>
+										<a>2</a>
+										<a>3</a>
+										<a>4</a>
+										<a>5</a>
+									<a class="next">다음</a>
+								</span>
+							</div>
+						</div>
+						<!--comment-->
+						<div class="pnvBtn">
+							<a href="" class="btnM white">이전글</a>
+							<a href="" class="btnM white right">다음글</a>
+						</div>
+						<!---->
+						<div class="btnArea tC">
+							<a href="board_gallery_write.html" class="btnM">수정</a>
+							<a href="board_gallery.html" class="btnM">목록</a>
+							<a href="board_gallery.html" class="btnM">삭제</a>
+						</div> 
+						<!--//-->
+
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		</div>
+    </body>
+</html>

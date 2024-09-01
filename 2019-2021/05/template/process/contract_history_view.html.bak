@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$(document).on('click tab', '.gnbOpen', function(e){
+				$('.gnbScroll').load('../gnb.html',function(){
+					funcGnbOpen();
+				});
+				return false;
+			});// 2019-03-15 gnb html load (퍼블리시용)
+            
+            // 헤더 컨텐츠 고정 값만큼 컨텐츠에 padding-top 설정, 목록은 모두 공통 <!--2019-03-15--->
+            $(window).resize(function(){
+                $(".postList").css({
+                    "padding-top" : $(".headFixed").height()
+                });
+            }).resize();
+            
+            // mobile 한정 - 검색영역 확장 버튼, 목록은 공통으로 사용 <!--2019-03-15--->
+            $(".btnSchOpen").click(function(){
+                if($(this).hasClass("active")){
+                    $(this).removeClass("active");
+                    $(this).parent(".searchField").removeClass("on");
+                    $(".postList").css({
+                        "padding-top" : $(".headFixed").height()
+                    });
+                }else{
+                    $(this).addClass("active");
+                    $(this).parent(".searchField").addClass("on");
+                    $(".postList").css({
+                        "padding-top" : $(".headFixed").height()
+                    });
+                }
+            });
+            
+            // 구분선택에 따른 개인/법인 콤보박스 변수
+            var custTypeOpt1 = "<option disabled>개인/법인</option><option value='1'>개인</option><option value='2'>법인</option><option value='3'>차량등록번호</option>";
+            var custTypeOpt2 = "<option disabled>개인/법인</option><option value='1'>개인</option><option value='2'>법인</option>";
+            
+            // 구분/개인/법인 선택에 따른 placehoder
+            var placeholderTxt1 = "Safe KEY";
+            var placeholderTxt2 = "법인번호";
+            var placeholderTxt3 = "차량등록번호";
+            var placeholderTxt4 = "고객명, 사업자명";
+            
+            // 구분선택
+            $("#historyType").on("change", function(){
+                if($(this).find("option:selected").val() == 1){ // 구매이력 선택
+                    $("#contractHistory").hide();
+                    $("#buyHistory").show();
+                    $("#custType").html(custTypeOpt1);
+                    $("#custType").prev().html("개인/법인");
+                    $("#searchWord").attr("placeholder", placeholderTxt1);
+                    $("#custBuyNm").html("고객명");
+                    $("#keyNum").html("Safe KEY");
+                }else{ // 계약이력 선택
+                    $("#buyHistory").hide();
+                    $("#contractHistory").show();
+                    $("#custType").html(custTypeOpt2);
+                    $("#custType").prev().html("개인/법인");
+                    $("#searchWord").attr("placeholder", placeholderTxt4);
+                    $("#custCntrtNm").html("고객명");
+                }
+            });
+            
+            // 개인/법인 선택
+            $("#custType").on("change", function(){
+                if($("#historyType option:selected").val() == 1 && $(this).find("option:selected").val() == 1){
+                    $("#searchWord").attr("placeholder", placeholderTxt1);
+                    $("#custBuyNm").html("고객명");
+                    $("#keyNum").html("Safe KEY");
+                }else if($("#historyType option:selected").val() == 1 && $(this).find("option:selected").val() == 2){
+                    $("#searchWord").attr("placeholder", placeholderTxt2);
+                    $("#custBuyNm").html("사업자명");
+                    $("#keyNum").html("법인번호");
+                }else if($("#historyType option:selected").val() == 1 && $(this).find("option:selected").val() == 3){
+                    $("#searchWord").attr("placeholder", placeholderTxt3);
+                    $("#custBuyNm").html("고객명");
+                    $("#keyNum").html("차량등록번호");
+                }else if($("#historyType option:selected").val() == 2 && $(this).find("option:selected").val() == 1){
+                    $("#custCntrtNm").html("고객명");
+                }else if($("#historyType option:selected").val() == 2 && $(this).find("option:selected").val() == 2){
+                    $("#custCntrtNm").html("사업자명");
+                }
+            });
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button>
+							<!-- <button class="goPrev" onclick="history.back()">뒤로가기</button> -->
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="../main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<!-- <h2>1Depth title</h2> -->
+                        <h2 class="sCase"><span>계출관리 &gt; </span>계약/구매이력 조회</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<div class="postList"> <!--2019-03-15 클래스명 변경--->
+                            <!-- fixed -->
+                            <div class="headFixed">
+                                <!-- 검색 -->
+                                <div class="searchField on"> <!-- 2019-09-05 on 추가 -->
+                                    <div class="innerInpGrp type3">
+                                        <ul class="srhGrpLine two">
+                                            <li>
+                                                <span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+                                                    <select id="historyType">
+                                                        <option>구분</option>
+                                                        <option value="1">구매이력</option>
+                                                        <option value="2">계약이력</option>
+                                                    </select>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+                                                    <select id="custType">
+                                                        <option>개인/법인</option>
+                                                        <option value="1">개인</option>
+                                                        <option value="2">법인</option>
+                                                        <option value="3">차량등록번호</option>
+                                                    </select>
+                                                </span>
+                                            </li>
+                                        </ul>
+										<div class="iptSearch"><!-- 2019-09-05 분리 -->
+                                            <span>
+												<input type="text" id="" class="searchInp" placeholder="000000" /> - 
+												<input type="text" id="" class="searchInp" placeholder="1*****" />
+											</span>
+                                            <input type="text" id="searchWord" class="searchInp" placeholder="법인번호 입력"  style="display:none"/>
+                                            <button class="btnBY">조회</button>
+                                        </div>
+                                    </div>
+                                   <!--  <button class="mbView btnSchOpen">열기</button> 2019-09-05 여닫기 없음. 처음부터 열어놓은 상태로 -->
+                                </div>
+                                <!-- // 검색 -->
+                            </div>
+                            <!-- // fixed -->
+                            
+                            <div class="postListBody"> <!--2019-03-15 클래스명 변경--->
+                                <!-- 구매이력 선택 시 -->
+                                <div class="tbContainer" id="buyHistory">
+                                    <span class="txtDot">Total 2610</span>
+                                    <div class="tbScroll">
+                                        <table class="tbStaus line">
+                                            <colgroup>
+                                                <col style="width:40px;">
+                                                <col style="width:80px;">
+                                                <col style="width:80px;">
+                                                <col style="width:60px;">
+                                                <col style="width:80px;">
+                                                <col style="width:80px;">
+                                                <col style="width:90px;">
+                                                <col style="width:80px;">
+                                                <col style="width:80px;">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">No</th>
+                                                    <th scope="col">지점명</th>
+                                                    <th scope="col">계약번호</th>
+                                                    <th scope="col" id="custBuyNm">고객명</th>
+                                                    <th scope="col">고객분류</th>
+                                                    <th scope="col">지불조건</th>
+                                                    <th scope="col" id="keyNum">Safe KEY</th>
+                                                    <th scope="col">구입차종</th>
+                                                    <th scope="col">출고일자</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>강남대리점</td>
+                                                    <td>800105020</td>
+                                                    <td>홍길동</td>
+                                                    <td>임직원-영업임직원</td>
+                                                    <td>할부정상조건</td>
+                                                    <td>8888888888</td>
+                                                    <td>SM6 GDe LE 19MY</td>
+                                                    <td>2020-12-31</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>강남대리점</td>
+                                                    <td>800105020</td>
+                                                    <td>홍길동</td>
+                                                    <td>임직원-영업임직원</td>
+                                                    <td>현금일시불</td>
+                                                    <td>8888888888</td>
+                                                    <td>SM6 GDe LE 19MY</td>
+                                                    <td>2020-12-31</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>강남대리점</td>
+                                                    <td>800105020</td>
+                                                    <td>홍길동</td>
+                                                    <td>임직원-영업임직원</td>
+                                                    <td>할부정상조건</td>
+                                                    <td>8888888888</td>
+                                                    <td>SM6 GDe LE 19MY</td>
+                                                    <td>2020-12-31</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>강남대리점</td>
+                                                    <td>800105020</td>
+                                                    <td>홍길동</td>
+                                                    <td>임직원-영업임직원</td>
+                                                    <td>현금일시불</td>
+                                                    <td>8888888888</td>
+                                                    <td>SM6 GDe LE 19MY</td>
+                                                    <td>2020-12-31</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="9" class="listNone">
+                                                        <span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- // 구매이력 선택 시 -->
+                                        
+                                <!-- 계약이력 선택 시 -->
+                                <div class="tbContainer" id="contractHistory" style="display: none;">
+                                    <span class="txtDot">Total 610</span>
+                                    <div class="tbScroll">
+                                        <table class="tbStaus line">
+                                            <colgroup>
+                                                <col style="width:40px;">
+                                                <col style="width:140px;">
+                                                <col style="width:80px;">
+                                                <col style="width:70px;">
+                                                <col style="width:100px;">
+                                                <col style="width:80px;">
+                                                <col style="width:80px;">
+                                                <col style="width:80px;">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">No</th>
+                                                    <th scope="col">차종</th>
+                                                    <th scope="col">계약번호</th>
+                                                    <th scope="col" id="custCntrtNm">고객명</th>
+                                                    <th scope="col">휴대전화번호</th>
+                                                    <th scope="col">견적일자</th>
+                                                    <th scope="col">계약일자</th>
+                                                    <th scope="col">출고일자</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>SM6 GDe LE 19MY</td>
+                                                    <td>800105020</td>
+                                                    <td>홍길동</td>
+                                                    <td>010-1548-5896</td>
+                                                    <td>2018-12-23</td>
+                                                    <td>2019-03-12</td>
+                                                    <td>2019-03-15</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>SM6 GDe LE 19MY</td>
+                                                    <td>800105020</td>
+                                                    <td>홍길동</td>
+                                                    <td>010-1548-5896</td>
+                                                    <td>2018-12-23</td>
+                                                    <td>2019-03-12</td>
+                                                    <td>2019-03-15</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>SM6 GDe LE 19MY</td>
+                                                    <td>800105020</td>
+                                                    <td>홍길동</td>
+                                                    <td>010-1548-5896</td>
+                                                    <td>2018-12-23</td>
+                                                    <td>2019-03-12</td>
+                                                    <td>2019-03-15</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>SM6 GDe LE 19MY</td>
+                                                    <td>800105020</td>
+                                                    <td>홍길동</td>
+                                                    <td>010-1548-5896</td>
+                                                    <td>2018-12-23</td>
+                                                    <td>2019-03-12</td>
+                                                    <td>2019-03-15</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="8" class="listNone">
+                                                        <span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- // 계약이력 선택 시 -->
+                            </div>
+                        </div>  
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

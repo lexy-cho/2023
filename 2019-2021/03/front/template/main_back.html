@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+
+		<link href='../js/lib/style.css' rel='stylesheet' />
+		<link href='../js/lib/core/main.min.css' rel='stylesheet' />
+		<link href='../js/lib/timegrid/main.min.css' rel='stylesheet' />
+		<link href='../js/lib/daygrid/main.min.css' rel='stylesheet' />
+		<!-- <link href='./style.css' rel='stylesheet' /> -->
+		<script src='../js/lib/core/main.min.js'></script>
+		<script src='../js/lib/interaction/main.min.js'></script>
+		<script src='../js/lib/daygrid/main.min.js'></script>
+		<script src='../js/lib/timegrid/main.min.js'></script>
+		<script src='../js/lib/swipeCalendar.min.js'></script>
+		<script>
+		$(document).ready(function(){
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" class="mainCase" style="width:120px;">
+				<header>
+					<!-- <h1 class="hiden">ThinkTree Ting</h1> main일 때 삭제 -->
+					<button class="btnNav">햄버거</button>
+					<button class="btnMainMore" style="position:fixed;right:0;top:0;">더보기</button>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb">
+				<section>
+					<div class="c-menu c-menu--slide-left"><!-- 좌측 Slide 일 경우 -->
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-menu c-menu--slide-right"><!-- 우측 Slide 일 경우 -->
+						<div class="mainNav">
+							<h2>Ting 캘린더
+								<!-- 2020-07-22 새로고침 버튼 -->
+								<span class="right">
+									<button class="btnRefresh">새로고침</button>
+								</span>
+								<!-- //2020-07-22 새로고침 버튼 -->
+							</h2>
+							<div>
+								<ul>
+									<li><button class="mothView mnavClose">월단위</button></li>
+									<li><button class="weekView mnavClose">주단위</button></li>
+									<li><button class="dayView mnavClose">일단위</button></li>
+								</ul>
+								<ol>
+									<li>
+										<span class="checkSet">
+											<input type="checkbox" id="chk000" checked />
+											<label for="chk000"><i style="background-color:#1c9749;border-color:#1c9749;"></i>휴일 일정</label>
+										</span>
+									</li>
+									<li>
+										<span class="checkSet">
+											<input type="checkbox" id="chk001" checked />
+											<label for="chk001"><i style="background-color:#cecda7;border-color:#cecda7;"></i>직원생일 일정</label>
+										</span>
+									</li>
+									<li>
+										<span class="checkSet">
+											<input type="checkbox" id="chk002" checked />
+											<label for="chk002"><i style="background-color:#3788d8;border-color:#3788d8;"></i>직원휴가 일정</label>
+										</span>
+									</li>
+									<li>
+										<span class="checkSet">
+											<input type="checkbox" id="chk003" checked />
+											<label for="chk003"><i style="background-color:#c33a95;border-color:#c33a95;"></i>회의 일정</label>
+										</span>
+									</li>
+									<li>
+										<span class="checkSet">
+											<input type="checkbox" id="chk004" />
+											<label for="chk004"><i></i>외근 일정</label>
+										</span>
+									</li>
+									<li>
+										<span class="checkSet">
+											<input type="checkbox" id="chk005" />
+											<label for="chk005"><i></i>현장근무 일정</label>
+										</span>
+									</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</section>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<script>
+				var calendar;
+				var calendarEventModal;
+
+				document.addEventListener('DOMContentLoaded', function() {
+					calendarEventModal = document.getElementById('calendarModal');
+
+					var calendarEl = document.getElementById('calendar');
+					calendar = new SwipeCalendar(calendarEl, {
+						plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
+						swipeEffect: 'slide',
+						swipeSpeed: 250,
+						swipeTitlePosition: 'center',
+						header: {
+							//left: 'dayGridMonth,timeGridWeek,timeGridDay',
+							left: '',
+							center: 'title, today',
+							//right: 'today'
+							right: ''
+						},
+						height: 'parent',
+						expandRows: true,
+						slotMinTime: '08:00',
+						slotMaxTime: '20:00',
+						buttonText: {
+							prev: "이전달",
+							next: "다음달",
+							today: "오늘",
+							month: "월",
+							week: "주",
+							day: "일",
+							list: "일정목록"
+						},
+						columnHeaderText: function(date) {
+							let weekList = ["일", "월", "화", "수", "목", "금", "토"];
+							return weekList[date.getDay()];
+						},
+						initialView: 'dayGridMonth',
+						initialDate: '2020-06-12',
+						navLinks: false, // can click day/week names to navigate views
+						nowIndicator: true,
+						eventLimit: 3, // allow "more" link when too many events
+						//locale: 'ko',
+						//editable: true,
+						//selectable: true,
+						//dayClick: false,
+						//dayClick: function (date, jsEvent, view) {},
+						/*navLinkDayClick: function(date, jsEvent) {
+							console.log('day', date.toISOString());
+							console.log('coords', jsEvent.pageX, jsEvent.pageY);
+						},*/
+						navLinkDayClick: function(eventClickInfo) {
+							calendarEventModal.style.display = "block";
+						},
+						dateClick: function (eventClickInfo) {
+							calendarEventModal.style.display = "block";
+						},
+						eventClick: function (eventClickInfo) {
+							calendarEventModal.style.display = "block";
+						},
+						eventLimitClick: function (eventClickInfo) {
+							calendarEventModal.style.display = "block";
+						},
+						events: [
+							{title: '[공식휴일] 현충일', color: "#1c9749", start: '2020-07-01',},
+							{title: '[공식휴일] 추석', color: "#1c9749", start:'2020-07-07', end: '2020-07-10'},
+							{groupId: 999, title: '[월차] 홍길동', start: '2020-07-09T10:00:00'},
+							{groupId: 999, title: '[생일] 홍길동', color: "#cecda7", start: '2020-07-24T10:00:00'},
+							{groupId: 999, title: 'Meeting', color: "#c33a95", start: '2020-07-16T10:00:00'},
+							{title: '[년차] 김철수', start: '2020-07-12T10:30:00', end: '2020-07-14T12:30:00'},
+							{title: 'Meeting1', color: "#c33a95", start: '2020-07-12T12:00:00'},
+							{title: 'Meeting2', color: "#c33a95", start: '2020-07-12T14:30:00'},
+							{title: 'Meeting', color: "#c33a95", start: '2020-07-20T17:30:00'},
+							{title: 'Dinner Meeting', color: "#c33a95", start: '2020-07-12T20:00:00'},
+							{title: 'Meeting3', color: "#c33a95", start: '2020-07-13T07:00:00'}
+						]
+					});
+					$(".mothView").click(function () {
+						calendar.changeView('dayGridMonth');
+					});
+					$(".weekView").click(function () {
+						calendar.changeView('timeGridWeek');
+					});
+					$(".dayView").click(function () {
+						calendar.changeView('timeGridDay');
+					});
+				});
+
+				function closeModal() {
+					calendarEventModal.style.display = "none";
+				}
+				window.onclick = function(event) {
+					if (event.target == calendarEventModal) {
+						calendarEventModal.style.display = "none";
+					}
+				}
+			</script>
+			<style>
+				#container {padding:0;}
+				.fc-unthemed td {border-left:0;}
+				.swiper-slide .fc-toolbar {display:none;}
+				.fc-button {padding:0;}
+				.content, .mainLayout {width:100%;height:100vh;}
+				/* #calendar {height:100%;width:100%;} */
+				html, body, #wrap {height:100%;width:100%;}
+				.fc .fc-head {background-color:#f5f5f5;}
+				.fc .fc-toolbar.fc-header-toolbar {position:relative;text-align:center;}
+				.fc .fc-toolbar .fc-center {margin:0 auto;}
+				.fc-more-cell * {font-size:12px;}
+				.fc-event-container * {font-size:11px;}
+				.fc-button-group button {display:none;}
+				.fc-event-container .fc-title {display:block;color:#fff;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;overflow:hidden;}
+			</style>
+			<div id='calendar'></div>
+			<div id="container" style="display:none;">
+			<section>
+				<div class="content">
+				<article>
+					<div class="mainLayout">
+					</div>
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>상단으로</button></div>
+		</div>
+		<!-- //Wrap -->
+
+		<!-- Calendar Event Modal -->
+		<div id="calendarModal" class="mainModal">
+			<div class="mainModalDialogBack">
+			<div class="mainModalDialog">
+				<div class="mainModalContent">
+					<div>
+						<strong>7월 12일 (일)</strong>
+						<ul>
+							<li>
+								<span class="mCIcon" style="background:#1c9749;">휴일</span>
+								[공식휴일] 현충일
+							</li>
+							<li>
+								<span class="mCIcon" style="background:#3788d8;">휴가</span>
+								[년차] 조명진 <br/>
+								[월차] 김시은, 이용민, 이재원
+							</li>
+							<li>
+								<span class="mCIcon" style="background:#cecda7;">생일</span>
+								[생일] 홍길동
+							</li>
+							<li>
+								<span class="mCIcon" style="background:#c33a95;">회의</span>
+								Meeting1 00:00<br/>
+								Meeting2 00:00<br/>
+								Meeting3 00:00<br/>
+								Dinner Meeting 00:00<br/>
+							</li>
+							<li>
+								<span class="mCIcon" style="background:#48e6c9;">외근</span>
+								[외근] 홍길동 00:00 ~ 00:00<br/>
+								     김철수 00:00 ~ 00:00
+							</li>
+							<li>
+								<span class="mCIcon" style="background:#ff8217;">현장근무</span>
+								[현장근무] 홍길동 (거래처명)
+							</li>
+						</ul>
+					</div>
+					<button type="button" class="pclose" onclick="closeModal();">Close</button>
+				</div>
+			</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+            
+		});
+		</script>
+	</head>
+	<body><!-- 2019-03-21 estColor class 삭제 -->
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="goPrev" onclick="history.back()">뒤로가기</button>
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight newStep">
+							<!--<a href="main.html" class="goMain process">메인으로 이동</a>-->
+						</span>
+					</div>
+					<div class="headSub">
+						<!-- <h2>1Depth title</h2> -->
+						<h2 class="sCase"><span>계출현황 &gt; </span>차량가격 및 매출할인정보</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+                        <div class="estColor online"><!-- 2019-03-21 지류/전자 구분 html(div) 추가, 지류일 경우 online class 삭제 -->
+                            <div class="estimateDetail">                                
+                                <div class="estimateDtlbody">
+                                    <!-- 차량가격 -->
+                                    <dl class="estimateDtlBox type2">
+                                        <dt class="estDtlTit">
+                                            차량가격
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+                                                <div class="gridSet">
+                                                    <div class="gridItem">
+                                                        <div class="listIptLine">
+                                                            <div class="left">
+                                                                <ul class="listView inline">
+                                                                    <li>
+                                                                        <span class="tit">차종</span>
+                                                                        <span class="txt">PE 15FL</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="right">
+                                                                <input type="tel" id="carType" class="tRight" value="22,500,000" readonly>
+                                                            </div>
+                                                        </div>
+                                                        <div class="listIptLine">
+                                                            <div class="left">
+                                                                <ul class="listView inline">
+                                                                    <li>
+                                                                        <span class="tit">외장색</span>
+                                                                        <span class="txt">검정색</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="right">
+                                                                <input type="tel" id="outsideColor" class="tRight" value="0" readonly>
+                                                            </div>
+                                                        </div>
+                                                        <div class="listIptLine">
+                                                            <div class="left">
+                                                                <ul class="listView inline">
+                                                                    <li>
+                                                                        <span class="tit">내장색</span>
+                                                                        <span class="txt">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="right">
+                                                                <input type="tel" id="insaideColor" class="tRight" value="220,500" readonly>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="dotLine"></div>
+                                                <div class="gridSet">
+                                                    <div class="gridItem">
+                                                        <dl class="totalLine cyn mt7">
+                                                            <dt>총판매가격</dt>
+                                                            <dd><input type="tel" id="totalSales" class="tRight" value="22,500,000" readonly></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <div class="gridSet">
+                                                    <div class="gridItem">
+                                                        <dl class="totalLine red">
+                                                            <dt>매출할인</dt>
+                                                            <dd><input type="tel" id="discount" class="tRight" value="22,500,000" readonly></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 차량가격 -->
+
+                                    <!-- 매출할인 -->
+                                    <dl class="estimateDtlBox type2">
+                                        <dt class="estDtlTit">
+                                            매출할인
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+                                                <div class="gridSet">
+                                                    <table class="grayList">
+                                                        <colgroup>
+                                                            <col style="width: 20%;">
+                                                            <col style="width: 22%;">
+                                                            <col style="width: 18%;">
+                                                            <col style="width: 40%;">
+                                                        </colgroup>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>할인명</th>
+                                                                <th>할인금액</th>
+                                                                <th>할인율</th>
+                                                                <th>기출고 정보/카드번호/기타사유/카드포인트/기타정보</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="tLeft">-</td>
+                                                                <td class="tRight">120,250,000</td>
+                                                                <td>0%</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="tLeft">-</td>
+                                                                <td class="tRight">250,000</td>
+                                                                <td>0%</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="tLeft">-</td>
+                                                                <td class="tRight">250,000</td>
+                                                                <td>0%</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="tLeft">-</td>
+                                                                <td class="tRight">250,000</td>
+                                                                <td>0%</td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 매출할인 -->
+
+                                    <!-- 증빙서류 -->
+                                    <dl class="estimateDtlBox type2">
+                                        <dt class="estDtlTit">
+                                            증빙서류
+                                            <button class="btnRoundBG documentUpload">매출할인 서류등록<i class="iCamera"></i></button>
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+                                                <div class="gridSet">
+                                                    <div class="gridItem">
+                                                        <ul class="fileList numType">
+                                                            <li><span class="num txtDot">1</span><button class="txt">가족관계증명서.pdf</button><button class="fileDel">삭제</button></li>
+                                                            <li><span class="num txtDot">2</span><button class="txt">재직증명서.jpg</button><button class="fileDel">삭제</button></li>
+                                                            <li><span class="num txtDot">3</span><button class="txt">개별소비세 예상가격 정리.xlsx개별소비세 예상가격 정리.xlsx</button><button class="fileDel">삭제</button></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 증빙서류 -->
+                                </div>
+                            </div>
+                        </div><!-- 2019-03-21 html(div) 추가 -->
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<!-- <script type="text/javascript" src="js/jquery-ui.min.js"></script> -->
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$('.gnbScroll').load('../gnb.html');
+			//
+			var cTabConSwiper = new Swiper('.cTabCon .swiper-container', {
+				autoHeight: true,
+				spaceBetween: 14,
+				onSlideChangeStart: function (swiper) {
+					$('.cTab li').removeClass('on');
+					if (swiper.activeIndex == 0) {
+						$('.cTab li:eq(0)').addClass('on');
+					}
+				}
+			});
+			$(".cTab li button").click(function () {
+				$(".cTab li").removeClass("on");
+				$(this).parent("li").addClass("on");
+				var activeTab = $(this).attr("data-name");
+				cTabConSwiper.slideTo(activeTab);
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 서브 생략 -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<!-- <button class="gnbOpen">GNB 열기</button> -->
+							<button class="goPrev" onclick="history.back()">뒤로가기</button> 
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="../main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2 class="sCase"><span>서류등록 &gt; </span>입금증</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<!-- contractLayout -->
+						<div class="docLayout">
+							<!-- summBox -->
+							<div class="summBoxBack">
+								<div class="summBox">
+									<span class="summTt">[11] 개인-일반개인판매 (과세)</span>
+									<div class="ttArea">
+										<strong>9000261364<i class="eIcon">전자계약</i><em>홍길동 님(이서언 님)</em></strong>
+									</div>
+									<div class="infoBtn">
+										<div class="left">
+											<dl>
+												<dt>계약상태</dt>
+												<dd>작성중</dd>
+												<dt>계약일자</dt>
+												<dd>2018-04-04</dd>
+											</dl>
+											<div>
+												<dl>
+													<dt>차종</dt>
+													<dd>QM6 1 8MY Dci 2wd re Signature</dd>
+												</dl>
+												<dl>
+													<dt>옵션</dt>
+													<dd>VGTIC</dd>
+												</dl>
+												<span>
+													<dl>
+														<dt>색상</dt>
+														<dd>어반그레이/블랙가죽시트</dd>
+													</dl>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--// summBox -->
+							<div class="documentView2">
+								<table cellpadding="0" cellspacing="0" border="0" class="receiptList">
+									<colgroup>
+										<col width="60%" />
+										<col />
+									</colgroup>
+									<thead>
+										<tr>
+											<th class="totalInfo"><span>총 발행건수<strong>6건</strong></span></th>
+											<th class="tRight">
+												<a href="" class="btnLine">입금증 전체보기</a>
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<strong>2018-05-01 16:26</strong>
+												<div>
+													<span>카드종류</span>
+													<span>삼성카드</span>
+													<em>20,000원</em>
+												</div>
+											</td>
+											<td>
+												<a href="document_receiptForm.html" class="btnSign action">서명</a>
+											</td>
+										</tr>
+										<!-- //Loop -->
+										<tr>
+											<td>
+												<strong>2018-05-01 16:26</strong>
+												<div>
+													<span>카드종류</span>
+													<span>삼성카드</span>
+													<em>20,000원</em>
+												</div>
+											</td>
+											<td>
+												<a href="document_receiptForm.html" class="btnSign action">서명</a>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<strong>2018-05-01 16:26</strong>
+												<div>
+													<span>카드종류</span>
+													<span>삼성카드</span>
+													<em>20,000원</em>
+												</div>
+											</td>
+											<td>
+												<a class="btnSign">서명</a>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<strong>2018-05-01 16:26</strong>
+												<div>
+													<span>카드종류</span>
+													<span>삼성카드</span>
+													<em>20,000원</em>
+												</div>
+											</td>
+											<td>
+												<a href="document_receiptForm.html" class="btnSign action">서명</a>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<strong>2018-05-01 16:26</strong>
+												<div>
+													<span>카드종류</span>
+													<span>삼성카드</span>
+													<em>20,000원</em>
+												</div>
+											</td>
+											<td>
+												<a class="btnSign">서명</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- //contractLayout -->
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/push.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.step1Data .blue').click(function(){
+					$('.step1Data .joinDetail .p2').show();
+					$('.step1Data .joinDetail .errorMsg').show();
+					$('.step1Data .blue').click(function(){
+						$('.step1Data').hide();
+						$('.step2Data').show();
+						$('.stepBack .step').hide();
+						$('.stepBack .step.case2').show();
+					});
+				});
+				$('.btnPassNumGo').click(function(){
+					$(this).hide();
+					$('.btnPassNumGo2').show();
+					$('.back.noTt').show();
+					$('.back.noTt button').click(function(){
+						$('.phonePass .redLine').show();
+						$('.back.noTt button').click(function(){
+							$('.phonePass .redLine').show();
+						});
+						$('.back.noTt button').click(function(){
+							$('.step1Data').hide();
+							$('.step2Data').show();
+							$('.stepBack h3').text('패스워드 재설정');
+							$('.stepBack .step').hide();
+							$('.stepBack .step.case2').show();
+						});
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap" class="joinCase">
+			<!-- header -->
+			<div id="header">
+				<header>
+					 <span class="left">
+						<h1>씽크트리<!-- 2020-10-29 텍스트 변경 --></h1>
+					 </span>
+					 <h2>아이디 찾기</h2>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="joinLayout">
+						<div class="stepBack">
+							<h3>휴대전화 인증</h3>
+							<div class="step step2 case1">
+								<span class="now"><em>step1</em></span>
+								<span><em>step2</em></span>
+							</div>
+							<div class="step step2 case2" style="display:none;">
+								<span class="fin"><em>step1</em></span>
+								<span class="now"><em>step2</em></span>
+							</div>
+						</div>
+						<div class="whiteBox">
+							<!-- step 1 -->
+							<div class="step1Data">
+								<div class="joinDetail infoWrite">
+									<ul class="infoArea">
+										<li>
+											<dl class="inputBox">
+												<dt>성명</dt>
+												<dd><input type="password" placeholder="성명을 입력해주세요"/></dd>
+											</dl>
+										</li>
+										<li>
+											<dl class="inputBox">
+												<dt>사업자번호(운송사)</dt>
+												<dd><input type="password" placeholder="소속 운송사의 사업자 번호를 입력해주세요"/></dd>
+											</dl>
+										</li>
+									</ul>
+									<p class="errorMsg" style="display:none;">아이디가 존재하지 않습니다.</p>
+									<!-- btn Area -->
+									<!-- 2020-06-16 disabled case 추가 -->
+									<div class="btnSet">
+										<button class="btnL whiteBlue">취소</button>
+										<button class="btnL blue" disabled>확인</button>
+									</div>
+									<!-- //2020-06-16 disabled case 추가 -->
+									<div class="btnSet">
+										<button class="btnL whiteBlue">취소</button>
+										<button class="btnL blue">확인</button>
+									</div>
+								</div>
+							</div>
+							<!-- //step 1 -->
+							<!-- step 2 -->
+							<div class="step2Data" style="display:none;">
+								<div class="joinDetail">
+									<div class="joinEnd">
+										<p>
+											회원님의 아이디는 아래와 같습니다.<br/><strong>h********g@naver.com</strong>해당 아이디로 다시 로그인해주세요.
+										</p>
+									</div>
+									<!-- btn Area -->
+									<div class="btnSet tC">
+										<a href="login.html" class="btnL blue">로그인 하러가기</a>
+									</div>
+								</div>
+							</div>
+							<!-- //step 2 -->
+						</div>
+					</div>
+					<!-- //page Layout -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+    </body>
+</html>

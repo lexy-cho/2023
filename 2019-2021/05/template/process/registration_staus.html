@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			// 2019-03-15 달력형식 변경, 공통으로 사용
+            $('.calendarSet button').duDatepicker({
+                format: 'yyyy-mm-dd', // Determines the date format
+                theme: 'yellow',        // Determines the color theme of the date picker
+				readOnly: true,       // Determines if input element is readonly (key input is disabled)
+				clearBtn: false,      // Determines if Clear button is displayed
+				cancelBtn: true,     // Determines if Cancel button is displayed
+				overlayClose: true    // Determines if clicking the overlay will close the date picker
+			}).on('datechanged', function(event){
+                $(this).prev().val(event.date);
+            });
+
+			$(document).on('click tab', '.gnbOpen', function(e){
+				$('.gnbScroll').load('../gnb.html',function(){
+					funcGnbOpen();
+				});
+				return false;
+			});// 2019-03-15 gnb html load (퍼블리시용)
+            
+            // 스와이프 탭
+            var swiper = new Swiper('.swiper-container', {
+                slidesPerView: 'auto'
+            });
+            $("[name='rgstTabMenu']").change(function(){
+                var radioTabVal = $("input:radio[name='rgstTabMenu']:checked").val();
+
+                swiper.slideTo(radioTabVal);	
+            });
+            
+            // 헤더 컨텐츠 고정 값만큼 컨텐츠에 padding-top 설정, 목록은 모두 공통 <!--2019-03-15--->
+            $(window).resize(function(){
+                $(".postList").css({
+                    "padding-top" : $(".headFixed").height()
+                });
+            }).resize();
+            
+            
+            // mobile 한정 - 검색영역 확장 버튼, 목록은 공통으로 사용 <!--2019-03-15--->
+            $(".btnSchOpen").click(function(){
+                if($(this).hasClass("active")){
+                    $(this).removeClass("active");
+                    $(this).parent(".searchField").removeClass("on");
+                    $(".postList").css({
+                        "padding-top" : $(".headFixed").height()
+                    });
+                }else{
+                    $(this).addClass("active");
+                    $(this).parent(".searchField").addClass("on");
+                    $(".postList").css({
+                        "padding-top" : $(".headFixed").height()
+                    });
+                }
+            });
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button>
+							<!-- <button class="goPrev" onclick="history.back()">뒤로가기</button> -->
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="../main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2>계출현황</h2> <!-- 2019-04-17 타이틀변경 -->
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<div class="postList"> <!-- 2019-03-15 클래스 변경, registType 삭제 -->
+                            <!-- fixed -->
+                            <div class="headFixed">
+                                <!-- 검색 -->
+                                <div class="searchField">
+                                    <ul class="srhGrpLine">
+                                        <li>
+                                            <span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+                                                <select>
+                                                    <option>본부선택</option>
+                                                    <option>전체</option>
+                                                    <option>영업본부</option>
+                                                    <option>동부 DB</option>
+                                                </select>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+                                                <select>
+                                                    <option>지점선택</option>
+                                                    <option>강릉지점</option>
+                                                    <option>구성지점</option>
+                                                    <option>북수원지점</option>
+                                                </select>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+                                                <select>
+                                                    <option>영업사원</option>
+                                                    <option>강릉지점</option>
+                                                    <option>구성지점</option>
+                                                    <option>북수원지점</option>
+                                                </select>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+                                                <select>
+                                                    <option>모델</option>
+                                                    <option>SM7-L47</option>
+                                                    <option>SM6-LFD</option>
+                                                    <option>SM5-L43</option>
+                                                </select>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    <div class="iptGrpLine">
+                                        <span class="checkSet"><input type="checkbox" id="prevMonth" /><label for="prevMonth"><i></i>전월</label></span>
+                                        <ul class="calGrp">
+                                            <li>
+                                                <div class="calendarSet"><input type="tel" id="" name="" /><button>달력열기</button></div><!--2019-03-15--->
+                                            </li>
+                                            <li>
+                                                <div class="calendarSet"><input type="tel" id="" name="" /><button>달력열기</button></div><!--2019-03-15--->
+                                            </li>
+                                        </ul>
+                                        <div class="iptSearch">
+                                            <input type="text" id="searchWord" class="searchInp" placeholder="고객명, 계약번호" />
+                                            <button class="btnBY">조회</button>
+                                            <button class="btnBG reflesh">새고로침</button>
+                                        </div>
+                                    </div>
+                                    <button class="mbView btnSchOpen">열기</button>
+                                </div>
+                                <!-- // 검색 -->
+
+                                <div class="infoBox">
+                                    <!-- 2019-08-19 -->
+                                    <p class="insideTag"><span class="stickerTltp">TIP</span>계약번호의 <i class="modifyMark">수정된 계약</i>표시는 최초서명 이후 계약내용 수정이 있었던 건으로 인수 전에 반드시 재서명을 진행하셔야 합니다.<span class="iReSign"></span><br /><span class="txtRD">재서명은 전자계약 건만 가능합니다.</span></p>
+                                    <!-- //2019-08-19 -->
+                                </div>
+
+                                <div class="tabContainer">
+                                    <div class="swiper-container">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <span class="tabBox">
+                                                    <input type="radio" name="rgstTabMenu" id="rgst01" value="0" checked />
+                                                    <label for="rgst01"><span class="txt">승인요청<span>15</span></span></label>
+                                                </span>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <span class="tabBox">
+                                                    <input type="radio" name="rgstTabMenu" id="rgst02" value="1" />
+                                                    <label for="rgst02"><span class="txt">계약승인<span>1</span></span></label>
+                                                </span>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <span class="tabBox">
+                                                    <input type="radio" name="rgstTabMenu" id="rgst03" value="2" />
+                                                    <label for="rgst03"><span class="txt">배정요청<span>0</span></span></label>
+                                                </span>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <span class="tabBox">
+                                                    <input type="radio" name="rgstTabMenu" id="rgst04" value="3" />
+                                                    <label for="rgst04"><span class="txt">배정완료<span>3</span></span></label>
+                                                </span>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <span class="tabBox">
+                                                    <input type="radio" name="rgstTabMenu" id="rgst05" value="4" />
+                                                    <label for="rgst05"><span class="txt">출고요청<span>2</span></span></label>
+                                                </span>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <span class="tabBox">
+                                                    <input type="radio" name="rgstTabMenu" id="rgst06" value="5" />
+                                                    <label for="rgst06"><span class="txt">출고승인<span>0</span></span></label>
+                                                </span>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <span class="tabBox">
+                                                    <input type="radio" name="rgstTabMenu" id="rgst07" value="6" />
+                                                    <label for="rgst07"><span class="txt">매출<span>0</span></span></label>
+                                                </span>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <span class="tabBox">
+                                                    <input type="radio" name="rgstTabMenu" id="rgst08" value="7" />
+                                                    <label for="rgst08"><span class="txt">고객인도<span>2</span></span></label>
+                                                </span>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <span class="tabBox">
+                                                    <input type="radio" name="rgstTabMenu" id="rgst09" value="8" />
+                                                    <label for="rgst09"><span class="txt">계약취소<span>0</span></span></label>
+                                                </span>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <span class="tabBox">
+                                                    <input type="radio" name="rgstTabMenu" id="rgst10" value="9" />
+                                                    <label for="rgst10"><span class="txt">매출취소<span>0</span></span></label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- table header / Tab -->
+                                <div class="tablet"> <!-- 2019-03-15 tab > tablet -->
+                                    <div class="tbContainer">
+                                        <table class="tbList">
+                                            <colgroup> <!-- 2019-04-12 넓이조절 -->
+                                                <col style="width:10%;">
+                                                <col style="width:18%;">
+                                                <col style="width:14%;">
+                                                <col style="width:9%;">
+                                                <col style="width:7%;">
+                                                <col style="width:7%;">
+                                                <col style="width:7%;">
+                                                <col style="width:8%;">
+                                                <col style="width:8%;">
+                                                <col style="width:*;">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>모델</th>
+                                                    <th>계약번호<button class="sort"><i></i>정렬</button></th>
+                                                    <th>고객명</th>
+                                                    <th>고객정보</th>
+                                                    <th>동의서</th> <!-- 2019-04-12 글씨변경-->
+                                                    <th>계약서</th>
+                                                    <th>인수증</th>
+                                                    <th>서류등록</th>
+                                                    <th>재서명</th>
+                                                    <th>본부<br />(지점/영업사원)</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- // table header / Tab -->
+                            </div>
+                            <!-- // fixed -->
+                            
+                            <div class="postListBody"> <!--2019-03-15 클래스명 변경--->
+                                <!-- 목록 / Tab -->
+                                <div class="tablet"> <!-- 2019-03-15 tab > tablet -->
+                                    <div class="tbContainer">
+                                        <table class="tbList">
+                                            <colgroup> <!-- 2019-04-12 넓이조절 -->
+                                                <col style="width:10%;">
+                                                <col style="width:18%;">
+                                                <col style="width:14%;">
+                                                <col style="width:9%;">
+                                                <col style="width:7%;">
+                                                <col style="width:7%;">
+                                                <col style="width:7%;">
+                                                <col style="width:8%;">
+                                                <col style="width:8%;">
+                                                <col style="width:*;">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td><a href="registration_detail.html">9000107390<i class="eIcon">전자계약</i><i class="modifyMark">수정된 계약</i> <!--2019-06-03 매수인정보 변경 수정일경우 표기 --></a></td>
+                                                    <td class="tLeft"><a href="../customer/customer_individual.html">김경아 님(김철수 님)</a></td>
+                                                    <td>승인요청</td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle">미완료</span></td>
+                                                    <td><a href="../contract/document_list.html" class="iDocument">서류등록</a></td>
+                                                    <td><a href="../contract/contract_write.html" class="iReSign">재서명</a></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td><a href="registration_detail.html">9000107390<i class="paperIcon">지류계약</i></a></td>
+                                                    <td class="tLeft"><a href="../customer/customer_individual.html">김지후 님 외 2명</a></td>
+                                                    <td>계약승인</td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle">미완료</span></td>
+                                                    <td><a href="../contract/document_list.html" class="iDocument">서류등록</a></td>
+                                                    <td></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td><a href="registration_detail.html">9000107390<i class="eIcon">전자계약</i><i class="modifyMark blue">수정된 계약</i> <!--2019-06-03 계약정보 수정일경우 표기 --></a></td>
+                                                    <td class="tLeft"><a href="../customer/customer_individual.html">김지후 님 외 2명</a></td>
+                                                    <td>배정완료</td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle">미완료</span></td>
+                                                    <td><a href="../contract/document_list.html" class="iDocument">서류등록</a></td>
+                                                    <td></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td><a href="registration_detail.html">9000107390<i class="eIcon">전자계약</i></a></td>
+                                                    <td class="tLeft"><a href="../customer/customer_individual.html">김지후 님 외 2명</a></td>
+                                                    <td>출고요청</td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle">미완료</span></td>
+                                                    <td><a href="../contract/document_list.html" class="iDocument">서류등록</a></td>
+                                                    <td></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td><a href="registration_detail.html">9000107390<i class="eIcon">전자계약</i></a></td>
+                                                    <td class="tLeft"><a href="../customer/customer_individual.html">김경아 님(김철수 님)</a></td>
+                                                    <td>승인요청</td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle">미완료</span></td>
+                                                    <td><a href="../contract/document_list.html" class="iDocument">서류등록</a></td>
+                                                    <td><a href="../contract/contract_write.html" class="iReSign">재서명</a></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td><a href="registration_detail.html">9000107390<i class="eIcon">전자계약</i></a></td>
+                                                    <td class="tLeft"><a href="../customer/customer_individual.html">김경아 님(김철수 님)</a></td>
+                                                    <td>승인요청</td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle">미완료</span></td>
+                                                    <td><a href="../contract/document_list.html" class="iDocument">서류등록</a></td>
+                                                    <td><a href="../contract/contract_write.html" class="iReSign">재서명</a></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td><a href="registration_detail.html">9000107390<i class="eIcon">전자계약</i></a></td>
+                                                    <td class="tLeft"><a href="../customer/customer_individual.html">김경아 님(김철수 님)</a></td>
+                                                    <td>승인요청</td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle">미완료</span></td>
+                                                    <td><a href="../contract/document_list.html" class="iDocument">서류등록</a></td>
+                                                    <td><a href="../contract/contract_write.html" class="iReSign">재서명</a></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td><a href="registration_detail.html">9000107390<i class="eIcon">전자계약</i></a></td>
+                                                    <td class="tLeft"><a href="../customer/customer_individual.html">김경아 님(김철수 님)</a></td>
+                                                    <td>승인요청</td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle">미완료</span></td>
+                                                    <td><a href="../contract/document_list.html" class="iDocument">서류등록</a></td>
+                                                    <td><a href="../contract/contract_write.html" class="iReSign">재서명</a></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td><a href="registration_detail.html">9000107390<i class="paperIcon">지류계약</i></a></td>
+                                                    <td class="tLeft"><a href="../customer/customer_individual.html">김지후 님 외 2명</a></td>
+                                                    <td>계약승인</td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle">미완료</span></td>
+                                                    <td><a href="../contract/document_list.html" class="iDocument">서류등록</a></td>
+                                                    <td></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td><a href="registration_detail.html">9000107390<i class="paperIcon">지류계약</i></a></td>
+                                                    <td class="tLeft"><a href="../customer/customer_individual.html">김지후 님 외 2명</a></td>
+                                                    <td>계약승인</td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle">미완료</span></td>
+                                                    <td><a href="../contract/document_list.html" class="iDocument">서류등록</a></td>
+                                                    <td></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td><a href="registration_detail.html">9000107390<i class="paperIcon">지류계약</i></a></td>
+                                                    <td class="tLeft"><a href="../customer/customer_individual.html">김지후 님 외 2명</a></td>
+                                                    <td>계약승인</td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle">미완료</span></td>
+                                                    <td><a href="../contract/document_list.html" class="iDocument">서류등록</a></td>
+                                                    <td></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td><a href="registration_detail.html">9000107390<i class="paperIcon">지류계약</i></a></td>
+                                                    <td class="tLeft"><a href="../customer/customer_individual.html">김지후 님 외 2명</a></td>
+                                                    <td>계약승인</td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle">미완료</span></td>
+                                                    <td><a href="../contract/document_list.html" class="iDocument">서류등록</a></td>
+                                                    <td></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td><a href="registration_detail.html">9000107390<i class="paperIcon">지류계약</i></a></td>
+                                                    <td class="tLeft"><a href="../customer/customer_individual.html">김지후 님 외 2명</a></td>
+                                                    <td>계약승인</td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle">미완료</span></td>
+                                                    <td><a href="../contract/document_list.html" class="iDocument">서류등록</a></td>
+                                                    <td></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td><a href="registration_detail.html">9000107390<i class="paperIcon">지류계약</i></a></td>
+                                                    <td class="tLeft"><a href="../customer/customer_individual.html">김지후 님 외 2명</a></td>
+                                                    <td>계약승인</td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle">미완료</span></td>
+                                                    <td><a href="../contract/document_list.html" class="iDocument">서류등록</a></td>
+                                                    <td></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td><a href="registration_detail.html">9000107390<i class="paperIcon">지류계약</i></a></td>
+                                                    <td class="tLeft"><a href="../customer/customer_individual.html">김지후 님 외 2명</a></td>
+                                                    <td>계약승인</td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle">미완료</span></td>
+                                                    <td><a href="../contract/document_list.html" class="iDocument">서류등록</a></td>
+                                                    <td></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td><a href="registration_detail.html">9000107390<i class="paperIcon">지류계약</i></a></td>
+                                                    <td class="tLeft"><a href="../customer/customer_individual.html">김지후 님 외 2명</a></td>
+                                                    <td>계약승인</td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle yellow">완료</span></td>
+                                                    <td><span class="iCircle">미완료</span></td>
+                                                    <td><a href="../contract/document_list.html" class="iDocument">서류등록</a></td>
+                                                    <td></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- // 목록 / Tab -->
+
+                                <!-- 목록 / mobile -->
+                                <div class="mobile">
+                                    <ul class="estList">
+                                        <li>
+                                            <div class="estListHead">
+                                                <div class="estHeadInner">
+                                                    <span class="estShop">중부 JB (용인대리점/황자연)</span>
+                                                    <span class="estStatus">승인요청</span>
+                                                </div>
+                                            </div>
+                                            <div class="estListBody">
+                                                <div class="estBodyMain type2 innerBtn">
+                                                    <div class="estMainInner">
+                                                        <span class="estModel">SM7-L47</span>
+                                                        <a href="registration_detail.html" class="estNum">9000107390<i class="eIcon">전자계약</i><i class="modifyMark">수정된 계약</i> <!--2019-06-03 매수인정보 변경 수정일경우 표기 --></a>
+                                                    </div>
+                                                    <a href="../contract/document_list.html" class="iDocument">서류등록</a>
+                                                    <a href="../contract/contract_write.html" class="iReSign">재서명</a>
+                                                    <a href="../customer/customer_individual.html" class="estName">홍길동 님<span>(김길동 님)</span></a>
+                                                </div>
+                                            </div>
+                                            <div class="estListFoot">
+                                                <ul class="statusDot">
+                                                    <li>
+                                                        <span class="txt">개인정보</span>
+                                                        <span class="iCircle yellow">완료</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="txt">계약서</span>
+                                                        <span class="iCircle yellow">완료</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="txt">인수증</span>
+                                                        <span class="iCircle">미완료</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="estListHead">
+                                                <div class="estHeadInner">
+                                                    <span class="estShop">중부 JB (용인대리점/황자연)</span>
+                                                    <span class="estStatus">승인요청</span>
+                                                </div>
+                                            </div>
+                                            <div class="estListBody">
+                                                <div class="estBodyMain type2 innerBtn">
+                                                    <div class="estMainInner">
+                                                        <span class="estModel">SM7-L47</span>
+                                                        <a href="registration_detail.html" class="estNum">9000107390<i class="paperIcon">지류계약</i></a>
+                                                    </div>
+                                                    <a href="../contract/document_list.html" class="iDocument">서류등록</a>
+                                                    <a href="../contract/contract_write.html" class="iReSign">재서명</a>
+                                                    <a href="../customer/customer_individual.html" class="estName">홍길동 님<span>(김길동 님)</span></a>
+                                                </div>
+                                            </div>
+                                            <div class="estListFoot">
+                                                <ul class="statusDot">
+                                                    <li>
+                                                        <span class="txt">개인정보</span>
+                                                        <span class="iCircle yellow">완료</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="txt">계약서</span>
+                                                        <span class="iCircle yellow">완료</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="txt">인수증</span>
+                                                        <span class="iCircle">미완료</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="estListHead">
+                                                <div class="estHeadInner">
+                                                    <span class="estShop">중부 JB (용인대리점/황자연)</span>
+                                                    <span class="estStatus">승인요청</span>
+                                                </div>
+                                            </div>
+                                            <div class="estListBody">
+                                                <div class="estBodyMain type2 innerBtn">
+                                                    <div class="estMainInner">
+                                                        <span class="estModel">SM7-L47</span>
+                                                        <a href="" class="estNum">9000107390<i class="paperIcon">지류계약</i></a>
+                                                    </div>
+                                                    <a href="" class="iDocument">서류등록</a>
+                                                    <a href="" class="iReSign">재서명</a>
+                                                    <a href="" class="estName">홍길동 님<span>(김길동 님)</span></a>
+                                                </div>
+                                            </div>
+                                            <div class="estListFoot">
+                                                <ul class="statusDot">
+                                                    <li>
+                                                        <span class="txt">개인정보</span>
+                                                        <span class="iCircle yellow">완료</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="txt">계약서</span>
+                                                        <span class="iCircle yellow">완료</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="txt">인수증</span>
+                                                        <span class="iCircle">미완료</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="estListHead">
+                                                <div class="estHeadInner">
+                                                    <span class="estShop">중부 JB (용인대리점/황자연)</span>
+                                                    <span class="estStatus">승인요청</span>
+                                                </div>
+                                            </div>
+                                            <div class="estListBody">
+                                                <div class="estBodyMain type2 innerBtn">
+                                                    <div class="estMainInner">
+                                                        <span class="estModel">SM7-L47</span>
+                                                        <a href="" class="estNum">9000107390<i class="eIcon">전자계약</i><i class="modifyMark blue">수정된 계약</i> <!--2019-06-03 계약정보 수정일경우 표기 --></a>
+                                                    </div>
+                                                    <a href="" class="iDocument">서류등록</a>
+                                                    <a href="" class="iReSign">재서명</a>
+                                                    <a href="" class="estName">홍길동 님<span>(김길동 님)</span></a>
+                                                </div>
+                                            </div>
+                                            <div class="estListFoot">
+                                                <ul class="statusDot">
+                                                    <li>
+                                                        <span class="txt">개인정보</span>
+                                                        <span class="iCircle yellow">완료</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="txt">계약서</span>
+                                                        <span class="iCircle yellow">완료</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="txt">인수증</span>
+                                                        <span class="iCircle">미완료</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="estListHead">
+                                                <div class="estHeadInner">
+                                                    <span class="estShop">중부 JB (용인대리점/황자연)</span>
+                                                    <span class="estStatus">승인요청</span>
+                                                </div>
+                                            </div>
+                                            <div class="estListBody">
+                                                <div class="estBodyMain type2 innerBtn">
+                                                    <div class="estMainInner">
+                                                        <span class="estModel">SM7-L47</span>
+                                                        <a href="" class="estNum">9000107390<i class="paperIcon">지류계약</i></a>
+                                                    </div>
+                                                    <a href="" class="iDocument">서류등록</a>
+                                                    <a href="" class="iReSign">재서명</a>
+                                                    <a href="" class="estName">홍길동 님<span>(김길동 님)</span></a>
+                                                </div>
+                                            </div>
+                                            <div class="estListFoot">
+                                                <ul class="statusDot">
+                                                    <li>
+                                                        <span class="txt">개인정보</span>
+                                                        <span class="iCircle yellow">완료</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="txt">계약서</span>
+                                                        <span class="iCircle yellow">완료</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="txt">인수증</span>
+                                                        <span class="iCircle">미완료</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- // 목록 / mobile -->
+                            </div>
+                        </div>  
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

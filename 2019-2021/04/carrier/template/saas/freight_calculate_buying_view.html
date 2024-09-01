@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/push.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.taxBillArea .btnM').click(function() {
+					$(this).css('display','none');
+					$('.taxBillArea .imgArea img, .taxBillArea .billBtn').css('display','inline-block');
+				});
+				$('.btnTaxBill').click(function(){
+			        $('.popDim').show();
+			        $('.taxBillPop').show();
+			    });
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap" class="freightCase">
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back">
+						<div data-include="../include/saas_snb.html"></div>
+					</div>
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<!-- 모바일 메뉴 없음 -->
+			<!-- //mobile Menu -->
+			<hr/>
+			<div id="containerBack">
+				<!-- header -->
+				<div id="header">
+					<header>
+						<span class="left">
+							<button class="btnList" onclick="location.href='freight_calculate_buying_detail.html'">목록</button>
+						</span>
+						<div class="viewTit2">
+							<span class="simpleTit">
+								<em>[<span class="red">수입</span> / 왕복]</em>
+								<strong class="date">2020-01-22</strong>
+							</span>
+							<span class="right">
+								<dl>
+									<dt>총 수령금액</dt>
+									<dd><span>755,000</span>원</dd>
+								</dl>
+							</span>
+						</div>
+					</header>
+				</div>
+				<!-- //header -->
+				<hr/>
+				<!-- container -->
+				<div id="container">
+				<section>
+					<div class="content">
+					<article>
+						<!-- Page Layout -->
+						<div class="freightCalculateIssue">
+							<div class="grayArea">
+								<div class="taxBillArea">
+									<div class="imgArea">
+										<img src="../../images/img_bill_example.png" alt="세금계산서 예시"/>
+									</div>
+									<div class="billBtn">
+										<div class="btnSet">
+											<button class="btnS gray">세금계산서 다운로드</button>
+										</div>
+										<dl>
+											<dt>세금계산서 발행일 :</dt>
+											<dd>2020-01-23</dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+							<div class="freightArea">
+								<ul>
+									<!-- 2020-07-16 batchCase 삭제 -->
+									<li>
+										<div class="freightBox">
+											<strong>[운임 상세]</strong>
+											<div class="tls wHalf">
+												<table>
+													<colgroup>
+														<col width="100"/>
+														<col width="100"/>
+														<col width="100"/>
+														<col width="100"/>
+													</colgroup>
+													<thead>
+														<tr>
+															<th>출발</th>
+															<th>작업</th>
+															<th>도착</th>
+															<th>운송금액(원)</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>부산항 (05:00)</td>
+															<td>충북/안산 (09:00)</td>
+															<td>부산항 (15:00)</td>
+															<td class="ftRed">560,000</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<strong>[운임 외 상세]</strong>
+											<!-- 2020-06-22 table 수정 -->
+											<div class="tls freTotal">
+												<table>
+													<colgroup>
+														<col width="40"/>
+														<col width="120"/>
+														<col width="120"/>
+														<col width="120"/>
+														<col width="120"/>
+														<col width="120"/>
+														<col width="120"/>
+														<col width="120"/>
+														<col width="120"/>
+														<col width="120"/>
+													</colgroup>
+													<thead>
+														<tr>
+															<th>구분</th>
+															<th>Port 사용료</th>
+															<th>컨테이너 반납비</th>
+															<th>픽업료</th>
+															<th>상하차료</th>
+															<th>경유비</th>
+															<th>대기료</th>
+															<th>기타</th>
+															<th>부대비용(원)</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>금액</td>
+															<td>30,000</td>
+															<td>15,000</td>
+															<td>65,000</td>
+															<td>20,000</td>
+															<td>35,000</td>
+															<td>20,000</td>
+															<td>10,000</td>
+															<td class="tR ftRed">195,000</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<div class="tls freTotalM">
+												<table>
+													<colgroup>
+														<col width="200"/>
+														<col width="150"/>
+														<col width="150"/>
+													</colgroup>
+													<thead>
+														<tr>
+															<th>구분</th>
+															<th>금액</th>
+															<th>부대비용(원)</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>Port 사용료</td>
+															<td>30,000</td>
+															<td rowspan="7" class="ftRed">195,000</td>
+														</tr>
+														<tr>
+															<td>컨테이너 반납비</td>
+															<td>15,000</td>
+														</tr>
+														<tr>
+															<td>픽업료</td>
+															<td>65,000</td>
+														</tr>
+														<tr>
+															<td>상하차료</td>
+															<td>20,000</td>
+														</tr>
+														<tr>
+															<td>경유비</td>
+															<td>35,000</td>
+														</tr>
+														<tr>
+															<td>대기료</td>
+															<td>20,000</td>
+														</tr>
+														<tr>
+															<td>기타</td>
+															<td>10,000</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<!-- //2020-06-22 table 수정 -->
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- //page Layout -->
+					</article>
+					</div>
+				</section>
+				</div>
+				<!-- //container -->
+			</div>
+		</div>
+		<!-- //Wrap -->
+    </body>
+</html>

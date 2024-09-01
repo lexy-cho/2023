@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$(".tabNav li button").click(function () {
+				$(".tabNav li").removeClass("on");
+				$(this).parent("li").addClass("on");
+				var activeTab = $(this).attr("data-name");
+				$('.tabData').hide();
+				$('.tData' + activeTab).show();
+			});
+			$('.tabWrap .btnArea').click(function () {
+				$('.tls tr').removeClass('on');
+				$('.tabWrap').hide();
+			});//
+			$('.btnReceiver').click(function() {
+				$('.popDim').show();
+				$('.receiverPop').show();
+			});//
+			$('.pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop, .pushPreviewPop').hide();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>메세지 관리</h2>
+					<div class="pagePos"><span>Home</span><span>APP 관리</span><span>Push 관리</span><strong>메세지 관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="pushListViewLayout">
+						<div class="tws">
+							<table>
+								<colgroup>
+									<col width="100"/>
+									<col width="200"/>
+									<col width="100"/>
+									<col width="200"/>
+									<col width="100"/>
+									<col width="200"/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>서비스</th>
+										<td>Ting</td>
+										<th>설치 인원</th>
+										<td>20명</td>
+										<th>삭제 인원</th>
+										<td>20명</td>
+									</tr>
+									<tr>
+										<th>배포 마이크로 URL</th>
+										<td colspan="5">
+											<a class="btnS blue" href="http://cyan2.think-tree.com/ting/front/download/template/ting_download.html" target="_blank">미리보기</a>
+											<button class="btnS white btnReceiver">SMS배포</button>
+											<button class="btnS white btnReceiver">email배포</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="btnArea tC">
+							<a class="btnM" href="app_connect.html">목록</a>
+						</div>
+						<!-- tab-wrap -->
+						<div class="tabWrap">
+							<!-- tab -->
+							<div class="tabBack">
+								<div class="tabNav">
+									<nav>
+										<ul>
+											<li class="on"><button data-name="0">설치현황</button></li>
+											<li><button data-name="1">배포이력</button></li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+							<!--// tab -->
+							<div class="tabLayout">
+								<!-- 설치현황 -->
+								<div class="tabData tData0" style="display:block;">
+									<div class="boardTop">
+										<span class="left">
+											<strong>설치인원 : OO명 / 삭제인원 : OO명</strong>
+										</span>
+										<span class="right">
+											<span class="searchBasic">
+												<span class="calDupSet">
+													<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+													<em>~</em>
+													<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+												</span>
+												<span class="selectSet">
+													<select>
+														<option>전체</option>
+														<option>설치</option>
+														<option>삭제</option>
+													</select>
+												</span>
+												<span class="selectSet">
+													<select>
+														<option>전체</option>
+														<option>안드로이드</option>
+														<option>IOS</option>
+													</select>
+												</span>
+												<span class="searchSet">
+													<input type="text" placeholder="이름 입력">
+													<input type="submit" value="검색" class="btnSearch">
+												</span>
+											</span>
+										</span>
+									</div>
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="30"/>
+												<col width="60"/>
+												<col width="60"/>
+												<col width="100"/>
+												<col width="100"/>
+												<col width="100"/>
+												<col width="100"/>
+												<col width="100"/>
+												<col width="100"/>
+												<col width="50"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th>No</th>
+													<th>사번</th>
+													<th>이름</th>
+													<th>기기종류</th>
+													<th>OS버전</th>
+													<th>기기모델명</th>
+													<th>설치일자</th>
+													<th>삭제일자</th>
+													<th>마지막 접속일자</th>
+													<th>사용권한</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>100</td>
+													<td>123456</td>
+													<td>홍길동</td>
+													<td>iOS</td>
+													<td>10.0.1</td>
+													<td>iPad 4</td>
+													<td>YYYY-MM-DD 00:00</td>
+													<td></td>
+													<td>YYYY-MM-DD 00:00</td>
+													<td>
+														<span class="toggleSet">
+															<input type="checkbox" id="push51" />
+															<label for="push51"></label>
+														</span>
+													</td>
+												</tr>
+												<tr>
+													<td>99</td>
+													<td>123456</td>
+													<td>홍길동</td>
+													<td>iOS</td>
+													<td>10.0.1</td>
+													<td>iPad 4</td>
+													<td>YYYY-MM-DD 00:00</td>
+													<td>YYYY-MM-DD 00:00</td>
+													<td>YYYY-MM-DD 00:00</td>
+													<td>
+														<span class="toggleSet">
+															<input type="checkbox" id="push52" />
+															<label for="push52"></label>
+														</span>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<!---->
+									<div class="paginate">
+										<span>
+											<a class="first">이전</a>
+											<a class="on">1</a>
+											<a>2</a>
+											<a>3</a>
+											<a>4</a>
+											<a>5</a>
+											<a class="next">다음</a>
+										</span>
+										<span class="selectSet">
+											<select>
+												<option>10개</option>
+												<option>20개</option>
+												<option>50개</option>
+												<option>100개</option>
+											</select>
+										</span>
+									</div>
+								</div>
+								<!-- //설치현황 -->
+								<!-- 배포이력 -->
+								<div class="tabData tData1">
+									<div class="boardTop">
+										<span class="right">
+											<span class="searchBasic">
+												<span class="calDupSet">
+													<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+													<em>~</em>
+													<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+												</span>
+												<span class="searchSet">
+													<input type="submit" value="검색" class="btnSearch">
+												</span>
+											</span>
+										</span>
+									</div>
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="30"/>
+												<col width="150"/>
+												<col width="100"/>
+												<col width="100"/>
+												<col />
+											</colgroup>
+											<thead>
+												<tr>
+													<th>No</th>
+													<th>배포일자</th>
+													<th>방법</th>
+													<th colspan="2">배포대상</th>
+												</tr>
+											</thead>	
+
+											<tbody>
+												<tr>
+													<td>100</td>
+													<td>YYYY-MM-DD 00:00</td>
+													<td>SMS</td>
+													<td>1</td>
+													<td class="tL">홍길동 (000000)</td>
+												</tr>
+												<tr>
+													<td>100</td>
+													<td>YYYY-MM-DD 00:00</td>
+													<td>SMS</td>
+													<td>9</td>
+													<td class="tL">홍길동 (000000), 홍길동 (000000), 홍길동 (000000), 홍길동 (000000), 홍길동 (000000), 홍길동 (000000), 홍길동 (000000), 홍길동 (000000), 홍길동 (000000)</td>
+												</tr>
+												<tr>
+													<td>9</td>
+													<td>YYYY-MM-DD 00:00</td>
+													<td>SMS</td>
+													<td>100</td>
+													<td class="tL">전체보기</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<!---->
+									<div class="paginate">
+										<span>
+											<a class="first">이전</a>
+											<a class="on">1</a>
+											<a>2</a>
+											<a>3</a>
+											<a>4</a>
+											<a>5</a>
+											<a class="next">다음</a>
+										</span>
+										<span class="selectSet">
+											<select>
+												<option>10개</option>
+												<option>20개</option>
+												<option>50개</option>
+												<option>100개</option>
+											</select>
+										</span>
+									</div>
+								</div>
+								<!-- //배포이력 -->
+							</div>
+						</div>
+						<!-- //tab-wrap -->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 배포대상 팝업 -->
+			<div class="basicPop receiverPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>배포대상 선택하기</h1>
+				</div>
+				<div class="pBack">
+					<div class="optionBox">
+						<span class="selectSet">
+							<select>
+								<option>부서 선택</option>
+								<option>메뉴2</option>
+							</select>
+						</span>
+						<input type="text" placeholder="성명 혹은 사변을 입력하세요"/>
+						<input class="btnSearch" type="submit" value="검색" />
+					</div>
+					<div class="tls">
+						<table>
+							<colgroup>
+								<col width="50"/>
+								<col width="120"/>
+								<col/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chkAll" />
+											<label for="chkAll"><i></i></label>
+										</span>
+									</th>
+									<th>부서</th>
+									<th>성명(사번)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk1" />
+											<label for="chk1"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk2" />
+											<label for="chk2"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk3" />
+											<label for="chk3"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk4" />
+											<label for="chk4"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk5" />
+											<label for="chk5"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk6" />
+											<label for="chk6"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //배포대상 팝업 -->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

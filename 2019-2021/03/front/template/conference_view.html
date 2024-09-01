@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<meta name="theme-color" content="#212121">
+		<meta name="apple-mobile-web-app-status-bar-style" content="#212121">
+		<title>ThinkTree Visitor</title>
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/jquery.toast.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('.fab .more').click(function(){
+				$('.fabDim').show();
+			});
+			$('#fabDimClose').click(function(){
+				$('.fabDim').hide();
+			});
+			/**/
+			$('.entypo-popup').click(function(){
+				$('.mainGo').toggle();
+			});
+			$('.alertPop button, .basicPop button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			/**/
+			/* 파일업로드 */
+			$('.fileSet input[type=file]').change(function() {
+				var fileValue = $(this).val().split("\\");
+				var fileName = fileValue[fileValue.length-1];
+				$('.fileSet .loadEnd em').text(fileName);
+				$('.fileSet .fileFind').hide();
+				$('.fileSet .loadIng').show();
+				setTimeout(function() {
+					$('.fileSet .loadIng').hide();
+					$('.fileSet .loadFail').show();
+				}, 3000);
+				setTimeout(function() {
+					$('.fileSet .loadFail').hide();
+					$('.fileSet .loadEnd').show();
+				}, 6000);
+			});
+			$('.fileSet .loadEnd button').click(function() {
+				$('.fileSet .fileFind').show();
+				$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+			});
+			/* end 파일업로드 */
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap" class="headFix">
+			<!-- header -->
+			<div id="header" class="subCase">
+				<header>
+					<button class="btnPrev" onclick="history.back()">이전</button>
+					<h1>회의실 예약</h1>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- snb 생략 -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<div class="conferenceLayout">
+						<div class="tvs">
+							<div class="tvsHead">
+								<strong>(업무미팅) 퍼블리싱 Scrum</strong>
+								<span class="meetState">진행중</span>
+							</div>
+							<div class="tvsInfo">
+								<dl>
+									<dt>날짜 :</dt>
+									<dd class="pr1">3월 2일 (월) 09:15 ~ 09:30 <span class="leavingTime">(09:15 ~ 09:25)</span></dd>
+								</dl>
+								<dl>
+									<dt>종료일 :</dt>
+									<dd>2020년 3월 31일</dd>
+								</dl>
+								<dl>
+									<dt>회의실 :</dt>
+									<dd class="pr1">Mountain</dd>
+								</dl>
+								<dl>
+									<dt>담당자 :</dt>
+									<dd>홍길동 [회의부서명]</dd>
+								</dl>
+								<dl>
+									<dt>참여자</dt>
+									<dd>홍길동 (000000), 홍길동 (000000), 홍길동 (000000)</dd>
+								</dl>
+							</div>
+							<div class="tvsContents">
+								<p>일정의 상세내용이 기입될 예정입니다. 본 내용은 고객의 URL발송시에도 포함되는 내용이니 참고하시기 바랍니다.</p>
+							</div>
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="43px" />
+										<col width="*" />
+									</colgroup>
+									<thead>
+										<tr>
+											<th colspan="2">
+												<strong>업체명1㈜가나다라마바사</strong>
+											</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="43px" />
+										<col width="*" />
+									</colgroup>
+									<thead>
+										<tr>
+											<th colspan="2">
+												<strong>업체명1㈜가나다라마바사</strong>
+											</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
+						</div>
+						<span class="fab"><button class="more">하위메뉴 보기</button></span>
+                    </div>
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>TOP</button></div>
+		</div>
+		<!-- //Wrap -->
+		<!-- fabBTn -->
+		<div class="fabDim" style="display:none;">
+			<div>
+				<button class="btnM white">일정완료</button>
+				<button class="btnM white" onClick="location.href='conference_write.html'">일정수정</button>
+				<button class="btnM white">일정취소</button>
+				<button class="btnM white" id="fabDimClose">닫기</button>
+			</div>
+		</div>
+		<!-- //fabBTn -->
+	</body>
+</html>

@@ -1,0 +1,165 @@
+@charset "utf-8";
+
+/*===================================================================
+* INFORMATION
+* -------------------------------------------------------------------
+* @Author : Cho, Myung Jin (lexy.cho@think-tree.co.kr)
+* @File Name: layout.css
+* @Description : 공통 레이아웃 정의
+* @Create Date: 2020-01-17
+* @Last Update Date: N/A
+* @History: N/A
+* ====================================================================*/
+/* ====================== */
+/* Common Setting */
+/* ====================== */
+.caption.on:before {content:'\25B2';}
+.caption.end:before {content:'\25CB';}
+.caption.cancel:before {content:'\25D0';}
+/* main */
+.apprLayout {padding:1rem 0.7143rem;}
+.apprLayout .applyList ul:after {content:'';display:block;clear:both;}
+.apprLayout .applyList li {display:table;margin-right:0.7143rem;width:calc((100% - 2.1429rem)/4);height:7rem;float:left;text-align:center;background-color:#8ea4bc;border-radius:6px;}
+.apprLayout .applyList li:last-child {margin:0;}
+.apprLayout .applyList li a {display:table-cell;vertical-align:middle;width:100%;height:100%;}
+.apprLayout .applyList li strong {color:#fff;}
+.apprLayout .applyList li span {margin:0 auto;display:block;text-indent:-9999px;overflow:hidden;font-size:0;width:4rem;height:4rem;background:url('../images/btn_add.svg') no-repeat center;background-size:3.4rem;}
+.apprLayout .viewList .topArea {padding:1rem 0 0.7143rem;}
+.apprLayout .viewList .topArea .selectSet {width:12rem;}
+.apprLayout .viewList .topArea .caption {line-height:2.7;font-size:0.9286rem;}
+.apprLayout .viewList .topArea:after {content:'';display:block;clear:both;}
+.apprLayout .caption:before {vertical-align:top;margin-right:4px;}
+.apprLayout .viewList li {position:relative;margin-bottom:0.5rem;border:1px solid #bbb;padding:0.7143rem;}
+.apprLayout .viewList li .caption {position:absolute;right:0.7143rem;top:0.7143rem;text-indent:-9999px;overflow:hidden;font-size:0;}
+.apprLayout .viewList li .caption:before {display:block;margin:0;text-indent:0;font-size:1.143rem;line-height:1;}
+.apprLayout .viewList li strong {display:block;padding-bottom:1rem;}
+.apprLayout .viewList li strong span {margin-right:3px;}
+.apprLayout .viewList li strong em {font-size:inherit;margin-right:3px;}
+.apprLayout .viewList li strong em.red {color:#ff7070;font-weight:bold;}
+.apprLayout .viewList li strong em.green {color:#21ac7a;font-weight:bold;}
+.apprLayout .viewList li .writer,
+.apprLayout .viewList li .date {font-size:0.9286rem;}
+.apprLayout .viewList li .writer.on {display:inline-block;padding:0.2rem 0.4rem;border:1px solid #8ea4bc;border-radius:3px;color:#5980ab;}
+/**/
+.apprWriteLayout h2 {padding:1rem 0;text-align:center;font-size:1.143rem;}
+.apprWriteLayout .apprLine {padding:0.7143rem;border:1px solid #bbb;border-width:1px 0;}
+.apprWriteLayout .apprLine dl {padding:0.2rem 0;display:table;width:100%;}
+.apprWriteLayout .apprLine dl dt {display:table-cell;width:2.6rem;text-align:left;font-size:0.9286rem;}
+.apprWriteLayout .apprLine dl dd {display:table-cell;padding:0 0.5rem;text-align:left;font-size:0.9286rem;}
+.apprWriteLayout .btnArea {padding:1rem 0.7143rem;}
+.apprWriteLayout .tws {padding:0 0.7143rem 0.7143rem;}
+.apprWriteLayout .tws td {text-align:left;height:2rem;}
+.apprWriteLayout .tws td .calDupSet em {padding:0 0.25rem;}
+.apprWriteLayout .tws td .tdRow {margin-bottom:0.3rem;}
+.apprWriteLayout .reasonSet {display:block;width:100%;}
+.apprWriteLayout .reasonSet > * {float:left;}
+.apprWriteLayout .reasonSet:after {content:'';display:block;clear:both;}
+.apprWriteLayout .reasonSet .selectSet {margin-right:0.5rem;width:8rem;}
+.apprWriteLayout .reasonSet input {width:calc(100% - 8.5rem);}
+.apprWriteLayout .noticeP {padding:0.7143rem;font-size:0.9286rem;word-break:break-all;}
+.apprWriteLayout .address div > * {float:left;}
+.apprWriteLayout .address div button {height:2.5rem;padding:0;width:6rem;margin-right:0.4rem;font-size:0.9286rem;}
+.apprWriteLayout .address div input {width:calc(100% - 6.4rem);}
+.apprWriteLayout .address div {display:inline-block;width:100%;}
+.apprWriteLayout .fileBox {margin:0 0.7143rem;}
+.fileBox {padding:0.7143rem;border:1px solid #cfd8dc;}
+.fileBox .all * {font-size:0.8571rem;}
+.fileBox ul {margin-top:0.5rem;padding:0 0.5rem;border:1px solid #cfd8dc;}
+.fileBox ul li {padding:0.5rem;border-bottom:1px solid #cfd8dc;}
+.fileBox ul li:last-child {border:none;}
+.fileBox ul li em {display:inline-block;font-size:0.9167rem;color:#aaa;}
+.fileBox ul li button {margin:0 0 0 10px;width:1.5rem;height:1.5rem;text-indent:-9999px;overflow:hidden;border:none;border-radius:3px;background:#76aad9 url('../images/i_pageview.svg') no-repeat center;background-size:100% auto;}
+.fileBox ul li button.off {background-color:#999;}
+/**/
+.apprViewLayout {padding:1rem 0.7143rem;}
+.apprViewLayout .apprArea {position:relative;margin-bottom:0.7143rem;padding:0.7143rem;background:#f4f4f4;}
+.apprViewLayout .apprArea p {display:block;padding:0 0 1rem;}
+.apprViewLayout .apprArea .caption {position:absolute;right:1rem;top:1rem;text-indent:-9999px;overflow:hidden;font-size:0;}
+.apprViewLayout .apprArea .caption:before {display:block;margin:0;text-indent:0;font-size:1.143rem;line-height:1;}
+.apprViewLayout .apprArea .gridSet .gridItem {width:auto;}
+.apprViewLayout .apprArea .gridSet .gridItem .writer,
+.apprViewLayout .apprArea .gridSet .gridItem .date {font-size:0.9286rem;}
+.apprViewLayout .tws {padding-bottom:0.7143rem;}
+.apprViewLayout .tws th {font-size:0.86rem;}
+.apprViewLayout .tws td {padding:0.5rem;text-align:left;}
+.apprViewLayout .tws td div {font-size:inherit;}
+.apprViewLayout .apprStatus li {margin-bottom:0.7143rem;border:1px solid #bbb;padding:0.7143rem;}
+.apprViewLayout .apprStatus li strong {font-weight:normal;}
+.apprViewLayout .apprStatus li .date {margin-top:0.3rem;font-size:0.86rem;}
+.apprViewLayout .apprStatus li p,
+.apprViewLayout .apprStatus li textarea {margin-top:0.5rem;font-size:0.9286rem;}
+.apprViewLayout .apprStatus li .sts {font-weight:bold;}
+.apprViewLayout .apprStatus li .sts.wait {color:#ff7070;}
+.apprViewLayout .apprStatus li .sts.agree {color:#3e8bff;}
+.apprViewLayout .apprStatus li .sts.appr {color:#70c1e7;}
+.apprViewLayout .apprStatus li .sts.ok {color:#333;}
+/* Basic Pop */
+/* 전자결재 팝업 */
+.apprKindPop {width:300px;height:240px;margin:-120px 0 0 -150px;}
+.apprKindPop .pBack {top:1.6rem;padding:0 2rem;}
+.apprKindPop .pBack strong {display:block;padding-bottom:1rem;font-size:1.143rem;}
+.apprKindPop .pBack .radioSet {display:block;padding:6px 0;}
+.apprKindPop .pBack .radioSet label {font-size:1.143rem;}
+/* 부재 시 전자결재 선택 팝업 */
+.apprAbsPop {top:50%;left:50%;width:300px;height:270px;margin:-135px 0 0 -150px;}
+.apprAbsPop .pBack {top:1.6rem;}
+.apprAbsPop .pBack strong {display:block;padding-bottom:1rem;font-weight:normal;line-height:1.5;text-align:center;}
+.apprAbsPop .lineBox {padding:1rem;border:1px solid #bbb;}
+.apprAbsPop .lineBox .radioSet {padding:0.5rem 0;}
+/* 결재 팝업 */
+.apprPop {width:340px;height:230px;margin:-115px 0 0 -170px;}
+.apprPop .pBack {top:1.6rem;}
+.apprPop .pBack .tws textarea {height:8rem;}
+/* 결재선 선택 팝업 */
+.apprLinePop {top:100%;transition:0.5s;}
+.apprLinePop.show {top:0;transition:0.5s;}
+.apprLinePop .pBack {padding:0.7143rem;}
+.apprLineBox {height:100%;}
+.apprLineBox .saveList {position:relative;padding-right:6.5rem;height:3rem;z-index:5;}
+.apprLineBox .saveList button {position:absolute;right:0;top:0;width:6rem;}
+.apprLineBox .saveList .inputBox {position:relative;}
+.apprLineBox .saveList .inputBox:after {content:'';position:absolute;right:1rem;top:50%;content:'';width:0;height:0;margin-top:-7px;border:4px solid #333;border-top-color:transparent;border-left-color:transparent;transform:rotate(45deg);}
+.apprLineBox .saveList ul {display:table;width:100%;table-layout:fixed;border-collapse:collapse;}
+.apprLineBox .saveList ul li {display:table-row;}
+.apprLineBox .saveList ul li > div {display:table-cell;position:relative;padding:0.5rem 2rem 0.5rem 0.5rem;width:100%;height:2.5rem;font-size:0.9286rem;vertical-align:middle;border:1px solid #ddd;background:#fff;}
+.apprLineBox .saveList ul li > div > * {float:left;vertical-align:middle;font-size:0.9286rem;}
+.apprLineBox .saveList ul li > div .btnDel {position:absolute;right:3px;top:50%;margin-top:-1rem;width:2rem;height:2rem;text-indent:-9999px;overflow:hidden;white-space: nowrap;border:none;background:transparent url('../images/btn_delete.svg') no-repeat center;background-size:1.2rem auto;}
+.apprLineBox .saveList ul li > div strong {display:inline-block;padding-right:0.5rem;box-sizing:border-box;width:calc(100% - 6rem);}
+.apprLineBox .saveList ul li > div .date {display:inline-block;width:6rem;text-align:center;}
+.apprLineBox.open .setTable {height:calc(100% - 25.5rem);}
+.apprLineBox .search {padding-bottom:0.5rem;height:17.5rem;}
+.apprLineBox .searchTop:after {content:'';display:block;clear:both;}
+.apprLineBox .searchTop {padding-bottom:0.5rem;width:100%;height:3rem;}
+.apprLineBox .searchTop .btnTeam {height:2.5rem;border:none;background:transparent;}
+.apprLineBox .searchTop .right input {width:7rem;}
+.apprLineBox .searchTop .right button {margin-left:0.5rem;padding:0;min-width:auto;width:4rem;text-align:center;font-size:0.9286rem;}
+.apprLineBox .searchTop .right > * {float:left;}
+.apprLineBox .search .searchBody {height:14rem;}
+.apprLineBox .search .searchBody .treeBox {height:100%;padding:0.5rem;border:1px solid #ddd;}
+.apprLineBox .search .searchBody .treeBox .jstreeBack {height:100%;overflow-y:auto;}
+.apprLineBox .search .searchBody .tls {height:100%;overflow:auto;}
+.apprLineBox .search .searchBody .tls td .btnS {position:static;height:2rem;min-width:2rem}
+.apprLineBox .search .searchBody *::-webkit-scrollbar {width:10px;}
+.apprLineBox .search .searchBody *::-webkit-scrollbar-thumb {background:#a9a9a9;}
+.apprLineBox .setTable {position:relative;padding-bottom:4.5rem;height:calc(100% - 8rem);}
+.apprLineBox .setTable .setList {height:100%;overflow:auto;}
+.apprLineBox .setTable .setList .btnSwich {text-indent:-9999px;overflow:hidden;white-space:nowrap;width:1.5rem;height:2rem;border:none;background:transparent url('../images/btn_swich.svg') no-repeat center;}
+.apprLineBox .setTable .setList .btnSwich.up {background:transparent url('../images/btn_arrow_up.svg') no-repeat center;background-size:1.5rem auto;}
+.apprLineBox .setTable .setList .btnSwich.down {background:transparent url('../images/btn_arrow_down.svg') no-repeat center;background-size:1.5rem auto;}
+.apprLineBox .setTable .setList ul {display:table;width:100%;overflow:auto;border-collapse:collapse;}
+.apprLineBox .setTable .setList ul li {display:table-row;}
+.apprLineBox .setTable .setList ul li > div {display:table-cell;padding:0.3rem;width:46%;vertical-align:middle;height:3rem;font-size:0.9286rem;text-align:center;border:1px solid #ddd;}
+.apprLineBox .setTable .setList ul li > span {display:table-cell;padding:0.3rem;width:20%;vertical-align:middle;text-align:center;border:1px solid #ddd;}
+.apprLineBox .setTable .setList ul li > span:last-child {width:14%;}
+.apprLineBox .setTable .setList ul li .ftBold {font-weight:bold;}
+.apprLineBox .setTable .setList .btnM.pink {min-width:2rem;height:2rem;line-height:1.8;color:#d42020;background:#f7e1e1;}
+.apprLineBox .setTable .save {position:absolute;bottom:0;padding:0.7143rem;width:100%;background:#efefef;}
+.apprLineBox .setTable .save * {vertical-align:middle;}
+.apprLineBox .setTable .save .checkSet {width:10rem;}
+.apprLineBox .setTable .save > input {width:calc(100% - 11rem);}
+/* Alert Pop */
+.spholidayAlertPop {height:60px;}
+/**/
+.finishPop .pBack {padding-bottom:0;}
+.savePop {margin-left:-145px;width:290px;}
+.cancelPop {margin-left:-140px;width:280px;}

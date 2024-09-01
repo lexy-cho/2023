@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../../js/navmenu.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.btnIssue').click(function(){
+					$('.basicBtn').hide();
+					$('.choiceBtn').show();
+					$('.tls tbody tr:nth-child(n+5)').toggleClass('issued');
+					$('.tls tbody tr:nth-child(n+5) td input, .tls tbody tr:nth-child(n+5) td button').attr('disabled', true);
+				});
+				$('.choiceBtn .gray').click(function(){
+					$('.choiceBtn').hide();
+					$('.basicBtn').show();
+					$('.tls tbody tr:nth-child(n+5)').toggleClass('issued');
+					$('.tls tbody tr:nth-child(n+5) td input, .tls tbody tr:nth-child(n+5) td button').attr('disabled', false);
+				});
+				$('.tls td .btnS.blue').click(function(){
+					location.href = 'freight_calculate_buying_view_logis.html';
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="grayBox searchArea">
+			<fieldset>
+				<!-- 2020-08-04 선택삭제 버튼 삭제, 영역 삭제 -->
+				<span class="choiceBtn" style="display:none;">
+					<button class="btnM gray">선택취소</button>
+					<button class="btnM green">선택발행</button>
+				</span>
+				<span class="right">
+					<!-- 2020-08-04 콤보박스 삭제 -->
+					<span class="inputKeyword">
+						<input type="text" placeholder="작업지 검색">
+						<input type="submit" class="btnM black" value="조회">
+					</span>
+				</span>
+			</fieldset>
+		</div>
+		<div class="pd2">
+			<div class="tls detail">
+				<table>
+					<colgroup>
+						<!-- 2020-08-04 체크박스 열 삭제 -->
+						<col width="80" />
+						<col width="160" />
+						<col width="150" />
+						<col width="100" />
+						<col width="100" />
+						<col width="150" />
+						<col width="150" />
+						<col width="150" />
+						<col width="150" />
+						<col width="150" />
+						<col width="150" />
+					</colgroup>
+					<thead>
+						<tr>
+							<!-- 2020-08-04 체크박스 열 삭제 -->
+							<th colspan="2">구분</th>
+							<th>운송일</th>
+							<th>운송유형</th>
+							<th>형태</th>
+							<th>매칭 수수료</th>
+							<th>운임</th>
+							<th>출발지</th>
+							<th>작업지</th>
+							<th>도착지</th>
+							<th>컨테이너 정보</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="total">
+							<td colspan="2">Total</td>
+							<td colspan="4" class="tL">
+								<dl>
+									<dt>[운송매칭]</dt>
+									<dd>7건 / 4,880,000원</dd>
+								</dl>
+							</td>
+							<td colspan="5" class="tL">
+								<dl>
+									<dt>[수령 계산서]</dt>
+									<dd>4건 / 2,880,000원</dd>
+								</dl>
+								<dl>
+									<dt>[미수령 계산서]</dt>
+									<dd>3건 / 2,000,000원</dd>
+								</dl>
+							</td>
+						</tr>
+						<!--Loop-->
+						<tr>
+							<!-- 2020-08-04 체크박스 열 삭제 -->
+							<td>수령</td>
+							<td><button class="btnS blue">계산서 확인</button></td><!-- 2020-06-16 버튼 class 변경 -->
+							<td>2020-01-26</td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td class="tR">560,000</td>
+							<td class="tR">185,000</td>
+							<td>부산항 (05:00)</td>
+							<td>충북/안산 (09:00)</td>
+							<td>부산항 (15:00)</td>
+							<td>
+								<!-- 2020-06-22 형식 수정 -->
+								<div>Open Top</div>
+								<div>40ft High Cube</div>
+								<div>30ton</div>
+								<!-- //2020-06-22 형식 수정 -->
+							</td>
+						</tr>
+						<!--//Loop-->
+						<tr>
+							<!-- 2020-08-04 체크박스 열 삭제 -->
+							<td>수령</td>
+							<td><button class="btnS blue">계산서 확인</button></td><!-- 2020-06-16 버튼 class 변경 -->
+							<td>2020-01-26</td>
+							<td class="ftBlue">수출</td>
+							<td>왕복</td>
+							<td class="tR">560,000</td>
+							<td class="tR">185,000</td>
+							<td>부산항 (05:00)</td>
+							<td>충북/안산 (<span class="ftRed">익</span> 09:00)</td>
+							<td>부산항 (15:00)</td>
+							<td>
+								<!-- 2020-06-22 형식 수정 -->
+								<div>Open Top</div>
+								<div>40ft High Cube</div>
+								<div>30ton</div>
+								<!-- //2020-06-22 형식 수정 -->
+							</td>
+						</tr>
+						<tr>
+							<!-- 2020-08-04 체크박스 열 삭제 -->
+							<td>수령</td>
+							<td><button class="btnS blue">계산서 확인</button></td><!-- 2020-06-16 버튼 class 변경 -->
+							<td>2020-01-26</td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td class="tR">560,000</td>
+							<td class="tR">660,000</td><!-- 2020-06-22 운임 금액 표기 -->
+							<td>부산항 (05:00)</td>
+							<td>충북/안산 (09:00)</td>
+							<td>부산항 (15:00)</td>
+							<td>
+								<!-- 2020-06-22 형식 수정 -->
+								<div>Open Top</div>
+								<div>40ft High Cube</div>
+								<div>30ton</div>
+								<!-- //2020-06-22 형식 수정 -->
+							</td>
+						</tr>
+						<tr>
+							<!-- 2020-08-04 체크박스 열 삭제 -->
+							<td>미수령</td>
+							<td><button class="btnS blue" disabled>계산서 확인</button></td><!-- 2020-06-16 버튼 class 변경 -->
+							<td>2020-01-26</td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td class="tR">560,000</td>
+							<td class="tR">660,000</td><!-- 2020-06-22 운임 금액 표기 -->
+							<td>부산항 (05:00)</td>
+							<td>충북/안산 (09:00)</td>
+							<td>부산항 (15:00)</td>
+							<td>
+								<!-- 2020-06-22 형식 수정 -->
+								<div>Open Top</div>
+								<div>40ft High Cube</div>
+								<div>30ton</div>
+								<!-- //2020-06-22 형식 수정 -->
+							</td>
+						</tr>
+						<tr>
+							<!-- 2020-08-04 체크박스 열 삭제 -->
+							<td>미수령</td>
+							<td><button class="btnS blue" disabled>계산서 확인</button></td><!-- 2020-06-16 버튼 class 변경 -->
+							<td>2020-01-26</td>
+							<td class="ftBlue">수출</td>
+							<td>왕복</td>
+							<td class="tR">560,000</td>
+							<td class="tR">660,000</td><!-- 2020-06-22 운임 금액 표기 -->
+							<td>부산항 (05:00)</td>
+							<td>충북/안산 (09:00)</td>
+							<td>부산항 (15:00)</td>
+							<td>
+								<!-- 2020-06-22 형식 수정 -->
+								<div>Open Top</div>
+								<div>40ft High Cube</div>
+								<div>30ton</div>
+								<!-- //2020-06-22 형식 수정 -->
+							</td>
+						</tr>
+						<tr>
+							<!-- 2020-08-04 체크박스 열 삭제 -->
+							<td>미수령</td>
+							<td><button class="btnS blue" disabled>계산서 확인</button></td><!-- 2020-06-16 버튼 class 변경 -->
+							<td>2020-01-26</td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td class="tR">560,000</td>
+							<td class="tR">660,000</td><!-- 2020-06-22 운임 금액 표기 -->
+							<td>부산항 (05:00)</td>
+							<td>충북/안산 (09:00)</td>
+							<td>부산항 (15:00)</td>
+							<td>
+								<!-- 2020-06-22 형식 수정 -->
+								<div>Open Top</div>
+								<div>40ft High Cube</div>
+								<div>30ton</div>
+								<!-- //2020-06-22 형식 수정 -->
+							</td>
+						</tr>
+						<tr>
+							<!-- 2020-08-04 체크박스 열 삭제 -->
+							<td>미수령</td>
+							<td><button class="btnS blue" disabled>계산서 확인</button></td><!-- 2020-06-16 버튼 class 변경 -->
+							<td>2020-01-26</td>
+							<td class="ftRed">수입</td>
+							<td>환적</td>
+							<td class="tR">560,000</td>
+							<td class="tR">185,000</td>
+							<td>부산항 (05:00)</td>
+							<td>-</td>
+							<td>부산항 (15:00)</td>
+							<td>
+								<!-- 2020-06-22 형식 수정 -->
+								<div>Open Top</div>
+								<div>40ft High Cube</div>
+								<div>30ton</div>
+								<!-- //2020-06-22 형식 수정 -->
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+    </body>
+</html>

@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.highcharts.com/highcharts.src.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$(".tabNav li button").click(function () {
+				$(".tabNav li").removeClass("on");
+				$(this).parent("li").addClass("on");
+				var activeTab = $(this).attr("data-name");
+				$('.tabData').hide();
+				$('.tData' + activeTab).show();
+			});
+			$('#userAssetsBtn').click(function(){
+				$('.popDim, #userAssetsPop1').show();
+				$(".tabNav li").removeClass("on");
+				$("#userAssetsPop1 .tabNav li:first-child").addClass("on");
+				$('.tabData').hide();
+				$('.tabData.tData0').show();
+			});
+			$('.assetsUserLayout .tls a').click(function(){
+				$('.popDim, #userAssetsPop2').show();
+				$(".tabNav li").removeClass("on");
+				$("#userAssetsPop2 .tabNav li:first-child").addClass("on");
+				$('.tabData').hide();
+				$('.tabData.tData2').show();
+			});//
+			$('#userAssetsPop2 .green').click(function(){
+				$('.alertDim, #etcReasonsPop1').show();
+			});
+			$('#etcReasonsPop1 .pBtn button').click(function(){
+				$('.alertDim, #etcReasonsPop1').hide();
+			});//
+			$('#etcReasonsBtn').click(function(){
+				$('.alertDim, #etcReasonsPop2').show();
+			});//
+			$('.orangeTxt button').click(function(){
+				$('.alertDim, #etcReasonsPop3').show();
+			});//
+			$('#userAssetsPop2 .pBtn button, .pBtn .white, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});//
+			$('.alertDim .basicPop .pBtn button').click(function(){
+				$('.alertDim, .alertDim .basicPop').hide();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>지급대장</h2>
+					<div class="pagePos"><span>Home</span><span>자산관리</span><strong>지급대장</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="assetsUserLayout">
+						<!---->
+						<div class="boardTop">
+							<em>전체 10,000건</em>
+							<span class="right">
+								<span class="calDupSet">
+									<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									<em>~</em>
+									<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+								</span>
+								<span class="searchBasic">
+									<input type="text" placeholder="이름, 사번 입력" />
+									<input type="submit" value="검색" class="btnSearch" />
+									<button class="btnReset">초기화</button>
+								</span>
+								<button class="btnM">엑셀다운로드</button>
+							</span>
+						</div>
+						<!---->
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col />
+									<col />
+									<col />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>No.</th>
+										<th>이름</th>
+										<th>사번</th>
+										<th>HW 지급</th>
+										<th>SW 지급</th>
+										<th>지급일</th>
+										<th>추가지급일</th>
+										<th>수령확인</th>
+										<th>관리</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td>5</td>
+										<td><a>김일수</a></td>
+										<td>190105</td>
+										<td>10</td>
+										<td>10</td>
+										<td>2020-06-26</td>
+										<td>-</td>
+										<td><button class="btnS green">수령 push 발송</button></td>
+										<td>
+											<button class="btnS white">발행</button>
+										</td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td>4</td>
+										<td><a>최남단</a></td>
+										<td>190104</td>
+										<td>10</td>
+										<td>10</td>
+										<td>2020-06-26</td>
+										<td>-</td>
+										<td>2020-06-26</td>
+										<td>
+											<button class="btnS white">재발행</button>
+											<button class="btnS white openView">미리보기</button>
+										</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td><a>박무명</a></td>
+										<td>190103</td>
+										<td>10</td>
+										<td>10</td>
+										<td>2020-06-01</td>
+										<td>-</td>
+										<td>2020-06-02</td>
+										<td>
+											<button class="btnS white">재발행</button>
+											<button class="btnS white openView">미리보기</button>
+										</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td><a>김철수</a></td>
+										<td>190102</td>
+										<td>10</td>
+										<td>10</td>
+										<td>2020-06-01</td>
+										<td>2020-06-26</td>
+										<td>2020-06-26</td>
+										<td>
+											<button class="btnS white">재발행</button>
+											<button class="btnS white openView">미리보기</button>
+										</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td><a>홍길동</a></td>
+										<td>190101</td>
+										<td>10</td>
+										<td>10</td>
+										<td>2020-06-01</td>
+										<td>2020-06-26</td>
+										<td>2020-06-01</td>
+										<td>
+											<button class="btnS white">재발행</button>
+											<button class="btnS white openView">미리보기</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="bpSet">
+							<div class="btnArea">
+								<span class="right">
+									<button class="btnM">사용자갱신</button>
+									<button class="btnM" id="userAssetsBtn">신규 지급</button>
+								</span>
+							</div>
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+										<a class="on">1</a>
+										<a>2</a>
+										<a>3</a>
+										<a>4</a>
+										<a>5</a>
+									<a class="next">다음</a>
+								</span>
+								<span class="selectSet">
+									<select>
+										<option>10개</option>
+										<option>20개</option>
+										<option>50개</option>
+										<option>100개</option>
+									</select>
+								</span>
+							</div>
+						</div>
+						<!--//-->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 신규등록 -->
+			<div class="basicPop userAssetsPop" id="userAssetsPop1" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>신규지급</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<tbody>
+								<tr>
+									<th width="120" >사용자 <sup>필수항목</sup></th>
+									<td><input type="text" placeholder="자동완성" value="" class="autoCom wAuto" /></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!---->
+					<div class="tabWrap">
+						<!-- tab -->
+						<div class="tabBack">
+							<div class="tabNav">
+								<nav>
+									<ul>
+										<li class="on"><button data-name="0">하드웨어</button></li>
+										<li><button data-name="1">소프트웨어</button></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<!--// tab -->
+						<div class="tabLayout">
+							<!-- 하드웨어 -->
+							<div class="tabData tData0" style="display:block;">
+								<!---->
+								<div class="tls">
+									<table>
+										<colgroup>
+											<col width="150"/>
+											<col width="100"/>
+											<col width="120"/>
+											<col width="170"/>
+											<col width="50"/>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>종류</th>
+												<th>고유번호</th>
+												<th>브랜드</th>
+												<th>기기명</th>
+												<th><button class="btnS white">일괄삭제</button></th>
+											</tr>
+										</thead>
+										<tbody>
+											<!--Loop-->
+											<tr>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>노트북</option>
+															<option>데스크탑</option>
+															<option>모니터</option>
+															<option>키보드/마우스</option>
+															<option>젠더</option>
+															<option>테스트기기</option>
+														</select>
+													</span>
+												</td>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>NT1-001</option>
+														</select>
+													</span>
+												</td>
+												<td>apple</td>
+												<td>aa-aaaaa</td>
+												<td><button class="btnS white">X</button></td>
+											</tr>
+											<!--//Loop-->
+										</tbody>
+									</table>
+								</div>
+								<!---->
+								<div class="btnArea">
+									<span class="right">
+										<button class="btnM">저장</button>
+										<button class="btnM">추가</button>
+									</span>
+								</div>
+								<!--//-->
+							</div>
+							<!-- //하드웨어 -->
+							<!-- 소프트웨어 -->
+							<div class="tabData tData1">
+								<!---->
+								<div class="tls">
+									<table>
+										<colgroup>
+											<col width="150"/>
+											<col width="100"/>
+											<col width="120"/>
+											<col width="170"/>
+											<col width="50"/>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>소프트웨어</th>
+												<th>고유번호</th>
+												<th>저작사</th>
+												<th>시리얼</th>
+												<th><button class="btnS white">일괄삭제</button></th>
+											</tr>
+										</thead>
+										<tbody>
+											<!--Loop-->
+											<tr>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>MS Office</option>
+															<option>윈도우10</option>
+															<option>윈도우엔터프라이즈</option>
+															<option>오피스</option>
+															<option>한컴</option>
+															<option>울트라에디터</option>
+															<option>에디터플러스</option>
+															<option>포토샵</option>
+															<option>오라클</option>
+															<option>DB툴(클라이언트)</option>
+														</select>
+													</span>
+												</td>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>SW1-001</option>
+														</select>
+													</span>
+												</td>
+												<td>Microsoft</td>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>000-00000000</option>
+														</select>
+													</span>
+												</td>
+												<td><button class="btnS white">X</button></td>
+											</tr>
+											<!--//Loop-->
+										</tbody>
+									</table>
+								</div>
+								<!---->
+								<div class="btnArea">
+									<span class="right">
+										<button class="btnM">저장</button>
+										<button class="btnM">추가</button>
+									</span>
+								</div>
+								<!--//-->
+							</div>
+							<!-- //소프트웨어 -->
+						</div>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white" onclick="if(!confirm('삭제 시 등록된 정보는 저장되지 않습니다. 삭제하시겠습니까?')){return false;}">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //신규등록 -->
+			<!-- 상세정보 -->
+			<div class="basicPop userAssetsPop detailCase" id="userAssetsPop2" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>지급 상세내용</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="80"/>
+								<col />
+								<col width="110"/>
+								<col />
+								<col width="110"/>
+								<col />
+								<col width="80"/>
+								<col />
+							</colgroup>
+							<tbody></td>
+								</tr>
+								<tr>
+									<th>사용자</th>
+									<td>홍길동 (190101)</td>
+									<th>최초 수령일자</th>
+									<td>2020-06-27</td>
+									<th>추가 수령일자</th>
+									<td>2020-06-27</td>
+									<th>수령확인</th>
+									<td>2020-06-27 <!-- <button class="btnS green">수령 push 발송</button> --></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tabWrap">
+						<!-- tab -->
+						<div class="tabBack">
+							<div class="tabNav">
+								<nav>
+									<ul>
+										<li class="on"><button data-name="2">하드웨어 (5)</button></li>
+										<li><button data-name="3">소프트웨어 (4)</button></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<!--// tab -->
+						<div class="tabLayout">
+							<!-- 하드웨어 -->
+							<div class="tabData tData2" style="display:block;">
+								<!---->
+								<div class="tls">
+									<table>
+										<colgroup>
+											<col width="110"/>
+											<col width="80"/>
+											<col width="100"/>
+											<col width="130"/>
+											<col width="80"/>
+											<col width="120"/>
+											<col width="120"/>
+											<col width="80"/>
+											<col width="40"/>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>종류</th>
+												<th>고유번호</th>
+												<th>브랜드</th>
+												<th>기기명</th>
+												<th>지급일자</th>
+												<th>반납일자</th>
+												<th>수리요청</th>
+												<th>수리지급</th>
+												<th><button class="btnS white">일괄삭제</button></th>
+											</tr>
+										</thead>
+										<tbody>
+											<!--Loop-->
+											<tr>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>노트북</option>
+															<option>데스크탑</option>
+															<option>모니터</option>
+															<option>키보드/마우스</option>
+															<option>젠더</option>
+															<option>테스트기기</option>
+														</select>
+													</span>
+												</td>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>NT1-001</option>
+														</select>
+													</span>
+												</td>
+												<td>apple</td>
+												<td>aa-aaaaa</td>
+												<td>2020-06-01</td>
+												<td><button class="btnS green">반납</button></td>
+												<td></td>
+												<td></td>
+												<td><button class="btnS white">X</button></td>
+											</tr>
+											<!--//Loop-->
+											<tr>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>노트북</option>
+															<option>데스크탑</option>
+															<option>모니터</option>
+															<option>키보드/마우스</option>
+															<option>젠더</option>
+															<option>테스트기기</option>
+														</select>
+													</span>
+												</td>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>NT1-001</option>
+														</select>
+													</span>
+												</td>
+												<td>apple</td>
+												<td>aa-aaaaa</td>
+												<td>2020-06-01</td>
+												<td>2020-06-02 <button class="btnS white" id="etcReasonsBtn">사유</button></td>
+												<td class="blueTxt">2020-06-02 <button class="btnS white">반려</button></td>
+												<td></td>
+												<td><button class="btnS white">X</button></td>
+											</tr>
+											<tr>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>노트북</option>
+															<option>데스크탑</option>
+															<option>모니터</option>
+															<option>키보드/마우스</option>
+															<option>젠더</option>
+															<option>테스트기기</option>
+														</select>
+													</span>
+												</td>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>NT1-001</option>
+														</select>
+													</span>
+												</td>
+												<td>apple</td>
+												<td>aa-aaaaa</td>
+												<td>2020-06-01</td>
+												<td><button class="btnS green">반납</button></td>
+												<td class="orangeTxt">2020-06-02 <button class="btnS white">요청</button></td>
+												<td></td>
+												<td><button class="btnS white">X</button></td>
+											</tr>
+											<tr>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>노트북</option>
+															<option>데스크탑</option>
+															<option>모니터</option>
+															<option>키보드/마우스</option>
+															<option>젠더</option>
+															<option>테스트기기</option>
+														</select>
+													</span>
+												</td>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>NT1-001</option>
+														</select>
+													</span>
+												</td>
+												<td>apple</td>
+												<td>aa-aaaaa</td>
+												<td>2020-06-01</td>
+												<td><button class="btnS green">반납</button></td>
+												<td>2020-06-02 <button class="btnS white">요청</button></td>
+												<td><button class="btnS white" onclick="if(!confirm('수리가 완료된 하드웨어 장비를 재지급하시겠습니까?')){return false;}">재지급</button></td>
+												<td><button class="btnS white">X</button></td>
+											</tr>
+											<tr>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>노트북</option>
+															<option>데스크탑</option>
+															<option>모니터</option>
+															<option>키보드/마우스</option>
+															<option>젠더</option>
+															<option>테스트기기</option>
+														</select>
+													</span>
+												</td>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>NT1-001</option>
+														</select>
+													</span>
+												</td>
+												<td>apple</td>
+												<td>aa-aaaaa</td>
+												<td>2020-06-01</td>
+												<td><button class="btnS green">반납</button></td>
+												<td>2020-06-02 <button class="btnS white">요청</button></td>
+												<td>2020-06-03</td>
+												<td><button class="btnS white">X</button></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<!---->
+								<div class="btnArea">
+									<span class="right">
+										<button class="btnM">일괄반납</button>
+										<button class="btnM">추가</button>
+									</span>
+								</div>
+								<!--//-->
+							</div>
+							<!-- //하드웨어 -->
+							<!-- 소프트웨어 -->
+							<div class="tabData tData3">
+								<!---->
+								<div class="tls">
+									<table>
+										<colgroup>
+											<col width="150"/>
+											<col width="80"/>
+											<col width="120"/>
+											<col width="170"/>
+											<col width="80"/>
+											<col width="120"/>
+											<col width="50"/>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>소프트웨어</th>
+												<th>고유번호</th>
+												<th>저작사</th>
+												<th>시리얼</th>
+												<th>지급일자</th>
+												<th>반납일자</th>
+												<th><button class="btnS white">일괄삭제</button></th>
+											</tr>
+										</thead>
+										<tbody>
+											<!--Loop-->
+											<tr>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>MS Office</option>
+															<option>윈도우10</option>
+															<option>윈도우엔터프라이즈</option>
+															<option>오피스</option>
+															<option>한컴</option>
+															<option>울트라에디터</option>
+															<option>에디터플러스</option>
+															<option>포토샵</option>
+															<option>오라클</option>
+															<option>DB툴(클라이언트)</option>
+														</select>
+													</span>
+												</td>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>SW1-001</option>
+														</select>
+													</span>
+												</td>
+												<td>Microsoft</td>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>000-00000000</option>
+														</select>
+													</span>
+												</td>
+												<td>2020-06-01</td>
+												<td><button class="btnS green">반납</button></td>
+												<td><button class="btnS white">X</button></td>
+											</tr>
+											<!--//Loop-->
+											<tr>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>MS Office</option>
+															<option>윈도우10</option>
+															<option>윈도우엔터프라이즈</option>
+															<option>오피스</option>
+															<option>한컴</option>
+															<option>울트라에디터</option>
+															<option>에디터플러스</option>
+															<option>포토샵</option>
+															<option>오라클</option>
+															<option>DB툴(클라이언트)</option>
+														</select>
+													</span>
+												</td>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>SW1-001</option>
+														</select>
+													</span>
+												</td>
+												<td>Microsoft</td>
+												<td>		
+													<span class="selectSet wFull">
+														<select>
+															<option>000-00000000</option>
+														</select>
+													</span>
+												</td>
+												<td>2020-06-01</td>
+												<td>2020-06-02 <button class="btnS white">사유</button></td>
+												<td><button class="btnS white">X</button></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<!---->
+								<div class="btnArea">
+									<span class="right">
+										<button class="btnM">일괄반납</button>
+										<button class="btnM">추가</button>
+									</span>
+								</div>
+								<!--//-->
+							</div>
+							<!-- //소프트웨어 -->
+						</div>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue" onclick="if(!confirm('홍길동(000000)의 지급정보가 수정되었습니다.')){return false;}">저장 및 확인</button>
+				</div>
+			</div>
+			<!-- //상세정보 -->
+			<div class="alertDim" style="display:none;">
+				<!-- 반납사유 입력 -->
+				<div class="basicPop etcReasonsPop" id="etcReasonsPop1" style="display:none;">
+					<button class="pclose">닫기</button>
+					<div class="tt">
+						<h1>반납 사유입력</h1>
+					</div>
+					<div class="pBack">
+						<!---->
+						<textarea placeholder="반납사유를 입력 해주세요" class="h11"></textarea>
+						<!--//-->
+					</div>
+					<div class="pBtn">
+						<button class="btnM white">취소</button>
+						<button class="btnM blue">반납완료</button>
+					</div>
+				</div>
+				<!--//반납사유 입력-->
+				<!-- 반납사유 보기 -->
+				<div class="basicPop etcReasonsPop" id="etcReasonsPop2" style="display:none;">
+					<button class="pclose">닫기</button>
+					<div class="tt">
+						<h1>반납사유</h1>
+					</div>
+					<div class="pBack">
+						<!---->
+						<p>사유가 나옵니다. 사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다 영문abcdefgabcdefgabcdefgabcdefg</p>
+						<!--//-->
+					</div>
+					<div class="pBtn tC">
+						<button class="btnM blue">확인</button>
+					</div>
+				</div>
+				<!--//반납사유 보기-->
+				<!-- 수리요청사유 -->
+				<div class="basicPop etcReasonsPop" id="etcReasonsPop3" style="display:none;">
+					<button class="pclose">닫기</button>
+					<div class="tt">
+						<h1>수리요청</h1>
+					</div>
+					<div class="pBack">
+						<!---->
+						<p>사유가 나옵니다. 사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다 영문abcdefgabcdefgabcdefgabcdefg</p>
+						<!--//-->
+					</div>
+					<div class="pBtn threeCase">
+						<button class="btnM green">반려</button>
+						<button class="btnM orange">승인</button>
+						<button class="btnM white">확인</button>
+					</div>
+				</div>
+				<!--//수리요청사유-->
+			</div>
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/tree.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/customer.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.yakutree.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$(document).on('click tab', '.gnbOpen', function(e){
+				$('.gnbScroll').load('../gnb.html',function(){
+					funcGnbOpen();
+				});
+				return false;
+			});// 2019-03-15 gnb html load (퍼블리싱용)
+
+            // 2019-03-15 달력형식 변경, 공통으로 사용
+            $('.calendarSet button').duDatepicker({
+                format: 'yyyy-mm-dd', // Determines the date format
+                theme: 'yellow',        // Determines the color theme of the date picker
+                readOnly: true,       // Determines if input element is readonly (key input is disabled)
+                clearBtn: false,      // Determines if Clear button is displayed
+                cancelBtn: true,     // Determines if Cancel button is displayed
+                overlayClose: true    // Determines if clicking the overlay will close the date picker
+            }).on('datechanged', function(event){
+                $(this).prev().val(event.date);
+            });
+            /* 2019-04-17 스크롤삭제
+            $(".lstScroll").mCustomScrollbar({
+                axis:"yx",
+                theme:"dark",
+                contentTouchScroll:true
+            });*/
+            
+            // 고객검색 모바일 한정
+            $(".btnSchOpen").click(function(){
+                if($(this).hasClass("active")){
+                    $(this).removeClass("active");
+                    $(this).parent(".searchField").removeClass("on");
+                    $(".customerPop .popScrollArea").removeClass("on");
+                }else{
+                    $(this).addClass("active");
+                    $(this).parent(".searchField").addClass("on");
+                    $(".customerPop .popScrollArea").addClass("on");
+                }
+            });
+            
+            // 고객검색
+            $("#customerOpen").click(function(){
+				$('.dimPop, .customerPop').show();
+			});
+            
+            // 자료검색
+            $("#formatFindOpen").click(function(){
+				$('.dimPop, .formatFindPop').show();
+			});
+
+            // 미리보기
+            $("#formatViewOpen").click(function(){
+				$('.dimPop, .formatViewPop').show();
+			});
+
+            // 발송관리
+            $("[name='sendKind']").click(function(){
+                if($(this).attr("id") == "s1"){
+                    $(".frmList.ylwType").hide();
+                }else{
+                    $(".frmList.ylwType").show();
+                }
+            });
+
+            // 사진첨부
+            $("#photoSelectOpen").click(function(){
+				$('.dimPop, #photoSelect').show();
+			});
+		});
+		$(function(){
+			$("#jstree").yakutree({
+				unique: false,
+				animate: true,
+				duration: 100 ,
+				aTagClick : true,
+				dragndrop : false,
+				btnCallback : function ( type, $source, $target) {
+					switch( type ) {
+						case 'moveUp':
+							//this.moveAnimation(  $source, $target, 'revert' );
+							break;
+					}
+				}
+			});
+			// 트리메뉴 참조 url https://github.com/yakuyaku/yakutree
+		});
+		</script>
+	</head>
+	<body class="custColor"> <!-- 법인일 경우 corp 클래스 추가 -->
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button>
+							<!-- <button class="goPrev" onclick="history.back()">뒤로가기</button> -->
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="../main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2 class="sCase">e-mail 발송</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<div class="sendDetail">
+							<!-- 발송공통 -->
+							<div class="sendSetting">
+								<div class="gridSet grid2">
+									<div class="gridItem">
+										<h4>받는사람 
+											<span>
+												<button class="btnBO" id="customerOpen">고객검색</button>
+												<!-- 2019-06-03 추가삭제 -->
+												<button class="btnBG">추가</button>
+												<button class="btnRD">삭제</button>
+												<!-- //2019-06-03 추가삭제 -->
+											</span>
+										</h4>
+										<div class="linebox lstScroll">
+											<ul class="receiveList">
+												<li>
+													<strong>
+														<span class="checkSet"><input type="checkbox" id="" name="" /><label for=""><i></i>홍길동</label></span>
+													</strong>
+													<div>123@Renault.com</div>
+												</li>
+												<li>
+													<strong>
+														<span class="checkSet"><input type="checkbox" id="" name="" /><label for=""><i></i>홍길동</label></span>
+													</strong>
+													<div>123@Renault.com</div>
+												</li>
+												<li>
+													<strong>
+														<span class="checkSet"><input type="checkbox" id="" name="" /><label for=""><i></i>홍길동</label></span>
+													</strong>
+													<div>456@Renault.com</div>
+												</li>
+												<li class="direct">
+													<strong>
+														<span class="checkSet"><input type="checkbox" id="" name="" /><label for=""><i></i></label></span>
+														<input type="text" placeholder="직접입력" />
+													</strong>
+													<div><input type="text" placeholder="e-mail 입력" /></div>
+												</li>
+												<li>
+													<strong>
+														<span class="checkSet"><input type="checkbox" id="" name="" /><label for=""><i></i></label></span>
+													</strong>
+													<div></div>
+												</li>
+												<li>
+													<strong>
+														<span class="checkSet"><input type="checkbox" id="" name="" /><label for=""><i></i></label></span>
+													</strong>
+													<div></div>
+												</li>
+											</ul>
+										</div>
+										<p>총 발송대상 수 : <strong>1</strong> 건</p>
+									</div>
+									<div class="gridItem">
+										<h4>발송관리</h4>
+										<div class="linebox goSet">
+											<div class="basic">
+												<span class="radioSet"><input type="radio" id="s1" name="sendKind" checked /><label for="s1"><i></i>바로전송</label></span>
+												<span class="radioSet"><input type="radio" id="s2" name="sendKind" /><label for="s2"><i></i>예약전송</label></span>
+											</div>
+											<ul class="frmList ylwType" style="display:none">
+												<li>
+													<label class="dotLabel">날짜</label>
+													<div class="calendarSet gray"><input type="tel" id="" name="" /><button>달력열기</button></div>
+												</li>
+												<li>
+													<label class="dotLabel">시간</label>
+													<div>
+														<span class="selectSet">
+															<select>
+																<option>시간</option>
+																<option>01</option>
+																<option>02</option>
+																<option>03</option>
+																<option>04</option>
+																<option>05</option>
+															</select>
+														</span>
+														<span class="selectSet">
+															<select>
+																<option>분</option>
+																<option>01</option>
+																<option>02</option>
+																<option>03</option>
+																<option>04</option>
+																<option>05</option>
+															</select>
+														</span>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- //발송공통 -->
+							<!-- email 용 -->
+							<div class="sendForm">
+								<h4>자료첨부</h4>
+								<div class="linebox">
+									<ul class="formatList">
+										<li>
+											<div><input type="text" placeholder="서식 추가" readonly="readonly" /></div>
+											<button class="btnBG" id="formatFindOpen">자료찾기</button>
+										</li>
+										<li>
+											<div><input type="text" value="사진첨부이름이노출됩니다.jpg" placeholder="사진 추가" readonly="readonly" /><button class="fileDel">삭제</button></div>
+											<button class="btnBG" id="photoSelectOpen">사진첨부</button>
+										</li>
+									</ul>
+									<p>* 60kbyte 이하의 jpg 파일만 전송 가능합니다.</p>
+								</div>
+								<h4>내용작성 <button class="reName">고객명</button></h4><!-- 2019-06-03 버튼추가 -->
+								<div class="detailbox">
+									<div class="line">
+										<strong class="tt">제목</strong>
+										<div><input type="text" placeholder="제목을 입력하세요" /></div>
+									</div>
+									<div class="line last">
+										<strong class="tt">보낸이</strong>
+										<div><input type="text" readonly /></div>
+									</div>
+									<div class="editorArea">
+										<img src="../../images/editorSample.png" class="sample" />
+									</div>
+								</div>
+							</div>
+							<!-- //email 용 -->
+							<div class="sendBtn">
+								<button class="btnCYN" id="formatViewOpen">미리보기</button>
+								<button class="btnBY">email 발송</button>
+							</div>
+                        </div>
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+        
+        <!-- DimPopUp -->
+		<div class="dimPop" style="display:none;"> 
+			<!-- 미리보기 : e-mail 경우-->
+			<div class="popLGCase formatViewPop emailCase" style="display:none;">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>e-mail 미리보기</h1>
+				</div>
+				<!-- 서식입력, 미리보기 Layout 공통으로 사용 -->
+				<div class="fdView">
+					<dl>
+						<dt>고객명</dt>
+						<dd>홍길동 / 123@Renault.com 외 n건</dd>
+					</dl>
+					<dl>
+						<dt>발신인</dt>
+						<dd>김르노 / sca@Renault.com</dd>
+					</dl>
+					<dl>
+						<dt>제목</dt>
+						<dd>휴가철 장거리 안전운전 Tip!</dd>
+					</dl>
+					<div class="editorArea">
+						<div class="lstScroll"><img src="../../images/img_sample_folder.png" class="sample" /></div>
+					</div>
+				</div>
+				<!-- //서식입력, 미리보기 Layout 공통으로 사용 -->
+				<div class="btn tCenter">
+					<button class="btnLB">확인</button>
+				</div>
+			</div>
+			<!-- //미리보기 -->  
+		
+			<!-- 자료찾기 -->
+			<div class="popLGCase formatFindPop" style="display:none;">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>자료찾기</h1>
+				</div>
+				<!-- 발송서식, 자료찾기 Layout 공통으로 사용 -->
+				<div class="sendFormatDetail">
+					<!---->
+					<div class="gridSet grid2">
+						<div class="gridItem">
+							<span class="selectSet"> <!-- 2019-05-06 추가 -->
+								<select>
+									<option>자료구분</option>
+									<option>개인 자료</option>
+									<option>공통 자료</option>
+								</select>
+							</span>
+							<h4>폴더</h4> <!-- 2019-05-06 변경 -->
+							<!---->
+							<div class="folderLayout lstScroll">
+								<ul id="jstree">
+									<li><a href="#">SMS</a>
+										<ul>
+											<li><a href="#">메뉴 1-2</a></li>
+											<li><a href="#">메뉴 1-3</a></li>
+										</ul>
+									</li>
+									<li><a href="#">e-mail</a></strong>
+										<ul>
+											<li><a href="#"> 2 - 1</a>
+												<ul>
+													<li> <a href="#"> 2- 1 -1</a></li>
+													<li> <a href="#"> 2-1 -2</a></li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+									<li><a href="#">FAX</a>
+										<ul>
+											<li> <a href="#"> 8-1</a></li>
+											<li> <a href="#"> 8-2</a></li>
+										</ul>
+									</li>
+									<li><a href="#">편지문구</a>
+										<ul>
+											<li> <a href="#"> 9-1</a></li>
+											<li> <a href="#"> 9-2</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!---->
+						<div class="gridItem">
+							<h4>자료목록</h4>
+							<div class="fdListLayout">
+								<div class="folderTit">
+									<label>e-mail</label>
+									<input type="text" value="상황별 안전운전" readonly />
+								</div>
+								<div class="fdHead">
+									<table>
+										<thead>
+											<tr>
+												<th class="col1">자료명</th>
+												<th class="col2">본사구분</th>
+												<th class="col3">등록일자</th>
+											</tr>
+										</thead>
+									</table>
+								</div>
+								<!---->
+								<div class="lstScroll">
+									<table>
+										<tbody>
+											<tr>
+												<td class="col1">휴가철 장거리 안전운전 TIP</td>
+												<td class="col2">Y</td>
+												<td class="col3">2016-08-17</td>
+											</tr>
+											<tr>
+												<td class="col1">휴가철 장거리 안전운전 TIP</td>
+												<td class="col2">Y</td>
+												<td class="col3">2016-08-17</td>
+											</tr>
+											<tr>
+												<td class="col1">휴가철 장거리 안전운전 TIP</td>
+												<td class="col2">Y</td>
+												<td class="col3">2016-08-17</td>
+											</tr>
+											<tr>
+												<td class="col1">휴가철 장거리 안전운전 TIP</td>
+												<td class="col2">Y</td>
+												<td class="col3">2016-08-17</td>
+											</tr>
+											<tr>
+												<td class="col1">휴가철 장거리 안전운전 TIP</td>
+												<td class="col2">Y</td>
+												<td class="col3">2016-08-17</td>
+											</tr>
+											<tr>
+												<td class="col1">휴가철 장거리 안전운전 TIP</td>
+												<td class="col2">Y</td>
+												<td class="col3">2016-08-17</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="fdPrevLayout">
+								<h4>미리보기</h4>
+								<div class="fdView">
+									<dl>
+										<dt>공통자료명</dt>
+										<dd>휴가철 장거리 안전운전 TIP</dd>
+									</dl>
+									<dl>
+										<dt>등록자</dt>
+										<dd>MCT</dd>
+									</dl>
+								</div>
+								<div class="editorArea"><img src="../../images/img_sample_folder.png" alt="" /></div>
+							</div>
+						</div>
+						<!---->
+					</div>
+				</div>
+				<!-- //발송서식, 자료찾기 Layout 공통으로 사용 -->
+				<div class="btn">
+					<button class="btnLB">취소</button>
+					<button class="btnBY">선택완료</button>
+				</div>
+			</div>
+			<!-- //자료찾기 -->
+
+			<!-- 고객검색 -->
+			<div class="popLGCase customerPop" style="display:none;">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>고객검색</h1>
+				</div>
+				<!-- 2019-05-06 검색영역 변경 -->
+				<div class="searchField">
+					<div class="iptSearch line1">
+						<span class="selectSet">
+							<span class="requiredMark">필수</span>
+							<select>
+								<option>선택</option>
+								<option>개인</option>
+								<option>법인</option>
+							</select>
+						</span>
+						<span class="selectSet">
+							<span class="requiredMark">필수</span>
+							<select>
+								<option>선택</option>
+								<option>출고</option>
+								<option>가망</option>
+							</select>
+						</span>
+						<div class="dateLabelCnt">
+							<span class="txtDot">등록일자</span>
+							<ul class="calGrp">
+								<li>
+									<div class="calendarSet"><input type="tel" id="" name="" /><button>달력열기</button></div>
+								</li>
+								<li>
+									<div class="calendarSet"><input type="tel" id="" name="" /><button>달력열기</button></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="iptSearch line2">
+						<span class="selectSet">
+							<select>
+								<option>고객그룹</option>
+								<option>전체</option>
+								<option>미분류</option>
+							</select>
+						</span>
+						<span class="selectSet">
+							<select>
+								<option>고객확보채널</option>
+								<option>소개</option>
+								<option>개척</option>
+								<option>매장활동</option>
+								<option>기타</option>
+							</select>
+						</span>
+						<span class="selectSet">
+							<select>
+								<option>연료구분</option>
+							</select>
+						</span>
+					</div>
+					<div class="iptSearch line3">
+						<span class="selectSet">
+							<select>
+								<option>고객명</option>
+								<option>생년월일</option>
+								<option>전화번호</option>
+							</select>
+						</span>
+						<input type="text" placeholder="고객명을 입력해주세요" /><!-- 생년월일/전화번호 선택시 placeholder 변경 -->
+						<button class="btnBY">조회</button>
+					</div>
+					<button class="mbView btnSchOpen">열기</button>
+				</div>
+				<!-- //2019-05-06 검색영역 변경 -->
+				<div class="popBack">
+					<span class="checkSet"><input type="checkbox" id="includeOpt" /><label for="includeOpt"><i></i>전체선택</label></span>
+					<div class="poplist">
+						<ul class="listHead">
+							<li>
+								<span class="col1">선택</span>
+								<div class="col2">
+									<div class="listGrid">
+										<span class="lgTd">SMS</span>
+										<span class="lgTd">e-mail</span>
+										<span class="lgTd">FAX</span>
+									</div>
+								</div>
+								<div class="col3">
+									<div class="listGrid">
+										<span class="lgTd">고객명</span>
+										<span class="lgTd">생년월일</span>
+										<span class="lgTd">휴대전화번호</span>
+									</div>
+								</div>
+								<span class="col4">확보채널</span>
+							</li>
+						</ul>
+						<div class="popScrollArea">
+							<ul class="listBody">
+								<!--Loop-->
+								<li>
+									<span class="col1">
+										<span class="checkSet"><input type="checkbox" id="p1" /><label for="p1"><i></i></label></span>
+									</span>
+									<div class="col2">
+										<div class="listGrid">
+											<span class="lgTd"><em class="pHide">SMS : </em>O</span>
+											<span class="lgTd"><em class="pHide">e-mail : </em>O</span>
+											<span class="lgTd"><em class="pHide">FAX : </em>X</span>
+										</div>
+									</div>
+									<div class="col3">
+										<div class="listGrid">
+											<span class="lgTd">홍길동</span>
+											<span class="lgTd">823456-*******</span>
+											<span class="lgTd">010-2345-6789</span>
+										</div>
+									</div>
+									<span class="col4">개척방문</span>
+								</li>
+								<!--//Loop-->
+								<li>
+									<span class="col1">
+										<span class="checkSet"><input type="checkbox" id="p1" /><label for="p1"><i></i></label></span>
+									</span>
+									<div class="col2">
+										<div class="listGrid">
+											<span class="lgTd"><em class="pHide">SMS : </em>O</span>
+											<span class="lgTd"><em class="pHide">e-mail : </em>O</span>
+											<span class="lgTd"><em class="pHide">FAX : </em>X</span>
+										</div>
+									</div>
+									<div class="col3">
+										<div class="listGrid">
+											<span class="lgTd">홍길동</span>
+											<span class="lgTd">823456-*******</span>
+											<span class="lgTd">010-2345-6789</span>
+										</div>
+									</div>
+									<span class="col4">개척방문</span>
+								</li>
+								<!-- 조회결과가 없을 때 -->
+								<li class="listNone">
+									<span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+								</li>
+								<!-- // 조회결과가 없을 때 -->
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="btn">
+					<button class="btnLB">취소</button>
+					<button class="btnBY">선택완료</button>
+				</div>
+			</div>
+			<!-- //고객검색 -->
+            
+            <!-- 사진첨부 -->
+            <div id="photoSelect" class="popSMCase hAuto" style="display:none;">
+                <div class="alertCnt">
+                    <h1 class="tit">사진첨부</h1>
+                    <div class="cntTxt">
+                        사진 첨부 경로를 선택하세요
+                    </div>
+                </div>
+				<div class="btn mt15">
+                    <button class="btnLB">불러오기</button>
+					<button class="btnBY">촬영하기</button>
+				</div>
+			</div>
+            <!-- //사진첨부 -->
+        </div>
+        <!-- // DimPopUp -->
+	</body>
+</html>

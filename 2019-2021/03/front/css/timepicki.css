@@ -1,0 +1,85 @@
+
+/* 
+Created on: 17 Sep, 2014, 4:29:37 PM
+Author: senthil
+*/
+
+.ti_tx,
+.mi_tx,
+.mer_tx {
+	width: 100%;
+	text-align: center;
+	margin: 10px 0;
+}
+
+.time,
+.mins,
+.meridian {
+	width: 60px;
+	float: left;
+	font-size: 20px;
+	color: #2d2e2e;
+	font-family: arial;
+	font-weight: 700;
+}
+
+.prev,
+.next {
+	cursor: pointer;
+	padding: 18px;
+	width: 24px;
+	height: 24px;
+	margin: auto;
+}
+
+.next {
+	background:url('../images/btn_timer_arrowDown.png') no-repeat center;background-size:17px auto;
+}
+
+.prev {
+	background:url('../images/btn_timer_arrowUp.png') no-repeat center;background-size:17px auto;
+}
+.prev:hover,
+.next:hover {
+	background-color: #ccc;
+}
+
+
+.time_pick {
+	position: relative;
+}
+.timepicker_wrap {
+ position:fixed;top:0;left:0;right:0;bottom:0;display:none;z-index:200;
+}
+.timepicker_back {
+	width: 202px;
+	padding: 10px;
+	z-index: 998;
+	box-shadow: 2px 2px 5px 0 rgba(50,50,50,0.35);
+	background: #fff;
+	border: 1px solid #ccc;
+	float: left;
+	position: absolute;
+	left:50%;top:50%;margin:-106px 0 0 -101px;
+}
+input.timepicki-input {
+	background: none repeat scroll 0 0 #FFFFFF;
+	border:1px solid #eee !important;
+	border-radius: 5px 5px 5px 5px;
+	float: none;
+	margin: 0;
+	text-align: center;
+	width: 70% !important;
+}
+a.reset_time {
+	float: left;
+	margin-top: 5px;
+	color: #000;
+}
+.timepicker_wrap .btnArea {padding:1rem 0 0;text-align:center;}
+.timePickerBack {position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);display:none;}
+.timePickerBack.on {display:block;}
+
+@media all and (max-width:800px) {
+	.timepicker_wrap {position:fixed;}
+}

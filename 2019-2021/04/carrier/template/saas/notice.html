@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/push.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			$(document).ready(function (){
+				$(".noticeList dl dt").click(function () {
+					$(this).parents("dl").toggleClass("on");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap" class="mypageCase"><!-- 마이페이지 일 경우 -->
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back">
+						<div data-include="../include/saas_snb.html"></div>
+					</div>
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<!-- 마이페이지는 모바일 메뉴 없음 -->
+			<hr/>
+			<div id="containerBack">
+				<!-- header -->
+				<div id="header">
+					<header>
+						<span class="left">
+							<button class="btnList" onclick="location.href='mypage_m.html' ">목록</button>
+						</span>
+						 <h2>설정</h2>
+						 <span class="right">
+							<button class="btnM grayBlack" onclick="location.href='login.html'">로그아웃</button>
+						 </span>
+					</header>
+				</div>
+				<!-- //header -->
+				<hr/>
+				<!-- container -->
+				<div id="container">
+				<section>
+					<div class="content">
+					<article>
+						<!-- Page Layout -->
+						<div class="mypageLayout">
+							<div class="pd2-t">
+								<div class="mypageContents">
+									<div class="tabBox">
+										<nav>
+											<ul>
+												<li><a href="mypage.html">회원정보</a></li>
+												<li><a href="user_approval.html">사용자 승인</a></li>
+												<li class="on"><a href="notice.html" class="news tabNotice"> 푸시알림</a></li>
+												<li><a href="system_notice.html" class="news">공지사항</a></li>
+											</ul>
+										</nav>
+									</div>
+									<h3>푸시알림</h3>
+									<div class="tabData">
+										<div class="noticeList">
+											<dl class="on">
+												<dt>
+													<span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-16 컴포넌트 수정 -->
+													<strong>붕어빵, 호떡, 군고구마…겨울간식들과 함께 찾아온 1.0.6 업데이트 안내</strong>
+													<button>여닫기</button>
+												</dt>
+												<dd>
+													<p>
+														겨울간식들과 함께 찾아온 1.0.6 업데이트 안내 내용 상세 영역 상세 내용 영역 - text
+														겨울간식들과 함께 찾아온 1.0.6 업데이트 안내 내용 상세 영역 상세 내용 영역 - text
+														겨울간식들과 함께 찾아온 1.0.6 업데이트 안내 내용 상세 영역 상세 내용 영역 - text
+													</p>
+												</dd>
+											</dl>
+											<dl>
+												<dt>
+													<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-16 컴포넌트 수정 --></td>
+													<strong>붕어빵, 호떡, 군고구마…겨울간식들과 함께 찾아온 1.0.6 업데이트 안내</strong>
+													<button>여닫기</button>
+												</dt>
+												<dd>
+													<p>겨울간식들과 함께 찾아온 1.0.6 업데이트 안내 내용 상세 영역 상세 내용 영역 - text</p>
+												</dd>
+											</dl>
+											<dl>
+												<dt>
+													<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-16 컴포넌트 수정 --></td>
+													<strong>붕어빵, 호떡, 군고구마…겨울간식들과 함께 찾아온 1.0.6 업데이트 안내</strong>
+													<button>여닫기</button>
+												</dt>
+												<dd>
+													<p>겨울간식들과 함께 찾아온 1.0.6 업데이트 안내 내용 상세 영역 상세 내용 영역 - text</p>
+												</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- //page Layout -->
+					</article>
+					</div>
+				</section>
+				</div>
+				<!-- //container -->
+			</div>
+		</div>
+		<!-- //Wrap -->
+    </body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('#newCodeBtn, .openCodeBtn').click(function(){
+				$('.codeDetail').show();
+			});
+			$('.codeDetail .btnArea button').click(function(){
+				$('.codeDetail').hide();
+			});
+			/**/
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>코드관리</h2>
+					<div class="pagePos"><span>Home</span><span>관리자</span><strong>코드관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="codeLayout">
+						<!-- 2020-05-12 -->
+						<div class="boardTop">
+							<em>전체 10,000건</em>
+							<span class="right">
+								<span class="searchBasic">
+									<span class="selectSet">
+										<select>
+											<option>코드번호</option>
+											<option>코드명</option>
+											<option>코드 설명</option>
+										</select>
+									</span>
+									<input type="text" placeholder="키워드 입력" />
+									<input type="submit" value="검색" class="btnSearch" />
+									<button class="btnReset">초기화</button>
+								</span>
+							</span>
+						</div>
+						<!-- //2020-05-12 -->
+						<!---->
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="100" />
+									<col width="200" />
+									<col />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>코드 번호</th>
+										<th>코드 명</th>
+										<th>코드 설명</th>
+								</thead>
+								<tbody>
+									<!-- Loop -->
+									<tr>
+										<td><a class="openCodeBtn">100</a></td>
+										<td>코드이름이 노출</td>
+										<td class="tL">코드 설명이 노출될 영역입니다.코드 설명이 노출될 영역입니다.코드 설명이 노출될 영역입니다.</td>
+									</tr>
+									<!-- //Loop -->
+									<tr>
+										<td><a class="openCodeBtn">101</a></td>
+										<td>코드이름이 노출</td>
+										<td class="tL">코드 설명이 노출될 영역입니다.</td>
+									</tr>
+									<tr>
+										<td><a class="openCodeBtn">102</a></td>
+										<td>코드이름이 노출</td>
+										<td class="tL">코드 설명이 노출될 영역입니다.</td>
+									</tr>
+									<tr>
+										<td><a class="openCodeBtn">103</a></td>
+										<td>코드이름이 노출</td>
+										<td class="tL">코드 설명이 노출될 영역입니다.</td>
+									</tr>
+									<tr>
+										<td><a class="openCodeBtn">104</a></td>
+										<td>코드이름이 노출</td>
+										<td class="tL">코드 설명이 노출될 영역입니다.</td>
+									</tr>
+									<tr>
+										<td><a class="openCodeBtn">105</a></td>
+										<td>코드이름이 노출</td>
+										<td class="tL">코드 설명이 노출될 영역입니다.</td>
+									</tr>
+									<tr>
+										<td><a class="openCodeBtn">106</a></td>
+										<td>코드이름이 노출</td>
+										<td class="tL">코드 설명이 노출될 영역입니다.</td>
+									</tr>
+									<tr>
+										<td><a class="openCodeBtn">107</a></td>
+										<td>코드이름이 노출</td>
+										<td class="tL">코드 설명이 노출될 영역입니다.</td>
+									</tr>
+									<tr>
+										<td><a class="openCodeBtn">108</a></td>
+										<td>코드이름이 노출</td>
+										<td class="tL">코드 설명이 노출될 영역입니다.</td>
+									</tr>
+									<tr>
+										<td><a class="openCodeBtn">109</a></td>
+										<td>코드이름이 노출</td>
+										<td class="tL">코드 설명이 노출될 영역입니다.</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="bpSet">
+							<div class="btnArea">
+								<span class="right">
+									<button class="btnM" id="newCodeBtn">신규등록</button>
+								</span>
+							</div>
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+										<a class="on">1</a>
+										<a>2</a>
+										<a>3</a>
+										<a>4</a>
+										<a>5</a>
+									<a class="next">다음</a>
+								</span>
+								<span class="selectSet">
+									<select>
+										<option>10개</option>
+										<option>20개</option>
+										<option>50개</option>
+										<option>100개</option>
+									</select>
+								</span>
+							</div>
+						</div>
+						<!--//-->
+
+						<div class="codeDetail" style="display:none;">
+							<!---->
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="150" />
+										<col />
+										<col width="150" />
+										<col />
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>코드 번호</th>
+											<td><input type="text" /></td>
+											<th>코드 명</th>
+											<td><input type="text" /></td>
+										</tr>
+										<tr>
+											<th>코드 설명</th>
+											<td colspan="3"><input type="text" /></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!---->
+							<div class="btnArea">
+								<button class="btnM right">상세 추가</button>
+							</div>
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="100" />
+										<col width="200" />
+										<col />
+										<col width="100" />
+										<col width="80" />
+										<col width="100" />
+										<col width="90" />
+									</colgroup>
+									<thead>
+										<tr>
+											<th>코드 상세 번호</th>
+											<th>코드 상세명</th>
+											<th>코드 상세 설명</th>
+											<th>우선순위</th>
+											<th>사용여부</th>
+											<th>하위코드번호</th>
+											<th>관리</th>
+									</thead>
+									<tbody>
+										<!-- Loop -->
+										<tr>
+											<td><input type="text" /></td>
+											<td><input type="text" /></td>
+											<td><input type="text" /></td>
+											<td><input type="text" /></td>
+											<td>
+												<span class="selectSet">
+													<select>
+														<option value="Y">Y</option>
+														<option value="N">N</option>
+													</select>
+												</span>
+											</td>
+											<td><input type="text" /></td>
+											<td><button class="btnS white">삭제</button></td>
+										</tr>
+										<!-- //Loop -->
+										<tr>
+											<td><input type="text" /></td>
+											<td><input type="text" /></td>
+											<td><input type="text" /></td>
+											<td><input type="text" /></td>
+											<td>
+												<span class="selectSet">
+													<select>
+														<option value="Y">Y</option>
+														<option value="N">N</option>
+													</select>
+												</span>
+											</td>
+											<td><input type="text" /></td>
+											<td><button class="btnS white">삭제</button></td>
+										</tr>
+										<tr>
+											<td><input type="text" /></td>
+											<td><input type="text" /></td>
+											<td><input type="text" /></td>
+											<td><input type="text" /></td>
+											<td>
+												<span class="selectSet">
+													<select>
+														<option value="Y">Y</option>
+														<option value="N">N</option>
+													</select>
+												</span>
+											</td>
+											<td><input type="text" /></td>
+											<td><button class="btnS white">삭제</button></td>
+										</tr>
+										<tr>
+											<td><input type="text" /></td>
+											<td><input type="text" /></td>
+											<td><input type="text" /></td>
+											<td><input type="text" /></td>
+											<td>
+												<span class="selectSet">
+													<select>
+														<option value="Y">Y</option>
+														<option value="N">N</option>
+													</select>
+												</span>
+											</td>
+											<td><input type="text" /></td>
+											<td><button class="btnS white">삭제</button></td>
+										</tr>
+										<tr>
+											<td><input type="text" /></td>
+											<td><input type="text" /></td>
+											<td><input type="text" /></td>
+											<td><input type="text" /></td>
+											<td>
+												<span class="selectSet">
+													<select>
+														<option value="Y">Y</option>
+														<option value="N">N</option>
+													</select>
+												</span>
+											</td>
+											<td><input type="text" /></td>
+											<td><button class="btnS white">삭제</button></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!---->
+							<div class="btnArea tC">
+								<button class="btnM">저장</button>
+								<button class="btnM">삭제</button>
+							</div>
+							<!--//-->
+						</div>
+
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		</div>
+    </body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/jstree.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/basicTree.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>발주서 관리</h2>
+					<div class="pagePos"><span>Home</span><span>문서 관리</span><strong>발주서 관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="documentViewLayout">
+						<!---->
+						<div class="tvs">
+							<table>
+								<colgroup>
+									<col width="300"/>
+									<col width="200"/>
+									<col width="300"/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<td><em>작성자 : </em>홍길동(000000)</td>
+										<td><em>작성일자 : </em>2020-01-01 (월)</td>
+										<td><em>문서번호 : </em>TOD-201100001</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="tvs mt1">
+							<table>
+								<colgroup>
+									<col width="300"/>
+									<col width="200"/>
+									<col width="300"/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<td><em>수신처 : </em>(주)클라이언트회사명 혹은 팀</td>
+										<td><em>납기일 : </em>2020-07-10</td>
+										<td><em>납기장소 : </em>(주)클라이언트회사명 혹은 팀</td>
+									</tr>
+									<tr>
+										<td colspan="3" class="docDetail">
+											<em>발주내용 :</em>
+											<div>
+												내용이 들어가는 항목입니다.  내용이 들어가는 항목입니다. 내용이 들어가는 항목입니다. 내용이 들어가는 항목입니다. 내용이 들어가는 항목입니다. 내용이 들어가는 항목입니다. 내용이 들어가는 항목입니다. 내용이 들어가는 항목입니다. <br/>1<br/>2<br/>내용이 들어가는 항목입니다.
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><em>수신자 이메일 : </em>김철수 (abcdefg@abcdefg.co.kr), 김홍도(abcdefg2@abcdefg.co.kr)</td>
+										<td><em>사내 참조 : </em>홍길동 (0000000), 김나라(111111)</td>
+										<td><em>영업담당자 : </em>홍길동(000000)</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="tvsList">
+							<table>
+								<colgroup>
+									<col width="200"/>
+									<col width="*"/>
+									<col width="150"/>
+									<col width="150"/>
+									<col width="150"/>
+									<col width="300"/>
+								</colgroup>
+								<thead>
+									<tr>
+										<th>날짜</th>
+										<th>내용</th>
+										<th>수량</th>
+										<th>단가</th>
+										<th>금액</th>
+										<th>비고</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="tC">2020-07-10</td>
+										<td class="tL">내용이 들어갑니다</td>
+										<td class="tC">1개</td>
+										<td class="tR">10,000</td>
+										<td class="tR"><strong>10,000</strong></td>
+										<td class="tL">비고내용</td>
+									</tr>
+									<tr>
+										<td class="tC">2020-07-10</td>
+										<td class="tL">내용이 들어갑니다</td>
+										<td class="tC">1개</td>
+										<td class="tR">10,000</td>
+										<td class="tR"><strong>10,000</strong></td>
+										<td class="tL">비고내용</td>
+									</tr>
+									<tr>
+										<td class="tC">2020-07-10</td>
+										<td class="tL">내용이 들어갑니다</td>
+										<td class="tC">1개</td>
+										<td class="tR">10,000</td>
+										<td class="tR"><strong>10,000</strong></td>
+										<td class="tL">비고내용</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<th colspan="2" class="tR">소계</th>
+										<td class="tC">12</td>
+										<td class="tR">2,000</td>
+										<td class="tR"><strong>24,000</strong></td>
+										<td></td>
+									</tr>
+									<tr>
+										<th colspan="2" class="tR">부가세 (V.A.T)</th>
+										<td class="tC"></td>
+										<td class="tR"></td>
+										<td class="tR"><strong>24,000</strong></td>
+										<td></td>
+									</tr>
+									<tr>
+										<th colspan="2" class="tR">합계 (TOTAL)</th>
+										<td class="tC"></td>
+										<td class="tR"></td>
+										<td class="tR"><strong>24,000</strong></td>
+										<td></td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+						<div class="tvs">
+							<table>
+								<colgroup>
+									<col width="70"/>
+									<col width="*"/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<td><em>비고 : </em></td>
+										<td class="tL">비고 내용이 들어갑니다</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="btnArea tC">
+							<span class="left">
+								<a href="biz_document_invoice_write.html" class="btnM green">청구서 발행</a>
+								<button class="btnM">발행 미리보기</button>
+							</span>
+							<a href="biz_document_write.html" class="btnM blue">수정</a>
+							<span class="right">
+								<button class="btnM" onclick="if(!confirm('선택한 항목을 삭제 하시겠습니끼?')){return false;}">삭제</button>
+								<a href="biz_document.html" class="btnM">목록</a>
+							</span>
+						</div>
+						<!--//-->
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="150"/>
+									<col width="150"/>
+									<col width="150"/>
+									<col width="150"/>
+									<col width="150"/>
+								</colgroup>
+								<thead>
+									<tr>
+										<th>발행인</th>
+										<th>발행일자</th>
+										<th>발송인</th>
+										<th>발송일자</th>
+										<th><button class="btnM white">현재화면 발행</button></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td colspan="5">발행된 발주서 PDF가 없습니다.</td>
+									</tr>
+									<tr>
+										<td>홍길동</td>
+										<td>2020-07-10</td>
+										<td>홍길동</td>
+										<td>2020-07-13</td>
+										<td>
+											<button class="btnS white">발송</button>
+											<button class="btnS white openView">미리보기</button>
+										</td>
+									</tr>
+									<tr>
+										<td>홍길동</td>
+										<td>2020-07-10</td>
+										<td>홍길동</td>
+										<td>2020-07-13</td>
+										<td>
+											<button class="btnS white">발송</button>
+											<button class="btnS white openView">미리보기</button>
+										</td>
+									</tr>
+									<tr>
+										<td>홍길동</td>
+										<td>2020-07-10</td>
+										<td>홍길동</td>
+										<td>2020-07-13</td>
+										<td><button class="btnS white">미리보기</button></td>
+									</tr>
+									<tr>
+										<td>홍길동</td>
+										<td>2020-07-10</td>
+										<td>홍길동</td>
+										<td>2020-07-13</td>
+										<td>
+											<button class="btnS white openView">미리보기</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;"></div>
+		<!-- //Popup -->
+    </body>
+</html>

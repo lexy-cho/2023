@@ -1,0 +1,154 @@
+ <!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.btnArea .white').click(function(){
+				$('.popDim, .etcReasonsPop').show();
+			});
+			$('.alertPop button, .miniPop button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .miniPop').hide();
+			});
+			$('.btnArea .red').click(function(){
+				$('.popDim, .popDim .signPop').show();
+			});
+			$('.signPop button').click(function(){
+				$('.popDim').hide();
+				$('.sign img').show();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<button class="btnPrev" onClick="location.href='confirm_list.html'">이전</button>
+					<h1>승인이력</h1>
+					<!-- <button class="btnNav">햄버거</button> -->
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu : 서브일 경우 삭제 -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="outsideLayout viewCase">
+						<div class="dlstyle">
+                            <dl>
+                                <dt>승인구분</dt>
+                                <dd><strong>현장출근</strong></dd>
+                            </dl>
+							<dl>
+								<dt>근무기간</dt>
+								<dd>2020-06-08 (월) ~ 2020-06-08 (월) 1일</dd>
+							</dl>
+							<dl>
+								<dt>참석자</dt>
+								<dd>홍길동 (000000)</dd>
+							</dl>
+                            <dl>
+                                <dt>방문업체 / 담당자</dt>
+                                <dd>업체명직접등록가능 / 김담당</dd>
+                            </dl>
+                            <dl>
+                                <dt>방문목적</dt>
+                                <dd>
+									기타 (사유)
+								</dd>
+                            </dl>
+							<!---->
+                            <dl>
+                                <dt>요청일시</dt>
+                                <dd>2020-07-01 00:00</dd>
+                            </dl>
+                        </div>
+						<div class="btnArea tC">
+							<button class="btnM red">승인</button>
+							<button class="btnM white">반려</button>
+						</div>
+					</div>
+					<!--//-->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>상단으로</button></div>
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 사인 -->
+			<div class="signPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<p>※ 크게 서명해주세요.</p>
+				<div class="signSet">
+					<div class="signArea">
+						<strong>서명</strong>
+						<div class="cvsArea">
+							<canvas></canvas>
+						</div>
+					</div>
+					<div class="btnArea">
+                        <button class="btnM white">초기화</button>
+						<button class="btnM white">이전 휙</button>
+						<button class="btnM blue">확인</button>
+					</div>
+				</div>
+			</div>
+			<!-- //사인 -->
+			<!-- 반려사유 -->
+			<div class="miniPop etcReasonsPop" style="display:none;">
+				<div class="tt">
+					<h1>반려 사유입력</h1>
+				</div>
+				<div class="pBack">
+					<textarea placeholder="반납사유를 입력 해주세요"></textarea>
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //반려사유 -->
+		</div>
+		<!-- //Popup -->
+	</body>
+</html>

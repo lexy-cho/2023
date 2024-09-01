@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+		});
+		</script>
+	</head>
+	<body><!-- 2019-03-21 estColor class 삭제 -->
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="goPrev" onclick="history.back()">뒤로가기</button>
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<!--<a href="../main.html" class="goMain">메인으로 이동</a>-->
+						</span>
+					</div>
+					<div class="headSub">
+						<!-- <h2>1Depth title</h2> -->
+						<h2 class="sCase"><span>계출현황 &gt; </span>고객정보</h2><!-- 2019-04-24 타이틀변경 -->
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+                        <div class="estColor online"><!-- 2019-03-21 지류/전자 구분 html(div) 추가, 지류일 경우 online class 삭제 -->
+                            <div class="estimateDetail">                                
+                                <div class="estimateDtlbody">
+                                    <!-- 고객정보 -->
+                                    <!-- 개인 -->
+                                    <dl class="estimateDtlBox type2">
+                                        <dt class="estDtlTit">
+                                            고객정보
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+												<!--2019-04-19 데이터 위치 변경 -->
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>주계약자</dt>
+                                                            <dd>홍길동</dd>
+                                                        </dl>
+													</div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>생년월일</dt>
+                                                            <dd>751204-*******</dd>
+                                                        </dl>
+													</div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>연락처</dt>
+                                                            <dd>010-1234-5689</dd>
+                                                        </dl>
+													</div>
+                                                </div>
+												<!---->
+												<div class="dotLine"></div>
+												<!---->
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>공동명의자1</dt>
+                                                            <dd>김길동</dd>
+                                                        </dl>
+                                                        <dl class="listView">
+                                                            <dt>생년월일</dt>
+                                                            <dd>781204-*******</dd>
+                                                        </dl>
+                                                        <dl class="listView">
+                                                            <dt>연락처</dt>
+                                                            <dd>010-1234-5689</dd>
+                                                        </dl>
+													</div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>공동명의자2</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+                                                        <dl class="listView">
+                                                            <dt>생년월일</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+                                                        <dl class="listView">
+                                                            <dt>연락처</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+													</div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>공동명의자3</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+                                                        <dl class="listView">
+                                                            <dt>생년월일</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+                                                        <dl class="listView">
+                                                            <dt>연락처</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+													</div>
+                                                </div>
+												<!---->
+                                                <!-- 2019-04-19 기존소스 <div class="gridSet">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>주계약자</dt>
+                                                            <dd>홍길동</dd>
+                                                            <dt>생년월일</dt>
+                                                            <dd>751204-*******</dd>
+                                                            <dt>연락처</dt>
+                                                            <dd>010-1234-5689</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <div class="dotLine"></div>
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>공동명의자1</dt>
+                                                            <dd>김길동</dd>
+                                                            <dt>생년월일</dt>
+                                                            <dd>781204-*******</dd>
+                                                            <dt>연락처</dt>
+                                                            <dd>010-1234-5689</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>공동명의자2</dt>
+                                                            <dd>-</dd>
+                                                            <dt>생년월일</dt>
+                                                            <dd>-</dd>
+                                                            <dt>연락처</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>공동명의자3</dt>
+                                                            <dd>-</dd>
+                                                            <dt>생년월일</dt>
+                                                            <dd>-</dd>
+                                                            <dt>연락처</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>-->
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 개인 -->
+                                    <!-- 법인 -->
+                                    <dl class="estimateDtlBox type2">
+                                        <dt class="estDtlTit">
+                                            고객정보
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+                                                <div class="gridSet">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>고객유형</dt>
+                                                            <dd>법인</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!--2019-04-19 데이터 위치 변경 -->
+                                                <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>법인/상호명</dt>
+                                                            <dd>주식회사엠에스팜스</dd>
+                                                        </dl>
+                                                        <dl class="listView">
+                                                            <dt>대표자명</dt>
+                                                            <dd>홍길동</dd>
+                                                        </dl>
+                                                        <dl class="listView">
+                                                            <dt>대표자 주민번호</dt>
+                                                            <dd>751204-*******</dd>
+                                                        </dl>
+                                                        <dl class="listView">
+                                                            <dt>사업자번호</dt>
+                                                            <dd>111-12-45678</dd>
+                                                        </dl>
+                                                        <dl class="listView">
+                                                            <dt>법인등록번호</dt>
+                                                            <dd>123654-8569745</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>업태</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+                                                        <dl class="listView">
+                                                            <dt>업종</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+                                                        <dl class="listView">
+                                                            <dt>전화번호</dt>
+                                                            <dd>02-4567-8548</dd>
+                                                        </dl>
+                                                        <dl class="listView">
+                                                            <dt>팩스번호</dt>
+                                                            <dd>02-4567-8548</dd>
+                                                        </dl>
+                                                        <dl class="listView">
+                                                            <dt>이메일</dt>
+                                                            <dd>honggildong@mesfarms.com</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <!-- 2019-04-19 기존소스 <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>법인/상호명</dt>
+                                                            <dd>주식회사엠에스팜스</dd>
+                                                            <dt>대표자명</dt>
+                                                            <dd>홍길동</dd>
+                                                            <dt>대표자 주민번호</dt>
+                                                            <dd>751204-*******</dd>
+                                                            <dt>사업자번호</dt>
+                                                            <dd>111-12-45678</dd>
+                                                            <dt>법인등록번호</dt>
+                                                            <dd>123654-8569745</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>업태</dt>
+                                                            <dd>-</dd>
+                                                            <dt>업종</dt>
+                                                            <dd>-</dd>
+                                                            <dt>전화번호</dt>
+                                                            <dd>02-4567-8548</dd>
+                                                            <dt>팩스번호</dt>
+                                                            <dd>02-4567-8548</dd>
+                                                            <dt>이메일</dt>
+                                                            <dd>honggildong@mesfarms.com</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>-->
+                                                <div class="gridSet">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>주소</dt>
+                                                            <dd>[03456] 서울특별시 은평구 서오롱로 17길 20-33(구산동) 구텐베르텔 1302호</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 법인 -->
+                                    <!-- // 고객정보 -->
+
+                                    <!-- 소개자 정보 -->
+                                    <dl class="estimateDtlBox type2">
+                                        <dt class="estDtlTit">
+                                            소개자 정보
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+												<!--2019-04-19 데이터 위치 변경 -->
+												<div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>성명</dt>
+                                                            <dd>박길동</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>관계</dt>
+                                                            <dd>대리인</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+												<div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>생년월일</dt>
+                                                            <dd>781204-*******</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>구분</dt>
+                                                            <dd></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+												<div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>연락처</dt>
+                                                            <dd>010-1234-5689</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>회사</dt>
+                                                            <dd></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+												<div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>서비스연계정</dt>
+                                                            <dd></dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem"></div>
+                                                </div>
+                                                <!-- 2019-04-19 기존소스 <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>성명</dt>
+                                                            <dd>박길동</dd>
+                                                            <dt>생년월일</dt>
+                                                            <dd>781204-*******</dd>
+                                                            <dt>연락처</dt>
+                                                            <dd>010-1234-5689</dd>
+                                                            <dt>서비스연계정</dt>
+                                                            <dd></dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>관계</dt>
+                                                            <dd>대리인</dd>
+                                                            <dt>구분</dt>
+                                                            <dd></dd>
+                                                            <dt>회사</dt>
+                                                            <dd></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 소개자 정보 -->
+
+                                    <!-- 임직원 구매정보 -->
+                                    <dl class="estimateDtlBox type2">
+                                        <dt class="estDtlTit">
+                                            임직원 구매정보
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+												<!--2019-04-19 데이터 위치 변경 -->
+												<div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>계약번호</dt>
+                                                            <dd></dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>할인율</dt>
+                                                            <dd></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+												<div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>혜택유형</dt>
+                                                            <dd></dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>최종구매일</dt>
+                                                            <dd></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <!-- 2019-04-19 기존소스 <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>계약번호</dt>
+                                                            <dd></dd>
+                                                            <dt>혜택유형</dt>
+                                                            <dd></dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>할인율</dt>
+                                                            <dd></dd>
+                                                            <dt>최종구매일</dt>
+                                                            <dd></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 임직원 구매정보 -->
+
+                                    <!-- 최종 사용자 정보 -->
+                                    <dl class="estimateDtlBox type2">
+                                        <dt class="estDtlTit">
+                                            최종 사용자 정보
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+                                                <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>성명</dt>
+                                                            <dd>홍길동</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>생년월일</dt>
+                                                            <dd>751204-*******</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 최종 사용자 정보 -->
+                                </div>
+                            </div>
+                        </div><!-- 2019-03-21 html(div) 추가 -->
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

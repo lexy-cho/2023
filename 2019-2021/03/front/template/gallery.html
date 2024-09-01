@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			var swiper = new Swiper('.gallerySwiper .swiper-container', {
+			  cancelable : true,
+			  spaceBetween: 4,
+			  navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			  },
+			  pagination: {
+				el: '.swiper-pagination',
+				dynamicBullets: true,
+			  }
+			});
+			swiper.on('slideChange', function () {
+				if (swiper.activeIndex == 0) {
+					$('.swTt').text('2020년도');
+				}else if (swiper.activeIndex == 1) {
+					$('.swTt').text('2019년도');
+				}else if (swiper.activeIndex == 2) {
+					$('.swTt').text('2018년도');
+				}else if (swiper.activeIndex == 3) {
+					$('.swTt').text('2017년도');
+				}
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<h1>갤러리</h1>
+					<button class="btnNav">햄버거</button>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+
+			<div id="snb">
+				<section>
+					<div class="c-menu c-menu--slide-left"><!-- 우측 Slide 일 경우 -->
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</section>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<span class="sortSet">
+						<span>
+							<input type="checkbox" id="chk000" checked />
+							<label for="chk000">일반</label>
+						</span>
+						<span>
+							<input type="checkbox" id="chk001" />
+							<label for="chk001">MT</label>
+						</span>
+					</span>
+					<span class="swTt">2020년도</span>
+					<!-- <span class="selectSet">
+						<select>
+							<option>전체</option>
+							<option>2020</option>
+							<option>2019</option>
+							<option>2018</option>
+						</select>
+					</span>
+					<span class="right">
+						<span class="tabNav gltype">
+							<nav>
+								<ul>
+									<li class="on"><button data-name="0">목록형</button></li>
+									<li><button data-name="1">카드형</button></li>
+								</ul>
+							</nav>
+						</span>
+						<span class="right">00개</span>
+					</span> -->
+				</div>
+				<div class="content">
+				<article>
+					<div class="gallerySwiper">
+						<!-- Swiper -->
+						<div class="swiper-container">
+							<ul class="swiper-wrapper">
+								<li class="swiper-slide">
+									<div class="galleryList">
+										<ol>
+											<!---->
+											<li>
+												<a href="gallery_view.html">
+													<span class="pic">
+														<img class="gallery" src="../images/img_square.png" alt="">
+													</span>
+												</a>
+											</li>
+											<!---->
+											<li>
+												<a href="gallery_view.html">
+													<span class="pic">
+														<img class="gallery" src="../images/img_square.png" alt="">
+													</span>
+												</a>
+											</li>
+											<!---->
+											<li>
+												<a href="gallery_view.html">
+													<span class="pic">
+														<img class="gallery" src="../images/img_square.png" alt="">
+													</span>
+												</a>
+											</li>
+											<!---->
+											<li>
+												<a href="gallery_view.html">
+													<span class="pic"></span>
+												</a>
+											</li>
+											<!---->
+											<li>
+												<a href="gallery_view.html">
+													<span class="pic"></span>
+												</a>
+											</li>
+											<!---->
+											<li>
+												<a href="gallery_view.html">
+													<span class="pic"></span>
+												</a>
+											</li>
+											<!---->
+											<li>
+												<a href="gallery_view.html">
+													<span class="pic"></span>
+												</a>
+											</li>
+											<li class="notList">
+												<div>
+													등록된 게시글이 없습니다
+												</div>
+											</li>
+										</ol>
+										<!---->
+									</div>
+								</li>
+								<li class="swiper-slide">
+									<div class="galleryList">
+										<ol>
+											<!---->
+											<li>
+												<a href="gallery_view.html">
+													<span class="pic">
+														<img class="gallery" src="../images/img_square.png" alt="">
+													</span>
+												</a>
+											</li>
+											<!---->
+											<li>
+												<a href="gallery_view.html">
+													<span class="pic">
+														<img class="gallery" src="../images/img_square.png" alt="">
+													</span>
+												</a>
+											</li>
+											<!---->
+											<li>
+												<a href="gallery_view.html">
+													<span class="pic">
+														<img class="gallery" src="../images/img_square.png" alt="">
+													</span>
+												</a>
+											</li>
+											<!---->
+											<li>
+												<a href="gallery_view.html">
+													<span class="pic"></span>
+												</a>
+											</li>
+											<!---->
+											<li>
+												<a href="gallery_view.html">
+													<span class="pic"></span>
+												</a>
+											</li>
+											<!---->
+											<li>
+												<a href="gallery_view.html">
+													<span class="pic"></span>
+												</a>
+											</li>
+											<!---->
+											<li>
+												<a href="gallery_view.html">
+													<span class="pic"></span>
+												</a>
+											</li>
+											<li class="notList">
+												<div>
+													등록된 게시글이 없습니다
+												</div>
+											</li>
+										</ol>
+										<!---->
+									</div>
+								</li>
+								<li class="swiper-slide">
+									<div class="galleryList">
+										<ol>
+											<li class="notList">
+												<div>
+													등록된 게시글이 없습니다
+												</div>
+											</li>
+										</ol>
+									</div>
+								</li>
+								<li class="swiper-slide">
+									<div class="galleryList">
+										<ol>
+											<li class="notList">
+												<div>
+													등록된 게시글이 없습니다
+												</div>
+											</li>
+										</ol>
+									</div>
+								</li>
+								<li class="swiper-slide">
+									<div class="galleryList">
+										<ol>
+											<li class="notList">
+												<div>
+													등록된 게시글이 없습니다
+												</div>
+											</li>
+										</ol>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<!-- Add Pagination <div class="swiper-pagination"></div>-->
+						<!-- Add Arrows -->
+						<div class="swiper-button-next"></div>
+						<div class="swiper-button-prev"></div>
+						<!-- //Swiper -->
+					</div>
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>상단으로</button></div>
+		</div>
+		<!-- //Wrap -->
+	</body>
+</html>

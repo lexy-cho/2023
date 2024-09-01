@@ -1,0 +1,767 @@
+@charset "utf-8";
+
+/* =================================================================================
+* INFORMATION
+* -----------------------------------------------------------------------
+* @File Name: contract.css
+* @Version: 1.0
+* @Descration: 전자계약 및 서류등록 (1,2차)
+* @Create Date: 2019-01-30
+* @Update Date: N/A
+* @History: N/A
+* ================================================================================= */
+
+/************************** 전자서명 공통 **************************/
+/**/
+.attention {position:fixed;left:0;right:0;top:5rem;z-index:50;height:1.7rem;padding:0 1.7rem;line-height:1.9;overflow:hidden;background:#e85252;}
+.attention p em.exMark {float:left;display:inline-block;width:0.8rem;height:0.8rem;margin-top:0.4rem;margin-right:0.4rem;border-radius:0.4rem;line-height:0.9;background:#fff;text-align:center;color:#e85252;font-weight:bold;}
+.attention p,
+.attention strong {animation-name:blink;animation-duration:1s;animation-timing-function:step-end;animation-iteration-count:infinite;color:#fff;font-size:0.8rem;}
+.attention input, .attention button {position:absolute;right:8px;top:6px;display:inline-block;width:12px;height:12px;text-indent:-9999px;overflow:hidden;border:none;background:url('../images/btn_closeWhite.svg') no-repeat; background-size:100% auto;}
+@keyframes blink {
+ 0% {color: #fff;}
+ 50% {color: #e85252;}
+}
+/* for Chrome, Safari */
+@-webkit-keyframes blink {
+ 0% {color:#fff;}
+ 50% {color:#e85252;}
+}
+@keyframes blink2 {
+ 0% {color: #fff;}
+ 50% {color: #528ee8;}
+}
+/* for Chrome, Safari */
+@-webkit-keyframes blink2 {
+ 0% {color:#fff;}
+ 50% {color:#528ee8;}
+}
+.attention em {animation-name:mark;animation-duration:1s;animation-timing-function:step-end;animation-iteration-count:infinite;color:#fff;}
+.attention.blue {background:#528ee8;}
+.attention.blue p,
+.attention.blue strong {animation-name:blink2;}
+.attention.blue p em.exMark {color:#528ee8;;}
+.attention.blue em {animation-name:mark2;}
+@keyframes mark {
+ 0% {background:#fff;}
+ 50% {background:#e85252;}
+}s
+/* for Chrome, Safari */
+@-webkit-keyframes mark {
+ 0% {background:#fff;}
+ 50% {background:#e85252;}
+}
+@keyframes mark2 {
+ 0% {background:#fff;}
+ 50% {background:#528ee8;}
+}s
+/* for Chrome, Safari */
+@-webkit-keyframes mark2 {
+ 0% {background:#fff;}
+ 50% {background:#528ee8;}
+}
+
+.contractLayout {padding:1.4rem;}
+.contractLayout .gridSet .gridItem {vertical-align:top;}
+.contractLayout .txtGuide {color:#e85252;font-size:0.84rem;line-height:1.4;}
+.contractLayout .rrmBox dd {padding:0.3rem 0.7rem !important;border-color:#ffbbbb;}
+/**/
+.cTabWrap {padding:13.2rem 0 0px;}
+.cTabBack {position:fixed;z-index:2;left:0;right:0;top:16.4rem;padding:1rem 1.4rem 0;background:#fff;}
+.cTab {clear:left;display:block;padding:0;height:30px;box-sizing:border-box;overflow:hidden;border-bottom:1px solid #ddd;}
+.cTab.fix {position:fixed;top:5rem;}
+.cTab ul li {float:left;display:inline-block;height:30px;}
+.cTab a, .cTab button {position:relative;display:block;padding:0 1rem;margin-right:9px;height:30px;line-height:2;cursor:pointer;word-break:break-all;border-radius:3px 3px 0 0;border:none;box-sizing:border-box;background:#ededed;}
+.cTab ul li.on a, .cTab ul li.on button {background:#ffcc33;color:#333;font-weight:bold;}
+.cTab a:after, .cTab button:after {content:'';position:absolute;right:-8px;bottom:0;border-bottom:14px solid #ededed;border-right:4px solid transparent;border-left:4px solid #ededed;border-top:14px solid transparent;}
+.cTab ul li.on a:after, .cTab ul li.on button:after {border-bottom:14px solid #ffcc33;border-right:4px solid transparent;border-left:4px solid #ffcc33;border-top:14px solid transparent;}
+/**/
+.cTabCon {clear:left;display:inline-block;padding:1.4rem;width:100%;border:1px solid #ddd;border-top:0;box-sizing:border-box;}
+h4.formTit {margin:1.4rem 0 1rem;padding:0 0 1rem;font-size:1.1rem;color:#333;border-bottom:1px solid #eee;}
+h4.formTit:before {content:'';display:inline-block;width:0.2rem;height:0.9rem;margin-right:0.5rem;vertical-align:middle;background:#ffcc33;}
+h4.formTit.mt0 {margin:0 0 1rem;}
+h4.formTit .channel {display:inline-block;margin:0 0 0 1rem;vertical-align:middle;}
+h4.formTit .channel label {font-size:1rem;font-weight:normal;}
+.agreeTxt {padding-bottom:1rem;line-height:1.5;}
+.agreeBox dl {padding:0 0 1.1rem;}
+.agreeBox dl dt {display:table;width:100%;border:1px solid #bbb;box-sizing:border-box;}
+.agreeBox dl dt div {position:relative;display:table-cell;padding:0.2rem 5rem 0.2rem 1rem;height:3.6rem;vertical-align:middle;box-sizing:border-box;}
+.agreeBox dl dt div span {color:#e85252;}
+.agreeBox dl dt div span.notMust {color:#007396;}
+.agreeBox dl dt div button {position:absolute;right:0.5rem;top:0.6rem;display:inline-block;width:6.3rem;height:2.3rem;line-height:1.3;padding:0 0.5rem 0;text-align:right;color:#fff;border:none;background:#888b8d;}
+.agreeBox dl dt div button:after {content:'';float:left;display:inline-block;margin:1px 0 0 0;width:0.9rem;height:1rem;vertical-align:middle;background:url('../images/i_documentWhite.svg') no-repeat center;background-size:auto 100%;}
+.agreeBox dl dt div button.ok {color:#222;background:#ffcc33;}
+.agreeBox dl dt div button.ok:after {background:url('../images/i_top_approval.svg') no-repeat center;background-size:90% auto;}
+.agreeBox dl dd {display:none;padding:1.4rem;background:#f8f8f8;}
+.agreeBox .agreeDTBack {border:1px solid #eee;box-sizing:border-box;background:#fff;}
+.agreeBox .listForm {padding:0.7rem;}
+.agreeBox .listForm ul {counter-reset:item;}
+.agreeBox .listForm li {padding:0 0 0 1.4rem;text-indent:-1.48rem;}
+.agreeBox .listForm li:before {content: "("counter(item)") ";counter-increment:item;}
+.agreeBox .agreeTable {border-collapse:collapse;width:100%;background:#fff;}
+.agreeBox .agreeTable th {border-right:1px solid #f1f2f2;background:#f1f2f2;}
+.agreeBox .agreeTable td {padding:0.4rem 1rem 0.4rem 1rem;border:1px solid #eee;border-left:0;border-bottom:0;}
+.agreeBox .agreeTable td:last-child {border-right-color: #fff;}
+.agreeBox .agreeTable td.tC {text-align:center;padding:0.4rem 0.4rem;}
+.agreeBox .mobileVer {display:none;}
+.agreeBox .tabletVer {display:table;}
+.agreeBtm {display:table;width:100%;padding:0.7rem 0 0.7rem 0.7rem;border-top:1px solid #eee;box-sizing:border-box;}
+.agreeBtm p {display:table-cell;padding-right:0.2rem;vertical-align:middle;}
+.agreeBtm div {display:table-cell;width:15rem;vertical-align:middle;}
+.agreeBox.documentCase dl dd {display:inline-block;width:100%;} 
+/**/
+.agreeBox .totAgree {height:3rem;line-height:3rem;padding-left:0.8rem;font-size:0.917rem;color:#53565a;font-weight:bold;background:#fdf1f1;}
+.agreeBox .totAgree .checkSet {line-height:normal;}
+.agreeBox .totAgree .checkSet label {vertical-align:top;font-size:0.9rem;}
+.agreeBox .agreeCon {padding:0.7rem 1rem;}
+.agreeBox .agreeCon ul li {margin-bottom:0.4rem;padding-bottom:0.4rem;border-bottom:1px dotted #ccc;}
+.agreeBox .agreeCon ul li:last-child {border-bottom:0;}
+.agreeBox .agreeCon ul li .checkSet label {position:relative;padding:0 0 0 20px;line-height:1.6;}
+.agreeBox .agreeCon ul li .checkSet label i {position:absolute;left:0;top:5px;}
+/**/
+.personArea {position:relative;clear:left;padding:0.5rem 0.8rem 0.8rem 0.8rem;background:#f3f9fd;border:1px solid #d7e9f5;}
+.personArea .mr30.vMiddle {display:inline-block;width:100%;padding-bottom:0.2rem;font-size:0.9rem;}
+.personArea p {padding-top:0.2rem;}
+/**/
+/* 정의형 목록 */
+.dlStyle {display:inline-block;width:100%;padding-bottom:1.2rem;box-sizing:border-box;}
+.dlStyle dt {display:inline-block;width:100%;height:2rem;box-sizing:border-box;color:#888;vertical-align:middle;}
+.dlStyle dt strong {position:relative;display:inline-block;padding-right:12px;color:#888;font-size:0.9rem;}
+.dlStyle dt span {font-size:0.8rem;color:#888;font-weight:bold;}
+.dlStyle dt label {color:#88888d;}
+.dlStyle dt .allow {display:inline-block;margin:0 0 0 1rem;vertical-align:middle;}
+.dlStyle dt .allow label {font-size:1rem;font-weight:normal;}
+.dlStyle dd {display:inline-block;width:100%;padding:0 0.7rem 0 0;min-height:2.3rem;font-size:0.9rem;vertical-align:middle;box-sizing:border-box;border-bottom:1px solid #ddd;background:#fff;}
+.dlStyle dd.bg {background:#fdfdf3;}
+.dlStyle dd.price {text-align:right;}
+.dlStyle dd.noline {border:none;}
+.dlStyle dd input,
+.dlStyle dd textarea {line-height:normal;/*width:auto;padding:0;border:none;background:none !important;*/resize:none;}
+.dlStyle dd input.cal {background:#fff url("../images/i_calendar.svg") no-repeat left center;background-size:60px 100%;}
+.dlStyle dd input.showLine {height:2.1rem;width:100%;padding:0 0.6rem;border:1px solid #bbbcbc;background:#fff !important;}
+.dlStyle dd .radioSet {margin-top:0.1rem;}
+.dlStyle.txtBox {padding-bottom:0;}
+.dlStyle.txtBox dd {padding:0.5rem;border:1px solid #ddd;}
+/**/
+.contractLayout .gridSet.grid2 .gridItem:first-child {padding-right:0.7rem;}
+.contractLayout .gridSet.grid2 .gridItem:last-child {padding-left:0.7rem;}
+.contractLayout .gridSet.grid3 .gridItem:first-child {padding-right:0.7rem;}
+.contractLayout .gridSet.grid3 .gridItem:last-child {padding-left:0.7rem;}
+.contractLayout .gridSet.grid2-75 .gridItem:first-child {width:20% !important;}
+.contractLayout .gridSet.grid2-75 .gridItem:last-child {width:80% !important;}
+.contractLayout .gridSet.grid4 .gridItem {padding-left:0.7rem;}
+.contractLayout .gridSet.grid4 .gridItem:first-child {padding-left:0rem;}
+/************************** 전자계약 **************************/
+/* summary Box  */
+.summBoxBack {position:fixed;z-index:2;left:0;right:0;top:5rem;padding:1.4rem 1.4rem 0;background:#fff;}
+.summBox {position:relative;padding:1rem 1rem 0 1rem;height:10rem;width:100%;border:1px solid #bbbcbc;box-sizing:border-box;} 
+.summBox .ttArea strong {display:inline-block;margin:0 0.4rem 0 0;line-height:normal;color:#333;}
+.summBox .ttArea strong em {margin-left:0.7rem;color:#333;}
+.summBox .ttArea span {color:#bbbcbc;}
+.summBox .ttArea i {margin:1px 2px 0;vertical-align:top;}
+.summBox .summTt {position:absolute;top:1rem;right:1rem;display:inline-block;font-size:0.9rem;color:#bbbcbc;}
+.summBox .infoBtn {overflow:hidden;margin-top:1rem;}
+.summBox .infoBtn dl {display:inline-block;overflow:hidden;}
+.summBox .infoBtn dl dt {float:left;display:inline-block;margin-right:1rem;font-size:0.9rem;color:#bbbcbc;}
+.summBox .infoBtn dl dd {float:left;display:inline-block;color:#53565a;}
+.summBox .infoBtn dl dd:after {content:'';display:inline-block;width:1px;height:0.7rem;margin:0 1rem;vertical-align:middle;background:#bbbcbc;}
+.summBox .infoBtn dl dd:last-child:after {display:none;}
+.summBox .infoBtn div {display:inline-block;}
+.summBox .infoBtn div.left {width:70%;}
+.summBox .infoBtn div.left div {width:100%;}
+.summBox .infoBtn div.left div dl {margin-right:1rem;}
+.summBox .infoBtn div.left span {clear:left;display:inline-block;width:100%;}
+.summBox .infoBtn div.left span dl {margin-bottom:0;}
+.summBox .infoBtn div.left span dl dd {width:calc(100% - 3rem);text-overflow:ellipsis;white-space: nowrap;word-wrap:normal;overflow:hidden;}
+.summBox .infoBtn div.right {position:absolute;right:1rem;bottom:1rem;}
+.summBox .infoBtn [class*=btn] {float:left;margin-left:1rem;padding:0.1rem 1rem 0.1rem;height:2.1rem;}
+.summBox .infoBtn input {width:8.5rem;}
+.summBox .btnLine {margin-right:0.4rem;}
+.summBox.posCase {height:5rem;}
+/**/
+.topPlace {padding:1.7rem 0 0;}
+.topPlace .gridItem {width:25%;padding:0 !important;}
+.topPlace .gridItem:first-child {width:25%;}
+.topPlace .gridItem:last-child {width:50%;}
+.topPlace .dlStyle {display:table;margin:0;width:100%;}
+.topPlace .dlStyle dt {display:table-cell;width:6.5rem;text-align:center;}
+.topPlace .dlStyle dt.wideHide {display:none;}
+.topPlace .gridItem:last-child .dlStyle dt {width:9rem;}
+.topPlace .dlStyle dd {display:table-cell;width:auto;height:2.3rem;}
+.topPlace .dlStyle dd.noline {padding:0;}
+.topPlace .dlStyle dd .selectSet {width:100%;}
+.topPlace .smselect ul {top:3.04rem;border:1px solid #bbbcbc;/*border-top-width:1px !important;*/}
+.topPlace .smselect ul {text-align:left;background:#fdfdf3;}
+.topPlace .smselect ul li {background:#fdfdf3;}
+.topPlace .smselect button {background:none;border:none;}
+.topPlace .smselect button:after {background:url('../images/i_arrow_down.svg') center center no-repeat;}
+.topPlace .rrmBox {height:2.3rem;}
+/**/
+.dlStyle.hBox2 dd {height:7.8rem;}
+.dlStyle.hBox3 dd {height:13.3rem;vertical-align:top;}
+.dlStyle.hBox4 dd {height:13.3rem;vertical-align:top;}
+.dlStyle.buyType dd {padding:0.5rem;border:1px solid #ddd}
+.dlStyle.multi dd {display:inline-block;width:100%;height:auto;padding:0.5rem 0.5rem;box-sizing:border-box;border-bottom:1px solid #eee;}
+.dlStyle.multi dd:last-child {border:none;}
+.dlStyle.place dd.bg {position:relative;}
+.dlStyle.place dd.bg div.dim {position:absolute;z-index:2;left:0;top:0;bottom:0;width:100%;background:transparent;}
+.dlStyle.tableCase {display:table;}
+.dlStyle.tableCase dt {display:table-cell;width:4.7rem;}
+.dlStyle.tableCase dd {display:table-cell;width:auto;}
+.dlStyle.pointPs .dlStyle dd input.cal {background:#fff url(../images/i_calendar.svg) no-repeat -0.05rem center;}
+.dlStyle.pointPs .calSet .calInput {width:8.4rem;background:#fdfdf3;}
+.hadd .dlStyle dt .checkSet label {font-weight:bold;color:#888;font-size:0.9rem;}
+/**/
+.priceSet {position:relative;padding:0 50% 0 0;}
+.priceSet .payKind {position:absolute;right:-100%;top:0;width:100%;padding-left:1.4rem !important;box-sizing:border-box;}
+.priceSet .payKindInfo {position:absolute;right:-100%;top:4rem;width:100%;padding-left:1.4rem;box-sizing:border-box;}
+.balloon {position:relative;padding:1rem 1rem;background:#88888d;border-radius:10px;}
+.balloon:after {content:'';position:absolute;top:2.458rem;right:-10px;display:block;width:0;height:0;border:10px transparent solid;border-right-width:0;border-top-width:11px;border-bottom-width:11px;border-left-color:#88888d;}
+.balloon .dlStyle {display:table;padding:0.5rem 0.5rem;margin-bottom:0.5rem;background:#fff;}
+.balloon .dlStyle:last-child {margin-bottom:0;}
+.balloon .dlStyle dt {display:table-cell;width:7rem;}
+.balloon .dlStyle dd {display:table-cell;width:auto;border:none;}
+.balloon .dlStyle dd div.price {padding:0.2rem 0.5rem 0 0;margin-top:0.5rem;text-align:right;border-top:1px solid #88888d;}
+.balloon .checkSet {margin-right:0.208rem;}
+.balloon.yell {background:#faf8e9;}
+.balloon.yell:after {border-left-color:#faf8e9;}
+.balloon.yell .dlStyle dt strong {color:#53565a;}
+.balloon.yell .dlStyle.total {padding:0;border-color:#eee;}
+.balloon.yell .dlStyle.total dt {padding:1rem 0;width:10rem;border-color:#eee;}
+.balloon.yell .dlStyle.pointCase dt {width:10rem;}
+/**/
+.vrtStyle {display:table;width:100%;border:1px solid #bbbcbc;}
+.vrtStyle>dt {display:table-cell;width:3.3rem;background:#88888d;vertical-align:middle;}
+.vrtStyle>dt strong {display:inline-block;padding:0 1.2rem;font-weight:bold;color:#fff;word-break:break-all;}
+.vrtStyle>dd {display:table-cell;padding:0 0 0 1.2rem;box-sizing:border-box;}
+.vrtStyle dd.price {text-align:right;}
+.vrtStyle dd dl {display:table;width:100%;padding:0.9rem 0;border-bottom:1px solid #eee;}
+.vrtStyle dd dl:last-child {border:none;}
+.vrtStyle dd dl dt {display:table-cell;width:6rem;color:#88888d;vertical-align:top;}
+.vrtStyle dd dl dd {display:table-cell;padding-right:1.5rem;color:#333332;}
+/**/
+.showSignArea {position:fixed;z-index:10;left:0.7rem;bottom:0.7rem;height:4.2rem;border:1px solid #007396;border-radius:2.1rem;background:#fff;}
+.showSignArea button {float:left;display:inline-block;margin:0.2rem;width:3.6rem;height:3.6rem;overflow:hidden;text-indent:-9999px;box-sizing:border-box;border:1px solid #eee;border-radius:100%;background:#f9f9f9 url('../images/i_sgin.svg') no-repeat center;background-size:50% auto;}
+.showSignArea span {float:left;display:inline-block;width:22rem;padding:0.5rem 0.5rem;font-size:0.8rem;line-height:1.2;}
+.showSignArea span em {display:inline-block;width:100%;padding:0 0 0 1rem;text-indent:-1rem;color:#007396;}
+/**/
+.contractLayout .rightBox {vertical-align:top;}
+.contractLayout .rightBox .dlStyle {display:table;}
+.contractLayout .rightBox .dlStyle dt {display:table-cell;vertical-align:middle;width:10rem;}
+.contractLayout .rightBox .dlStyle dd {display:table-cell;vertical-align:middle;width:auto;}
+.contractLayout .rightBox .carPrice dt {padding:1rem 0 1rem 1.4rem;width:11.2rem;background:#88888d;}
+.contractLayout .rightBox .carPrice dt strong {color:#fff;}
+.contractLayout .rightBox .markArea {padding:1rem 0 0 1.2rem;}
+.contractLayout .rightBox .payKind dt {width:5rem;}
+.contractLayout .markArea dl {position:relative;padding-bottom:0.7rem}
+.contractLayout .markArea dl:before {position:absolute;left:-1.2rem;top:50%;content:'';display:inline-block;width:2.4rem;height:2.4rem;margin-top:-1.6rem;vertical-align:middle;background:url('../images/btn_cal_plus.svg') no-repeat;background-size:100% auto;}
+.contractLayout .markArea dl dt {padding:1rem 0.5rem 1rem 1.8rem;background:#f3f3f3;}
+.contractLayout .markArea dl.minus:before {background:url('../images/btn_cal_minus.svg') no-repeat;background-size:100% auto;}
+.contractLayout .markArea dl.total:before {background:url('../images/btn_cal_equal.svg') no-repeat;background-size:100% auto;}
+.contractLayout .markArea dl.total dt {padding:1.4rem 0.5rem 1.4rem 1.8rem;background:#ffcc33;}
+.contractLayout .markArea dl.total dt strong {color:#444;}
+.contractLayout .total {margin-top:2.3rem;}
+.contractLayout .total dt {text-align:center;background:#ffcc33;}
+.contractLayout .total dt strong {padding-right:0;}
+.contractLayout .total dd {font-size:1.1rem;font-weight:bold;}
+.contractLayout .rightBox .total dt {text-align:left;}
+.contractLayout .dlStyle.on dt strong {color:#fa8b19;}
+.contractLayout .dlStyle.on dd {color:#fa8b19;}
+/**/
+.privacySign {padding:1.4rem;background:#f1f2f2;}
+.privacySign .dateBox {position:relative;display:inline-block;width:100%;padding:0 1rem 1.4rem 0;box-sizing:border-box;}
+.privacySign .dateBox span {position:absolute;right:0;top:-0.4rem;display:inline-block;width:8rem;height:2.3rem;border:1px solid #bbbcbc;line-height:2.292rem;text-align:center;overflow:hidden;font-size:1rem;color:#88888d;box-sizing:border-box;background:#fff;}
+.privacySign .tt {display:inline-block;padding:0.5rem;font-weight:bold;background:#ffcc33;}
+/**/
+.noticeSign {margin:1.4rem 0 0;padding:1.4rem;background:#f1f2f2;}
+.noticeSign .pointTt {display:inline-block;margin-bottom:0.7rem;color:#ffa51c;}
+.noticeSign dl.bank {height:2.4rem;padding:0 0 0 0.7em;margin:1.4rem 0 1.4rem;line-height:2.2;border:1px solid #bbbcbc;background:#fff}
+.noticeSign dl dt {display:inline-block;margin-right:0.7em;color:#bbbcbc;}
+.noticeSign dl dd {display:inline-block;color:#53565a;}
+.noticeSign dl dd:after {content:'';display:inline-block;width:1px;height:15px;margin:0 0.7rem;background:#bbbcbc;vertical-align:middle;}
+.noticeSign dl dd:last-child:after {display:none;}
+.noticeSign ol li {margin-bottom:10px;list-style:decimal;list-style-position:inside;color:#888b8d;}
+.noticeSign .owners {margin-top:1rem;}
+ /**/
+ .sellerRep {position:relative;}
+ .sellerRep img {position:absolute;right:0;top:-0.5rem;}
+ .sellerBelong dl {display:table;width:100%;}
+ .sellerBelong dl dt {display:table-cell;width:3rem;}
+ .sellerBelong dl dd {display:table-cell;}
+ /**/
+.boxSet {display:table;width:100%;text-align:center;border:1px solid #eee;}
+.boxSet dt {display:table-cell;width:50%;color:#53565a;vertical-align:middle;}
+.boxSet dd {display:table-cell;padding:0.7rem 0;vertical-align:middle;box-sizing:border-box;}
+ /**/
+.privacySign.notPrxyCase {clear:left;display:inline-block;width:100%;box-sizing:border-box;}
+/* Btn Contract Bottom */
+.bottomContBtn {position:fixed;left:0;bottom:0;width:100%;height:3rem;border-top:1px solid #eee;background:#f9f9f9;box-shadow:none;*zoom:1;z-index:110;}
+.bottomContBtn:after {content:"";display:block;clear:both;}
+.bottomContBtn [class*=btn] {float:left;width:25%;height:3rem;margin:0;border:none;}
+.bottomContBtn .btnPrev, 
+.bottomContBtn .btnNext,
+.bottomContBtn .btnPrev.gray, 
+.bottomContBtn .btnNext.gray, 
+.bottomContBtn .btnPrev[disabled], 
+.bottomContBtn .btnNext[disabled] {background:transparent;}
+.bottomContBtn .btnPrev i, 
+.bottomContBtn .btnNext i {background-color:transparent;background-size:1.5rem auto;}
+.bottomContBtn .btnPrev i {background-image:url("../images/i_arrow_thin_left.svg");background-size:1rem auto;}
+.bottomContBtn .btnNext i {background-image:url("../images/i_arrow_thin_right.svg");background-size:1rem auto;}
+.bottomContBtn .btnPrev.gray i, 
+.bottomContBtn .btnPrev[disabled] i {background-image:url("../images/i_arrow_thin_left_gray.svg");}
+.bottomContBtn .btnNext.gray i, 
+.bottomContBtn .btnNext[disabled] i {background-image:url("../images/i_arrow_thin_right_gray.svg");}
+.bottomContBtn .btnSign {background:url("../images/i_sgin.svg") no-repeat center center;background-size:1rem auto;text-indent:-9999px;}
+.bottomContBtn .btnDocumt {background:url("../images/i_document_view.svg") no-repeat center center;background-size:1rem auto;text-indent:-9999px;}
+.bottomContBtn.threeCase [class*=btn] {width:33.3%;}
+.btnDocumtSolo {position:fixed;right:0.7rem;bottom:1.1rem;display:none;width:3.6rem;height:3.6rem;overflow:hidden;text-indent:-9999px;box-sizing:border-box;border:1px solid #eee;border-radius:100%;background:#f9f9f9 url('../images/i_document_view.svg') no-repeat center;background-size:50% auto;}
+/* 주민등록번호 키패드 */
+.numberPop {position:absolute;left:50%;top:50%;width:22rem;height:34rem;margin:-17rem 0 0 -11rem;padding:0;overflow:hidden;border:1px solid #ffcc33;}
+.numberPop .topBox {height:10.833rem;padding:2.083rem 0 0 0;background:#333;box-sizing:border-box;}
+.numberPop .pkSelect {margin:0 auto;text-align:center;}
+.numberPop .pkSelect span {position:relative;display:inline-block;}
+.numberPop .pkSelect span:first-child {margin-right:1.25rem;}
+.numberPop .pkSelect span input {position:absolute;opacity:0;left:0;top:0;width:100%;height:100%;}
+.numberPop .pkSelect span label {position:relative;display:inline-block;color:#888;font-size:0.917rem;}
+.numberPop .pkSelect span input:checked + label {border-bottom:4px solid #ffcc33;color:#eee;}
+.numberPop .secret {text-align:center;margin:2rem 0 0 0;}
+.numberPop .secret input {display:inline-block;width:15px;padding:0;font-family:'Malgun gothic';font-size:160%;text-align:center;border:none;background:transparent;}
+.numberPop .secret span {position:relative;display:inline-block;width:15px;height:40px;text-align:center;}
+.numberPop .secret span:after {position:absolute;content:'';left:0;display:inline-block;margin:16px 3px 0;width:14px;height:14px;border-radius:50%;background:#666;}
+.numberPop .secret span.end:after {display:none;}
+.numberPop .secret span.end input {color:#fff;}
+.numberPop .secret span.now:after {background:#fff;}
+.numberPop .secret strong {position:relative;display:inline-block;width:15px;height:40px;text-align:center;}
+.numberPop .secret strong:after {position:absolute;content:'';left:0;display:inline-block;margin:16px 3px 0;width:14px;height:14px;border-radius:50%;background:#666;}
+.numberPop .secret strong input {color:transparent;}
+.numberPop .secret strong.end:after {background:#fff;}
+.numberPop .secret strong.end input {color:#fff;}
+.numberPop .secret strong.now:after {background:#fff;}
+.numberPop .secret em {display:inline-block;width:10px;height:2px;background:rgba(255, 255, 255, 0.25);margin:4px 2px 0 6px;text-indent:-9999px;overflow:hidden;vertical-align:middle;} 
+.numberPop .keypad {padding:1.25rem 1.25rem 1.458rem;}
+.numberPop .keypad .keyBack {margin:0 -10px;}
+.numberPop .keypad ul {display:table;width:15rem;margin:0 auto;}
+.numberPop .keypad ul li {float:left;display:table-cell;width:33.3%;padding:0.4rem 0.8rem;box-sizing:border-box;}
+.numberPop .keypad ul li input {width:3.3rem;height:3.3rem;border-radius:50%;border:none;cursor:pointer;font-size:1.2rem;color:#53565a;font-weight:bold;}
+.numberPop .keypad ul li input.number {background:#f1f1f2;}
+.numberPop .keypad ul li input.number:active {background:#ffcc33;color:#000;}
+.numberPop .keypad ul li input.reset {padding:0;font-size:0.8rem;color:#bbbcbc;text-align:center;border:2px solid #bbbcbc;background:#fff;}
+.numberPop .keypad ul li input.back {background:url('../images/i_back.svg') no-repeat center center;background-size:40px auto;text-indent:-9999px;}
+.numberPop .btn {padding:0.7rem 0.7rem 0.7rem;border-top:1px solid #eee;}
+/* 2019-03-25 레몬법 */
+.lemonLawDetail .back {padding:1.4rem;border:1px solid #eee}
+.lemonLawDetail h2 {text-align:center;padding:0 0 2rem 0;color:#000;font-size:1.3rem;}
+.lemonLawDetail h3 {text-align:center;}
+.lemonLawDetail h4 {padding:1rem 0 0 0;}
+.lemonLawDetail ul {counter-reset:item;}
+.lemonLawDetail li {padding:0 0 0 1.4rem;text-indent:-1.22rem;}
+.lemonLawDetail li:before {content:counter(item)". ";counter-increment:item;}
+.lemonLawDetail li div {padding:0 0 0 1.4rem;}
+.lemonLawSign .lLSBack {margin-top:0.5rem;border:1px solid #eee}
+.lemonLawSign .lLSBack p {padding:0.5rem 1.4rem 0.5rem 1.4rem;font-weight:bold;color:#000;}
+.lemonLawSign .lLSBack div {padding:0.5rem 1.4rem 0.5rem 1.4rem;border-top:1px solid #eee;}
+.lemonLawSign .privacySign {margin-top:1.4rem !important;padding:1.4rem 1.4rem 1.4rem;}
+.lemonLawSign .privacySign .gridSet.grid2 {margin-top:1.4rem !important;}
+.lemonLawSign .owners {margin-top:1rem;}
+.lemonLawSign .btnBlack {float:right;display:inline-block;text-align:center;border:none;width:10rem;height:2.7rem;background:#999;border:1px solid #999;font-size:1rem;line-height:2.7rem;color:#fff;vertical-align:top;cursor:pointer;}
+/**/
+.taxMustEtc {padding:1rem 0;}
+.taxMustEtc p.info {margin-bottom:1rem;padding:0.9rem 1rem;color: #366d98;font-size:1.15rem;border:1px solid #d7e9f5;background:#f3f9fd;}
+/************************** 서류등록 목록	**************************/
+.docLayout {padding:1.4rem;}
+.docTab {position:fixed;position:fixed;z-index:2;left:0;right:0;top:16.4rem;padding:1.4rem 1.4rem 0;background:#fff;}
+.docTab div {display:table;table-layout:fixed;padding:0;width:100%;box-sizing:border-box;}
+.docTab div span {position:relative;display:table-cell;width:50%;height:3rem;text-align:center;background:#f8f8f8;}
+.docTab div span strong {position:absolute;z-index:2;top:0;right:0;bottom:-1px;left:0;display:block;padding:0;border:1px solid #bbbcbc;border-right:none;color:#000;}
+.docTab div span:last-child strong {border-right:1px solid #bbbcbc;}
+.docTab div span strong button {display:inline-block;width:100%;font-size:1.1rem;height:3rem;line-height:3rem;font-weight:bold;border:none;background:none;}
+.docTab div span strong em {font-size:0.9rem;}
+.docTab div span.on strong {z-index:4;right:-1px;border:1px solid #ffcc33;box-shadow:inset 0 0 0 2px #ffcc33;background:#fff;}
+.docTab div span:last-child.on strong {right:0;}
+.sPhoto {position:absolute;z-index:10;bottom:-200px;right:15px;display:inline-block;width:60px;height:60px;padding:18px 0 0 0;color:#000;box-sizing:border-box;border:none;border-radius:100%;background:#ffcc33 url('../images/i_doc_cameraOn.svg') no-repeat center 7px;background-size:25px auto;}
+/**/
+.documentView  {padding:14.4rem 0 0px;}
+.documentView2  {padding:11.4rem 0 0px;}
+.dList li {display:table;width:100%;border-bottom:1px solid #eee;}
+.dList li div {display:table-cell;width:50%;padding:1.5rem 1rem 1.5rem 0;font-size:1.2rem;font-weight:bold;color:#646464;}
+.dList li div em {display:inline-block;width:3rem;font-size:1rem;text-align:center;color:#88888d;}
+.dList li div strong {display:inline-block;width:2rem;height:2rem;margin-left:1rem;font-size:1rem;line-height:1.8rem;border-radius:50%;box-sizing:border-box;vertical-align:middle;cursor:pointer;text-align:center;border:2px solid #ffcc33;}
+.dList li span.btn {display:table-cell;padding:0 2rem 0 0;text-align:right;}
+.dList li span.date {display:table-cell;padding-left:1rem;width:20%;color:#88888d;font-weight:normal;font-size:0.84rem;}
+.dList.saleCase {padding-bottom:3rem;}
+/**/
+.btnSign,
+.btnPhoto {display:inline-block;padding-left:2.4rem;line-height:3rem;font-size:1.3rem;color:#bbbcbc;border:none;}
+.btnSign {background:url('../images/i_doc_sign.svg') no-repeat left center;background-size:auto 50%;cursor:pointer;}
+.btnSign.action {color:#53565a;background:url('../images/i_doc_signOn.svg') no-repeat left center;background-size:auto 50%;}
+.btnPhoto {margin-left:2rem;background:url('../images/i_doc_camera.svg') no-repeat left center;background-size:auto 48%;cursor:pointer;}
+.btnPhoto.action {color:#53565a;background:url('../images/i_doc_cameraOn.svg') no-repeat left center;background-size:auto 48%;}
+/**/
+table.gridList {border-collapse:collapse;border-spacing:0;width:100%;}
+table.gridList thead tr {border-top:1px solid #bbbcbc;border-bottom:1px solid #bbbcbc;}
+table.gridList thead tr th {height:67px;padding:0 1.25rem;font-weight:800;font-size:1.1rem;letter-spacing:-0.01rem;text-align:left;color:#53565a;font-family:'RenaultSamsungMotors';box-sizing:Border-box;}
+table.gridList tbody tr {width:100%;border-bottom:1px solid #eee;}
+table.gridList tbody tr:hover {background:#fafafa;}
+table.gridList tbody tr.total {background:#f1f1f2;}
+table.gridList tbody tr.total .totalInfo strong {display:inline-block;margin-left:20px;color:#333;}
+table.gridList tbody tr td {height:4rem;/* padding:0 1.25rem; */padding:1.25rem;font-size:1rem;color:#53565a;box-sizing:border-box;}
+table.gridList tr td.highlight {line-height:30px;font-weight:bold;}
+table.gridList tr td.highlight em {margin:0 0 0 10px;color:#e85252;}
+table.gridList tr td.btnArea {padding:1.25rem 70px 1.25rem 0;}
+table.gridList tr.unable td.highlight {color:#bbbcbc;}
+table.gridList tr td.tCenter {text-align:center;}
+table.gridList.noHead tbody tr:first-child {border-top:1px solid #eee;}
+table.gridList.noHead tr td.highlight {font-size:1.2rem;line-height:30px;font-weight:bold;}
+table.gridList.noHead tr td.btnArea {padding:1.0rem 70px 1.0rem 0;}
+/************************** 하이패스 가입신청서	**************************/
+.lineMust {padding:0.3rem 0.7rem !important;border-bottom:1px solid #ffbbbb !important;background-color:#fffaeb !important;}
+/************************** 선포인트 신청서 **************************/
+/************************** 면세 신고서 **************************/
+/************************** 입금증 **************************/
+table.receiptList {border-collapse:collapse;border-spacing:0;width:100%;}
+table.receiptList thead tr {border-top:1px solid #bbbcbc;border-bottom:1px solid #bbbcbc;background:#f1f1f2;}
+table.receiptList thead tr .totalInfo strong {display:inline-block;margin-left:20px;color:#333;}
+table.receiptList thead tr th {padding:1.25rem;font-weight:800;font-size:1.1rem;letter-spacing:-0.01rem;text-align:left;color:#53565a;font-family:'RenaultSamsungMotors';box-sizing:Border-box;}
+table.receiptList tbody tr td {height:4rem;padding:1.25rem;font-size:1rem;text-align:center;color:#53565a;box-sizing:border-box;border-bottom:1px solid #bbbcbc;}
+table.receiptList tbody tr td strong {display:inline-block;width:32%;}
+table.receiptList tbody tr td div {display:inline-block;width:66%;}
+table.receiptList tbody tr td span {display:inline-block;width:30%;}
+table.receiptList tbody tr td em {display:inline-block;width:30%;text-align:right;}
+table.receiptList tbody tr td:first-child {padding-right:0;}
+/************************** 인수증 **************************/
+.takeoverInfo {padding: 1.125rem 1.25rem;background:#fdfdf3;border:1px solid #eee;}
+/************************** 반품신청서 **************************/
+/************************** 계약철회통지서 **************************/
+/************************** 가망고객 **************************/
+.dlStyle dd .phoneNum input {width:30%;padding:0 0.7rem;}
+.possibilityStart {min-height:calc(100vh - 5rem);padding:1.4rem;background:#f5f5f5;}
+.possibilityStart h3 {padding:0 0 1.3rem 0}
+.possibilityStart h3 strong:before {content:'';margin-right:0.5rem;display:inline-block;width:0.6rem;height:0.6rem;border:3px solid #ffcc33;border-radius:100%;vertical-align:middle;}
+.possibilityStart h3 span {font-weight:normal;color:#999;font-size:0.9rem;}
+.possibilityStart .startBack {margin:0 0 1.4rem 0;width:100%;padding:1.9rem 1.4rem;border:1px solid #eee;box-sizing:border-box;background:#fff;}
+.possibilityStart .startBack.base.corpBase {display:none;}
+.possibilityStart .startBack.base .dlStyle {display:table;width:100%;}
+.possibilityStart .startBack.base .dlStyle dt {display:table-cell;width:8rem;}
+.possibilityStart .startBack.base .dlStyle dd {display:table-cell;width:auto;}
+.possibilityStart .startBack.base .dlStyle dd.noline {padding:0;border:none;}
+.possibilityStart .startBack.base .dlStyle dd.noline input.wFull {width:100%;padding:0 0.7rem;height:2.3rem;}
+.possibilityStart .startBack.base .dlStyle dd.noline .selectSet {display:inline-block;}
+.possibilityStart .startBack.base .dlStyle dd.noline .selectSet button {width:100%;height:3rem;}
+.possibilityStart .startBack.base .dlStyle dd.noline .selectSet ul {top:3rem;}
+.possibilityStart .startBack .dlStyle:last-child {padding:0;}
+.possibilityStart .startBack .ckind {border:none;}
+.possibilityStart .startBack .ckind div {float:left;display:inline-block;}
+.possibilityStart .startBack .ckind .radioSet label {padding:1rem 0 0 0;width:16.7rem;height:11.5rem;text-align:center;border:1px solid #eee;box-sizing:border-box;}
+.possibilityStart .startBack .ckind .radioSet label i {margin:0 auto;}
+.possibilityStart .startBack .ckind .radioSet label strong {display:inline-block;padding:0.5rem 0 0 0;width:100%;height:7rem;}
+.possibilityStart .startBack .ckind .radioSet label em {display:inline-block;width:100%;}
+.possibilityStart .startBack .ckind .ckPerson .radioSet label strong {background:url('../images/i_individual_gray.svg') no-repeat center bottom;background-size:2.1rem auto;}
+.possibilityStart .startBack .ckind .ckPerson .radioSet input:checked + label {border-color:#ffcc33;background:#fffaeb;box-shadow:inset 0 0 0 2px #ffcc33;}
+.possibilityStart .startBack .ckind .ckPerson .radioSet input:checked + label strong {background:url('../images/i_individual.svg') no-repeat center bottom;background-size:2.1rem auto;}
+.possibilityStart .startBack .ckind .ckCorp .radioSet label strong {background:url('../images/i_corporate_gray.svg') no-repeat center bottom;background-size:2.8rem auto;}
+.possibilityStart .startBack .ckind .ckCorp .radioSet input:checked + label {border-color:#7ac5ff;background:#f1f8fe;box-shadow:inset 0 0 0 2px #7ac5ff;}
+.possibilityStart .startBack .ckind .ckCorp .radioSet input:checked + label strong {background:url('../images/i_corporate.svg') no-repeat center bottom;background-size:2.8rem auto;}
+.possibilityStart .btnArea * {display:inline-block;width:12.4rem;height:3.8rem;line-height:3.5;box-sizing:border-box;}
+.possibilityStart .btnArea .btnReset,
+.possibilityStart .btnArea button {padding-right:2.4rem;text-align:right;font-weight:bold;border:1px solid #222;background:url('../images/btn_refresh.svg') no-repeat 1.2rem center;background-size:1.2rem auto;}
+.possibilityStart .btnArea a {float:right;border:none;text-align:center;font-weight:bold;}
+.possibilityStart .btnArea a.okPs {background:#ffcc33;}
+.possibilityStart .btnArea a.okCorp {display:none;background:#7ac5ff;}
+.arrowDate {position:relative;display:inline-block;height:2.3rem;padding:0 1rem;margin:0 0 0 1rem;line-height:2.5;vertical-align:top;border:1px solid #ffcc33;box-sizing:border-box;}
+.arrowDate:before {content:'';position:absolute;left:-5px;top:50%;margin-top:-5px;display:inline-block;width:8px;height:8px;border:1px solid #ffcc33;border-width:1px 1px 0 0;background:#fff;    
+	-webkit-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    transform: rotate(-135deg);}
+.customerKind.corpCase .possibilityStart .personBase {display:none;}
+.customerKind.corpCase .possibilityStart .corpBase {display:inline-block;}
+.customerKind.corpCase .possibilityStart .btnArea a.okPs {display:none;}
+.customerKind.corpCase .possibilityStart .btnArea a.okCorp {display:inline-block;}
+.customerKind.corpCase .possibilityStart h3 strong:before {border:3px solid #7ac5ff;}
+.customerKind.corpCase .arrowDate {border-color:#7ac5ff;}
+.customerKind.corpCase .arrowDate:before {border-color:#7ac5ff;}
+/**/
+.possibility {padding:calc(1.4rem + 30px) 1.4rem 1.4rem 1.4rem;}
+.possibility .cTab.fix {position:fixed;z-index:5;top:5rem;left:1.4rem;right:1.4rem;padding-top:1.4rem;height:calc(1.4rem + 30px);overflow:visible;background:#fff;}
+.possibility .cTab span {position:absolute;top:0;right:0;display:inline-block;padding:0.4rem 0 0;font-size:0.9rem;width:4rem;height:5rem;color:#fff;text-align:center;box-sizing:border-box;background:url('../images/bg_flag.svg') no-repeat left bottom;background-size:100% auto;}
+.possibility .cTab span:after {content:'';display:inline-block;width:100%;height:1.6rem;margin:0.3rem 0 0;background:url('../images/i_individual_circle.svg') no-repeat center bottom;background-size:auto 1.6rem;}
+.possibility .cTabCon {padding:1.4rem;background:#fff;}
+.possibility.corpCase .cTab span:after {background:url('../images/i_corporate_circle.svg') no-repeat center bottom;background-size:auto 1.6rem;}
+.possibility.corpCase .cTab ul li.on a, 
+.possibility.corpCase .cTab ul li.on button {background:#7ac5ff;}
+.possibility.corpCase .cTab ul li.on a:after, 
+.possibility.corpCase .cTab ul li.on button:after {border-bottom: 14px solid #7ac5ff;border-left: 4px solid #7ac5ff;}
+.possibility.corpCase h4.formTit:before {background:#7ac5ff;}
+.possibility div.agreeTxt {border-bottom:1px dashed #bbb;}
+.possibility div.agreeTxt p {padding:0.7rem;font-size:0.9rem;background:#f8f8f8;}
+.possibility .dlStyle dd.noline {padding:0;border:none;}
+.possibility .dlStyle dd.noline2 {padding:0.2rem;}
+.possibility .dlStyle dd.noline input.wFull {width:100% !important;}
+.possibility .dlStyle dd.noline .selectSet {display:inline-block;}
+.possibility .dlStyle dd.noline .selectSet button {width:100%;height:3rem;}
+.possibility .dlStyle dd.noline .selectSet ul {top:3rem;}
+.possibility .emailAdd {*zoom:1;}
+.possibility .emailAdd:after {content:"";display:block;clear:both;}
+.possibility .emailAdd > * {float:left;}
+.possibility .emailAdd .smselect,
+.possibility .emailAdd .selectSet {margin-left:0.5rem;width:calc(35% - 0.5rem) !important;}
+.possibility .emailAdd input {width:30% !important;}
+.possibility .emailAdd input {background:#fff;}
+.possibility .emailAdd em {width:5%;height:2.3rem;line-height:2.3rem;text-align:center;}
+.possibility .emailOk {padding-top:0.5rem;}
+.possibility .addrCnt input {width:100%;}
+.possibility .addrCnt button {position:absolute;}
+.possibility .addrCnt .addrTop {position:relative;padding:0 0 0 40%;}
+.possibility .addrCnt .addrTop span {position:absolute;left:0;top:0;width:39%;display:inline-block;}
+.possibility .addrCnt .addrTop button {right:0;top:0;height:2.3rem;width:5rem;}
+.possibility .addrCnt .addrDetail {position:relative;padding:0.5rem 0 0 0;}
+.possibility .addrCnt .addrDetail button {right:2px;top:0.6rem;width:2rem;height:2rem;}
+.possibility .addrOk {padding-top:0.5rem;}
+.possibility .nowCar .selectSet {width:20%;}
+.possibility .nowCar strong {margin:0 2px 0 5px;font-weight:normal;}
+.possibility .nowCar .year {width:15%;}
+.possibility .nowCar .dis {width:15%;}
+.possibility .nowCar em {margin:0 0 0 2px;}
+.possiBtn {margin:1rem 0;text-align:center;}
+.possiBtn * {width:12rem;height:3rem;line-height:2.6;}
+.possiBtn .btnLB {background:none;}
+.possibilityEnd {min-height:calc(100vh - 5rem);padding:25rem 0 0;background:#fff url('../images/bg_possibilityEnd1.png') repeat;}
+.possibilityEnd .endBack {position:relative;min-height:calc(100vh - 30rem);box-sizing:border-box;background:#fff;}
+.possibilityEnd .endBack div {position:absolute;top:-10rem;left:50%;margin-left:-12.8rem;padding:5rem 0 0 0;width:25.7rem;text-align:center;background: url('../images/bg_possibilityEnd2.png') no-repeat center top;}
+.possibilityEnd .endBack div:before {content:'';display:inline-block;width:9rem;height:9rem;border:1rem solid #fff;background:#ffcc33 url('../images/i_customer_plusWhite.svg') no-repeat center;background-size:50% auto;border-radius:100%;}
+.possibilityEnd .endBack p {padding:2rem 0 2rem;font-size:1.25rem;}
+.possibilityEnd [class*=btn] {width:10rem;height:3rem;line-height:3rem;}
+/**/
+.docKindPop {position:fixed;z-index:3005;left:50%;top:50%;margin:-5.5rem 0 0 -10.2rem;width:21.2rem;height:6rem;}
+.docKindPop .close {position:absolute;top:-2.3rem;right:0;z-index:100;padding:0.6rem;width:2rem;height:2rem;text-indent:-9999px;overflow:hidden;border:none;box-sizing:border-box;background:url('../images/btn_closeWhite.svg') no-repeat center;background-size:1.4rem auto;}
+.docKindPop .pBack {top:2rem;text-align:center;}
+.docKindPop .pBack input,
+.docKindPop .pBack button,
+.docKindPop .pBack a {display:inline-block;margin:0 0.4rem;padding:2.8rem 0 0 0;width:6rem;height:6rem;font-size:1rem;line-height:2.9rem;color:#666;border-radius:0.5rem;font-weight:bold;text-align:center;border:none;box-sizing:border-box;box-shadow:0 0 10px rgba(0,0,0,.3);background:#ffcc33 url(../images/i_kind_sign_on.svg) no-repeat center 0.6rem;background-size:2.5rem auto;}
+.docKindPop .pBack .action {color:#000;}
+.docKindPop .pBack a.btnSign {background:#f1f2f2 url('../images/i_doc_sign.svg') no-repeat center 0.6rem;background-size:2.5rem auto;border:1px solid #fff}
+.docKindPop .pBack a.btnSign.action {background:#ffcc33 url('../images/i_doc_signOn.svg') no-repeat center 0.6rem;background-size:2.5rem auto;border:1px solid #ffcc33}
+.docKindPop .pBack a.btnPhoto {background:#f1f2f2 url('../images/i_doc_camera.svg') no-repeat center 0.6rem;background-size:2.5rem auto;border:1px solid #fff}
+.docKindPop .pBack a.btnPhoto.action {background:#ffcc33 url('../images/i_doc_cameraOn.svg') no-repeat center 0.6rem;background-size:2.5rem auto;border:1px solid #ffcc33}
+.docKindPop .pBack button {background:#f1f2f2 url('../images/i_document_viewOff.svg') no-repeat center 0.6rem;background-size:2.5rem auto;border:1px solid #fff}
+.docKindPop .pBack button.action {background:#ffcc33 url('../images/i_document_view.svg') no-repeat center 0.6rem;background-size:2.5rem auto;border:1px solid #ffcc33}
+
+/* ============================================ */
+/* media query */
+/* ============================================ */
+/* @media (max-width:420px), (orientation : landscape) and (max-width:820px)  { */
+@media all and (max-width:420px), (orientation : landscape) and (max-width:667px) {
+	.attention {top:10rem;}
+	/**/
+	.contractLayout .gridSet.grid2 .gridItem:first-child {padding-right:0;}
+	.contractLayout .gridSet.grid2 .gridItem:last-child {padding-left:0;}
+	/*.contractLayout .gridSet.grid2.except .gridItem {width:50% !important;}*/
+	.contractLayout .gridSet.grid3 .gridItem:first-child {padding-right:0;}
+	.contractLayout .gridSet.grid3 .gridItem:last-child {padding-left:0;} 
+	.contractLayout .gridSet.grid2-75 .gridItem:first-child {width:100% !important;}
+	.contractLayout .gridSet.grid2-75 .gridItem:last-child {width:100% !important;}
+	.contractLayout .gridSet.grid4 .gridItem {padding-left:0;}
+	.contractLayout .gridSet .gridItem.blockCase {display:none;}
+	/**/
+	.signBack.mt1 {margin-top:1rem;}
+	.dlStyle.rrmBox {position:relative;border-color:#ffaeae;}
+	.dlStyle.rrmBox:before {position:absolute;left:0;bottom:0;content:'';display:inline-block;height:5px;border-left:1px solid #ffaeae;}
+	.dlStyle.rrmBox:after {position:absolute;right:0;bottom:0;content:'';display:inline-block;height:5px;border-left:1px solid #ffaeae;}
+	.dlStyle.rrmBox dt,
+	.dlStyle.rrmBox dt * {color:#e85252;}
+	.dlStyle.rrmBox dd.bg {padding:0.5rem 0.5rem 0.5rem 0;background:none;}
+	.dlStyle.rrmBox dd .smselect button {border:none;background:#fdfdf3;}
+	.dlStyle.rrmBox dd input, 
+	.dlStyle.rrmBox dd .smselect {width:100%;border:1px solid #ffaeae;background:#fdfdf3;}
+	.dlStyle.rrmBox dd input {padding:0 0.5rem;}
+	/**/
+	.dlStyle {display:table;padding:0 0 0.5rem;}
+	.dlStyle dt {display:table-cell;width:7.5rem;padding:0.5rem 0 0.5rem 0;line-height:1.5;color:#888;}
+	.dlStyle dt strong {color:#888;font-weight:normal;}
+	.dlStyle dt span {display:block;color:#888;font-weight:normal;}
+	.dlStyle dd {display:table-cell;width:auto;}
+	.buyType label {font-size:0.9rem;letter-spacing:-0.1rem;}
+	/**/
+	.contractLayout {padding:0 0 4rem 0;}
+	.contractLayout .total {margin-top:0;}
+	.cTabWrap {padding:7.7rem 0 0;}
+	.cTabBack {display:none;height:0;}
+	.cTabCon {padding:1rem;border:none;}
+	.showSignArea {display:none;height:0;}
+	.bottomContBtn {display:inline-block !important;}
+	.agreeBox dl dt div {padding:0.2rem 7rem 0.2rem 0.5rem;}
+	.agreeBox .agreeCon {padding:0.7rem 0.8rem;}
+	.agreeTxt {font-size:0.85rem;}
+	h4.formTit {font-size:1rem;}
+	/**/
+	.summBoxBack {top:2.5rem;padding:0.5rem 0 0;}
+	.summBox {padding:0 1rem 0 1rem;height:7.2rem;border:none;border-bottom:1px solid #bbbcbc;}
+	.summBox .infoBtn {margin-top:0.5rem;}
+	.summBox .summTt {top:0;width:5rem;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+	.summBox .infoBtn div.left {width:100%;}
+	.summBox .infoBtn div.left div {width:100%;display:none;}
+	.summBox .infoBtn div.left dl {display:table;width:100%;margin-bottom:0.2rem;border:1px solid #ddd;}
+	.summBox .infoBtn dl dt {display:table-cell;width:4.2rem;height:1.8rem;font-size:0.9rem;text-align:center;/*border-right:1px solid #ddd;*/}
+	.summBox .infoBtn dl dd {display:table-cell;width:25%;height:1.8rem;border-right:1px solid #ddd;}
+	.summBox .infoBtn dl dd:last-child {border-right:0;}
+	.summBox .infoBtn dl dd:after {display:none;}
+	.summBox .infoBtn div.left div dl {border:0;border-bottom:1px solid #ddd;}
+	.summBox .infoBtn div.left div dt {border-right:0;}
+	.summBox .infoBtn div.left div dd {width:auto;border-right:0;}
+	.summBox .infoBtn [class*=btn] {padding:0.1rem 0.5rem 0.1rem;height:2rem;font-size:0.9rem;}
+	.summBox .infoBtn div.right {bottom:0.5rem;}
+	/**/
+	.topPlace {padding:0.7rem 0 0;}
+	.topPlace .gridItem {width:100%;padding:0 !important;}
+	.topPlace .gridItem:first-child {width:100%;}
+	.topPlace .gridItem:last-child {width:100%;}
+	.topPlace .dlStyle {width:100%;}
+	.topPlace .dlStyle dt {width:8.5rem;text-align:left;}
+	.topPlace .dlStyle dt.wideHide {display:table-cell;}
+	.topPlace .gridItem:last-child .dlStyle dt {width:8.5rem;}
+	/**/
+	.agreeBox dl dd {padding:0.7rem;}
+	.agreeBox .agreeTable {table-layout:fixed;}
+	.agreeBox .agreeTable th {font-size:0.9rem;}
+	.agreeBox .agreeTable td {font-size:0.9rem;}
+	.agreeBox .mobileVer {display:block !important;}
+	.agreeBox .tabletVer {display:none;}
+	.agreeBtm {display:inline-block;width:100%;padding:0;}
+	.agreeBtm p {display:inline-block;width:100%;padding:0.5rem;}
+	.agreeBtm div {display:inline-block;width:100%;padding:0.5rem;border-top:1px dotted #eee;}
+	/**/
+	.privacySign {padding:0.5rem;}
+	.privacySign .dateBox {padding:0;margin:0 0 0.7rem;}
+	.privacySign .dateBox span {position:relative;top:auto;margin:0.3rem 0 0;vertical-align:middle;}
+	.privacySign .tt {padding:0 0.5rem}
+	.noticeSign {margin:1rem 0 0;padding:0.5rem;}
+	.noticeSign dl.bank {height:auto;}
+	.noticeSign dl dt {float:left;width:30%;margin-right:0;}
+	.noticeSign dl dd {width:70%;}
+	.noticeSign dl dd:after {display:none;}
+	.noticeSign .owners {margin-top:0.5rem;}
+	/**/
+	.dlStyle.hBox2 dd {height:auto;}
+	.dlStyle.hBox3 dd {height:auto;}
+	.dlStyle.hBox4 dd {height:auto;}
+	.hadd .dlStyle dt .checkSet label {font-weight:normal;}
+	.contractLayout .rightBox {padding-top:0.5rem !important;}
+	.contractLayout .rightBox .dlStyle {padding:0;margin-bottom:0.5rem;border-bottom:1px solid #000;}
+	.contractLayout .rightBox .dlStyle dt {padding:0.7rem 0.7rem 0.7rem 0;width:8rem;background:none;}
+	.contractLayout .rightBox .dlStyle dd {border:none;} 
+	.contractLayout .rightBox .carPrice dt strong {color:#444;}
+	.contractLayout .rightBox .markArea {padding:0 0 0 1.8rem;}
+	.contractLayout .rightBox .markArea dt {padding:0.7rem;width:9.5rem;}
+	.contractLayout .rightBox .markArea dl:before {left:-1.8rem;width:1.8rem;height:1.8rem;margin-top:-0.9rem;}
+	.contractLayout .rightBox .dlStyle.plus {border-color:#88888d;}
+	.contractLayout .rightBox .dlStyle.minus {border-color:#74c166;}
+	.contractLayout .rightBox .dlStyle.total {border-color:#e75252;}
+	.contractLayout .rightBox .dlStyle.total dt {padding:0.7rem;background:none;}
+	.contractLayout .rightBox .dlStyle.total dt strong {color:#e75252;}
+	.balloon {padding:0;background:#fff;}
+	.balloon .dlStyle {padding:0;}
+	.balloon .dlStyle dt {width:7.5rem;}
+	.balloon .dlStyle dd {border-bottom:1px solid #ddd}
+	.balloon .dlStyle.multi dd {padding:0 0 0.5rem 0;}
+	.balloon .dlStyle.multi .checkSet {margin-right:0;}
+	.balloon .dlStyle.multi dd:last-child {border-bottom:1px solid #ddd}
+	.balloon .dlStyle dd div.price {padding:0.5rem 0.5rem 0 0;border-top:1px dotted #ddd;}
+	.balloon .dlStyle dd {border-bottom:1px solid #ddd}
+	.priceSet {position:relative;padding:0 0 0 0;}
+	.priceSet .payKind {position:relative;right:auto;top:0;width:100%;padding-left:0 !important;box-sizing:border-box;}
+	.priceSet .payKindInfo {position:relative;right:auto;top:auto;width:100%;padding-left:0;box-sizing:border-box;}
+	.balloon.yell {background:#fff;}
+	.balloon.yell .dlStyle.total dt {text-align:left;border-bottom:1px solid #e75252;background:none;}
+	.balloon.yell .dlStyle.total dt strong {color:#e75252;}
+	.balloon.yell .dlStyle.total dd {border-color:#e75252;}
+	.vrtStyle {border:none;background:#f5f5f5;}
+	.vrtStyle>dt {display:none;}
+	.vrtStyle>dd {padding:0 0;}
+	.vrtStyle dd dl {padding:0.9rem 0 0.9rem 0.9rem;}
+	.vrtStyle dd dl dt {width:7rem;}
+	/*레몬법 */
+	.lemonLawDetail .back {padding:0.7rem;}
+	.lemonLawDetail h2 {padding:0 0.7rem 1rem;font-size:1rem;}
+	.lemonLawDetail h3 {font-size:0.9rem;text-align:left;}
+	.lemonLawDetail h4 {font-size:1rem;padding:1rem 0 0 0;}
+	.lemonLawSign .lLSBack p {padding:0.5rem;}
+	.lemonLawSign .lLSBack div {padding:0.5rem;}
+	.lemonLawSign .privacySign {margin-top:1.4rem !important;padding:1rem;}
+	/**/
+	.docLayout {padding:0 0 1rem;}
+	.docLayout .summBox {height:5rem;}
+	.documentView  {padding:9.5rem 0 0;}
+	.documentView2  {padding:7.4rem 0 0px;}
+	.docTab {top:8rem;padding:0.5rem 0.5rem 0;}
+	.dList ul {display:inline-block;width:100%;border-top:1px solid #eee;}
+	.dList li {display:inline-block;float:left;width:50%;}
+	.dList li:nth-child(2n+1) {border-right:1px solid #eee;}
+	.dList li div {display:inline-block;width:100%;padding:0.5rem 0 0.5rem 1rem;font-size:0.9rem;font-weight:normal;}
+	.dList li div strong {display:inline-block;width:100%;text-align:left;border:none;font-weight:normal;}
+	.dList li div strong span {text-decoration:underline;}
+	.dList li div strong:after {content:"건";margin-left:0.5rem;color:#999;text-decoration:none;}
+	.dList li div em {width:auto;padding-right:0.5rem;font-size:0.84rem;}
+	.dList li span.date {display:none;}
+	.dList li span.btn {display:none;}
+	.dList.saleCase li {width:100%;}
+	.dList.saleCase li:nth-child(2n+1) {border-right:none;}
+	table.gridList {table-layout:fixed;}
+	table.receiptList tbody tr td strong {display:inline-block;width:100%;text-align:left;}
+	table.receiptList tbody tr td div {display:inline-block;width:100%;text-align:left;}
+	table.receiptList tbody tr td span {display:inline-block;width:30%;}
+	table.receiptList tbody tr td em {display:inline-block;width:30%;text-align:right;}
+    /*** 가망고객 ***/
+    .possibility .tbList.tbBody > li .listTitle {margin-top:0;}
+    .possibility .tbList.tbBody > li .date,
+    .possibility .tbList.tbBody > li .tel,
+    .possibility .tbList.tbBody > li .channel,
+    .possibility .tbList.tbBody > li .document {position:absolute;line-height:1;}
+    .possibility .tbList.tbBody > li .date {left:1rem;bottom:1rem;width:8rem;padding-right:0;border-right:none;text-align:left;}
+    .possibility .tbList.tbBody > li .tel {left:9.1rem;bottom:1rem;padding-left:0.5rem;}
+    .possibility .tbList.tbBody > li .channel {right:1rem;bottom:1rem;}
+    .possibility .tbList.tbBody > li .document {right:1rem;top:1rem;}
+	.possibilityEnd {min-height:auto;padding-top:14rem;}
+	.possibilityEnd .endBack {min-height:auto;}
+	.btnDocumtSolo {display:inline-block;}
+	.pageTop.list.type3 {right:5rem;}
+	/**/
+	.possibilityStart {padding:1rem 1rem 4rem;min-height:calc(100vh - 2.5rem);}
+	.possibilityStart .startBack .ckind div {width:100%;}
+	.possibilityStart .startBack .ckind .radioSet {width:100%;}
+	.possibilityStart .startBack .ckind .radioSet label {width:100%;height:4rem;padding:0 0 0 1rem;}
+	.possibilityStart .startBack .ckind .radioSet label strong {width:80%;height:2.9rem;line-height:1.8;text-align:left;padding:0.2rem 0 0 0;background-image:none !important;}
+	.possibilityStart .startBack .ckind .radioSet label i {margin:-0.5rem 0.5rem 0 0;vertical-align:middle;}
+	.possibilityStart .startBack.base .dlStyle dd.noline .selectSet.w15 {width:100%;}
+	.possibilityStart .startBack .ckind .ckCorp .radioSet label strong {line-height:3.5;}
+	.possibilityStart .startBack .ckind .radioSet input:checked + label strong {background-image:none !important;}
+	.possibilityStart .selectSet.w10 {width:7rem;}
+	.possibilityStart .btnArea * {width:45%;}
+	.possiBtn * {width:45%;}
+	.contractLayout.possibility {padding: 1rem 1rem 4rem 1rem;}
+	.possibility .cTab.fix {top:2rem;left:1rem;right:1rem;}
+	.possibility .cTabCon {padding:3.4rem 1rem 1.4rem;border:1px solid #ddd;}
+	.possibility .addrCnt .addrTop {padding: 0 0 0 0;}
+	.possibility .addrCnt .addrTop span {position:relative;width:100%;padding:0 0 0.5rem 0;}
+	.possibility .nowCar .selectSet {width:100%;margin-bottom:0.5rem;}
+	.possibility .nowCar strong {display:inline-block;width:25%;}
+	.possibility .nowCar .year {width:50%;margin-bottom:0.5rem;}
+	.possibility .nowCar .dis {width:50%;}
+	.possibility .emailAdd input {width:45% !important;}
+	.possibility .emailAdd em {width:10%;}
+	.possibility .emailAdd .selectSet {margin:0.5rem 0 0 0;width:100% !important;}
+	.possibilityStart .startBack.base .dlStyle dd.noline {padding:0.5rem 0 0.5rem 0;}
+	.possibilityStart .startBack {padding:0 0.7rem;}
+	.possibility .selectSet.w10 {width:7rem;}
+	.arrowDate {padding:0 0.5rem;margin-left:0.5rem;}
+}
+@media (orientation : landscape) {
+	.dList li span.btn {padding:0 5rem 0 0;}
+	.dList li span.btn .btnPhoto {margin-left:4rem;}
+    
+}
+@media (orientation : landscape) and (max-width:820px) {
+
+}
+@media (max-width:420px) {
+    
+}

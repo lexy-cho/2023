@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.btnPwReset').click(function(){
+					$('.popDim').show();
+					$('.pwResetPop').show();
+				});
+
+				$('.evidence').click(function(){
+					$('.popDim').show();
+					$('.bigImgPop#thum1Pop').show();
+				}); //2020-07-13 썸네일 팝업
+				$('.thum2').click(function(){
+					$('.popDim').show();
+					$('.bigImgPop#thum2Pop').show();
+				}); //2020-07-13 썸네일 팝업
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Page Layout -->
+		<div class="carOwnerDetail">
+			<!-- <div class="detailTop">
+				<span class="left">
+					<button class="btnM red">회원삭제</button>
+				</span>
+				<span class="right">
+					<button class="btnM orange">정보수정</button>
+				</span>
+			</div> -->
+			<div class="tab">
+				<!-- tab -->
+				<div class="tabBack">
+					<div class="tabNav">
+						<nav>
+							<ul>
+								<li class="on"><button data-name="1">기본정보</button></li>
+								<li><button data-name="2">소속 운송사</button></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<!--// tab -->
+				<div class="tabLayout">
+					<!-- 기본정보 -->
+					<div class="tabData tData1" style="display:block;">
+						<div class="detailContents">
+							<div class="tws">
+								<table>
+									<!-- 2020-07-16 col width 수정 -->
+									<colgroup>
+										<col width="95" />
+										<col width="280" />
+										<col width="95" />
+										<col width="280" />
+									</colgroup>
+									<!-- //2020-07-16 col width 수정 -->
+									<tbody>
+										<tr>
+											<th>소속운송사<br/>서비스</th>
+											<td>SaaS 운송사 (프리미엄 유료서비스)</td>
+											<th>가입일자</th>
+											<td>2019-12-01</td>
+										</tr>
+										<tr>
+											<th>인증번호<br/>(휴대전화)</th>
+											<td>01023456789</td>
+											<th>패스워드</th>
+											<td><button class="btnS blue btnPwReset">패스워드 초기화</button></td>
+										</tr>
+										<tr>
+											<th>성명</th>
+											<td>홍길동</td>
+											<th></th>
+											<td></td>
+										</tr>
+										<tr>
+											<th rowspan="2">사업장 주소</th>
+											<td colspan="3">
+												<span class="addressArea">
+													<span class="zipCode">[83909]</span>
+													<span class="address">서울시 성북구 한아름로 53-1</span>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="3">컨테이너 아파트 102동 203호</td>
+										</tr>
+										<tr>
+											<th>운전면허번호</th>
+											<td>13-11-123456-78</td>
+											<th>증빙자료</th>
+											<td><span class="evidence"><em><img src="../images/sample1.png" alt="증비자료 예시"/></em></span></td>
+										</tr>
+										<tr class="lastTr">
+											<th>화물운송 종사자 자격증</th>
+											<td>9876-54321</td>
+											<th>증빙자료</th>
+											<td><span class="evidence"><em><img src="../images/sample1.png" alt="증비자료 예시"/></em></span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- // 기본정보 -->
+					<!-- 소속 운송사	 -->
+					<div class="tabData tData2">
+						<div class="detailContents affiliateTab">
+							<ol>
+								<li>
+									<strong>1. 소속 운송사</strong>
+									<div class="tws">
+										<table>
+											<!-- 2020-07-16 col width 수정 -->
+											<colgroup>
+												<col width="95" />
+												<col width="280" />
+												<col width="95" />
+												<col width="280" />
+											</colgroup>
+											<!-- //2020-07-16 col width 수정 -->
+											<tbody>
+												<tr>
+													<th>성명</th>
+													<td>홍길동</td>
+													<th>드라이버 소속</th>
+													<td>내부</td>
+												</tr>
+												<tr>
+													<th>상호명</th>
+													<td>하이웨이 컨테이너</td>
+													<th>사업자번호</th>
+													<td>123-01-12345</td>
+												</tr>
+												<tr>
+													<th>차량번호</th>
+													<td>555호 8888</td>
+													<th>차량사진</th>
+													<td><span class="evidence"><em><img src="../images/sample1.png" alt="증비자료 예시"/></em></span></td>
+												</tr>
+												<tr>
+													<th>차량검사 유효기간</th>
+													<td>2020-02-25</td>
+													<th>차량보험 갱신일자</th>
+													<td>2020-12-31</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</li>
+								<li>
+									<strong>2. 게스트 운송사</strong>
+									<div class="tws">
+										<table>
+											<!-- 2020-07-16 col width 수정 -->
+											<colgroup>
+												<col width="95" />
+												<col width="280" />
+												<col width="95" />
+												<col width="280" />
+											</colgroup>
+											<!-- //2020-07-16 col width 수정 -->
+											<tbody>
+												<tr>
+													<th>성명</th>
+													<td>홍길동</td>
+													<th>드라이버 소속</th>
+													<td>내부</td>
+												</tr>
+												<tr>
+													<th>상호명</th>
+													<td>하이웨이 컨테이너</td>
+													<th>사업자번호</th>
+													<td>123-01-12345</td>
+												</tr>
+												<tr>
+													<th>차량번호</th>
+													<td>555호 8888</td>
+													<th>차량사진</th>
+													<td><span class="evidence"><em><img src="../images/sample1.png" alt="증비자료 예시"/></em></span></td>
+												</tr>
+												<tr>
+													<th>차량검사 유효기간</th>
+													<td>2020-02-25</td>
+													<th>차량보험 갱신일자</th>
+													<td>2020-12-31</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</li>
+								<li>
+									<strong>3. 게스트 운송사</strong>
+									<div class="tws">
+										<table>
+											<!-- 2020-07-16 col width 수정 -->
+											<colgroup>
+												<col width="95" />
+												<col width="280" />
+												<col width="95" />
+												<col width="280" />
+											</colgroup>
+											<!-- //2020-07-16 col width 수정 -->
+											<tbody>
+												<tr>
+													<th>성명</th>
+													<td>홍길동</td>
+													<th>드라이버 소속</th>
+													<td>내부</td>
+												</tr>
+												<tr>
+													<th>상호명</th>
+													<td>하이웨이 컨테이너</td>
+													<th>사업자번호</th>
+													<td>123-01-12345</td>
+												</tr>
+												<tr>
+													<th>차량번호</th>
+													<td>555호 8888</td>
+													<th>차량사진</th>
+													<td><span class="evidence"><em><img src="../images/sample1.png" alt="증비자료 예시"/></em></span></td>
+												</tr>
+												<tr>
+													<th>차량검사 유효기간</th>
+													<td>2020-02-25</td>
+													<th>차량보험 갱신일자</th>
+													<td>2020-12-31</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</li>
+							</ol>
+						</div>
+					</div>
+					<!-- // 소속 운송사 -->
+				</div>
+			</div>
+		</div>
+		<!-- //page Layout -->
+		<div class="popDim" style="display:none">
+			<!-- 패스워드 초기화 -->
+			<div class="basicPop pwResetPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>패스워드 초기화</h1>
+				</div>
+				<div class="pBack">
+					<div class="grayBox">
+						<p>임시 패스워드를 사용자의 휴대전화(SMS)로 발송합니다. 패스워드를 초기화 하시겠습니까?</p>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!-- //패스워드 초기화 -->
+			<!-- 주소검색 -->
+			<div class="basicPop searchPop" id="samplePop12" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>주소검색</h1>
+				</div>
+				<div class="pBack">
+					<div class="seachArea">
+						<div class="searchInput">
+							<input type="text" placeholder="도로명 + 번지로 검색"/>
+							<button class="btnSearch">조회</button>
+						</div>
+						<div class="tip">
+							<dl>
+								<dt><strong>Search tip</strong></dt>
+								<dd><span>도로명 + 건물번호</span>예) 세종대로 207,  매봉산로 37</dd>
+								<dd><span>지역명(동/리) + 번지</span>예) 역삼동 68-1,  상암동 1682</dd>
+							</dl>
+						</div>
+					</div>
+					<div class="listBox">
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="80" />
+									<col width="400" />
+									<col width="80" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>우편번호</th>
+										<th>회사명</th>
+										<th>위치</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr class="on">
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//주소검색-->
+			<!-- 2020-07-13 이미지 팝업 -->
+			<!-- 이미지크게보기 -->
+			<div class="bigImgPop" id="thum1Pop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="bigImg">
+					<div class="centered">
+						<img src="../images/sample1.png" alt="예시 1">
+					</div>
+				</div>
+			</div>
+			<!--//이미지크게보기-->
+			<!-- 이미지크게보기 -->
+			<div class="bigImgPop" id="thum2Pop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="bigImg">
+					<div class="centered">
+						<img src="../images/sample2.png" alt="예시 2">
+					</div>
+				</div>
+			</div>
+			<!--//이미지크게보기-->
+			<!-- //2020-07-13 이미지 팝업 추가 -->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

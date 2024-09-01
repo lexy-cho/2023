@@ -1,0 +1,289 @@
+<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+<script type="text/javascript" src="../js/swiper.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('.btnOpen').click(function(){
+			$(this).toggleClass('on');
+			$('.menu ul').toggle();
+		});
+		var swiper1 = new Swiper('.gnbSwiper .swiper-container', {
+		  slidesPerView: 'auto',
+		  loop: true,
+		  autoplay: {
+		    delay: 2000,
+		},
+		});
+	});
+</script>
+			<div class="gnbArea">
+				<div class="gnbTop">
+					<button class="c-close gnbClose">닫기</button>
+					<a href="main.html" class="btnHome">HOME</a><!-- 2020-05-15 -->
+					<div class="loginInfo">
+						<strong>
+							<span class="userImg">
+								<img src="../images/img_square.png" alt=""/>
+							</span><!-- 2020-07-17 이미지 추가 -->
+							홍길동님 안녕하세요.
+						</strong>
+						<a href="push.html" class="btnRing">알림<span>2</span></a><!-- 2020-05-15 -->
+					</div>
+					<div class="myGo">
+						<!-- <span><a href="push.html">알림</a></span>
+						<span><a href="login.html">로그아웃</a></span> -->
+						<span><a href="setting.html">설정</a></span>
+					</div>
+				</div>
+				<div class="gnbEvent">
+					<!-- Swiper -->
+					<div class="gnbSwiper">
+						<div class="swiper-container">
+							<ul class="swiper-wrapper">
+								<li class="swiper-slide">
+									<div class="event">
+										<a href="notice.html">
+											<img src="../images/event_birthday2.png"/>
+											<p>2020년 00월 00일<br/>홍길동님, 김철수님 생일 축하합니다.</p>
+										</a>
+									</div>
+								</li>
+								<li class="swiper-slide">
+									<div class="event">
+										<a href="notice.html">
+											<img src="../images/event_hangeul.png"/>
+										</a>
+									</div>
+								</li>
+								<li class="swiper-slide">
+									<div class="event">
+										<a href="notice.html">
+											<strong>Title Sample</strong>
+											<img src="../images/img_event_example3.png"/>
+										</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- //Swiper -->
+				</div>
+				<div class="gnbContents">
+					<div class="favorites">
+						<div class="gnbTit">
+							<strong>즐겨찾기</strong>
+							<a href="" class="goFavorAlgin entypo-switch">편집</a><!-- 2020-09-25 -->
+						</div>
+						<div class="gnbBody">
+							<ul>
+								<li><span class="entypo-doc-text-inv"><a href="evidence.html">증빙서류<!-- <em>new</em> --></a></span></li>
+								<li><span class="entypo-flag"><a href="holiday.html">휴가관리<!-- <em>new</em> --></a></span></li>
+								<li><span class="entypo-layout"><a href="notice.html">공지사항<em>new</em></a></span></li>
+								<li><span class="entypo-picture"><a href="gallery.html">갤러리<!-- <em>new</em> --></a></span></li>
+								<li><span class="entypo-pencil"><a href="education.html">사내 교육<!-- <em>new</em> --></a></span></li>
+								<li><span class="entypo-book"><a href="circular.html">회람<!-- <em>new</em> --></a></span></li>
+								<li><span class="entypo-doc-text-inv"><a href="conference.html">회의실 예약<!-- <em>new</em> --></a></span></li>
+								<li><span class="entypo-ticket"><a href="visitor.html">방문객이력<!-- <em>new</em> --></a></span></li>
+								<li><span class="entypo-vcard"><a href="business_card.html">명함관리<!-- <em>new</em> --></a></span></li>
+								<li><span class="entypo-hourglass"><a href="salary.html">급여명세서<!-- <em>new</em> --></a></span></li>
+								<li><span class="entypo-address"><a href="outside.html">외근관리<!-- <em>new</em> --></a></span></li>
+								<li><span class="entypo-location"><a href="outsideWork.html">현장근무<!-- <em>new</em> --></a></span></li>
+								<li><span class="entypo-monitor"><a href="assets.html">자산현황<!-- <em>new</em> --></a></span></li>
+								<li><span class="entypo-thumbs-up"><a href="confirm_list.html">승인이력<!-- <em>new</em> --></a></span></li>
+								<li><span class="entypo-mail"><a href="https://mail.think-tree.com/" target="_blank">메일<!-- <em>new</em> --></a></span></li>
+								<li><span class="entypo-book-open"><a href="book_rent.html">사내도서<!-- <em>new</em> --></a></span></li>
+								<li><span class="entypo-thermometer"><a href="fever_check.html">발열체크<!-- <em>new</em> --></a></span></li>
+								<li><span class="entypo-clipboard"><a href="approval.html">전자결재<!-- <em>new</em> --></a></span></li>
+								<li><span class="entypo-network"><a href="network.html">네트워크<!-- <em>new</em> --></a></span></li>
+								<li><span class="entypo-shareable"><a href="video.html">화상회의<!-- <em>new</em> --></a></span></li> <!-- 2021-05-21 class 변경 -->
+								<li><span class="entypo-chat"><a>Chat<!-- <em>new</em> --></a></span></li> <!-- 2021-05-21 추가 -->
+							</ul>
+							<div class="nullBox">
+								<span>즐겨찾기를 설정해서<br/>나만의 메뉴를 완성하세요</span>
+							</div>
+						</div>
+					</div>
+					<div class="menu">
+						<div class="gnbTit">
+							<strong>전체 메뉴보기<em>new</em></strong>
+							<button class="btnOpen">여닫기</button>
+						</div>
+						<div class="gnbBody">
+							<nav>
+								<ul style="display:none;">
+									<li>
+										<a href="evidence.html">증빙서류<!-- <em>new</em> --></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star1" checked/>
+											<label for="star1"><span></span></label>
+										</span>
+									</li>
+									<li>
+										<a href="holiday.html">휴가관리<!-- <em>new</em> --></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star2" checked/>
+											<label for="star2"><span></span></label>
+										</span>
+									</li>
+									<li>
+										<a href="notice.html">공지사항<em>new</em></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star3" checked/>
+											<label for="star3"><span></span></label>
+										</span>
+									</li>
+									<li>
+										<a href="gallery.html">갤러리<!-- <em>new</em> --></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star4" checked/>
+											<label for="star4"><span></span></label>
+										</span>
+									</li>
+									<li>
+										<a href="education.html">사내 교육<!-- <em>new</em> --></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star5" checked/>
+											<label for="star5"><span></span></label>
+										</span>
+									</li>
+									<li>
+										<a href="circular.html">회람<!-- <em>new</em> --></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star6"/>
+											<label for="star6"><span></span></label>
+										</span>
+									</li>
+									<li>
+										<a href="conference.html">회의실 예약<!-- <em>new</em> --></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star7"/>
+											<label for="star7"><span></span></label>
+										</span>
+									</li>
+									<li>
+										<a href="visitor.html">방문객이력<!-- <em>new</em> --></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star8"/>
+											<label for="star8"><span></span></label>
+										</span>
+									</li>
+									<li>
+										<a href="business_card.html">명함관리<!-- <em>new</em> --></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star9"/>
+											<label for="star9"><span></span></label>
+										</span>
+									</li>
+									<li>
+										<a href="salary.html">급여명세서<!-- <em>new</em> --></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star10"/>
+											<label for="star10"><span></span></label>
+										</span>
+									</li>
+									<li>
+										<a href="outside.html">외근관리<!-- <em>new</em> --></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star10"/>
+											<label for="star10"><span></span></label>
+										</span>
+									</li>
+									<li>
+										<a href="outsideWork.html">현장근무<!-- <em>new</em> --></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star11"/>
+											<label for="star11"><span></span></label>
+										</span>
+									</li>
+									<li>
+										<a href="assets.html">자산현황<em>new</em></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star12"/>
+											<label for="star12"><span></span></label>
+										</span>
+									</li>
+									<li>
+										<a href="confirm_list.html">승인이력<!-- <em>new</em> --></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star13"/>
+											<label for="star13"><span></span></label>
+										</span>
+									</li>
+									<li>
+										<a href="https://mail.think-tree.com/" target="_blank">메일<!-- <em>new</em> --></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star14"/>
+											<label for="star14"><span></span></label>
+										</span>
+									</li>
+									<li>
+										<a href="book_rent.html">사내도서<!-- <em>new</em> --></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star15"/>
+											<label for="star15"><span></span></label>
+										</span>
+									</li>
+									<li>
+										<a href="fever_check.html">발열체크<!-- <em>new</em> --></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star16"/>
+											<label for="star16"><span></span></label>
+										</span>
+									</li>
+									<li>
+										<a href="approval.html">전자결재<!-- <em>new</em> --></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star17"/>
+											<label for="star17"><span></span></label>
+										</span>
+									</li>
+									<li>
+										<a href="network.html">네트워크<!-- <em>new</em> --></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star18"/>
+											<label for="star18"><span></span></label>
+										</span>
+									</li>
+									<li>
+										<a href="video.html">화상회의<!-- <em>new</em> --></a>
+										<span class="starToggle">
+											<input type="checkbox" id="star19"/>
+											<label for="star19"><span></span></label>
+										</span>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+				<div class="gnbMenu" style="display:none;">
+					<nav>
+						<ul>
+							<!-- <li><span><a href="main.html">HOME</a></span></li> -->
+							<li><span class="entypo-doc-text-inv"><a href="evidence.html">증빙서류<!-- <em>new</em> --></a></span></li>
+							<li><span class="entypo-flag"><a href="holiday.html">휴가관리<!-- <em>new</em> --></a></span></li>
+							<li><span class="entypo-layout"><a href="notice.html">공지사항<em>new</em></a></span></li>
+							<li><span class="entypo-picture"><a href="gallery.html">갤러리<!-- <em>new</em> --></a></span></li>
+							<li><span class="entypo-pencil"><a href="education.html">사내 교육<!-- <em>new</em> --></a></span></li>
+							<li><span class="entypo-book"><a href="circular.html">회람<!-- <em>new</em> --></a></span></li>
+							<li><span class="entypo-doc-text-inv"><a href="conference.html">회의실 예약<!-- <em>new</em> --></a></span></li>
+							<li><span class="entypo-ticket"><a href="visitor.html">방문객이력<!-- <em>new</em> --></a></span></li>
+							<li><span class="entypo-vcard"><a href="business_card.html">명함관리<!-- <em>new</em> --></a></span></li>
+							<li><span class="entypo-hourglass"><a href="salary.html">급여명세서<!-- <em>new</em> --></a></span></li>
+							<li><span class="entypo-address"><a href="outside.html">외근관리<!-- <em>new</em> --></a></span></li>
+							<li><span class="entypo-location"><a href="outsideWork.html">현장근무<!-- <em>new</em> --></a></span></li><!-- 2020-09-01 문구 변경 -->
+							<li><span class="entypo-monitor"><a href="assets.html">자산현황<em>new</em></a></span></li>
+							<li><span class="entypo-thumbs-up"><a href="confirm_list.html">승인이력<!-- <em>new</em> --></a></span></li>
+							<li><span class="entypo-mail"><a href="https://mail.think-tree.com/" target="_blank">메일<!-- <em>new</em> --></a></span></li>
+							<li><span class="entypo-book-open"><a href="book_rent.html">사내도서 대여<!-- <em>new</em> --></a></span></li>
+							<li><span class="entypo-thermometer"><a href="fever_check.html">발열체크<!-- <em>new</em> --></a></span></li>
+							<li><span class="entypo-thermometer"><a href="approval.html">전자결재<!-- <em>new</em> --></a></span></li>
+						</ul>
+						<!-- <ul class="goService">
+							<li><span><a href="visitor/inside_main.html" target="_blank">VISITOR</a></span></li>
+							<li><span><a href="#">COMMUTING</a></span></li>
+							<li><span><a href="#">SCANIT</a></span></li>
+							<li><span><a href="#">PDF</a></span></li>
+						</ul> -->
+					</nav>
+				</div>
+			</div>

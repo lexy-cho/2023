@@ -1,0 +1,80 @@
+/*===================================================================
+* INFORMATION
+* -------------------------------------------------------------------
+* @File Name: _subSsampack.scss
+* @Description : 각 화면별 정의
+* @Create Date: 2021-06-23
+* @Last Update Date: N/A
+* @History: N/A
+* ====================================================================*/
+/* ===== 쌤팩 마지막 단계 ===== */
+.ssampackApply {
+  .checkSet.big {
+    input + label i {width:28px;height:28px;border:2px solid $brightGrayColor;}
+    input + label i:before {left:5px;top:5px;width:14px;height:10px;}
+    input:checked + label,
+    input:checked + label i {border-color:#20ab61;}
+  }
+  .checkSet {
+    input:checked + label,
+    input:checked + label i {border-color:#20ab61;}
+  }
+  .applyStep1 {border-bottom:2px solid $blackColor;
+    .selectArea {@extend %clearBh;padding:30px 0 30px;
+      label {display:inline-block;width:70px;font-weight:600;font-size:$txtSizeP6;}
+      .selectSet {width:260px;}
+    }
+    .kind ~ .kind {margin-left:48px;}
+  }
+  .applyStep2 {padding-top:144px;background:url('../images/img_ssampack_plus.png') no-repeat center 50px;
+    .checkSet {display:block;margin-right:0;
+      i {left:20px;margin-top:-15px;}
+      label {padding:22px 30px 24px 73px;font-size:$txtSizeP10;color:$blackColor;font-weight:600;border:1px solid $brightGrayColor;background:$lightGrayColor;}
+      label em {margin-left:10px;font-size:$txtSizeP2;color:$lightBlackColor;}
+    }
+  }
+  .applyStep3 {padding-top:144px;background:url('../images/img_ssampack_plus.png') no-repeat center 50px;
+    .checkSet {width:270px;height:320px;margin-right:0;
+      label {width:270px;height:320px;padding:0;border:1px solid $brightGrayColor;
+        i {left:19px;top:19px;margin:0;z-index:10;}
+        span {display:inline-block;@extend %imgAlignA;width:100%;height:243px;box-sizing:border-box;overflow:hidden;background:$lightGrayColor;
+          img {max-width:90%;max-height:90%;}
+        }
+        strong {display:block;padding:10px 0 0 18px;font-size:$txtSizeP4;color:$blackColor;;box-sizing:border-box;
+          em {display:block;font-size:$txtSize;color:$lightBlackColor;}
+        }
+      }
+      & ~ .checkSet {margin-left:6px;}
+    }
+  }
+  .applyWishList {padding:100px 0 30px;
+    .tit {display:block;padding:0 0 15px;font-size:$txtSizeP10;border-bottom:2px solid $blackColor;}
+    .gridSet {border-bottom:1px solid $grayColor;}
+    .productSet {padding:20px;vertical-align:top;
+      span {font-size:$txtSizeP4;}
+      ul li {position:relative;margin:2px 0;padding-left:15px;font-size:$txtSizeP2;line-height:22px;color:#666;letter-spacing:-0.05em;word-break:keep-all}
+      ul li:before {content:'';display:block;position:absolute;top:11px;left:2px;width:3px;height:3px;border-radius:100%;background-color:#666;}
+    }
+    .priceSet {padding:0 20px;width:338px;border:2px solid $whiteColor;border-width:5px 0;background:$lightGrayColor;
+      dl {display:table;width:100%;height:72px;}
+      dl * {font-weight:600;}
+      dt {display:table-cell;width:120px;height:72px;font-size:$txtSizeP4;vertical-align:middle;}
+      dd {display:table-cell;text-align:right;vertical-align:middle;}
+      dd strong {font-size:$txtSizeP4;}
+      dl.total {border-top:1px solid $grayColor;
+        * {color:#d1555f;}
+        dt {font-size:$txtSizeP10;}
+        dd strong {font-size:$txtSizeP10;}
+      }
+    }
+    .checkSet {display:block;margin:30px 0 0 0;
+      label {padding:22px 30px 24px 73px;font-size:15px;font-weight:300;color:$lightBlackColor;border:1px solid $grayColor;background:#F8FCF9;}
+      i {left:20px;margin-top:-15px;}
+    }
+  }
+  .btnArea {padding-top:30px;
+    * {margin:0 10px;@include iconBtn(220px, 60px);vertical-align:middle;background:url('../images/btn_ssampack_cart.png') no-repeat;background-size:auto 100%;}
+    .buy {background:url('../images/btn_ssampack_buy.png') no-repeat;background-size:auto 100%;}
+  }
+  .appyNotice {padding-top:85px;}
+}

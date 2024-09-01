@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.listArea .listScroll tbody tr').click(function(){
+					$('.listArea .listScroll tbody tr').removeClass('on');
+					$(this).addClass('on');
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back">
+						<div data-include="include/snb.html"></div>
+					</div>
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- header -->
+			<div id="header">
+				<header>
+					 <h2>광고관리</h2>
+					 <div class="layoutSet">
+						 <button class="btnLayoutR">오른쪽 레이아웃 펼치기</button>
+						 <button class="btnLayoutL">왼쪽 레이아웃 펼치기</button>
+						 <button class="btnLayoutP">레이아웃 합치기</button>
+					 </div>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="searchArea">
+					<fieldset>
+						<dl class="inputBox">
+							<dt>공개여부</dt>
+							<dd>
+								<span class="selectSet">
+									<select>
+										<option>전체</option>
+										<option>공개</option>
+										<option>미공개</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<dl class="inputBox">
+							<dt>서비스</dt>
+							<dd>
+								<span class="selectSet">
+									<select>
+										<option>전체</option>
+										<option>운송사용</option>
+										<option>차주용</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<dl class="inputBox">
+							<dt>게시구분</dt>
+							<dd>
+								<span class="selectSet">
+									<select>
+										<option>전체</option>
+										<option>게시중</option>
+										<option>게시종료</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<span class="searchSet">
+							<input type="text" value="키워드로 검색">
+							<input type="submit" value="조회">
+						</span>
+					</fieldset>
+				</div>
+				<div class="content">
+					<div class="contentScroll">
+						<div class="listArea">
+						<article>
+							<!-- Page Layout -->
+							<div class="">
+								<div class="listTop">
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="80" />
+												<col width="60" />
+												<col width="60" />
+												<col width="200" />
+												<col width="60" />
+												<col width="100" />
+											</colgroup>
+											<thead>
+												<tr>
+													<th>등록일자</th>
+													<th>공개 여부</th>
+													<th>서비스 대상</th>
+													<th>제목</th>
+													<th>작성자</th>
+													<th>게시 기간</th>
+												</tr>
+											</thead>
+										</table>
+									</div>
+								</div>
+								<div class="listScroll">
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="80" />
+												<col width="60" />
+												<col width="60" />
+												<col width="180" />
+												<col width="60" />
+												<col width="140" />
+											</colgroup>
+											<tbody>
+												<!--Loop-->
+												<tr class="on">
+													<td>2020-04-08</td>
+													<td>공개</td>
+													<td>전체</td>
+													<td class="tL">멤버쉽서비스 안내</td>
+													<td>홍길동</td>
+													<td>2020-04-08 ~ 2020-04-08</td>
+												</tr>
+												<!--//Loop-->
+												<tr>
+													<td>2020-04-06</td>
+													<td>미공개</td>
+													<td>운송사용</td>
+													<td class="tL">4월의 저렴이 주유소 안내</td>
+													<td>홍길동</td>
+													<td>2020-04-08 ~ 2020-04-08</td>
+												</tr>
+												<tr>
+													<td>2020-04-01</td>
+													<td>공개</td>
+													<td>처주용</td>
+													<td class="tL">Tstation화물에서 타이어 이벤트</td>
+													<td>홍길동</td>
+													<td>2020-04-08 ~ 2020-04-08</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="listBottom">
+								<!-- btn Area & paginate Set -->
+								<div class="bpSet">
+									<div class="btnArea">
+										<span class="left">
+											<button class="btnS lineRed">선택삭제</button>
+										</span>
+									</div>
+									<div class="paginate">
+										<span>
+											<a class="first">처음</a>
+											<a class="prev">이전</a>
+											<a class="on">1</a>
+											<a>2</a>
+											<a>3</a>
+											<a>4</a>
+											<a>5</a>
+											<a>6</a>
+											<a>7</a>
+											<a>8</a>
+											<a>9</a>
+											<a class="next">다음</a>
+											<a class="last">마지막</a>
+										</span>
+										<span class="selectSet">
+											<select>
+												<option selected>20</option>
+												<option>50</option>
+												<option>100</option>
+											</select>
+										</span>
+									</div>
+								</div>
+							</div>
+							<!-- //page Layout -->
+						</article>
+						</div>
+						<div class="detailArea">
+						<article>
+							<!-- Page Layout -->
+							<div>
+								<div data-include="advertise_detail.html"></div>
+							</div>
+							<!-- //page Layout -->
+						</article>
+						</div>
+					</div>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+    </body>
+</html>

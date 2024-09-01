@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../js/menu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>  
+		$(window).load(function () {
+			funcGnbOpen();
+		});
+		$(document).ready(function(){
+			$(".fullOpen").click(function(){
+				$('.wrapper').css('overflow','hidden');
+				$(".content-1").mCustomScrollbar({
+					axis:"yx",
+					theme:"light",
+					contentTouchScroll:true
+				});
+			});
+			$(".fullClose").click(function(){
+				$('.wrapper').css('overflow','auto');
+			});
+			
+			$(".samplePopBtn1").click(function(){
+				$('.dimPop, #samplePop1').show();
+			});
+			$(".samplePopBtn2").click(function(){
+				$('.dimPop, #samplePop2').show();
+			});
+			$(".samplePopBtn3").click(function(){
+				$('.dimPop, #samplePop3').show();
+			});
+			$(".popMNCase .close, .popLGCase .close, .popSMCase .btn button").click(function(){
+				$('.dimPop, .popMNCase, .popLGCase, .popSMCase').hide();
+			});
+			//
+            
+            // 달력 <!--2019-03-15--->
+            $('.calendarSet button').duDatepicker({
+                format: 'yyyy-mm-dd', // Determines the date format
+                theme: 'yellow',        // Determines the color theme of the date picker
+				readOnly: true,       // Determines if input element is readonly (key input is disabled)
+				clearBtn: false,      // Determines if Clear button is displayed
+				cancelBtn: true,     // Determines if Cancel button is displayed
+				overlayClose: true    // Determines if clicking the overlay will close the date picker
+			}).on('datechanged', function(event){
+                $(this).prev().val(event.date);
+            });
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		
+		<!-- DimPopUp -->
+		<div class="dimPop" style="display:none;">
+			<!-- Dim 내 포함된 팝업 (X 닫기 없는 버전) -->
+			<div class="popSMCase" id="samplePop1" style="display:none;">
+				<div class="popBack">
+					팝업 샘플1
+				</div>
+				<div class="btn">
+					<button class="btnLB">취소</button>
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+			<!-- //Dim 내 포함된 팝업 (X 닫기 없는 버전) -->
+			<!-- Dim 내 포함된 팝업 (작은버전) -->
+			<div class="popMNCase" id="samplePop2" style="display:none;">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>팝업 샘플2</h1>
+				</div>
+				<div class="popBack">
+					Dim 내 포함된 팝업 (작은버전)
+				</div>
+				<div class="btn">
+					<button class="btnLB">취소</button>
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+			<!-- //Dim 내 포함된 팝업 (작은버전) -->
+			<!-- Dim 내 포함된 팝업 (큰버전) -->
+			<div class="popLGCase" id="samplePop3"  style="display:none;">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>팝업 샘플3</h1>
+				</div>
+				<div class="popBack">
+					Dim 내 포함된 팝업 (작은버전)
+				</div>
+				<div class="btn">
+					<button class="btnLB">취소</button>
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+			<!-- //Dim 내 포함된 팝업 (큰버전) -->
+		</div>
+		<!-- //DimPopUp -->
+
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+					<div class="gnbTop">
+						<div class="loginInfo">
+							<p>
+								<strong>
+									김르노님 안녕하세요.<br/>
+									<span>세션만료 26분 30초</span>
+								</strong>
+							</p>
+							<a href="setting.html">환경설정</a>
+						</div>
+						<div class="myGo">
+							<a href="mypage.html">마이페이지</a>
+							<span><a href="login.html">로그아웃</a></span>
+						</div>
+					</div>
+					<div class="gnbMenu">
+						<nav>
+							<ul>
+								<li class="mni0 noSub">
+									<a href="main.html"><span>Home</span></a>
+								</li>
+								<li class="mni1">
+									<strong><span>견적관리</span></strong>
+									<ol>
+										<li class="on"><a href="">신규견적</a></li>
+										<li><a href="">견적조회</a></li>
+										<li><a href="">할부계산기</a></li>
+									</ol>
+								</li>
+								<li class="mni2">
+									<strong><span>계출관리</span></strong>
+									<ol>
+										<li><a href="">계출현황</a></li>
+										<li><a href="">매출 계약 조회</a></li>
+									</ol>
+								</li>
+								<li class="mni3">
+									<strong><span>재고 조회</span></strong>
+									<ol>
+										<li><a href="">가용재고</a></li>
+										<li><a href="">납기문의</a></li>
+									</ol>
+								</li>
+								<!-- <li class="mni4"><a href=""><span>가망고객</span></a></li> -->
+								<li class="mni5">
+									<strong><span>고객 활동</span></strong>
+									<ol>
+										<li><a>가망고객 등록</a></li>
+										<li><a>고객 조회</a></li>
+										<li><a>eCommerce 고객관리</a></li>
+										<li><a>eShowroom 견적</a></li>
+									</ol>
+								</li>
+								<li class="mni10">
+									<strong><span>발송관리</span></strong>
+									<ol>
+										<li><a>SMS 발송</a></li>
+										<li><a>e-mail 발송</a></li>
+										<li><a>FAX 발송</a></li>
+										<li><a>발송결과조회</a></li>
+										<li><a>포인트관리</a></li>
+										<li><a>발송 서식관리</a></li>
+									</ol>
+								</li>
+								<li class="mni11">
+									<strong><span>셀프플래너</span></strong>
+									<ol>
+										<li><a>셀프플래너</a></li>
+										<li><a>활동모델 관리</a></li>
+									</ol>
+								</li>
+								<li class="mni12">
+									<strong><span>MCA관리</span></strong>
+									<ol>
+										<li><a>MCA관리(등록)</a></li>
+										<li><a>MCA실적조회</a></li>
+									</ol>
+								</li>
+								<li class="mni13">
+									<a><span>시스템관리</span></a>
+								</li>
+								<li class="mni5">
+									<strong><span>고객 관리</span></strong>
+									<ol>
+										<li><a href="">가망고객 등록</a></li>
+										<li><a href="">고객 검색</a></li>
+										<li><a href="">SMS 발송</a></li>
+										<li><a href="">e-mail 발송</a></li>
+										<li><a href="">MegaD고객정보 조회</a></li>
+									</ol>
+								</li>
+								<li class="mni6">
+									<strong><span>홈페이지</span></strong>
+									<ol>
+										<li><a href="">홈페이지</a></li>
+										<li><a href="">가격표</a></li>
+										<li><a href="">카다로그</a></li>
+										<li><a href="">영업담당 개인 홈페이지</a></li>
+									</ol>
+								</li>
+								<li class="mni7">
+									<strong><span>업무연락</span></strong>
+									<ol>
+										<li><a href="">개인 e-mail 함</a></li>
+										<li><a href="">터치 클래스</a></li>
+										<li><a href="">G.N.T</a></li>
+									</ol>
+								</li>
+								<li class="mni8">
+									<strong><span>통합게시판</span></strong>
+									<ol>
+										<li><a href="">공지사항</a></li>
+										<li><a href="">자료실</a></li>
+										<li><a href="">용품 정보 및 A/S</a></li>
+										<li><a href="">월간공지</a></li>
+										<li><a href="">납기정보</a></li>
+									</ol>
+								</li>
+								<li class="mni9">
+									<strong><span>[관리] 통계</span></strong>
+									<ol>
+										<li><a href="">공지사항</a></li>
+										<li><a href="">자료실</a></li>
+										<li><a href="">용품정보 및 A/S</a></li>
+									</ol>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button>
+						</span>
+						<h1><img src="../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<!-- <h2>1Depth title</h2> -->
+						<h2 class="sCase"><span>1Depth title &gt; </span>2Depth title</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<!-- Component -->
+						<div class="ComponentLayout">
+							
+								<!--  -->
+								<div style="padding:10px 10px;">
+									<input type="text" placeholder="Auto Complete" /><br/>
+									<input type="text" readonly /><br/>
+									<input type="text" disabled="disabled" />
+									<br/><br/>
+									* 글등록 form은 기본적으로 dl / dt / dd 로 되어 있음. <br/>
+									이에 dd 에 class를 추가하여 필수항목(inMust),에러(inError)에 대한 대응하도록 함 <br/><br/>
+									&lt;dl&gt;
+										&lt;dt&gt;항목명&lt;/dt&gt;
+										&lt;dd class="inMust"&gt;&lt;/dd&gt;
+									&lt;/dl&gt; <- 필수항목일 경우 <br/>
+									&lt;dl&gt;
+										&lt;dt&gt;항목명&lt;/dt&gt;
+										&lt;dd class="inError"&gt;&lt;/dd&gt;
+									&lt;/dl&gt; <- 에러일 경우 <br/>
+									&lt;dl&gt;
+										&lt;dt&gt;항목명&lt;/dt&gt;
+										&lt;dd class="inMust inError"&gt;&lt;/dd&gt;
+									&lt;/dl&gt; <- 필수항목 에러일 경우 <br/>
+									샘플 URL : <a href="customer/customer_individual.html" style="color:blue;">고객조회</a><br/><br/>
+									<dl>
+										<dt>필수항목 <sup>필수항목</sup></dt>
+										<dd class="inMust">
+											<input placeholder="홍길동" />
+											<span class="selectSet">
+												<select>
+													<option disabled>본부선택</option>
+													<option>전체</option>
+													<option>영업본부</option>
+													<option>동부 DB</option>
+												</select>
+											</span>
+										</dd>
+									</dl><br/>
+									<dl>
+										<dt>오류항목</dt>
+										<dd class="inError">
+											<input placeholder="홍길동" />
+											<span class="selectSet">
+												<select>
+													<option disabled>본부선택</option>
+													<option>전체</option>
+													<option>영업본부</option>
+													<option>동부 DB</option>
+												</select>
+											</span>
+										</dd>
+									</dl>
+									<br/><br/>
+
+
+
+									<span class="radioSet"><input type="radio" id="a1" name="a" checked /><label for="a1"><i></i>전체</label></span>
+									<span class="radioSet"><input type="radio" id="a2" name="a" /><label for="a2"><i></i>신청가능</label></span>
+									<br/><br/>
+
+									<span class="checkSet"><input type="checkbox" id="b1" /><label for="b1"><i></i>전체</label></span>
+									<span class="checkSet"><input type="checkbox" id="b2" /><label for="b2"><i></i>신청가능</label></span>
+									<br/><br/>
+
+                                    <div class="calendarSet"><input type="tel" id="" name="" /><button>달력열기</button></div><!--2019-03-15--->
+                                    <div class="calendarSet gray"><input type="tel" id="" name="" /><button>달력열기</button></div><!--2019-03-15--->
+                                    
+									<br/><br/>
+
+									<span class="selectSet"> <!-- .selectSet 넓이 조절 시 하단의 select의 넓이가 자동조절 됨 -->
+										<select>
+											<option disabled>본부선택</option>
+											<option>전체</option>
+											<option>영업본부</option>
+											<option>동부 DB</option>
+										</select>
+									</span>
+									<br/>
+									 <!-- <span class="smselect">.smselect 넓이 조절 시 하단의 select의 넓이가 자동조절 됨
+										<button type="button" class="my_value">본부선택</button>
+										<ul class="sList">
+											<li>본부선택</li>
+											<li>전체</li>
+											<li>영업본부</li>
+											<li>동부 DB</li>
+										</ul>
+									</span>
+									<br/>
+									<span class="selectSet2" style="width:200px;">
+										<select>
+											<option>본부선택</option>
+											<option>전체</option>
+											<option>영업본부</option>
+											<option>동부 DB</option>
+										</select>
+									</span>
+									<select>
+										<option>본부선택</option>
+										<option>전체</option>
+										<option>영업본부</option>
+										<option>동부 DB</option>
+									</select>
+									<br/><br/> -->
+									<div class="price">
+										<input type="text" /><span>원</span>
+									</div>
+									<br/>
+									<div class="phoneNum">
+                                        <span class="selectSet">
+                                            <select>
+                                                <option>010</option>
+                                                <option>011</option>
+                                                <option>017</option>
+                                                <option>018</option>
+                                                <option>019</option>
+                                            </select>
+                                        </span>
+                                        <span class="txt">-</span>
+                                        <input type="tel" id="middleNum">
+                                        <span class="txt">-</span>
+                                        <input type="tel" id="lastNum">
+                                    </div>
+                                    <br/><br/>
+									<button class="samplePopBtn1">Dim 내 포함된 팝업 (X 닫기 없는 버전)</button> 
+									<button class="samplePopBtn2">Dim 내 포함된 팝업 (작은버전)</button> 
+									<button class="samplePopBtn3">Dim 내 포함된 팝업 (큰버전)</button> 
+									<button class="fullOpen">레이어 Full 팝업</button> 
+									<a href="">네이티브 Full 팝업</a>
+									
+									<br/><br/>
+									* 전체 공통 아이콘<br/>
+									<i class="eIcon">전자계약</i> &nbsp;
+									<i class="paperIcon">지류계약</i> &nbsp;
+
+									<br/><br/>
+									
+									<style>
+										.gridSet {margin:1rem 0 0;padding:1rem;border:1px solid red;}
+										.gridSet .gridItem {border:1px solid blue;}
+										.tab ul {display:table;width:100%;}
+										.tab ul li {display:table-cell;width:33.3%;border:1px solid red;}
+										.tab ul li a {display:block;}
+									</style>
+									* 기본 그리드는 아래와 같이 기본 이용 (색상과 여백은 샘플)<br/>
+									<div class="gridSet">
+										<div class="gridItem">기본 1 col</div>
+									</div>
+									<br/>
+									<div class="gridSet grid2">
+										<div class="gridItem">기본 2 col1</div>
+										<div class="gridItem">기본 2 col2</div>
+									</div>
+									<br/>
+									<div class="gridSet grid3">
+										<div class="gridItem">기본 3 col1</div>
+										<div class="gridItem">기본 3 col2</div>
+										<div class="gridItem">기본 3 col3</div>
+									</div>
+									<br/><br/>
+
+									* 타이틀 있는 데이터의 여닫기는 dl을 이용 (색상과 여백은 샘플)
+									<dl class="dlWrite">
+										<dt>타이틀</dt>
+										<dd>데이터</dd>
+									</dl>
+									<br/><br/>
+									* 기본 Tab 사용방법 (색상과 여백은 샘플)
+									<script>  
+										$(document).ready(function(){
+								
+											$(".stepLayout").hide();
+											$(".stepLayout:first").show();
+											$(".tab li a").click(function () {
+												$(".tab li").removeClass("on");
+												$(this).parent("li").addClass("on");
+												$(".stepLayout").hide();
+												var activeTab = $(this).attr("data-name");
+												$("." + activeTab).fadeIn();
+											});
+								
+										});
+									</script>
+									<!-- tabWrap -->
+									<div class="tabWrap">
+										<!-- tab -->
+										<div class="tab">
+											<nav>
+												<ul>
+													<li><a data-name="step1">1번째</a></li>
+													<li><a data-name="step2">2번째</a></li>
+													<li><a data-name="step3">3번째</a></li>
+												</ul>
+											</nav>
+										</div>
+										<!--// tab -->
+										<div class="tabCon">
+											<div class="stepLayout step1">
+												1번째 입니다
+											</div>
+											<div class="stepLayout step2">
+												2번째 입니다
+											</div>
+											<div class="stepLayout step3">
+												3번째 입니다
+											</div>
+										</div>
+									</div>
+									<!-- //tabWrap -->
+
+								</div>
+								<!--  -->
+
+						</div>
+						<!-- //Component -->
+					</section>
+				</div>
+			</div>
+			<!-- //container -->
+			<!-- fullWrap : 하단 > 상단 -->
+			<div class="fullWrap slideDefault com-slide-bottom">
+				<section>
+					<!-- header -->
+					<div id="fullHeader" class="headArea"> 
+						<head>
+							<h2 class="sCase">1Depth title &gt; 2Depth title</h2>
+							<button class="fullClose">Fullpop 닫기</button>
+						</head>
+					</div>
+					<!-- //header -->
+					<article>
+						<div class="content-1" style="position:absolute;top:3.2rem;bottom:0;width:100%;-webkit-overflow-scrolling:touch;background:red;">
+							Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>Fullpop 영역<br/>
+						</div>
+					</article>
+				</section>
+			</div>
+			<!-- //fullWrap -->
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

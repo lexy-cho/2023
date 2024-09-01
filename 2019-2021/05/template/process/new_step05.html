@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/inview.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+            $("body").css("overflow", "visible"); /* body스크롤 활성화 */
+            
+            // 모바일에서 Summary 닫기
+            if (window.matchMedia("(max-width:420px), (orientation : landscape) and (max-width:820px)").matches) {
+                $("body").removeClass("has-active-menu");
+                $(".estSummary").removeClass("is-active");
+                $("#estimateWrap").removeClass("has-push-left").removeClass("pushCase");
+            }
+            
+			// 2019-03-15 달력형식 변경, 공통으로 사용
+            $('.calendarSet button').duDatepicker({
+                format: 'yyyy-mm-dd', // Determines the date format
+                theme: 'yellow',        // Determines the color theme of the date picker
+				readOnly: true,       // Determines if input element is readonly (key input is disabled)
+				clearBtn: false,      // Determines if Clear button is displayed
+				cancelBtn: true,     // Determines if Cancel button is displayed
+				overlayClose: true    // Determines if clicking the overlay will close the date picker
+			}).on('datechanged', function(event){
+                $(this).prev().val(event.date);
+            });
+
+			$(document).on('click tab', '.gnbOpen', function(e){
+				$('.gnbScroll').load('../gnb.html',function(){
+					funcGnbOpen();
+				});
+				return false;
+			});// 2019-03-15 gnb html load (퍼블리시용)
+			$("#moveHome .btn *").click(function(){
+				window.location.href = '../main.html';
+			});// 2019-04-12 main go (퍼블리싱용)
+            
+			$(".fullOpen").click(function(){
+				$('.wrapper').css('overflow','hidden');
+				/* 2019-04-18 스크롤 plugin 삭제 $(".content-1").mCustomScrollbar({
+					axis:"yx",
+					theme:"dark",
+					contentTouchScroll:true
+				});*/
+			});
+            
+			$(document).on('click', '.fullOpen', function(e){
+				$('.wrapper').css('overflow','hidden');
+				/* 2019-04-18 스크롤 plugin 삭제 $(".fullContainer").mCustomScrollbar({
+					axis:"yx",
+					theme:"light",
+					contentTouchScroll:true
+				}); */
+			});
+            
+			$(".fullClose").click(function(){
+				$('.wrapper').css('overflow','auto');
+				$('.fullContents').hide();
+				$('.fullWrap').removeClass('installCase');
+			});
+            
+			// 견적전체보기
+			$(".fullPop1").click(function(){
+				$('#allEstimates').show();
+				$('#allEstimates').load('all_estimates.html');
+				$('.fullWrap .fullHeader h2').text('견적 전체보기');
+			});
+			
+            // 상향견적
+			$(".fullPop2").click(function(){
+				$('#installment').show();
+				$('.sInstallCase, .cInstallCase, .rInstallCase, .cleaseCase').hide();
+				$('.sInstallCase').show();
+				$('#installment .sInstallCase').load('installment_situation.html');
+				$('.fullWrap .fullHeader h2').text('상향견적');
+			});
+            
+			// 비교견적
+			$(".fullPop3").click(function(){
+				$('#installment').show();
+				$('.sInstallCase, .cInstallCase, .rInstallCase, .cleaseCase').hide();
+				$('.cInstallCase').show();
+				$('#installment .cInstallCase').load('installment_compare.html');
+				$('.fullWrap .fullHeader h2').text('비교견적');
+			});
+            
+			// 추천견적
+			$(".fullPop4").click(function(){
+				$('#installment').show();
+				$('.sInstallCase, .cInstallCase, .rInstallCase, .cleaseCase').hide();
+				$('.rInstallCase').show();
+				$('#installment .rInstallCase').load('installment_recommendation.html');
+				$('.fullWrap .fullHeader h2').text('추천견적');
+			});
+            
+			// 리스비교견적
+			$(".fullPop5").click(function(){
+				$('#installment').show();
+				$('.sInstallCase, .cInstallCase, .rInstallCase, .cleaseCase').hide();
+				$('.cleaseCase').show();
+				$('#installment .cleaseCase').load('lease_compare.html');
+				$('.fullWrap .fullHeader h2').text('비교견적');
+			});
+            
+            // summary scroll
+            /* 2019-04-18 스크롤 plugin 삭제 $(".estSumScroll").mCustomScrollbar({
+                axis:"yx",
+                theme:"dark",
+                contentTouchScroll:true
+            }); */
+            
+            // summary open
+			$(".stepOpen").click(function(){
+				$('#estimateWrap').addClass('pushCase');
+                $(".estSumScroll").mCustomScrollbar("scrollTo", "top");
+			});
+			
+            // summary close
+            $(".stepClose").click(function(){
+				$('#estimateWrap').removeClass('pushCase');
+				$('.wrapper').css('overflow','auto');
+			});
+            
+            // 스크롤
+            /* 2019-04-18 스크롤 plugin 삭제 $(".lstScroll").mCustomScrollbar({
+                axis:"yx",
+                theme:"dark",
+                contentTouchScroll:true
+            }); */
+            
+            // 전체보기
+            $(".scrollToggle").click(function(){
+                if($(this).hasClass("open")){
+                    $(this).removeClass("open");
+					$(this).parents(".sbSub").find(".lstBox").addClass("lstScroll");
+                    /* 2019-04-18 스크롤 plugin 삭제 $(this).parents(".sbSub").find(".lstBox").addClass("lstScroll").mCustomScrollbar({
+                        axis:"yx",
+                        theme:"dark",
+                        contentTouchScroll:true
+                    }); */
+                }else{
+                    $(this).addClass("open");
+					$(this).parents(".sbSub").find(".lstBox").removeClass("lstScroll");
+                    // $(this).parents(".sbSub").find(".lstBox").mCustomScrollbar("destroy").removeClass("lstScroll");
+                }
+            });
+            
+            // 할부계산기
+            $(".openPop1").click(function(){
+				$('.dimPop, .calculatorPop').show();
+			});
+            
+            // 월납입금 상세
+            $(".openPop3").click(function(){
+				$('.dimPop, #openPop3').show();
+			});
+            
+            // 지불방법 선택
+            $("[name='paymentType']").click(function(){
+                if($(this).prop("checked") && $(this).attr("id") == "payment01"){ // 현금
+                    $("[data-index='installment']").fadeOut();
+                    $("[data-index='lease']").fadeOut();
+                    $("[data-index='credit']").fadeOut();
+					$("[data-index='leaseOperating']").fadeOut();
+					$("[data-index='leaseFinance']").fadeOut();
+                }else if($(this).prop("checked") && $(this).attr("id") == "payment02"){ // 할부
+                    $("[data-index='lease']").fadeOut(function(){
+                        $("[data-index='installment']").fadeIn(); 
+                    });
+					$("[data-index='leaseOperating']").fadeOut();
+					$("[data-index='leaseFinance']").fadeOut();
+                    $("[data-index='credit']").fadeOut();
+                }else if($(this).prop("checked") && $(this).attr("id") == "payment03"){ // 리스
+                    $("[data-index='installment']").fadeOut(function(){
+                        $("[data-index='lease']").fadeIn();
+                    });
+					$("[data-index='leaseOperating']").fadeOut();
+					$("[data-index='leaseFinance']").fadeOut();
+                    $("[data-index='credit']").fadeOut();
+                }else if($(this).prop("checked") && $(this).attr("id") == "payment04"){ // 할부 + 외상
+                    $("[data-index='lease']").fadeOut(function(){
+                        $("[data-index='installment']").fadeIn();
+                        $("[data-index='credit']").find(".sbTit").html("6. 인도금 후불정보");
+                        $("[data-index='credit']").fadeIn();
+                    });
+					$("[data-index='leaseOperating']").fadeOut();
+					$("[data-index='leaseFinance']").fadeOut();
+                }else{ // 외상
+                    $("[data-index='installment']").fadeOut(function(){
+                        $("[data-index='credit']").find(".sbTit").html("2. 인도금 후불정보");
+                        $("[data-index='credit']").fadeIn();
+                    });
+                    $("[data-index='lease']").fadeOut();
+					$("[data-index='leaseOperating']").fadeOut();
+					$("[data-index='leaseFinance']").fadeOut();
+                }
+            });
+            
+            // 리스 운용/금융 선택
+            $("[name='leaseProduct']").click(function(){
+                if($(this).prop("checked") && $(this).attr("id") == "leaseProduct05"){ // 금융
+                    $("[data-index='leaseOperating']").fadeOut(function(){
+                        $("[data-index='leaseFinance']").fadeIn();
+					});
+                }else{  // 운용
+                    $("[data-index='leaseFinance']").fadeOut(function(){
+                        $("[data-index='leaseOperating']").fadeIn();
+                    });
+                }
+            });
+            
+            // mobile 한정 - bottom 메뉴 오픈
+            $(".btnOpen").click(function(){
+                if($(this).hasClass("on")){
+                    $(this).removeClass("on");
+                    $(this).next().slideUp(300);
+                }else{
+                    $(this).addClass("on");
+                    $(this).next().slideDown(300);
+                }
+            });
+		});
+		</script>
+	</head>
+	<body class="has-active-menu"><!-- 2019-03-21 estColor, online class 삭제 -->
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">	
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button>
+							<!-- <button class="goPrev" onclick="history.back()">뒤로가기</button> -->
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight newStep">
+							<a href="main.html" class="goMain process">메인으로 이동</a>
+                            <button class="btnSave"><span>저장</span></button>
+							<button class="btnWrite" onClick="location.href='../contract/contract_write.html'"><span>전자계약서 작성</span></button>
+							<button class="btnApproval" style="display: none;" disabled><span>승인요청</span></button>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2>신규견적</h2> <!-- 2019-04-17 타이틀변경 -->
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+                        <div class="estColor online"><!-- 2019-03-21 지류/전자 구분 html(div) 추가, 지류일 경우 online class 삭제 -->
+                            <!-- estimate Summary : 왼쪽 > 오른쪽 -->
+                            <div class="estSummary slideDefault com-push-left is-active">
+                                <button class="stepClose">견적 써머리 닫기</button>
+                                <article>
+                                    <div class="estSumScroll">
+                                        <div class="summaryHead">
+                                            <ul class="frmList">
+                                                <li style="display:none;">
+                                                    <label for="baisicDate" class="dotLabel">기준일자</label>
+                                                    <div class="calendarSet"><input type="tel" id="baisicDate" name="" /><button>달력열기</button></div>2019-03-15-
+                                                </li>
+                                                <li>
+                                                    <label for="contractNum" class="dotLabel">계약번호</label>
+                                                    <input type="number" id="contractNum" placeholder="-" disabled="disabled" />
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="summaryMain">
+                                            <ul class="titLinkList">
+                                                <li class="stepMenu00">
+                                                    <a href="new_step01.html" class="tit"><i class="icon"></i><span class="txt">기본정보</span></a>
+                                                    <ul class="tglGrdList">
+                                                        <li>
+                                                            <div class="left">[11] 개인 - 일반개인판매</div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="left">과세</div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="stepMenu01">
+                                                    <a href="new_step02.html" class="tit"><i class="icon"></i><span class="txt">차량/배송</span><span class="priceSum">33,020,000</span></a>
+                                                    <ul class="tglGrdList">
+                                                        <li>
+                                                            <div class="left">차량 :</div>
+                                                            <div class="right">
+                                                                <span class="priceView">33,020,000</span>
+                                                                <span class="option">
+                                                                    <span>(EW SM7 V6 10M)</span>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="left">색상 :</div>
+                                                            <div class="right">
+                                                                <span class="priceView">180,000</span>
+                                                                <span class="option">
+                                                                    <span>(화이트 펄/라이트 그레이 나파 가죽시트)</span>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="left">옵션 :</div>
+                                                            <div class="right">
+                                                                <span class="priceView">1,500,000</span>
+                                                                <span class="option">
+                                                                    <span>[선택] BOSE 사운드 시스템+뒷자리</span>
+                                                                    <span>[선택] 18" 프레스티지 알로이 휠 &amp; SM7-L47</span>
+                                                                    <span>[선택] 뒷자석 VIP Pack1</span>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="left">용품 :</div>
+                                                            <div class="right">
+                                                                <span class="priceView">1,1756,000</span>
+                                                                <span class="option">
+                                                                    <span>[용품] 내비게이션 업그레이드</span>
+                                                                    <span>[용품] 파노라마 선루프</span>
+                                                                    <span>[용품] 뒷자석 VIP Pack1</span>
+                                                                    <span>[용품] 18" 프레스티지 알로이 휠</span>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="left">해피케어 상품 :</div>
+                                                            <div class="right">
+                                                                <span class="priceView">33,020,000</span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="left">탁송료 :</div>
+                                                            <div class="right">
+                                                                <span class="priceView">303,000</span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="stepMenu02">
+                                                    <a href="new_step03.html" class="tit"><i class="icon"></i><span class="txt">판매조건</span><span class="priceSum">3,639,000</span></a>
+                                                    <ul class="tglGrdList">
+                                                        <li>
+                                                            <div class="left">매출할인 :</div>
+                                                            <div class="right">
+                                                                <span class="priceView">2,339,000</span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="left">카드적립금액 :</div>
+                                                            <div class="right">
+                                                                <span class="priceView">1,000,000</span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="left">할인가격 :</div>
+                                                            <div class="right">
+                                                                <span class="priceView">300,000</span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="stepMenu03">
+                                                    <a href="new_step04.html" class="tit"><i class="icon"></i><span class="txt">등록비용</span><span class="priceSum">2,214,220</span></a>
+                                                    <ul class="tglGrdList">
+                                                        <li>
+                                                            <div class="left">등록제비용 :</div>
+                                                            <div class="right">
+                                                                <span class="priceView">581,610</span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="left">취득세 :</div>
+                                                            <div class="right">
+                                                                <span class="priceView">1,632,610</span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="stepMenu04 active">
+                                                    <a href="new_step05.html" class="tit"><i class="icon"></i><span class="txt">지불정보</span><span class="priceSum">393,000</span></a>
+                                                    <ul class="tglGrdList">
+                                                        <li>
+                                                            <div class="left">계약금 :</div>
+                                                            <div class="right">
+                                                                <span class="priceView">100,000</span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="left">선수임도금 :</div>
+                                                            <div class="right">
+                                                                <span class="priceView">293,000</span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="left">할부원금 :</div>
+                                                            <div class="right">
+                                                                <span class="priceView">33,579,000</span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="left">잔가금 :</div>
+                                                            <div class="right">
+                                                                <span class="priceView">0</span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="left">보증금 :</div>
+                                                            <div class="right">
+                                                                <span class="priceView">0</span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="left">르노캐피탈밸류박스 :</div>
+                                                            <div class="right">
+                                                                <span class="priceView">0</span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="stepMenu05">
+                                                    <a href="new_step06.html" class="tit"><i class="icon"></i><span class="txt">고객 (123456-*******)</span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="summaryFoot">
+                                            <dl>
+                                                <dt>출고 전 입금액</dt>
+                                                <dd class="allPriceSum">33,245,620</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            <!-- //estimate Summary -->
+                            <!-- estimate Write -->
+                            <button class="stepOpen">견적 써머리 열기</button>
+                            <div id="estimateWrap" class="wrapper has-push-left pushCase">
+                                <article>
+                                    <!-- 지불방법 선택 -->
+                                    <div class="stepBox">
+                                        <h3 class="sbTit">1. 지불방법 선택</h3>
+                                        <div class="gridSet grid2">
+                                            <div class="gridItem">
+                                                <div class="sbSub">
+                                                    <h4 class="sbsTit">지불방법</h4>
+                                                    <div class="lstBox">
+                                                        <ul class="threeRow"> <!--2019-10-16-->
+                                                            <li><span class="radioSet"><input type="radio" id="payment01" name="paymentType" checked /><label for="payment01"><i></i>현금</label></span></li>
+                                                            <li><span class="radioSet"><input type="radio" id="payment02" name="paymentType" /><label for="payment02"><i></i>할부</label></span></li>
+                                                            <li><span class="radioSet"><input type="radio" id="payment03" name="paymentType" /><label for="payment03"><i></i>리스</label></span></li>
+                                                            <li class="half"><span class="radioSet"><input type="radio" id="payment04" name="paymentType" /><label for="payment04"><i></i>할부+외상</label></span></li>
+                                                            <li><span class="radioSet"><input type="radio" id="payment05" name="paymentType" /><label for="payment05"><i></i>외상</label></span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="gridItem">
+                                                <!-- 지불방법-할부 선택 시 노출 -->
+                                                <div class="gridThirdBtn" data-index="installment" style="display: none;">
+                                                    <button class="btnCYN fullOpen fullPop2"><i class="iEstimate01"></i>상향견적</button>
+                                                    <button class="btnCYN fullOpen fullPop3"><i class="iEstimate02"></i>비교견적</button>
+                                                    <button class="btnCYN fullOpen fullPop4"><i class="iEstimate03"></i>추천견적</button>
+                                                </div>
+                                                <!-- // 지불방법-할부 선택 시 노출 -->
+
+                                                <!-- 지불방법-리스 선택 시 노출 -->
+                                                <!-- 2019-07-10 리스 견적 추가 -->
+                                                <div class="gridThirdBtn" data-index="lease" style="display: none;">
+                                                    <button class="btnCYN fullOpen fullPop5"><i class="iEstimate02"></i>비교견적</button>
+                                                </div>
+                                                <!-- //2019-07-10 리스 견적 추가 -->
+                                            </div>
+                                        </div>
+                                        <!-- 2019-06-19 -->
+                                        <!-- //2019-06-19 -->
+                                    </div>
+                                    <!-- // 지불방법 선택 -->
+
+                                    <!--------------------------------------------------------------------------->
+                                    <!-------------------- 2019-07-10 리스 시 노출 영역 변경 -------------------->
+                                    <div class="stepBox" data-index="lease" style="display: none;">
+                                        <h3 class="sbTit">2. 리스상품</h3>
+										<div class="gridSet grid2">
+											<div class="gridItem">
+                                                <div class="sbSub">
+                                                    <h4 class="sbsTit">리스상품</h4>
+                                                    <button class="scrollToggle">전체보기</button>
+                                                    <div class="lstBox lstScroll">
+                                                        <ul>
+                                                            <li><span class="radioSet"><input type="radio" id="leaseProduct01" name="leaseProduct" /><label for="leaseProduct01"><i></i>운용리스-24개월-LO04R<span class="priceView">24개월</span></label></span></li>
+                                                            <li><span class="radioSet"><input type="radio" id="leaseProduct02" name="leaseProduct" /><label for="leaseProduct02"><i></i>운용리스-36개월-LO05R<span class="priceView">36개월</span></label></span></li>
+                                                            <li><span class="radioSet"><input type="radio" id="leaseProduct03" name="leaseProduct" /><label for="leaseProduct03"><i></i>운용리스-48개월-LO06R<span class="priceView">48개월</span></label></span></li>
+                                                            <li><span class="radioSet"><input type="radio" id="leaseProduct04" name="leaseProduct" /><label for="leaseProduct04"><i></i>운용리스-60개월-LO07R<span class="priceView">60개월</span></label></span></li>
+                                                            <li><span class="radioSet"><input type="radio" id="leaseProduct05" name="leaseProduct" /><label for="leaseProduct05"><i></i>금융리스-12개월-LF07R<span class="priceView">12개월</span></label></span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+											</div>
+											<div class="gridItem leaseAddInfo">
+												<!-- 2019-06-19 운용리스 일 경우 -->
+												<div class="lstBoxSub subListBox" data-index="leaseOperating" style="display:none;">
+													<div class="lstBox">
+														<ul class="frmList nonDot halfType">
+															<li>
+																<label for="leaseOperating1" class="dotLabel">잔가금</label>
+																<span class="selectSet">
+																	<select id="leaseOperating1">
+																		<option>선택해주세요</option>
+																		<option>선택1</option>
+																		<option>선택2</option>
+																		<option>선택3</option>
+																	</select>
+																</span>
+																<div class="frmSub type4">
+																	<i class="iSub gray"></i>
+																	<input type="tel" class="tRight" value="0" readonly />
+																</div>
+															</li>
+															<li>
+																<label for="leaseOperating2" class="dotLabel">보증금</label>
+																<span class="selectSet">
+																	<select id="leaseOperating2">
+																		<option>선택해주세요</option>
+																		<option>선택1</option>
+																		<option>선택2</option>
+																		<option>선택3</option>
+																	</select>
+																</span>
+																<div class="frmSub type4">
+																	<i class="iSub gray"></i>
+																	<input type="tel" class="tRight" value="0" readonly />
+																</div>
+															</li>
+														</ul>
+														<div class="lstBoxFoot">
+															<button class="btnCYN">월리스료</button>
+														</div>
+													</div>
+												</div>
+												<!-- //운용리스 일 경우 -->
+												<!-- 2019-06-19 금융리스 일 경우 -->
+												<div class="lstBoxSub subListBox" data-index="leaseFinance" style="display:none;">
+													<div class="lstBox">
+														<ul class="frmList nonDot halfType">
+															<li>
+																<label for="leaseFinance1" class="dotLabel">고객유형</label>
+																<span class="selectSet">
+																	<select id="leaseFinance1">
+																		<option>선택해주세요</option>
+																		<option>선택1</option>
+																		<option>선택2</option>
+																		<option>선택3</option>
+																	</select>
+																</span>
+															</li>
+														</ul>
+														<div class="lstBoxFoot">
+															<button class="btnCYN">월리스료</button>
+														</div>
+													</div>
+												</div>
+												<!-- //운용리스 일 경우 -->
+											</div>
+										</div>
+                                        <!-- 운용리스 일 경우 -->
+										<div data-index="leaseOperating" style="display:none;">
+											<div class="gridSet grid2">
+												<div class="gridItem">
+													<div class="whBox">
+														<ul class="frmList ylwType type2">
+															<li>
+																<label for="leaseOperating3" class="dotLabel">계약금</label>
+																<input type="tel" id="leaseOperating3" class="tRight" value="0" readonly />
+															</li>
+															<li>
+																<label for="leaseOperating4" class="dotLabel">등록비용</label>
+																<input type="tel" id="leaseOperating4" class="tRight" value="0" readonly />
+															</li>
+															<li>
+																<label for="leaseOperating5" class="dotLabel">취득세</label>
+																<input type="tel" id="leaseOperating5" class="tRight" value="0" readonly />
+															</li>
+															<li>
+																<label for="leaseOperating6" class="dotLabel">자동차세( 개월)</label>
+																<input type="tel" id="leaseOperating6" class="tRight" value="0" readonly />
+															</li>
+															<li>
+																<label for="leaseOperating7" class="dotLabel">공채금액</label>
+																<input type="tel" id="leaseOperating7" class="tRight" value="0" readonly />
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="gridItem">
+													<div class="whBox">
+														<ul class="frmList ylwType type2">
+															<li>
+																<label for="leaseOperating8" class="dotLabel">책임보험료(/년)</label>
+																<input type="tel" id="leaseOperating8" class="tRight" value="0" />
+															</li>
+															<li>
+																<label for="leaseOperating9" class="dotLabel">종합보험료(/년)</label>
+																<input type="tel" id="leaseOperating9" class="tRight" value="0" />
+															</li>
+															<li>
+																<label for="leaseOperating10" class="dotLabel">월리스료</label>
+																<input type="tel" id="leaseOperating10" class="tRight" value="0" readonly />
+															</li>
+															<li>
+																<label for="leaseOperating11" class="dotLabel">납입총액</label>
+																<input type="tel" id="leaseOperating11" class="tRight" value="0" readonly />
+															</li>
+															<li>
+																<label for="leaseOperating12" class="dotLabel">공채할인율</label>
+																<input type="tel" id="leaseOperating12" class="tRight" value="0" />
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="gryLgBox mt10">
+												<div class="dictStyle">
+													운용리스시 등록비용중 <br>인지대+번호대+등록대행수수료가 60,000원에 '개인등록'으로 설정되고 취득세는 '납부'로 자동설정 됩니다.
+												</div>
+											</div>
+										</div>
+                                        <!-- //운용리스 일 경우 -->
+                                        <!-- 금융리스 일 경우 -->
+										<div data-index="leaseFinance" style="display:none;">
+											<div class="gridSet grid2">
+												<div class="gridItem">
+													<div class="whBox">
+														<ul class="frmList ylwType type2">
+															<li>
+																<label for="leaseFinance2" class="dotLabel">계약금</label>
+																<input type="tel" id="leaseFinance2" class="tRight" value="0" readonly />
+															</li>
+															<li class="radioCase">
+																<label class="dotLabel">세금계산서 출력명의</label>
+																<span class="radioSet"><input type="radio" id="leaseFinance3" name="leaseFinanceTax" checked=""><label for="leaseFinance3"><i></i>리스사</label></span>
+																<span class="radioSet"><input type="radio" id="leaseFinance4" name="leaseFinanceTax"><label for="leaseFinance4"><i></i>고객</label></span>
+															</li>
+															<li>
+																<label for="leaseFinance5" class="dotLabel">선수인도금 (0.00%)</label>
+																<input type="tel" id="leaseFinance5" class="tRight" value="0" readonly />
+															</li>
+															<li>
+																<label for="leaseFinance6" class="dotLabel">취득원가</label>
+																<input type="tel" id="leaseFinance6" class="tRight" value="0" readonly />
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="gridItem">
+													<div class="whBox">
+														<ul class="frmList ylwType type2">
+															<li>
+																<label for="" class="dotLabel">취급수수료</label>
+																<input type="tel" id="" class="tRight" value="0" />
+															</li>
+															<li>
+																<label for="" class="dotLabel">월리스료</label>
+																<input type="tel" id="" class="tRight" value="0" />
+															</li>
+															<li>
+																<label for="" class="dotLabel">납입총액</label>
+																<input type="tel" id="" class="tRight" value="0" readonly />
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+                                        <!-- //금융리스 일 경우 -->
+                                    </div>
+                                    <!------------------- //2019-07-10 리스 시 노출 영역 변경 ------------------->
+                                    <!--------------------------------------------------------------------------->
+
+                                    <!-- 지불방법-할부 or 할부+외상 선택 시 노출 -->
+                                    <div data-index="installment" style="display: none;">
+                                        <!-- 할부상품 -->
+                                        <div class="stepBox">
+                                            <h3 class="sbTit">2. 할부상품</h3>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <div class="sbSub">
+                                                        <h4 class="sbsTit">할부상품</h4>
+                                                        <button class="scrollToggle">전체보기</button>
+                                                        <div class="lstBox lstScroll">
+                                                            <ul>
+                                                                <li><span class="radioSet"><input type="radio" id="instProduct01" name="instProduct" checked /><label for="instProduct01"><i></i>선택해주세요</label></span></li>
+                                                                <li><span class="radioSet"><input type="radio" id="instProduct02" name="instProduct" /><label for="instProduct02"><i></i>저리할부(1.99%)</label></span></li>
+                                                                <li><span class="radioSet"><input type="radio" id="instProduct03" name="instProduct" /><label for="instProduct03"><i></i>저리장기할부(3.9%)</label></span></li>
+                                                                <li><span class="radioSet"><input type="radio" id="instProduct04" name="instProduct" /><label for="instProduct04"><i></i>저리잔가보장할부(4.9/5.5%)</label></span></li>
+                                                                <li><span class="radioSet"><input type="radio" id="instProduct05" name="instProduct" /><label for="instProduct05"><i></i>저리장기할부(3.9%)</label></span></li>
+                                                                <li><span class="radioSet"><input type="radio" id="instProduct06" name="instProduct" /><label for="instProduct06"><i></i>저리잔가보장할부(4.9/5.5%)</label></span></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="lstBox subListBox lstScroll"><!-- 2019-03-29 yellow > subListBox 로 클래스 수정 -->
+                                                            <ul class="twoRow"> <!--2019-10-16-->
+                                                                <li><span class="radioSet"><input type="radio" id="instTerm01" name="instTerm" checked /><label for="instTerm01"><i></i>선택해주세요</label></span></li>
+                                                                <li><span class="radioSet"><input type="radio" id="instTerm02" name="instTerm" /><label for="instTerm02"><i></i>03개월(1.99%)</label></span></li>
+                                                                <li><span class="radioSet"><input type="radio" id="instTerm03" name="instTerm" /><label for="instTerm03"><i></i>04개월(1.99%)</label></span></li>
+                                                                <li><span class="radioSet"><input type="radio" id="instTerm04" name="instTerm" /><label for="instTerm04"><i></i>05개월(1.99%)</label></span></li>
+                                                                <li><span class="radioSet"><input type="radio" id="instTerm05" name="instTerm" /><label for="instTerm05"><i></i>06개월(1.99%)</label></span></li>
+                                                                <li><span class="radioSet"><input type="radio" id="instTerm06" name="instTerm" /><label for="instTerm06"><i></i>07개월(1.99%)</label></span></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="gryDarkBox"><!-- 2019-03-29 ylwDarkBox > gryDarkBox 로 클래스 수정 -->
+                                                            <div class="calcPerBox onlyRate">
+                                                                <label for="finalRate">최종할부이자율</label>
+                                                                <div class="insideTxt">
+                                                                    <input type="tel" id="finalRate" value="0.0" readonly />
+                                                                    <span class="txt">%</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="gridItem">
+													<!-- 2019-08-03 마일리지 추가 -->
+                                                    <div class="sbSub pb14">
+                                                        <h4 class="sbsTit">마일리지</h4>
+                                                        <div class="lstBox">
+                                                            <ul class="twoRow"> <!--2019-10-16-->
+                                                                <li><span class="radioSet"><input type="radio" id="mileageBox01" name="mileageBox" checked /><label for="mileageBox01"><i></i>선택해주세요</label></span></li>
+                                                                <li><span class="radioSet"><input type="radio" id="mileageBox02" name="mileageBox" /><label for="mileageBox02"><i></i>1만</label></span></li>
+                                                                <li><span class="radioSet"><input type="radio" id="mileageBox03" name="mileageBox" /><label for="mileageBox03"><i></i>2만</label></span></li>
+                                                                <li><span class="radioSet"><input type="radio" id="mileageBox04" name="mileageBox" /><label for="mileageBox04"><i></i>3만</label></span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+													<!-- //2019-08-03 마일리지 추가 -->
+                                                    <div class="sbSub">
+                                                        <h4 class="sbsTit">CPI 선택</h4><!-- 2019-08-03 문구변경 -->
+                                                        <!-- 2019-08-03 없애기 <button class="scrollToggle">전체보기</button> -->
+                                                        <div class="lstBox"><!-- 2019-08-03 lstScroll 없애기 -->
+                                                            <ul class="twoRow"> <!--2019-10-16-->
+                                                                <li><span class="radioSet"><input type="radio" id="valueBox01" name="valueBox" checked /><label for="valueBox01"><i></i>선택해주세요</label></span></li>
+                                                                <li><span class="radioSet"><input type="radio" id="valueBox02" name="valueBox" /><label for="valueBox02"><i></i>CPI 고객</label></span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- // 할부상품 -->
+
+                                        <!-- 유예정보 -->
+                                        <div class="stepBox">
+                                            <h3 class="sbTit">3. 유예정보</h3>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <div class="sbSub">
+                                                        <h4 class="hide">유예정보</h4>
+                                                        <div class="lstBox">
+                                                            <ul class="frmList nonDot type2">
+                                                                <li>
+                                                                    <label for="minGracePrice" class="dotLabel">최소유예금</label>
+                                                                    <input type="tel" id="minGracePrice" class="tRight" value="2,000" readonly />
+                                                                </li>
+                                                                <li>
+                                                                    <label for="maxGracePrice" class="dotLabel">최대유예금</label>
+                                                                    <input type="tel" id="maxGracePrice" class="tRight" value="0" readonly />
+                                                                </li>
+                                                                <li>
+                                                                    <label for="gracePrice" class="dotLabel">유예금</label>
+                                                                    <input type="tel" id="gracePrice" class="tRight" value="0" readonly />
+                                                                </li>
+                                                                <li>
+                                                                    <label for="graceRate" class="dotLabel">유예율</label>
+                                                                    <div class="insideTxt">
+                                                                        <input type="tel" id="graceRate" class="tRight" value="0.00" readonly />
+                                                                        <span class="txt">%</span>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="gridItem">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- // 유예정보 -->
+
+                                        <!-- 할부원금정보 -->
+                                        <div class="stepBox">
+                                            <h3 class="sbTit">4. 할부원금정보</h3>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <div class="sbSub">
+                                                        <h4 class="hide">할부원금정보</h4>
+                                                        <div class="lstBox">
+                                                            <ul class="frmList nonDot type2">
+                                                                <li>
+                                                                    <label for="minAdvance" class="dotLabel">최소선수금</label>
+                                                                    <input type="tel" id="minAdvance" class="tRight" value="2,000" readonly />
+                                                                </li>
+                                                                <li>
+                                                                    <label for="maxAdvance" class="dotLabel">최대선수금</label>
+                                                                    <input type="tel" id="maxAdvance" class="tRight" value="0" readonly />
+                                                                </li>
+                                                                <li>
+                                                                    <label for="advancePayment" class="dotLabel">선수금</label>
+                                                                    <input type="tel" id="advancePayment" class="tRight" value="0" />
+                                                                </li>
+                                                                <li>
+                                                                    <label for="advanceRate" class="dotLabel">선수율</label>
+                                                                    <div class="insideTxt">
+                                                                        <input type="tel" id="advanceRate" class="tRight" value="0.00" readonly />
+                                                                        <span class="txt">%</span>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <label for="minInstallment" class="dotLabel">최소할부금</label>
+                                                                    <input type="tel" id="minInstallment" class="tRight" value="0" readonly />
+                                                                </li>
+                                                                <li>
+                                                                    <label for="maxInstallment" class="dotLabel">최대할부금</label>
+                                                                    <input type="tel" id="maxInstallment" class="tRight" value="0" readonly />
+                                                                </li>
+                                                                <li>
+                                                                    <label for="principal" class="dotLabel">할부원금</label>
+                                                                    <input type="tel" id="principal" class="tRight" value="0" />
+                                                                </li>
+                                                            </ul>
+                                                            <div class="lstBoxFoot">
+                                                                <button class="btnCYN">미리계산하기</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="gridItem">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- // 할부원금정보 -->
+
+                                        <!-- 기본정보 및 할부정보 -->
+                                        <div class="stepBox">
+                                            <h3 class="sbTit">5. 기본정보 및 할부정보</h3>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <div class="sbSub">
+                                                        <div class="bgBlack"><span class="iArrow"><i></i></span>기본정보</div>
+                                                        <div class="lstBox">
+                                                            <ul class="frmList nonDot type2">
+                                                                <li>
+                                                                    <label for="baiscPrice" class="dotLabel">판매가격</label>
+                                                                    <input type="tel" id="baiscPrice" class="tRight" value="30,900,250" readonly />
+                                                                </li>
+                                                                <li>
+                                                                    <label for="basicDownPayment" class="dotLabel">계약금</label>
+                                                                    <input type="tel" id="basicDownPayment" class="tRight" value="100,000" readonly />
+                                                                </li>
+                                                                <li>
+                                                                    <label for="basicAdvancePayment" class="dotLabel">선수인도금</label>
+                                                                    <input type="tel" id="basicAdvancePayment" class="tRight" value="1,293,000" readonly />
+                                                                </li>
+                                                                <li>
+                                                                    <label for="basicPrincipal" class="dotLabel">할부원금</label>
+                                                                    <input type="tel" id="basicPrincipal" class="tRight" value="29,507,250" readonly />
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <div class="sbSub">
+                                                        <div class="bgBlack"><span class="iArrow"><i></i></span>할부정보</div>
+                                                        <div class="lstBox">
+                                                            <ul class="frmList nonDot type2">
+                                                                <li>
+                                                                    <label for="instPrincipal" class="dotLabel">할부원금</label>
+                                                                    <input type="tel" id="instPrincipal" class="tRight" value="30,900,250" readonly />
+                                                                </li>
+                                                                <li>
+                                                                    <label for="instGracePrice" class="dotLabel">유예금</label>
+                                                                    <input type="tel" id="instGracePrice" class="tRight" value="100,000" readonly />
+                                                                </li>
+                                                                <li>
+                                                                    <label for="commissionFee" class="dotLabel">인지대</label>
+                                                                    <input type="tel" id="commissionFee" class="tRight" value="1,293,000" readonly />
+                                                                </li>
+                                                                <li>
+                                                                    <label for="totalInterest" class="dotLabel">이자총계</label>
+                                                                    <input type="tel" id="totalInterest" class="tRight" value="29,507,250" readonly />
+                                                                </li>
+                                                                <li>
+                                                                    <label for="monthlyPayment" class="dotLabel">월납입금</label>
+                                                                    <input type="tel" id="monthlyPayment" class="tRight" value="29,507,250" readonly />
+                                                                    <div class="frmSub">
+                                                                        <label for="paymentTerm" class="dotLabel"><i class="iSub gray"></i>기간</label>
+                                                                        <div class="insideTxt long">
+                                                                            <input type="tel" id="paymentTerm" class="tRight" value="24" readonly />
+                                                                            <span class="txt">개월</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                            <div class="lstBoxFoot">
+                                                                <button class="btnCYN openPop3">월납입금 상세</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- // 기본정보 및 할부정보 -->
+                                    </div>
+                                    <!-- // 지불방법-할부 or 할부+외상 선택 시 노출 -->
+
+                                    <!-- 지불방법-할부+외상 or 외상 선택 시 노출 -->
+                                    <div data-index="credit" style="display: none;">
+                                        <!-- 후불정보 -->
+                                        <div class="stepBox">
+                                            <h3 class="sbTit">6. 인도금 후불정보</h3>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <div class="sbSub">
+                                                        <div class="bgBlack"><span class="iArrow"><i></i></span>후불정보</div>
+                                                        <div class="lstBox">
+                                                            <ul class="frmList nonDot type2">
+                                                                <li>
+                                                                    <label for="creditPayment01" class="dotLabel">인도금후불(1)</label>
+                                                                    <input type="tel" id="creditPayment01" class="tRight" value="29,507,250" readonly />
+                                                                    <div class="frmSub type2">
+                                                                        <label for="creditDueDate01" class="dotLabel"><i class="iSub gray"></i>후불만기일(1)</label>
+                                                                        <div class="calendarSet gray"><input type="tel" id="creditDueDate01" name="" /><button>달력열기</button></div><!--2019-03-15--->
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <label for="creditPayment02" class="dotLabel">인도금후불(2)</label>
+                                                                    <input type="tel" id="creditPayment02" class="tRight" value="29,507,250" readonly />
+                                                                    <div class="frmSub type2">
+                                                                        <label for="creditDueDate02" class="dotLabel"><i class="iSub gray"></i>후불만기일(2)</label>
+                                                                        <div class="calendarSet gray"><input type="tel" id="creditDueDate02" name="" /><button>달력열기</button></div><!--2019-03-15--->
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <label for="creditPayment03" class="dotLabel">인도금후불(3)</label>
+                                                                    <input type="tel" id="creditPayment03" class="tRight" value="29,507,250" readonly />
+                                                                    <div class="frmSub type2">
+                                                                        <label for="creditDueDate03" class="dotLabel"><i class="iSub gray"></i>후불만기일(3)</label>
+                                                                        <div class="calendarSet gray"><input type="tel" id="creditDueDate03" name="" /><button>달력열기</button></div><!--2019-03-15--->
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="gridItem">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- // 후불정보 -->
+                                    </div>
+                                    <!-- // 지불방법-할부+외상 or 외상 선택 시 노출 -->
+									<!--2019-09-19-->
+									<div class="stepPageGo">
+										<button class="btnLG" onClick="location.href='new_step04.html'">이전</button>
+										<button class="btnBY" onClick="location.href='new_step06.html'">다음</button>
+									</div>
+									<!--//2019-09-19-->
+                                </article>
+                            </div>
+                            <!-- //estimate Write -->
+                            <div class="estimateBtn">
+                                <div class="footLeft">
+                                    <button onclick="location.href='new_step04.html'" class="btnPrev"><i>이전페이지</i></button>
+                                    <button onclick="location.href='new_step06.html'" class="btnNext"><i>다음페이지</i></button>
+                                </div>
+                                <div class="footRight">
+                                    <button class="btnCYN fullOpen fullPop1">견적전체보기</button>
+                                    <button class="btnOpen mbView"><i>열기</i></button>
+                                    <div class="footBtnGroup">
+                                        <button id="estimateCopyBtn" class="btnRBG">복사견적</button>
+                                        <button class="btnRBG">견적발송</button>
+                                        <button class="btnRBG openPop1">할부계산기</button>
+                                        <button id="estimateDelBtn" class="btnRD">초기화</button>
+                                    </div>
+                                    <button class="pageTop">TOP</button>
+                                </div>
+                            </div>
+                        </div><!-- 2019-03-21 html(div) 추가 -->
+					</section>
+				</div>
+			</div>
+			<!-- //container -->
+			<!-- fullWrap : 하단 > 상단 -->
+			<div class="fullWrap slideDefault com-slide-bottom">
+				<section>
+					<!-- header -->
+					<div class="fullHeader"> 
+						<head>
+							<h2>1Depth title &gt; 2Depth title</h2>
+							<button class="fullClose">닫기</button>
+						</head>
+					</div>
+					<!-- //header -->
+					<article>
+						<div class="fullContainer">
+							<!-- 전체견적 -->
+							<div id="allEstimates" class="fullContents">
+							</div>
+							<!-- 할부견적 -->
+							<div id="installment" class="fullContents">
+								<!-- 상황견적 -->
+								<div class="sInstallCase"></div>
+								<!-- 비교견적 -->
+								<div class="cInstallCase"></div>
+								<!-- 추천견적 -->
+								<div class="rInstallCase"></div>
+								<!-- 리스 비교견적 -->
+								<div class="cleaseCase"></div><!-- 2019-07-10 추가 -->
+							</div>
+							<!---//--->
+						</div>
+					</article>
+				</section>
+			</div>
+			<!-- //fullWrap -->
+		</div>
+		<!-- //wrap -->
+        
+        <!-- DimPopUp -->
+		<div class="dimPop" style="display:none;">
+			<!-- 할부계산기 -->
+			<div class="popMNCase calculatorPop" style="display:none;">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>할부계산기</h1>
+				</div>
+				<div class="popBack">
+					<dl>
+						<dt>할부상품</dt>
+						<dd>정액불, 무이자</dd>
+					</dl>
+					<dl>
+						<dt>할부원금</dt>
+						<dd>
+							<div class="price">
+								<input type="text" placeholder="숫자만 입력" /><span>원</span>
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>할부기간</dt>
+						<dd>
+							<div class="price">
+								<input type="text" placeholder="숫자만 입력" /><span>개월</span>
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>이율(/년)</dt>
+						<dd>
+							<div class="price">
+								<input type="text" placeholder="숫자만 입력" /><span>%</span>
+							</div>
+						</dd>
+					</dl>
+					<button class="btnBY">월납입금 계산하기</button>
+					<div class="result">
+						<dl>
+							<dt>월납입금</dt>
+							<dd>
+								<div class="price">
+									<strong>1,680,239</strong><span>원</span>
+								</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt>이자계</dt>
+							<dd>
+								<div class="price">
+									<strong>1,680,239</strong><span>원</span>
+								</div>
+							</dd>
+						</dl>
+					</div>
+				</div>
+			</div>
+			<!-- //할부계산기 -->
+            
+            <!-- 월납입금 -->
+			<div class="popLGCase lookupPop" id="openPop3" style="display:none">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>월납입금</h1>
+				</div>
+				<div class="popBack">
+					<div class="poplist">
+						<table>
+							<colgroup>
+								<col width="15%" /><col/><col width="18%"/><col width="35%"/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>회차</th>
+									<th>월납입액</th>
+									<th>밸류박스비용</th>
+									<th>대출잔액</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="scrollArea">
+							<table>
+								<colgroup>
+									<col width="15%" /><col/><col width="18%"/><col width="35%"/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td class="tRight">1,255,166</td>
+										<td>0</td>
+										<td class="tRight">28,301,067</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td class="tRight">1,255,166</td>
+										<td>0</td>
+										<td class="tRight">28,301,067</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td class="tRight">1,255,166</td>
+										<td>0</td>
+										<td class="tRight">28,301,067</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //월납입금 -->
+            
+            <!-- 홈버튼 클릭 시 -->
+            <div id="moveHome" class="popSMCase hAuto" style="display:none;">
+                <div class="alertCnt">
+                    <h1 class="tit">현재화면에서 나가시겠습니까?</h1>
+                    <div class="cntTxt">
+                        현재 화면에 입력된 정보를 저장한 후 해당 화면으로 이동합니다. 
+                    </div>
+                </div>
+				<div class="btn mt15">
+                    <button class="btnLB">아니오</button>
+					<button class="btnBY">예</button>
+				</div>
+			</div>
+            <!-- // 홈버튼 클릭 시 -->
+            
+            <!-- 삭제버튼 클릭 시 -->
+            <div id="estimateDel" class="popSMCase alertPop large hAuto" style="display:none;">
+                <div class="alertCnt">
+                    <h1 class="tit">초기화 하시겠습니까?</h1>
+                    <div class="cntTxt">
+                        현재 견적 건의 모든 정보가 초기화됩니다.<br />초기화 된 정보는 복구할 수 없습니다.<br />초기화 하시겠습니까?
+                    </div>
+                </div>
+				<div class="btn mt15">
+                    <button class="btnLB">아니오</button>
+					<button class="btnBY">예</button>
+				</div>
+			</div>
+            <!-- // 삭제버튼 클릭 시 -->
+            
+            <!-- 복사견적 버튼 클릭 시 -->
+            <div id="estimateCopy" class="popSMCase alertPop large hAuto" style="display:none;">
+                <div class="alertCnt">
+                    <h1 class="tit">복사견적을 생성하시겠습니까?</h1>
+                    <div class="cntTxt">
+                        현재 견적서를 복사하여 화면에 표기합니다.
+                    </div>
+                </div>
+				<div class="btn mt15">
+                    <button class="btnLB">아니오</button>
+					<button class="btnBY">예</button>
+				</div>
+			</div>
+            <!-- // 복사견적 버튼 클릭 시 -->
+            
+            <!-- 저장 클릭 시 - 개인정보 수집동의등록확인 -->
+            <div id="personalTerms" class="popSMCase alertPop large hAuto" style="display: none;">
+                <div class="alertCnt">
+                    <div class="cntTxt">
+                        입력하신 견적정보를 저장하기 위해서<br />
+                        개인정보수집동의서의 등록이 필요합니다.
+                    </div>
+                    <div class="dotLine"></div>
+                    <p class="tit">개인정보수집동의서를 등록하시겠습니까?</p>
+                </div>
+				<div class="btn mt15">
+                    <button class="btnLB">아니오</button>
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+            <!-- // 저장 클릭 시 - 개인정보 수집동의등록확인 -->
+            
+            <!-- 저장 클릭 시 - 필수입력사항 확인 -->
+            <div id="requiredPop" class="popSMCase requiredPop hAuto" style="display: none;">
+                <div class="alertCnt noBtn">
+                    <h1 class="requiredHead">필수입력사항 확인</h1>
+                    <div class="cntTxt">
+                        OOO이 입력되지 않았습니다.<br />OOO를 입력하는 화면으로 이동합니다.
+                    </div>
+                </div>
+			</div>
+            <!-- // 저장 클릭 시 - 필수입력사항 확인 -->
+            
+            <!-- 전자계약서 작성 클릭 시 -->
+            <div id="estimateOnline" class="popSMCase alertPop large hAuto" style="display: none;">
+                <div class="alertCnt">
+                    <h1 class="tit">전자계약서 작성</h1>
+                    <div class="cntTxt">
+                        전자계약서를 작성 하시겠습니까?
+                    </div>
+                </div>
+				<div class="btn mt15">
+                    <button class="btnLB">취소</button>
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+            <!-- // 전자계약서 작성 클릭 시 -->
+            
+            <!-- 전자계약서 작성 클릭 시 - 취소를 눌렀을 경우 -->
+            <div id="estimateOnline" class="popSMCase alertPop large hAuto" style="display: none;">
+                <div class="alertCnt">
+                    <h1 class="tit">전자계약서의 개인정보수집동의서를 작성하지 않은 상태입니다.</h1>
+                    <div class="cntTxt">
+                        해당 계약은 금일 23:59까지만 저장되므로 시간 내에 작성을 완료해 주십시오. 
+                    </div>
+                </div>
+				<div class="btn mt15">
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+            <!-- // 전자계약서 작성 클릭 시 - 취소를 눌렀을 경우 -->
+            
+            <!-- 저장 클릭 시 - 저장중 -->
+            <div id="savingNow" class="saveLayer" style="display: none;">
+				<div class="loading move"></div>
+                <div class="loadingTxt">
+                    <span>저장중</span>
+                    <span class="loadingDot01"></span>
+                    <span class="loadingDot02"></span>
+                    <span class="loadingDot03"></span>
+                </div>
+			</div>
+            <!-- // 저장 클릭 시 - 저장중 -->
+            
+            <!-- 저장 클릭 시 - 저장완료 -->
+            <div id="savingComplete" class="saveLayer" style="display: none;">
+				<div class="loading complete"></div>
+                <div class="loadingTxt complete">
+                    <span>저장중</span>
+                    <span class="loadingDot01"></span>
+                    <span class="loadingDot02"></span>
+                    <span class="loadingDot03"></span>
+                    <span class="resultTxt">저장완료</span>
+                </div>
+			</div>
+            <!-- // 저장 클릭 시 - 저장완료 -->
+            
+            <!-- 저장 클릭 시 - 저장실패 -->
+            <div id="savingFail" class="saveLayer" style="display: none;">
+				<div class="loading fail"></div>
+                <div class="loadingTxt fail">
+                    <span>저장중</span>
+                    <span class="loadingDot01"></span>
+                    <span class="loadingDot02"></span>
+                    <span class="loadingDot03"></span>
+                    <span class="resultTxt">저장실패</span>
+                    <p>네트워크 연결상태를 확인해주세요.</p>
+                </div>
+			</div>
+            <!-- // 저장 클릭 시 - 저장실패 -->
+            
+            <!-- 승인요청 클릭 시 -->
+            <div id="rqstApproval" class="popSMCase iptCase" style="display: none;">
+                <div class="popCnt">
+                    <h1 class="tit">계약서 선택</h1>
+                    <dl class="iptGrayBox">
+                        <dt><label for="contractNum">계약서번호</label></dt>
+                        <dd>
+                            <span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+                                <select>
+                                    <option>선택</option>
+                                    <option>박길동</option>
+                                    <option>김길동</option>
+                                    <option>018</option>
+                                    <option>019</option>
+                                </select>
+                            </span>
+                        </dd>
+                        <dt><label for="numInsert">수기입력</label></dt>
+                        <dd><input type="tel" id="numInsert"></dd>
+                    </dl>
+                </div>
+				<div class="btn mt15">
+                    <button class="btnLB">취소</button>
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+            <!-- // 승인요청 클릭 시 -->
+        </div>
+        <!-- // DimPopUp -->
+	</body>
+</html>

@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../css/inview.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<!-- <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/swiper.min.js"></script> -->
+		<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../js/menu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(window).load(function () {
+			funcGnbOpen();
+		});
+		$(document).ready(function(){
+	
+			$(document).on('click', '.fullOpen', function(e){
+				$('.wrapper').css('overflow','hidden');
+				$(".fullContainer").mCustomScrollbar({
+					axis:"yx",
+					theme:"light",
+					contentTouchScroll:true
+				});
+			});
+			$(".fullClose").click(function(){
+				$('.wrapper').css('overflow','auto');
+				$('.fullContents').hide();
+				$('.fullWrap').removeClass('installCase');
+			});
+			//
+			$(".fullPop1").click(function(){
+				$('#allEstimates').show();
+				$('#allEstimates').load('process/all_estimates.html');
+				$('.fullWrap .fullHeader h2').text('견적 전체보기');
+			});
+			//
+			$(".fullPop2, .fullPop3, .fullPop4").click(function(){
+				$('#installment').show();
+				$('.sInstallCase, .cInstallCase, .rInstallCase').hide();
+				$('.fullWrap').addClass('installCase');
+			});
+			//
+			$(".fullPop2").click(function(){
+				$('#installment').show();
+				$('.sInstallCase, .cInstallCase, .rInstallCase').hide();
+				$('.sInstallCase').show();
+				$('#installment .sInstallCase').load('process/installment_situation.html');
+				$('.fullWrap .fullHeader h2').text('상환견적');
+			});
+			//
+			$(".fullPop3").click(function(){
+				$('#installment').show();
+				$('.sInstallCase, .cInstallCase, .rInstallCase').hide();
+				$('.cInstallCase').show();
+				$('#installment .cInstallCase').load('process/installment_compare.html');
+				$('.fullWrap .fullHeader h2').text('비교견적');
+			});
+			//
+			$(".fullPop4").click(function(){
+				$('#installment').show();
+				$('.sInstallCase, .cInstallCase, .rInstallCase').hide();
+				$('.rInstallCase').show();
+				$('#installment .rInstallCase').load('process/installment_recommendation.html');
+				$('.fullWrap .fullHeader h2').text('추천견적');
+			});
+			//
+			$(".stepOpen").click(function(){
+				$('body').addClass('pushCase');
+				$(".estSumScroll").mCustomScrollbar({
+					axis:"yx",
+					theme:"light",
+					contentTouchScroll:true
+				});
+			});
+			$(".stepClose").click(function(){
+				$('body').removeClass('pushCase');
+				$('.wrapper').css('overflow','auto');
+			});
+			//
+			$(".openPop1").click(function(){
+				$('.dimPop, .calculatorPop').show();
+			});
+			$(".openPop2").click(function(){
+				$('.dimPop, #openPop2').show();
+			});
+			$(".openPop3").click(function(){
+				$('.dimPop, #openPop3').show();
+			});
+			$(".openPop4").click(function(){
+				$('.dimPop, #openPop4').show();
+			});
+			$(".openPop5").click(function(){
+				$('.dimPop, #openPop5').show();
+			});
+			$(".openPop6").click(function(){
+				$('.dimPop, #openPop6').show();
+			});
+			$(".openPop7").click(function(){
+				$('.dimPop, #openPop7').show();
+			});
+ 			$(".openPop8").click(function(){
+				$('.dimPop, #openPop8').show();
+			});
+			// 2019-04-24 주소Tab 적용
+			$(".newABtn").click(function () {
+				$(".newAdd").show();
+				$(".oldAdd").hide();
+			});
+			$(".oldABtn").click(function () {
+				$(".newAdd").hide();
+				$(".oldAdd").show();
+			});
+			// end 2019-04-24 주소Tab 적용
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+
+		<!-- DimPopUp -->
+		<div class="dimPop" style="">
+			<!-- 할부계산기 -->
+			<div class="popMNCase calculatorPop" style="display:none;">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>할부계산기</h1>
+				</div>
+				<div class="popBack">
+					<dl>
+						<dt>할부상품</dt>
+						<dd>정액불, 무이자</dd>
+					</dl>
+					<dl>
+						<dt>할부원금</dt>
+						<dd>
+							<div class="price">
+								<input type="text" placeholder="숫자만 입력" /><span>원</span>
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>할부기간</dt>
+						<dd>
+							<div class="price">
+								<input type="text" placeholder="숫자만 입력" /><span>개월</span>
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>이율(/년)</dt>
+						<dd>
+							<div class="price">
+								<input type="text" placeholder="숫자만 입력" /><span>%</span>
+							</div>
+						</dd>
+					</dl>
+					<button class="btnBY">월납입금 계산하기</button>
+					<div class="result">
+						<dl>
+							<dt>월납입금</dt>
+							<dd>
+								<div class="price">
+									<strong>1,680,239</strong><span>원</span>
+								</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt>이자계</dt>
+							<dd>
+								<div class="price">
+									<strong>1,680,239</strong><span>원</span>
+								</div>
+							</dd>
+						</dl>
+					</div>
+				</div>
+			</div>
+			<!-- //할부계산기 -->
+			<!-- 재고조회 -->
+			<div class="popLGCase lookupPop" id="openPop2" style="display:none">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>재고조회</h1>
+				</div>
+				<div class="popBack">
+					<div class="poplist">
+						<table>
+							<colgroup>
+								<col width="15%" /><col/><col width="20%"/><col width="20%"/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>용품코드</th>
+									<th>용품명</th>
+									<th>요청대기계약</th>
+									<th>가용재고</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="popScrollArea">
+							<table>
+								<colgroup>
+									<col width="15%" /><col/><col width="20%"/><col width="20%"/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<td>FC2</td>
+										<td class="tLeft">전방카메라_스마트커넥트용</td>
+										<td>30</td>
+										<td>999</td>
+									</tr>
+									<tr>
+										<td>FC2</td>
+										<td class="tLeft">전방카메라_스마트커넥트용</td>
+										<td>30</td>
+										<td>999</td>
+									</tr>
+									<tr>
+										<td>FC2</td>
+										<td class="tLeft">전방카메라_스마트커넥트용</td>
+										<td>30</td>
+										<td>999</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //재고조회 -->
+			<!-- 월납입금 -->
+			<div class="popLGCase lookupPop" id="openPop3" style="display:none">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>월납입금</h1>
+				</div>
+				<div class="popBack">
+					<div class="poplist">
+						<table>
+							<colgroup>
+								<col width="15%" /><col/><col width="18%"/><col width="35%"/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>회차</th>
+									<th>월납입액</th>
+									<th>밸류박스비용</th>
+									<th>대출잔액</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="popScrollArea">
+							<table>
+								<colgroup>
+									<col width="15%" /><col/><col width="18%"/><col width="35%"/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td class="tRight">1,255,166</td>
+										<td>0</td>
+										<td class="tRight">28,301,067</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td class="tRight">1,255,166</td>
+										<td>0</td>
+										<td class="tRight">28,301,067</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td class="tRight">1,255,166</td>
+										<td>0</td>
+										<td class="tRight">28,301,067</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td class="tRight">1,255,166</td>
+										<td>0</td>
+										<td class="tRight">28,301,067</td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td class="tRight">1,255,166</td>
+										<td>0</td>
+										<td class="tRight">28,301,067</td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td class="tRight">1,255,166</td>
+										<td>0</td>
+										<td class="tRight">28,301,067</td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td class="tRight">1,255,166</td>
+										<td>0</td>
+										<td class="tRight">28,301,067</td>
+									</tr>
+									<tr>
+										<td>8</td>
+										<td class="tRight">1,255,166</td>
+										<td>0</td>
+										<td class="tRight">28,301,067</td>
+									</tr>
+									<tr>
+										<td>9</td>
+										<td class="tRight">1,255,166</td>
+										<td>0</td>
+										<td class="tRight">28,301,067</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //월납입금 -->
+			<!-- 지점조회 -->
+			<div class="popLGCase searchPop" id="openPop4" style="display:none">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>지점조회</h1>
+				</div>
+				<div class="popBack">
+					<div class="popSearch">
+						<div class="halfCase"><!-- 2019-05-06 class 추가 --> 
+							<!-- 2019-05-06 검색조건 분리 -->
+							<span class="w50">
+								<span class="txtDot">지점 명</span>
+								<input type="text" placeholder="지점 명을 입력해주세요" />
+							</span>
+							<span class="w50">
+								<span class="txtDot">지점번호</span>
+								<input type="text" placeholder="지점번호를 숫자로 입력해주세요" />
+							</span>
+							<!-- //2019-05-06 -->
+							<!-- <input type="text" placeholder="지점 명 혹은 지점번호로 조회해 주세요" /> -->
+							<button class="btnBY">조회</button>
+						</div>
+					</div>
+					<div class="poplist oCase">
+						<table>
+							<colgroup>
+								<col width="15%" /><col/><col width="12%"/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>지점번호</th>
+									<th class="tInGrid">
+										<div class="listGrid">
+											<span class="lgTd">지점명 <em>및 주소</em></span>
+											<div class="lgTd mHide">주소</div>
+										</div>
+									</th>
+									<th>SC</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="popScrollArea">
+							<table>
+								<colgroup>
+									<col width="15%" /><col/><col width="12%"/>
+								</colgroup>
+								<tbody>
+									<!-- Loop -->
+									<tr>
+										<td>599</td>
+										<td class="tInGrid tLeft">
+											<div class="listGrid">
+												<span class="lgTd">EV영업팀</span>
+												<div class="lgTd tEllipsis"><div>서울특별시 금천구 가산디지털2로 30 (가산)</div></div>
+											</div>
+										</td>
+										<td>002</td>
+									</tr>
+									<!-- //Loop -->
+									<tr>
+										<td>599</td>
+										<td class="tInGrid tLeft">
+											<div class="listGrid">
+												<span class="lgTd">EV영업팀</span>
+												<div class="lgTd tEllipsis"><div>서울특별시 금천구 가산디지털2로 30 (가산) 서울특별시 금천구 가산디지털2로 30 (가산)</div></div>
+											</div>
+										</td>
+										<td>002</td>
+									</tr>
+									<tr class="on">
+										<td>599</td>
+										<td class="tInGrid tLeft">
+											<div class="listGrid">
+												<span class="lgTd">EV영업팀</span>
+												<div class="lgTd tEllipsis"><div>서울특별시 금천구 가산디지털2로 30 (가산)</div></div>
+											</div>
+										</td>
+										<td>002</td>
+									</tr>
+									<tr>
+										<td>599</td>
+										<td class="tInGrid tLeft">
+											<div class="listGrid">
+												<span class="lgTd">EV영업팀</span>
+												<div class="lgTd tEllipsis"><div>서울특별시 금천구 가산디지털2로 30 (가산) 서울특별시 금천구 가산디지털2로 30 (가산)</div></div>
+											</div>
+										</td>
+										<td>002</td>
+									</tr>
+									<tr>
+										<td colspan="3" class="listNone">
+											<span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="btn">
+					<button class="btnLB">취소</button>
+					<button class="btnBY">선택완료</button>
+				</div>
+			</div>
+			<!-- //지점조회 -->
+			<!-- 고객조회 -->
+			<div class="popLGCase searchPop" id="openPop5" style="display:none">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>고객조회</h1>
+				</div>
+				<div class="popBack">
+					<div class="popSearch">
+						<div class="halfCase"><!-- 2019-05-06 class 추가 --> 
+							<!-- 2019-05-06 검색조건 분리 -->
+							<span class="w50">
+								<span class="txtDot">고객명</span>
+								<input type="text" placeholder="고객명을 입력해주세요" />
+							</span>
+							<span class="w50">
+								<span class="txtDot">생년월일</span>
+								<input type="text" placeholder="생년월일을 숫자로 입력해주세요" />
+							</span>
+							<!-- //2019-05-06 -->
+							<!-- <input type="text" placeholder="고객명 혹은 생년월일로 조회해 주세요" /> -->
+							<button class="btnBY">조회</button>
+						</div>
+					</div>
+					<div class="poplist cCase">
+						<table>
+							<colgroup>
+								<col width="21%" /><col width="17%"/><col width="22%"/><col/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>고객명</th>
+									<th>출고여부</th>
+									<th>생년월일</th>
+									<th class="tInGrid">
+										<div class="listGrid mHide">
+											<span class="lgTd">자택전화번호 </span>
+											<span class="lgTd">휴대전화번호</span>
+										</div>
+										<strong class="pHide">전화번호</strong>
+									</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="popScrollArea">
+							<table>
+								<colgroup>
+									<col width="21%" /><col width="17%"/><col width="22%"/><col/>
+								</colgroup>
+								<tbody>
+									<!-- Loop -->
+									<tr>
+										<td>홀길동1</td>
+										<td>출고</td>
+										<td>823456-*******</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<span class="lgTd"><em class="pHide">T</em>031-2345-6789</span>
+												<span class="lgTd"><em class="pHide">P</em>010-2345-6789</span>
+											</div>
+										</td>
+									</tr>
+									<!-- //Loop -->
+									<tr class="on">
+										<td>홀길동1</td>
+										<td>미출고</td>
+										<td>823456-*******</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<span class="lgTd"><em class="pHide">T</em>031-2345-6789</span>
+												<span class="lgTd"><em class="pHide">P</em>010-2345-6789</span>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>홀길동1</td>
+										<td>미출고</td>
+										<td>823456-*******</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<span class="lgTd"><em class="pHide">T</em>031-2345-6789</span>
+												<span class="lgTd"><em class="pHide">P</em>010-2345-6789</span>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>홀길동1</td>
+										<td>미출고</td>
+										<td>823456-*******</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<span class="lgTd"><em class="pHide">T</em>031-2345-6789</span>
+												<span class="lgTd"><em class="pHide">P</em>010-2345-6789</span>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="4" class="listNone">
+											<span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="btn">
+					<button class="btnLB">취소</button>
+					<button class="btnBY">선택완료</button>
+				</div>
+			</div>
+			<!-- //고객조회 -->
+			<!-- 보유차량 -->
+			<div class="popLGCase searchPop" id="openPop6" style="display:none">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>보유차량</h1>
+				</div>
+				<div class="popBack">
+					<div class="popSearch kindCase">
+						<div>
+							<span class="selectSet">
+								<select>
+									<option>선택</option>
+									<option>전체</option>
+									<option>제조사</option>
+									<option>제조사</option>
+								</select>
+							</span>
+							<input type="text" placeholder="차량명을 조회해 주세요" />
+							<button class="btnBY">조회</button>
+						</div>
+					</div>
+					<div class="poplist uCase">
+						<table>
+							<colgroup>
+								<col width="12%" /><col width="17%"/><col width="39%"/><col/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>코드</th>
+									<th class="tInGrid">
+										<div class="listGrid">
+											<div class="lgTd">제조사 <em class="pHide">및 차급명</em></div>
+											<span class="lgTd mHide">차급명</div>
+										</div>
+									</th>
+									<th>차명</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="popScrollArea">
+							<table>
+								<colgroup>
+									<col width="12%" /><col width="17%"/><col width="39%"/><col/>
+								</colgroup>
+								<tbody>
+									<!-- Loop -->
+									<tr>
+										<td>1</td>
+										<td>K0101</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<div class="lgTd">기아</div>
+												<span class="lgTd">Mini(경)</span>
+											</div>
+										</td>
+										<td>올 뉴 모닝</td>
+									</tr>
+									<!-- //Loop -->
+									<tr class="on">
+										<td>1</td>
+										<td>K0101</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<div class="lgTd">기아</div>
+												<span class="lgTd">Mini(경)</span>
+											</div>
+										</td>
+										<td>올 뉴 모닝</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>K0101</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<div class="lgTd">기아</div>
+												<span class="lgTd">Mini(경)</span>
+											</div>
+										</td>
+										<td>올 뉴 모닝</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>K0101</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<div class="lgTd">기아</div>
+												<span class="lgTd">Mini(경)</span>
+											</div>
+										</td>
+										<td>올 뉴 모닝</td>
+									</tr>
+									<tr>
+										<td colspan="4" class="listNone">
+											<span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="btn">
+					<button class="btnLB">취소</button>
+					<button class="btnBY">선택완료</button>
+				</div>
+			</div>
+			<!-- //보유차량 -->
+			<!-- 우편번호 찾기 -->
+			<div class="popLGCase zipPop" id="openPop7" style="">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>우편번호 찾기</h1>
+				</div>
+				<div class="popBack">
+					<div class="popScrollArea">
+						<div class="popTab">
+							<span class="newABtn on">도로 명</span>
+							<span class="oldABtn">지번주소</span><!--2019-04-24 지번용 버튼명 변경 --><!--2019-04-24 지번용 버튼명 변경 -->
+						</div>
+						<div class="newAdd"><!--2019-04-24 도로명용 div 추가 -->
+							<div class="inputInfo">
+								<dl>
+									<dt>새주소(도로명 주소) 찾기</dt>
+									<dd>
+										도로명과 건물번호를 입력 후 검색하세요.<br/>
+										예) 찾고자 하는 주소 : 강원 강릉시 임영로 197
+											<span>도로명+건물번호 → ‘임영로 197’로 검색</span>
+									</dd>
+								</dl>
+								<p>도로명과 주소가 검색되지 않는 경우는 행정안전부 새주소 안내시스템 (http://www.juso.go.kr)에서 확인하시기 바랍니다.</p>
+							</div>
+							<div class="popSearch">
+								<div>
+									<dl>
+										<dt>시 도</dt>
+										<dd>
+											<span class="selectSet w15">
+												<select>
+													<option>선택</option>
+													<option>서울시</option>
+												</select>
+											</span> <!-- 2019-04-17 select 스크립트 삭제 -->
+										</dd>
+									</dl>
+									<dl>
+										<dt>시군구</dt>
+										<dd>
+											<span class="selectSet w15">
+												<select>
+													<option>선택</option>
+													<option>마포구</option>
+												</select>
+											</span> <!-- 2019-04-17 select 스크립트 삭제 -->
+										</dd>
+									</dl>
+									<span class="inputArea">
+										<dl>
+											<dt>도로명</dt>
+											<dd><input type="text" /></dd>
+										</dl>
+										<dl>
+											<dt>건물명</dt>
+											<dd><input type="text" /></dd>
+										</dl>
+									</span>
+									<button class="btnBY">조회</button>
+								</div>
+							</div>
+						</div><!--//2019-04-24 도로명용 div 추가 -->
+						<!--2019-04-24 지번용 추가 -->
+						<div class="oldAdd" style="display:none;">
+							<div class="inputInfo">
+								<dl>
+									<dt>지번주소로 도로명주소 찾기</dt>
+									<dd>지번주소를 차례대로 고르세요<br/>지번 주소에 해당하는 도로명 주소를 표시해줍니다</dd>
+								</dl>
+							</div>
+							<div class="popSearch">
+								<div>
+									<dl>
+										<dt>시 도</dt>
+										<dd>
+											<span class="selectSet w15">
+												<select>
+													<option>선택</option>
+													<option>서울시</option>
+												</select>
+											</span>
+										</dd>
+									</dl>
+									<dl>
+										<dt>시군구</dt>
+										<dd>
+											<span class="selectSet w15">
+												<select>
+													<option>선택</option>
+													<option>마포구</option>
+												</select>
+											</span>
+										</dd>
+									</dl>
+									<span class="inputArea">
+										<dl>
+											<dt>동면읍</dt>
+											<dd>
+												<span class="selectSet w15">
+													<select>
+														<option>선택</option>
+														<option>마포구</option>
+													</select>
+												</span>
+											</dd>
+										</dl>
+										<dl>
+											<dt>번지입력</dt>
+											<dd class="last">
+												<input type="text" /><em>-</em>
+												<input type="text" />
+											</dd>
+										</dl>
+									</span>
+									<button class="btnBY">조회</button>
+								</div>
+							</div>
+						</div>
+						<!--//2019-04-24 지번용 추가 -->
+						<div class="poplist">
+							<table>
+								<tbody>
+									<!-- Loop -->
+									<tr>
+										<th><strong>13480</strong></th>
+										<td class="tEllipsis">
+											<div><span>도로명</span><p>경기 성남시 분당구 서판교로 32</p></div><!--2019-05-06 주소영역 p 추가 -->
+											<div><span>지번</span><p>경기 성남시 분당구 판교동 577-3</p></div>
+										</td>
+									</tr>
+									<!-- //Loop -->
+									<tr class="on">
+										<th><strong>13480</strong></th>
+										<td class="tEllipsis">
+											<div><span>도로명</span><p>경기 성남시 분당구 서판교로 32</p></div><!--2019-05-06 주소영역 p 추가 -->
+											<div><span>지번</span><p>경기 성남시 분당구 판교동 577-3</p></div>
+										</td>
+									</tr>
+									<tr>
+										<th><strong>13480</strong></th>
+										<td class="tEllipsis">
+											<div><span>도로명</span><p>경기 성남시 분당구 서판교로 32</p></div><!--2019-05-06 주소영역 p 추가 -->
+											<div><span>지번</span><p>경기 성남시 분당구 판교동 577-3</p></div>
+										</td>
+									</tr>
+									<tr>
+										<th><strong>13480</strong></th>
+										<td class="tEllipsis">
+											<div><span>도로명</span><p>경기 성남시 분당구 서판교로 32</p></div><!--2019-05-06 주소영역 p 추가 -->
+											<div><span>지번</span><p>경기 성남시 분당구 판교동 577-3</p></div>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" class="listNone">
+											<span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //우편번호 찾기 -->
+			<!--보유자 조회 및 사용포인트 > 관계자 추가 --> 
+			<div class="popLGCase searchPop usePoints" id="openPop8" style="display:none">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>보유자 조회 및 사용포인트</h1>
+				</div>
+				<div class="popBack">
+					<div class="popSearch">
+						<div>
+							<dl>
+								<dt>관계<sup>*</sup></dt>
+								<dd>
+									<span class="selectSet">
+										<select>
+											<option>선택해주세요</option>
+										</select>
+									</span>
+								</dd>
+								<dt>이름<sup>*</sup></dt>
+								<dd><input type="text" placeholder="이름입력" /></dd>								
+							</dl>
+							<dl>
+								<dt>생년월일<sup>*</sup></dt>
+								<dd><input type="text" placeholder="YYMMDD" /></dd>
+								<dt>휴대전화<sup>*</sup></dt>
+								<dd><input type="text" placeholder="숫자만 입력" /></dd>								
+							</dl>
+							<button class="btnBY">조회</button>
+						</div>
+					</div>
+					<div class="poplist">
+						<table>
+							<colgroup>
+								<col width="65%" /><col width="35%"/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>
+										<div class="listGrid">
+											<span class="lgTd"><span class="mHide">이름</span><em class="pHide">소유자 정보</em></span>
+											<span class="lgTd mHide birth">생년월일</span>
+											<span class="lgTd mHide sex">성별</span>
+											<div class="lgTd mHide call">휴대전화</div>
+										</div>
+									</th>
+									<th>
+										<div class="listGrid pointNum">
+											<span class="lgTd">포인트<em class="pHide"> 사용포인트</em></span>
+											<div class="lgTd mHide">사용포인트</div>
+										</div>
+									</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="popScrollArea">
+							<table>
+								<colgroup>
+									<col width="65%" /><col width="35%"/>
+								</colgroup>
+								<tbody>
+									<!-- Loop -->
+									<tr>
+										<td>
+											<div class="listGrid">
+												<span class="lgTd">홍길동</span>
+												<span class="lgTd birth">100831-*******</span>
+												<span class="lgTd sex">남자</span>
+												<div class="lgTd call">010-9999-8888</div>
+											</div>
+										</td>
+										<td>
+											<div class="listGrid pointNum">
+												<span class="lgTd">1,000,000</span>
+												<div class="lgTd">
+													<input type="text" placeholder="1,000,000"/>
+													<em class="pointGuide" style="display:none;">사용포인트는 포인트보다 클 수 없습니다.</em>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<!--//Loop -->
+									<tr>
+										<td>
+											<div class="listGrid">
+												<span class="lgTd">홍길동</span>
+												<span class="lgTd birth">100831-*******</span>
+												<span class="lgTd sex">남자</span>
+												<div class="lgTd call">010-9999-8888</div>
+											</div>
+										</td>
+										<td>
+											<div class="listGrid pointNum">
+												<span class="lgTd">1,000,000</span>
+												<div class="lgTd">
+													<input type="text" placeholder="1,000,000"/>
+													<em class="pointGuide" style="display:none;">사용포인트는 포인트보다 클 수 없습니다.</em>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr class="on">
+										<td>
+											<div class="listGrid">
+												<span class="lgTd">홍길동</span>
+												<span class="lgTd birth">100831-*******</span>
+												<span class="lgTd sex">남자</span>
+												<div class="lgTd call">010-9999-8888</div>
+											</div>
+										</td>
+										<td>
+											<div class="listGrid pointNum">
+												<span class="lgTd">1,000,000</span>
+												<div class="lgTd">
+													<input type="text" placeholder="1,000,000"/>
+													<em class="pointGuide" style="display:none;">사용포인트는 포인트보다 클 수 없습니다.</em>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" class="listNone">
+											<span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="btn">
+					<button class="btnLB">취소</button>
+					<button class="btnBY">선택완료</button>
+				</div>
+			</div>
+			<!--//보유자 조회 및 사용포인트 > 관계자 추가 --> 
+		</div>
+		<!-- //DimPopUp -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+					<div class="gnbTop">
+						<div class="loginInfo">
+							<p>
+								<strong>
+									김르노님 안녕하세요.<br/>
+									<span>세션만료 26분 30초</span>
+								</strong>
+							</p>
+							<a href="setting.html">환경설정</a>
+						</div>
+						<div class="myGo">
+							<a href="mypage.html">마이페이지</a>
+							<span><a href="login.html">로그아웃</a></span>
+						</div>
+					</div>
+					<div class="gnbMenu">
+						<nav>
+							<ul>
+								<li class="mni0 noSub">
+									<a href="main.html"><span>Home</span></a>
+								</li>
+								<li class="mni1">
+									<strong><span>견적관리</span></strong>
+									<ol>
+										<li class="on"><a href="">신규견적</a></li>
+										<li><a href="">견적조회</a></li>
+										<li><a href="">할부계산기</a></li>
+									</ol>
+								</li>
+								<li class="mni2">
+									<strong><span>계출관리</span></strong>
+									<ol>
+										<li><a href="">계출현황</a></li>
+										<li><a href="">매출 계약 조회</a></li>
+									</ol>
+								</li>
+								<li class="mni3">
+									<strong><span>재고 조회</span></strong>
+									<ol>
+										<li><a href="">가용재고</a></li>
+										<li><a href="">납기문의</a></li>
+									</ol>
+								</li>
+								<!-- <li class="mni4"><a href=""><span>가망고객</span></a></li> -->
+								<li class="mni5">
+									<strong><span>고객 활동</span></strong>
+									<ol>
+										<li><a>가망고객 등록</a></li>
+										<li><a>고객 조회</a></li>
+										<li><a>eCommerce 고객관리</a></li>
+										<li><a>eShowroom 견적</a></li>
+									</ol>
+								</li>
+								<li class="mni10">
+									<strong><span>발송관리</span></strong>
+									<ol>
+										<li><a>SMS 발송</a></li>
+										<li><a>e-mail 발송</a></li>
+										<li><a>FAX 발송</a></li>
+										<li><a>발송결과조회</a></li>
+										<li><a>포인트관리</a></li>
+										<li><a>발송 서식관리</a></li>
+									</ol>
+								</li>
+								<li class="mni11">
+									<strong><span>셀프플래너</span></strong>
+									<ol>
+										<li><a>셀프플래너</a></li>
+										<li><a>활동모델 관리</a></li>
+									</ol>
+								</li>
+								<li class="mni12">
+									<strong><span>MCA관리</span></strong>
+									<ol>
+										<li><a>MCA관리(등록)</a></li>
+										<li><a>MCA실적조회</a></li>
+									</ol>
+								</li>
+								<li class="mni13">
+									<a><span>시스템관리</span></a>
+								</li>
+								<li class="mni6">
+									<strong><span>홈페이지</span></strong>
+									<ol>
+										<li><a href="">홈페이지</a></li>
+										<li><a href="">가격표</a></li>
+										<li><a href="">카다로그</a></li>
+										<li><a href="">영업담당 개인 홈페이지</a></li>
+									</ol>
+								</li>
+								<li class="mni7">
+									<strong><span>업무연락</span></strong>
+									<ol>
+										<li><a href="">개인 e-mail 함</a></li>
+										<li><a href="">터치 클래스</a></li>
+										<li><a href="">G.N.T</a></li>
+									</ol>
+								</li>
+								<li class="mni8">
+									<strong><span>통합게시판</span></strong>
+									<ol>
+										<li><a href="">공지사항</a></li>
+										<li><a href="">자료실</a></li>
+										<li><a href="">용품 정보 및 A/S</a></li>
+										<li><a href="">월간공지</a></li>
+										<li><a href="">납기정보</a></li>
+									</ol>
+								</li>
+								<li class="mni9">
+									<strong><span>[관리] 통계</span></strong>
+									<ol>
+										<li><a href="">공지사항</a></li>
+										<li><a href="">자료실</a></li>
+										<li><a href="">용품정보 및 A/S</a></li>
+									</ol>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button>
+							<!-- <button class="goPrev" onclick="history.back()">뒤로가기</button> -->
+						</span>
+						<h1><img src="../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="main.html" class="goMain">메인으로 이동</a>
+							<!-- <button class="">저장</button>
+							<button class="">전자계약서 작성</button>
+							<button class="">승인요청</button> -->
+						</span>
+					</div>
+					<div class="headSub">
+						<!-- <h2>1Depth title</h2> -->
+						<h2 class="sCase"><span>1Depth title &gt; </span>2Depth title</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<!-- estimate Summary : 왼쪽 > 오른쪽 -->
+						<div class="estSummary slideDefault com-push-left">
+							<button class="stepClose">견적 써머리 닫기</button>
+							<article>
+								<div class="estSumScroll">estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/>estimate Summary<br/></div>
+							</article>
+						</div>
+						<!-- //estimate Summary -->
+						<!-- estimate Write -->
+				        <button class="stepOpen">견적 써머리 열기</button>
+						<div id="estimateWrap" class="wrapper">
+							<article>
+								<br/><br/><br/>
+								* 견적상세 내 팝업
+								<br/><br/>
+								<button class="fullOpen fullPop1">견적전체보기 > OK</button><br/><br/>
+								<a href="">견적발송 > 네이티브 팝업 링크로 이동</a><br/><br/>
+								<button class="openPop1">할부계산기 > OK</button><br/><br/>
+								<button class="fullOpen fullPop2">상환견적 (Full) > OK</button><br/><br/>
+								<button class="fullOpen fullPop3">비교견적 (Full) > OK</button><br/><br/>
+								<button class="fullOpen fullPop4">추천견적 (Full) > OK</button><br/><br/>
+								<button class="openPop2">재고조회 > OK</button><br/><br/>
+								<button class="openPop3">월납입금 상세 > OK</button><br/><br/>
+								<button class="openPop4">지점조회 > OK</button><br/><br/>
+								<button class="openPop5">고객조회 > OK</button><br/><br/>
+								<button class="openPop6">보유차량 > OK</button><br/><br/>
+								<button class="openPop7">우편번호 찾기 > OK</button><br/><br/>
+								<a href="masking.html">촬영 > 마스킹 화면 링크로 이동 > OK</a><br/><br/>
+								<button class="openPop8">관계자 추가 > OK</button><br/><br/>
+							</article>
+						</div>
+						<!-- //estimate Write -->
+						<div class="estimateBtn">
+							버튼영역입니다.
+							<!-- <button class="fullOpen">Fullpop 열기</button> -->
+						</div>
+					</section>
+				</div>
+			</div>
+			<!-- //container -->
+			<!-- fullWrap : 하단 > 상단 -->
+			<div class="fullWrap slideDefault com-slide-bottom">
+				<section>
+					<!-- header -->
+					<div class="fullHeader"> 
+						<head>
+							<h2>1Depth title &gt; 2Depth title</h2>
+							<button class="fullClose">닫기</button>
+						</head>
+					</div>
+					<!-- //header -->
+					<article>
+						<div class="fullContainer">
+							<!-- 전체견적 -->
+							<div id="allEstimates" class="fullContents">
+							</div>
+							<!-- 할부견적 -->
+							<div id="installment" class="fullContents">
+								<!-- 상황견적 -->
+								<div class="sInstallCase"></div>
+								<!-- 비교견적 -->
+								<div class="cInstallCase"></div>
+								<!-- 추천견적 -->
+								<div class="rInstallCase"></div>
+							</div>
+							<!---//--->
+						</div>
+					</article>
+				</section>
+			</div>
+			<!-- //fullWrap -->
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

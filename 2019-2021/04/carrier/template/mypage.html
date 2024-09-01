@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/push.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.btnWithdraw').click(function(){
+					$('.popDim').show();
+					$('.withdrawPop').show();
+					scrollClose();
+					$('.withdrawPop .pBtn .orange').click(function(){
+						location.href='login.html';
+					});
+				}); //2020-06-16 회원탈퇴 팝업
+				$('.btnPwChange').click(function(){
+					$('.popDim').show();
+					$('.pwChangePop').show();
+					scrollClose();
+				});
+				$('.btnTerms').click(function(){
+					$('.popDim').show();
+					$('.termsPop').show();
+					scrollClose();
+				});
+				/* 파일업로드 */
+				$('.fileSet input[type=file]').change(function() {
+					var fileValue = $(this).val().split("\\");
+					var fileName = fileValue[fileValue.length-1];
+					$('.fileSet .loadEnd em').text(fileName);
+					$('.fileSet .fileFind').hide();
+					$('.fileSet .loadIng').show();
+					setTimeout(function() {
+						$('.fileSet .loadIng').hide();
+						$('.fileSet .loadFail').show();
+					}, 3000);
+					setTimeout(function() {
+						$('.fileSet .loadFail').hide();
+						$('.fileSet .loadEnd').show();
+					}, 6000);
+				});
+				$('.fileSet .loadEnd button').click(function() {
+					$('.fileSet .fileFind').show();
+					$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+				});
+				/* end 파일업로드 */
+				$('.btnLogout').click(function(){
+					$('.alertDim').show();
+					$('.logoutPop').show();
+					$('.logoutPop .pBtn .red').click(function(){
+						location.href='login.html';
+					});
+				}); //2020-06-16 로그아웃 팝업
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap" class="mypageCase"><!-- 마이페이지 일 경우 -->
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back">
+						<div data-include="include/snb.html"></div>
+					</div>
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<!-- 마이페이지는 모바일 메뉴 없음 -->
+			<hr/>
+			<div id="containerBack">
+				<!-- header -->
+				<div id="header">
+					<header>
+						<span class="left">
+							<button class="btnList" onclick="location.href='setting_m.html'">목록</button>
+						</span>
+						 <h2>설정</h2>
+						 <span class="right">
+							<button class="btnM grayBlack btnLogout">로그아웃</button><!-- 2020-06-16 class 수정 -->
+						 </span>
+					</header>
+				</div>
+				<!-- //header -->
+				<hr/>
+				<!-- container -->
+				<div id="container">
+				<section>
+					<div class="content">
+					<article>
+						<!-- Page Layout -->
+						<div class="mypageLayout">
+							<div class="pd2-t">
+								<div class="mypageContents">
+									<div class="tabBox">
+										<nav>
+											<ul>
+												<li><a href="setting.html">자원관리</a></li>
+												<li><a href="area_setting.html">기본배차권역</a></li><!-- 2020-07-08 기본배차권역 페이지 추가 -->
+												<li><a href="user_approval.html" class="news">사용자 승인</a></li>
+												<li class="on"><a href="mypage.html">회원정보</a></li>
+												<li><a href="matching_fee.html">매칭수수료 정산</a></li>
+												<li><a href="faq.html">자주 하는 질문</a></li>
+											</ul>
+										</nav>
+									</div>
+									<h3>회원정보</h3>
+									<div class="tabData">
+										<div class="infoWrite">
+											<div class="phoneArea">
+												<dl>
+													<dt>아이디</dt>
+													<dd class="bdNone">hong@naver.com</dd>
+												</dl>
+												<!-- 2020-07-16 버튼 영역 추가 -->
+												<div class="right">
+													<button class="btnM gray btnLeave">퇴사처리</button><!-- 2020-07-16 퇴사처리 버튼 추가 -->
+													<button class="btnM black btnTerms">이용약관</button>
+												</div>
+												<!-- 2020-07-16 버튼 영역 추가 -->
+											</div>
+											<ul class="infoArea">
+												<li>
+													<dl class="inputBox iner bdNone"><!-- 2020-06-23 bdNone 클래스 추가 -->
+														<dt>비밀번호</dt><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+														<dd><button class="btnM whiteBlue btnPwChange">비밀번호 변경</button></dd><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+													</dl>
+												</li>
+												<li>
+													<dl class="inputBox iner">
+														<dt>성명<sup>필수</sup></dt>
+														<dd><input type="text" value="홍길동"/></dd>
+													</dl>
+												</li>
+												<li>
+													<!-- 2020-07-16 버튼 추가 -->
+													<div class="inputBtnSet">
+														<dl class="inputBox iner">
+															<dt>휴대폰번호<sup>필수</sup></dt>
+															<dd><input type="text" value="010-9999-9999"/></dd>
+														</dl>
+														<button class="btnM black">휴대전화 인증</button>
+													</div>
+													<!-- 2020-07-16 버튼 추가 -->
+												</li>
+												<li>
+													<dl class="inputBox iner">
+														<dt>부서</dt>
+														<dd><input type="text" value="운영부"/></dd>
+													</dl>
+												</li>
+												<li>
+													<dl class="inputBox iner">
+														<dt>직급</dt>
+														<dd><input type="text" value="차장"/></dd>
+													</dl>
+												</li>
+												<div class="businessArea">
+													<li>
+														<dl class="inputBox iner bdNone"><!-- 2020-06-23 bdNone 클래스 추가 -->
+															<dt>사업자번호<sup>필수</sup></dt>
+															<dd>123-12-12345</dd><!-- 2020-06-23 텍스트로 변경 -->
+														</dl>
+													</li>
+													<li>
+														<dl class="inputBox iner bdNone">
+															<dt>회사명<sup>필수</sup></dt>
+															<dd>컨테이너로드</dd><!-- 2020-07-16 텍스트로 변경 -->
+														</dl>
+													</li>
+													<!-- 2020-07-16 항목이동 -->
+													<li>
+														<dl class="inputBox iner bdNone">
+															<dt>대표자명<sup>필수</sup></dt>
+															<dd>김거리</dd><!-- 2020-07-16 텍스트로 변경 -->
+														</dl>
+													</li>
+													<!-- //2020-07-16 항목이동 -->
+													<li>
+														<dl class="inputBox iner">
+															<dt class="line2Dt">소재지</dt><!-- 2020-07-16 필수항목 삭제, 정렬 클래스 추가 -->
+															<div class="address">
+																<div><button>주소 검색</button><input type="text" class="inputAuto" readonly value="서울시 강남구 강남대로 234"/></div><!-- 2020-07-16 value 추가 -->
+																<input type="text" value="씽크트리 빌딩 10층" class="soloInput"/><!-- 2020-10-29 value 추가 -->
+															</div>
+														</dl>
+													</li>
+													<!-- 2020-07-16 항목이동 -->
+													<li>
+														<dl class="inputBox iner">
+															<dt>세금계산서<br/>발행 이메일<sup>필수</sup></dt><!-- 2020-07-16 필수항목 표기 -->
+															<dd><input type="text" value="honggildong1234@gmail.com"/></dd>
+														</dl>
+													</li>
+													<!-- //2020-07-16 항목이동 -->
+													<li>
+														<dl class="inputBox iner">
+															<dt>회사 전화번호</dt><!-- 2020-07-16 텍스트 변경 -->
+															<dd><input type="tel" value="02-2345-6789"/></dd>
+														</dl>
+													</li>
+													<!-- 2020-07-16 팩스번호 항목 삭제 -->
+													<!-- 2020-07-16 항목추가 -->
+													<li>
+														<dl class="inputBox iner">
+															<dt>업태</dt>
+															<dd><input type="tel" value="운송업"/></dd>
+														</dl>
+													</li>
+													<li>
+														<dl class="inputBox iner">
+															<dt>업종</dt>
+															<dd><input type="tel" value="운송업"/></dd>
+														</dl>
+													</li>
+													<!-- 2020-07-16 항목추가 -->
+													<li>
+														<dl class="inputBox iner">
+															<dt>결제 카드<br/>정보(법인)</dt>
+															<dd>
+																<div class="cardNum">
+																	<input type="text" value="2222"><em>-</em>
+																	<input type="text" value="2222"><em>-</em>
+																	<input type="text" value="2222"><em>-</em>
+																	<input type="text" value="2222">
+																</div>
+															</dd>
+														</dl>
+													</li>
+												</div>
+											</ul>
+											<!-- btn Area -->
+											<div class="btnSet">
+												<button class="btnL whiteBlue">취소</button><!-- 2020-06-16 class 변경 -->
+												<button class="btnL blue">확인 (변경사항 저장)</button><!-- 2020-06-16 class 변경 -->
+											</div>
+											<!-- 2020-06-16 회원탈퇴 영역 추가 -->
+											<span class="withdrawBox">
+												물류플랫폼을<!-- 2020-10-29 텍스트 변경 --> 더 이상 이용하지 않는다면 <button class="btnWithdraw">회원탈퇴하기 ></button>
+											</span>
+											<!-- //2020-06-16 회원탈퇴 영역 추가 -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- //page Layout -->
+					</article>
+					</div>
+				</section>
+				</div>
+				<!-- //container -->
+			</div>
+		</div>
+		<!-- //Wrap -->
+		<!-- 2020-06-16 alertpop 영역 추가 -->
+		<!-- alertPop -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop logoutPop" style="display:none;">
+				<div class="pBack">
+					<p>로그아웃 하시겠습니까?</p>
+				</div>
+				<div class="pBtn">
+					<button class="btnM gray">취소</button>
+					<button class="btnM red">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //alertPop -->
+		<!-- //2020-06-16 alertpop 영역 추가 -->
+		<div class="popDim" style="display:none">
+			<!-- 이용약관 -->
+			<div class="basicPop termsPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt tC">
+					<h1>이용약관</h1>
+				</div>
+				<div class="pBack">
+					<!-- tab-wrap -->
+					<div class="cTabCase3">
+						<!-- tab -->
+						<div class="tabBack">
+							<div class="tabNav">
+								<nav>
+									<ul>
+										<li class="on"><button data-name="1">이용약관</button></li>
+										<li><button data-name="2">개인정보 수집·이용·제공 동의</button></li>
+										<li><button data-name="3">운송약관 동의</button></li>
+										<li><button data-name="4">마케팅 정보수신 동의</button></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<!--// tab -->
+						<div class="tabLayout">
+							<div class="tabData tData1"  style="display:block;">
+								<div class="termArea">
+									<div class="termHead">
+										<span class="current">[현행] 2020년 01월 02일 시행안</span>
+									</div>
+									<div class="term">
+										씽크트리<!-- 2020-10-29 텍스트 변경 --> 주식회사 (이하 “회사”)의 씽크트리<!-- 2020-10-29 텍스트 변경 --> 서비스 (이하 “서비스”)를 이용하고
+										자 하는 자는 본 이용약관의 내용을 확인하고 이에 동의해야 합니다.
+										<ul>
+											<li>제 1 장 총칙
+												<ul>
+													<li>제 1 조 - 목적
+														<p>
+															본 약관은 회사가 운영하는 서비스 (인터넷 사이트 및 모바일 어플리케이션)에서 제공하는
+															제반 서비스의 이용과 관련하여 회사와 이용자 및 이용자 간의 권리, 의무 및 책임사항,
+															기타 필요한 사항을 규정함을 목적으로 합니다.
+														</p>
+													</li>
+													<li>제 2 조 - 약관의 효력 및 변경
+														<p>
+															본 약관은 2016년 12월 01일부터 시행하고 회사는 본 이용약관의 내용을 서비스 웹사이트에 항시 게시합니다.
+															<br/><br/>회사는 사업 정책의 변경 및 서비스 환경의 변화, 관계법령의 개정 등의 사유가 발생한 경우
+															본 이용약관을 개정할 수 있습니다. 회사가 본 이용약관을 개정하는 경우에는 개정된 사항의 적용일자 및 개정사유를 명시하여 그 적용일 자 7일 이전부터 적용일자 전일까지 서비스
+															웹사이트를 통해 공지합니다. 다만, 이용자에게 불리하게 본 이용약관의 내용을 변경하는 경우에는 30일 이상의 사전 유예기간을 두고 공지합니다.
+															<br/><br/>회사가 이용약관의 개정을 공지 또는 통지하면서 이용자에게 최대 30일 기간 내에 의사표시를 하지 않으면 개정된 약관 내용에 대한 동의의 의사표시가 표명된 것으로 본다는 뜻을 명확하게 고지하였음에도 이용자가 명시적으로 거부의 의사표시를 하지 아니한 경우 회사는 이용자가 개정 이용약관에 동의한 것으로 간주합니다.
+															<br/><br/>개정 이용약관에 동의하지 않는 이용자에 대해 회사는 개정 내용을 적용할 수 없으며
+															이 경우 이용자는 이용약관을 해지할 수 있습니다. 다만, 기존 이용약관을 적용할 수 없는
+															특별한 사정이 있는 경우에는 회사는 개정 이용약관에 동의하지 않는 이용자와의 이용약관을 해지할 수 있습니다
+														</p>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="tabData tData2">
+								<div class="termArea">
+									<div class="termHead">
+										<strong>개인정보 수집·이용·제공 동의</strong>
+										<span>[현행] 2020년 01월 02일 시행안</span>
+									</div>
+									<div class="term">
+									</div>
+								</div>
+							</div>
+							<div class="tabData tData3">
+								<div class="termArea">
+									<div class="termHead">
+										<strong>운송약관 동의</strong>
+										<span>[현행] 2020년 01월 02일 시행안</span>
+									</div>
+									<div class="term">
+									</div>
+								</div>
+							</div>
+							<div class="tabData tData4">
+								<div class="termArea">
+									<div class="termHead">
+										<strong>마케팅 정보수신 동의</strong>
+										<span>[현행] 2020년 01월 02일 시행안</span>
+									</div>
+									<div class="term"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //tab-wrap -->
+				</div>
+			</div>
+			<!-- //이용약관 -->
+			<!-- 패스워드 변경 -->
+			<div class="basicPop pwChangePop" id="samplePop2" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>비밀번호 변경</h1><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+				</div>
+				<div class="pBack">
+					<div class="before">
+						<dl class="inputBox iner wFull">
+							<dt>기존 비밀번호</dt><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+							<dd><input type="password" placeholder="영,숫자 포함하여 8자리 이상"/></dd>
+						</dl>
+					</div>
+					<div class="grayBox">
+						<dl class="inputBox iner wFull">
+							<dt>신규 비밀번호</dt><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+							<dd><input type="password" placeholder="영,숫자 포함하여 8자리 이상"/></dd>
+						</dl>
+						<dl class="inputBox iner wFull">
+							<dt>신규 비밀번호(확인)</dt><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+							<dd><input type="password" placeholder="영,숫자 포함하여 8자리 이상"/></dd>
+						</dl>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//패스워드 변경-->
+			<!-- 주소검색 -->
+			<div class="basicPop searchPop addressPop" id="samplePop5" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>주소검색</h1>
+				</div>
+				<div class="pBack">
+					<div class="tab02">
+						<!-- tab -->
+						<div class="tabBack">
+							<div class="tabNav">
+								<nav>
+									<ul>
+										<li class="on"><button data-name="1">작업지 주소</button></li>
+										<li><button data-name="2">자주 쓰는 주소</button></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<!--// tab -->
+						<div class="tabLayout">
+							<div class="tabData tData1" style="display:block;">
+								<div class="seachArea">
+									<div class="searchInput">
+										<input type="text" placeholder="도로명 + 번지로 검색"/>
+										<button class="btnSearch">조회</button>
+									</div>
+									<div class="tip">
+										<dl>
+											<dt><strong>Search tip</strong></dt>
+											<dd><span>도로명 + 건물번호</span>예) 세종대로 207,  매봉산로 37</dd>
+											<dd><span>지역명(동/리) + 번지</span>예) 역삼동 68-1,  상암동 1682</dd>
+										</dl>
+									</div>
+								</div>
+								<div class="listArea">
+									<div class="listTop">
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="100" />
+													<col width="*" />
+													<col width="100" />
+												</colgroup>
+												<thead>
+													<tr>
+														<th>우편번호</th>
+														<th>회사명</th>
+														<th>자주 쓰는</th>
+													</tr>
+												</thead>
+											</table>
+										</div>
+									</div>
+									<div class="listScroll">
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="100" />
+													<col width="560" />
+													<col width="100" />
+												</colgroup>
+												<tbody>
+													<!--Loop-->
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td><button class="btnSaveAddress">주소 저장</button></td>
+													</tr>
+													<!--//Loop-->
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td><button class="btnSaveAddress">주소 저장</button></td>
+													</tr>
+													<tr class="on">
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td><button class="btnSaveAddress">주소 저장</button></td>
+													</tr>
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td><button class="btnSaveAddress">주소 저장</button></td>
+													</tr>
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td><button class="btnSaveAddress">주소 저장</button></td>
+													</tr>
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td><button class="btnSaveAddress">주소 저장</button></td>
+													</tr>
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td><button class="btnSaveAddress">주소 저장</button></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tabData tData2">
+								<div class="listArea">
+									<div class="listTop">
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="100" />
+													<col width="*" />
+													<col width="200" />
+												</colgroup>
+												<thead>
+													<tr>
+														<th>우편번호</th>
+														<th>회사명</th>
+														<th>이름</th>
+													</tr>
+												</thead>
+											</table>
+										</div>
+									</div>
+									<div class="listScroll">
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="100" />
+													<col width="*" />
+													<col width="200" />
+												</colgroup>
+												<tbody>
+													<!--Loop-->
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td>세종 1공장</td>
+													</tr>
+													<!--//Loop-->
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td>안산중공업</td>
+													</tr>
+													<tr class="on">
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td>안산중앙도시 2공장</td>
+													</tr>
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td>안산중앙도시 1공장</td>
+													</tr>
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td>안산중앙도시 3공장</td>
+													</tr>
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td>안산중앙도시 2공장</td>
+													</tr>
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td>안산중앙도시 2공장</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//주소검색-->
+			<!-- 2020-06-16 회원탈퇴  -->
+			<div class="basicPop withdrawPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>회원탈퇴</h1>
+				</div>
+				<div class="pBack">
+					<div class="grayBox">
+						<p>
+							회원탈퇴 전, 개인 이용정보가 필요할 경우 별도로 저장해주세요.<br/>
+							탈퇴 후 회원님의 개인정보 및 이용정보가 삭제되어 복구가 불가능합니다.<br/>
+							회원 탈퇴 시 App에서 제공하는 모든 서비스를 이용하실 수 없습니다.<br/>
+							탈퇴 후 내 설정 정보는 모두 삭제되며, 서비스 구매 관련 정보 등은 관련 법령에 따라 일정기간 보관됨을 안내 드립니다.<br/><br/>
+							회원 탈퇴 시 1주일 경과 후 재가입 가능하며, 모든 혜택 정보는 소멸됩니다.
+						</p>
+					</div>
+					<strong>그동안 씽크트리를<!-- 2020-10-29 텍스트 변경 --> 이용해 주셔서 감사합니다.</strong>
+				</div>
+				<div class="pBtn">
+					<button class="btnM gray">취소</button>
+					<button class="btnM orange btnBye">회원탈퇴</button>
+				</div>
+			</div>
+			<!--//2020-06-16 회원탈퇴 -->
+		</div>
+    </body>
+</html>

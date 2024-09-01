@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+	</head>
+	<body>
+		<!-- Page Layout -->
+		<div class="codeDetail">
+			<div class="detailTop">
+				<span class="left">
+					<button class="btnM whiteRed btnCodeDelete">그룹코드삭제</button>
+				</span>
+			</div>
+			<div class="tab">
+				<!-- tab -->
+				<div class="tabBack">
+					<div class="tabNav">
+						<nav>
+							<ul>
+								<li class="on"><button data-name="1">코드 상세</button></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<!--// tab -->
+				<div class="tabLayout">
+					<!-- 코드 상세 -->
+					<div class="tabData tData1" style="display:block;">
+						<div class="detailContents">
+							<div class="codeTable">
+								<div class="tws">
+									<table>
+										<!-- 2020-07-13 col width 수정 -->
+										<colgroup>
+											<col width="95" />
+											<col width="282" />
+											<col width="95" />
+											<col width="283" />
+										</colgroup>
+										<!-- //2020-07-13 col width 수정 -->
+										<tbody>
+											<tr>
+												<th>그룹코드</th>
+												<td><input type="text" value="G0001"/></td>
+												<th>그룹명</th>
+												<td><input type="text" value="운송유형1"/></td>
+											</tr>
+											<tr>
+												<th>코드 설명</th>
+												<td colspan="3"><input type="text" value="운송유형: 수입, 수출, 환적"/></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="tws codeData">
+									<table>
+										<colgroup>
+											<col width="80" />
+											<col width="40" />
+											<col width="80" />
+											<col width="80" />
+											<col width="100" />
+											<col width="100" />
+											<col width="100" />
+											<col width="100" />
+											<col width="100" />
+											<col width="60" />
+										</colgroup>
+										<thead>
+											<tr>
+												<th rowspan="2">그룹코드</th>
+												<th rowspan="2">순번</th>
+												<th rowspan="2">코드</th>
+												<th rowspan="2">사용여부</th>
+												<th>범주1</th>
+												<th>범주2</th>
+												<th>범주3</th>
+												<th>범주4</th>
+												<th>범주5</th>
+												<th rowspan="2">삭제</th>
+											</tr>
+											<tr>
+												<th><input type="text" placeholder="코드명" value="운송유형"/></th>
+												<th><input type="text" placeholder="코드명"/></th>
+												<th><input type="text" placeholder="코드명"/></th>
+												<th><input type="text" placeholder="코드명"/></th>
+												<th><input type="text" placeholder="코드명"/></th>
+											</tr>
+										</thead>
+										<tbody>
+											<!--Loop-->
+											<tr>
+												<td><input type="text" value="G0001"/></td>
+												<td><input type="text" value="1"/></td>
+												<td><input type="text" value="IM"/></td>
+												<td>
+													<span class="selectSet">
+														<select>
+															<option selected>Y</option>
+															<option>N</option>
+														</select>
+													</span>
+												</td>
+												<td><input type="text" value="수입"/></td>
+												<td><input type="text"/></td>
+												<td><input type="text"/></td>
+												<td><input type="text"/></td>
+												<td><input type="text"/></td>
+												<td><button class="btnTrash">삭제</button></td>
+											</tr>
+											<!--//Loop-->
+											<tr>
+												<td><input type="text" value="G0001"/></td>
+												<td><input type="text" value="2"/></td>
+												<td><input type="text" value="EX"/></td>
+												<td>
+													<span class="selectSet">
+														<select>
+															<option selected>Y</option>
+															<option>N</option>
+														</select>
+													</span>
+												</td>
+												<td><input type="text" value="수출"/></td>
+												<td><input type="text"/></td>
+												<td><input type="text"/></td>
+												<td><input type="text"/></td>
+												<td><input type="text"/></td>
+												<td><button class="btnTrash">삭제</button></td>
+											</tr>
+											<tr>
+												<td><input type="text" value="G0001"/></td>
+												<td><input type="text" value="3"/></td>
+												<td><input type="text" value="TR"/></td>
+												<td>
+													<span class="selectSet">
+														<select>
+															<option selected>Y</option>
+															<option>N</option>
+														</select>
+													</span>
+												</td>
+												<td><input type="text" value="환적"/></td>
+												<td><input type="text"/></td>
+												<td><input type="text"/></td>
+												<td><input type="text"/></td>
+												<td><input type="text"/></td>
+												<td><button class="btnTrash">삭제</button></td>
+											</tr>
+											<tr>
+												<td><input type="text"/></td>
+												<td><input type="text"/></td>
+												<td><input type="text"/></td>
+												<td>
+													<span class="selectSet">
+														<select>
+															<option>Y</option>
+															<option selected>N</option>
+														</select>
+													</span>
+												</td>
+												<td><input type="text"/></td>
+												<td><input type="text"/></td>
+												<td><input type="text"/></td>
+												<td><input type="text"/></td>
+												<td><input type="text"/></td>
+												<td><button class="btnTrash">삭제</button></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="btnArea"><!-- 2020-07-13 class 변경 -->
+									<button class="btnM wFull lineOrange btnCodeAdd">+ Add</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- // 코드 상세 -->
+				</div>
+			</div>
+		</div>
+		<!-- //page Layout -->
+		<div class="popDim" style="display:none">
+			<!-- 신규 코드 -->
+			<div class="basicPop newCodePop" id="samplePop10" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>코드 [신규등록]</h1><!-- 2020-07-13 제목 수정 -->
+				</div>
+				<div class="pBack">
+					<div class="tws">
+						<table>
+							<!-- 2020-07-13 col width 변경 -->
+							<colgroup>
+								<col width="95" />
+								<col width="230" />
+								<col width="95" />
+								<col width="230" />
+							</colgroup>
+							<!-- //2020-07-13 col width 변경 -->
+							<tbody>
+								<tr>
+									<th>그룹코드</th>
+									<td><input type="text" class="duplicateCase"/><button class="btnS black">중복확인</button></td>
+									<th>그룹명</th>
+									<td><input type="text"/></td>
+								</tr>
+								<tr>
+									<th>설명</th><!-- 2020-07-13 텍스트 수정 -->
+									<td colspan="3"><input type="text" placeholder="코드 설명을 입력해주세요"/></td><!-- 2020-07-13 텍스트 수정 -->
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tws codeData">
+						<table>
+							<colgroup>
+								<col width="100" />
+								<col width="100" />
+								<col width="100" />
+								<col width="100" />
+								<col width="100" />
+							</colgroup>
+							<thead>
+								<tr>
+									<th>범주1</th>
+									<th>범주2</th>
+									<th>범주3</th>
+									<th>범주4</th>
+									<th>범주5</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type="text"/></td>
+									<td><input type="text"/></td>
+									<td><input type="text"/></td>
+									<td><input type="text"/></td>
+									<td><input type="text"/></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//신규 코드-->
+		</div>
+    </body>
+</html>

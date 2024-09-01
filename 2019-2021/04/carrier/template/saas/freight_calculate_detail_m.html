@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/push.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.btnBilling.cancel').click(function(){
+					$('.alertDim').show();
+					$('.singleBillCancelPop').show();
+					$('.singleBillCancelPop button').click(function(){
+						$('.alertDim').show();
+						$('.batchBillCancelPop').show();
+					});
+					$(this).parent('.billBtn').find('.btnBilling').toggle();
+				});
+
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<div class="grayOptionArea">
+				<span>2020.01.26 ~ 2020.02.01</span><!-- 2020-06-24 텍스트 수정 -->
+				<div>
+					<span class="selectSet">
+						<select>
+							<option selected>미발행 순</option>
+							<option>발행 순</option>
+							<option>운송일 순</option>
+						</select>
+					</span>
+				</div>
+			</div>
+			<div class="totalList">
+				<span>
+					<dl>
+						<dt>발행 계산서</dt><!-- 2020-06-22 텍스트 수정 -->
+						<dd><span>3건</span><span>2,000,000원</span></dd>
+					</dl>
+					<dl>
+						<dt>미발행 계산서</dt><!-- 2020-06-22 텍스트 수정 -->
+						<dd><span>4건</span><span>2,880,000원</span></dd>
+					</dl>
+				</span>
+				<span class="totalBtnSet"><!-- 2020-08-04 case 클래스 삭제 -->
+					<button class="btnL green" onclick="location.href='freight_calculate_batch.html'">세금계산서 일괄 발행</button><!-- 2020-08-04 링크 연결 -->
+				</span>
+				<!-- 2020-08-04 totalBtnSet case2 삭제 -->
+				<p class="ftRed">* 운임 정산 탭에는 운송 완료된 건만 표출됩니다.</p><!-- 2020-06-22 텍스트 추가 -->
+			</div>
+			<div class="orderlist payList">
+				<ul>
+					<li class="orderData">
+						<span class="checkSet noLabel"><!-- 2020-08-04 style display:none 삭제 -->
+							<input type="checkbox" id="paylist1" checked/>
+							<label for="paylist1"><i></i></label>
+						</span>
+						<div class="listDate"><em class="off">미발행</em>[<strong class="red">수입</strong> / 왕복] 2020-01-22</div>
+						<div class="listMap">
+							<strong>부산항(05:00) – 충북/안산(09:00)</strong> – 부산항(15:00)<!-- 2020-06-22 strong 위치 수정 -->
+							<span>(Open Top / 40ft High Cube / 30ton)</span>
+						</div>
+						<div class="listPrice">
+							<dl class="price">
+								<dt>운임 :</dt>
+								<dd><strong>560,000</strong> 원</dd>
+							</dl>
+							<dl class="price">
+								<dt>운임 외 :</dt>
+								<dd><strong>30,000</strong> 원</dd>
+							</dl>
+						</div>
+						<!-- 2020-06-16 버튼 영역 수정 -->
+						<div class="billBtn">
+							<button class="btnBilling" onclick="location.href='freight_calculate_single.html'">계산서 발행</button>
+							<button class="btnBilling chk" onclick="location.href='freight_calculate_single_view.html'" style="display:none;">계산서 확인</button><!-- 2020-06-22 단일발행 상세로 링크 --><!-- 2020-08-04 계산서 확인으로 통일 -->
+							<!-- 2020-08-04 발행취소 버튼 삭제 -->
+						</div>
+						<!-- //2020-06-16 버튼 영역 수정 -->
+					</li>
+					<li class="orderData">
+						<span class="checkSet noLabel"><!-- 2020-08-04 style display:none 삭제 -->
+							<input type="checkbox" id="paylist2" disabled/>
+							<label for="paylist2"><i></i></label>
+						</span>
+						<div class="listDate"><em class="on">발행됨</em>[<strong class="blue">수출</strong> / 왕복] 2020-01-22</div>
+						<div class="listMap">
+							부산항(05:00) – <strong>충북/안산(09:00) – 부산항(15:00)</strong><!-- 2020-06-22 strong 위치 수정 -->
+							<span>(Open Top / 40ft High Cube / 30ton)</span>
+						</div>
+						<div class="listPrice">
+							<dl class="price">
+								<dt>운임 :</dt>
+								<dd><strong>560,000</strong> 원</dd>
+							</dl>
+							<!-- 2020-06-16 운임 외 없는 case -->
+						</div>
+						<!-- 2020-06-16 버튼 영역 수정 -->
+						<div class="billBtn">
+							<button class="btnBilling" onclick="location.href='freight_calculate_single.html'" style="display:none;">계산서 발행</button>
+							<button class="btnBilling chk" onclick="location.href='freight_calculate_single_view.html'">계산서 확인</button><!-- 2020-06-22 단일발행 상세로 링크 --><!-- 2020-08-04 계산서 확인으로 통일 -->
+							<!-- 2020-08-04 발행취소 버튼 삭제 -->
+						</div>
+						<!-- //2020-06-16 버튼 영역 수정 -->
+					</li>
+					<li class="orderData">
+						<span class="checkSet noLabel"><!-- 2020-08-04 style display:none 삭제 -->
+							<input type="checkbox" id="paylist3" disabled/>
+							<label for="paylist3"><i></i></label>
+						</span>
+						<div class="listDate"><em class="on">발행됨</em>[<strong class="red">수입</strong> / 환적] 2020-01-22</div>
+						<div class="listMap">
+							<strong>부산항(05:00) – 부산항(09:00)</strong><!-- 2020-06-22 strong 위치 수정 -->
+							<span>(Open Top / 40ft High Cube / 30ton)</span>
+						</div>
+						<div class="listPrice">
+							<dl class="price">
+								<dt>운임 :</dt>
+								<dd><strong>560,000</strong> 원</dd>
+							</dl>
+							<dl class="price">
+								<dt>운임 외 :</dt>
+								<dd><strong>30,000</strong> 원</dd>
+							</dl>
+						</div>
+						<!-- 2020-06-16 버튼 영역 수정 -->
+						<div class="billBtn">
+							<button class="btnBilling" onclick="location.href='freight_calculate_single.html'" style="display:none;">계산서 발행</button>
+							<button class="btnBilling chk" onclick="location.href='freight_calculate_single_view.html'">계산서 확인</button><!-- 2020-06-22 단일발행 상세로 링크 --><!-- 2020-08-04 계산서 확인으로 통일 -->
+							<!-- 2020-08-04 발행취소 버튼 삭제 -->
+						</div>
+						<!-- //2020-06-16 버튼 영역 수정 -->
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- 2020-06-22 alertPop 영역 추가 -->
+		<!-- alertPopup -->
+		<div class="alertDim" style="display:none;">
+			<!-- 단일 세금계산서 발행 취소 -->
+			<div class="alertPop singleBillCancelPop" style="display:none;">
+				<div class="pBack">
+					<p>해당 세금계산서를 발행 취소하시겠습니까?</p>
+				</div>
+				<div class="pBtn">
+					<button class="btnM black">취소</button>
+					<button class="btnM red">확인</button>
+				</div>
+			</div>
+			<!-- 단일 세금계산서 발행 취소 -->
+			<!-- 일괄 세금계산서 발행 취소 -->
+			<div class="alertPop batchBillCancelPop" style="display:none;">
+				<div class="pBack">
+					<p>해당 세금계산서는 타 운송건과 일괄 발행된 건으로, 발행 취소 시 일괄 발행 취소됩니다. 발행 취소하시겠습니까?</p>
+				</div>
+				<div class="pBtn">
+					<button class="btnM black">취소</button>
+					<button class="btnM red">확인</button>
+				</div>
+			</div>
+			<!-- 일괄 세금계산서 발행 취소 -->
+		</div>
+		<!-- //alertPopup -->
+		<!-- //2020-06-22 alertPop 영역 추가 -->
+		<!-- popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 검색필터 -->
+			<div class="basicPop filterPop" id="samplePop8" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>검색필터</h1>
+				</div>
+				<div class="pBack">
+					<dl>
+						<dt>오더일자</dt>
+						<dd>
+							<span class="radioChoose">
+								<label for="lb1"><input type="radio" id="lb1" name="radio1" value="오늘" /><span>오늘</span></label>
+								<label for="lb2"><input type="radio" id="lb2" name="radio1" value="10일" /><span>10일</span></label>
+								<label for="lb3"><input type="radio" id="lb3" name="radio1" value="지난달" /><span>지난달</span></label>
+								<label for="lb4"><input type="radio" id="lb4" name="radio1" value="이번달" /><span>이번달</span></label>
+							</span>
+							<span class="calDupSet">
+								<span class="calSet"><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span>
+								<em>~</em>
+								<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+							</span>
+						</dd>
+					</dl>
+					<dl>
+						<dt>작업지 검색</dt>
+						<dd>
+							<input class="wFull" type="text" placeholder="작업지를 입력해주세요">
+						</dd>
+					</dl>
+				</div>
+				<div class="pBtn">
+					<button class="btnM orange">적용하기</button>
+				</div>
+			</div>
+			<!--//검색필터-->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

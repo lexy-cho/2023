@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$('.btnAdress').click(function(){
+				$('.popDim').show();
+				$('.searchPop#addressPop').show();
+			});
+			$('.btnPwReset').click(function(){
+				$('.popDim').show();
+				$('.pwResetPop').show();
+			});
+			$('.btnNewCarrier').click(function(){
+				$('.popDim').show();
+				$('.newCarrierPop').show();
+			});
+			$('.btnDormant').click(function(){
+				$('.popDim').show();
+				$('.dormantCancelPop').show();
+			}); //2020-07-14 휴먼계정취소 팝업
+			$('.btnSaasUpgrade').click(function(){
+				$('.popDim').show();
+				$('.saasUpgradePop').show();
+			}); //2020-07-14 saas 업그레이드 팝업
+			$(".membershipSelect select").on("change", function(){
+				if($(this).find("option:selected").val() == 0){
+					$(this).parent('.membershipSelect').addClass('green');
+				}else if($(this).find("option:selected").val() == 1){
+					$(this).parent('.membershipSelect').removeClass('green');
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Page Layout -->
+		<div class="carrierDetail">
+			<!-- 2020-07-13 detailtop 삭제 -->
+			<div class="tab">
+				<!-- tab -->
+				<div class="tabBack">
+					<div class="tabNav">
+						<nav>
+							<ul>
+								<li class="on"><button data-name="1">기본정보</button></li><!-- 2020-07-14 운송사(플랫폼) -->
+								<li><button data-name="2">사업자 정보</button></li><!-- 2020-07-14 운송사(플랫폼) -->
+								<li><button data-name="3">기본정보</button></li><!-- 2020-07-14 운송사(SaaS) -->
+								<li><button data-name="4">사업자 정보</button></li><!-- 2020-07-14 운송사(SaaS) -->
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<!--// tab -->
+				<div class="tabLayout">
+					<!-- 운송사(플랫폼)기본정보 -->
+					<div class="tabData tData1" style="display:block;">
+						<div class="detailContents">
+							<div class="tws">
+								<table>
+									<!-- 2020-07-16 col width 수정 -->
+									<colgroup>
+										<col width="95"/>
+										<col width="655"/>
+									</colgroup>
+									<!-- //2020-07-16 col width 수정 -->
+									<tbody>
+										<tr>
+											<th>가입일자</th>
+											<td>2020-07-03</td>
+										</tr>
+										<tr>
+											<th>아이디(이메일)</th>
+											<td>honggildong1234@gmail.com</td>
+										</tr>
+										<tr>
+											<th>패스워드</th>
+											<td><button class="btnS blue btnPwReset">패스워드 초기화</button></td>
+										</tr>
+										<tr>
+											<th>성명</th>
+											<td>홍길동</td>
+										</tr>
+										<tr>
+											<th>직급</th>
+											<td>구매부장</td>
+										</tr>
+										<tr>
+											<th>휴대전화</th>
+											<td>010-1234-5678</td>
+										</tr>
+										<tr>
+											<th>활동여부</th>
+											<td>활동중 or 휴먼상태 <button class="btnS blue btnDormant">휴먼상태 해제</button></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btnArea">
+								<span class="left">
+									<button class="btnS red">회원삭제</button>
+								</span>
+								<span class="right">
+									<button class="btnS black btnSaasUpgrade">SaaS 운송사로 업그레이드</button>
+									<button class="btnS black">운송사시스템 바로가기</button>
+								</span>
+							</div>
+						</div>
+					</div>
+					<!-- // 운송사(플랫폼)기본정보 -->
+					<!-- 운송사(플랫폼)사업자 정보 -->
+					<div class="tabData tData2">
+						<div class="detailContents">
+							<div class="inputArea">
+								<dl class="inputBox">
+									<dt>운송사 평가레벨</dt>
+									<dd>
+										<span class="selectSet">
+											<select>
+												<option>LVL0</option>
+												<option>LVL1</option>
+												<option>LVL2</option>
+												<option>LVL3</option>
+												<option>LVL4</option>
+												<option>LVL5</option>
+												<option>LVL6</option>
+												<option>LVL7</option>
+												<option>LVL8</option>
+												<option>LVL9</option>
+											</select>
+										</span>
+									</dd>
+								</dl>
+								<dl class="inputBox">
+									<dt>보유 차량 수</dt>
+									<dd><input type="text" class="tC" value="50"/></dd>
+								</dl>
+								<!-- 2020-07-21 수수료요율 -->
+								<dl class="inputBox">
+									<dt>수수료요율(%)</dt>
+									<dd><input type="text" class="tC" value="0.00"/></dd>
+								</dl>
+								<!-- //2020-07-21 수수료요율 -->
+							</div>
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="95"/>
+										<col width="280"/>
+										<col width="95"/>
+										<col width="280"/>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>회사명<sup>필수</sup></th>
+											<td><input type="text" value="주식회사 컨테이너맨"/></td>
+											<th>대표자 명<sup>필수</sup></th>
+											<td><input type="text" value="홍길동"/></td>
+										</tr>
+										<tr>
+											<th>사업자번호<sup>필수</sup></th>
+											<td><input type="text" value="123-45-12345"/></td>
+											<th>회사구분<sup>필수</sup></th>
+											<td>
+												<span class="radioSet">
+													<input type="radio" id="rdo1" name="radio1" checked/>
+													<label for="rdo1"><i></i></label>법인
+												</span>
+												<span class="radioSet">
+													<input type="radio" id="rdo2" name="radio1"/>
+													<label for="rdo2"><i></i></label>유한
+												</span>
+												<span class="radioSet">
+													<input type="radio" id="rdo3" name="radio1"/>
+													<label for="rdo3"><i></i></label>개인
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th rowspan="2">사업장 주소<sup>필수</sup></th>
+											<td colspan="3">
+												<span class="addressArea addMini"><button class="btnAdress">주소검색</button><input class="zipCode" type="text" value="10526" readonly><input class="address" type="text" value="경기도 성남시 수정대로 123" readonly/><em>경기/성남</em></span>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="3"><input type="text" value="물류빌딩 202동 5층"></td>
+										</tr>
+										<tr>
+											<th>업태</th>
+											<td><input type="text" value="운송"/></td>
+											<th>종목</th>
+											<td><input type="text" value="컨테이너운송, 운송주선"/></td>
+										</tr>
+										<tr>
+											<th>전화번호</th>
+											<td><input type="text" value="02-5555-5555"/></td>
+											<th>팩스번호</th>
+											<td><input type="text" value="070-5555-5555"/></td>
+										</tr>
+										<tr>
+											<th>세금계산서 발행 이메일</th>
+											<td><input type="text" value="abc6@naver.com"/></td>
+											<th></th>
+											<td></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btnArea">
+								<span class="left">
+									<button class="btnS red">회원삭제</button>
+								</span>
+								<span class="right">
+									<button class="btnS black">SaaS 운송사로 업그레이드</button>
+									<button class="btnS black">운송사시스템 바로가기</button>
+								</span>
+							</div>
+						</div>
+					</div>
+					<!-- //운송사(플랫폼)사업자 정보 -->
+					<!-- 운송사(SaaS)기본정보 -->
+					<div class="tabData tData3">
+						<div class="detailContents">
+							<div class="tws">
+								<table>
+									<!-- 2020-07-16 col width 수정 -->
+									<colgroup>
+										<col width="95"/>
+										<col width="655"/>
+									</colgroup>
+									<!-- //2020-07-16 col width 수정 -->
+									<tbody>
+										<tr>
+											<th>가입일자</th>
+											<td>2020-07-03</td>
+										</tr>
+										<tr>
+											<th>아이디(이메일)</th>
+											<td>honggildong1234@gmail.com</td>
+										</tr>
+										<tr>
+											<th>패스워드</th>
+											<td><button class="btnS blue btnPwReset">패스워드 초기화</button></td>
+										</tr>
+										<tr>
+											<th>성명</th>
+											<td>홍길동</td>
+										</tr>
+										<tr>
+											<th>직급</th>
+											<td>구매부장</td>
+										</tr>
+										<tr>
+											<th>휴대전화</th>
+											<td>010-1234-5678</td>
+										</tr>
+										<tr>
+											<th>활동여부</th>
+											<td>활동중 or 휴먼상태 <button class="btnS blue btnDormant">휴먼상태 해제</button></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="sharingTable">
+								<strong>회사 내의 정보공유 계정 <span class="companyName">[주식회사 활빈당]</span></strong>
+								<table>
+									<!-- 2020-07-16 col width 수정 -->
+									<colgroup>
+										<col width="95"/>
+										<col width="131"/>
+										<col width="131"/>
+										<col width="131"/>
+										<col width="131"/>
+										<col width="131"/>
+									</colgroup>
+									<!-- //2020-07-16 col width 수정 -->
+									<thead>
+										<tr>
+											<th>마스터</th>
+											<th>성명</th>
+											<th>이메일(아이디)</th>
+											<th>공유승인일자</th>
+											<th>가입일자</th>
+											<th>공유</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<span class="radioSet">
+													<input type="checkbox" id="rdo1" checked/>
+													<label for="rdo1"><i></i></label>
+												</span>
+											</td>
+											<td>홍길동</td>
+											<td>010-9999-9999</td>
+											<td>2020-06-08</td>
+											<td>2020-06-06</td>
+											<td>승인 / <button class="btnS red">퇴사</button></td>
+										</tr>
+										<tr>
+											<td>
+												<span class="radioSet">
+													<input type="checkbox" id="rdo2" />
+													<label for="rdo2"><i></i></label>
+												</span>
+											</td>
+											<td>김영희</td>
+											<td>010-9999-9999</td>
+											<td>2020-05-11</td>
+											<td>2020-05-06</td>
+											<td>미승인</td>
+										</tr>
+										<tr>
+											<td>
+												<span class="radioSet">
+													<input type="checkbox" id="rdo3" />
+													<label for="rdo3"><i></i></label>
+												</span>
+											</td>
+											<td>박기장</td>
+											<td>010-2222-5555</td>
+											<td>2020-06-08</td>
+											<td>2020-06-01</td>
+											<td>승인 / <button class="btnS red">퇴사</button></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btnArea">
+								<span class="left">
+									<button class="btnS red">회원삭제</button>
+								</span>
+								<span class="right">
+									<button class="btnS black">운송사시스템 바로가기</button>
+								</span>
+							</div>
+						</div>
+					</div>
+					<!-- // 운송사(SaaS)기본정보 -->
+					<!-- 운송사(SaaS)사업자 정보 -->
+					<div class="tabData tData4">
+						<div class="detailContents">
+							<div class="inputArea">
+								<dl class="inputBox">
+									<dt>운송사 평가레벨</dt>
+									<dd>
+										<span class="selectSet">
+											<select>
+												<option>LVL0</option>
+												<option>LVL1</option>
+												<option>LVL2</option>
+												<option>LVL3</option>
+												<option>LVL4</option>
+												<option>LVL5</option>
+												<option>LVL6</option>
+												<option>LVL7</option>
+												<option>LVL8</option>
+												<option>LVL9</option>
+											</select>
+										</span>
+									</dd>
+								</dl>
+								<dl class="inputBox">
+									<dt>보유 차량 수</dt>
+									<dd><input type="text" class="tC" value="50"/></dd>
+								</dl>
+								<!-- 2020-07-21 수수료요율 -->
+								<dl class="inputBox">
+									<dt>수수료요율(%)</dt>
+									<dd><input type="text" class="tC" value="0.00"/></dd>
+								</dl>
+								<!-- //2020-07-21 수수료요율 -->
+							</div>
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="95"/>
+										<col width="280"/>
+										<col width="95"/>
+										<col width="280"/>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>회사명<sup>필수</sup></th>
+											<td><input type="text" value="주식회사 컨테이너맨"/></td>
+											<th>대표자 명<sup>필수</sup></th>
+											<td><input type="text" value="홍길동"/></td>
+										</tr>
+										<tr>
+											<th>사업자번호<sup>필수</sup></th>
+											<td><input type="text" value="123-45-12345"/></td>
+											<th>회사구분<sup>필수</sup></th>
+											<td>
+												<span class="radioSet">
+													<input type="radio" id="rdo1" name="radio1" checked/>
+													<label for="rdo1"><i></i></label>법인
+												</span>
+												<span class="radioSet">
+													<input type="radio" id="rdo2" name="radio1"/>
+													<label for="rdo2"><i></i></label>유한
+												</span>
+												<span class="radioSet">
+													<input type="radio" id="rdo3" name="radio1"/>
+													<label for="rdo3"><i></i></label>개인
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th rowspan="2">사업장 주소<sup>필수</sup></th>
+											<td colspan="3">
+												<span class="addressArea addMini"><button class="btnAdress">주소검색</button><input class="zipCode" type="text" value="10526" readonly><input class="address" type="text" value="경기도 성남시 수정대로 123" readonly/><em>경기/성남</em></span>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="3"><input type="text" value="물류빌딩 202동 5층"></td>
+										</tr>
+										<tr>
+											<th>업태</th>
+											<td><input type="text" value="운송"/></td>
+											<th>종목</th>
+											<td><input type="text" value="컨테이너운송, 운송주선"/></td>
+										</tr>
+										<tr>
+											<th>전화번호</th>
+											<td><input type="text" value="02-5555-5555"/></td>
+											<th>팩스번호</th>
+											<td><input type="text" value="070-5555-5555"/></td>
+										</tr>
+										<tr>
+											<th>세금계산서 발행 이메일</th>
+											<td><input type="text" value="abc6@naver.com"/></td>
+											<th>SaaS 서브도메인</th>
+											<td>cm01</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="membershipStu">
+								<strong>멤버십 이력</strong>
+								<button class="btnS whiteRed btnMembershipRenewal">멤버십 갱신</button>
+								<div class="tws">
+									<table>
+										<!-- 2020-07-16 col width 수정 -->
+										<colgroup>
+											<col width="95"/>
+											<col width="170"/>
+											<col width="60"/>
+											<col width="100"/>
+											<col width="225"/>
+											<col width="100"/>
+										</colgroup>
+										<!-- //2020-07-16 col width 수정 -->
+										<thead>
+											<tr>
+												<th class="tC">적용</th>
+												<th class="tC">멤버십 기간</th>
+												<th class="tC">종류</th>
+												<th class="tC">멤버십 비용(월)</th>
+												<th class="tC">비고</th>
+												<th class="tC">갱신일자</th>
+											</tr>
+										</thead>
+										<tbody>
+											<!-- Loop -->
+											<tr>
+												<td class="tC">
+													<div class="selectSet green membershipSelect">
+														<select>
+															<option value="0">O</option>
+															<option value="1">X</option>
+														</select>
+													</div>
+												</td>
+												<td class="tC">2019-04-01~2020-12-31</td>
+												<td class="tC">무료</td>
+												<td class="tC">0</td>
+												<td></td>
+												<td class="tC">2019-12-20</td>
+											</tr>
+											<!-- //Loop -->
+											<tr>
+												<td class="tC">
+													<div class="selectSet membershipSelect">
+														<select>
+															<option value="0">O</option>
+															<option value="1" selected>X</option>
+														</select>
+													</div>
+												</td>
+												<td class="tC">2019-04-01~2020-12-31</td>
+												<td class="tC">유료</td>
+												<td class="tC">30,000</td>
+												<td>2019-10-01 중도해지 (-10,000원 반환)</td>
+												<td class="tC">2019-12-20</td>
+											</tr>
+											<tr>
+												<td class="tC">
+													<div class="selectSet membershipSelect">
+														<select>
+															<option value="0">O</option>
+															<option value="1" selected>X</option>
+														</select>
+													</div>
+												</td>
+												<td class="tC">2019-04-01~2020-12-31</td>
+												<td class="tC">유료</td>
+												<td class="tC">30,000</td>
+												<td>최초 가입 2개월 무료 이벤트</td>
+												<td class="tC">2019-12-20</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="btnArea">
+								<span class="left">
+									<button class="btnS red">회원삭제</button>
+								</span>
+								<span class="right">
+									<button class="btnS black">운송사시스템 바로가기</button>
+								</span>
+							</div>
+						</div>
+					</div>
+					<!-- //운송사(SaaS)사업자 정보 -->
+				</div>
+			</div>
+		</div>
+		<!-- //page Layout -->
+		<!-- popup -->
+		<div class="popDim" style="display:none">
+			<!-- 운송사 신규등록 -->
+			<div class="basicPop newCarrierPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>운송사 [신규등록]</h1>
+				</div>
+				<div class="pBack">
+					<div class="tab">
+						<!-- tab -->
+						<div class="tabBack">
+							<div class="tabNav">
+								<nav>
+									<ul>
+										<li class="on"><button data-name="1">기본정보</button></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<!--// tab -->
+						<div class="tabLayout">
+							<!-- 기본정보 -->
+							<div class="tabData tData1" style="display:block;">
+								<div class="tws">
+									<table>
+										<colgroup>
+											<col width="80" />
+											<col width="170" />
+											<col width="80" />
+											<col width="170" />
+										</colgroup>
+										<tbody>
+											<tr>
+												<th>회사구분<sup>필수항목</sup></th>
+												<td>
+													<span class="radioSet">
+														<input type="radio" id="rdo1" name="radio1"/>
+														<label for="rdo1"><i></i></label>법인
+													</span>
+													<span class="radioSet">
+														<input type="radio" id="rdo1" name="radio1"/>
+														<label for="rdo1"><i></i></label>유한
+													</span>
+													<span class="radioSet">
+														<input type="radio" id="rdo1" name="radio1"/>
+														<label for="rdo1"><i></i></label>개인
+													</span>
+												</td>
+												<th>보유 차량 수<sup>필수항목</sup></th>
+												<td><input type="text"/></td>
+											</tr>
+											<tr>
+												<th>사업자번호<sup>필수항목</sup></th>
+												<td><input type="text"/></td>
+												<th>회사명<sup>필수항목</sup></th>
+												<td><input type="text"/></td>
+											</tr>
+											<tr>
+												<th rowspan="2">사업장 주소<sup>필수항목</sup></th>
+												<td colspan="3"><span class="addressArea"><button class="btnAdress">주소검색</button><input class="zipCode" type="text" readonly><input class="address" type="text" placeholder="기본주소" readonly/></span></td>
+											</tr>
+											<tr>
+												<td colspan="4"><input class="wFull" type="text" placeholder="상세주소"/></td>
+											</tr>
+											<tr class="lastTr">
+												<th>업태</th>
+												<td><input type="text"></td>
+												<th>종목</th>
+												<td><input type="text"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="tws">
+									<table>
+										<colgroup>
+											<col width="80" />
+											<col width="490" />
+										</colgroup>
+										<tbody>
+											<tr>
+												<th>서비스 구분<sup>필수항목</sup></th>
+												<td>
+													<span class="radioSet">
+														<input type="radio" id="rdo1" name="radio1" checked/>
+														<label for="rdo1"><i></i></label>SaaS 운송사 (프리미엄 유료서비스)
+													</span>
+												</td>
+											</tr>
+											<tr>
+												<th>서브 도메인<sup>필수항목</sup></th>
+												<td class="subdomain">
+													<input type="text" placeholder="아이디">
+													<button class="btnS gray">중복확인</button>
+													<span>* 서브 도메인 주소가 됩니다.</span>
+												</td>
+											</tr>
+											<tr>
+												<th>패스워드</th>
+												<td>확인하면 사용자의 휴대전화로 아이디와 임시패스워드가 전송됩니다.</td>
+											</tr>
+											<tr>
+												<th>성명<sup>필수항목</sup></th>
+												<td><input class="wHalf" type="text" placeholder="성명"></td>
+											</tr>
+											<tr>
+												<th>이메일<sup>필수항목</sup></th>
+												<td>
+													<span class="emailForm">
+														<span class="emailSet">
+															<input type="text"/>
+															<input type="text" value="@naver.com" readonly/>
+														</span>
+														<span class="selectSet">
+															<select>
+																<option selected>선택하세요</option>
+																<option>naver.com</option>
+																<option>gmail.com</option>
+																<option>직접입력</option>
+															</select>
+														</span>
+													</span>
+													상기 이메일 주소는 더 컨테이너 플랫폼이 매칭 수수료 계산서를 수신하는 대상이 됩니다.
+												</td>
+											</tr>
+											<tr class="lastTr">
+												<th>휴대전화번호<sup>필수항목</sup></th>
+												<td><input class="wHalf" type="number"/></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- // 기본정보 -->
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!-- //운송사 신규등록 -->
+			<!-- 패스워드 초기화 -->
+			<div class="basicPop pwResetPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>패스워드 초기화</h1>
+				</div>
+				<div class="pBack">
+					<div class="grayBox">
+						<p>임시 패스워드를 사용자의 휴대전화(SMS)로 발송합니다. 패스워드를 초기화 하시겠습니까?</p>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!-- //패스워드 초기화 -->
+			<!-- 2020-07-13 휴먼상태 해제 -->
+			<div class="basicPop dormantCancelPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>휴먼상태 해제</h1>
+				</div>
+				<div class="pBack">
+					<div class="grayBox">
+						<p>휴면처리 직전의 정보로 로그인 할 수 있도록 합니다. 휴면상태를 해제 하시겠습니까?</p>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!-- //2020-07-13 휴먼상태 해제 -->
+			<!-- 2020-07-13 SaaS운송사로 업그레이드 -->
+			<div class="basicPop saasUpgradePop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>SaaS 운송사로 업그레이드</h1>
+				</div>
+				<div class="pBack">
+					<strong>운송사 도메인 설정</strong>
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="130"/>
+								<col width="*"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>서비스<sup>필수</sup></th>
+									<td>Saas 운송사(프리미엄 유료서비스)</td>
+								</tr>
+								<tr>
+									<th>서브 도메인sup</th>
+									<td>
+										<div class="inputBtnSet">
+											<input type="text" value="em01"/>
+											<button class="btnS black">중복확인</button>
+										</div>
+										<p class="errorMsg">※SaaS운송사의 서브 도메인 주소가 됩니다.<br/>ex) <a href="http://www.thecontainer.co.kr/cm01" target="_blank">http://www.thecontainer.co.kr/cm01</a></p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<strong>운송사 멤버십 설정</strong>
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="130"/>
+								<col width="*"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>멤버십 기간<sup>필수</sup></th>
+									<td>
+										<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+										<em>~</em>
+										<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									</td>
+								</tr>
+								<tr>
+									<th>멤버십 종류</th>
+									<td>
+										<span class="radioSet">
+											<input type="radio" id="memship1" name="memship"/>
+											<label for="memship1"><i></i></label>유료
+										</span>
+										<span class="radioSet">
+											<input type="radio" id="memship2" name="memship"/>
+											<label for="memship2"><i></i></label>무료
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>멤버십 적용</th>
+									<td>
+										<span class="selectSet green membershipSelect">
+											<select>
+												<option value="0">O</option>
+												<option value="1">X</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>멤버십 비용(원/월)</th>
+									<td><input type="text"/></td>
+								</tr>
+								<tr>
+									<th>비고</th>
+									<td><input type="text"/></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!-- //2020-07-13 SaaS운송사로 업그레이드 -->
+			<!-- 주소검색 -->
+			<div class="basicPop searchPop" id="addressPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>주소검색</h1>
+				</div>
+				<div class="pBack">
+					<div class="seachArea">
+						<div class="searchInput">
+							<input type="text" placeholder="도로명 + 번지로 검색"/>
+							<button class="btnSearch">조회</button>
+						</div>
+						<div class="tip">
+							<dl>
+								<dt><strong>Search tip</strong></dt>
+								<dd><span>도로명 + 건물번호</span>예) 세종대로 207,  매봉산로 37</dd>
+								<dd><span>지역명(동/리) + 번지</span>예) 역삼동 68-1,  상암동 1682</dd>
+							</dl>
+						</div>
+					</div>
+					<div class="listBox">
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="80" />
+									<col width="400" />
+									<col width="80" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>우편번호</th>
+										<th>회사명</th>
+										<th>위치</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr class="on">
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//주소검색-->
+			<!-- 멤버십 갱신 -->
+			<div class="basicPop newMemshipPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>멤버십 등록</h1>
+				</div>
+				<div class="pBack">
+					<!-- 2020-07-14 tab 추가 -->
+					<div class="tab">
+						<div class="tabBack">
+							<div class="tabNav">
+								<nav>
+									<ul>
+										<li class="on"><button data-name="1">기본정보</button></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<div class="tabLayout">
+							<div class="tabData tData1" style="display:block;">
+								<div class="tws">
+									<table>
+										<colgroup>
+											<col width="140"/><!-- 2020-07-14 col width 수정 -->
+											<col width="*"/>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th>멤버십 기간<sup>필수항목</sup></th>
+												<td>
+													<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+													<em>~</em>
+													<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+												</span>
+												</td>
+											</tr>
+											<tr>
+												<th>멤버십 종류<sup>필수항목</sup></th>
+												<td>
+													<span class="radioSet">
+														<input type="radio" id="msk1" name="membershipKind"/>
+														<label for="msk1"><i></i></label>유료
+													</span>
+													<span class="radioSet">
+														<input type="radio" id="msk2" name="membershipKind"/>
+														<label for="msk2"><i></i></label>무료
+													</span>
+												</td>
+											</tr>
+											<tr>
+												<th>멤버십 적용</th>
+												<td>
+													<span class="selectSet green membershipSelect">
+														<select>
+															<option value="0">O</option>
+															<option value="1">X</option>
+														</select>
+													</span>
+												</td>
+											</tr>
+											<tr>
+												<th>멤버십 비용<span>(원/월)</span></th>
+												<td><input type="text"/></td>
+											</tr>
+											<tr>
+												<th>비고</th>
+												<td><input type="text"/></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //2020-07-14 tab 추가 -->
+
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!-- //멤버십 갱신 -->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

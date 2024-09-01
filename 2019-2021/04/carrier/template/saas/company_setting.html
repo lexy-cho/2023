@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/push.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.btnPassNumGo').click(function(){
+					$(this).hide();
+					$('.btnPassNumGo2').show();
+					$('.back.noTt').show();
+					$('.back.noTt button').click(function(){
+						$('.step1Data .line').show();
+					});
+				});
+				$('.carrierKind button.black').click(function(){
+					$('.alertDim, .newCarrierPop').show();
+					$('.newCarrierPop .pBtn .red').click(function(){
+						$('.carrierKind .inputBox.readCase input').attr('readonly', false);
+						$('.carrierKind .inputBox.readCase input').attr('placeholder', '정확하게 입력해주세요. 추후 변경 불가합니다.');
+						$('.carrierKind .inputBox.readCase').removeClass('readCase');
+						$('.infoArea .newCarrier').show();
+					});
+				}); // 2020-07-16 사업자번호 확인버튼 클릭 시
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap" class="joinCase">
+			<!-- header -->
+			<div id="header">
+				<header>
+					 <span class="left">
+						<h1>씽크트리<!-- 2020-10-29 텍스트 변경 --></h1>
+					 </span>
+					 <h2>사용승인 설정</h2>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="joinLayout">
+						<div class="whiteBox">
+							<strong>기존 사용승인이 해제되었습니다.<br/>본인 인증 후 신규 회사 등록이 가능합니다.</strong>
+							<!-- step 1 -->
+							<div class="step1Data">
+								<h4>회원정보</h4>
+								<p class="p1">로그인 계정 아이디로 <strong>&lt;휴대전화번호&gt;</strong>를 사용합니다. 정확히 입력해 주세요.</p>
+								<div class="joinDetail phonePass">
+									<div class="back">
+										<dl class="inputBox">
+											<dt>휴대전화</dt>
+											<dd><input type="tel" placeholder="‘ - ’ 없이 숫자로 입력"/></dd>
+										</dl>
+										<button class="btnM green btnPassNumGo">인증번호 발송</button>
+										<button class="btnM gray btnPassNumGo2" style="display:none;">재발송</button>
+									</div>
+									<div class="back noTt" style="display:none;">
+										<dl class="inputBox">
+											<dt>인증번호</dt>
+											<dd><input type="tel" placeholder="6자리"/></dd>
+											<dd>2:59</dd>
+										</dl>
+										<button class="btnM green">확인</button>
+									</div>
+									<p class="errorMsg" style="/*display:none;*/">휴대전화가 올바르지 않습니다. 다시 한 번 확인해주세요.</p>
+									<p class="errorMsg" style="/*display:none;*/">인증되었습니다.</p>
+								</div>
+								<div class="line" style="display:none;">
+									<div class="joinDetail infoWrite">
+										<ul class="infoArea">
+											<li class="carrierKind">
+												<div class="inputBtnSet">
+													<dl class="inputBox">
+														<dt>사업자번호</dt>
+														<dd><input type="tel" placeholder="‘ - ’ 없이 숫자로 입력"/></dd>
+													</dl>
+													<button class="btnM black">운송사 검색</button>
+												</div>
+											</li>
+											<li class="carrierKind">
+												<dl class="inputBox readCase">
+													<dt>회사명</dt>
+													<dd><input type="text" readonly/></dd>
+												</dl>
+											</li>
+											<li class="newCarrier" style="display:none;">
+												<dl class="inputBox">
+													<dt>대표자명</dt>
+													<dd><input type="text" placeholder="정확하게 입력해주세요. 추후 변경 불가합니다."/></dd>
+												</dl>
+											</li>
+											<li class="newCarrier" style="display:none;">
+												<dl class="inputBox">
+													<dt>계산서 발행 이메일</dt>
+													<dd><input type="text" placeholder="세금계산서 발행 이메일을 입력해주세요"/></dd>
+												</dl>
+											</li>
+										</ul>
+										<!-- btn Area -->
+										<div class="btnSet">
+											<button class="btnL whiteBlue">취소</button>
+											<a class="btnL blue" href="dispatch_the.html">확인</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- //step 1 -->
+						</div>
+					</div>
+					<!-- //page Layout -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="alertDim" style="display:none;">
+			<!-- 신규운송사 등록 여부 -->
+			<div class="alertPop newCarrierPop" style="display:none;">
+				<div class="pBack">
+					<p>사업자 번호가 존재하지 않습니다.<br/>신규 운송사로 등록하시겠습니까?</p>
+				</div>
+				<div class="pBtn"><!-- 2020-06-22 가운데 정렬 class 추가 -->
+					<button class="btnM black">아니오</button>
+					<button class="btnM red">신규운송사 등록</button>
+				</div>
+			</div>
+			<!-- //신규운송사 등록 여부 -->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/customer.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+            // 2019-03-15 달력형식 변경, 공통으로 사용
+            $('.calendarSet button').duDatepicker({
+                format: 'yyyy-mm-dd', // Determines the date format
+                theme: 'yellow',        // Determines the color theme of the date picker
+                readOnly: true,       // Determines if input element is readonly (key input is disabled)
+                clearBtn: false,      // Determines if Clear button is displayed
+                cancelBtn: true,     // Determines if Cancel button is displayed
+                overlayClose: true    // Determines if clicking the overlay will close the date picker
+            }).on('datechanged', function(event){
+                $(this).prev().val(event.date);
+            });
+            
+            // slide
+            $(".custDtlTit button").click(function(){
+                var slidBtn = $(this);
+                
+                if(slidBtn.hasClass("active")){
+                    slidBtn.parent().next().slideUp(300, function(){
+                        slidBtn.removeClass("active");
+                    });
+                }else{
+                    slidBtn.addClass("active").parent().next().slideDown(300);
+                }
+            });
+            
+            // bottom 열기
+            $(".btnBottomOpen").click(function(){
+                if($(this).hasClass("active")){
+                    $(this).removeClass("active");
+                    $(".custBottomBtn").css({
+                        "transform": "translateY(" + $(".custBottomBtn").outerHeight() + "px)"   
+                    });
+                }else{
+                    $(this).addClass("active");
+                    $(".custBottomBtn").css("transform", "translateY(0)");
+                }
+            });
+            
+            // PC에서 화면 전환 시 bottom 위치 조정
+            $(window).resize(function(){
+                if(!$(".btnBottomOpen").hasClass("active")){
+                    $(".custBottomBtn").css({
+                        "transform": "translateY(" + $(".custBottomBtn").outerHeight() + "px)"   
+                    });  
+                }
+            }).resize();
+            
+            // 우편번호 검색
+            $(".openPop7").click(function(){
+				$('.dimPop, #openPop7').show();
+			});
+			// 2019-04-24 주소Tab 적용
+			$(".newABtn").click(function () {
+				$(".newAdd").show();
+				$(".oldAdd").hide();
+			});
+			$(".oldABtn").click(function () {
+				$(".newAdd").hide();
+				$(".oldAdd").show();
+			});
+			// end 2019-04-24 주소Tab 적용
+            
+            // 개인사업자 조회
+            $("#personalBusiOpen").click(function(){
+				$('.dimPop, #openPop5').show();
+			});
+            
+            // 개인정보 수집 동의 미리보기
+            $(".termsView").click(function(){
+				$('.dimPop, #terms').show();
+			});
+            
+            // 개인사업자 선택 2019-03-25 추가
+            $("#custJopType").click(function(){
+                if($(this).prop("checked")){
+                    $("#personalBusi").show();
+                }else{
+                    $("#personalBusi").hide();
+                }
+            });
+		});
+		</script>
+	</head>
+	<body class="custColor"> <!-- 법인일 경우 corp 클래스 추가 -->
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<!-- <button class="gnbOpen">GNB 열기</button> -->
+							<button class="goPrev" onclick="history.back()">뒤로가기</button>
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="../main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<!-- <h2>1Depth title</h2> -->
+						<h2 class="sCase">MCA 고객등록</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<div class="customerDetail">
+                            <div class="customerDtlbody">
+                                <!--  MCA 기본정보 -->
+                                <dl class="customerDtlBox">
+                                    <dt class="custDtlTit">
+                                        <button class="slideBtn active">MCA 기본정보 <em>고객님의 소중한 정보를 입력해 주세요</em><span class="btnSlideOpen"></span></button>
+                                    </dt>
+                                    <dd class="custDtlMain">
+                                        <div class="gridContainer">
+											<!--  2019-05-06 추가  -->
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>생년월일<sup>필수입력</sup></dt>
+                                                        <dd class="inMust">
+															<div class="inpInnerBtn">
+																<input type="text" placeholder="숫자로 입력해주세요" />
+																<button class="btnBG long">기등록 여부확인</button>
+															</div>
+														</dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>계약번호</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">기등록여부 확인하면 자동 조회함</span>
+														</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+											<!--  //2019-05-06 추가  -->
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>성명<sup>필수입력</sup></dt>
+                                                        <dd class="inMust"><input type="text" placeholder="입력해주세요" /></dd><!--  2019-05-06 dd class 변경  -->
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>가입유형</dt>
+                                                        <dd>
+                                                            <span class="selectSet">
+                                                                <select>
+                                                                    <option>선택해주세요</option>
+                                                                    <option>기출고 고객</option>
+                                                                    <option>임직원</option>
+                                                                    <option>2005.1월 이전고객</option>
+                                                                    <option>특별승인</option>
+                                                                </select>
+                                                            </span>
+														</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>중지여부</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                <span class="checkSet"><input type="checkbox" id="custJopType" name="custJopType" /><label for="custJopType"><i></i>체크 시, 계약입력 및 소개불가</label></span>
+                                                            </span>
+														</dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>특별승인</dt>
+                                                        <dd>
+                                                            <span class="selectSet">
+                                                                <select>
+                                                                    <option>선택해주세요</option>
+                                                                    <option>공동명의출고고객</option>
+                                                                    <option>기출고법인 대표자</option>
+                                                                    <option>협력업체 임직원</option>
+                                                                    <option>기타</option>
+                                                                </select>
+                                                            </span>
+														</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <!-- // MCA 기본정보 -->
+                                <!--  MCA 일반정보 -->
+                                <dl class="customerDtlBox">
+                                    <dt class="custDtlTit type2">
+                                        <button class="slideBtn active">MCA 일반정보 <span class="btnSlideOpen"></span></button>
+                                    </dt>
+                                    <dd class="custDtlMain">
+                                        <div class="gridContainer">
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>직종</dt>
+                                                        <dd>
+                                                            <span class="selectSet">
+                                                                <select>
+                                                                    <option>선택해주세요</option>
+                                                                    <option>자영업</option>
+                                                                    <option>대기업임원</option>
+                                                                    <option>당사임직원</option>
+                                                                    <option>영업/판매 관련직</option>
+                                                                    <option>사무관리직</option>
+                                                                    <option>의료전문직</option>
+                                                                    <option>법률전문직</option>
+                                                                    <option>공무원</option>
+                                                                    <option>서비스/요식업 종사자</option>
+                                                                    <option>운송업 종사자(개인)</option>
+                                                                    <option>정보총신/인터넷관련</option>
+                                                                    <option>생산직</option>
+                                                                    <option>엔지니어</option>
+                                                                    <option>스포츠업</option>
+                                                                    <option>교수/연구직</option>
+                                                                    <option>학생</option>
+                                                                    <option>주부</option>
+                                                                    <option>언론직</option>
+                                                                    <option>종교관련직</option>
+                                                                    <option>기타</option>
+                                                                </select>
+                                                            </span>
+														</dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>사업자등록번호</dt>
+														<dd>
+															<!--  2019-05-06 변경  -->
+															<div class="inpInnerBtn">
+																<input type="tel" placeholder="_ _ _-_ _-_ _ _ _ _" />
+																<button class="btnBG right" id="personalBusiOpen">조회</button>
+															</div>
+															<!--  //2019-05-06 변경  -->
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>회사명</dt>
+                                                        <dd><input type="text" placeholder="입력해주세요" /></dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>부서명</dt>
+                                                        <dd><input type="text" placeholder="입력해주세요" /></dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>자택전화번호</dt>
+                                                        <dd><input type="text" placeholder="입력해주세요" /></dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>휴대전화번호</dt>
+                                                        <dd><input type="text" placeholder="입력해주세요" /></dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet">
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>e-mail</dt>
+                                                        <dd>
+                                                            <div class="emailCnt">
+                                                                <input type="email" />
+                                                                <span class="txt">@</span>
+                                                                <input type="text" />
+                                                                <span class="selectSet">
+                                                                    <select>
+                                                                        <option>이메일선택</option>
+                                                                        <option>naver.com</option>
+                                                                        <option>gmail.com</option>
+                                                                        <option>직접입력</option>
+                                                                    </select>
+                                                                </span>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet">
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>자택주소</dt>
+														<dd>
+															<div class="addrCnt">
+																<div class="addrTop">
+																	<div class="postNum">
+																		<input type="tel" readonly />
+																		<button class="btnRBG openPop7">우편번호</button>
+																	</div>
+																	<div class="addrView">
+																		<input type="text" readonly />
+																	</div>
+																</div>
+																<div class="addrDetail">
+																	<input type="text" placeholder="상세주소를 입력해주세요" />
+																	<button class="btnBG reflesh">새로고침</button>
+																</div>
+															</div>
+														</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>관련영업담당</dt>
+                                                        <dd>
+                                                            <span class="selectSet">
+                                                                <select>
+                                                                    <option>선택해주세요</option>
+                                                                    <option>김태준(k001660)</option>
+                                                                    <option>프랑싯코이달고마르케(a067755)</option>
+                                                                    <option>영업본부장(vk00369)</option>
+                                                                    <option>ESITFT(vk00376)</option>
+                                                                </select>
+                                                            </span>
+														</dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>최종수정자</dt>
+                                                        <dd><input type="text" readonly /></dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <!-- // MCA 기본정보 -->
+								<div class="mcaBtn">
+									<button class="btnLB">초기화</button>
+									<a href="my_mca_end.html" class="btnBY">저장</a>
+								</div>
+                            </div>
+                        </div>
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+        
+        <!-- DimPopUp -->
+		<div class="dimPop" style="display:none">            
+			<!-- 우편번호 찾기 -->
+			<div class="popLGCase zipPop" id="openPop7" style="display:none">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>우편번호 찾기</h1>
+				</div>
+				<div class="popBack">
+					<div class="popScrollArea">
+						<div class="popTab">
+							<span class="newABtn on">도로 명</span>
+							<span class="oldABtn">지번주소</span><!--2019-04-24 지번용 버튼명 변경 --><!--2019-04-24 지번용 버튼명 변경 -->
+						</div>
+						<div class="newAdd"><!--2019-04-24 도로명용 div 추가 -->
+							<div class="inputInfo">
+								<dl>
+									<dt>새주소(도로명 주소) 찾기</dt>
+									<dd>
+										도로명과 건물번호를 입력 후 검색하세요.<br/>
+										예) 찾고자 하는 주소 : 강원 강릉시 임영로 197
+											<span>도로명+건물번호 → ‘임영로 197’로 검색</span>
+									</dd>
+								</dl>
+								<p>도로명과 주소가 검색되지 않는 경우는 행정안전부 새주소 안내시스템 (http://www.juso.go.kr)에서 확인하시기 바랍니다.</p>
+							</div>
+							<div class="popSearch">
+								<div>
+									<dl>
+										<dt>시 도</dt>
+										<dd>
+											<span class="selectSet w15">
+												<select>
+													<option>선택</option>
+													<option>서울시</option>
+												</select>
+											</span> <!-- 2019-04-17 select 스크립트 삭제 -->
+										</dd>
+									</dl>
+									<dl>
+										<dt>시군구</dt>
+										<dd>
+											<span class="selectSet w15">
+												<select>
+													<option>선택</option>
+													<option>마포구</option>
+												</select>
+											</span> <!-- 2019-04-17 select 스크립트 삭제 -->
+										</dd>
+									</dl>
+									<span class="inputArea">
+										<dl>
+											<dt>도로명</dt>
+											<dd><input type="text" /></dd>
+										</dl>
+										<dl>
+											<dt>건물명</dt>
+											<dd><input type="text" /></dd>
+										</dl>
+									</span>
+									<button class="btnBY">조회</button>
+								</div>
+							</div>
+						</div><!--//2019-04-24 도로명용 div 추가 -->
+						<!--2019-04-24 지번용 추가 -->
+						<div class="oldAdd" style="display:none;">
+							<div class="inputInfo">
+								<dl>
+									<dt>지번주소로 도로명주소 찾기</dt>
+									<dd>지번주소를 차례대로 고르세요<br/>지번 주소에 해당하는 도로명 주소를 표시해줍니다</dd>
+								</dl>
+							</div>
+							<div class="popSearch">
+								<div>
+									<dl>
+										<dt>시 도</dt>
+										<dd>
+											<span class="selectSet w15">
+												<select>
+													<option>선택</option>
+													<option>서울시</option>
+												</select>
+											</span>
+										</dd>
+									</dl>
+									<dl>
+										<dt>시군구</dt>
+										<dd>
+											<span class="selectSet w15">
+												<select>
+													<option>선택</option>
+													<option>마포구</option>
+												</select>
+											</span>
+										</dd>
+									</dl>
+									<span class="inputArea">
+										<dl>
+											<dt>동면읍</dt>
+											<dd>
+												<span class="selectSet w15">
+													<select>
+														<option>선택</option>
+														<option>마포구</option>
+													</select>
+												</span>
+											</dd>
+										</dl>
+										<dl>
+											<dt>번지입력</dt>
+											<dd class="last">
+												<input type="text" /><em>-</em>
+												<input type="text" />
+											</dd>
+										</dl>
+									</span>
+									<button class="btnBY">조회</button>
+								</div>
+							</div>
+						</div>
+						<!--//2019-04-24 지번용 추가 -->
+						<div class="poplist">
+							<table>
+								<tbody>
+									<!-- Loop -->
+									<tr>
+										<th><strong>13480</strong></th>
+										<td class="tEllipsis">
+											<div><span>도로명</span><p>경기 성남시 분당구 서판교로 32</p></div><!--2019-05-06 주소영역 p 추가 -->
+											<div><span>지번</span><p>경기 성남시 분당구 판교동 577-3</p></div>
+										</td>
+									</tr>
+									<!-- //Loop -->
+									<tr class="on">
+										<th><strong>13480</strong></th>
+										<td class="tEllipsis">
+											<div><span>도로명</span><p>경기 성남시 분당구 서판교로 32</p></div><!--2019-05-06 주소영역 p 추가 -->
+											<div><span>지번</span><p>경기 성남시 분당구 판교동 577-3</p></div>
+										</td>
+									</tr>
+									<tr>
+										<th><strong>13480</strong></th>
+										<td class="tEllipsis">
+											<div><span>도로명</span><p>경기 성남시 분당구 서판교로 32</p></div><!--2019-05-06 주소영역 p 추가 -->
+											<div><span>지번</span><p>경기 성남시 분당구 판교동 577-3</p></div>
+										</td>
+									</tr>
+									<tr>
+										<th><strong>13480</strong></th>
+										<td class="tEllipsis">
+											<div><span>도로명</span><p>경기 성남시 분당구 서판교로 32</p></div><!--2019-05-06 주소영역 p 추가 -->
+											<div><span>지번</span><p>경기 성남시 분당구 판교동 577-3</p></div>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" class="listNone">
+											<span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //우편번호 찾기 -->
+            
+            <!-- 사업자 조회 -->
+			<div class="popLGCase searchPop" id="openPop5" style="display:none">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>사업자 조회</h1>
+				</div>
+				<div class="popBack">
+					<div class="popSearch">
+						<div class="halfCase"><!-- 2019-05-06 class 추가 --> 
+							<!-- 2019-05-06 검색조건 분리 -->
+							<span class="w50">
+								<span class="txtDot">사업자번호</span>
+								<input type="text" placeholder="사업자번호를 입력해주세요" />
+							</span>
+							<span class="w50">
+								<span class="txtDot">사업자명</span>
+								<input type="text" placeholder="사업자명을 입력해주세요" />
+							</span>
+							<!-- //2019-05-06 -->
+							<!-- <input type="text" placeholder="사업자번호 혹은 사업자명을 입력해 주세요" /> -->
+							<button class="btnBY">조회</button>
+						</div>
+					</div>
+					<div class="poplist cCase">
+						<table>
+							<colgroup>
+								<col width="18%" /><col width="28%"/><col width="28%"/><col/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>사업자번호</th>
+									<th class="tInGrid">
+										<div class="listGrid mHide">
+											<span class="lgTd">사업자명</span>
+											<span class="lgTd">대표자</span>
+										</div>
+										<strong class="pHide">사업자명/대표자</strong>
+									</th>
+									<th class="tInGrid">
+										<div class="listGrid mHide">
+											<span class="lgTd">업종</span>
+											<span class="lgTd">업태</span>
+										</div>
+										<strong class="pHide">업종/업태</strong>
+									</th>
+									<th>주소</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="popScrollArea">
+							<table>
+								<colgroup>
+								    <col width="18%" /><col width="28%"/><col width="28%"/><col/>
+								</colgroup>
+								<tbody>
+									<!-- Loop -->
+									<tr>
+										<td>333-33-55565</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<span class="lgTd">하나하나(주)</span>
+												<span class="lgTd"><em class="pHide">/</em>홍길동</span>
+											</div>
+										</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<span class="lgTd">일반소매업</span>
+												<span class="lgTd"><em class="pHide">/</em>소매업</span>
+											</div>
+										</td>
+										<td>서울특별시 마포구 대흥로 22 (마포구)</td>
+									</tr>
+									<!-- //Loop -->
+									<tr class="on">
+										<td>333-33-55565</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<span class="lgTd">하나하나(주)</span>
+												<span class="lgTd"><em class="pHide">/</em>홍길동</span>
+											</div>
+										</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<span class="lgTd">일반소매업</span>
+												<span class="lgTd"><em class="pHide">/</em>소매업</span>
+											</div>
+										</td>
+										<td>서울특별시 마포구 대흥로 22 (마포구)</td>
+									</tr>
+									<tr>
+										<td>333-33-55565</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<span class="lgTd">하나하나(주)</span>
+												<span class="lgTd"><em class="pHide">/</em>홍길동</span>
+											</div>
+										</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<span class="lgTd">일반소매업</span>
+												<span class="lgTd"><em class="pHide">/</em>소매업</span>
+											</div>
+										</td>
+										<td>서울특별시 마포구 대흥로 22 (마포구)</td>
+									</tr>
+									<tr>
+										<td>333-33-55565</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<span class="lgTd">하나하나(주)</span>
+												<span class="lgTd"><em class="pHide">/</em>홍길동</span>
+											</div>
+										</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<span class="lgTd">일반소매업</span>
+												<span class="lgTd"><em class="pHide">/</em>소매업</span>
+											</div>
+										</td>
+										<td>서울특별시 마포구 대흥로 22 (마포구)</td>
+									</tr>
+									<tr>
+										<td colspan="4" class="listNone">
+											<span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="btn">
+					<button class="btnLB">취소</button>
+					<button class="btnBY">선택완료</button>
+				</div>
+			</div>
+			<!-- // 사업자 조회 -->
+        </div>
+        <!-- // DimPopUp -->
+	</body>
+</html>

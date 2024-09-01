@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../js/menu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$(document).on('click tab', '.gnbOpen', function(e){
+				$('.gnbScroll').load('gnb.html',function(){
+					funcGnbOpen();
+				});
+				return false;
+			});// 2019-03-15 gnb html load (퍼블리시용)
+            
+            // 헤더 컨텐츠 고정 값만큼 컨텐츠에 padding-top 설정, 목록은 모두 공통 <!--2019-03-15--->
+            $(window).resize(function(){
+                $(".postList").css({
+                    "padding-top" : $(".headFixed").height()
+                });
+            }).resize();
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button>
+							<!-- <button class="goPrev" onclick="history.back()">뒤로가기</button> -->
+						</span>
+						<h1><img src="../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2>자료실</h2> <!-- 2019-04-17 타이틀변경 -->
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<div class="postList"> <!--2019-03-15 클래스명 변경--->
+                            <!-- fixed -->
+                            <div class="headFixed">
+                                <!-- 2019-05-06 검색 변경 -->
+                                <div class="searchField board innerSlt">
+                                    <div class="iptGrpLine">
+                                        <div class="iptSearch">
+                                            <span class="selectSet">
+                                                <select>
+                                                    <option>제목</option>
+                                                    <option>내용</option>
+                                                    <option>작성자</option>
+                                                </select>
+                                            </span>
+                                            <input type="text" id="searchWord" class="searchInp" placeholder="제목을 입력해 주세요." /><!-- 내용/작성자 선택시 placeholder 변경 -->
+                                            <button class="btnBY">조회</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- //2019-05-06 검색 변경  -->
+								<div class="bbsTotal"><span class="txtDot">total 2610</span></div> <!-- 2019-04-12 위치변경-->
+                                <!-- table header -->
+                                <div class="tablet"> <!-- 2019-03-15 tab > tablet -->
+                                    <div class="tbContainer">
+                                        <ul class="tbList board2 tbHead">
+                                            <li>
+                                                <span class="numbering">번호</span>
+                                                <span class="listTitle tLeft">제목</span>
+                                                <span>작성일자</span>
+                                                <span>작성자</span>
+                                                <span>조회수</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- // table header -->
+                            </div>
+                            <!-- // fixed -->
+                            
+                            <div class="postListBody"> <!--2019-03-15 클래스명 변경--->
+                                <!-- table list -->
+                                <div class="tbContainer">
+                                    <ul class="tbList board2 tbBody">
+                                        <li>
+                                            <span class="numbering"><span class="iNew">N</span><span class="num">26</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis new">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="iNew">N</span><span class="num">25</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis new">시스템 점검을 위한 사용제한 시간 안내시스템 점검을 위한 사용제한 시간 안내시스템 점검을 위한 사용제한 시간 안내시스템 점검을 위한 사용제한 시간 안내시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="iNew">N</span><span class="num">24</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis new">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">23</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">22</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">21</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">20</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">19</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">18</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">17</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">16</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">15</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">14</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">13</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">12</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">11</span></span>
+                                            <span class="listTitle tLeft"><a href="" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">10</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">9</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">8></span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">7</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">6</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">5</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">4</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">3</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">2</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering"><span class="num">1</span></span>
+                                            <span class="listTitle tLeft"><a href="data_detail.html" class="txtEllipsis">시스템 점검을 위한 사용제한 시간 안내</a></span>
+                                            <span class="date"><span class="mTxt">작성일자 : </span>2018-12-05</span>
+                                            <span class="writer"><span class="mTxt">작성자 : </span>관리자</span>
+                                            <span class="view"><span class="mTxt">조회수 : </span>540</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- // table list -->
+                            </div>
+                        </div>  
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

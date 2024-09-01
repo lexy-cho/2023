@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/approval.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.alertPop button, .miniPop button, .basicPop .pBtn button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .miniPop, .basicPop').hide();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<button class="btnPrev" onClick="location.href='approval.html'">이전</button>
+					<h1>전자결재</h1>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb">
+				<section>
+					<div class="c-menu c-menu--slide-left"><!-- 우측 Slide 일 경우 -->
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</section>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="apprViewLayout">
+						<div class="apprArea">
+							<span class="caption on">진행중</span>
+							<p>휴가 신청을 상신합니다.</p>
+							<div class="gridSet grid2">
+								<div class="gridItem"><span class="writer">* 홍길동 [개발팀]</span></div>
+								<div class="gridItem tR"><span class="date">기안일 : 2020-01-01 23:59</span></div>
+							</div>
+						</div>
+						<div class="tws">
+							<table>
+								<colgroup>
+									<col width="70"/>
+									<col width="290"/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>휴가구분</th>
+										<td>휴가(년차)</td>
+									</tr>
+									<tr>
+										<th>전일/반일</th>
+										<td>전일</td>
+									</tr>
+									<tr>
+										<th>휴가기간</th>
+										<td>2019-12-19 ~ 2019-12-19 (일수 : 3)<div>[잔여휴가일 : 11.5일]</div></td>
+									</tr>
+									<tr>
+										<th>휴가사유</th>
+										<td>휴가사유가 나오는 영역입니다.</td>
+									</tr>
+									<tr>
+										<th>업무백업</th>
+										<td>김철수(개발팀) - 업무백업내용이 표기되는 영역입니다.</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="fileBox">
+							<div class="all"><span>첨부파일 : 00개</span></div>
+							<ul>
+								<li><a href="../images/sample1.png" target="_blank" download/>filename.png</a></li>
+								<li><a href="../images/sample1.png" target="_blank" download/>filename.png</a></li>
+								<li><a href="../images/sample1.png" target="_blank" download/>example_of_a_long_filename.png</a></li>
+							</ul>
+						</div>
+						<div class="btnArea">
+							<span class="right">
+								<button class="btnM primary">결재</button>
+								<button class="btnM white">반려</button>
+							</span>
+						</div>
+						<div class="apprStatus">
+							<ul>
+								<li>
+									<span class="sts ok">결재(승인) 완료</span><!-- 2020-11-03 텍스트 수정 -->
+									<strong>김철수 [개발팀]</strong>
+									<div class="date">* 확인일시 : 2020-01-01 23:59</div>
+									<div class="date">* 결재일시 : 2020-01-01 23:59</div>
+									<p>합의합니다. (결제의견 나오는 영역)</p>
+								</li>
+								<li>
+									<span class="sts wait">결제(합의)대기중</span>
+									<strong>김남이 [개발팀]</strong>
+									<div class="date">* 확인일시 : 2020-01-01 23:59</div>
+									<textarea placeholder="결제의견을 입력해주세요"></textarea>
+								</li>
+								<li>
+									<span class="sts agree">결제</span>
+									<strong>박무개 [개발팀]</strong>
+									<div class="date">* 확인일시 : 2020-01-01 23:59</div>
+								</li>
+								<li>
+									<span class="sts appr">결제</span>
+									<strong>최미진 [개발팀]</strong>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!--//-->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>상단으로</button></div>
+		</div>
+		<!-- //Wrap -->
+		<!-- Alert Popup -->
+		<div class="alertDim" style="display:none;">
+		</div>
+		<!-- //Alert Popup -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+		</div>
+		<!-- //Popup -->
+	</body>
+</html>

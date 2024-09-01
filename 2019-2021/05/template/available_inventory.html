@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../js/menu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$(document).on('click tab', '.gnbOpen', function(e){
+				$('.gnbScroll').load('gnb.html',function(){
+					funcGnbOpen();
+				});
+				return false;
+			});// 2019-03-15 gnb html load (퍼블리시용)
+            
+            // 헤더 컨텐츠 고정 값만큼 컨텐츠에 padding-top 설정, 목록은 모두 공통 <!--2019-03-15--->
+            $(window).resize(function(){
+                $(".postList").css({
+                    "padding-top" : $(".headFixed").height()
+                });
+            }).resize();
+            
+            // 옵션선택
+            $(".optionOpen").click(function(){
+				$('.dimPop, .optionSelect').show();
+			});
+            
+            // 견적서작성
+            $(".estimateGo").click(function(){
+				$('.dimPop, #estimateAlert').show();
+			});
+            
+            // 전시차 선택 swiper setting
+            var swiperSetting = {
+                pagination: '.swiper-pagination',
+                paginationType: 'fraction',
+                paginationClickable: true,
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                onSlideNextEnd: function() {
+                    var slideNextLength = $(".swiper-slide-next").length;
+                    var slidePrevLength = $(".swiper-slide-prev").length;
+
+                    if(slideNextLength == 0){
+                        $(".btnSlideNext").prop("disabled", true);
+                    }else{
+                        $(".btnSlideNext").prop("disabled", false);
+                    }
+                    if(slidePrevLength > 0){
+                        $(".btnSlidePrev").prop("disabled", false);
+                    }else{
+                        $(".btnSlidePrev").prop("disabled", true);
+                    }
+                },
+                onSlidePrevEnd: function() {
+                    var slideNextLength = $(".swiper-slide-next").length;
+                    var slidePrevLength = $(".swiper-slide-prev").length;
+
+                    if(slideNextLength > 0){
+                        $(".btnSlideNext").prop("disabled", false);
+                    }else{
+                        $(".btnSlideNext").prop("disabled", true);
+                    }
+                    if(slidePrevLength == 0){
+                        $(".btnSlidePrev").prop("disabled", true);
+                    }else{
+                        $(".btnSlidePrev").prop("disabled", false);
+                    }
+                }
+            }
+            var swiper = null;
+            
+            // 전시차 선택 오픈
+            $(".showingInfo").click(function(){
+				$('.dimPop, .showingInfoLayer').show();
+                
+                if(swiper != null) swiper.destroy();
+                
+                var swiper = new Swiper('.swiper-container', swiperSetting);
+                
+                // 슬라이드 시작점 초기화
+                $(".swiper-wrapper").css("transform", "translate3d(0, 0, 0)");
+                
+                // 높이 초기화
+                /*$(".showingInfoLayer .swiper-slide").css({
+                    "height" : $(".showingInfoLayer").innerHeight() - 130
+                });*/
+
+                // 버튼 초기화
+                if($(".showingInfoLayer .swiper-slide").length == 1){
+                    $(".btnSlideNext").prop("disabled", true);
+                    $(".btnSlidePrev").prop("disabled", true);
+                }else{
+                    $(".btnSlidePrev").prop("disabled", true);
+                    $(".btnSlideNext").prop("disabled", false);
+                }
+			});
+            
+            // 전시차 선택 swiper click
+            $(".btnSlideNext").on("click", function(event){
+                $(".showingInfoLayer .swiper-button-next").trigger("click");
+            });
+            $(".btnSlidePrev").on("click", function(event){
+                $(".showingInfoLayer .swiper-button-prev").trigger("click");
+            });
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button>
+							<!-- <button class="goPrev" onclick="history.back()">뒤로가기</button> -->
+						</span>
+						<h1><img src="../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2>가용재고</h2> <!-- 2019-04-17 타이틀변경 -->
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<div class="postList"> <!--2019-03-15 클래스명 변경--->
+                            <!-- fixed -->
+                            <div class="headFixed">
+                                <!-- 검색 -->
+                                <div class="searchField type3">
+                                    <ul class="srhGrpLine">
+                                        <li class="mustSelect">
+                                            <span class="requiredMark">필수</span>
+                                            <span class="selectSet">
+                                                <select>
+                                                    <option>모델</option>
+                                                    <option>SM7-L47</option>
+                                                    <option>SM6-LFD</option>
+                                                    <option>SM5-L43</option>
+                                                </select>
+                                            </span>
+                                        </li>
+                                        <li class="mustSelect">
+                                            <span class="requiredMark">필수</span>
+                                            <span class="selectSet">
+                                                <select>
+                                                    <option>연식</option>
+                                                    <option>전체</option>
+                                                    <option>영업본부</option>
+                                                    <option>동부 DB</option>
+                                                </select>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="selectSet">
+                                                <select>
+                                                    <option>차종</option>
+                                                    <option>강릉지점</option>
+                                                    <option>구성지점</option>
+                                                    <option>북수원지점</option>
+                                                </select>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <div class="txtInsideBtn">
+                                                <span class="txt">옵션</span>
+                                                <button class="btnBG optionOpen"><i class="iSearch"></i></button>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="innerSltBtn">
+                                        <ul class="srhGrpLine third">
+                                            <li>
+                                                <span class="selectSet">
+                                                    <select>
+                                                        <option>외장색</option>
+                                                        <option>SM7-L47</option>
+                                                        <option>SM6-LFD</option>
+                                                        <option>SM5-L43</option>
+                                                    </select>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span class="selectSet">
+                                                    <select>
+                                                        <option>내장색</option>
+                                                        <option>전체</option>
+                                                        <option>영업본부</option>
+                                                        <option>동부 DB</option>
+                                                    </select>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span class="selectSet">
+                                                    <select>
+                                                        <option>판매조건</option>
+                                                        <option>강릉지점</option>
+                                                        <option>구성지점</option>
+                                                        <option>북수원지점</option>
+                                                    </select>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                        <button class="btnBY">조회</button>
+                                    </div>
+                                    <div class="searchSubLine">
+                                        <span class="checkSet"><input type="checkbox" id="includeOpt" /><label for="includeOpt"><i></i>옵션명 포함</label></span>
+                                        <span class="checkSet"><input type="checkbox" id="showingCar" /><label for="showingCar"><i></i>전시차 입고가능</label></span>
+                                    </div>
+                                </div>
+                                <!-- // 검색 -->
+								<!-- 2019-08-03 타이틀부분 고정으로 분리 -->
+                                <div class="tbContainer fixedTitCase">
+                                    <div class="tbScroll" id="listHeader">
+                                        <table class="tbStaus line">
+                                            <colgroup>
+                                                <col style="width:100px;">
+                                                <col style="width:45px;">
+                                                <col style="width:65px;">
+                                                <col style="width:100px;">
+                                                <col style="width:40px;">
+                                                <col style="width:40px;">
+                                                <col style="width:50px;">
+                                                <col style="width:40px;">
+                                                <col style="width:50px;">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">차종</th>
+                                                    <th scope="col">옵션</th>
+                                                    <th scope="col">외장색</th>
+                                                    <th scope="col">내장색</th>
+                                                    <th scope="col">부산</th>
+                                                    <th scope="col">전시차</th>
+                                                    <th scope="col">전시차<br />입고예정</th>
+                                                    <th scope="col">합계</th>
+                                                    <th scope="col">계약<br />승인요청</th>
+                                                </tr>
+                                            </thead>
+										</table>
+									</div>
+								</div>
+								<!-- 2019-08-03 타이틀부분 고정으로 분리 -->
+                            </div>
+                            <!-- // fixed -->
+                            <div class="postListBody"> <!--2019-03-15 클래스명 변경--->
+                                <!-- 목록 -->
+                                <div class="tbContainer fixedDataCase"> <!--2019-03-15 클래스명 추가 ---> 
+                                    <div class="tbScroll" id="listWrap" onScroll="javascript:document.getElementById('listHeader').scrollLeft = document.getElementById('listWrap').scrollLeft">
+                                        <table class="tbStaus line">
+                                            <colgroup>
+                                                <col style="width:100px;">
+                                                <col style="width:45px;">
+                                                <col style="width:65px;">
+                                                <col style="width:100px;">
+                                                <col style="width:40px;">
+                                                <col style="width:40px;">
+                                                <col style="width:50px;">
+                                                <col style="width:40px;">
+                                                <col style="width:50px;">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <!-- 2019-08-03 모델연식 삭제 -->
+                                                    <td class="tLeft"><span class="txtEllipsis">LPe New 장애인용 Premium Collection</span></td>
+                                                    <td>-B--4</td>
+                                                    <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                                    <td class="tLeft"><span class="txtEllipsis">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span></td>
+                                                    <td><button class="txtBU estimateGo">80</button></td>
+                                                    <td><button class="txtBU showingInfo">80</button></td>
+                                                    <td>3</td>
+                                                    <td>300</td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <!-- 2019-08-03 모델연식 삭제 -->
+                                                    <td class="tLeft"><span class="txtEllipsis">LPe New 장애인용 Premium Collection</span></td>
+                                                    <td>-B--4</td>
+                                                    <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                                    <td class="tLeft"><span class="txtEllipsis">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span></td>
+                                                    <td><button class="txtBU estimateGo">80</button></td>
+                                                    <td><button class="txtBU showingInfo">80</button></td>
+                                                    <td>3</td>
+                                                    <td>300</td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <!-- 2019-08-03 모델연식 삭제 -->
+                                                    <td class="tLeft"><span class="txtEllipsis">LPe New 장애인용 Premium Collection</span></td>
+                                                    <td>-B--4</td>
+                                                    <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                                    <td class="tLeft"><span class="txtEllipsis">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span></td>
+                                                    <td><button class="txtBU estimateGo">80</button></td>
+                                                    <td><button class="txtBU showingInfo">80</button></td>
+                                                    <td><button class="txtBU">3</button></td>
+                                                    <td>300</td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <!-- 2019-08-03 모델연식 삭제 -->
+                                                    <td class="tLeft"><span class="txtEllipsis">LPe New 장애인용 Premium Collection</span></td>
+                                                    <td>-B--4</td>
+                                                    <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                                    <td class="tLeft"><span class="txtEllipsis">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span></td>
+                                                    <td><button class="txtBU estimateGo">80</button></td>
+                                                    <td><button class="txtBU showingInfo">80</button></td>
+                                                    <td>3</td>
+                                                    <td>300</td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <!-- 2019-08-03 모델연식 삭제 -->
+                                                    <td class="tLeft"><span class="txtEllipsis type2">LPe 택시/렌터카</span></td>
+                                                    <td>-B--4</td>
+                                                    <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                                    <td class="tLeft"><span class="txtEllipsis type2">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span></td>
+                                                    <td><button class="txtBU estimateGo">80</button></td>
+                                                    <td><button class="txtBU showingInfo">80</button></td>
+                                                    <td>3</td>
+                                                    <td>300</td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <!-- 2019-08-03 모델연식 삭제 -->
+                                                    <td class="tLeft"><span class="txtEllipsis">LPe 장애인용</span></td>
+                                                    <td>-B--4</td>
+                                                    <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                                    <td class="tLeft"><span class="txtEllipsis">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span></td>
+                                                    <td><button class="txtBU estimateGo">80</button></td>
+                                                    <td><button class="txtBU showingInfo">80</button></td>
+                                                    <td><button class="txtBU">3</button></td>
+                                                    <td>300</td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <!-- 2019-08-03 모델연식 삭제 -->
+                                                    <td class="tLeft"><span class="txtEllipsis">LPe New 장애인용 Premium Collection</span></td>
+                                                    <td>-B--4</td>
+                                                    <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                                    <td class="tLeft"><span class="txtEllipsis">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span></td>
+                                                    <td><button class="txtBU estimateGo">80</button></td>
+                                                    <td><button class="txtBU showingInfo">80</button></td>
+                                                    <td>3</td>
+                                                    <td>300</td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <!-- 2019-08-03 모델연식 삭제 -->
+                                                    <td class="tLeft"><span class="txtEllipsis">LPe New 장애인용 Premium Collection</span></td>
+                                                    <td>-B--4</td>
+                                                    <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                                    <td class="tLeft"><span class="txtEllipsis">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span></td>
+                                                    <td><button class="txtBU estimateGo">80</button></td>
+                                                    <td><button class="txtBU showingInfo">80</button></td>
+                                                    <td>3</td>
+                                                    <td>300</td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <!-- 2019-08-03 모델연식 삭제 -->
+                                                    <td class="tLeft"><span class="txtEllipsis">LPe New 장애인용 Premium Collection</span></td>
+                                                    <td>-B--4</td>
+                                                    <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                                    <td class="tLeft"><span class="txtEllipsis">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span></td>
+                                                    <td><button class="txtBU estimateGo">80</button></td>
+                                                    <td><button class="txtBU showingInfo">80</button></td>
+                                                    <td>3</td>
+                                                    <td>300</td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <!-- 2019-08-03 모델연식 삭제 -->
+                                                    <td class="tLeft"><span class="txtEllipsis">LPe New 장애인용 Premium Collection</span></td>
+                                                    <td>-B--4</td>
+                                                    <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                                    <td class="tLeft"><span class="txtEllipsis">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span></td>
+                                                    <td><button class="txtBU estimateGo">80</button></td>
+                                                    <td><button class="txtBU showingInfo">80</button></td>
+                                                    <td>3</td>
+                                                    <td>300</td>
+                                                    <td>6</td>
+                                                </tr>
+                                            </tbody>
+											<!-- 2019-07-24 -->
+                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="4" class="tCenter">합계</td> <!-- 2019-08-03 모델연식 삭제 colspan 숫자변경 -->
+                                                    <td class="tCenter">80</td>
+                                                    <td class="tCenter">80</td>
+                                                    <td class="tCenter">3</td>
+                                                    <td class="tCenter">300</td>
+                                                    <td class="tCenter">6</td>
+                                                </tr>
+                                            </tfoot>
+											<!-- //2019-07-24 -->
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- // 목록 -->
+                            </div>
+                        </div>  
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+        
+        <!-- DimPopUp -->
+        <div class="dimPop" style="display: none;">
+            <!-- 옵션선택 -->
+			<div class="popLGCase optionSelect" id="optionSelect" style="display: none;">
+				<button class="close">닫기</button>
+                <div class="tt">
+                    <h1>옵션선택</h1>
+                </div>
+                <div class="popBack">
+                    <div class="cntTxt">
+                        <table>
+                            <colgroup>
+                                <col width="40px" />
+                                <col width="80px" />
+                                <col width="*" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>선택</th>
+                                    <th>옵션코드</th>
+                                    <th>옵션정보</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div class="popScrollArea">
+                            <table>
+                                <colgroup>
+                                    <col width="40px" />
+                                    <col width="80px" />
+                                    <col width="*" />
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="checkSet"><input type="checkbox" id="sltOpt01" /><label for="sltOpt01"><i></i></label></span></td>
+                                        <td>-----</td>
+                                        <td class="tLeft">STANDARD</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="checkSet"><input type="checkbox" id="sltOpt02" /><label for="sltOpt02"><i></i></label></span></td>
+                                        <td>-S---</td>
+                                        <td class="tLeft">Free Gift(럭셔리팩+컨비니언스팩)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="checkSet"><input type="checkbox" id="sltOpt03" /><label for="sltOpt03"><i></i></label></span></td>
+                                        <td>--E--</td>
+                                        <td class="tLeft">LED 라이팅 패키지</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="checkSet"><input type="checkbox" id="sltOpt04" /><label for="sltOpt04"><i></i></label></span></td>
+                                        <td>--E--</td>
+                                        <td class="tLeft">LED 라이팅 패키지</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+				<div class="btn mt15">
+                    <button class="btnDBG">조합</button>
+					<button class="btnBY">포함</button>
+				</div>
+			</div>
+			<!-- //옵션선택 -->
+            
+            <!-- 부산 클릭 시 -->
+            <div id="estimateAlert" class="popSMCase alertPop large hAuto" style="display: none;">
+                <div class="alertCnt">
+                    <h1 class="tit">견적서 작성</h1>
+                    <div class="cntTxt">
+                        해당 정보로 견적서를 작성하시겠습니까?
+                    </div>
+                </div>
+				<div class="btn mt15">
+                    <button class="btnLB">아니오</button>
+					<button class="btnBY">견적작성으로 이동</button>
+				</div>
+			</div>
+            <!-- // 부산 클릭 시 -->
+            
+            <!-- 전시차 정보 -->
+			<div class="popLGCase showingInfoLayer" id="showingInfoLayer" style="display: none;">
+				<button class="close">닫기</button>
+                <div class="tt">
+                    <h1>전시차 정보</h1>
+                </div>
+                <div class="popBack">
+                    <div class="popScrollArea">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <table>
+                                        <colgroup>
+                                            <col width="90px" />
+                                            <col width="*" />
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th>지역본부</th>
+                                                <td>호남 HN (용봉대리점) 1</td>
+                                            </tr>
+                                            <tr>
+                                                <th>모델</th>
+                                                <td>SM5-L43 (18MY)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>차종</th>
+                                                <td>GDe 2WD RE Signature SP</td>
+                                            </tr>
+                                            <tr>
+                                                <th>옵션</th>
+                                                <td>-SE– (Free Gift, LED 라이팅 패키지)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>색상</th>
+                                                <td>외장: 메탈릭 블랙 / 내장: 블랙(가죽)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>용품</th>
+                                                <td>AW3, IR2 (360스카이뷰)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>차대번호</th>
+                                                <td>KNMA4C2BMJP167395</td>
+                                            </tr>
+                                            <tr>
+                                                <th>출고승인<br />경과일</th>
+                                                <td>27</td>
+                                            </tr>
+                                            <tr>
+                                                <th>입고경과일</th>
+                                                <td>22</td>
+                                            </tr>
+                                            <tr>
+                                                <th>계약지점</th>
+                                                <td>호남 HN (용봉대리점)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>출고승인일</th>
+                                                <td>2019.03.14</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="swiper-slide">
+                                    <table>
+                                        <colgroup>
+                                            <col width="90px" />
+                                            <col width="*" />
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th>지역본부</th>
+                                                <td>호남 HN (용봉대리점) 2</td>
+                                            </tr>
+                                            <tr>
+                                                <th>모델</th>
+                                                <td>SM5-L43 (18MY)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>차종</th>
+                                                <td>GDe 2WD RE Signature SP</td>
+                                            </tr>
+                                            <tr>
+                                                <th>옵션</th>
+                                                <td>-SE– (Free Gift, LED 라이팅 패키지)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>색상</th>
+                                                <td>외장: 메탈릭 블랙 / 내장: 블랙(가죽)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>용품</th>
+                                                <td>AW3, IR2 (360스카이뷰)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>차대번호</th>
+                                                <td>KNMA4C2BMJP167395</td>
+                                            </tr>
+                                            <tr>
+                                                <th>출고승인<br />경과일</th>
+                                                <td>27</td>
+                                            </tr>
+                                            <tr>
+                                                <th>입고경과일</th>
+                                                <td>22</td>
+                                            </tr>
+                                            <tr>
+                                                <th>계약지점</th>
+                                                <td>호남 HN (용봉대리점)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>출고승인일</th>
+                                                <td>2019.03.14</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="swiper-slide">
+                                    <table>
+                                        <colgroup>
+                                            <col width="90px" />
+                                            <col width="*" />
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th>지역본부</th>
+                                                <td>호남 HN (용봉대리점) 3</td>
+                                            </tr>
+                                            <tr>
+                                                <th>모델</th>
+                                                <td>SM5-L43 (18MY)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>차종</th>
+                                                <td>GDe 2WD RE Signature SP</td>
+                                            </tr>
+                                            <tr>
+                                                <th>옵션</th>
+                                                <td>-SE– (Free Gift, LED 라이팅 패키지)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>색상</th>
+                                                <td>외장: 메탈릭 블랙 / 내장: 블랙(가죽)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>용품</th>
+                                                <td>AW3, IR2 (360스카이뷰)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>차대번호</th>
+                                                <td>KNMA4C2BMJP167395</td>
+                                            </tr>
+                                            <tr>
+                                                <th>출고승인<br />경과일</th>
+                                                <td>27</td>
+                                            </tr>
+                                            <tr>
+                                                <th>입고경과일</th>
+                                                <td>22</td>
+                                            </tr>
+                                            <tr>
+                                                <th>계약지점</th>
+                                                <td>호남 HN (용봉대리점)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>출고승인일</th>
+                                                <td>2019.03.14</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="swiper-slide">
+                                    <table>
+                                        <colgroup>
+                                            <col width="90px" />
+                                            <col width="*" />
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th>지역본부</th>
+                                                <td>호남 HN (용봉대리점) 4</td>
+                                            </tr>
+                                            <tr>
+                                                <th>모델</th>
+                                                <td>SM5-L43 (18MY)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>차종</th>
+                                                <td>GDe 2WD RE Signature SP</td>
+                                            </tr>
+                                            <tr>
+                                                <th>옵션</th>
+                                                <td>-SE– (Free Gift, LED 라이팅 패키지)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>색상</th>
+                                                <td>외장: 메탈릭 블랙 / 내장: 블랙(가죽)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>용품</th>
+                                                <td>AW3, IR2 (360스카이뷰)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>차대번호</th>
+                                                <td>KNMA4C2BMJP167395</td>
+                                            </tr>
+                                            <tr>
+                                                <th>출고승인<br />경과일</th>
+                                                <td>27</td>
+                                            </tr>
+                                            <tr>
+                                                <th>입고경과일</th>
+                                                <td>22</td>
+                                            </tr>
+                                            <tr>
+                                                <th>계약지점</th>
+                                                <td>호남 HN (용봉대리점)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>출고승인일</th>
+                                                <td>2019.03.14</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="swiper-slide">
+                                    <table>
+                                        <colgroup>
+                                            <col width="90px" />
+                                            <col width="*" />
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th>지역본부</th>
+                                                <td>호남 HN (용봉대리점) 5</td>
+                                            </tr>
+                                            <tr>
+                                                <th>모델</th>
+                                                <td>SM5-L43 (18MY)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>차종</th>
+                                                <td>GDe 2WD RE Signature SP</td>
+                                            </tr>
+                                            <tr>
+                                                <th>옵션</th>
+                                                <td>-SE– (Free Gift, LED 라이팅 패키지)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>색상</th>
+                                                <td>외장: 메탈릭 블랙 / 내장: 블랙(가죽)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>용품</th>
+                                                <td>AW3, IR2 (360스카이뷰)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>차대번호</th>
+                                                <td>KNMA4C2BMJP167395</td>
+                                            </tr>
+                                            <tr>
+                                                <th>출고승인<br />경과일</th>
+                                                <td>27</td>
+                                            </tr>
+                                            <tr>
+                                                <th>입고경과일</th>
+                                                <td>22</td>
+                                            </tr>
+                                            <tr>
+                                                <th>계약지점</th>
+                                                <td>호남 HN (용봉대리점)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>출고승인일</th>
+                                                <td>2019.03.14</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                    </div>
+                    <button class="btnSlideNext"></button>
+                    <button class="btnSlidePrev"></button>
+                </div>
+			</div>
+			<!-- //전시차 정보 -->
+        </div>
+        <!-- // DimPopUp -->
+	</body>
+</html>

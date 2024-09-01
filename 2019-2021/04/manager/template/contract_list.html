@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back">
+						<div data-include="include/snb.html"></div>
+					</div>
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- header -->
+			<div id="header">
+				<header>
+					 <h2>계약 관리</h2>
+					 <div class="layoutSet">
+						 <button class="btnLayoutR">오른쪽 레이아웃 펼치기</button>
+						 <button class="btnLayoutL">왼쪽 레이아웃 펼치기</button>
+						 <button class="btnLayoutP">레이아웃 합치기</button>
+					 </div>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="searchArea">
+					<fieldset>
+						<span class="calendarSet">
+							<span class="calDupSet">
+								<span class="calSet"><label for="searchDate">조회기간</label><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span>
+								<em>~</em>
+								<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+							</span>
+							<span class="radioChoose">
+								<label for="lb1"><input type="radio" id="lb1" name="radio1" value="오늘" checked/><span>오늘</span></label>
+								<label for="lb2"><input type="radio" id="lb2" name="radio1" value="7일" /><span>7일</span></label>
+								<label for="lb3"><input type="radio" id="lb3" name="radio1" value="1개월" /><span>1개월</span></label>
+								<label for="lb4"><input type="radio" id="lb4" name="radio1" value="3개월" /><span>3개월</span></label>
+							</span>
+						</span>
+						<span class="searchSet">
+							<input type="text" value="키워드로 검색">
+							<input type="submit" value="조회">
+						</span>
+					</fieldset>
+				</div>
+				<div class="content">
+					<div class="contentScroll">
+						<div class="listArea">
+						<article>
+							<!-- Page Layout -->
+							<div class="">
+								<div class="listTop">
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="40" />
+												<col width="40" />
+												<col width="50" />
+												<col width="50" />
+												<col width="50" />
+												<col width="30" />
+												<col width="20" />
+											</colgroup>
+											<thead>
+												<tr>
+													<th>계약번호</th>
+													<th>계약일자</th>
+													<th>계약자 아이디</th>
+													<th>회사명</th>
+													<th>계약금액(원)</th>
+													<th>운송타입</th>
+													<th>물류(ft)</th>
+												</tr>
+											</thead>
+										</table>
+									</div>
+								</div>
+								<div class="listScroll">
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="40" />
+												<col width="40" />
+												<col width="50" />
+												<col width="50" />
+												<col width="50" />
+												<col width="30" />
+												<col width="20" />
+											</colgroup>
+											<tbody>
+												<!--Loop-->
+												<tr>
+													<td>m9999999</td>
+													<td>2018-12-01</td>
+													<td>010-1234-1234</td>
+													<td>24시달려</td>
+													<td>9,999,999</td>
+													<td class="ftRed">수입</td>
+													<td>20ft</td>
+												</tr>
+												<!--//Loop-->
+												<tr>
+													<td>m9999999</td>
+													<td>2018-12-01</td>
+													<td>010-1234-1234</td>
+													<td>24시달려</td>
+													<td>9,999,999</td>
+													<td class="ftRed">수입</td>
+													<td>복합</td>
+												</tr>
+												<tr>
+													<td>m9999999</td>
+													<td>2018-12-01</td>
+													<td>010-1234-1234</td>
+													<td>24시달려</td>
+													<td>9,999,999</td>
+													<td class="ftRed">수입</td>
+													<td>20ft</td>
+												</tr>
+												<tr class="on">
+													<td>m9999999</td>
+													<td>2018-12-01</td>
+													<td>010-1234-1234</td>
+													<td>24시달려</td>
+													<td>9,999,999</td>
+													<td class="ftRed">수입</td>
+													<td>20ft</td>
+												</tr>
+												<tr>
+													<td>m9999999</td>
+													<td>2018-12-01</td>
+													<td>010-1234-1234</td>
+													<td>24시달려</td>
+													<td>9,999,999</td>
+													<td class="ftRed">수입</td>
+													<td>20ft</td>
+												</tr>
+												<tr>
+													<td>m9999999</td>
+													<td>2018-12-01</td>
+													<td>010-1234-1234</td>
+													<td>24시달려</td>
+													<td>9,999,999</td>
+													<td class="ftRed">수입</td>
+													<td>20ft</td>
+												</tr>
+												<tr>
+													<td>m9999999</td>
+													<td>2018-12-01</td>
+													<td>010-1234-1234</td>
+													<td>24시달려</td>
+													<td>9,999,999</td>
+													<td class="ftRed">수입</td>
+													<td>20ft</td>
+												</tr>
+												<tr>
+													<td>m9999999</td>
+													<td>2018-12-01</td>
+													<td>010-1234-1234</td>
+													<td>24시달려</td>
+													<td>9,999,999</td>
+													<td class="ftRed">수입</td>
+													<td>20ft</td>
+												</tr>
+												<tr>
+													<td>m9999999</td>
+													<td>2018-12-01</td>
+													<td>010-1234-1234</td>
+													<td>24시달려</td>
+													<td>9,999,999</td>
+													<td class="ftRed">수입</td>
+													<td>20ft</td>
+												</tr>
+												<tr>
+													<td>m9999999</td>
+													<td>2018-12-01</td>
+													<td>010-1234-1234</td>
+													<td>24시달려</td>
+													<td>9,999,999</td>
+													<td class="ftRed">수입</td>
+													<td>20ft</td>
+												</tr>
+												<tr>
+													<td>m9999999</td>
+													<td>2018-12-01</td>
+													<td>010-1234-1234</td>
+													<td>24시달려</td>
+													<td>9,999,999</td>
+													<td class="ftRed">수입</td>
+													<td>20ft</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="listBottom">
+								<!-- btn Area & paginate Set -->
+								<div class="bpSet">
+									<div class="btnArea">
+										<span class="left">
+											<button class="btnS lineRed">선택삭제</button>
+										</span>
+									</div>
+									<div class="paginate">
+										<span>
+											<a class="first">처음</a>
+											<a class="prev">이전</a>
+											<a class="on">1</a>
+											<a>2</a>
+											<a>3</a>
+											<a>4</a>
+											<a>5</a>
+											<a>6</a>
+											<a>7</a>
+											<a>8</a>
+											<a>9</a>
+											<a class="next">다음</a>
+											<a class="last">마지막</a>
+										</span>
+										<span class="selectSet">
+											<select>
+												<option selected>20</option>
+												<option>50</option>
+												<option>100</option>
+											</select>
+										</span>
+									</div>
+								</div>
+							</div>
+							<!-- //page Layout -->
+						</article>
+						</div>
+						<div class="detailArea">
+						<article>
+							<!-- Page Layout -->
+							<div>
+								<div data-include="contract_detail.html"></div>
+							</div>
+							<!-- //page Layout -->
+						</article>
+						</div>
+					</div>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+    </body>
+</html>

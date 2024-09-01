@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/approval.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.alertPop button, .miniPop button, .basicPop .pBtn button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .miniPop, .basicPop').hide();
+				$('.fullPop').removeClass('show');
+			});
+			$('.fullPop .pclose').click(function(){
+				$('.fullPop').removeClass('show');
+			});
+			/* 사내망 등록, vpn 신규 등록 */
+			$('.intGo').click(function(){
+				$('.fullPop.newInt').addClass('show');
+			});
+			$('.vpnGo').click(function(){
+				$('.fullPop.newVpn').addClass('show');
+			});
+			$(".fullPop.newInt .btnArea button, .fullPop.newVpn .btnArea button").click(function(){
+				if($(this).hasClass("white")){
+					$(".alertDim, .writeOutPop").show();
+				}else if($(this).hasClass("primary")){
+					$(".ntApply, .null").hide();
+					$(".ntBox").show();
+				}
+			});
+			$(".fullPop.newInt .btnArea button").click(function(){
+				if($(this).hasClass("primary")){
+					$(".alertDim, .intWriteFinPop").show();
+					setTimeout(function(){
+						$(".alertDim, .intWriteFinPop").hide();
+						$('.fullPop').removeClass('show');
+					}, 2000);
+					$(".ntBox.int .step1").hide();
+					$(".ntBox.int .step2").show();
+				}
+			});
+			$(".fullPop.newVpn .btnArea button").click(function(){
+				if($(this).hasClass("primary")){
+					$(".alertDim, .vpnWriteFinPop").show();
+					setTimeout(function(){
+						$(".alertDim, .vpnWriteFinPop").hide();
+						$('.fullPop').removeClass('show');
+					}, 1500);
+					$(".ntBox.vpn .step1").hide();
+					$(".ntBox.vpn .step2").show();
+				}
+			});
+			$(".eqSet .toggleSet input").change(function() {
+				var addressInput = $(this).parents('.eqSet').children('input');
+				if($(this).is(":checked") == true){
+					$(addressInput).attr('disabled', false);
+				}else{
+					$(addressInput).attr('disabled', true);
+				}
+			});
+			$(".ntBox .step2").click(function(){
+				$(this).hide();
+				$(this).parents(".ntContents").children(".step3").show();
+			});
+			/* end 사내망 등록, vpn 신규 등록 */
+			/* 네트워크 메인 목록 */
+			$(".ntBox.int .btnRound").on('click', function(){
+				var txt = $(this).text();
+				if(txt == "more"){
+					$(".popDim, .intDetailPop").show();
+				}else if(txt == "비밀번호"){
+					$(".popDim, .wifiDetailPop").show();
+				}
+			});
+			$(".eqItem .reIng").on('click', function(){
+				$(".popDim, .intReasonPop").show();
+			});
+			$(".btnVpnPw").on('click', function(){
+				$(".popDim, .vpnPwPop").show();
+			});
+			$(".btnVpnRePw").on('click', function(){
+				$(".alertDim, .vpnRePwPop").show();
+			});
+			/* end 네트워크 메인 목록 */
+			/* vpn 사용 신청 */
+			$('.vpnUseGo').click(function(){
+				$('.fullPop.useVpn').addClass('show');
+			});
+			$('.securityGo').click(function(){
+				$('.fullPop.security').addClass('show');
+				$('.fullPop.security .pclose, .fullPop.security .primary').click(function(){
+					$('.fullPop.security').removeClass('show');
+					$('.fullPop.useVpn').addClass('show');
+				});
+			});
+			$(".fullPop.useVpn .btnArea button").click(function(){
+				if($(this).hasClass("white")){
+					$(".alertDim, .writeOutPop").show();
+				}else if($(this).hasClass("primary")){
+					$(".alertDim, .vpnUseFinPop").show();
+					setTimeout(function(){
+						$(".alertDim, .vpnUseFinPop").hide();
+						$('.fullPop').removeClass('show');
+					}, 1500);
+				}
+			});
+			$(".btnPrivateTerm").click(function(){
+				$(".private").toggle();
+			});
+			$(".systemSet > button").click(function(){
+				$(".systemSet span > *, .systemSet > button").toggle();
+			});
+			$(".selInput .selectSet select").on('change', function(){
+				$("#manageTp option:checked").text()
+				var txt = $(this).find('option:selected').text();
+				if(txt == "기타"){
+					$(this).parents(".selInput").addClass("other");
+				}else{
+					$(this).parents(".selInput").removeClass("other");
+				}
+			});
+			/* end vpn 사용 신청 */
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<h1>네트워크</h1>
+					<button class="btnNav">햄버거</button>
+					<a href="vpn_distribution.html" class="btnGo">VPN 계정 배포</a>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb">
+				<section>
+					<div class="c-menu c-menu--slide-left"><!-- 우측 Slide 일 경우 -->
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</section>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="networkLayout">
+						<div class="ntArea">
+							<div class="null">등록된 네트워크 환경이 없습니다.<br/>네트워크 등록 신청 해주시기 바랍니다.</div>
+							<div class="ntBox int" style="display:none;">
+								<div class="ntTit">
+									<strong>사내망 등록 정보</strong>
+									<span class="right">
+										<button class="btnS primary intGo">등록신청</button>
+									</span>
+								</div>
+								<div class="ntContents">
+									<div class="lineBox step1">
+										<p>신규 등록신청 해주시기 바랍니다.</p>
+									</div>
+									<div class="step2" style="display:none;">
+										<div class="eqList">
+											<div class="eqHead">
+												<strong>지급장비</strong>
+											</div>
+											<div class="eqBody">
+												<ul>
+													<li class="eqItem">
+														<div class="eqTit">
+															<strong>데스트탑</strong>
+														</div>
+														<div class="gridSet grid2">
+															<div class="gridItem">
+																<div class="eqSet"><strong>이더넷 - XX:XX:XX:XX:XX:XX</strong></div>
+																<div class="eqSet"><strong>만료일 - 2021.01.01</strong></div>
+															</div>
+															<div class="gridItem"><span class="ing">승인 진행 중</span></div>
+														</div>
+													</li>
+													<li class="eqItem">
+														<div class="eqTit">
+															<strong>노트북</strong>
+														</div>
+														<div class="gridSet grid2">
+															<div class="gridItem">
+																<div class="eqSet"><strong>이더넷 - XX:XX:XX:XX:XX:XX</strong></div>
+																<div class="eqSet"><strong>만료일 - 2021.01.01</strong></div>
+															</div>
+															<div class="gridItem">
+																<span class="ing">승인 진행 중</span>
+															</div>
+														</div>
+														<div class="gridSet grid2">
+															<div class="gridItem">
+																<div class="eqSet"><strong>Wifi - XX:XX:XX:XX:XX:XX</strong></div>
+																<div class="eqSet"><strong>만료일 - 2021.01.01</strong></div>
+															</div>
+															<div class="gridItem">
+																<span class="ing">승인 진행 중</span>
+															</div>
+														</div>
+													</li>
+													<li class="eqItem">
+														<div class="eqTit">
+															<strong>타블렛</strong>
+														</div>
+														<div class="gridSet grid2">
+															<div class="gridItem">
+																<div class="eqSet"><strong>Wifi - XX:XX:XX:XX:XX:XX</strong></div>
+																<div class="eqSet"><strong>만료일 - 2021.01.01</strong></div>
+															</div>
+															<div class="gridItem">
+																<span class="ing">승인 진행 중</span>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="eqList">
+											<div class="eqHead">
+												<strong>개인장비</strong>
+											</div>
+											<div class="eqBody">
+												<ul>
+													<li class="eqItem">
+														<div class="eqTit">
+															<strong>노트북</strong>
+														</div>
+														<div class="gridSet grid2">
+															<div class="gridItem">
+																<div class="eqSet"><strong>이더넷 - XX:XX:XX:XX:XX:XX</strong></div>
+																<div class="eqSet"><strong>만료일 - 2021.01.01</strong></div>
+															</div>
+															<div class="gridItem">
+																<span class="ing">승인 진행 중</span>
+															</div>
+														</div>
+														<div class="gridSet grid2">
+															<div class="gridItem">
+																<div class="eqSet"><strong>Wifi - XX:XX:XX:XX:XX:XX</strong></div>
+																<div class="eqSet"><strong>만료일 - 2021.01.01</strong></div>
+															</div>
+															<div class="gridItem">
+																<span class="ing">승인 진행 중</span>
+															</div>
+														</div>
+													</li>
+													<li class="eqItem">
+														<div class="eqTit">
+															<strong>모바일</strong>
+														</div>
+														<div class="gridSet grid2">
+															<div class="gridItem">
+																<div class="eqSet"><strong>Wifi - XX:XX:XX:XX:XX:XX</strong></div>
+																<div class="eqSet"><strong>만료일 - 2021.01.01</strong></div>
+															</div>
+															<div class="gridItem">
+																<span class="ing">승인 진행 중</span>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="step3" style="display:none;">
+										<div class="eqList">
+											<div class="eqHead">
+												<strong>지급장비</strong>
+												<em class="right">만료일 : 0000-00-00</em>
+											</div>
+											<div class="eqBody">
+												<ul>
+													<li class="eqItem">
+														<div class="eqTit">
+															<strong>데스트탑</strong>
+														</div>
+														<div class="gridSet grid2">
+															<div class="gridItem">
+																<div class="eqSet"><strong>이더넷 <em class="ftRed">- 192.168.10.XX</em></strong></div>
+																<div class="eqSet"><strong>만료일 - 2021.01.01</strong></div>
+															</div>
+															<div class="gridItem"><button class="btnRound">more</button></div>
+														</div>
+													</li>
+													<li class="eqItem">
+														<div class="eqTit">
+															<strong>노트북</strong>
+														</div>
+														<div class="gridSet grid2">
+															<div class="gridItem">
+																<div class="eqSet"><strong>이더넷 <em class="ftRed">- 192.168.10.XX</em></strong></div>
+																<div class="eqSet"><strong>만료일 - 2021.01.01</strong></div>
+															</div>
+															<div class="gridItem"><button class="btnRound">more</button></div>
+														</div>
+														<div class="gridSet grid2">
+															<div class="gridItem">
+																<div class="eqSet"><strong>Wifi <em class="ftRed">- thinktreeWifi 2</em></strong></div>
+																<div class="eqSet"><strong>만료일 - 2021.01.01</strong></div>
+															</div>
+															<div class="gridItem"><button class="btnRound">비밀번호</button></div>
+														</div>
+													</li>
+													<li class="eqItem">
+														<div class="eqTit">
+															<strong>타블렛</strong>
+														</div>
+														<div class="gridSet grid2">
+															<div class="gridItem">
+																<div class="eqSet"><strong>Wifi <em class="ftRed">- thinktreeWifi 2</em></strong></div>
+																<div class="eqSet"><strong>만료일 - 2021.01.01</strong></div>
+															</div>
+															<div class="gridItem"><button class="btnRound">비밀번호</button></div>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="eqList">
+											<div class="eqHead">
+												<strong>개인장비</strong>
+												<em class="right">만료일 : 0000-00-00</em>
+											</div>
+											<div class="eqBody">
+												<ul>
+													<li class="eqItem">
+														<div class="eqTit">
+															<strong>노트북</strong>
+														</div>
+														<div class="gridSet grid2">
+															<div class="gridItem">
+																<div class="eqSet"><strong>이더넷 - XX:XX:XX:XX:XX:XX</strong></div>
+																<div class="eqSet"><strong>만료일 - 2021.01.01</strong></div>
+															</div>
+															<div class="gridItem"><span class="reIng">승인 반려</span></div>
+														</div>
+														<div class="gridSet grid2">
+															<div class="gridItem">
+																<div class="eqSet"><strong>Wifi <em class="ftRed">- thinktreeWifi 1</em></strong></div>
+															</div>
+															<div class="gridItem"><button class="btnRound">비밀번호</button></div>
+														</div>
+													</li>
+													<li class="eqItem">
+														<div class="eqTit">
+															<strong>모바일</strong>
+														</div>
+														<div class="gridSet grid2">
+															<div class="gridItem">
+																<div class="eqSet"><strong>Wifi <em class="ftRed">- thinktreeWifi 1</em></strong></div>
+																<div class="eqSet"><strong>만료일 - 2021.01.01</strong></div>
+															</div>
+															<div class="gridItem"><button class="btnRound">비밀번호</button></div>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="ntBox vpn" style="display:none;">
+								<div class="ntTit">
+									<strong>VPN 계정 정보</strong>
+									<span class="right">
+										<button class="btnS primary vpnGo">등록신청</button>
+									</span>
+								</div>
+								<div class="ntContents">
+									<div class="lineBox step1">
+										<p>신규 등록신청 해주시기 바랍니다.</p>
+									</div>
+									<div class="lineBox step2" style="display:none;">
+										<ul>
+											<li>아이디 : abcdefg</li>
+											<li>사용기간 : 2020-10-09 ~ 2020-12-31</li>
+										</ul>
+										<div class="ing">승인 진행 중</div>
+									</div>
+									<div class="step3" style="display:none;">
+										<div class="lineBox">
+											<button class="btnRound btnVpnPw">비밀번호</button>
+											<ul>
+												<li>아이디 : abcdefg</li>
+												<li>사용기간 : 2020-10-09 ~ 2020-12-31</li>
+												<li>VPN 접속 URL : <a href="https://192.168.10.XX" target="_blank">https://192.168.10.XX</a></li>
+											</ul>
+										</div>
+										<div class="lineBox">
+											<button class="btnRound btnVpnRePw">비밀번호 재요청</button>
+											<ul>
+												<li>아이디 : abcdefg</li>
+												<li>사용기간 : 2020-10-09 ~ 2020-12-31</li>
+												<li>VPN 접속 URL : <a href="https://192.168.10.XX" target="_blank">https://192.168.10.XX</a></li>
+											</ul>
+										</div>
+										<div class="btnArea">
+											<span class="left"><a href="vpn_history.html" class="btnBlue">사용이력</a></span>
+											<span class="right">
+												<em class="ftRed">* 사용 신청 기간 1건</em>
+												<button class="btnBlue vpnUseGo">사용신청</button>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="ntApply">
+							<ul>
+								<li><button class="intGo">사내망<br/>등록 신청</button></li>
+								<li><button class="vpnGo">VPN<br/>계정 신청</button></li>
+							</ul>
+						</div>
+					</div>
+					<!--//-->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>상단으로</button></div>
+		</div>
+		<!-- //Wrap -->
+		<!-- Alert Popup -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop writeOutPop" style="display:none;">
+				<div class="pBack">
+					<p class="tC">작성한 신청 정보가 삭제됩니다.<br/>취소 하시겠습니까?</p>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<div class="alertPop notBtn intWriteFinPop" style="display:none;">
+				<div class="pBack">
+					<p class="tC">사내망 등록신청이<br/>완료되었습니다.</p>
+				</div>
+			</div>
+			<div class="alertPop notBtn vpnWriteFinPop" style="display:none;">
+				<div class="pBack">
+					<p class="tC">VPN 계정등록신청이<br/>완료되었습니다.</p>
+				</div>
+			</div>
+			<div class="alertPop notBtn vpnUseFinPop" style="display:none;">
+				<div class="pBack">
+					<p class="tC">VPN 사용신청이<br/>완료되었습니다.</p>
+				</div>
+			</div>
+			<div class="alertPop vpnRePwPop" style="display:none;">
+				<div class="pBack">
+					<p class="tL">비밀번호 재요청이 등록 되었습니다.<br/>비밀번호 안내 후 2시간 이후 확인이 불가하니 참고하시기 바랍니다.</p>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //Alert Popup -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 사내망 등록 정보 -->
+			<div class="miniPop intDetailPop" style="display:none;">
+				<div class="tt">
+					<h1>사내망 등록 정보</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<ul>
+						<li>내부고정 IP : 192.168.10.XX</li>
+						<li>서브넷 마스크 : 255.255.255.0</li>
+						<li>DNS 서버 1 : 203.248.252.2</li>
+						<li>DNS 서버 2 : 164.124.101.2</li>
+					</ul>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<!-- //사내망 등록 정보 -->
+			<!-- 사내망 신청 반려 -->
+			<div class="miniPop intReasonPop" style="display:none;">
+				<div class="tt">
+					<h1>사내망 신청 반려</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="dlstyle">
+						<dl>
+							<dt>장비명 :</dt>
+							<dd>노트북/이더넷</dd>
+						</dl>
+						<dl>
+							<dt>반려 사유 :</dt>
+							<dd><p class="reason">사유가 나오는 영역입니다.</p></dd>
+						</dl>
+					</div>
+					<p>반려된 장비 정보는 익일 삭제가 됩니다. 필요시 재신청해주시기 바랍니다.</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<!-- //사내망 신청 반려 -->
+			<!-- Wifi 비밀번호 -->
+			<div class="miniPop wifiDetailPop" style="display:none;">
+				<div class="tt">
+					<h1>Wifi 비밀번호</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="grayBox">abcd1234!!@#</div>
+					<p>Wifi 비밀번호는 누출되지 않도록 별도 저장하지 않습니다.</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<!-- //Wifi 비밀번호 -->
+			<!-- Wifi 비밀번호 변경 안내 -->
+			<div class="miniPop wifiChangePop" style="display:none;">
+				<div class="tt">
+					<h1>Wifi 비밀번호 변경 안내</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<p class="tC">Wifi 비밀번호가 변경되었습니다. 변경된 비밀번호를 확인해주시기 바랍니다.</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<!-- //Wifi 비밀번호 변경 안내 -->
+			<!-- VPN 계정 비밀번호 -->
+			<div class="miniPop vpnPwPop">
+				<div class="tt">
+					<h1>VPN 계정 비밀번호</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<strong>비밀번호 유효시간 <span>00:00:00</span></strong>
+					<div class="grayBox">abcd1234!!@#</div>
+					<p>비밀번호 분실 시에는 재요청 해주시기 바랍니다.</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<!-- //VPN 계정 비밀번호 -->
+		</div>
+		<!-- //Popup -->
+		<!-- 사내망 등록 신청 -->
+		<div class="fullPop ntFullPop newInt">
+			<div class="tt">
+				<h1>사내망 등록 신청</h1>
+				<button class="pclose">닫기</button>
+			</div>
+			<div class="pBack">
+				<div class="tws">
+					<table>
+						<colgroup>
+							<col width="80"/>
+							<col width="*"/>
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>사용기간</th>
+								<td>2020-10-09 ~ 2020-12-31</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="eqList">
+					<div class="eqHead">
+						<strong>지급장비</strong>
+						<em class="right">* 장비 지급은 경영지원팀에 문의하세요</em>
+					</div>
+					<div class="eqBody">
+						<ul>
+							<li class="eqItem">
+								<div class="eqTit">
+									<strong>데스트탑</strong>
+								</div>
+								<div class="eqSet">
+									<span>
+										<span class="toggleSet">
+											<input type="checkbox" id="item10" checked/>
+											<label for="item10"></label>
+										</span>
+										<strong>이더넷</strong>
+									</span>
+									<input type="text" value="XX:XX:XX:XX:XX:XX"/>
+								</div>
+								<div class="eqSet">
+									<span>
+										<span class="toggleSet">
+											<input type="checkbox" id="item11" />
+											<label for="item11"></label>
+										</span>
+										<strong>Wifi</strong>
+									</span>
+									<input type="text" placeholder="맥어드레스 입력 (XX:XX:XX:XX:XX:XX)" disabled/>
+								</div>
+							</li>
+							<li class="eqItem">
+								<div class="eqTit">
+									<strong>노트북</strong>
+								</div>
+								<div class="eqSet">
+									<span>
+										<span class="toggleSet">
+											<input type="checkbox" id="item20" />
+											<label for="item20"></label>
+										</span>
+										<strong>이더넷</strong>
+									</span>
+									<input type="text" placeholder="맥어드레스 입력 (XX:XX:XX:XX:XX:XX)" disabled/>
+								</div>
+								<div class="eqSet">
+									<span>
+										<span class="toggleSet">
+											<input type="checkbox" id="item21" />
+											<label for="item21"></label>
+										</span>
+										<strong>Wifi</strong>
+									</span>
+									<input type="text" placeholder="맥어드레스 입력 (XX:XX:XX:XX:XX:XX)" disabled/>
+								</div>
+							</li>
+							<li class="eqItem">
+								<div class="eqTit">
+									<strong>타블렛</strong>
+								</div>
+								<div class="eqSet">
+									<span>
+										<span class="toggleSet">
+											<input type="checkbox" id="item30" />
+											<label for="item30"></label>
+										</span>
+										<strong>이더넷</strong>
+									</span>
+									<input type="text" placeholder="맥어드레스 입력 (XX:XX:XX:XX:XX:XX)" disabled/>
+								</div>
+								<div class="eqSet">
+									<span>
+										<span class="toggleSet">
+											<input type="checkbox" id="item31" />
+											<label for="item31"></label>
+										</span>
+										<strong>Wifi</strong>
+									</span>
+									<input type="text" placeholder="맥어드레스 입력 (XX:XX:XX:XX:XX:XX)" disabled/>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="eqList">
+					<div class="eqHead">
+						<strong>개인장비</strong>
+						<span class="right">
+							<button class="btnS white">추가</button>
+						</span>
+					</div>
+					<div class="eqBody">
+						<ul>
+							<li class="eqItem">
+								<div class="eqTit">
+									<input type="text" placeholder="장비명"/>
+									<span class="right">
+										<button class="btnS white btnEqDel">삭제</button>
+									</span>
+								</div>
+								<div class="eqSet">
+									<span>
+										<span class="toggleSet">
+											<input type="checkbox" id="item40" checked/>
+											<label for="item40"></label>
+										</span>
+										<strong>이더넷</strong>
+									</span>
+									<input type="text" value="XX:XX:XX:XX:XX:XX"/>
+								</div>
+								<div class="eqSet">
+									<span>
+										<span class="toggleSet">
+											<input type="checkbox" id="item41" />
+											<label for="item41"></label>
+										</span>
+										<strong>Wifi</strong>
+									</span>
+									<input type="text" placeholder="맥어드레스 입력 (XX:XX:XX:XX:XX:XX)" disabled/>
+								</div>
+							</li>
+							<li class="eqItem">
+								<div class="eqTit">
+									<input type="text" placeholder="장비명"/>
+									<span class="right">
+										<button class="btnS white btnEqDel">삭제</button>
+									</span>
+								</div>
+								<div class="eqSet">
+									<span>
+										<span class="toggleSet">
+											<input type="checkbox" id="item50" />
+											<label for="item50"></label>
+										</span>
+										<strong>이더넷</strong>
+									</span>
+									<input type="text" placeholder="맥어드레스 입력 (XX:XX:XX:XX:XX:XX)" disabled/>
+								</div>
+								<div class="eqSet">
+									<span>
+										<span class="toggleSet">
+											<input type="checkbox" id="item51" />
+											<label for="item51"></label>
+										</span>
+										<strong>Wifi</strong>
+									</span>
+									<input type="text" placeholder="맥어드레스 입력 (XX:XX:XX:XX:XX:XX)" disabled/>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<p class="tR infoTxt">* 개인장비는 보안이슈로 인해 반려될수 있습니다.</p>
+				<div class="dlstyle writeCase">
+					<dl>
+						<dt>비고</dt>
+						<dd><textarea></textarea></dd>
+					</dl>
+				</div>
+				<p>등록 및 사용 기간은 등록 신청일로부터 해당년도까지 유효하며, 년 1회 갱신해야 합니다. 신청 후 보안담당자의 승인 및 발행이 완료되면 안내가 될 예정입니다.</p>
+				<div class="btnArea tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">신청하기</button>
+				</div>
+			</div>
+		</div>
+		<!-- //사내망 등록 신청 -->
+		<!-- vpn 계정 신청 -->
+		<div class="fullPop ntFullPop newVpn">
+			<div class="tt">
+				<h1>VPN 계정 신청</h1>
+				<button class="pclose">닫기</button>
+			</div>
+			<div class="pBack">
+				<div class="dlstyle writeCase">
+					<dl>
+						<dt>신청 계정 정보</dt>
+						<dd>
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="80"/>
+										<col width="*"/>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>사용기간</th>
+											<td class="tL">2020-10-09</td>
+										</tr>
+										<tr>
+											<th>아이디</th>
+											<td class="tL">abcdefg<span class="right infoTxt">* 메일 아이디와 동일</span></td>
+										</tr>
+										<tr>
+											<th>비밀번호</th>
+											<td class="tL">
+												<div class="middotList">
+													<ul>
+														<li>비밀번호는 계정등록 후 별도 공지합니다.</li>
+														<li>비밀번호 분실 혹은 변경 시에는 경영지원팀에 문의하세요</li>
+													</ul>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<span class="checkSet">
+								<input type="checkbox" id="chkAll" />
+								<label for="chkAll"><i></i>위와 같이 VPN 계정 등록 신청합니다.</label>
+							</span>
+						</dd>
+					</dl>
+					<dl>
+						<dt>비고</dt>
+						<dd><textarea></textarea></dd>
+					</dl>
+				</div>
+				<p>등록 및 사용 기간은 등록 신청일로부터 해당년도까지 유효하며, 년 1회 갱신해야 합니다. 신청 후 보안담당자의 승인 및 발행이 완료되면 안내가 될 예정입니다.</p>
+				<div class="btnArea tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">신청하기</button>
+				</div>
+			</div>
+		</div>
+		<!-- //vpn 계정 신청 -->
+		<!-- vpn 사용 신청 -->
+		<div class="fullPop ntFullPop useVpn">
+			<div class="tt">
+				<h1>VPN 사용 신청</h1>
+				<button class="pclose">닫기</button>
+			</div>
+			<div class="pBack">
+				<div class="dlstyle writeCase">
+					<div class="formBox">
+						<dl>
+							<dt>사용기간</dt>
+							<dd>
+								<div class="dateLine">
+									<strong>시작일 :</strong>
+									<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									<span class="selectSet">
+										<select>
+											<option>00</option>
+											<option>01</option>
+											<option>02</option>
+											<option>03</option>
+											<option>04</option>
+											<option>05</option>
+											<option>06</option>
+											<option>07</option>
+											<option>08</option>
+											<option>09</option>
+											<option>10</option>
+											<option>11</option>
+											<option>12</option>
+										</select>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option>00</option>
+											<option>30</option>
+										</select>
+									</span>
+								</div>
+								<div class="dateLine">
+									<strong>완료일 :</strong>
+									<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									<span class="selectSet">
+										<select>
+											<option>00</option>
+											<option>01</option>
+											<option>02</option>
+											<option>03</option>
+											<option>04</option>
+											<option>05</option>
+											<option>06</option>
+											<option>07</option>
+											<option>08</option>
+											<option>09</option>
+											<option>10</option>
+											<option>11</option>
+											<option>12</option>
+										</select>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option>00</option>
+											<option>30</option>
+										</select>
+									</span>
+								</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt>접속시스템명</dt>
+							<dd>
+								<div class="systemSet">
+									<span>
+										<span class="selectSet">
+											<select>
+												<option>프로젝트 명이 노출됩니다</option>
+											</select>
+										</span>
+										<input type="text" style="display:none;"/>
+									</span>
+									<button class="btnS gray">직접입력</button>
+									<button class="btnS white" style="display:none;">입력취소</button>
+								</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt>사용목적</dt>
+							<dd>
+								<span class="selInput">
+									<span class="selectSet">
+										<select>
+											<option>선택</option>
+											<option>긴급대응</option>
+											<option>외부개발</option>
+											<option>유지보수</option>
+											<option>기타</option>
+										</select>
+									</span>
+									<input type="text"/>
+								</span>
+							</dd>
+						</dl>
+						<dl>
+							<dt>사용장소</dt>
+							<dd>
+								<span class="selInput">
+									<span class="selectSet">
+										<select>
+											<option>현장근무지</option>
+											<option>외근지</option>
+											<option>자택</option>
+											<option>기타</option>
+										</select>
+									</span>
+									<input type="text"/>
+								</span>
+							</dd>
+						</dl>
+						<dl>
+							<dt>승인자</dt>
+							<dd><input type="text"/></dd>
+						</dl>
+					</div>
+					<dl>
+						<dt>개인정보 수집・이용 및 제공 동의
+							<span class="right"><button class="btnS white btnPrivateTerm">전문보기</button></span>
+						</dt>
+						<dd>
+							<div class="private" style="display:none;">
+								<div class="tws">
+									<table>
+										<colgroup>
+											<col width="125"/>
+											<col width="*"/>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th>수집・이용 목적</th>
+												<td>VPN 사용신청 위한 보안서약</td>
+											</tr>
+											<tr>
+												<th>수집・이용 항목</th>
+												<td>성명, 생년월일, 소속(직위), 성명, 주소</td>
+											</tr>
+											<tr>
+												<th>수집・이용  기간</th>
+												<td>수집,이용에 대한 동의일로부터 자료 파기 시</td>
+											</tr>
+											<tr>
+												<th>동의하지 않을 경우의 처리</th>
+												<td> VPN 사용신청 불가</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="agreeSet">
+									<p>위와 같이 개인정보 수집 · 이용 동의합니다.</p>
+									<div class="radioArea">
+										<span class="radioSet">
+											<input type="radio" id="privacy1" name="privacy" />
+											<label for="privacy1"><i></i>동의</label>
+										</span>
+										<span class="radioSet">
+											<input type="radio" id="privacy2" name="privacy" />
+											<label for="privacy2"><i></i>동의하지 않음</label>
+										</span>
+									</div>
+								</div>
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>정보보호 보안서약
+							<span class="right"><button class="btnS white securityGo">전문보기</button></span>
+						</dt>
+						<dd>
+							<p class="securityVow">개인정보 수집・이용 및 제공 동의 및 정보보호 보안서약은 필수항목으로 동의 및 서약서명을 하지 않을 경우 VPN 사용 신청에 불가합니다.</p>
+						</dd>
+					</dl>
+					<dl>
+						<dt>비고</dt>
+						<dd><textarea></textarea></dd>
+					</dl>
+				</div>
+				<p>VPN 사용 신청은 [승인자 > 보안담당자 > 보안책임자] 순으로 승인 절차가 진행됩니다. 반려된 경우 신규 신청해 주시기 바랍니다.</p>
+				<div class="btnArea tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">신청하기</button>
+				</div>
+			</div>
+		</div>
+		<!-- //vpn 사용 신청 -->
+		<!-- 정보보호 보안서약 -->
+		<div class="fullPop ntFullPop security">
+			<div class="tt">
+				<h1>정보보호 보안서약</h1>
+				<button class="pclose">닫기</button>
+			</div>
+			<div class="pBack">
+				<div class="tws">
+					<table>
+						<colgroup>
+							<col width="80"/>
+							<col width="120"/>
+							<col width="80"/>
+							<col width="120"/>
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>성명</th>
+								<td>홍길동</td>
+								<th>생년월일</th>
+								<td>0000년00월00일</td>
+							</tr>
+							<tr>
+								<th>소속부서</th>
+								<td>개발팀</td>
+								<th>직급</th>
+								<td>매니저</td>
+							</tr>
+							<tr>
+								<th>주소</th>
+								<td colspan="3">[00000] 서울시 마포구 매봉산로 개인주소 표기</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="securityTerm">
+					<p>주식회사 씽크트리 (이하 "회사"이라 함)의 임직원(협력업체 포함) 홍길동 (이하 "나"로 칭함) 으로서 “회사”와 업무를 추진(거래, 계약, 출입, 상주)하면서 재직 중 또는 퇴직 이후에도 상호신뢰를 바탕으로 “회사”의 영업비밀 보호를 위해 아래의 사항을 성실히 준수할 것을 서약합니다. 이를 위배할 경우 회사소정의 규정에 의거 받는 어떠한 처분도 이의가 없음을 서약합니다.</p>
+					<ol>
+						<li>나는 회사 내 정보보호 정책 및 지침을 성실히 준수하겠습니다.</li>
+						<li>나는 업무를 수행함에 있어서 취득한 모든 정보에 대한 권리는 회사 소유임을 확약합니다.</li>
+						<li>나는 업무 수행상 알게 된 고객에 관한 일체의 정보 및 회사의 영업비밀(경영정보, 재무정보, 고객정보 등)을 회사 및 고객의 승인 없이 제 3자에게 판매, 대여, 유용 등을 하지 않겠습니다.</li>
+						<li>나는 퇴사 후에도 회사에서 습득한 회사 고유의 기술과 경영노하우를 제3자에게 유출하지 않겠습니다.</li>
+						<li>나는 고객의 정보를 수집할 때에는 업무상 필요한 정보 이외의 것을 확인하지 않으며, 본인에게 접근이 허용되지 않은 정보에 대한 접근 통제 규칙을 철저하게 준수하겠습니다.</li>
+						<li>고객의 정보 유출이나 정보보호 위반사례를 발견할 시에는 이를 지체 없이 부서장 또는 정보보호 책임자에게 보고하겠습니다.</li>
+						<li>나는 업무 프로그램, 전산기기, 시설물 등을 훼손하거나 외부로 유출하는 일이 없도록 하고, 나에게 출입이 허용되지 않은 구역에 대한 접근 통제 규칙을 철저히 준수하겠습니다.</li>
+						<li>나는 정보통신망 이용촉진 및 정보보호 등에 관한 법률에 입각하여 회사의 정보보호 지침을 준수합니다.</li>
+					</ol>
+					<p>나는 상기 사항을 숙지하여 이를 준수할 것을 동의하며 만일, 본 서약을 위반할 경우 “부정경쟁방지 및 영업비밀 보호에 관한 법률","정보통신망이용촉진 및 정보보호법" “개인정보보호법”, "형법상의 업무상 배임죄","기타 제반 관계법률"에 따라 민. 형사상의 책임을 질 것을 서약합니다.</p>
+					<div class="lineBox">
+						<p class="tL">본인은 위 사항을 명확히 읽고, 설명 받아 이해하였으며, 미 준수 시 회사의 경영에 큰 영향을 미친다는 것을 알고 본인의 진정한 의지로 서명합니다.</p>
+					</div>
+					<div class="signSet">
+						<div class="btnArea">
+							<strong>※ 크게 서명해 주세요</strong>
+							<span class="right">
+								<button class="btnSign reset">초기화</button>
+								<button class="btnSign prev">이전 휙</button>
+							</span>
+						</div>
+						<div class="signArea">
+							<strong>서명</strong>
+							<div class="cvsArea">
+								<canvas></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="btnArea tC">
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //정보보호 보안서약 -->
+	</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.btnPwChange').click(function(){
+					$('.popDim').show();
+					$('.pwChangePop').show();
+				});
+				$('.btnTerm').click(function(){
+					$('.popDim').show();
+					$('.termsPop').show();
+				});
+				$('.btnFileChk').click(function(){
+					$('.popDim').show();
+					$('.imgZoomPop').show();
+					$('.imgZoomPop button').click(function(){
+						$('.popDim').hide();
+						$('.imgZoomPop').hide();
+					});
+				});
+				$('.dataView .btnCamera').click(function(){
+					$('.popDim').show();
+					$('.imgShootPop').show();
+				});
+				$('.imgShootPop .popImgBox button').click(function(){
+					$(this).hide();
+					$('.imgShootPop .popImgBox img').show();
+				});
+				$('.imgShootPop .pclose').click(function(){
+					$('.imgShootPop').hide();
+					$('.popDim').hide();
+					$('.btnShooting').hide();
+					$('.btnShooting').next('.ddImg').show();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- panelBack -->
+			<div id="panelBack">
+				<div class="mypage">
+					<div class="panelTit">
+						<span class="left"><button class="btnBack" onclick="location.href='mypage.html'">이전</button></span>
+						<span class="profile"><span class="btnProfile">프로필</span><strong>010-1234-4567</strong></span>
+					</div>
+					<div class="panelArea">
+						<!-- 마이페이지 상세화면 -->
+						<h3>회원정보</h3>
+						<div class="panelContents">
+							<div class="dataList">
+								<ol>
+									<li class="basicCase">
+										<div class="dataBox">
+											<strong>기본정보
+												<span class="right">
+													<button class="btnS gray btnTerm">이용약관</button>
+												</span>
+											</strong>
+											<div class="dataWrite">
+												<dl>
+													<dt>성명</dt>
+													<dd>홍길동</dd>
+												</dl>
+												<dl>
+													<dt>운전면허정보</dt>
+													<dd><input type="text" value="13-11-123456-78"/></dd>
+													<dd>
+														<button class="btnFileChk mini" disabled>첨부확인</button>
+														<button class="btnCamera" onclick="location.href='masking.html'">면허증 촬영</button>
+													</dd>
+												</dl>
+												<dl>
+													<dt>화물운송 종사자격증</dt>
+													<dd><input type="text" value="13-11-123456-78"/></dd>
+													<dd>
+														<button class="btnFileChk mini">첨부확인</button>
+														<button class="btnCamera" onclick="location.href='masking.html'">자격증 촬영</button>
+													</dd>
+												</dl>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="dataBox">
+											<strong>소속 운송사</strong>
+											<div class="dataView case1">
+												<div class="mainTb">
+													<table>
+														<colgroup>
+															<col width="84"/>
+															<col width="*"/>
+														</colgroup>
+														<tbody>
+															<tr>
+																<th>상호명</th>
+																<td>컨테이너로드</td>
+															</tr>
+															<tr>
+																<th>사업자 등록번호</th>
+																<td>123-01-12345</td>
+															</tr>
+															<tr>
+																<th>차량 정보</th>
+																<td>(자차) 555호 8888
+																	<span class="cameraSet">
+																		<button class="btnFileChk mini">첨부확인</button>
+																		<button class="btnCamera">차량 촬영</button>
+																	</span>
+																</td>
+															</tr>
+															<tr>
+																<th>차량검사 유효기간</th>
+																<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+															</tr>
+															<tr>
+																<th>차량보험 갱신일자</th>
+																<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="dataBox">
+											<strong>소속 운송사</strong>
+											<div class="dataView case2">
+												<div class="mainTb">
+													<span class="tbNum">1</span>
+													<table>
+														<colgroup>
+															<col width="84"/>
+															<col width="*"/>
+														</colgroup>
+														<tbody>
+															<tr>
+																<th>상호명</th>
+																<td>컨테이너로드</td>
+															</tr>
+															<tr>
+																<th>사업자 등록번호</th>
+																<td>123-01-12345</td>
+															</tr>
+															<tr>
+																<th>차량 정보</th>
+																<td>(자차) 555호 8888
+																	<span class="cameraSet">
+																		<button class="btnFileChk mini">첨부확인</button>
+																		<button class="btnCamera">차량 촬영</button>
+																	</span>
+																</td>
+															</tr>
+															<tr>
+																<th>차량검사 유효기간</th>
+																<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+															</tr>
+															<tr>
+																<th>차량보험 갱신일자</th>
+																<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="mainTb">
+													<span class="tbNum">2</span>
+													<table>
+														<colgroup>
+															<col width="84"/>
+															<col width="*"/>
+														</colgroup>
+														<tbody>
+															<tr>
+																<th>상호명</th>
+																<td>컨테이너로드</td>
+															</tr>
+															<tr>
+																<th>사업자 등록번호</th>
+																<td>123-01-12345</td>
+															</tr>
+															<tr>
+																<th>차량 정보</th>
+																<td>(자차) 555호 8888
+																	<span class="cameraSet">
+																		<button class="btnFileChk mini">첨부확인</button>
+																		<button class="btnCamera">차량 촬영</button>
+																	</span>
+																</td>
+															</tr>
+															<tr>
+																<th>차량검사 유효기간</th>
+																<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+															</tr>
+															<tr>
+																<th>차량보험 갱신일자</th>
+																<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ol>
+							</div>
+							<div class="btnSet">
+								<button class="btnM gray" onclick="location.href='mypage.html'">취소</button>
+								<button class="btnM red">확인(변경사항 저장)</button>
+							</div>
+						</div>
+						<!-- //마이페이지 상세화면 -->
+					</div>
+				</div>
+			</div>
+			<!-- //panelBack -->
+		</div>
+		<!-- //Wrap -->
+		<!-- popup -->
+		<div class="popDim" style="display:none">
+			<!-- 이용약관 -->
+			<div class="basicPop termsPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt tC">
+					<h1>이용약관</h1>
+				</div>
+				<div class="pBack">
+					<!-- tab-wrap -->
+					<div class="cTabCase3">
+						<!-- tab -->
+						<div class="tabBack">
+							<div class="tabNav">
+								<nav>
+									<ul>
+										<li class="on"><button data-name="1">이용약관</button></li>
+										<li><button data-name="2">개인정보 수집·이용·제공 동의</button></li>
+										<li><button data-name="3">운송약관 동의</button></li>
+										<li><button data-name="4">마케팅 정보수신 동의</button></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<!--// tab -->
+						<div class="tabLayout">
+							<div class="tabData tData1"  style="display:block;">
+								<div class="termArea">
+									<div class="termHead">
+										<span class="current">[현행] 2020년 01월 02일 시행안</span>
+									</div>
+									<div class="term">
+										씽크트리<!-- 2020-10-29 텍스트 변경 --> 주식회사 (이하 “회사”)의 씽크트리<!-- 2020-10-29 텍스트 변경 --> 서비스 (이하 “서비스”)를 이용하고
+										자 하는 자는 본 이용약관의 내용을 확인하고 이에 동의해야 합니다.
+										<ul>
+											<li>제 1 장 총칙
+												<ul>
+													<li>제 1 조 - 목적
+														<p>
+															본 약관은 회사가 운영하는 서비스 (인터넷 사이트 및 모바일 어플리케이션)에서 제공하는
+															제반 서비스의 이용과 관련하여 회사와 이용자 및 이용자 간의 권리, 의무 및 책임사항,
+															기타 필요한 사항을 규정함을 목적으로 합니다.
+														</p>
+													</li>
+													<li>제 2 조 - 약관의 효력 및 변경
+														<p>
+															본 약관은 2016년 12월 01일부터 시행하고 회사는 본 이용약관의 내용을 서비스 웹사이트에 항시 게시합니다.
+															<br/><br/>회사는 사업 정책의 변경 및 서비스 환경의 변화, 관계법령의 개정 등의 사유가 발생한 경우
+															본 이용약관을 개정할 수 있습니다. 회사가 본 이용약관을 개정하는 경우에는 개정된 사항의 적용일자 및 개정사유를 명시하여 그 적용일 자 7일 이전부터 적용일자 전일까지 서비스
+															웹사이트를 통해 공지합니다. 다만, 이용자에게 불리하게 본 이용약관의 내용을 변경하는 경우에는 30일 이상의 사전 유예기간을 두고 공지합니다.
+															<br/><br/>회사가 이용약관의 개정을 공지 또는 통지하면서 이용자에게 최대 30일 기간 내에 의사표시를 하지 않으면 개정된 약관 내용에 대한 동의의 의사표시가 표명된 것으로 본다는 뜻을 명확하게 고지하였음에도 이용자가 명시적으로 거부의 의사표시를 하지 아니한 경우 회사는 이용자가 개정 이용약관에 동의한 것으로 간주합니다.
+															<br/><br/>개정 이용약관에 동의하지 않는 이용자에 대해 회사는 개정 내용을 적용할 수 없으며
+															이 경우 이용자는 이용약관을 해지할 수 있습니다. 다만, 기존 이용약관을 적용할 수 없는
+															특별한 사정이 있는 경우에는 회사는 개정 이용약관에 동의하지 않는 이용자와의 이용약관을 해지할 수 있습니다
+														</p>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="tabData tData2">
+								<div class="termArea">
+									<div class="termHead">
+										<strong>개인정보 수집·이용·제공 동의</strong>
+										<span>[현행] 2020년 01월 02일 시행안</span>
+									</div>
+									<div class="term">
+									</div>
+								</div>
+							</div>
+							<div class="tabData tData3">
+								<div class="termArea">
+									<div class="termHead">
+										<strong>운송약관 동의</strong>
+										<span>[현행] 2020년 01월 02일 시행안</span>
+									</div>
+									<div class="term">
+									</div>
+								</div>
+							</div>
+							<div class="tabData tData4">
+								<div class="termArea">
+									<div class="termHead">
+										<strong>마케팅 정보수신 동의</strong>
+										<span>[현행] 2020년 01월 02일 시행안</span>
+									</div>
+									<div class="term"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //tab-wrap -->
+				</div>
+			</div>
+			<!-- //이용약관 -->
+			<!-- 이미지 확대 -->
+			<div class="imgZoomPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<span class="popImgBox">
+					<img src="../images/sample3.png" alt="예시">
+				</span>
+			</div>
+			<!--//이미지 확대 -->
+			<!-- 이미지 촬영 -->
+			<div class="imgShootPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<span class="popImgBox">
+					<img src="../images/sample3.png" alt="예시" style="display:none;">
+					<button class="btnM gray">차량 촬영(번호판)</button>
+				</span>
+			</div>
+			<!--//이미지 촬영 -->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

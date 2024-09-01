@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/push.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.dispatchLayout table td').click(function(){
+					$('.dispatchLayout table td').removeClass('on');
+					$(this).addClass('on');
+					$('.dispatchLayout').addClass('on');
+					$('.fullSizeCase').addClass('circleCase');
+				}); //2020-07-16 메인 캘린더 날짜 선택
+				$('.calenderDetail button').click(function(){
+					$('.dispatchLayout table td').removeClass('on');
+					$('.dispatchLayout').removeClass('on');
+					$('.fullSizeCase').removeClass('circleCase');
+				});
+				$('.calGuide .calCaption').click(function(){
+					$(this).toggleClass('off');
+					if($(this).hasClass('deviation')){
+						$('.calenderArea .calCaption.deviation').toggle();
+					} else if($(this).hasClass('busiCar')){
+						$('.calenderArea .calCaption.busiCar').toggle();
+					} else if($(this).hasClass('undecided')){
+						$('.calenderArea .calCaption.undecided').toggle();
+					} else if($(this).hasClass('tHE')){
+						$('.calenderArea .calCaption.tHE').toggle();
+					} else if($(this).hasClass('partner')){
+						$('.calenderArea .calCaption.partner').toggle();
+					}
+				}); // 2020-07-16 캘린더 캡션 on/off
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back">
+						<div data-include="../include/saas_snb.html"></div>
+					</div>
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<!-- mobile Menu -->
+			<div id="headerM">
+				<div data-include="../include/saas_headM.html"></div>
+			</div>
+			<!-- //mobile Menu -->
+			<!-- mobile push -->
+			<div id="push">
+				<aside>
+					<div class="panelBack c-menu--slide-right" data-include="../push.html"></div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</aside>
+			</div>
+			<!-- //mobile push -->
+			<hr/>
+			<div id="containerBack">
+				<!-- header -->
+				<div id="header" class="changeList"><!-- 2020-06-16 class 추가 -->
+					<header>
+						 <span class="left">
+							<strong class="switchTit">자사 <strong>물량 캘린더</strong></strong>
+							<a class="btnM btnListSwitch own" href="dispatch_the.html">캘린더 전환</a><!-- 2020-06-16 위치변경 -->
+						 </span>
+						 <div class="calNavigation">
+							<button class="btnCalNavi before">이전</button>
+							<strong>2020-04</strong>
+							<button class="btnCalNavi after">다음</button>
+						</div>
+					</header>
+				</div>
+				<!-- //header -->
+				<hr/>
+				<!-- container -->
+				<div id="container">
+				<section>
+					<div class="content">
+					<article>
+						<!-- Page Layout -->
+						<div class="dispatchLayout pd2">
+							<div class="calGuide">
+								<div>
+									<strong>사내운송</strong>
+									<span class="calCaption deviation"></span> 자차
+									<span class="calCaption busiCar"></span> 지입
+									<span class="calCaption undecided"></span> 드라이버 미확정
+								</div>
+								<div class="last">
+									<strong>위탁운송</strong>
+									<span class="calCaption tHE"></span> 물류플랫폼<!-- 2020-10-29 텍스트 변경 -->
+									<span class="calCaption partner"></span> 파트너 배차
+								</div>
+							</div>
+							<div class="calenderArea">
+								<table>
+									<thead>
+										<tr>
+											<th>일</th>
+											<th>월</th>
+											<th>화</th>
+											<th>수</th>
+											<th>목</th>
+											<th>금</th>
+											<th>토</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="notThisMonth">
+												<strong class="num"><em>29</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li><span class="calCaption deviation">자차<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption busiCar">지입<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption undecided">미확정<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption tHE">tHE<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption partner">파트너<strong><i>12</i><em>건</em></strong></span></li>
+													</ul>
+												</div>
+											</td>
+											<td class="notThisMonth">
+												<strong class="num"><em>30</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li><span class="calCaption deviation">자차<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption busiCar">지입<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption undecided">미확정<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption tHE">tHE<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption partner">파트너<strong><i>12</i><em>건</em></strong></span></li>
+													</ul>
+												</div>
+											</td>
+											<td class="notThisMonth">
+												<strong class="num"><em>31</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li><span class="calCaption deviation">자차<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption busiCar">지입<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption undecided">미확정<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption tHE">tHE<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption partner">파트너<strong><i>12</i><em>건</em></strong></span></li>
+													</ul>
+												</div>
+											</td>
+											<td class="today">
+												<strong class="num"><em>1</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li><span class="calCaption deviation">자차<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption busiCar">지입<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption undecided">미확정<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption tHE">tHE<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption partner">파트너<strong><i>12</i><em>건</em></strong></span></li>
+													</ul>
+												</div>
+											</td>
+											<td>
+												<strong class="num"><em>2</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li><span class="calCaption deviation">자차<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption busiCar">지입<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption undecided">미확정<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption tHE">tHE<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption partner">파트너<strong><i>12</i><em>건</em></strong></span></li>
+													</ul>
+												</div>
+											</td>
+											<td>
+												<strong class="num"><em>3</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li><span class="calCaption deviation">자차<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption busiCar">지입<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption undecided">미확정<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption tHE">tHE<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption partner">파트너<strong><i>12</i><em>건</em></strong></span></li>
+													</ul>
+												</div>
+											</td>
+											<td>
+												<strong class="num"><em>4</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li><span class="calCaption deviation">자차<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption busiCar">지입<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption undecided">미확정<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption tHE">tHE<strong><i>999</i><em>건</em></strong></span></li>
+														<li><span class="calCaption partner">파트너<strong><i>12</i><em>건</em></strong></span></li>
+													</ul>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<strong class="num"><em>5</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li><span class="calCaption deviation">자차<strong><i>999</i><em>건</em></strong></span></li>
+														<li></li>
+														<li></li>
+														<li></li>
+														<li></li>
+													</ul>
+												</div>
+											</td>
+											<td>
+												<strong class="num"><em>6</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li></li>
+														<li><span class="calCaption busiCar">지입<strong><i>999</i><em>건</em></strong></span></li>
+														<li></li>
+														<li></li>
+														<li></li>
+													</ul>
+												</div>
+											</td>
+											<td>
+												<strong class="num"><em>7</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li></li>
+														<li></li>
+														<li><span class="calCaption undecided">미확정<strong><i>999</i><em>건</em></strong></span></li>
+														<li></li>
+														<li></li>
+													</ul>
+												</div>
+											</td>
+											<td>
+												<strong class="num"><em>8</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li></li>
+														<li></li>
+														<li></li>
+														<li><span class="calCaption tHE">tHE<strong><i>999</i><em>건</em></strong></span></li>
+														<li></li>
+													</ul>
+												</div>
+											</td>
+											<td>
+												<strong class="num"><em>9</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li></li>
+														<li></li>
+														<li></li>
+														<li></li>
+														<li><span class="calCaption partner">파트너<strong><i>12</i><em>건</em></strong></span></li>
+													</ul>
+												</div>
+											</td>
+											<td>
+												<strong class="num"><em>10</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li></li>
+														<li></li>
+														<li></li>
+														<li></li>
+														<li></li>
+													</ul>
+												</div>
+											</td>
+											<td>
+												<strong class="num"><em>11</em></strong>
+												<div class="fullSizeCase">
+													<ul>
+														<li></li>
+														<li></li>
+														<li></li>
+														<li></li>
+														<li></li>
+													</ul>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td><strong class="num"><em>12</em></strong></td>
+											<td><strong class="num"><em>13</em></strong></td>
+											<td><strong class="num"><em>14</em></strong></td>
+											<td><strong class="num"><em>15</em></strong></td>
+											<td><strong class="num"><em>16</em></strong></td>
+											<td><strong class="num"><em>17</em></strong></td>
+											<td><strong class="num"><em>18</em></strong></td>
+										</tr>
+										<tr>
+											<td><strong class="num"><em>19</em></strong></td>
+											<td><strong class="num"><em>20</em></strong></td>
+											<td><strong class="num"><em>21</em></strong></td>
+											<td><strong class="num"><em>22</em></strong></td>
+											<td><strong class="num"><em>23</em></strong></td>
+											<td><strong class="num"><em>24</em></strong></td>
+											<td><strong class="num"><em>25</em></strong></td>
+										</tr>
+										<tr>
+											<td><strong class="num"><em>26</em></strong></td>
+											<td><strong class="num"><em>27</em></strong></td>
+											<td><strong class="num"><em>28</em></strong></td>
+											<td><strong class="num"><em>29</em></strong></td>
+											<td><strong class="num"><em>30</em></strong></td>
+											<td class="notThisMonth"><strong class="num"><em>1</em></strong></td>
+											<td class="notThisMonth"><strong class="num"><em>2</em></strong></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="calenderDetail">
+								<h3>
+									2020-04-02 (목)
+									<button class="btnClose">닫기</button>
+								</h3>
+								<div class="calListArea">
+									<div class="gridSet grid2">
+										<div class="gridItem">
+											<h4>사내운송</h4>
+											<ul>
+												<li>
+													<div class="info">
+														<span class="simpleTit">
+															<div><span class="calCaption deviation">자차</span>홍길동<i>222호 2222</i></div>
+															<em>[<span class="red">수입</span> / 왕복]</em>
+															<!-- 2020-06-16 날짜삭제 -->
+														</span>
+														<div class="listMap">
+															부산항(05:00) – <strong>충북/안산(09:00)</strong> – 부산항(15:00)
+														</div>
+													</div>
+													<div class="go">
+														<a class="btnM whiteBlue" href="order_view.html">계약오더 상세보기</a>
+														<a class="btnM whiteBlue" href="trans_execution_view.html">운송실행 상세보기</a>
+													</div>
+												</li>
+												<li>
+													<div class="info">
+														<span class="simpleTit">
+															<div><span class="calCaption busiCar">지입</span>홍길동<i>222호 2222</i></div>
+															<em>[<span class="blue">수출</span> / 왕복]</em>
+															<!-- 2020-06-16 날짜삭제 -->
+														</span>
+														<div class="listMap">
+															부산항(05:00) – <strong>충북/안산(09:00)</strong> – 부산항(15:00)
+														</div>
+													</div>
+													<div class="go">
+														<a class="btnM whiteBlue" href="order_view2.html">계약오더 상세보기</a>
+														<a class="btnM whiteBlue" href="trans_execution_view.html">운송실행 상세보기</a>
+													</div>
+												</li>
+												<li>
+													<div class="info">
+														<span class="simpleTit">
+															<div><span class="calCaption undecided">드라이버 미확정</span></div>
+															<em>[<span class="red">수입</span> / 왕복]</em>
+															<!-- 2020-06-16 날짜삭제 -->
+														</span>
+														<div class="listMap">
+															부산항(05:00) – <strong>충북/안산(09:00)</strong> – 부산항(15:00)
+														</div>
+													</div>
+													<div class="go">
+														<a class="btnM whiteBlue" href="order_view2.html">계약오더 상세보기</a>
+														<a class="btnM whiteBlue" href="trans_execution_view.html">운송실행 상세보기</a>
+													</div>
+												</li>
+												<li class="none">배차 내역이 없습니다.</li> <!-- 2020-06-24 추가 -->
+											</ul>
+										</div>
+										<div class="gridItem">
+											<h4>위탁운송</h4>
+											<ul>
+												<li>
+													<div class="info">
+														<span class="simpleTit">
+															<div><span class="calCaption tHE">tHE</span>물류플랫폼<!-- 2020-10-29 텍스트 변경 --><span class="statusSet decide">배차확정</span></div>
+															<em>[<span class="red">수입</span> / 왕복]</em>
+															<span class="disCode">배차번호 200100001</span> <!-- 2020-06-16 날짜대신 교체 -->
+														</span>
+														<div class="listMap">
+															부산항(05:00) – <strong>충북/안산(09:00)</strong> – 부산항(15:00)
+														</div>
+													</div>
+													<div class="go">
+														<a class="btnM whiteBlue" href="order_view2.html">콜오더 상세보기</a>
+														<a class="btnM whiteBlue" href="trans_execution_view.html">운송실행 상세보기</a>
+													</div>
+												</li>
+												<li>
+													<div class="info">
+														<span class="simpleTit">
+															<div><span class="calCaption tHE">tHE</span>물류플랫폼<!-- 2020-10-29 텍스트 변경 --><span class="statusSet receive">오더 제출</span></div>
+															<em>[<span class="red">수입</span> / 왕복]</em>
+														</span>
+														<div class="listMap">
+															부산항(05:00) – <strong>충북/안산(09:00)</strong> – 부산항(15:00)
+														</div>
+													</div>
+													<div class="go">
+														<a class="btnM whiteBlue" href="order_view2.html">콜오더 상세보기</a>
+														<a class="btnM whiteBlue" href="trans_execution_view.html">운송실행 상세보기</a>
+													</div>
+												</li>
+												<li>
+													<div class="info">
+														<span class="simpleTit">
+															<div><span class="calCaption partner">파트너</span>㈜컨테이너맨</div>
+															<em>[<span class="blue">수출</span> / 왕복]</em>
+														</span>
+														<div class="listMap">
+															부산항(05:00) – <strong>충북/안산(09:00)</strong> – 부산항(15:00)
+														</div>
+													</div>
+													<div class="go">
+														<a class="btnM whiteBlue" href="order_view2.html">계약오더 상세보기</a>
+														<a class="btnM whiteBlue" href="trans_execution_view.html">운송실행 상세보기</a>
+													</div>
+												</li>
+												<li class="none">위탁운송 내역이 없습니다.</li> <!-- 2020-06-24 추가 -->
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- //page Layout -->
+					</article>
+					</div>
+				</section>
+				</div>
+				<!-- //container -->
+			</div>
+		</div>
+		<!-- //Wrap -->
+    </body>
+</html>

@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.basicPop button').click(function(){
+					$('.popDim').hide();
+					$(this).parents('.basicPop').hide();
+					scrollOpen();
+				}); //팝업닫기 샘플
+
+				/*********** 배차관리 관련 팝업 *************/
+				$('#driverReservBtn').click(function(){
+					$('.popDim').show();
+					$('#driverReservPop1').show();
+					scrollClose();
+				});
+				$('.dispatchLayout table td').click(function(){
+					$('.dispatchLayout').addClass('on');
+				});
+				$('.calenderDetail button').click(function(){
+					$('.dispatchLayout').removeClass('on');
+				});
+				$('.calenderArea.writeCase td').click(function(){
+					$(this).toggleClass('on');
+				}); // 배차예약 선택
+				$('.reservList .info').click(function(){
+					$('.popDim').show();
+					$('#driverReservPop2').show();
+				}); // 2020-06-16 배차예약 확인
+
+				/*********** 추천정보 관련 팝업 *************/
+				function dpVehiclePopGo() {
+					scrollOpen();
+				} //2020-07-16 수정
+				$('.dpApplyPop .designate .selectSet select').change(function(){
+					if($('.dpApplyPop .designate .selectSet select').find("option:selected").val() == 0){
+						$('.pBtn .red').attr('disabled', true);
+					} else {
+						$('.pBtn .red').attr('disabled', false);
+					}
+				}); // 드라이버&차량 지정이 미완료이면 배차신청 버튼 비활성화 처리
+				$(".rcdlist li.firstOpen").click(function(){
+					$(this).removeClass('firstOpen');
+				});
+				$('.rcdlist li:nth-child(1)').click(function(){
+					$('.popDim').show();
+					$('.dpApplyAfterPop.waitCase').show();
+					$('.dpApplyAfterPop.waitCase .listScroll .tls').hide();
+					$('.dpApplyAfterPop.waitCase .listScroll .tls.case1').show();
+					scrollClose();
+				}); // 신청 후 팝업의 대기&승인 케이스
+				$('.rcdlist li:nth-child(2)').click(function(){
+					$('.popDim').show();
+					$('.dpApplyAfterPop.waitCase').show();
+					$('.dpApplyAfterPop.waitCase .listScroll .tls').hide();
+					$('.dpApplyAfterPop.waitCase .listScroll .tls.case2').show();
+					scrollClose();
+				}); //신청 후 팝업의 승인&미승인 케이스
+				$('.rcdlist li:nth-child(3)').click(function(){
+					$('.popDim').show();
+					$('.dpApplyAfterPop.endCase').show();
+					scrollClose();
+				}); //신청 완료 팝업의 미승인 케이스
+				$('.rcdlist li:nth-child(4)').click(function(){
+					$('.popDim').show();
+					$('.recommendPop, .recommendPop .rcdCase').hide();
+					$('.recommendPop, .recommendPop .rcdCase.importCase').show();
+					scrollClose();
+					dpVehiclePopGo();
+				});
+				$('.rcdlist li:nth-child(5)').click(function(){
+					$('.popDim').show();
+					$('.recommendPop, .recommendPop .rcdCase').hide();
+					$('.recommendPop, .recommendPop .rcdCase.exportCase').show();
+					scrollClose();
+					dpVehiclePopGo();
+				});
+				$('.rcdlist li:nth-child(6)').click(function(){
+					$('.popDim').show();
+					$('.recommendPop, .recommendPop .rcdCase').hide();
+					$('.recommendPop, .recommendPop .rcdCase.transshipCase').show();
+					scrollClose();
+					dpVehiclePopGo();
+				});
+				$('.rcdlist li:nth-child(7)').click(function(){
+					$('.popDim').show();
+					$('.recommendPop, .recommendPop .rcdCase').hide();
+					$('.recommendPop, .recommendPop .rcdCase.addImportCase').show();
+					scrollClose();
+					dpVehiclePopGo();
+				});
+				$('.rcdlist li:nth-child(8)').click(function(){
+					$('.popDim').show();
+					$('.recommendPop, .recommendPop .rcdCase').hide();
+					$('.recommendPop, .recommendPop .rcdCase.addExportCase').show();
+					scrollClose();
+					dpVehiclePopGo();
+				});
+				$('.rcdlist li:nth-child(9)').click(function(){
+					$('.popDim').show();
+					$('.recommendPop, .recommendPop .rcdCase').hide();
+					$('.recommendPop, .recommendPop .rcdCase.addTransshipCase').show();
+					scrollClose();
+					dpVehiclePopGo();
+				});
+
+				/*********** 윤송실적 관련 토글 *************/
+				$('.totalBtnSet button').click(function(){
+				    $('.btnL').toggle();
+					$('.btnTrash').toggle();
+					$('.orderlist li a').attr('href', function(index, attr){
+						return attr == 'reservation_detail.html' ? null : 'reservation_detail.html' ;
+					});
+			    });
+				$('.orderlist .btnTrash').click(function(){
+				   $(this).parent('li').hide();
+			    });
+				$('.selectSet.popCase').click(function(){
+				   $('.selectSetPop').show();
+					scrollClose();
+			    });
+				$('.selectSetPop').click(function(){
+				   $(this).hide();
+					scrollOpen();
+			    });
+				$('.selectSetPop li').click(function(){
+				   $('.selectSetPop li').removeClass('on');
+				   $(this).addClass('on');
+				   var txt =  $(this).text();
+				   $('.selectSet.popCase').text(txt);
+			    });
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+            <!-- header -->
+            <div id="header">
+				<span class="left">
+					<button class="btnInfo on" onclick="location.href='reservation_detail2.html'">최신운송</button>
+				</span>
+				<h1>물류플랫폼<!-- 2020-10-29 텍스트 변경 --></h1>
+				<span class="right">
+					<button class="btnRing openPush">알림<span>2</span></button>
+					<a href="mypage.html" class="btnProfile">마이페이지 버튼</a>
+				</span>
+				<!-- tab -->
+				<div class="tabBack">
+					<div class="tabNav">
+						<nav>
+							<ul>
+								<li class="on"><button data-name="1">배차관리</button></li>
+								<li><button data-name="2">추천정보<span>3</span></button></li>
+								<li><button data-name="3">운송실적</button></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<!--// tab -->
+			</div>
+            <!-- //header -->
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- tab-wrap -->
+					<div class="tabLayout">
+						<!------------------ 배차관리 ------------------>
+						<div class="tabData tData1" style="display:block;">
+							<div class="tabTopArea">
+								<strong class="switchTit">컨테이너로드컨테이너로드</strong>
+								<div class="calNavigation">
+									<button class="btnCalNavi before">이전</button>
+									<strong>2020-04</strong>
+									<button class="btnCalNavi after">다음</button>
+								</div>
+								<button class="btnM black" id="driverReservBtn">배차예약</button>
+							</div>
+							<div class="dispatchLayout">
+								<!---->
+								<div class="calenderArea">
+									<table>
+										<thead>
+											<tr>
+												<th>일</th>
+												<th>월</th>
+												<th>화</th>
+												<th>수</th>
+												<th>목</th>
+												<th>금</th>
+												<th>토</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="notThisMonth">
+													<strong class="num"><em>29</em></strong>
+													<div class="fullSizeCase">
+														<ul>
+															<li><span class="calCaption income">수입<strong><i>999</i><em>건</em></strong></span></li>
+															<li><span class="calCaption export">수출<strong><i>999</i><em>건</em></strong></span></li>
+															<li><span class="calCaption reservation">배차예약됨<strong></strong></span></li><!-- 2020-07-02 건수가 아닌 문구로 변경-->
+														</ul>
+													</div>
+												</td>
+												<td class="notThisMonth">
+													<strong class="num"><em>30</em></strong>
+													<div class="fullSizeCase">
+														<ul>
+															<li><span class="calCaption income">수입<strong><i>999</i><em>건</em></strong></span></li>
+															<li><span class="calCaption export">수출<strong><i>999</i><em>건</em></strong></span></li>
+															<li><span class="calCaption reservation">배차예약됨<strong></strong></span></li><!-- 2020-07-02 건수가 아닌 문구로 변경-->
+														</ul>
+													</div>
+												</td>
+												<td class="notThisMonth">
+													<strong class="num"><em>31</em></strong>
+													<div class="fullSizeCase">
+														<ul>
+															<li><span class="calCaption income">수입<strong><i>999</i><em>건</em></strong></span></li>
+															<li><span class="calCaption export">수출<strong><i>999</i><em>건</em></strong></span></li>
+															<li><span class="calCaption reservation">배차예약됨<strong></strong></span></li><!-- 2020-07-02 건수가 아닌 문구로 변경-->
+														</ul>
+													</div>
+												</td>
+												<td class="today">
+													<strong class="num"><em>1</em></strong>
+													<div class="fullSizeCase">
+														<ul>
+															<li><span class="calCaption income">수입<strong><i>999</i><em>건</em></strong></span></li>
+															<li><span class="calCaption export">수출<strong><i>999</i><em>건</em></strong></span></li>
+															<li><span class="calCaption reservation">배차예약됨<strong></strong></span></li><!-- 2020-07-02 건수가 아닌 문구로 변경-->
+														</ul>
+													</div>
+												</td>
+												<td>
+													<strong class="num"><em>2</em></strong>
+													<div class="fullSizeCase">
+														<ul>
+															<li><span class="calCaption income">수입<strong><i>999</i><em>건</em></strong></span></li>
+															<li><span class="calCaption export">수출<strong><i>999</i><em>건</em></strong></span></li>
+															<li><span class="calCaption reservation">배차예약됨<strong></strong></span></li><!-- 2020-07-02 건수가 아닌 문구로 변경-->
+														</ul>
+													</div>
+												</td>
+												<td>
+													<strong class="num"><em>3</em></strong>
+													<div class="fullSizeCase">
+														<ul>
+															<li><span class="calCaption income">수입<strong><i>999</i><em>건</em></strong></span></li>
+															<li><span class="calCaption export">수출<strong><i>999</i><em>건</em></strong></span></li>
+															<li><span class="calCaption reservation">배차예약됨<strong></strong></span></li><!-- 2020-07-02 건수가 아닌 문구로 변경-->
+														</ul>
+													</div>
+												</td>
+												<td>
+													<strong class="num"><em>4</em></strong>
+													<div class="fullSizeCase">
+														<ul>
+															<li><span class="calCaption income">수입<strong><i>999</i><em>건</em></strong></span></li>
+															<li><span class="calCaption export">수출<strong><i>999</i><em>건</em></strong></span></li>
+															<li><span class="calCaption reservation">배차예약됨<strong></strong></span></li><!-- 2020-07-02 건수가 아닌 문구로 변경-->
+														</ul>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<strong class="num"><em>5</em></strong>
+													<div class="fullSizeCase">
+														<ul>
+															<li></li>
+															<li></li>
+															<li><span class="calCaption reservation">배차예약됨<strong></strong></span></li><!-- 2020-07-02 건수가 아닌 문구로 변경-->
+														</ul>
+													</div>
+												</td>
+												<td>
+													<strong class="num"><em>6</em></strong>
+													<div class="fullSizeCase">
+														<ul>
+															<li><span class="calCaption income">수입<strong><i>999</i><em>건</em></strong></span></li>
+															<li></li>
+															<li></li>
+														</ul>
+													</div>
+												</td>
+												<td>
+													<strong class="num"><em>7</em></strong>
+													<div class="fullSizeCase">
+														<ul>
+															<li></li>
+															<li><span class="calCaption export">수출<strong><i>999</i><em>건</em></strong></span></li>
+															<li></li>
+														</ul>
+													</div>
+												</td>
+												<td>
+													<strong class="num"><em>8</em></strong>
+													<div class="fullSizeCase">
+														<ul>
+															<li></li>
+															<li></li>
+															<li><span class="calCaption reservation">배차예약됨<strong></strong></span></li><!-- 2020-07-02 건수가 아닌 문구로 변경-->
+														</ul>
+													</div>
+												</td>
+												<td>
+													<strong class="num"><em>9</em></strong>
+													<div class="fullSizeCase">
+														<ul>
+															<li><span class="calCaption income">수입<strong><i>999</i><em>건</em></strong></span></li>
+															<li></li>
+															<li></li>
+														</ul>
+													</div>
+												</td>
+												<td>
+													<strong class="num"><em>10</em></strong>
+													<div class="fullSizeCase">
+														<ul>
+															<li></li>
+															<li><span class="calCaption export">수출<strong><i>999</i><em>건</em></strong></span></li>
+															<li></li>
+														</ul>
+													</div>
+												</td>
+												<td>
+													<strong class="num"><em>11</em></strong>
+													<div class="fullSizeCase">
+														<ul>
+															<li></li>
+															<li></li>
+															<li><span class="calCaption reservation">배차예약됨<strong></strong></span></li><!-- 2020-07-02 건수가 아닌 문구로 변경-->
+														</ul>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td><strong class="num"><em>12</em></strong></td>
+												<td><strong class="num"><em>13</em></strong></td>
+												<td><strong class="num"><em>14</em></strong></td>
+												<td><strong class="num"><em>15</em></strong></td>
+												<td><strong class="num"><em>16</em></strong></td>
+												<td><strong class="num"><em>17</em></strong></td>
+												<td><strong class="num"><em>18</em></strong></td>
+											</tr>
+											<tr>
+												<td><strong class="num"><em>19</em></strong></td>
+												<td><strong class="num"><em>20</em></strong></td>
+												<td><strong class="num"><em>21</em></strong></td>
+												<td><strong class="num"><em>22</em></strong></td>
+												<td><strong class="num"><em>23</em></strong></td>
+												<td><strong class="num"><em>24</em></strong></td>
+												<td><strong class="num"><em>25</em></strong></td>
+											</tr>
+											<tr>
+												<td><strong class="num"><em>26</em></strong></td>
+												<td><strong class="num"><em>27</em></strong></td>
+												<td><strong class="num"><em>28</em></strong></td>
+												<td><strong class="num"><em>29</em></strong></td>
+												<td><strong class="num"><em>30</em></strong></td>
+												<td class="notThisMonth"><strong class="num"><em>1</em></strong></td>
+												<td class="notThisMonth"><strong class="num"><em>2</em></strong></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<!---->
+								<div class="calenderDetail">
+									<h3>
+										2020-04-02 (목)
+										<button class="btnClose">닫기</button>
+									</h3>
+									<!---->
+									<div class="calListArea">
+										<h4>배차현황</h4>
+										<div class="orderlist">
+											<ul>
+												<li>
+													<div class="orderData">
+														<a href="reservation_detail2.html">
+															<div class="listDate">[<strong class="red">수입</strong> / 왕복] <span>운송실행</span></div>
+															<div class="listMap">
+																<strong>부산항(05:00) – 충북/안산(09:00)</strong> – 부산항(15:00)
+																<span>(Open Top / 40ft High Cube / 30ton)</span>
+															</div>
+															<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+															<div class="listPrice">
+																<span class="price right"><strong>560,000</strong> 원</span>
+															</div>
+														</a>
+													</div>
+												</li>
+												<li>
+													<div class="orderData">
+														<a href="reservation_detail2.html">
+															<div class="listDate">[<strong class="blue">수출</strong> / 왕복] <span>컨테이너 작업</span></div>
+															<div class="listMap">
+																부산항(05:00) – <strong>충북/안산(09:00) – 부산항(<em class="ftRed">익</em> 15:00)</strong>
+																<span>(Open Top / 40ft High Cube / 30ton)</span>
+															</div>
+															<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+															<div class="listPrice">
+																<span class="disCode">배차번호 200100001</span>
+																<span class="price right"><strong>560,000</strong> 원</span>
+															</div>
+														</a>
+													</div>
+												</li>
+												<li>
+													<div class="orderData">
+														<a href="reservation_detail2.html">
+															<div class="listDate">[<strong class="blue">수출</strong> / 왕복] <span>배차확정</span></div>
+															<div class="listMap">
+																부산항(05:00) – <strong>충북/안산(09:00) – 부산항(15:00)</strong>
+																<span>(Open Top / 40ft High Cube / 30ton)</span>
+															</div>
+															<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+															<div class="listPrice">
+																<span class="disCode">배차번호 200100001</span>
+																<span class="price right"><strong>560,000</strong> 원</span>
+															</div>
+														</a>
+													</div>
+												</li>
+												<li>
+													<div class="orderData">
+														<a href="reservation_detail2.html">
+															<div class="listDate">[<strong class="blue">수출</strong> / 편도] <span>드라이버 확정</span></div>
+															<div class="listMap">
+																부산항(05:00) – <strong>충북/안산(09:00) – 부산항(15:00)</strong>
+																<span>(Open Top / 40ft High Cube / 30ton)</span>
+															</div>
+															<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+															<div class="listPrice">
+																<span class="price right"><strong>560,000</strong> 원</span>
+															</div>
+														</a>
+													</div>
+												</li>
+											</ul>
+										</div>
+										<!---->
+										<h4>예약현황 <em>[주간] 06 ~ 22시 / [심야] 22 ~ 06시</em></h4>
+										<div class="reservList">
+											<ul>
+												<li>
+													<div class="info">
+														<div><span class="calCaption reservation"></span>주간<i>985호 6565</i></div>
+														<div class="setLoal"><span>서울/마포</span><span>서울/서대문</span><span>서울/전역</span></div>
+													</div>
+												</li>
+												<li>
+													<div class="info">
+														<div><span class="calCaption reservation"></span>주간/심야<i>985호 6565</i></div>
+														<div class="setLoal"><span>경기/의왕</span><span>경기/안산</span><span>경기/전역</span></div>
+													</div>
+												</li>
+												<li>
+													<div class="info">
+														<div><span class="calCaption reservation"></span>심야<i>985호 6565</i></div>
+														<div class="setLoal"><span>경기/의왕</span><span>경기/안산</span><span>경기/전역</span></div>
+													</div>
+												</li>
+											</ul>
+										</div>
+										<!---->
+									</div>
+								</div>
+								<!---->
+							</div>
+						</div>
+						<!------------------ //배차관리 ------------------>
+						<!------------------ 추천정보 ------------------>
+						<div class="tabData tData2">
+							<div class="searchInput">
+								<span>2019.12.01</span>
+								<div>
+									<span class="selectSet">
+										<select>
+											<option selected>오늘</option>
+											<option>최근 1주일</option>
+											<option>최근 1개월</option>
+											<option>전체</option>
+										</select>
+									</span>
+								</div>
+							</div>
+							<div class="orderlist rcdlist">
+								<div class="nullBox" style="display:none;">표시할 추천정보가 없습니다.</div><!-- 2020-08-04 표시할 정보가 없을 경우 띄움 -->
+								<ul>
+									<li class="standBy">
+										<div class="orderData">
+											<div class="listDate">[<strong class="red">수입</strong> / 왕복] 2020-01-22</div>
+											<div class="listMap">
+												<strong>부산항(05:00) – 충북/안산(09:00)</strong> – 부산항(15:00)
+												<span>(Open Top / 40ft High Cube / 30ton / 5대)</span>
+											</div>
+											<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+											<div class="listPrice">
+												<span class="disCode">오더번호 A00001</span>
+												<span class="price right"><strong>560,000</strong> 원</span>
+											</div>
+										</div>
+									</li>
+									<li class="standBy">
+										<div class="orderData">
+											<div class="listDate">[<strong class="red">수입</strong> / 왕복] 2020-01-22</div>
+											<div class="listMap">
+												<strong>부산항(05:00) – 충북/안산(09:00)</strong> – 부산항(15:00)
+												<span>(Open Top / 40ft High Cube / 30ton / 5대)</span>
+											</div>
+											<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+											<div class="listPrice">
+												<span class="disCode">오더번호 A00001</span>
+												<span class="price right"><strong>560,000</strong> 원</span>
+											</div>
+										</div>
+									</li>
+									<li class="standBy">
+										<div class="orderData">
+											<div class="listDate">[<strong class="blue">수출</strong> / 왕복] 2020-01-22</div>
+											<div class="listMap">
+												부산항(05:00) – <strong>충북/안산(09:00) – 부산항(15:00)</strong>
+												<span>(Open Top / 40ft High Cube / 30ton / 5대)</span>
+											</div>
+											<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+											<div class="listPrice">
+												<span class="disCode">오더번호 A00001</span>
+												<span class="price right"><strong>560,000</strong> 원</span>
+											</div>
+										</div>
+									</li>
+									<li class="firstOpen">
+										<div class="orderData">
+											<div class="listDate">[<strong class="red">수입</strong> / 편도] 2020-01-22</div>
+											<div class="listMap">
+												<strong>부산항(05:00) – 충북/안산(09:00)</strong> – 부산항(15:00)
+												<span>(Open Top / 40ft High Cube / 30ton / 5대)</span>
+											</div>
+											<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+											<div class="listPrice">
+												<span class="disCode">오더번호 A00001</span>
+												<span class="price right"><strong>560,000</strong> 원</span>
+											</div>
+										</div>
+									</li>
+									<li class="firstOpen">
+										<div class="orderData">
+											<div class="listDate">[<strong class="blue">수출</strong> / 편도] 2020-01-22</div>
+											<div class="listMap">
+												부산항(05:00) – <strong>충북/안산(09:00) – 부산항(15:00)</strong>
+												<span>(Open Top / 40ft High Cube / 30ton / 5대)</span>
+											</div>
+											<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+											<div class="listPrice">
+												<span class="disCode">오더번호 A00001</span>
+												<span class="price right"><strong>560,000</strong> 원</span>
+											</div>
+										</div>
+									</li>
+									<li class="firstOpen">
+										<div class="orderData">
+											<div class="listDate">[<strong class="blue">수출</strong> / 환적] 2020-01-22</div>
+											<div class="listMap">
+												<strong>부산항(05:00) – 부산항(15:00)</strong>
+												<span>(Open Top / 40ft High Cube / 30ton / 5대)</span>
+											</div>
+											<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+											<div class="listPrice">
+												<span class="disCode">오더번호 A00001</span>
+												<span class="price right"><strong>560,000</strong> 원</span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="orderData">
+											<div class="listDate">[<strong class="red">수입</strong> / 왕복] 2020-01-22</div>
+											<div class="listMap">
+												<strong>부산항(05:00) – 충북/안산(09:00)</strong> – 부산항(15:00)
+												<span>(Open Top / 40ft High Cube / 30ton / 5대)</span>
+											</div>
+											<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+											<div class="listPrice">
+												<span class="disCode">오더번호 A00001</span>
+												<span class="price right"><strong>560,000</strong> 원</span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="orderData">
+											<div class="listDate">[<strong class="blue">수출</strong> / 왕복] 2020-01-22</div>
+											<div class="listMap">
+												부산항(05:00) – <strong>충북/안산(09:00) – 부산항(15:00)</strong>
+												<span>(Open Top / 40ft High Cube / 30ton / 5대)</span>
+											</div>
+											<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+											<div class="listPrice">
+												<span class="disCode">오더번호 A00001</span>
+												<span class="price right"><strong>560,000</strong> 원</span>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="orderData">
+											<div class="listDate">[<strong class="blue">수출</strong> / 환적] 2020-01-22</div>
+											<div class="listMap">
+												<strong>부산항(05:00) – 부산항(15:00)</strong>
+												<span>(Open Top / 40ft High Cube / 30ton / 5대)</span>
+											</div>
+											<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+											<div class="listPrice">
+												<span class="disCode">오더번호 A00001</span>
+												<span class="price right"><strong>560,000</strong> 원</span>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!------------------ //추천정보 ------------------>
+						<!------------------ 운송실적 ------------------>
+						<div class="tabData tData3">
+							<div class="tabTopArea">
+								<strong class="switchTit">컨테이너로드</strong>
+								<div class="calNavigation">
+									<button class="btnCalNavi before">이전</button>
+									<strong>2020-04</strong>
+									<button class="btnCalNavi after">다음</button>
+								</div>
+								<span class="selectSet">
+									<select>
+										<option selected>운행일 순</option>
+										<option>높은 운임순</option>
+										<option>낮은 운임순</option>
+									</select>
+								</span>
+							</div>
+							<div class="totalList">
+								<span>
+									<dl>
+										<dt>운송 실행</dt>
+										<dd><span>12건</span><span>4,840,000원</span></dd>
+									</dl>
+								</span>
+								<span class="totalBtnSet">
+									<button class="btnL whiteBlue">편집</button>
+									<button class="btnL gray" style="display:none;">완료</button>
+								</span>
+							</div>
+							<div class="orderlist">
+								<ul>
+									<li>
+										<button class="btnTrash" style="display:none;">휴지통</button>
+										<div class="orderData">
+											<a href="reservation_detail2.html">
+												<div class="listDate">[<strong class="red">수입</strong> / 왕복] 2020-01-26</div>
+												<div class="listMap">
+													<strong>부산항(05:00) – 충북/안산(09:00)</strong> – 부산항(15:00)
+													<span>(Open Top / 40ft High Cube / 30ton)</span>
+												</div>
+												<div class="listPrice">
+													<span class="price right">운임 : <strong>560,000</strong> 원</span>
+												</div>
+											</a>
+										</div>
+									</li>
+									<li>
+										<button class="btnTrash" style="display:none;">휴지통</button>
+										<div class="orderData">
+											<a href="reservation_detail2.html">
+												<div class="listDate">[<strong class="blue">수출</strong> / 왕복] 2020-01-22</div>
+												<div class="listMap">
+													부산항(05:00) – <strong>충북/안산(09:00) – 부산항(<em class="ftRed">익</em> 15:00)</strong>
+													<span>(Open Top / 40ft High Cube / 30ton)</span>
+												</div>
+												<div class="listPrice">
+													<span class="price right">운임 : <strong>560,000</strong> 원</span>
+												</div>
+											</a>
+										</div>
+									</li>
+									<li>
+										<button class="btnTrash" style="display:none;">휴지통</button>
+										<div class="orderData">
+											<a href="reservation_detail2.html">
+												<div class="listDate">[<strong class="red">수입</strong> / 편도] 2020-01-22</div>
+												<div class="listMap">
+													<strong>부산항(05:00) – 충북/안산(09:00)</strong> – 부산항(15:00)
+													<span>(Open Top / 40ft High Cube / 30ton)</span>
+												</div>
+												<div class="listPrice">
+													<span class="price right">운임 : <strong>560,000</strong> 원</span>
+												</div>
+											</a>
+										</div>
+									</li>
+									<li>
+										<button class="btnTrash" style="display:none;">휴지통</button>
+										<div class="orderData">
+											<a href="reservation_detail2.html">
+												<div class="listDate">[<strong class="blue">수출</strong> / 편도] 2020-01-22</div>
+												<div class="listMap">
+													부산항(05:00) – <strong>충북/안산(09:00) – 부산항(15:00)</strong>
+													<span>(Open Top / 40ft High Cube / 30ton)</span>
+												</div>
+												<div class="listPrice">
+													<span class="price right">운임 : <strong>560,000</strong> 원</span>
+												</div>
+											</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!------------------ //운송실적 ------------------>
+					</div>
+					<!-- //tab-wrap -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<!-- 알림 -->
+			<div id="push">
+				<aside>
+					<div class="panelBack pushback c-menu--slide-right">
+						<div class="panelTit">
+							<strong>운송알림</strong>
+							<span class="right"><button class="btnClose closePush c-close">닫기</button></span>
+						</div>
+						<div class="panelArea">
+							<div data-include="push.html"></div>
+						</div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</aside>
+			</div>
+			<!-- //알림 -->
+		</div>
+		<!-- //Wrap -->
+		<!-- alertPopup -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop" id="samplePop1" style="display:none;">
+				<div class="pBack">
+					<p>alert 팝업 샘플입니다. <br/> 여러줄일 경우엔 이렇게 나오면 됩니다</p>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!-- 배정확정 alert -->
+			<div class="alertPop confirmAlertPop" id="samplePop3" style="display:none;">
+				<div class="pBack">
+					<div>
+						<strong>배차를 확정하시겠습니까?</strong>
+						<div class="alertList">
+							<ol>
+								<li><span class="txtOrange">[배차확정]</span>한 건은 운송실행 탭에서 내역을 확인하실 수 있습니다.</li>
+								<li><span class="txtOrange">[배차확정]</span>을 할 경우, 2시간 동안 배차정보를 열람하실 수 없습니다.</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM gray">취소</button>
+					<button class="btnM orange">확인</button>
+				</div>
+			</div>
+			<!-- //배정확정 alert -->
+			<!-- 배차 취소 -->
+			<div class="alertPop cancelPop" id="samplePop7" style="display:none;">
+				<div class="pBack">
+					<div>
+						<strong>배차를 취소하시겠습니까?</strong>
+						<div class="alertList">
+							<ul>
+								<li>[배차취소]할 경우, 2시간 동안 배차정보를 열람하실 수 없습니다.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM gray">취소</button>
+					<button class="btnM orange">확인</button>
+				</div>
+			</div>
+			<!-- //배차 취소 -->
+			<!-- 배차 취소2 -->
+			<div class="alertPop cancelPop" id="samplePop8" style="display:none;">
+				<div class="pBack">
+					<div>
+						<strong><span class="txtOrange">오늘 운송</span> 건입니다.<br/>배차 취소가 불가합니다.</strong>
+						<div class="alertList">
+							<ul>
+								<li>부득이하게 [배차취소]가 필요한 경우, 운영사무국에 연락해주세요. Tel. 02) 123-4566<br/><span class="txtOrange">(차후 배차 선정에 불이익이 있을 수 있습니다.)</span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM gray wFull">닫기</button>
+				</div>
+			</div>
+			<!-- //배차 취소2 -->
+			<!-- 공차예약 alert -->
+			<div class="alertPop reservationAlertPop" id="samplePop5" style="display:none;">
+				<div class="pBack">
+					<div>
+						<strong>예약하시겠습니까?</strong>
+						<div class="alertList">
+							<ol>
+								<li>예약정보에 따라서 왕복 또는 편도 배차 스케줄을 받아보실 수 있습니다.</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM gray">취소</button>
+					<button class="btnM orange">확인</button>
+				</div>
+			</div>
+			<!-- //공차예약 alert -->
+			<!-- 출발 알림 -->
+			<div class="alertPop startPop" id="samplePop10" style="display:none;">
+				<div class="pBack">
+					<div>
+						<strong><span class="txtGreen">홍길동</span> 고객님! 씽크트리와<!-- 2020-10-29 텍스트 변경 --> 함께 해주셔서 감사합니다.</strong>
+						<div class="grayBox">출발지 도착시간은 <span class="txtGreen">2020-02-01 15:00 (소요시간:5시간 05분, 505km)</span> 입니다.</div>
+						<strong>출발 하셨나요?</strong>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM gray">출발 전입니다</button>
+					<button class="btnM orange">운전 중입니다</button>
+				</div>
+			</div>
+			<!-- //출발 알림 -->
+			<!-- 최신운송 alert 팝업 -->
+			<div class="alertPop latestPop" style="display:none;">
+				<div class="pBack">
+					<div>
+						<p>1개월 이내에 예정된 배차 건이 없습니다<br/>추천 정보에서 배차를 신청해보세요!</p><!-- 2020-07-16 텍스트 변경 -->
+						<div class="alertUl">
+							<ul>
+								<li>※ 배차건이 예정되어 있는 경우 최신 운송 정보를 보여드립니다.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM gray">닫기</button>
+					<button class="btnM red">추천정보로 이동</button>
+				</div>
+			</div>
+		</div>
+			<!-- //최신운송 alert 팝업 -->
+		</div>
+		<!-- //alertPopup -->
+		<!-- popup -->
+		<div class="popDim" style="display:none">
+			<!-- 배차예약하기 -->
+			<div class="basicPop driverReservPop" id="driverReservPop1" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>배차예약 <strong>2020년 07월</strong></h1><!-- 2020-07-02 타이틀 변경 -->
+				</div>
+				<div class="pBack">
+					<!-- 달력 -->
+					<div class="calenderArea writeCase">
+						<table>
+							<thead>
+								<tr>
+									<th>일</th>
+									<th>월</th>
+									<th>화</th>
+									<th>수</th>
+									<th>목</th>
+									<th>금</th>
+									<th>토</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="on notThisMonth"><strong class="num"><em>29</em></strong></td>
+									<td class="notThisMonth"><strong class="num"><em>30</em></strong></td>
+									<td class="notThisMonth"><strong class="num"><em>31</em></strong></td>
+									<td class="on"><strong class="num"><em>1</em></strong></td><!-- 2020-07-02 이미 예약이 있을 경우, on / 날짜 선택은 choice -->
+									<td class="holiday"><strong class="num"><em>2</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td><strong class="num"><em>3</em></strong></td>
+									<td><strong class="num"><em>4</em></strong></td>
+								</tr>
+								<tr>
+									<td class="on"><strong class="num"><em>5</em></strong></td>
+									<td><strong class="num"><em>6</em></strong></td>
+									<td><strong class="num"><em>7</em></strong></td>
+									<td class="on"><strong class="num"><em>8</em></strong></td>
+									<td class="holiday"><strong class="num"><em>9</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td><strong class="num"><em>10</em></strong></td>
+									<td><strong class="num"><em>11</em></strong></td>
+								</tr>
+								<tr>
+									<td><strong class="num"><em>12</em></strong></td>
+									<td><strong class="num"><em>13</em></strong></td>
+									<td><strong class="num"><em>14</em></strong></td>
+									<td><strong class="num"><em>15</em></strong></td>
+									<td class="holiday"><strong class="num"><em>16</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td><strong class="num"><em>17</em></strong></td>
+									<td><strong class="num"><em>18</em></strong></td>
+								</tr>
+								<tr>
+									<td><strong class="num"><em>19</em></strong></td>
+									<td class="on"><strong class="num"><em>20</em></strong></td>
+									<td><strong class="num"><em>21</em></strong></td>
+									<td><strong class="num"><em>22</em></strong></td>
+									<td class="holiday"><strong class="num"><em>23</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td><strong class="num"><em>24</em></strong></td>
+									<td><strong class="num"><em>25</em></strong></td>
+								</tr>
+								<tr>
+									<td><strong class="num"><em>26</em></strong></td>
+									<td><strong class="num"><em>27</em></strong></td>
+									<td class="on"><strong class="num"><em>28</em></strong></td>
+									<td><strong class="num"><em>29</em></strong></td>
+									<td class="holiday"><strong class="num"><em>30</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td class="notThisMonth"><strong class="num"><em>1</em></strong></td>
+									<td class="on notThisMonth"><strong class="num"><em>2</em></strong></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- //달력 -->
+					<!-- 예약정보 -->
+					<div class="reservDetail">
+						<!-- 2020-08-04 예약시간 항목 위치 이동 -->
+						<!-- 2020-07-02 소속운송사/드라이버/배차차량 삭제 -->
+						<dl class="inputBox wFull">
+							<dt>희망권역 1</dt>
+							<dd>
+								<span class="selectSet dis"> <!-- 첫선택일 경우 dis -->
+									<select>
+										<option>선택해주세요</option>
+										<option>경기/인천권</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<dl class="inputBox wFull">
+							<dt>희망권역 2</dt>
+							<dd>
+								<span class="selectSet dis"> <!-- 첫선택일 경우 dis -->
+									<select>
+										<option>선택해주세요</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<dl class="inputBox wFull">
+							<dt>희망권역 3</dt>
+							<dd>
+								<span class="selectSet dis"> <!-- 첫선택일 경우 dis -->
+									<select>
+										<option>선택해주세요</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<!-- 2020-08-04 예약시간 항목 위치 이동 -->
+						<dl class="inputBox notInput wFull">
+							<dt>예약시간</dt>
+							<dd>
+								<span class="checkSet">
+									<input type="checkbox" id="chk1" />
+									<label for="chk1"><i></i>[주간] 06 ~ 22시</label>
+								</span>
+								<span class="checkSet">
+									<input type="checkbox" id="chk2" />
+									<label for="chk2"><i></i>[심야] 22 ~ 6시</label>
+								</span>
+							</dd>
+						</dl>
+						<!-- //2020-08-04 예약시간 항목 위치 이동 -->
+					</div>
+					<!-- //예약정보 -->
+				</div>
+				<!-- 2020-08-04 저장버튼, 영역 삭제 -->
+			</div>
+			<!--//배차예약하기-->
+			<!-- 예약상세 -->
+			<div class="basicPop driverReservPop" id="driverReservPop2" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>배차예약 <strong>2020년 07월</strong></h1><!-- 2020-07-02 타이틀 변경 -->
+				</div>
+				<div class="pBack">
+					<!-- 달력 -->
+					<div class="calenderArea writeCase">
+						<table>
+							<thead>
+								<tr>
+									<th>일</th>
+									<th>월</th>
+									<th>화</th>
+									<th>수</th>
+									<th>목</th>
+									<th>금</th>
+									<th>토</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="on notThisMonth"><strong class="num"><em>29</em></strong></td>
+									<td class="notThisMonth"><strong class="num"><em>30</em></strong></td>
+									<td class="notThisMonth"><strong class="num"><em>31</em></strong></td>
+									<td class="on choice"><strong class="num"><em>1</em></strong></td><!-- 2020-07-02 이미 예약이 있을 경우, on / 날짜 선택은 choice -->
+									<td class="holiday"><strong class="num"><em>2</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td><strong class="num"><em>3</em></strong></td>
+									<td><strong class="num"><em>4</em></strong></td>
+								</tr>
+								<tr>
+									<td class="on"><strong class="num"><em>5</em></strong></td>
+									<td><strong class="num"><em>6</em></strong></td>
+									<td><strong class="num"><em>7</em></strong></td>
+									<td class="on"><strong class="num"><em>8</em></strong></td>
+									<td class="holiday"><strong class="num"><em>9</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td><strong class="num"><em>10</em></strong></td>
+									<td><strong class="num"><em>11</em></strong></td>
+								</tr>
+								<tr>
+									<td><strong class="num"><em>12</em></strong></td>
+									<td><strong class="num"><em>13</em></strong></td>
+									<td><strong class="num"><em>14</em></strong></td>
+									<td><strong class="num"><em>15</em></strong></td>
+									<td class="holiday"><strong class="num"><em>16</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td><strong class="num"><em>17</em></strong></td>
+									<td><strong class="num"><em>18</em></strong></td>
+								</tr>
+								<tr>
+									<td><strong class="num"><em>19</em></strong></td>
+									<td class="on"><strong class="num"><em>20</em></strong></td>
+									<td><strong class="num"><em>21</em></strong></td>
+									<td><strong class="num"><em>22</em></strong></td>
+									<td class="holiday"><strong class="num"><em>23</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td><strong class="num"><em>24</em></strong></td>
+									<td><strong class="num"><em>25</em></strong></td>
+								</tr>
+								<tr>
+									<td><strong class="num"><em>26</em></strong></td>
+									<td><strong class="num"><em>27</em></strong></td>
+									<td class="on"><strong class="num"><em>28</em></strong></td>
+									<td><strong class="num"><em>29</em></strong></td>
+									<td class="holiday"><strong class="num"><em>30</em></strong></td><!-- 2020-07-13 고정휴일일 경우 -->
+									<td class="notThisMonth"><strong class="num"><em>1</em></strong></td>
+									<td class="on notThisMonth"><strong class="num"><em>2</em></strong></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- //달력 -->
+					<!-- 예약정보 -->
+					<div class="reservDetail">
+						<!-- 2020-08-04 예약시간 항목 위치 이동 -->
+						<!-- 2020-07-02 소속운송사/드라이버/배차차량 삭제 -->
+						<dl class="inputBox wFull">
+							<dt>희망권역 1</dt>
+							<dd>
+								<span class="selectSet">
+									<select>
+										<option>선택해주세요</option>
+										<option selected>경기/인천권</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<dl class="inputBox wFull">
+							<dt>희망권역 2</dt>
+							<dd>
+								<span class="selectSet">
+									<select>
+										<option>선택해주세요</option>
+										<option selected>충청권</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<dl class="inputBox wFull">
+							<dt>희망권역 3</dt>
+							<dd>
+								<span class="selectSet dis"> <!-- 첫선택일 경우 dis -->
+									<select>
+										<option>선택해주세요</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<!-- 2020-08-04 예약시간 항목 위치 이동 -->
+						<dl class="inputBox notInput wFull">
+							<dt>예약시간</dt>
+							<dd>
+								<span class="checkSet">
+									<input type="checkbox" id="chk3" checked />
+									<label for="chk3"><i></i>[주간] 06 ~ 22시</label>
+								</span>
+								<span class="checkSet">
+									<input type="checkbox" id="chk4" />
+									<label for="chk4"><i></i>[심야] 22 ~ 6시</label>
+								</span>
+							</dd>
+						</dl>
+						<!-- 2020-08-04 예약시간 항목 위치 이동 -->
+					</div>
+					<!-- //예약정보 -->
+				</div>
+				<!-- 2020-08-04 저장버튼, 영역 삭제 -->
+			</div>
+			<!--//예약상세-->
+			<!-- 검색필터 -->
+			<div class="basicPop filterPop" id="samplePop6" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>검색필터</h1>
+				</div>
+				<div class="pBack">
+					<div class="pds">
+						<dl>
+							<dt>예약일자</dt>
+							<dd>
+								<span class="radioChoose">
+									<label for="lb1"><input type="radio" id="lb1" name="radio1" value="오늘" /><span>오늘</span></label>
+									<label for="lb2"><input type="radio" id="lb2" name="radio1" value="10일" /><span>10일</span></label>
+									<label for="lb3"><input type="radio" id="lb3" name="radio1" value="지난달" /><span>지난달</span></label>
+									<label for="lb4"><input type="radio" id="lb4" name="radio1" value="이번달" /><span>이번달</span></label>
+								</span>
+								<span class="calDupSet">
+									<span class="calSet"><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span>
+									<em>~</em>
+									<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+								</span>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteOrange">닫기</button>
+					<button class="btnM orange">적용하기</button>
+				</div>
+			</div>
+			<!-- //검색필터 -->
+			<!-- 배차신청 차량선택 -->
+			<div class="basicPop dpVehiclePop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>차량 선택</h1>
+				</div>
+				<div class="pBack">
+					<strong>배차 신청할 차량을 선택해주세요.</strong>
+					<dl class="inputBox">
+						<dt>차량 선택</dt>
+						<dd>
+							<span class="selectSet dis">
+								<select>
+									<option>선택</option>
+									<option>(자차) 123가 4567</option>
+									<option>(자차) 223가 4567</option>
+								</select>
+							</span>
+						</dd>
+					</dl>
+					<div class="alertUl">
+						<ul>
+							<li>※ 신청한 배차 건을 물류플랫폼<!-- 2020-10-29 텍스트 변경 --> 운영자가 확정하면 해당 배차 건이 최종 확정됩니다. 배차 확정 이후에 [배차취소]할 경우, 2시간 동안 배차 추천정보를 열람할 수 없습니다.</li>
+						</ul>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM gray">신청 취소</button>
+					<button class="btnM red">배차 신청</button>
+				</div>
+			</div>
+			<!-- //배차신청 차량선택 -->
+			<!-- 배차 추천 -->
+			<div class="basicPop recommendPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>배차 추천</h1>
+				</div>
+				<div class="pBack">
+					<strong><span>홍길동</span> 고객님! 씽크트리<!-- 2020-10-29 텍스트 변경 -->에서 추천하는 최적 배차입니다.<br/>배차 확정 하시겠어요?</strong>
+					<div class="rcdCase importCase" style="display:none;">
+						<span class="simpleTit">
+							<em>[<span class="red">수입</span> / 왕복]</em>
+							<div class="disCode">오더번호 200100001</div>
+						</span>
+						<div class="tls map">
+							<table>
+								<colgroup>
+									<col width="80" />
+									<col width="20" />
+									<col width="70" />
+									<col width="90" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>운송일자</th>
+										<th>운송시간</th>
+										<th>출발/작업/도착지</th>
+										<th>운송금액(원)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+										<td rowspan="3">560,000</td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="rcdCase exportCase" style="display:none;">
+						<span class="simpleTit">
+							<em>[<span class="blue">수출</span> / 왕복]</em>
+							<div class="disCode">오더번호 200100001</div>
+						</span>
+						<div class="tls map">
+							<table>
+								<colgroup>
+									<col width="80" />
+									<col width="20" />
+									<col width="70" />
+									<col width="90" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>운송일자</th>
+										<th>운송시간</th>
+										<th>출발/작업/도착지</th>
+										<th>운송금액(원)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+										<td rowspan="3">560,000</td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="rcdCase transshipCase" style="display:none;">
+						<span class="simpleTit">
+							<em>[<span class="blue">수출</span> / 환적]</em>
+							<div class="disCode">오더번호 200100001</div>
+						</span>
+						<div class="tls map transship">
+							<table>
+								<colgroup>
+									<col width="80" />
+									<col width="20" />
+									<col width="70" />
+									<col width="90" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>운송일자</th>
+										<th>운송시간</th>
+										<th>출발/작업/도착지</th>
+										<th>운송금액(원)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+										<td rowspan="3">560,000</td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="rcdCase addImportCase" style="display:none;">
+						<span class="simpleTit">
+							<em>[<span class="red">수입</span> / 왕복]</em>
+							<div class="disCode">오더번호 200100001</div>
+						</span>
+						<div class="tls map addImport">
+							<table>
+								<colgroup>
+									<col width="90" />
+									<col width="20" />
+									<col width="70" />
+									<col width="*" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>운송일자</th>
+										<th>운송시간</th>
+										<th>출발/작업/도착지</th>
+										<th>운송금액(원)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+										<td rowspan="3">560,000<br/><span class="ftRed">(공휴 O, 야간 X)</span></td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="rcdCase addExportCase" style="display:none;">
+						<span class="simpleTit">
+							<em>[<span class="blue">수출</span> / 왕복]</em>
+							<div class="disCode">오더번호 200100001</div>
+						</span>
+						<div class="tls map addExport">
+							<table>
+								<colgroup>
+									<col width="90" />
+									<col width="20" />
+									<col width="70" />
+									<col width="*" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>운송일자</th>
+										<th>운송시간</th>
+										<th>출발/작업/도착지</th>
+										<th>운송금액(원)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+										<td rowspan="3">560,000<br/><span class="ftRed">(공휴 O, 야간 X)</span></td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="rcdCase addTransshipCase" style="display:none;">
+						<span class="simpleTit">
+							<em>[<span class="blue">수출</span> / 환적]</em>
+							<div class="disCode">오더번호 200100001</div>
+						</span>
+						<div class="tls map addTransship">
+							<table>
+								<colgroup>
+									<col width="90" />
+									<col width="20" />
+									<col width="70" />
+									<col width="*" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>운송일자</th>
+										<th>운송시간</th>
+										<th>출발/작업/도착지</th>
+										<th>운송금액(원)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+										<td rowspan="3">560,000<br/><span class="ftRed">(공휴 O, 야간 X)</span></td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="tls">
+						<table>
+							<colgroup>
+								<col width="80" />
+								<col width="80" />
+								<col width="40" />
+								<col width="50" />
+							</colgroup>
+							<thead>
+								<tr>
+									<th>컨테이너 유형</th>
+									<th>컨테이너 사이즈</th>
+									<th>총 중량</th>
+									<th>운송 대수</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Open Top</td>
+									<td>40ft High Cube</td>
+									<td>50ton</td>
+									<td>5대</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="memo">
+						<strong>품목</strong>
+						<p>
+							공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.
+							공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기,
+							빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.
+						</p>
+						<strong>운송 메모</strong>
+						<p>
+							공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.
+							공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기,
+							빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.
+						</p>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteOrange">거절</button>
+					<button class="btnM orange btnConfirm">신청하기</button>
+				</div>
+			</div>
+			<!-- //배차 추천 -->
+			<!-- 배차 신청 -->
+			<div class="basicPop dpApplyPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>배차신청</h1>
+				</div>
+				<div class="pBack">
+					<div class="orderData popCase">
+						<div class="simpleTit">
+							<em>[<span class="red">수입</span> / 왕복]</em>
+							<strong class="date">2020-01-22</strong>
+							<span class="disCode">오더번호 A00001</span>
+						</div>
+						<div class="listMap">
+							<strong>부산항(05:00) – 충북/안산(09:00)</strong> – 부산항(15:00)
+							<span>(Open Top / 40ft High Cube / 30ton / 5대)</span>
+						</div>
+						<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+						<div class="listPrice">
+							<span class="price right"><strong>560,000</strong> 원</span>
+						</div>
+					</div>
+					<div class="middleArea">
+						<dl class="inputBox">
+							<dt>배차 신청 대수</dt>
+							<dd>
+								<span class="selectSet">
+									<select>
+										<option>선택</option>
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<div class="blueUl">
+							<ul>
+								<li>※1. 지정 1번부터 우선순위로 배차가 할당됩니다.</li>
+								<li>※2. 신청한 배차가 확정되면 '운송실행' 메뉴에서 확인 가능합니다.</li>
+								<li>※3. 배차 확정 후 취소 시 추천정보 2시간 동안 열람 불가합니다.</li>
+							</ul>
+						</div>
+					</div>
+					<div class="designate">
+						<strong>드라이버/차량 지정</strong>
+						<div class="pickBox">
+							<span class="numIcon">1</span>
+							<dl class="inputBox iner">
+								<dt>드라이버 선택</dt>
+								<dd>
+									<span class="selectSet">
+										<select>
+											<option value="0" selected>선택(성명 + 연락처)</option>
+											<option>홍길동 (010-1234-5678)</option>
+											<option>홍길동 (010-1234-5678)</option>
+											<option>홍길동 (010-1234-5678)</option>
+										</select>
+									</span>
+								</dd>
+							</dl>
+							<dl class="inputBox iner">
+								<dt>차량 선택</dt>
+								<dd>
+									<span class="selectSet">
+										<select>
+											<option value="0" selected>선택</option>
+											<option>(자차) 123가 1234</option>
+										</select>
+									</span>
+								</dd>
+							</dl>
+						</div>
+						<div class="pickBox">
+							<span class="numIcon">2</span>
+							<dl class="inputBox iner">
+								<dt>드라이버 선택</dt>
+								<dd>
+									<span class="selectSet">
+										<select>
+											<option value="0" selected>선택(성명 + 연락처)</option>
+											<option>홍길동 (010-1234-5678)</option>
+											<option>홍길동 (010-1234-5678)</option>
+											<option>홍길동 (010-1234-5678)</option>
+										</select>
+									</span>
+								</dd>
+							</dl>
+							<dl class="inputBox iner">
+								<dt>차량 선택</dt>
+								<dd>
+									<span class="selectSet">
+										<select>
+											<option value="0" selected>선택</option>
+											<option>(자차) 123가 1234</option>
+										</select>
+									</span>
+								</dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM gray">신청 취소</button>
+					<button class="btnM red" disabled>배차 신청</button>
+				</div>
+			</div>
+			<!-- //배차 신청 -->
+			<!-- 배차 신청 흐 -->
+			<div class="basicPop dpApplyAfterPop waitCase" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>배차신청 내역</h1>
+				</div>
+				<div class="pBack">
+					<strong>배차 신청 내역<span class="applicant">(신청자:유관순, 2020-04-20 13:00)</span></strong>
+					<div class="listArea">
+						<div class="listTop">
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="60"/>
+										<col width="140"/>
+										<col width="140"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>상태</th>
+											<th>차량</th>
+											<th>드라이버</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
+						</div>
+						<div class="listScroll">
+							<div class="tls case1">
+								<table>
+									<colgroup>
+										<col width="60"/>
+										<col width="140"/>
+										<col width="140"/>
+									</colgroup>
+									<tbody>
+										<tr>
+											<td>대기</td>
+											<td>(자차) 123가 1234</td>
+											<td>홍길동 (010-1234-5678)</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tls case2" style="display:none;">
+								<table>
+									<colgroup>
+										<col width="60"/>
+										<col width="140"/>
+										<col width="140"/>
+									</colgroup>
+									<tbody>
+										<tr>
+											<td>승인</td>
+											<td>(자차) 123가 1234</td>
+											<td>홍길동 (010-1234-5678)</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<strong>오더정보</strong>
+					<div class="orderData popCase">
+						<div class="simpleTit">
+							<em>[<span class="red">수입</span> / 왕복]</em>
+							<strong class="date">2020-01-22</strong>
+							<span class="disCode">오더번호 A00001</span>
+						</div>
+						<div class="listMap">
+							<strong>부산항(05:00) – 충북/안산(09:00)</strong> – 부산항(15:00)
+							<span>(Open Top / 40ft High Cube / 30ton / 5대)</span>
+						</div>
+						<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+						<div class="listPrice">
+							<span class="price right"><strong>560,000</strong> 원</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //배차 신청 흐 -->
+			<!-- 배차 신청 완료 -->
+			<div class="basicPop dpApplyAfterPop endCase" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>배차신청 내역</h1>
+				</div>
+				<div class="pBack">
+					<strong>배차 신청 내역<span class="applicant">(신청자:유관순, 2020-04-20 13:00)</span></strong>
+					<div class="listArea">
+						<div class="listTop">
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="60"/>
+										<col width="140"/>
+										<col width="140"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>상태</th>
+											<th>차량</th>
+											<th>드라이버</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
+						</div>
+						<div class="listScroll">
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="60"/>
+										<col width="120"/>
+										<col width="140"/>
+									</colgroup>
+									<tbody>
+										<tr class="fail">
+											<td>미승인</td>
+											<td>(자차) 123가 1234</td>
+											<td>홍길동 (010-1234-5678)</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<strong>오더정보</strong>
+					<div class="orderData popCase">
+						<div class="simpleTit">
+							<em>[<span class="blue">수출</span> / 왕복]</em>
+							<strong class="date">2020-01-22</strong>
+							<span class="disCode">오더번호 A00001</span>
+						</div>
+						<div class="listMap">
+							부산항(05:00) – <strong>충북/안산(09:00) – 부산항(15:00)</strong>
+							<span>(Open Top / 40ft High Cube / 30ton / 5대)</span>
+						</div>
+						<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+						<div class="listPrice">
+							<span class="price right"><strong>560,000</strong> 원</span>
+						</div>
+					</div>
+				</div>
+				<!-- 2020-07-16 pBtn 영역 삭제 -->
+			</div>
+			<!-- //배차 신청 완료 -->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

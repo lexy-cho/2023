@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.btnCardChange').click(function(){
+					$('.popDim').show();
+					$('.cardChangePop').show();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back c-menu c-menu--slide-left">
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- header -->
+			<div id="header" class="mypageCase">
+				<header>
+					<span class="left">
+						<button class="btnList" onclick="location.href='mypage_m.html' ">목록</button>
+					</span>
+					 <h2>MY</h2>
+					 <span class="right">
+						<button class="btnM grayBlack" onclick="location.href='login.html'">로그아웃</button>
+					 </span>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="mypageLayout">
+						<div class="pd2">
+							<!-- 2020-06-25 오더현황 삭제 -->
+							<div class="mypageContents">
+								<div class="tabBox">
+									<nav>
+										<ul>
+											<li><a href="mypage.html">회원정보</a></li>
+											<li class="on"><a href="business_info.html">사업자 정보</a></li>
+											<li><a href="user_approval.html">사용자 승인</a></li>
+											<li><a href="notice.html" class="news tabNotice"> 푸시알림</a></li>
+											<li><a href="system_notice.html" class="news">공지사항</a></li>
+										</ul>
+									</nav>
+								</div>
+								<h3>사업자 정보</h3>
+								<div class="tabData">
+									<div class="infoWrite">
+										<ul class="infoArea">
+											<li>
+												<dl class="inputBox iner">
+													<dt>상호(법인명)<sup>필수</sup></dt>
+													<dd><input type="text" value="주식회사 활빈당"/></dd>
+												</dl>
+											</li>
+											<li>
+												<dl class="inputBox iner">
+													<dt>사업자번호<sup>필수</sup></dt>
+													<dd><input type="text" placeholder="- (하이픈)을 제외하고 숫자로 입력" value="110-81-55555"/></dd>
+												</dl>
+											</li>
+											<li>
+												<dl class="inputBox iner inputAdress">
+													<dt>사업장 주소</dt>
+													<div class="address">
+														<div><button class="btnAdress">주소검색</button><input type="text" class="inputAuto" readonly placeholder="기본 주소"/></div>
+														<input type="text" placeholder="상세 주소" class="soloInput"/>
+													</div>
+												</dl>
+											</li>
+											<li>
+												<dl class="inputBox iner">
+													<dt>업태</dt>
+													<dd><input type="tel" placeholder="업태를 입력해주세요"/></dd>
+												</dl>
+											</li>
+											<li>
+												<dl class="inputBox iner">
+													<dt>종목</dt>
+													<dd><input type="tel" placeholder="종목을 입력해주세요"/></dd>
+												</dl>
+											</li>
+											<li>
+												<div class="emailForm">
+													<dl class="inputBox iner">
+														<dt>계산서 수령<sup>필수</sup></dt>
+														<dd><input type="text" placeholder="계산서 수령 이메일 주소"/></dd>
+													</dl>
+													<div class="domain">
+														<input type="text" readonly value="@gmail.com"/>
+														<span class="selectSet">
+															<select>
+																<option selected>선택해주세요</option>
+																<option>gmail.com</option>
+																<option>직접입력</option>
+															</select>
+														</span>
+													</div>
+												</div>
+											</li>
+										</ul>
+										<!-- btn Area -->
+										<div class="btnSet">
+											<button class="btnL whiteOrange">취소</button>
+											<button class="btnL orange">확인 (변경사항 저장)</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //page Layout -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<div class="popDim" style="display:none;">
+			<!-- 주소검색 -->
+			<div class="basicPop searchPop addressPop" id="samplePop5" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>주소검색</h1>
+				</div>
+				<div class="pBack">
+					<div class="seachArea">
+						<div class="searchInput">
+							<input type="text" placeholder="도로명 + 번지로 검색"/>
+							<button class="btnSearch">조회</button>
+						</div>
+						<div class="tip">
+							<dl>
+								<dt><strong>Search tip</strong></dt>
+								<dd><span>도로명 + 건물번호</span>예) 세종대로 207,  매봉산로 37</dd>
+								<dd><span>지역명(동/리) + 번지</span>예) 역삼동 68-1,  상암동 1682</dd>
+							</dl>
+						</div>
+					</div>
+					<div class="listArea">
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="40" />
+									<col width="450" />
+									<col width="40" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>우편번호</th>
+										<th>회사명</th>
+										<th>위치</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr class="on">
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//주소검색-->
+		</div>
+    </body>
+</html>

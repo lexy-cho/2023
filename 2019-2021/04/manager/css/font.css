@@ -1,0 +1,97 @@
+@charset "utf-8";
+
+/* =================================================================================
+* INFORMATION
+* -----------------------------------------------------------------------
+* @File Name: font.css
+* @Version: 1.0
+* @Create Date: 2020-03-06
+* @Update Date: N/A
+* @History: N/A
+* ================================================================================= */
+
+/* ====================== */
+/* TT UI library */
+/* ====================== */
+/* ===== Webfont ===== */
+/* RenaultSamsungMotors case */
+@font-face {
+  font-family: "NanumSquare";
+  src: url("../font/NanumSquareR.eot"); /* IE9 Compat Modes */
+  src: url("../font/NanumSquareR.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../font/NanumSquareR.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../font/NanumSquareR.woff") format("woff"), /* Modern Browsers */
+    url("../font/NanumSquareR.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "NanumSquare";
+  src: url("../font/NanumSquareB.eot");
+  src: url("../font/NanumSquareB.eot?#iefix") format("embedded-opentype"),
+    url("../font/NanumSquareB.ttf") format("truetype"),
+    url("../font/NanumSquareB.woff") format("woff"),
+    url("../font/NanumSquareB.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "NanumSquare";
+  src: url("../font/NanumSquareL.eot");
+  src: url("../font/NanumSquareL.eot?#iefix") format("embedded-opentype"),
+    url("../font/NanumSquareL.ttf") format("truetype"),
+    url("../font/NanumSquareL.woff") format("woff"),
+    url("../font/NanumSquareL.woff2") format("woff2");
+  font-weight: lighter;
+  font-style: normal;
+}
+@font-face {
+  font-family: "NanumSquare";
+  src: url("../font/NanumSquareEB.eot");
+  src: url("../font/NanumSquareEB.eot?#iefix") format("embedded-opentype"),
+    url("../font/NanumSquareEB.ttf") format("truetype"),
+    url("../font/NanumSquareEB.woff") format("woff"),
+    url("../font/NanumSquareEB.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+    font-family: "NotoSansKR";
+    src: url("../font/notokr-regular.eot"); /* IE9 Compat Modes */
+    src: url("../font/notokr-regular.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../font/notokr-regular.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../font/notokr-regular.woff") format("woff"), /* Modern Browsers */
+    url("../font/notokr-regular.woff2") format("woff2"); /* Modern Browsers */
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "NotoSansKR";
+    src: url("../font/notokr-light.eot"); /* IE9 Compat Modes */
+    src: url("../font/notokr-light.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../font/notokr-light.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../font/notokr-light.woff") format("woff"), /* Modern Browsers */
+    url("../font/notokr-light.woff2") format("woff2"); /* Modern Browsers */
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: "NotoSansKR";
+    src: url("../font/notokr-bold.eot"); /* IE9 Compat Modes */
+    src: url("../font/notokr-bold.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../font/notokr-bold.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../font/notokr-bold.woff") format("woff"), /* Modern Browsers */
+    url("../font/notokr-bold.woff2") format("woff2"); /* Modern Browsers */
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: "NotoSansKR";
+    src: url("../font/notokr-medium.eot"); /* IE9 Compat Modes */
+    src: url("../font/notokr-medium.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../font/notokr-medium.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../font/notokr-medium.woff") format("woff"), /* Modern Browsers */
+    url("../font/notokr-medium.woff2") format("woff2"); /* Modern Browsers */
+    font-weight: bold;
+    font-style: normal;
+}

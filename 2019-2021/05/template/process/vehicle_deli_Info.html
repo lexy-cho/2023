@@ -1,0 +1,517 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){            
+            // 책임보험사 등록
+            $(".insuranceOpen").click(function(){
+				$('.dimPop, #insuranceOpen').show();
+			});
+		});
+		</script>
+	</head>
+	<body><!-- 2019-03-21 estColor class 삭제 -->
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="goPrev" onclick="history.back()">뒤로가기</button>
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<!--<a href="../main.html" class="goMain">메인으로 이동</a>-->
+						</span>
+					</div>
+					<div class="headSub">
+						<!-- <h2>1Depth title</h2> -->
+						<h2 class="sCase"><span>계출현황 &gt; </span>차량인도정보</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+                        <div class="estColor online"><!-- 2019-03-21 지류/전자 구분 html(div) 추가, 지류일 경우 online class 삭제 -->
+                            <div class="estimateDetail">                                
+                                <div class="estimateDtlbody">
+                                    <!-- 2019-03-29 수정 계약진행 일자정보 -->
+                                    <dl class="estimateDtlBox type2">
+                                        <dt class="estDtlTit">
+                                            계약진행 일자정보
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+												<!--2019-04-19 데이터 위치 변경 -->
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>계약승인일</dt>
+                                                            <dd>2010-08-31</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>배정요청일</dt>
+                                                            <dd>2010-08-31</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>배정일자</dt>
+                                                            <dd>2010-08-31</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>출고요청일자</dt>
+                                                            <dd>2010-08-31</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>출고승인일자</dt>
+                                                            <dd>2010-08-31</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>매출일자</dt>
+                                                            <dd>2010-08-31</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>취소일자</dt>
+                                                            <dd>2010-08-31</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>배송일자</dt>
+                                                            <dd>2010-08-31</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem"><!--공란--></div>
+                                                </div>
+                                                <!-- 2019-04-19 기존소스 <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>계약승인일</dt>
+                                                            <dd>2010-08-31</dd>
+                                                            <dt>출고요청일자</dt>
+                                                            <dd>2010-08-31</dd>
+                                                            <dt>취소일자</dt>
+                                                            <dd>2010-08-31</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>배정요청일</dt>
+                                                            <dd>2010-08-31</dd>
+                                                            <dt>출고승인일자</dt>
+                                                            <dd>2010-08-31</dd>
+                                                            <dt>배송일자</dt>
+                                                            <dd>2010-08-31</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>배정일자</dt>
+                                                            <dd>2010-08-31</dd>
+                                                            <dt>매출일자</dt>
+                                                            <dd>2010-08-31</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>-->
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 2019-03-29 수정 계약진행 일자정보 -->
+
+                                    <!-- 차량인도정보 -->
+                                    <dl class="estimateDtlBox type2">
+                                        <dt class="estDtlTit">
+                                            차량인도정보
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+												<!--2019-04-19 데이터 위치 변경 -->
+                                                <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>인도방법</dt>
+                                                            <!-- 019-03-29 수정 -->
+                                                            <dd class="nonBorder nonPd">
+                                                                <div class="doubleSet">
+                                                                    <span>지점</span>
+                                                                    <span>대리점</span>
+                                                                </div>
+                                                            </dd>
+                                                            <!-- // 2019-03-29 수정 -->
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>인수자</dt>
+                                                            <dd>홍길동</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+                                                <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>출고장</dt>
+                                                            <dd>부산</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>인수자와의 관계</dt>
+                                                            <dd>본인</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+                                                <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>출고예정일자</dt>
+                                                            <dd>2010-08-31</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>인수자 연락처</dt>
+                                                            <dd>010-1234-5689</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+                                                <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>본출예약일시</dt>
+                                                            <dd>2010-08-31 12:00</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>제작증 발급일자</dt>
+                                                            <dd>2010-08-31</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <div class="dotLine"></div>
+												<!---->
+                                                <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>임시번호판 신청</dt>
+                                                            <dd>
+                                                                <span class="checkSet"><input type="checkbox" id="numBar" name="numBar" checked readonly /><label for="numBar"><i></i>신청하기</label></span>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>용품사양</dt>
+                                                            <dd></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+                                                <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>책임보험사</dt>
+                                                            <dd class="iptdd">
+                                                                <div class="iptInsideBtn">
+                                                                    <input type="text" id="insurance">
+                                                                    <button class="btnBG insuranceOpen">등록</button>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>접수번호</dt>
+                                                            <dd>R20180402139</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+                                                <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>보험가입번호</dt>
+                                                            <dd>20100831</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>용품장착상태</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+                                                <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>등록방법</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>출고사은품</dt>
+                                                            <dd>선팅+먼지털이개</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <!-- 2019-04-19 기존소스 <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>인도방법</dt>
+                                                            <dd class="nonBorder nonPd">
+                                                                <div class="doubleSet">
+                                                                    <span>지점</span>
+                                                                    <span>대리점</span>
+                                                                </div>
+                                                            </dd>
+                                                            <dt>출고장</dt>
+                                                            <dd>부산</dd>
+                                                            <dt>출고예정일자</dt>
+                                                            <dd>2010-08-31</dd>
+                                                            <dt>본출예약일시</dt>
+                                                            <dd>2010-08-31 12:00</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>인수자</dt>
+                                                            <dd>홍길동</dd>
+                                                            <dt>인수자와의 관계</dt>
+                                                            <dd>본인</dd>
+                                                            <dt>인수자 연락처</dt>
+                                                            <dd>010-1234-5689</dd>
+                                                            <dt>제작증 발급일자</dt>
+                                                            <dd>2010-08-31</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <div class="dotLine"></div>
+                                                <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>임시번호판 신청</dt>
+                                                            <dd>
+                                                                <span class="checkSet"><input type="checkbox" id="numBar" name="numBar" checked readonly /><label for="numBar"><i></i>신청하기</label></span>
+                                                            </dd>
+                                                            <dt>책임보험사</dt>
+                                                            <dd class="iptdd">
+                                                                <div class="iptInsideBtn">
+                                                                    <input type="text" id="insurance">
+                                                                    <button class="btnBG insuranceOpen">등록</button>
+                                                                </div>
+                                                            </dd>
+                                                            <dt>보험가입번호</dt>
+                                                            <dd>20100831</dd>
+                                                            <dt>등록방법</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>용품사양</dt>
+                                                            <dd></dd>
+                                                            <dt>접수번호</dt>
+                                                            <dd>R20180402139</dd>
+                                                            <dt>용품장착상태</dt>
+                                                            <dd>-</dd>
+                                                            <dt>출고사은품</dt>
+                                                            <dd>선팅+먼지털이개</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>-->
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 차량인도정보 -->
+
+                                    <!-- 기타정보 -->
+                                    <dl class="estimateDtlBox type2">
+                                        <dt class="estDtlTit">
+                                            기타정보
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+												<!--2019-04-19 데이터 위치 변경 -->
+                                                <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>연장보증상품</dt>
+                                                            <dd></dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>만기일자</dt>
+                                                            <dd>2013-08-31</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+                                                <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>출고요청일자</dt>
+                                                            <dd>2010-08-31</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>제원관리번호</dt>
+                                                            <dd>R20180402139</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+                                                <div class="gridSet">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>차량등록번호</dt>
+                                                            <dd></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+                                                <div class="gridSet">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>FULL E/I Code</dt>
+                                                            <dd></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <!-- 2019-04-19 기존소스 <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>연장보증상품</dt>
+                                                            <dd></dd>
+                                                            <dt>출고요청일자</dt>
+                                                            <dd>2010-08-31</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>만기일자</dt>
+                                                            <dd>2013-08-31</dd>
+                                                            <dt>제원관리번호</dt>
+                                                            <dd>R20180402139</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <div class="gridSet">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>차량등록번호</dt>
+                                                            <dd></dd>
+                                                            <dt>FULL E/I Code</dt>
+                                                            <dd></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 기타정보 -->
+                                </div>
+                            </div>
+                        </div><!-- 2019-03-21 html(div) 추가 -->
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+        
+        <!-- DimPopUp -->
+		<div class="dimPop" style="display: none;">
+            <!-- 책임보험사 등록 -->
+            <div id="insuranceOpen" class="popSMCase iptCase" style="display: none;">
+                <div class="popCnt">
+                    <h1 class="tit">책임보험</h1>
+                    <dl class="iptGrayBox">
+                        <dt><label for="insuName">책임보험사</label></dt>
+                        <dd><input type="text" id="insuName"></dd>
+                        <dt><label for="insuNumber">책임보험번호</label></dt>
+                        <dd><input type="tel" id="insuNumber"></dd>
+                    </dl>
+                </div>
+				<div class="btn mt15">
+                    <button class="btnLB">취소</button>
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+            <!-- // 책임보험사 등록 -->
+        </div>
+        <!-- // DimPopUp -->
+	</body>
+</html>

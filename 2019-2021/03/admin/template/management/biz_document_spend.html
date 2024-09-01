@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/jstree.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/basicTree.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			$('.btnApprGo').click(function(){
+				$('.alertDim, .apprGoPop').show();
+			});
+			$('.btnReason').click(function(){
+				$('.popDim, .reasonPop').show();
+			});
+			$('.btnChkDel').click(function(){
+				confirm('선택한 정보를 삭제 하시겠습니끼?'),
+				$('.alertDim, .chkDelAlertPop').show();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>지출 결의서</h2>
+					<div class="pagePos"><span>Home</span><span>문서 관리</span><strong>지출 결의서</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="documentLayout">
+							<!---->
+							<div class="boardTop">
+								<em>전체 10,000건</em>
+								<span class="right">
+									<span class="searchBasic">
+										<span class="selectSet">
+											<select>
+												<option selected>작성일자</option>
+												<option>보고일자</option>
+												<option>대표승인일자</option>
+											</select>
+										</span>
+										<span class="calDupSet">
+											<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+											<em>~</em>
+											<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+										</span>
+										<input type="text" placeholder="적요 입력" />
+										<input type="submit" value="검색" class="btnSearch" />
+										<button class="btnReset">초기화</button>
+									</span>
+									<button class="btnM">엑셀다운로드</button>
+								</span>
+							</div>
+							<!---->
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="60"/>
+										<col width="150"/>
+										<col width="150"/>
+										<col width="300"/>
+										<col width="100"/>
+										<col width="100"/>
+										<col width="100"/>
+										<col width="150"/>
+										<col width="150"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="chkall" />
+													<label for="chkall"><i></i></label>
+												</span>
+											</th>
+											<th>작성자</th>
+											<th>부서</th>
+											<th>적용 (대표)</th>
+											<th>지출총액</th>
+											<th>작성일자</th>
+											<th>보고일자</th>
+											<th>대표승인</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<!--Loop-->
+										<tr>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="chk1" />
+													<label for="chk1"><i></i></label>
+												</span>
+											</td>
+											<td><a href="biz_document_spend_view.html">홍길동(000000)</a></td>
+											<td>경영지원팀</td>
+											<td class="tL">물품 구비</td>
+											<td>405,900</td><!-- 2020-12-08  class="tR" 삭제 -->
+											<td>2020-01-01</td>
+											<td><button class="btnS white btnApprGo">승인요청</button></td>
+											<td></td>
+											<td></td>
+										</tr>
+										<!--//Loop-->
+										<tr>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="chk1" />
+													<label for="chk1"><i></i></label>
+												</span>
+											</td>
+											<td><a href="biz_document_spend_view.html">홍길동(000000)</a></td>
+											<td>경영지원팀</td>
+											<td class="tL">물품 구비</td>
+											<td>405,900</td><!-- 2020-12-08  class="tR" 삭제 -->
+											<td>2020-01-01</td>
+											<td>2020-01-01</td>
+											<td><em class="blueTxt">승인 대기중</em></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="chk1" />
+													<label for="chk1"><i></i></label>
+												</span>
+											</td>
+											<td><a href="biz_document_spend_view.html">홍길동(000000)</a></td>
+											<td>경영지원팀</td>
+											<td class="tL">물품 구비</td>
+											<td>405,900</td><!-- 2020-12-08  class="tR" 삭제 -->
+											<td>2020-01-01</td>
+											<td>2020-01-01</td>
+											<td>
+												<em class="orangeTxt">2020-01-01</em>
+												<button class="btnS btnReason">사유</button>
+											</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="chk1" />
+													<label for="chk1"><i></i></label>
+												</span>
+											</td>
+											<td><a href="biz_document_spend_view.html">홍길동(000000)</a></td>
+											<td>경영지원팀</td>
+											<td class="tL">물품 구비</td>
+											<td>405,900</td><!-- 2020-12-08  class="tR" 삭제 -->
+											<td>2020-01-01</td>
+											<td>2020-01-01</td>
+											<td><em class="blueTxt">승인 대기중</em></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="chk1" />
+													<label for="chk1"><i></i></label>
+												</span>
+											</td>
+											<td><a href="biz_document_spend_view.html">홍길동(000000)</a></td>
+											<td>경영지원팀</td>
+											<td class="tL">물품 구비</td>
+											<td>405,900</td><!-- 2020-12-08  class="tR" 삭제 -->
+											<td>2020-01-01</td>
+											<td>2020-01-01</td>
+											<td>2020-01-01</td>
+											<td><button class="btnS white">발행</button></td>
+										</tr>
+										<tr>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="chk1" />
+													<label for="chk1"><i></i></label>
+												</span>
+											</td>
+											<td><a href="biz_document_spend_view.html">홍길동(000000)</a></td>
+											<td>경영지원팀</td>
+											<td class="tL">물품 구비</td>
+											<td>405,900</td><!-- 2020-12-08  class="tR" 삭제 -->
+											<td>2020-01-01</td>
+											<td>2020-01-01</td>
+											<td>2020-01-01</td>
+											<td>
+												<button class="btnS white">재발행</button>
+												<button class="btnS white">미리보기</button>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="chk1" />
+													<label for="chk1"><i></i></label>
+												</span>
+											</td>
+											<td><a href="biz_document_spend_view.html">홍길동(000000)</a></td>
+											<td>경영지원팀</td>
+											<td class="tL">물품 구비</td>
+											<td>405,900</td><!-- 2020-12-08  class="tR" 삭제 -->
+											<td>2020-01-01</td>
+											<td>2020-01-01</td>
+											<td>2020-01-01</td>
+											<td>
+												<button class="btnS white">재발행</button>
+												<button class="btnS white">미리보기</button>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="chk1" />
+													<label for="chk1"><i></i></label>
+												</span>
+											</td>
+											<td><a href="biz_document_spend_view.html">홍길동(000000)</a></td>
+											<td>경영지원팀</td>
+											<td class="tL">물품 구비</td>
+											<td>405,900</td><!-- 2020-12-08  class="tR" 삭제 -->
+											<td>2020-01-01</td>
+											<td>2020-01-01</td>
+											<td>2020-01-01</td>
+											<td>
+												<button class="btnS white">재발행</button>
+												<button class="btnS white">미리보기</button>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="chk1" />
+													<label for="chk1"><i></i></label>
+												</span>
+											</td>
+											<td><a href="biz_document_spend_view.html">홍길동(000000)</a></td>
+											<td>경영지원팀</td>
+											<td class="tL">물품 구비</td>
+											<td>405,900</td><!-- 2020-12-08  class="tR" 삭제 -->
+											<td>2020-01-01</td>
+											<td>2020-01-01</td>
+											<td>2020-01-01</td>
+											<td>
+												<button class="btnS white">재발행</button>
+												<button class="btnS white">미리보기</button>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="chk1" />
+													<label for="chk1"><i></i></label>
+												</span>
+											</td>
+											<td><a href="biz_document_spend_view.html">홍길동(000000)</a></td>
+											<td>경영지원팀</td>
+											<td class="tL">물품 구비</td>
+											<td>405,900</td><!-- 2020-12-08  class="tR" 삭제 -->
+											<td>2020-01-01</td>
+											<td>2020-01-01</td>
+											<td>2020-01-01</td>
+											<td>
+												<button class="btnS white">재발행</button>
+												<button class="btnS white">미리보기</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!---->
+							<div class="bpSet">
+								<div class="btnArea">
+									<span class="left">
+										<button class="btnM btnChkDel">선택 삭제</button>
+									</span>
+									<span class="right">
+										<a href="biz_document_spend_write.html" class="btnM">신규 등록</a>
+									</span>
+								</div>
+								<div class="paginate">
+									<span>
+										<a class="first">이전</a>
+											<a class="on">1</a>
+											<a>2</a>
+											<a>3</a>
+											<a>4</a>
+											<a>5</a>
+										<a class="next">다음</a>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option>10개</option>
+											<option>20개</option>
+											<option>50개</option>
+											<option>100개</option>
+										</select>
+									</span>
+								</div>
+							</div>
+							<!--//-->
+						</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- AlertPop -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop apprGoPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>해당 항목의 현재정보로 승인 요청합니다.<br/>정보확인이 끝났는지 확인바랍니다.<br/>승인요청 하시겠습니까?</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<div class="alertPop chkDelAlertPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>삭제할 항목을 선택해주세요.</p>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //AlertPop -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 반려사유 입력 -->
+			<div class="basicPop reasonPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>반려사유</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<textarea></textarea>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<!--//반려사유 입력 -->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

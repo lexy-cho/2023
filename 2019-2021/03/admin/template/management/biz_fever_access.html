@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('.alertPop button, .basicPop button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>발열체크</h2>
+					<div class="pagePos"><span>Home</span><span>경영지원</span><strong>출입관리이력</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="feverLayout">
+						<!---->
+						<div class="boardTop">
+							<span class="right">
+								<span class="radioSet2">
+									<label for="lb1"><input type="radio" id="lb1" name="radio1" value="오늘" /><span>오늘</span></label>
+									<label for="lb2"><input type="radio" id="lb2" name="radio1" value="1주일" /><span>1주일</span></label>
+									<label for="lb3"><input type="radio" id="lb3" name="radio1" value="한달" /><span>한달</span></label>
+								</span>
+								<span class="calDupSet">
+									<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									<em>~</em>
+									<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+								</span>
+								<span class="searchBasic">
+									<span class="selectSet">
+										<select>
+											<option>이름</option>
+											<option>체온</option>
+											<!-- 2020-11-23 option 변경 -->
+										</select>
+									</span>
+									<input type="text" placeholder="이름, 체온 구분" />
+									<input type="submit" value="검색" class="btnSearch" />
+									<button class="btnReset">초기화</button>
+								</span>
+								<button class="btnM">엑셀다운로드</button>
+							</span>
+						</div>
+						<!---->
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="50"/>
+									<col width="200"/>
+									<col width="180"/>
+									<col width="180"/>
+									<col width="180"/>
+								</colgroup>
+								<thead>
+									<tr>
+										<th>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkall" />
+												<label for="chkall"><i></i></label>
+											</span>
+										</th>
+										<th>체크일시</th>
+										<th>성명</th>
+										<th>체온측정(°C)</th>
+										<th>마스크 착용</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk1" />
+												<label for="chk1"><i></i></label>
+											</span>
+										</td>
+										<td>2020-00-00 09:13</td>
+										<td>홍길동</td>
+										<td>38°C</td>
+										<td>O</td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk2" />
+												<label for="chk2"><i></i></label>
+											</span>
+										</td>
+										<td>2020-00-00 09:23</td>
+										<td>나문희</td>
+										<td>36.4°C</td>
+										<td>O</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="bpSet">
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+										<a class="on">1</a>
+										<a>2</a>
+										<a>3</a>
+										<a>4</a>
+										<a>5</a>
+									<a class="next">다음</a>
+								</span>
+								<span class="selectSet">
+									<select>
+										<option>10개</option>
+										<option>20개</option>
+										<option>50개</option>
+										<option>100개</option>
+									</select>
+								</span>
+							</div>
+						</div>
+						<!--//-->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="alertDim" style="display:none;">
+			<!-- PDF 다운로드 -->
+			<div class="alertPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>PDF 생성중입니다. <br/>생성이 완료되면 다운로드 버튼이 <br/>활성화 됩니다.</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue" disabled>다운로드</button>
+				</div>
+			</div>
+			<!-- 비고 입력 -->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

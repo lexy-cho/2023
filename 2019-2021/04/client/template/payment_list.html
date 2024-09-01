@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.btnCardChange').click(function(){
+					$('.popDim').show();
+					$('.cardChangePop').show();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back c-menu c-menu--slide-left">
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- header -->
+			<div id="header" class="mypageCase">
+				<header>
+					<span class="left">
+						<button class="btnList" onclick="location.href='mypage_m.html' ">목록</button>
+					</span>
+					 <h2>MY</h2>
+					 <span class="right">
+						<button class="btnM grayBlack" onclick="location.href='login.html'">로그아웃</button>
+					 </span>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="mypageLayout">
+						<div class="pd2">
+							<!-- 2020-06-25 오더현황 삭제 -->
+							<div class="mypageContents">
+								<div class="tabBox">
+									<nav>
+										<ul>
+											<li><a href="mypage.html">회원정보</a></li>
+											<li class="on"><a href="payment_list.html">결제 내역</a></li>
+											<li><a href="bill_info.html">계산서 정보</a></li>
+											<li><a href="notice.html" class="news tabNotice">알림</a></li>
+											<li><a href="system_notice.html" class="news">시스템공지</a></li>
+										</ul>
+									</nav>
+								</div>
+								<h3>결제 내역</h3>
+								<div class="tabData">
+									<div class="paymentLayout">
+										<div class="cardInfo">
+											<div class="tt">
+												<h4>결제 카드 정보</h4>
+												<button class="btnS red btnCardChange">수정</button>
+											</div>
+											<div class="ciDetail">
+												<dl>
+													<dt>결제 카드명</dt>
+													<dd>KB국민 굿데이카드(법인)</dd>
+												</dl>
+												<dl>
+													<dt>결제 카드번호</dt>
+													<dd>1234-1234-****-1234</dd>
+												</dl>
+												<dl>
+													<dt>카드 소유주</dt>
+													<dd>㈜활빈당</dd>
+												</dl>
+												<dl>
+													<dt>등록일시</dt>
+													<dd>2019-12-25</dd>
+												</dl>
+											</div>
+										</div>
+										<div class="paymentList">
+											<div class="tt">
+												<h4>결제 내역</h4>
+												<span class="pCase">
+													<span class="calendarSet">
+														<span class="calDupSet">
+															<span class="calSet"><label for="searchDate">조회기간</label><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span>
+															<em>~</em>
+															<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+														</span>
+														<span class="radioChoose">
+															<label for="lb1"><input type="radio" id="lb1" name="radio1" value="오늘" /><span>오늘</span></label>
+															<label for="lb2"><input type="radio" id="lb2" name="radio1" value="10일" /><span>10일</span></label>
+															<label for="lb3"><input type="radio" id="lb3" name="radio1" value="지난달" /><span>지난달</span></label>
+															<label for="lb4"><input type="radio" id="lb4" name="radio1" value="이번달" /><span>이번달</span></label>
+														</span>
+													</span>
+												</span>
+												<span class="mCase">
+												(2019.12.01 ~ 2019.12.31) <button class="btnOption">옵션</button>
+												</span>
+											</div>
+											<div class="resList">
+												<ul class="thead">
+													<li>
+														<span class="num"></span>
+														<span class="date">결제 일시 (카드결제/ 계좌이체)</span>
+														<div class="ocnum">
+															<div class="listGrid">
+																<span>오더번호</span>
+																<span>컨테이너 번호</span>
+															</div>
+														</div>
+														<span class="kind">결제 수단</span>
+														<span class="ps">결제처 (예금주)</span>
+														<span class="price">이용금액</span>
+														<span class="way">결제방법</span>
+													</li>
+												</ul>
+												<ul class="tbody">
+													<!--Loop-->
+													<li>
+														<span class="num">1</span>
+														<span class="date">2019-12-31 00:00:00<em>(카드결제 : KB국민 굿데이카드(법인))</em></span>
+														<div class="ocnum">
+															<div class="listGrid">
+																<em>오더번호/컨테이너</em>
+																<span>C999999</span>
+																<span>A000001</span>
+															</div>
+														</div>
+														<span class="kind">KB국민 굿데이카드(법인)</span>
+														<span class="ps"><em>결제처</em>㈜씽크트리<!-- 2020-10-29 텍스트 변경 --></span>
+														<span class="price"><strong>999,000</strong>원</span>
+														<span class="way">일시불</span>
+													</li>
+													<!--//Loop-->
+													<li>
+														<span class="num">1</span>
+														<span class="date">2019-12-31 00:00:00<em>(카드결제 : KB국민 굿데이카드(법인))</em></span>
+														<div class="ocnum">
+															<div class="listGrid">
+																<em>오더번호/컨테이너</em>
+																<span>C999999</span>
+																<span>A000001</span>
+															</div>
+														</div>
+														<span class="kind">KB국민 굿데이카드(법인)</span>
+														<span class="ps"><em>결제처</em>㈜씽크트리<!-- 2020-10-29 텍스트 변경 --></span>
+														<span class="price"><strong>999,000</strong>원</span>
+														<span class="way">일시불</span>
+													</li>
+													<li>
+														<span class="num">1</span>
+														<span class="date">2019-12-31 00:00:00<em>(카드결제 : KB국민 굿데이카드(법인))</em></span>
+														<div class="ocnum">
+															<div class="listGrid">
+																<em>오더번호/컨테이너</em>
+																<span>C999999</span>
+																<span>A000001</span>
+															</div>
+														</div>
+														<span class="kind">KB국민 굿데이카드(법인)</span>
+														<span class="ps"><em>결제처</em>㈜씽크트리<!-- 2020-10-29 텍스트 변경 --></span>
+														<span class="price"><strong>999,000</strong>원</span>
+														<span class="way">일시불</span>
+													</li>
+													<li>
+														<span class="num">1</span>
+														<span class="date">2019-12-31 00:00:00<em>(카드결제 : KB국민 굿데이카드(법인))</em></span>
+														<div class="ocnum">
+															<div class="listGrid">
+																<em>오더번호/컨테이너</em>
+																<span>C999999</span>
+																<span>A000001</span>
+															</div>
+														</div>
+														<span class="kind">KB국민 굿데이카드(법인)</span>
+														<span class="ps"><em>결제처</em>㈜씽크트리<!-- 2020-10-29 텍스트 변경 --></span>
+														<span class="price"><strong>999,000</strong>원</span>
+														<span class="way">일시불</span>
+													</li>
+													<li>
+														<span class="num">1</span>
+														<span class="date">2019-12-31 00:00:00<em>(카드결제 : KB국민 굿데이카드(법인))</em></span>
+														<div class="ocnum">
+															<div class="listGrid">
+																<em>오더번호/컨테이너</em>
+																<span>C999999</span>
+																<span>A000001</span>
+															</div>
+														</div>
+														<span class="kind">KB국민 굿데이카드(법인)</span>
+														<span class="ps"><em>결제처</em>㈜씽크트리<!-- 2020-10-29 텍스트 변경 --></span>
+														<span class="price"><strong>999,000</strong>원</span>
+														<span class="way">일시불</span>
+													</li>
+													<li>
+														<span class="num">1</span>
+														<span class="date">2019-12-31 00:00:00<em>(카드결제 : KB국민 굿데이카드(법인))</em></span>
+														<div class="ocnum">
+															<div class="listGrid">
+																<em>오더번호/컨테이너</em>
+																<span>C999999</span>
+																<span>A000001</span>
+															</div>
+														</div>
+														<span class="kind">KB국민 굿데이카드(법인)</span>
+														<span class="ps"><em>결제처</em>㈜씽크트리<!-- 2020-10-29 텍스트 변경 --></span>
+														<span class="price"><strong>999,000</strong>원</span>
+														<span class="way">일시불</span>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //page Layout -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<div class="popDim" style="display:none;">
+			<!-- 결제정보 변경 -->
+			<div class="basicPop cardChangePop" id="samplePop3" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>결제정보 변경</h1>
+				</div>
+				<div class="pBack">
+					<div class="cardName">
+						<dl class="inputBox iner wFull">
+							<dt>카드명(닉네임)</dt>
+							<dd><input type="text" placeholder="카드관리 위한 이름(20자 이내)"/></dd>
+						</dl>
+					</div>
+					<div class="grayBox">
+						<dl class="inputBox iner wFull">
+							<dt>카드번호</dt>
+							<dd><input type="tel" placeholder="- 하이픈을 제외한 14~16자리 숫자"/></dd>
+						</dl>
+						<dl class="inputBox iner">
+							<dt>결제비밀번호<em>(앞 2자리)</em></dt>
+							<dd><input type="password" placeholder="앞 2자리"/></dd>
+							<dd class="notInput"><span></span><span></span></dd>
+						</dl>
+						<dl class="inputBox iner">
+							<dt>유효기간<em>(월/년도)</em></dt>
+							<dd><input type="tel" placeholder="MMYY"/></dd>
+						</dl>
+						<dl class="inputBox iner">
+							<dt>CSV코드<em>(카드 뒷면 3자리)</em></dt>
+							<dd><input type="tel" placeholder="3자리 숫자"/></dd>
+						</dl>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//결제정보 변경-->
+		</div>
+    </body>
+</html>

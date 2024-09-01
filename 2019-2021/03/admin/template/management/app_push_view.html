@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('#deleteBtn').click(function(){
+				$('.popDim').show();
+				$('.alertPop').show();
+			});
+			$('.pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop, .pushPreviewPop').hide();
+			});
+			/**/
+			$('.btnResend').click(function() {
+				confirm('재발송 하시겠습니까?');
+			}); // 재발송
+			$('.tls.pushView .fail').hover(function() {
+				$(this).parent().find('.reason').toggle();
+			}); // 실패 원인
+
+			$('.btnPushPreview').click(function() {
+				$('.popDim').show();
+				$('.pushPreviewPop').show();
+			}); // 푸시 미리보기
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>메세지 관리</h2>
+					<div class="pagePos"><span>Home</span><span>APP 관리</span><span>Push 관리</span><strong>메세지 관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="pushListViewLayout">
+						<div class="tws">
+							<table>
+								<colgroup>
+									<col width="100"/>
+									<col width="200"/>
+									<col width="100"/>
+									<col width="200"/>
+									<col width="100"/>
+									<col width="200"/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>서비스</th>
+										<td>Ting</td>
+										<th>카테고리</th>
+										<td colspan="3">공지사항</td>
+									</tr>
+									<tr>
+										<th>타이틀</th>
+										<td colspan="5">Push Message 제목</td>
+									</tr>
+									<tr>
+										<th>발송자</th>
+										<td>홍길동</td>
+										<th>수신자</th>
+										<td>[00명]</td>
+										<th>발송시간</th>
+										<td>YYYY-MM-DD 00:00 (예약발송)</td>
+									</tr>
+									<!-- 2020-05-06 -->
+									<tr>
+										<th rowspan="4">내용 <button class="btnS blue btnPushPreview">미리보기</button></th>
+										<td colspan="5">Push Message 내용입니다.</td>
+									</tr>
+									<tr>
+										<td colspan="5" class="pushImage viewCase">
+											오른쪽 이미지용 (비율 1:1 정사각형)<br/>
+											<div class="uploadArea">
+												<img src="../../images/img_library_thumbnail.png" />
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="5" class="pushImage viewCase hCase"> <!-- 2020-05-28 -->
+											하단 이미지용 (비율 2:1 가로 직사각형)<br/> <!-- 2020-05-22 -->
+											<div class="uploadArea">
+												<img src="../../images/img_library_thumbnail.png" />
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="5">링크 URL</td>
+									</tr>
+									<!-- //2020-05-06 -->
+								</tbody>
+							</table>
+						</div>
+						<div class="btnArea tC">
+							<button class="btnM" onclick="location.href='app_push.html'">목록</button>
+							<button class="btnM" onclick="location.href='app_push_write.html'">신규 푸시 보내기</button>
+						</div>
+						<div class="pushChkList">
+							<div class="boardTop">
+								<span class="left">
+									<strong>수신자 수 : OO명 / <span class="ftGreen">성공 OO명</span> / <span class="ftRed">실패 OO명</span></strong>
+									<button class="btnM orange" onclick="location.href='app_push_write.html'">추가 푸시 보내기</button>
+								</span>
+								<span class="right">
+									<span class="searchBasic">
+										<span class="selectSet">
+											<select>
+												<option>수신상태</option>
+												<option>발송대기</option>
+												<option>성공</option>
+												<option>실패</option>
+											</select>
+										</span>
+										<span class="calDupSet">
+											<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+											<em>~</em>
+											<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+										</span>
+										<span class="selectSet">
+											<select>
+												<option>OS종류</option>
+												<option>전체</option>
+												<option>안드로이드</option>
+												<option>IOS</option>
+											</select>
+										</span>
+										<span class="searchSet">
+											<input type="text" placeholder="search..">
+											<input type="submit" value="검색" class="btnSearch">
+										</span>
+									</span>
+								</span>
+							</div>
+							<div class="tls pushView">
+								<table>
+									<colgroup>
+										<col width="30"/>
+										<col width="60"/>
+										<col width="60"/>
+										<col width="100"/>
+										<col width="100"/>
+										<col width="100"/>
+										<col width="100"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>No</th>
+											<th>부서</th>
+											<th>사번</th>
+											<th>이름</th>
+											<th>OS 종류</th>
+											<th>기기 모델명</th>
+											<th>송신시간 및 상태</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>100</td>
+											<td>경영기획파트</td>
+											<td>123456</td>
+											<td>홍길동</td>
+											<td>iOS</td>
+											<td>iPad 4</td>
+											<td>YYYY-MM-DD 00:00</td>
+										</tr>
+										<tr>
+											<td>99</td>
+											<td>전체</td>
+											<td>123456</td>
+											<td>홍길동</td>
+											<td>Android</td>
+											<td>galaxy s7</td>
+											<td>
+												<span class="redLine">
+													<span class="fail">실패</span>
+													<button class="btnS white btnResend">재발송</button>
+													<span class="reason" style="display:none">
+														<strong>발송취소 사유</strong>
+														<span>발송오류</span>
+													</span>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<td>98</td>
+											<td>개발2파트</td>
+											<td>123456</td>
+											<td>홍길동</td>
+											<td>iOS</td>
+											<td>iPad 4</td>
+											<td>YYYY-MM-DD 00:00</td>
+										</tr>
+										<tr>
+											<td>97</td>
+											<td>개발1파트</td>
+											<td>123456</td>
+											<td>홍길동</td>
+											<td>iOS</td>
+											<td>iPad 4</td>
+											<td>YYYY-MM-DD 00:00</td>
+										</tr>
+										<tr>
+											<td>96</td>
+											<td>퍼블리싱파트</td>
+											<td>123456</td>
+											<td>홍길동</td>
+											<td>iOS</td>
+											<td>iPad 4</td>
+											<td>YYYY-MM-DD 00:00</td>
+										</tr>
+										<tr>
+											<td>95</td>
+											<td>경영지원파트</td>
+											<td>123456</td>
+											<td>홍길동</td>
+											<td>iOS</td>
+											<td>iPad 4</td>
+											<td>YYYY-MM-DD 00:00</td>
+										</tr>
+										<tr>
+											<td>94</td>
+											<td>전략기획파트</td>
+											<td>123456</td>
+											<td>홍길동</td>
+											<td>Android</td>
+											<td>galaxy s7</td>
+											<td>
+												<span class="redLine">
+													<span class="fail">실패</span>
+													<button class="btnS white btnResend">재발송</button>
+													<span class="reason" style="display:none">
+														<strong>발송취소 사유</strong>
+														<span>앱 삭제</span>
+													</span>
+												</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!---->
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+									<a class="on">1</a>
+									<a>2</a>
+									<a>3</a>
+									<a>4</a>
+									<a>5</a>
+									<a class="next">다음</a>
+								</span>
+								<span class="selectSet">
+									<select>
+										<option>10개</option>
+										<option>20개</option>
+										<option>50개</option>
+										<option>100개</option>
+									</select>
+								</span>
+							</div>
+							<!--//-->
+						</div>
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<div class="alertPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>입력한 정보가 삭제됩니다.<br/>삭제하시겠습니까?</p>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- 푸시 삽입 이미지 미리보기 -->
+			<div class="preArea img_hp msg_preview pushPreviewPop" style="display:none;">
+				<img src="../../images/btn_closeWhite.svg" alt="Close" class="pclose">
+				<div class="img_txt">
+					<div class="title">PUSH 제목가 나옵니다.PUSH 제목가 나옵니다.PUSH 제목가 나옵니다.</div>
+					<div class="push">
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+					</div>
+				</div>
+			</div>
+			<!-- //푸시 삽입 이미지 미리보기 -->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

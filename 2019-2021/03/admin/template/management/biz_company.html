@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/jstree.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/basicTree.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.compayList .tls tr td, #newCompayBtn').click(function () {
+				$('.tls tr').removeClass('on');
+				$(this).parent().addClass('on');
+				$('.compayDetail').show();
+			});
+			$('.compayDetail .btnArea *').click(function () {
+				$('.tls tr').removeClass('on');
+				$('.compayDetail').hide();
+			});
+			/* 파일업로드 */
+			$('.fileSet input[type=file]').change(function() {
+				var fileValue = $(this).val().split("\\");
+				var fileName = fileValue[fileValue.length-1];
+				$('.fileSet .loadEnd em').text(fileName);
+				$('.fileSet .fileFind').hide();
+				$('.fileSet .loadIng').show();
+				setTimeout(function() {
+					$('.fileSet .loadIng').hide();
+					$('.fileSet .loadFail').show();
+				}, 3000);
+				setTimeout(function() {
+					$('.fileSet .loadFail').hide();
+					$('.fileSet .loadEnd').show();
+				}, 6000);
+			});
+			$('.fileSet .loadEnd button').click(function() {
+				$('.fileSet .fileFind').show();
+				$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+			});
+			/* end 파일업로드 */
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>거래처 정보</h2>
+					<div class="pagePos"><span>Home</span><span>고객정보 관리</span><strong>거래처 정보</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="compayLayout">
+						<div class="compayList">
+							<!---->
+							<div class="boardTop">
+								<em>전체 10,000건</em>
+								<span class="right">
+									<span class="searchBasic">
+										<span class="selectSet">
+											<select>
+												<option selected>전체</option>
+												<option>업체명</option>
+												<option>대표자명</option>
+											</select>
+										</span>
+										<input type="text" placeholder="업체, 대표자명 입력" />
+										<input type="submit" value="검색" class="btnSearch" />
+										<button class="btnReset">초기화</button>
+									</span>
+									<button class="btnM">엑셀다운로드</button>
+								</span>
+							</div>
+							<!---->
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="70"/>
+										<col width="250"/>
+										<col />
+										<col width="140"/>
+										<col width="100"/>
+										<col width="100"/>
+										<!-- <col width="200"/> 2020-06-18 -->
+									</colgroup>
+									<thead>
+										<tr>
+											<th>No</th>
+											<th>업체명</th>
+											<th>기본주소</th>
+											<th>대표자명</th>
+											<th>대표번호</th>
+											<th>팩스번호</th>
+											<!-- <th>대표이메일</th> 2020-06-18 -->
+										</tr>
+									</thead>
+									<tbody>
+										<!--Loop-->
+										<tr>
+											<td>1000</td>
+											<td>㈜가나다라마바사아자가나다라마바사아자</td>
+											<td class="tL"><button class="btnM white entypo-location" onclick="window.open('https://map.naver.com/')">지도</button> 서울시 강남구 ~</td>
+											<td>홍길동</td>
+											<td>02-0000-0000</td>
+											<td>02-0000-0000</td>
+											<!-- <td>abcdefghijk@abcdefghijk.co.kr</td> 2020-06-18 -->
+										</tr>
+										<!--//Loop-->
+										<tr>
+											<td>9000</td>
+											<td>㈜ 가나다라마바사아자차</td>
+											<td class="tL"><button class="btnM white entypo-location" onclick="window.open('https://map.naver.com/')">지도</button> 서울시 강남구 ~</td>
+											<td>도미닉 시뇨라 외 2인</td>
+											<td>02-0000-0000</td>
+											<td>02-0000-0000</td>
+											<!-- <td>abcdefghijk@abcdefghijk.co.kr</td> 2020-06-18 -->
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!---->
+							<div class="bpSet">
+								<div class="btnArea">
+									<span class="right">
+										<button class="btnM" id="newCompayBtn">신규등록</button>
+									</span>
+								</div>
+								<div class="paginate">
+									<span>
+										<a class="first">이전</a>
+											<a class="on">1</a>
+											<a>2</a>
+											<a>3</a>
+											<a>4</a>
+											<a>5</a>
+										<a class="next">다음</a>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option>10개</option>
+											<option>20개</option>
+											<option>50개</option>
+											<option>100개</option>
+										</select>
+									</span>
+								</div>
+							</div>
+							<!--//-->
+						</div>
+						<!-- compayDetail -->
+						<div class="compayDetail" style="display:none;">
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="120">
+										<col width="320">
+										<col width="120">
+										<col width="320">
+										<col width="120">
+										<col width="320">
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>업체명 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+											<td><input type="text" /></td>
+											<th>회사구분 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+											<td>
+											<span class="selectSet">
+												<select>
+													<option>선택하세요</option>
+													<option>법인사업자</option>
+													<option>개인사업자</option>
+													<option>공공기관</option>
+													<option>기타</option>
+												</select>
+											</span>
+											</td>
+											<th>소속국가 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+											<td>
+											<span class="selectSet">
+												<select>
+													<option>선택하세요</option>
+													<option>한국</option>
+													<option>일본</option>
+													<option>중국</option>
+													<option>미국</option>
+												</select>
+											</span>
+											</td>
+										</tr>
+										<tr>
+											<th>대표번호</th>
+											<td>
+												<!-- phoneNum -->
+												<div class="phoneNum">
+													<input type="tel" />
+													<span class="txt">-</span>
+													<input type="tel" class="middleNum" />
+													<span class="txt">-</span>
+													<input type="tel" class="lastNum" />
+												</div>
+											</td>
+											<th>팩스번호</th>
+											<td>
+												<!-- phoneNum -->
+												<div class="phoneNum">
+													<input type="tel" />
+													<span class="txt">-</span>
+													<input type="tel" class="middleNum" />
+													<span class="txt">-</span>
+													<input type="tel" class="lastNum" />
+												</div>
+											</td>
+											<th>홈페이지</th>
+											<td><input type="text" /></td>
+										</tr>
+										<!-- 2020-06-18 대표이메일 삭제 -->
+										<tr>
+											<th>업체 주소 (기본) <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+											<td colspan="5">
+												<!-- address -->
+												<div class="addressForm">
+													<input type="tel" readonly />
+													<button class="btnM">우편번호 찾기</button>
+													<span class="gps">
+														<button class="btnM">GPS</button>
+														<span class="gpsInput">
+															<input type="text"/>
+															<em class="txt">,</em>
+															<input type="text"/>
+														</span>
+													</span>
+													<div>
+														<input type="text" readonly />
+														<input type="text" />
+													</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th>업체 주소 (추가)</th>
+											<td colspan="5">
+												<!-- address -->
+												<div class="addressForm">
+													<input type="tel" readonly />
+													<button class="btnM">우편번호 찾기</button>
+													<span class="gps">
+														<button class="btnM">GPS</button>
+														<span class="gpsInput">
+															<input type="text"/>
+															<em class="txt">,</em>
+															<input type="text"/>
+														</span>
+													</span>
+													<div>
+														<input type="text" readonly />
+														<input type="text" />
+													</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th>사업자 등록번호</th>
+											<td><input type="text" placeholder="&quot;-&quot; 없이 숫자만 기입" class="wAuto" /></td>
+											<th>사업자 등록증</th>
+											<td>
+												<span class="fileSet">
+													<span class="fileFind">
+														<input type="file" id="file1" />
+														<label for="file1">파일찾기</label>
+													</span> <!--파일선택:버튼만있는형식:초록색버전-->
+													<span class="loadIng" style="display:none;">업로드 중</span>
+													<strong class="loadEnd" style="display:none;">
+														<em>샘플 데이터.png</em>
+														<button>취소</button>
+													</strong>
+													<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+												</span>
+												<button class="btnM white">미리보기</button>
+											</td>
+											<th>통장 사본</th>
+											<td>
+												<span class="fileSet">
+													<span class="fileFind">
+														<input type="file" id="file1" />
+														<label for="file1">파일찾기</label>
+													</span> <!--파일선택:버튼만있는형식:초록색버전-->
+													<span class="loadIng" style="display:none;">업로드 중</span>
+													<strong class="loadEnd" style="display:none;">
+														<em>샘플 데이터.png</em>
+														<button>취소</button>
+													</strong>
+													<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+												</span>
+												<button class="btnM white">미리보기</button>
+											</td>
+										</tr>
+										<tr>
+											<th>대표자 정보</th>
+											<td colspan="5">
+												<!---->
+												<div class="tls">
+													<table>
+														<colgroup>
+															<col width="50"/>
+															<col width="200"/>
+															<col width="250"/>
+															<col />
+															<col width="50"/>
+														</colgroup>
+														<thead>
+															<tr>
+																<th>No</th>
+																<th>성명</th>
+																<th>휴대전화</th>
+																<th>이메일</th>
+																<th><button class="btnS white">추가</button></th>
+															</tr>
+														</thead>
+														<tbody>
+															<!--Loop-->
+															<tr>
+																<td>1</td>
+																<td><input type="text" /></td>
+																<td>
+																	<!-- phoneNum -->
+																	<div class="phoneNum">
+																		<span class="selectSet">
+																			<select>
+																				<option>010</option>
+																				<option>011</option>
+																				<option>017</option>
+																				<option>018</option>
+																				<option>019</option>
+																			</select>
+																		</span>
+																		<span class="txt">-</span>
+																		<input type="tel" class="middleNum" />
+																		<span class="txt">-</span>
+																		<input type="tel" class="lastNum" />
+																	</div>
+																</td>
+																<td>
+																	<!-- email -->
+																	<div class="emailForm">
+																		<input type="text" />
+																		<span class="emailDomain">
+																			<em>@</em>
+																			<span class="selectSet">
+																				<select>
+																					<option>선택해주세요</option>
+																					<option>nave.com</option>
+																					<option>gmail.com</option>
+																					<option>hanmail.net</option>
+																					<option>직접입력</option>
+																				</select>
+																			</span>
+																			<input type="text" />
+																		</span>
+																	</div>
+																</td>
+																<td><button class="btnS pink">삭제</button></td>
+															</tr>
+															<!--//Loop-->
+															<tr>
+																<td>2</td>
+																<td><input type="text" /></td>
+																<td>
+																	<!-- phoneNum -->
+																	<div class="phoneNum">
+																		<span class="selectSet">
+																			<select>
+																				<option>010</option>
+																				<option>011</option>
+																				<option>017</option>
+																				<option>018</option>
+																				<option>019</option>
+																			</select>
+																		</span>
+																		<span class="txt">-</span>
+																		<input type="tel" class="middleNum" />
+																		<span class="txt">-</span>
+																		<input type="tel" class="lastNum" />
+																	</div>
+																</td>
+																<td>
+																	<!-- email -->
+																	<div class="emailForm">
+																		<input type="text" />
+																		<span class="emailDomain">
+																			<em>@</em>
+																			<span class="selectSet">
+																				<select>
+																					<option>선택해주세요</option>
+																					<option>nave.com</option>
+																					<option>gmail.com</option>
+																					<option>hanmail.net</option>
+																					<option>직접입력</option>
+																				</select>
+																			</span>
+																			<input type="text" />
+																		</span>
+																	</div>
+																</td>
+																<td><button class="btnS pink">삭제</button></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<!--//-->
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btnArea tC">
+								<button class="btnM">저장</button>
+								<button class="btnM">삭제</button>
+							</div>
+						</div>
+						<!-- //compayDetail -->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+    </body>
+</html>

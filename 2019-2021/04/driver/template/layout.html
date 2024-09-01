@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+	</head>
+	<body>
+		<!--
+			- aside 고정영역 -
+			//알림 : 상단1단 : 높이 1
+		-->
+		<!-- Wrap -->
+		<div id="wrap">
+            <!-- header -->
+            <div id="header">
+				씽크트리<!-- 2020-10-29 텍스트 변경 -->
+				<button class="openPush">알림 버튼</button>
+			</div>
+            <!-- //header -->
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="sampleLayer">
+						<div class="scrollTopArea">스크롤시 고정</div>
+						<div style="height:200rem;">데이터샘플</div>
+						<button class="openDetail">상세화면 버튼</button>
+					</div>
+					<!-- //Page Layout -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<!-- 알림 -->
+			<div id="push">
+				<aside>
+					<div class="panelBack pushback c-menu--slide-right">
+						<div class="panelTit">
+							상단부분
+							<button class="closePush c-close">닫기</button>
+						</div>
+						<div class="panelArea">
+							데이터샘플
+							<div style="height:400rem;">데이터샘플</div>
+							<!-- <div data-include="include/snb.html"></div> -->
+							<button class="openDetail">상세화면 버튼</button>
+						</div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</aside>
+			</div>
+			<!-- //알림 -->
+		</div>
+		<!-- //Wrap -->
+    </body>
+</html>

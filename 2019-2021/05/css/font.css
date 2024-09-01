@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+/* =================================================================================
+* INFORMATION
+* -----------------------------------------------------------------------
+* @File Name: font.css
+* @Version: 1.0
+* @Create Date: 2018-05-14
+* @Update Date: N/A
+* @History: N/A
+* ================================================================================= */
+
+/* ====================== */
+/* TT UI library */
+/* ====================== */
+/* ===== Webfont ===== */
+
+/* RenaultSamsungMotors case */
+@font-face {
+  font-family: "RenaultSamsungMotors";
+  src: url("../fonts/RenaultSamsungMotorsBold.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/RenaultSamsungMotorsBold.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/RenaultSamsungMotorsBold.svg") format("svg"), /* Legacy iOS */
+    url("../fonts/RenaultSamsungMotorsBold.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/RenaultSamsungMotorsBold.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/RenaultSamsungMotorsBold.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "RenaultSamsungMotors";
+  src: url("../fonts/RenaultSamsungMotorsLight.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/RenaultSamsungMotorsLight.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/RenaultSamsungMotorsLight.svg") format("svg"), /* Legacy iOS */
+    url("../fonts/RenaultSamsungMotorsLight.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/RenaultSamsungMotorsLight.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/RenaultSamsungMotorsLight.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: lighter;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "RenaultSamsungMotors";
+  src: url("../fonts/RenaultSamsungMotorsRegular.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/RenaultSamsungMotorsRegular.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/RenaultSamsungMotorsRegular.svg") format("svg"), /* Legacy iOS */
+    url("../fonts/RenaultSamsungMotorsRegular.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/RenaultSamsungMotorsRegular.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/RenaultSamsungMotorsRegular.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}

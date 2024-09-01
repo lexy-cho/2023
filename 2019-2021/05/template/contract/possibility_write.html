@@ -1,0 +1,587 @@
+<!-- <!DOCTYPE html> -->
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<!-- <script type="text/javascript" src="js/jquery-ui.min.js"></script> -->
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$(".agreeBox dt button").click(function () {
+				if ($(this).hasClass("ok") == true){
+					$(this).parents("dt").next("dd").toggle();
+				} else {
+					$(this).parents("dt").next("dd").show();
+					$(this).hide();
+					$(this).next("button.ok").show();
+				}
+			});
+			
+			$(".adAddr").click(function() {
+				$(".dimPop , #openPop7").show();
+			});
+			// 2019-04-24 주소Tab 적용
+			$(".newABtn").click(function () {
+				$(".newAdd").show();
+				$(".oldAdd").hide();
+			});
+			$(".oldABtn").click(function () {
+				$(".newAdd").hide();
+				$(".oldAdd").show();
+			});
+			// end 2019-04-24 주소Tab 적용
+			
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		
+		
+		<!--주소 팝업 start-->
+		<div class="dimPop" style="display:none">
+			<div class="popLGCase zipPop" id="openPop7" style="display:none">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>우편번호 찾기</h1>
+				</div>
+				<div class="popBack">
+					<div class="popScrollArea">
+						<div class="popTab">
+							<span class="newABtn on">도로 명</span>
+							<span class="oldABtn">지번주소</span><!--2019-04-24 지번용 버튼명 변경 --><!--2019-04-24 지번용 버튼명 변경 -->
+						</div>
+						<div class="newAdd"><!--2019-04-24 도로명용 div 추가 -->
+							<div class="inputInfo">
+								<dl>
+									<dt>새주소(도로명 주소) 찾기</dt>
+									<dd>
+										도로명과 건물번호를 입력 후 검색하세요.<br/>
+										예) 찾고자 하는 주소 : 강원 강릉시 임영로 197
+											<span>도로명+건물번호 → ‘임영로 197’로 검색</span>
+									</dd>
+								</dl>
+								<p>도로명과 주소가 검색되지 않는 경우는 행정안전부 새주소 안내시스템 (http://www.juso.go.kr)에서 확인하시기 바랍니다.</p>
+							</div>
+							<div class="popSearch">
+								<div>
+									<dl>
+										<dt>시 도</dt>
+										<dd>
+											<span class="selectSet w15">
+												<select>
+													<option>선택</option>
+													<option>서울시</option>
+												</select>
+											</span> <!-- 2019-04-17 select 스크립트 삭제 -->
+										</dd>
+									</dl>
+									<dl>
+										<dt>시군구</dt>
+										<dd>
+											<span class="selectSet w15">
+												<select>
+													<option>선택</option>
+													<option>마포구</option>
+												</select>
+											</span> <!-- 2019-04-17 select 스크립트 삭제 -->
+										</dd>
+									</dl>
+									<span class="inputArea">
+										<dl>
+											<dt>도로명</dt>
+											<dd><input type="text" /></dd>
+										</dl>
+										<dl>
+											<dt>건물명</dt>
+											<dd><input type="text" /></dd>
+										</dl>
+									</span>
+									<button class="btnBY">조회</button>
+								</div>
+							</div>
+						</div><!--//2019-04-24 도로명용 div 추가 -->
+						<!--2019-04-24 지번용 추가 -->
+						<div class="oldAdd" style="display:none;">
+							<div class="inputInfo">
+								<dl>
+									<dt>지번주소로 도로명주소 찾기</dt>
+									<dd>지번주소를 차례대로 고르세요<br/>지번 주소에 해당하는 도로명 주소를 표시해줍니다</dd>
+								</dl>
+							</div>
+							<div class="popSearch">
+								<div>
+									<dl>
+										<dt>시 도</dt>
+										<dd>
+											<span class="selectSet w15">
+												<select>
+													<option>선택</option>
+													<option>서울시</option>
+												</select>
+											</span>
+										</dd>
+									</dl>
+									<dl>
+										<dt>시군구</dt>
+										<dd>
+											<span class="selectSet w15">
+												<select>
+													<option>선택</option>
+													<option>마포구</option>
+												</select>
+											</span>
+										</dd>
+									</dl>
+									<span class="inputArea">
+										<dl>
+											<dt>동면읍</dt>
+											<dd>
+												<span class="selectSet w15">
+													<select>
+														<option>선택</option>
+														<option>마포구</option>
+													</select>
+												</span>
+											</dd>
+										</dl>
+										<dl>
+											<dt>번지입력</dt>
+											<dd class="last">
+												<input type="text" /><em>-</em>
+												<input type="text" />
+											</dd>
+										</dl>
+									</span>
+									<button class="btnBY">조회</button>
+								</div>
+							</div>
+						</div>
+						<!--//2019-04-24 지번용 추가 -->
+						<div class="poplist">
+							<table>
+								<tbody>
+									<!-- Loop -->
+									<tr>
+										<th><strong>13480</strong></th>
+										<td class="tEllipsis">
+											<div><span>도로명</span><p>경기 성남시 분당구 서판교로 32</p></div><!--2019-05-06 주소영역 p 추가 -->
+											<div><span>지번</span><p>경기 성남시 분당구 판교동 577-3</p></div>
+										</td>
+									</tr>
+									<!-- //Loop -->
+									<tr class="on">
+										<th><strong>13480</strong></th>
+										<td class="tEllipsis">
+											<div><span>도로명</span><p>경기 성남시 분당구 서판교로 32</p></div><!--2019-05-06 주소영역 p 추가 -->
+											<div><span>지번</span><p>경기 성남시 분당구 판교동 577-3</p></div>
+										</td>
+									</tr>
+									<tr>
+										<th><strong>13480</strong></th>
+										<td class="tEllipsis">
+											<div><span>도로명</span><p>경기 성남시 분당구 서판교로 32</p></div><!--2019-05-06 주소영역 p 추가 -->
+											<div><span>지번</span><p>경기 성남시 분당구 판교동 577-3</p></div>
+										</td>
+									</tr>
+									<tr>
+										<th><strong>13480</strong></th>
+										<td class="tEllipsis">
+											<div><span>도로명</span><p>경기 성남시 분당구 서판교로 32</p></div><!--2019-05-06 주소영역 p 추가 -->
+											<div><span>지번</span><p>경기 성남시 분당구 판교동 577-3</p></div>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" class="listNone">
+											<span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--주소 팝업 start-->		
+		
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 서브 생략 -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<!-- <button class="gnbOpen">GNB 열기</button> -->
+							<button class="goPrev" onclick="history.back()">뒤로가기</button> 
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="../main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2>가망고객</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<!-- contractLayout -->
+						<div class="contractLayout possibility">
+							<!-- tab-wrap -->
+							<div class="cTab">
+								<nav>
+									<ul>
+										<li class="on"><button data-name="0">신청서작성</button></li>
+										<li><a href="">미리보기</a></li>
+									</ul>
+								</nav>
+							</div>
+							<div class="cTabCon">
+								<div class="possiBtn">
+									<a href="possibility_end.html" class="btnBY">BEST 저장</a>
+									<a href="possibility.html" class="btnBG">고객정보 입력취소</a>
+								</div>
+								<p class="agreeTxt">
+									&lt;르노삼성자동차는 고객님의 개인정보를 소중하고 안전하게 관리하고 있습니다.&gt;<br>
+									르노삼성자동차㈜가 신차판매를 위해 취득하는 고객님의 개인정보는「개인정보보호법」및「신용정보 이용 및 보호에 관한 법률」의 규정에 따라 수집·이용·위탁을 위하여 고객님의 동의를 얻어야 합니다. 이에 다음과 같이 개인정보의 수집, 이용 및 위탁에 대한 동의를 구합니다.
+								</p>
+								<!-- 인적사항 -->
+								<h4 class="formTit">고객 정보<span></span></h4>
+								<div class="gridSet grid2">
+									<div class="gridItem">
+										<dl class="dlStyle" style="border-color:#fff;"><!-- 2018-08-07 style 추가 -->
+											<dt><strong>담당거점</strong></dt>
+											<dd>강남 뱅뱅사거리 지점</dd>
+										</dl>
+										<dl class="dlStyle" style="border-color:#fff;"><!-- 2018-08-07 style 추가 -->
+											<dt><strong>고객명<sup>필수항목</sup></strong></dt>
+											<dd><input type="text" placeholder="고객명을 입력해주세요."/></dd>
+										</dl>
+										<dl class="dlStyle" style="border-color:#fff;"><!-- 2018-08-07 style 추가 -->  
+											<dt><strong>핸드폰번호<sup>필수항목</sup></strong></dt>
+											<dd><input type="text" placeholder="핸드폰 번호를 입력해주세요."/></dd>
+										</dl>
+										<dl class="dlStyle">
+											<dt><strong>e-mail</strong></dt>
+											<dd><input type="text" placeholder="이메일을 입력해주세요."></dd>
+										</dl>
+									</div>
+									<div class="gridItem">
+										<dl class="dlStyle" style="border-color:#fff;"><!-- 2018-08-07 style 추가 -->
+											<dt><strong>영업담당</strong></dt>
+											<dd>홍길동</dd>
+										</dl>
+										<dl class="dlStyle">
+											<dt><strong>운전면허번호</strong></dt>
+											<dd><input type="number" placeholder="숫자로 입력해주세요"></dd>
+										</dl>
+										<dl class="dlStyle">
+											<dt><strong>SMS 수신 허용<sup>필수항목</sup></strong></dt>
+											<dd>
+												<span class="radioSet">
+													<input type="radio" id="sms_11" name="sms2">
+													<label for="sms_11"><i></i>수신 허용</label>
+												</span>
+												<span class="radioSet">
+													<input type="radio" id="sms_12" name="sms2" checked="checked">
+													<label for="sms_12"><i></i>수신 거부</label>
+												</span>
+											</dd>
+										</dl>
+										<dl class="dlStyle">
+											<dt><strong>메일 수신 허용</strong></dt>
+											<dd>
+												<span class="radioSet">
+													<input type="radio" id="mail_01" name="mail">
+													<label for="mail_01"><i></i>수신 허용</label>
+												</span>
+												<span class="radioSet">
+													<input type="radio" id="mail_02" name="mail" checked="checked">
+													<label for="mail_02"><i></i>수신 거부</label>
+												</span>
+											</dd>
+										</dl>
+									</div>
+								</div>
+								<div class="gridSet grid2">
+									<div class="gridItem">
+										<dl class="dlStyle">
+											<dt><strong>DM 수령 허용</strong></dt>
+											<dd>
+												<span class="radioSet">
+													<input type="radio" id="dm_01" name="dm" checked="checked">
+													<label for="dm_01"><i></i>자택</label>
+												</span>
+												<span class="radioSet">
+													<input type="radio" id="dm_02" name="dm">
+													<label for="dm_02"><i></i>직장</label>
+												</span>
+												<span class="radioSet">
+													<input type="radio" id="dm_03" name="dm">
+													<label for="dm_03"><i></i>수신 거부</label>
+												</span>
+											</dd>
+										</dl>
+									</div>
+									<div class="gridItem">
+										<dl class="dlStyle">
+											<dt><strong>희망 차량<sup>필수항목</sup></strong></dt>
+											<dd>
+												<div class="smselect sbig" style="background:#fff5d7;">													
+													<button type="button" class="my_value">선택해주세요.</button>
+													<ul class="a_list"> 
+														<li>희망 차량1</li>
+														<li>희망 차량2</li>
+														<li>희망 차량3</li>
+													</ul>
+												</div>
+											</dd>
+										</dl>
+									</div>
+								</div>
+								<div class="gridSet grid2">
+									<div class="gridItem">
+										<dl class="dlStyle h120">
+											<dt><strong>DM 수령지 주소</strong></dt>
+											<dd class="adAddr">
+												<textarea rows="2" placeholder="DM 수령지 주소를 입력해주세요" class="wFull"></textarea>
+											</dd>
+										</dl>
+									</div>
+									<div class="gridItem vBottom hopeDate">
+										<dl class="dlStyle selectHalf">
+											<dt><strong>희망구입시기 <sup>필수항목</sup></strong></dt>
+											<dd>
+												<div class="smselect sbig">
+													<button type="button" class="my_value">선택해주세요.</button>
+													<ul class="a_list">
+														<li>선택하세요. </li> 
+														<li>1개월 <!-- 등록날자 : 2018-07-01 > 예정날짜 : 2018-08-01 --></li> 
+														<li>3개월 <!-- 등록날자 : 2018-07-01 > 예정날짜 : 2018-10-01 --></li> 
+														<li>6개월 <!-- 등록날자 : 2018-07-01 > 예정날짜 : 2019-01-01 --></li> 
+														<li>1년이내 <!-- 등록날자 : 2018-07-01 > 예정날짜 : 2019-07-01 --></li> 
+														<li>1년이상 <!-- 등록날자 : 2018-07-01 > 예정날짜 : 2019-07-01 --></li> 
+														<li>접촉종료 <!-- 등록날자 : 2018-07-01 > 예정날짜 : -- --></li> 
+													</ul>
+												</div>
+												2018-08-01
+											</dd>
+										</dl>
+									</div>
+								</div>
+								<div>
+									<dl class="dlStyle nowCar">
+										<dt><strong>현 보유차량</strong></dt>
+										<dd>
+											<div>
+											<span class="inBlock w50"><strong class="first">차종</strong></span>
+											<span>
+												<div class="smselect sbig">			
+													<button type="button" class="my_value">선택해주세요.</button>
+													<ul class="a_list">
+														<li>선택하세요</li>
+														<li>희망차량 1</li>
+														<li>희망차량 2</li>
+													</ul>
+												</div>
+												<div class="smselect sbig">
+													<button type="button" class="my_value">선택해주세요.</button>
+													<ul class="a_list">
+														<li>선택하세요</li>
+														<li>차량</li>
+														<li>차량</li>
+													</ul>
+												</div>
+											</span>
+											<span><strong>년식</strong></span>
+											<span><input type="number" class="posNow" placeholder="숫자 입력"></span>
+											<span><strong>운행거리</strong></span>
+											<span><input type="number" class="posNow2" placeholder="숫자 입력"></span>
+											<span><strong>km</strong></span>
+											</div>
+										</dd>
+									</dl>
+								</div>
+								<!--// 인적사항 -->
+								<!-- 개인정보 수집 / 이용 / 위탁에 대한 동의 -->
+								<h4 class="formTit">개인정보 수집 / 이용 / 위탁에 대한 동의</h4>
+								<!---->
+								<p class="agreeTxt">각각 항목의 전문보기를 클릭하여  확인 후 서명을 진행해 주세요.</p>
+								<div class="agreeBox">
+									<dl>
+										<dt class="bold">
+											<div>
+												<span>(필수)</span> 필수적 동의사항
+												<button class="ok">확인</button>
+												<button>전문보기</button>
+											</div>
+										</dt>
+										<dd>
+											<div class="agreeDTBack">
+												<div class="listForm">
+													<ul>
+														<li>(1) 수집 · 이용 목적 : 신차정보/상품/서비스 안내 및 구매/이용 권유, 판촉/이벤트 행사 등의 마케팅 활동 (* 시승 서비스 제공(시승자 본인확인) 및 교통사고 발생시 처리)</li>
+														<li>(2) 수집항목 : 고객명, 핸드폰 연락처<br>(*시승하는 경우 : 운전면허번호 확인)</li>
+														<li>(3) 개인정보 보유 및 이용기간 : 보유 및 이용기간은 1년으로 하며 1년이 경과한 경우 복구되지 않도록 파기합니다.</li>
+														<li>(4) 미 동의시 불이익사항 : 동의를 거부할 수 있으며 거부 시 시승 서비스 제공이 불가합니다.</li>
+													</ul>
+												</div>
+												<div class="agreeBtm">
+													<p>정보 수집·이용에 대한 동의</p>
+													<div>
+														<span class="checkSet">
+															<input type="radio" name="agree_05" id="chk_05" checked />
+															<label for="chk_05"><i></i>동의함</label>
+														</span>
+														<span class="checkSet">
+															<input type="radio" name="agree_05" id="chk_05_n">
+															<label for="chk_05_n"><i></i>동의하지 않음</label>
+														</span>
+													</div>
+												</div>
+											</div>
+										</dd>
+									</dl>
+								</div>
+								<div class="agreeBox">
+									<dl>
+										<dt class="bold">
+											<div>
+												<span class="notMust">(선택)</span> 선택적 동의사항
+												<button class="ok">확인</button>
+												<button>전문보기</button>
+											</div>
+										</dt>
+										<dd>
+											<div class="agreeDTBack">
+												<div class="listForm">
+													<ul>
+														<li>(1) 수집 · 이용 목적 : 신차정보/상품/서비스 안내 및 구매/이용 권유, 판촉/이벤트 행사 등의 마케팅 활동 (* 시승 서비스 제공(시승자 본인확인) 및 교통사고 발생시 처리)</li>
+														<li>(2) 수집항목 : 이메일, DM수령주소, 현 보유차량 정보,<br>구입희망차량, 희망구입시기</li>
+														<li>(3) 개인정보 보유 및 이용기간 : 보유 및 이용기간은 1년으로 하며 1년이 경과한 경우 복구되지 않도록 파기합니다.</li>
+														<li>(4) 미 동의시 불이익사항 : 없음</li>
+													</ul>
+												</div>
+												<div class="agreeBtm">
+													<p>정보 수집·이용에 대한 동의</p>
+													<div>
+														<span class="checkSet">
+															<input type="radio" name="agree_05" id="chk_05" checked />
+															<label for="chk_05"><i></i>동의함</label>
+														</span>
+														<span class="checkSet">
+															<input type="radio" name="agree_05" id="chk_05_n">
+															<label for="chk_05_n"><i></i>동의하지 않음</label>
+														</span>
+													</div>
+												</div>
+											</div>
+										</dd>
+									</dl>
+								</div>
+								<div class="agreeBox">
+									<dl>
+										<dt class="bold">
+											<div>
+												<span>(필수)</span> 개인정보 취급위탁 안내
+												<button class="ok">확인</button>
+												<button>전문보기</button>
+											</div>
+										</dt>
+										<dd>
+											<div class="agreeDTBack">
+												<div class="listForm">
+													르노삼성자동차㈜는 서비스 제공 등을 위하여 필요한 경우에 아래와 같은 업무를 외부에 취급 위탁하여 수탁자가 본인의 개인정보를 취급할 수 있도록 하고 있습니다.<br>㈜ 삼성SDS (전산 시스템 운영 및 유지보수), ㈜ 아림디엠 (우편물 및 경품 배송업무 대행), ㈜ 다우기술(SMS 발송 업무 대행)
+												</div>
+											</div>
+										</dd>
+									</dl>
+								</div>
+								<!--// 개인정보 수집 / 이용 / 위탁에 대한 동의 -->
+								<!-- 고객확인 -->
+								<h4 class="formTit">고객확인</h4>
+								<div class="gridSet grid2">
+									<div class="gridItem">
+										<p>※ 상세한 내용은 르노삼성자동차㈜ 홈페이지 (http://www.renaultsamsungM.com) 「개인정보 취급방침」에서 확인할 수 있습니다. 본인은 본 동의서의 내용을 상세히 읽고 충분히 이해하여 이에 동의합니다.</p>
+									</div>
+									<div class="gridItem">
+										<dl class="dlStyle mb40">
+											<dt><strong>신청일자</strong></dt>
+											<dd>2018년 05월 18일</dd>
+										</dl>
+									</div>
+								</div>
+								<!--// 고객확인 -->
+								<!---->
+								<div class="signBack mt1">
+									<div class="paperCase" style="display:none;"><p>서명이 끝난 고객정보 입니다.</p></div>
+									<!---->
+									<div class="signSet">
+										<div class="signItem">
+											<div>
+												<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+												<span><!-- 성명이미지가 들어올 영역 --></span>
+												<strong><em>고객</em>이름</strong>
+											</div>
+											<button class="btnLY">초기화</button><!--2019-07-23-->
+											<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+										</div>
+										<div class="signItem">
+											<div>
+												<span class="signDim">서명활성화 버튼을 이용하여<br/>서명오염을 방지합니다.</span><!--2019-07-31-->
+												<span><!-- 서명이미지가 들어올 영역 --></span> 
+												<strong><em>고객</em>서명</strong>
+											</div>
+											<button class="btnLY">초기화</button><!--2019-07-23-->
+											<button class="btnLY singToggleBtn">서명활성화</button><!--2019-07-31-->
+										</div>
+									</div>
+								</div>
+								<!---->
+							</div>
+							<!--// tab-wrap -->
+						</div>
+						<!-- //main -->
+					</section>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

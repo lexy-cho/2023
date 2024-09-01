@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<style>
+			img {width:100%;}
+		</style>
+		<script>
+		$(document).ready(function(){
+			$(".btnMenu").click(function(){
+				$(".popupDim").show();
+				$("#menuCase").show();
+			});
+			$(".kindPop .pClose").click(function(){
+				$(".kindPop").hide();
+				$(".popupDim").hide();
+			});
+			$(".btnScreen").click(function(){
+				$(".btnScreen").toggleClass("on");
+			});
+			var swiper = new Swiper('.bsCardImgSwiper .swiper-container', {
+			  slidesPerView: 'auto',
+			  centeredSlides: true,
+			  spaceBetween: 10,
+			  navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			  },
+			  pagination: {
+				el: '.swiper-pagination',
+				//dynamicBullets: true,
+				clickable: true,
+				renderBullet: function (index, className) {
+					if (index == 0){
+						return '<span class="' + className + '">' + '앞면' + '</span>';
+					} else if (index == 1){
+						return '<span class="' + className + '">' + '뒷면' + '</span>';
+					}
+
+				},
+			  }
+			});
+		});
+		</script>
+	</head>
+	<body class="bsCardImgSwiperBack">
+		<!-- camLayout -->
+		<div class="bsCardImgSwiper">
+			<!-- Swiper -->
+			<div class="swiper-container">
+				<ul class="swiper-wrapper">
+					<li class="swiper-slide">
+						<div><span><img src="../images/sample5.png" alt="" /></span></div>
+					</li>
+					<li class="swiper-slide">
+						<div class="noImg"><span></span></div><!-- 2020-08-14 뒷면 이미지가 없을 경우 -->
+					</li>
+				</ul>
+			</div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination"></div>
+		</div>
+		<!-- //Swiper -->
+		<button class="btnCancel" onclick="history.back()">취소</button>
+		<div class="btnSet">
+			<button class="btnM white">앞면 촬영</button>
+			<button class="btnM white">뒷면 촬영</button>
+			<button class="btnM white" onClick="location.href='business_card_view.html'">완료</button>
+		</div>
+		<!--// camLayout -->
+	</body>
+</html>

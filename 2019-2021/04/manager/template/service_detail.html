@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('input:radio[name="rcpt"]').change(function(){
+					$('.recipientPickPop .tab').css('display', 'none');
+					if($(this).val() == 'showTab'){
+						$('.recipientPickPop .tab').css('display', 'block');
+					} else {
+						$('.recipientPickPop .tab').css('display', 'none');
+					}
+				});
+				$('.btnNewPush').click(function(){
+					$('.popDim').show();
+					$('.newPushPop').show();
+					$('.newPushPop .btnRecipientPick').click(function(){
+						$('.newPushPop').hide();
+						$('.recipientPickPop').show();
+						$('.recipientPickPop .pBtn button:last').click(function(){
+							$('.popDim').show();
+							$('.newPushPop').show();
+						});
+					});
+				});
+				$('.btnRecipientPick').click(function(){
+					$('.popDim').show();
+					$('.recipientPickPop').show();
+				})
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Page Layout -->
+		<div class="operatorDetail">
+			<!-- <div class="detailTop">
+				<span class="left">
+					<button class="btnM whiteRed btnNewPush">신규등록</button>
+					<button class="btnM red">삭제</button>
+				</span>
+			</div> -->
+			<div class="tab">
+				<!-- tab -->
+				<div class="tabBack">
+					<div class="tabNav">
+						<nav>
+							<ul>
+								<li class="on"><button data-name="1">2020-01-22 22:00:00</button></li><!-- 2020-07-13 상세화면 -->
+								<li><button data-name="2">신규등록</button></li><!-- 2020-07-13 신규등록 -->
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<!--// tab -->
+				<div class="tabLayout">
+					<!-- 2020-07-13 푸시 view 화면 -->
+					<div class="tabData tData1" style="display:block;">
+						<div class="detailContents">
+							<div class="tws">
+								<table>
+									<!-- 2020-07-13 col width 수정 -->
+									<colgroup>
+										<col width="95" />
+										<col width="170" />
+										<col width="95" />
+										<col width="170" />
+										<col width="95" />
+										<col width="170" />
+									</colgroup>
+									<!-- //2020-07-13 col width 수정 -->
+									<tbody>
+										<!-- 2020-07-13 상태, 여부, 발송자 라인 합침 -->
+										<tr>
+											<th>발송상태</th>
+											<td><span class="ftGreen">성공</span></td>
+											<th>수신여부</th>
+											<td>125/400</td>
+											<th>발송자</th>
+											<td>홍길동</td>
+										</tr>
+										<!-- //2020-07-13 상태, 여부, 발송자 라인 합침 -->
+										<tr>
+											<th rowspan="2">수신자<br/>(서비스 대상)</th>
+											<td colspan="5">가나익스프레스, 달려24, 홍길동</td>
+										</tr>
+										<tr>
+											<td colspan="5">고객용, 운송사용, 차주용,  SaaS운송사용, SaaS차주용</td>
+										</tr>
+										<tr>
+											<th>제목</th>
+											<td colspan="5">겨울간식들과 함께 찾아온 1.0.6 업데이트 안내</td>
+										</tr>
+										<tr>
+											<th>이미지</th>
+											<td colspan="5">
+												<span class="fileSet">
+													<span class="fileFind" style="display:none;">
+														<input type="file" id="file1" />
+														<label for="file1">파일 선택</label>
+													</span> <!--파일선택:버튼만있는형식:초록색버전-->
+													<span class="loadIng" style="display:none;">업로드 중</span>
+													<strong class="loadEnd">
+														<em>샘플 데이터.png</em>
+														<button>취소</button>
+													</strong>
+													<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th>내용</th>
+											<td colspan="5">
+												붕어빵, 호떡 군고구마 … 겨울간식들과 함께 찾아온 1.0.6 업데이트를 안내 드립니다.<br/>금번 업데이트에 포함된 내용은 다음과 같습니다.<br/>⋮<br/>유저 분들의 많은 이용 바랍니다.
+											</td>
+										</tr>
+										<tr>
+											<th>URL</th>
+											<td colspan="5">http://www.think-tree.co.kr</td>
+										</tr>
+										<tr>
+											<th>발송</th>
+											<td colspan="5">
+												즉시발송 (2019-12-19  오전 03:10)
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<p class="infoMsg">(동일한 내용으로 푸시를 재 발송을 할 경우, google push server가 발송을 제한할 수 있습니다. 내용과 제목 등을 약간의 수정하여 내용의 변화를 해주세요.)</p>
+							</div>
+							<div class="btnArea">
+								<span class="left">
+									<button class="btnM red">삭제</button>
+								</span>
+								<span class="right">
+									<button class="btnM black">재발송</button>
+								</span>
+							</div>
+						</div>
+					</div>
+					<!-- //2020-07-13 푸시 view 화면 -->
+					<!-- 2020-07-13 푸시 신규등록 화면 -->
+					<div class="tabData tData2">
+						<div class="detailContents">
+							<div class="tws">
+								<table>
+									<!-- 2020-07-13 col width 수정 -->
+									<colgroup>
+										<col width="95" />
+										<col width="*" />
+									</colgroup>
+									<!-- //2020-07-13 col width 수정 -->
+									<tbody>
+										<tr>
+											<th>발송자</th>
+											<td>홍길동</td>
+										</tr>
+										<tr>
+											<th rowspan="2">수신자<br/>(서비스 대상)</th>
+											<td>
+												<button class="btnS gray btnRecipientPick">수신자 추가</button>
+												<div>
+													<span class="recipient">가나 익스프레스 (3)<button>삭제</button></span>
+													<span class="recipient">달려24 (5)<button>삭제</button></span>
+													<span class="recipient">홍길동<button>삭제</button></span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>고객용, 운송사용, 차주용,  SaaS운송사용, SaaS차주용</td>
+										</tr>
+										<tr>
+											<th>제목</th>
+											<td><input type="text" value="겨울간식들과 함께 찾아온 1.0.6 업데이트 안내"/></td>
+										</tr>
+										<tr>
+											<th>이미지</th>
+											<td colspan="3">
+												<span class="fileSet">
+													<span class="fileFind">
+														<input type="file" id="file1" />
+														<label for="file1">파일 선택</label>
+													</span> <!--파일선택:버튼만있는형식:초록색버전-->
+													<span class="loadIng" style="display:none;">업로드 중</span>
+													<strong class="loadEnd" style="display:none;">
+														<em>샘플 데이터.png</em>
+														<button>취소</button>
+													</strong>
+													<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+												</span>
+												<span class="ftOrange"> * 업로드 이미지(jpg, png) : 사이즈 OOO X OOOpx</span>
+											</td>
+										</tr>
+										<tr>
+											<th>내용</th>
+											<td colspan="3">
+												<textarea class="wFull" name="name" rows="8" cols="80">붕어빵, 호떡 군고구마 … 겨울간식들과 함께 찾아온 1.0.6 업데이트를 안내 드립니다. 금번 업데이트에 포함된 내용은 다음과 같습니다.</textarea>
+											</td>
+										</tr>
+										<tr>
+											<th>URL</th>
+											<td colspan="3"><input type="text" value="http://www.think-tree.co.kr"></td>
+										</tr>
+										<tr>
+											<th>발송</th>
+											<td colspan="3">
+												<span class="radioSet">
+													<input type="radio" id="rdo31" name="radio3" checked/>
+													<label for="rdo31"><i></i></label>즉시발송
+												</span>
+												<span class="radioSet">
+													<input type="radio" id="rdo32" name="radio3"/>
+													<label for="rdo32"><i></i></label>예약발송
+												</span>
+												<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+												<input type="text" class="wAuto" value="오전 15:10"/>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="btnArea">
+								<span class="left">
+									<button class="btnM red">취소</button>
+								</span>
+								<span class="right">
+									<button class="btnM black">푸시발송</button>
+								</span>
+							</div>
+						</div>
+					</div>
+					<!-- //2020-07-13 푸시 신규등록 화면 -->
+				</div>
+			</div>
+		</div>
+		<!-- //page Layout -->
+		<!-- popup -->
+		<div class="popDim" style="display:none">
+			<!-- 신규 푸시서비스 -->
+			<div class="basicPop newPushPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>푸시서비스 [신규등록]</h1>
+				</div>
+				<div class="pBack">
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="80"/>
+								<col width="300"/>
+								<col width="80"/>
+								<col width="80"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>서비스 대상</th>
+									<td>
+										<span class="radioSet">
+											<input type="checkbox" id="newPushChk1" checked/>
+											<label for="newPushChk1"><i></i>전체</label>
+										</span>
+										<span class="radioSet">
+											<input type="checkbox" id="newPushChk23" />
+											<label for="newPushChk2"><i></i>화주용(Client)</label>
+										</span>
+										<span class="radioSet">
+											<input type="checkbox" id="newPushChk3" />
+											<label for="newPushChk3"><i></i>운송사용(Carrier)</label>
+										</span>
+										<span class="radioSet">
+											<input type="checkbox" id="newPushChk4" />
+											<label for="newPushChk4"><i></i>차주용(Driver)</label>
+										</span>
+									</td>
+									<th>작성자</th>
+									<td>홍길동</td>
+								</tr>
+								<tr>
+									<th>수신자</th>
+									<td colspan="3">
+										<button class="btnS gray btnRecipientPick">수신자 선택</button>
+										<div>
+											<span class="recipient">가나 익스프레스 (3)<button>삭제</button></span>
+											<span class="recipient">달려24 (5)<button>삭제</button></span>
+											<span class="recipient">홍길동<button>삭제</button></span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th>제목</th>
+									<td colspan="3"><input type="text"/></td>
+								</tr>
+								<tr>
+									<th>이미지</th>
+									<td colspan="3">
+										<span class="fileSet">
+											<span class="fileFind">
+												<input type="file" id="file1" />
+												<label for="file1">파일 선택</label>
+											</span> <!--파일선택:버튼만있는형식:초록색버전-->
+											<span class="loadIng" style="display:none;">업로드 중</span>
+											<strong class="loadEnd" style="display:none;">
+												<em>샘플 데이터.png</em>
+												<button>취소</button>
+											</strong>
+											<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+										</span>
+										<span> * 업로드 이미지(jpg, png) : 사이즈 OOO X OOOpx</span>
+									</td>
+								</tr>
+								<tr>
+									<th>내용</th>
+									<td colspan="3">
+										<textarea class="wFull" name="name" rows="6" cols="80" placeholder="내용을 입력해주세요"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<th>URL</th>
+									<td colspan="3"><input type="text"/></td>
+								</tr>
+								<tr>
+									<th>발송</th>
+									<td colspan="3">
+										<span class="radioSet">
+											<input type="radio" id="rdo21" name="radio2" checked/>
+											<label for="rdo3"><i></i>즉시발송</label>
+										</span>
+										<span class="radioSet">
+											<input type="radio" id="rdo22" name="radio2" checked/>
+											<label for="rdo4"><i></i>예약발송</label>
+										</span>
+										<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//신규 푸시서비스-->
+			<!-- 수신자 추가 -->
+			<div class="basicPop recipientPickPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>수신자 추가</h1>
+				</div>
+				<div class="pBack">
+					<div class="before">
+						<strong>수신자를 선택해 주세요.</strong>
+						<!-- 2020-07-14 라디오 삭제 -->
+					</div>
+					<!-- 2020-07-14 전체 탭으로 변경 -->
+					<div class="tab">
+						<!-- tab -->
+						<div class="tabBack">
+							<div class="tabNav">
+								<nav>
+									<ul>
+										<li class="on"><button data-name="11">전체 (플랫폼 + SaaS)</button></li>
+										<li><button data-name="12">화주 (고객)</button></li>
+										<li><button data-name="13">운송사 (플랫폼)</button></li>
+										<li><button data-name="14">운송사 (SaaS)</button></li>
+										<li><button data-name="15">차주 (드라이버)</button></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<!--// tab -->
+						<div class="tabLayout">
+							<div class="tabData tData11" style="display:block;">
+								<span class="checkSet">
+									<input type="checkbox" id="addRipient1" />
+									<label for="addRipient1"><i></i>전체 화주(고객)</label>
+								</span>
+								<span class="checkSet">
+									<input type="checkbox" id="addRipient2" />
+									<label for="addRipient2"><i></i>전체 운송사 (플랫폼)</label>
+								</span>
+								<span class="checkSet">
+									<input type="checkbox" id="addRipient3" />
+									<label for="addRipient3"><i></i>전체 운송사 (SaaS)</label>
+								</span>
+								<span class="checkSet">
+									<input type="checkbox" id="addRipient4" />
+									<label for="addRipient4"><i></i>전체 차주 (드라이버)</label>
+								</span>
+							</div>
+							<div class="tabData tData12">
+								<div class="listScrollArea">
+									<div class="listTop">
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="50" />
+													<col width="100" />
+													<col width="150" />
+													<col width="300" />
+												</colgroup>
+												<thead>
+													<tr>
+														<th>
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="phkAll" />
+																<label for="phkAll"><i></i></label>
+															</span>
+														</th>
+														<th>이름</th>
+														<th>연락처</th>
+														<th>회사명</th>
+													</tr>
+												</thead>
+											</table>
+										</div>
+									</div>
+									<div class="listScroll">
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="50" />
+													<col width="100" />
+													<col width="150" />
+													<col width="300" />
+												</colgroup>
+												<tbody>
+													<!--Loop-->
+													<tr>
+														<td>
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="phk1" />
+																<label for="phk1"><i></i></label>
+															</span>
+														</td>
+														<td>김철수</td>
+														<td>010-5555-6666</td>
+														<td class="tL">가나익스프레스</td>
+													</tr>
+													<!--//Loop-->
+													<tr>
+														<td>
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="phk1" />
+																<label for="phk1"><i></i></label>
+															</span>
+														</td>
+														<td>고나리</td>
+														<td>010-5555-6666</td>
+														<td class="tL">가나익스프레스</td>
+													</tr>
+													<tr>
+														<td>
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="phk1" />
+																<label for="phk1"><i></i></label>
+															</span>
+														</td>
+														<td>홍길동</td>
+														<td>010-5555-6666</td>
+														<td class="tL">달려24</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tabData tData13">
+								<div class="listScrollArea">
+									<div class="listTop">
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="50" />
+													<col width="300" />
+													<col width="150" />
+													<col width="150" />
+												</colgroup>
+												<thead>
+													<tr>
+														<th>
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="phkAll2" />
+																<label for="phkAll2"><i></i></label>
+															</span>
+														</th>
+														<th>회사명</th>
+														<th>구성원</th>
+														<th>연락처</th>
+													</tr>
+												</thead>
+											</table>
+										</div>
+									</div>
+									<div class="listScroll">
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="50" />
+													<col width="300" />
+													<col width="150" />
+													<col width="150" />
+												</colgroup>
+												<tbody>
+													<!--Loop-->
+													<tr>
+														<td>
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="phk4" />
+																<label for="phk4"><i></i></label>
+															</span>
+														</td>
+														<td class="tL">가나익스프레스</td>
+														<td>김철수 외 1인</td>
+														<td>010-1234-1211 외</td>
+													</tr>
+													<!--//Loop-->
+													<tr>
+														<td>
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="phk5" />
+																<label for="phk5"><i></i></label>
+															</span>
+														</td>
+														<td class="tL">달려24</td>
+														<td>이영희 외 1인</td>
+														<td>010-1234-1111 외</td>
+													</tr>
+													<tr>
+														<td>
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="phk6" />
+																<label for="phk6"><i></i></label>
+															</span>
+														</td>
+														<td class="tL">홍나라컨테이너</td>
+														<td>홍길동 외 1인</td>
+														<td>010-1234-4444 외</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tabData tData14">
+								<div class="listScrollArea">
+									<div class="listTop">
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="50" />
+													<col width="300" />
+													<col width="150" />
+													<col width="150" />
+												</colgroup>
+												<thead>
+													<tr>
+														<th>
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="phkAll3" />
+																<label for="phkAll3"><i></i></label>
+															</span>
+														</th>
+														<th>회사명</th>
+														<th>구성원</th>
+														<th>연락처</th>
+													</tr>
+												</thead>
+											</table>
+										</div>
+									</div>
+									<div class="listScroll">
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="50" />
+													<col width="300" />
+													<col width="150" />
+													<col width="150" />
+												</colgroup>
+												<tbody>
+													<!--Loop-->
+													<tr>
+														<td>
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="phk7" />
+																<label for="phk7"><i></i></label>
+															</span>
+														</td>
+														<td class="tL">가나익스프레스</td>
+														<td>김철수 외 1인</td>
+														<td>010-1234-1211 외</td>
+													</tr>
+													<!--//Loop-->
+													<tr>
+														<td>
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="phk8" />
+																<label for="phk8"><i></i></label>
+															</span>
+														</td>
+														<td class="tL">달려24</td>
+														<td>이영희 외 1인</td>
+														<td>010-1234-1111 외</td>
+													</tr>
+													<tr>
+														<td>
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="phk9" />
+																<label for="phk9"><i></i></label>
+															</span>
+														</td>
+														<td class="tL">홍나라컨테이너</td>
+														<td>홍길동 외 1인</td>
+														<td>010-1234-4444 외</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tabData tData15">
+								<div class="listScrollArea">
+									<div class="listTop">
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="50" />
+													<col width="300" />
+													<col width="150" />
+													<col width="150" />
+												</colgroup>
+												<thead>
+													<tr>
+														<th>
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="phkAll4" />
+																<label for="phkAll4"><i></i></label>
+															</span>
+														</th>
+														<th>회사명</th>
+														<th>구성원</th>
+														<th>연락처</th>
+													</tr>
+												</thead>
+											</table>
+										</div>
+									</div>
+									<div class="listScroll">
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="50" />
+													<col width="300" />
+													<col width="150" />
+													<col width="150" />
+												</colgroup>
+												<tbody>
+													<!--Loop-->
+													<tr>
+														<td>
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="phk10" />
+																<label for="phk10"><i></i></label>
+															</span>
+														</td>
+														<td class="tL">가나익스프레스</td>
+														<td>김철수 외 1인</td>
+														<td>010-1234-1211 외</td>
+													</tr>
+													<!--//Loop-->
+													<tr>
+														<td>
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="phk11" />
+																<label for="phk11"><i></i></label>
+															</span>
+														</td>
+														<td class="tL">달려24</td>
+														<td>이영희 외 1인</td>
+														<td>010-1234-1111 외</td>
+													</tr>
+													<tr>
+														<td>
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="phk12" />
+																<label for="phk12"><i></i></label>
+															</span>
+														</td>
+														<td class="tL">홍나라컨테이너</td>
+														<td>홍길동 외 1인</td>
+														<td>010-1234-4444 외</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //2020-07-14 전체 탭으로 변경 -->
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!-- //수신자 추가 -->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/editor/ckeditor.js"></script>
+		<script type="text/javascript" src="../../js/editor/sample.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.btnNewBook').click(function(){
+				$('.popDim, .bookInfoPop#newBookCase').show();
+			});
+			$('.tls td .underLine').click(function(){
+				$('.popDim, .bookInfoPop#detailCase').show();
+			});
+			$('.basicPop .pBtn button, .basicPop .pclose').click(function(){
+				$('.popDim, .basicPop').hide();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>도서현황</h2>
+					<div class="pagePos"><span>Home</span><span>게시판관리</span><span>사내도서</span><strong>도서현황</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="bookLayout">
+						<!---->
+						<div class="boardTop">
+							<span class="right">
+								<span class="searchBasic">
+									<span class="selectSet">
+										<select>
+											<option>전체</option>
+											<option>대여 가능</option>
+											<option>대여 불가능</option>
+										</select>
+									</span>
+									<input type="text" placeholder="도서명" />
+									<input type="submit" value="검색" class="btnSearch" />
+									<button class="btnReset">초기화</button>
+								</span>
+								<button class="btnM">엑셀다운로드</button>
+							</span>
+						</div>
+						<!---->
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="50"/>
+									<col width="50"/>
+									<col width="150"/>
+									<col width="400"/>
+									<col width="120"/>
+									<col width="100"/>
+									<col width="220"/>
+									<col width="150"/>
+									<col width="100"/>
+									<col width="100"/>
+								</colgroup>
+								<thead>
+									<tr>
+										<th>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkall" />
+												<label for="chkall"><i></i></label>
+											</span>
+										</th>
+										<th>번호</th>
+										<th>카테고리</th>
+										<th>도서명</th>
+										<th>관리번호</th>
+										<th>출판사</th>
+										<th>저자</th>
+										<th>구입일</th>
+										<th>대여여부</th>
+										<th>대여가능 여부</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk1" />
+												<label for="chk1"><i></i></label>
+											</span>
+										</td>
+										<td>1</td>
+										<td>과학일반</td>
+										<td><span class="underLine">슈퍼인텔리전스</span></td>
+										<td>B-2019-001</td>
+										<td>까치</td>
+										<td>닉 보스트롬 / 조성진 옮김</td>
+										<td>2000-00-00</td>
+										<td>-</td>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="rent1" checked/>
+												<label for="rent1"></label>
+											</span>
+										</td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk2" />
+												<label for="chk2"><i></i></label>
+											</span>
+										</td>
+										<td>2</td>
+										<td>경제경영</td>
+										<td><span class="underLine">사업을 한다는 것</span></td>
+										<td>B-2019-002</td>
+										<td>센시오</td>
+										<td>레이 크록 / 이영래 옮김</td>
+										<td>2000-00-00</td>
+										<td>대여중</td>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="rent2" checked/>
+												<label for="rent2"></label>
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk3" />
+												<label for="chk3"><i></i></label>
+											</span>
+										</td>
+										<td>3</td>
+										<td>소설</td>
+										<td><span class="underLine">삼국지연의 1</span></td>
+										<td>B-2019-003</td>
+										<td>솔</td>
+										<td>나관중</td>
+										<td>2000-00-00</td>
+										<td>-</td>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="rent3" checked/>
+												<label for="rent3"></label>
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk4" />
+												<label for="chk4"><i></i></label>
+											</span>
+										</td>
+										<td>4</td>
+										<td>소설</td>
+										<td><span class="underLine">삼국지연의 2</span></td>
+										<td>B-2019-004</td>
+										<td>솔</td>
+										<td>나관중</td>
+										<td>2000-00-00</td>
+										<td>대여중</td>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="rent4" checked/>
+												<label for="rent4"></label>
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk5" />
+												<label for="chk5"><i></i></label>
+											</span>
+										</td>
+										<td>5</td>
+										<td>소설</td>
+										<td><span class="underLine">삼국지연의 3</span></td>
+										<td>B-2019-005</td>
+										<td>솔</td>
+										<td>나관중</td>
+										<td>2000-00-00</td>
+										<td>대여중</td>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="rent5" checked/>
+												<label for="rent5"></label>
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk6" />
+												<label for="chk6"><i></i></label>
+											</span>
+										</td>
+										<td>6</td>
+										<td>소설</td>
+										<td><span class="underLine">삼국지연의 4</span></td>
+										<td>B-2019-006</td>
+										<td>솔</td>
+										<td>나관중</td>
+										<td>2000-00-00</td>
+										<td>대여중</td>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="rent6" checked/>
+												<label for="rent6"></label>
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk7" />
+												<label for="chk7"><i></i></label>
+											</span>
+										</td>
+										<td>7</td>
+										<td>소설</td>
+										<td><span class="underLine">삼국지연의 5</span></td>
+										<td>B-2019-007</td>
+										<td>솔</td>
+										<td>나관중</td>
+										<td>2000-00-00</td>
+										<td>대여중</td>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="rent7" checked/>
+												<label for="rent7"></label>
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk8" />
+												<label for="chk8"><i></i></label>
+											</span>
+										</td>
+										<td>8</td>
+										<td>소설</td>
+										<td><span class="underLine">삼국지연의 6</span></td>
+										<td>B-2019-008</td>
+										<td>솔</td>
+										<td>나관중</td>
+										<td>2000-00-00</td>
+										<td>-</td>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="rent8" checked/>
+												<label for="rent8"></label>
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk9" />
+												<label for="chk9"><i></i></label>
+											</span>
+										</td>
+										<td>9</td>
+										<td>컴퓨터/인터넷</td>
+										<td><span class="underLine">오라클 11g 부터 12g 완전 바이블 1</span></td>
+										<td>B-2019-009</td>
+										<td>아티오</td>
+										<td>최원준, 김보겸</td>
+										<td>2000-00-00</td>
+										<td>-</td>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="rent9" />
+												<label for="rent9"></label>
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk10" />
+												<label for="chk10"><i></i></label>
+											</span>
+										</td>
+										<td>10</td>
+										<td>컴퓨터/인터넷</td>
+										<td><span class="underLine">오라클 11g 부터 12g 완전 바이블 2</span></td>
+										<td>B-2019-010</td>
+										<td>아티오</td>
+										<td>최원준, 김보겸</td>
+										<td>2000-00-00</td>
+										<td>-</td>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="rent10" />
+												<label for="rent10"></label>
+											</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="bpSet">
+							<div class="btnArea">
+								<span class="left">
+									<button class="btnM">선택 삭제</button>
+								</span>
+								<span class="right">
+									<button class="btnM btnNewBook">신규 추가</button>
+								</span>
+							</div>
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+										<a class="on">1</a>
+										<a>2</a>
+										<a>3</a>
+										<a>4</a>
+										<a>5</a>
+									<a class="next">다음</a>
+								</span>
+							</div>
+						</div>
+						<!--//-->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 신규도서 추가 -->
+			<div class="basicPop bookInfoPop" id="newBookCase" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>도서추가</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="100"/>
+								<col width="*"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>카테고리 <sup>필수</sup></th>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option selected>선택하세요</option>
+												<option>과학일반</option>
+												<option>경제경영</option>
+												<option>소설</option>
+												<option>컴퓨터/인터넷</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>도서명 <sup>필수</sup></th>
+									<td><input type="text"/></td>
+								</tr>
+								<tr>
+									<th>출판사</th>
+									<td><input type="text"/></td>
+								</tr>
+								<tr>
+									<th>저자</th>
+									<td><input type="text"/></td>
+								</tr>
+								<tr>
+									<th>구입일 <sup>필수</sup></th>
+									<td><span class="calSet"><input type="tel" placeholder="2019-12-19" /><button>달력열기</button></span></td>
+								</tr>
+								<tr>
+									<th>대여가능 여부 <sup>필수</sup></th>
+									<td>
+										<span class="toggleSet">
+											<input type="checkbox" id="bookrent" />
+											<label for="bookrent"></label>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //신규도서 추가 -->
+			<!-- 도서정보 -->
+			<div class="basicPop bookInfoPop" id="detailCase" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>도서 정보</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="120"/>
+								<col width="*"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>카테고리 <sup>필수</sup></th>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option>선택하세요</option>
+												<option>과학일반</option>
+												<option>경제경영</option>
+												<option selected>소설</option>
+												<option>컴퓨터/인터넷</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>도서명 <sup>필수</sup></th>
+									<td><input type="text" value="삼국지연의 2"/></td>
+								</tr>
+								<tr>
+									<th>관리번호</th>
+									<td>B-2019-003</td>
+								</tr>
+								<tr>
+									<th>출판사</th>
+									<td><input type="text" value="솔"/></td>
+								</tr>
+								<tr>
+									<th>저자</th>
+									<td><input type="text" value="나관중"/></td>
+								</tr>
+								<tr>
+									<th>구입일 <sup>필수</sup></th>
+									<td><span class="calSet"><input type="tel" placeholder="2019-12-19" value="2000-10-22"/><button>달력열기</button></span></td>
+								</tr>
+								<tr>
+									<th>대여가능 여부 <sup>필수</sup></th>
+									<td>
+										<span class="toggleSet">
+											<input type="checkbox" id="bookrent2" checked/>
+											<label for="bookrent2"></label>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //도서정보 -->
+		</div>
+		<!-- //Popup -->
+		</div>
+    </body>
+</html>

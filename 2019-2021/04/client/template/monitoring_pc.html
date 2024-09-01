@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				/*$('.tls tbody tr').click(function(){
+					$(location).attr('href', 'order_view.html');
+				});*/
+				$('.tls table tbody tr td:nth-child(n+3):nth-child(-n+10)').mouseover(function(){
+					$(this).parents('tr').children('.tls table tbody tr td:nth-child(n+3):nth-child(-n+11)').css('background','#fff8f4');
+				});
+				$('.tls table tbody tr td:nth-child(n+3):nth-child(-n+10)').mouseleave(function(){
+					$(this).parents('tr').children('.tls table tbody tr td:nth-child(n+3):nth-child(-n+11)').css('background','transparent');
+				});
+				$('.btnDoor.mult1').click(function(){
+					console.log();
+					$(this).toggleClass("on");
+					$('tbody tr.mult1').toggle();
+				});
+				$('.btnDoor.mult2').click(function(){
+					$(this).toggleClass("on");
+					$('tbody tr.mult2').toggle();
+				});
+				$('.btnDoor.mult3').click(function(){
+					$(this).toggleClass("on");
+					$('tbody tr.mult3').toggle();
+				});
+				$('.btnDoor.mult4').click(function(){
+					$(this).toggleClass("on");
+					$('tbody tr.mult4').toggle();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="pd2">
+			<div class="tabTop">
+				<strong>진행 중인 운송 현황</strong>
+				<!-- 2020-07-08 날짜, 옵션선택 삭제 -->
+			</div>
+			<div>
+				<div class="tab01">
+					<!-- tab -->
+					<div class="tabBack">
+						<div class="tabNav">
+							<nav>
+								<ul>
+									<li class="on"><button data-name="1">오더<span class="number">9</span></button></li>
+									<li><button data-name="2">배차<span class="number">5</span></button></li>
+									<li><button data-name="3">출발지<span class="subTitle">(상차/픽업)</span><span class="number">9</span></button></li>
+									<li><button data-name="4">작업지<span class="number">9</span></button></li>
+									<li><button data-name="5">도착지<span class="subTitle">(반납/하차)</span><span class="number">8</span></button></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+					<!--// tab -->
+					<div class="tabLayout">
+						<div class="tabData tData1" style="display:block;">
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="200" />
+										<col width="140" />
+										<col width="100" />
+										<col width="80" />
+										<col width="150" />
+										<col width="90" />
+										<col width="100" />
+										<col width="90" />
+									</colgroup>
+									<thead>
+										<tr>
+											<th>운송일시</th>
+											<th>오더번호</th>
+											<th>배차번호</th>
+											<th>운송유형</th>
+											<th>운송비용</th>
+											<th>상차/픽업</th>
+											<th>작업지</th>
+											<th>반납/하차</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr onclick="location.href='order_view.html'">
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>-</td>
+											<td>배차요청중</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>의왕ICD</td>
+											<td>최대여섯글자</td>
+											<td>의왕ICD</td>
+										</tr>
+										<tr onclick="location.href='order_view2.html'">
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>배차요청중</td>
+											<td class="ftBlue">수출</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+										<tr onclick="location.href='order_view.html'">
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>A000001</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+										<tr onclick="location.href='order_view.html'">
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>A000001</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+										<tr onclick="location.href='order_view.html'">
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>A000001</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="tabData tData2">
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="200" />
+										<col width="140" />
+										<col width="100" />
+										<col width="80" />
+										<col width="150" />
+										<col width="90" />
+										<col width="100" />
+										<col width="90" />
+									</colgroup>
+									<thead>
+										<tr>
+											<th>운송일시</th>
+											<th>오더번호</th>
+											<th>배차번호</th>
+											<th>운송유형</th>
+											<th>운송비용</th>
+											<th>상차/픽업</th>
+											<th>작업지</th>
+											<th>반납/하차</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>-</td>
+											<td>배차요청중</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>배차요청중</td>
+											<td class="ftBlue">수출</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>A000001</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>A000001</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>A000001</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="tabData tData3">
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="200" />
+										<col width="140" />
+										<col width="100" />
+										<col width="80" />
+										<col width="150" />
+										<col width="90" />
+										<col width="100" />
+										<col width="90" />
+									</colgroup>
+									<thead>
+										<tr>
+											<th>운송일시</th>
+											<th>오더번호</th>
+											<th>배차번호</th>
+											<th>운송유형</th>
+											<th>운송비용</th>
+											<th>상차/픽업</th>
+											<th>작업지</th>
+											<th>반납/하차</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>-</td>
+											<td>배차요청중</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>배차요청중</td>
+											<td class="ftBlue">수출</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>A000001</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>A000001</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>A000001</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="tabData tData4">
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="200" />
+										<col width="140" />
+										<col width="100" />
+										<col width="80" />
+										<col width="150" />
+										<col width="90" />
+										<col width="100" />
+										<col width="90" />
+									</colgroup>
+									<thead>
+										<tr>
+											<th>운송일시</th>
+											<th>오더번호</th>
+											<th>배차번호</th>
+											<th>운송유형</th>
+											<th>운송비용</th>
+											<th>상차/픽업</th>
+											<th>작업지</th>
+											<th>반납/하차</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>-</td>
+											<td>배차요청중</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>배차요청중</td>
+											<td class="ftBlue">수출</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>A000001</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>A000001</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>A000001</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="tabData tData5">
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="200" />
+										<col width="140" />
+										<col width="100" />
+										<col width="80" />
+										<col width="150" />
+										<col width="90" />
+										<col width="100" />
+										<col width="90" />
+									</colgroup>
+									<thead>
+										<tr>
+											<th>운송일시</th>
+											<th>오더번호</th>
+											<th>배차번호</th>
+											<th>운송유형</th>
+											<th>운송비용</th>
+											<th>상차/픽업</th>
+											<th>작업지</th>
+											<th>반납/하차</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>-</td>
+											<td>배차요청중</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>배차요청중</td>
+											<td class="ftBlue">수출</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>A000001</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>A000001</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+										<tr>
+											<td><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --></td>
+											<td>C999999</td>
+											<td>A000001</td>
+											<td class="ftRed">수입</td>
+											<td class="tR">999,000</td>
+											<td>XX CY</td>
+											<td>경남부산</td>
+											<td>경남부산</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 검색필터 -->
+			<div class="basicPop filterPop" id="samplePop8" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>검색필터</h1>
+				</div>
+				<div class="pBack">
+					<dl>
+						<dt>오더일자</dt>
+						<dd>
+							<span class="radioChoose">
+								<label for="lb1"><input type="radio" id="lb1" name="radio1" /><span>오늘</span></label>
+								<label for="lb2"><input type="radio" id="lb2" name="radio1" /><span>7일</span></label>
+								<label for="lb3"><input type="radio" id="lb3" name="radio1" /><span>1개월</span></label>
+								<label for="lb4"><input type="radio" id="lb4" name="radio1" /><span>3개월</span></label>
+							</span>
+							<span class="calDupSet">
+								<span class="calSet"><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span>
+								<em>~</em>
+								<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+							</span>
+						</dd>
+					</dl>
+					<dl>
+						<dt>작업지 검색</dt>
+						<dd>
+							<input class="wFull" type="text" placeholder="작업지를 입력해주세요">
+						</dd>
+					</dl>
+				</div>
+				<div class="pBtn">
+					<button class="btnM orange">적용하기</button>
+				</div>
+			</div>
+			<!--//검색필터-->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/jstree.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/basicTree.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			$('.btnHistory').click(function(){
+				$('.popDim, .docHistoryPop').show();
+			});
+			$(".btnReject").click(function(){
+				$(".popDim, .reasonPop").show();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>지출 결의서</h2>
+					<div class="pagePos"><span>Home</span><span>문서 관리</span><strong>지출 결의서</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="docSpendWriteLayout">
+							<!---->
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="120"/>
+										<col width="310"/>
+										<col width="120"/>
+										<col width="300"/>
+										<col width="120"/>
+										<col width="310"/>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th class="tC">작성일자</th> <!-- 2020-12-08 -->
+											<td>홍길동(000000)</td>
+											<th class="tC">작성일자</th> <!-- 2020-12-08 -->
+											<td>2020-01-01 (월)</td>
+											<th class="tC">보고일자</th> <!-- 2020-12-08 -->
+											<td></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="120"/>
+										<col width="100"/>
+										<col width="320"/>
+										<col width="100"/>
+										<col width="640"/>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th class="tC">승인</th> <!-- 2020-12-08 -->
+											<td>작성자</td>
+											<td><button class="btnS white">승인요청</button></td>
+											<td>대표승인</td>
+											<td></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="120"/>
+										<col width="100"/>
+										<col width="320"/>
+										<col width="100"/>
+										<col width="640"/>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th class="tC">승인</th> <!-- 2020-12-08 -->
+											<td>작성자</td>
+											<td><span class="betLine">홍길동<em>2020-01-01 (월)</em></span></td>
+											<td>대표승인</td>
+											<td>
+												<button class="btnS white">승인</button>
+												<button class="btnS white btnReject">반려</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="120"/>
+										<col width="100"/>
+										<col width="320"/>
+										<col width="100"/>
+										<col width="640"/>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th class="tC">승인</th> <!-- 2020-12-08 -->
+											<td>작성자</td>
+											<td><span class="betLine">홍길동<em>2020-01-01 (월)</em></span></td>
+											<td>대표승인</td>
+											<td><span class="betLine">김철수<em>2020-01-01 (월)</em></span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="120"/>
+										<col width="100"/>
+										<col width="320"/>
+										<col width="100"/>
+										<col width="640"/>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th class="tC">승인</th> <!-- 2020-12-08 -->
+											<td>작성자</td>
+											<td>
+												<span class="betLine">홍길동<em>2020-01-01 (월)</em></span>
+												<button class="btnS white">승인요청</button>
+											</td>
+											<td>대표승인</td>
+											<td>
+												<span class="betLine">김철수<em class="orangeTxt">2020-01-01 (월)</em></span>
+												<span class="right">
+													<button class="btnS white btnHistory">History</button>
+												</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="120"/>
+										<col width="100"/>
+										<col width="320"/>
+										<col width="100"/>
+										<col width="640"/>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th class="tC">승인</th> <!-- 2020-12-08 -->
+											<td>작성자</td>
+											<td><span class="betLine">홍길동<em>2020-01-01 (화)</em></span></td>
+											<td>대표승인</td>
+											<td>
+												<button class="btnS white">승인</button>
+												<button class="btnS white btnReject">반려</button>
+												<span class="right">
+													<button class="btnS white btnHistory">History</button>
+												</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tws spendDetail">
+								<table>
+									<colgroup>
+										<col width="160"/>
+										<col width="160"/>
+										<col width="400"/>
+										<col width="160"/>
+										<col width="400"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>지출일자</th>
+											<th>사용자</th>
+											<th>적요</th>
+											<th>금액</th>
+											<th>비고</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>2020-01-01 (월)</td>
+											<td>홍길동</td>
+											<td>물품 구매 내용입니다. 두줄 이상도 입력 가능</td>
+											<td class="tR">50,000원</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td>적요가 길어질 수도 있어서 이곳에 쓸수도 있어요</td>
+											<td class="tR"></td>
+											<td>비고 이곳에 쓸 수도 있어요</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td class="tR"></td>
+											<td></td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<th colspan="2">총액</th>
+										<td></td>
+										<td class="tR">50,000원</td>
+										<td></td>
+									</tfoot>
+								</table>
+							</div>
+							<div class="tws spendDetail">
+								<table>
+									<colgroup>
+										<col width="160"/>
+										<col width="160"/>
+										<col width="400"/>
+										<col width="160"/>
+										<col width="400"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>지출일자</th>
+											<th>사용자</th>
+											<th>적요</th>
+											<th>금액</th>
+											<th>비고</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td colspan="5">입력한 정보가 없습니다.</td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<th colspan="2">총액</th>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tfoot>
+								</table>
+							</div>
+							<!---->
+							<div class="btnArea tC">
+								<span class="left">
+									<button class="btnM white">발행 미리보기</button>
+								</span>
+								<span class="right">
+									<a href="biz_document_spend.html" class="btnM white" onclick="if(!confirm('선택한 정보를 삭제 하시겠습니끼?')){return false;}">삭제</a>
+									<a href="biz_document_spend.html" class="btnM white">목록</a>
+								</span>
+								<a href="biz_document_spend_write.html" class="btnM white">수정</a>
+							</div>
+							<!--//-->
+						</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 반려사유 입력 -->
+			<div class="basicPop reasonPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>반려사유 입력</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<textarea placeholder="반려사유를 입력하세요"></textarea>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<!--//반려사유 입력 -->
+			<!-- history -->
+			<div class="basicPop docHistoryPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>History</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<ul>
+						<li>지선주 - 승인요청 2020-01-01</li>
+						<li>안병찬 - <span class="orangeTxt">승인반려 2020-01-01</span>
+							<p class="reasonArea">반려사유가 나오게 됩니다. 반려사유는 길게 나올 수도 있고 짧을 수도 있습니다.</p>
+						</li>
+						<li>지선주 - 재승인요청 2020-01-02</li>
+					</ul>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<!--//history -->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

@@ -1,0 +1,46 @@
+body {
+	color: #555;
+	font: normal 10pt/160% Arial, Dotum,  sans-serif;
+	margin:0; padding:0;
+}
+
+.fr {color:red;}
+.ml15 {margin-left:15px;}
+hr { display:none}
+#wrap { position:relative; width:100%; height:100%; text-align:left; min-width:1000px;}
+#top { position:fixed; _position:absolute; left:0; top:0;z-index:10;margin:0; padding:0; width:100%; min-width:1000px; height:160px; text-align:center; border-bottom:1px solid #ddd; background:#fff;}
+#top h1 { line-height:50px;}
+#top nav ul { list-style:none;}
+#top nav li { display:inline;}
+#top nav li button { padding:0 5px; font-size:11px; height:23px; background:#000; color:#fff; border:none}
+#top h2 { clear:both; margin:15px 0; padding: 0 30px; background: #eee; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; line-height: 200%; font-size: 12pt; font-weight: bold;}
+#container { margin-top:160px; padding:15px;}
+#container h1 { font-size:16px;}
+#container article div { padding-left:15px;}
+#container p.line { padding:5px 10px; border:1px solid #ddd;}
+#container pre.line { padding:5px 10px; border:1px solid #ddd; line-height:120%; font-size:11px;}
+#container div.line { padding:5px 10px; border:1px solid #ddd;}
+#container div.line p {margin-left:50px;}
+#container div.line ul li dl { margin-left:50px;}
+#container div.line ul li dl dt em {font-style:normal;color:red;}
+#container div.line ul li {margin-bottom:45px;}
+#container h2 {font-size:14px; font-family:Arial;display:inline-block;}
+table.wd  {border-collapse:collapse;  border-spacing:0px; width:100%; border:1px solid #ccc}
+table.wd th { padding:3px 10px 1px; font-weight:bold; border:1px solid #ccc}
+table.wd td { padding:3px 10px 1px; border:1px solid #ccc;}
+table.ibtlist th { font-weight:bold; background:#ccc}
+table.ibtlist td { text-align:center;}
+footer { position:relative; clear:both; display:inline-block; margin:10px 0; padding:5px 0 10px; border-top: 1px solid #ccc; width:100%;}
+footer strong { padding-left:15px;}
+footer div { position:absolute; font-size:11px;}
+footer p { margin-top:0; padding-right:15px; text-align:right; font-size:11px;}
+
+ol {list-style:none;counter-reset:item;}
+ol>li:before {content: "("counter(item)") ";counter-increment:item;}
+
+
+
+/* component by-gugu */
+
+.componentStyle h1 {margin-bottom:10px;margin-top:10px;font-size:23px !important;font-weight:bold;font-family:none;}
+.componentStyle img {margin-bottom:15px;}

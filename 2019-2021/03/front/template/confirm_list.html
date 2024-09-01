@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/*$('.bcardLayout li').click(function(){
+				location.href = 'business_card_view.html';
+			});*/
+			$('.searchOpner').click(function(){
+				$('.searchBasic').slideToggle();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<h1>승인이력</h1>
+					<button class="btnNav">햄버거</button>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb">
+				<section>
+					<div class="c-menu c-menu--slide-left"><!-- 우측 Slide 일 경우 -->
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</section>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<span class="selectSet">
+						<select>
+							<option>전체</option>
+							<option>외근승인</option>
+							<option>현장근무승인</option>
+						</select>
+					</span>
+					<span class="right">
+						<span class="selectSet">
+							<select>
+								<option>전체</option>
+								<option>요청된 승인</option>
+								<option>완료된 승인</option>
+							</select>
+						</span>
+						<span class="selectSet">
+							<select>
+								<option>전체</option>
+								<option>홍길동</option>
+								<option>김철수</option>
+							</select>
+						</span>
+						<!-- 00개
+						<button class="searchOpner">검색</button> -->
+					</span>
+				</div>
+				<!-- 검색영역 -->
+				<div class="searchBasic">
+					<div class="searchBack">
+						<div class="term">
+							<div class="calDupSet">
+								<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+								<em>~</em>
+								<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+							</div>
+							<input type="text" placeholder="회사, 이름 입력" />
+						</div>
+						<input type="submit" value="검색" class="btnSearch" />
+					</div>
+				</div>
+				<!-- //검색영역 -->
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="outsideLayout">
+						<div class="mobileList">
+							<ul>
+								<li>
+									<span>2020-06-08 (월) ~ 2020-06-08 (월)</span>
+									<div class="tL">
+										<a href="confirm_view.html">
+											<strong><em>VPN 사용신청</em>김철수 (0000000)</strong>
+											접속시스템명은 프로젝트명 <i>외근 근무지</i>
+										</a>
+									</div>
+									<div class="time">
+										<em>요청일 : 2020-01-01 00:00</em>
+									</div>
+									<span class="signStatus"><em>미서명</em></span>
+								</li>
+								<li>
+									<span>2020-06-08 (월) ~ 2020-06-08 (월)</span>
+									<div class="tL">
+										<a href="confirm_view.html">
+											<strong><em>VPN 계정신청</em>김철수 (0000000)</strong>
+										</a>
+									</div>
+									<div class="time">
+										<em>요청일 : 2020-01-01 00:00</em>
+									</div>
+									<span class="signStatus"><em>미서명</em></span>
+								</li>
+								<li>
+									<span>2020-06-08 (월) ~ 2020-06-08 (월)</span>
+									<div class="tL">
+										<a href="confirm_view.html">
+											<strong><em>사내망 신청</em>김철수 (0000000)</strong>
+											이더넷 <i>지급장비 명</i>
+										</a>
+									</div>
+									<div class="time">
+										<em>요청일 : 2020-01-01 00:00</em>
+									</div>
+									<span class="signStatus"><em>미서명</em></span>
+								</li>
+								<li>
+									<span>2020-06-08 (월) ~ 2020-06-08 (월)</span>
+									<div class="tL">
+										<a href="confirm_view.html">
+											<strong><em>사내망 신청</em>김철수 (0000000)</strong>
+											wifi <i>지급장비 명</i>
+										</a>
+									</div>
+									<div class="time">
+										<em>요청일 : 2020-01-01 00:00</em>
+									</div>
+									<span class="signStatus"><em>미서명</em></span>
+								</li>
+								<!--Loop-->
+								<li>
+									<span>2020-06-08 (월)</span>
+									<div class="tL">
+										<a href="confirm_view.html">
+											<strong><em>외근</em>홍길동 (000000)</strong>
+											업체명직접등록가능 <i>영업미팅</i>
+										</a>
+									</div>
+									<div class="time">
+										<em>요청일 : 2020-01-01 00:00</em>
+									</div>
+									<span class="signStatus"><em>미서명</em></span>
+								</li>
+								<!--//Loop-->
+								<li>
+									<span>2020-06-08 (월) ~ 2020-06-08 (월)</span>
+									<div class="tL">
+										<a href="confirm_view2.html">
+											<strong><em class="work">현장출근</em> 홍길동 (000000)</strong>
+											업체명직접등록가능 <i>영업미팅</i>
+										</a>
+									</div>
+									<div class="time">
+										<em>요청일 : 2020-01-01 00:00</em>
+									</div>
+									<span class="signStatus"><em>미서명</em></span>
+								</li>
+								<li>
+									<span>2020-06-08 (월) ~ 2020-06-08 (월)</span>
+									<div class="tL">
+										<a href="confirm_view5.html">
+											<strong><em class="work">현장출근</em> 홍길동 (000000)</strong>
+											업체명직접등록가능 <i>영업미팅</i>
+										</a>
+									</div>
+									<div class="time">
+										<em>요청일 : 2020-01-01 00:00</em>
+										<em>반려일 : 2020-07-01 00:00</em>
+									</div>
+									<span class="signStatus"><em class="reject">미서명</em></span> <!-- 반려한 경우 -->
+								</li>
+								<li>
+									<span>2020-06-08 (월)</span>
+									<div class="tL">
+										<a href="confirm_view3.html">
+											<strong><em class="work">현장출근</em> 홍길동 (000000)</strong>
+											업체명직접등록가능 <i>영업미팅</i>
+										</a>
+									</div>
+									<div class="time">
+										<em>요청일 : 2020-01-01 00:00</em>
+										<em>승인일 : 2020-07-01 00:00</em>
+									</div>
+									<span class="signStatus"><em class="on">서명완료</em></span>
+								</li>
+								<li>
+									<span>2020-06-05 (금)</span>
+									<div class="tL">
+										<a href="confirm_view4.html">
+											<strong><em>외근</em> 김철수 (000000)</strong>
+											르노삼성자동차(주) <i>수정대응</i>
+										</a>
+									</div>
+									<div class="time">
+										<em>요청일 : 2020-01-01 00:00</em>
+										<em>승인일 : 2020-07-01 00:00</em>
+									</div>
+									<span class="signStatus"><em class="on">서명완료</em></span>
+								</li>
+								<li>
+									<span>2020-06-04 (목)</span>
+									<div class="tL">
+										<a href="confirm_view4.html">
+											<strong><em>외근</em> 홍길동 (000000)</strong>
+											알씨아이파이낸셜서비스코리아㈜ <i>영업미팅</i>
+										</a>
+									</div>
+									<div class="time">
+										<em>요청일 : 2020-01-01 00:00</em>
+										<em>승인일 : 2020-07-01 00:00</em>
+									</div>
+									<span class="signStatus"><em class="on">서명완료</em></span>
+								</li>
+								<li>
+									<span>2020-06-03 (수)</span>
+									<div class="tL">
+										<a href="confirm_view4.html">
+											<strong><em>외근</em> 홍길동 (000000)</strong>
+											알씨아이파이낸셜서비스코리아㈜ <i>영업미팅</i>
+										</a>
+									</div>
+									<div class="time">
+										<em>요청일 : 2020-01-01 00:00</em>
+										<em>승인일 : 2020-07-01 00:00</em>
+									</div>
+									<span class="signStatus"><em class="on">서명완료</em></span>
+								</li>
+								<!---->
+								<li class="notList">
+									<div>
+										등록된 게시글이 없습니다
+									</div>
+								</li>
+								<!--//-->
+							</ul>
+						</div>
+					</div>
+					<!--//-->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>상단으로</button></div>
+		</div>
+		<!-- //Wrap -->
+	</body>
+</html>

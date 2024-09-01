@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<!-- <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/swiper.min.js"></script> -->
+		<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../js/menu.js"></script>
+		<!-- <script type="text/javascript" src="js/duDatepicker.js"></script> -->
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(window).ready(function(){
+				$(document).on('click tab', '.gnbOpen', function(e){
+					$('.gnbScroll').load('gnb.html',function(){
+						funcGnbOpen();
+					});
+					return false;
+				});
+
+				$(document).on('click tab', '.pwChangePop button', function(e){
+					$('.dimPop').hide();
+					return false;
+				});
+			});
+		</script>
+		<!-- <style>ol {display:block !important}</style>  -->
+	</head>
+	<body>
+	<div class="gnbTop">
+	<div class="loginInfo">
+		<p>
+			<strong>
+				김르노님 안녕하세요.<br/>
+				<span>세션만료 26분 30초</span>
+			</strong>
+		</p>
+		<a href="/e-best/ver4/template/setting.html">환경설정</a>
+	</div>
+	<div class="myGo">
+		<a href="/e-best/ver4/template/mypage.html">마이페이지</a>
+		<span><a href="/e-best/ver4/template/login.html">로그아웃</a></span>
+	</div>
+</div>
+<div class="gnbMenu">
+	<nav>
+		<ul>
+			<li class="mni0 noSub">
+				<a href="/e-best/ver4/template/main.html"><span>Home</span></a>
+			</li>
+			<li class="mni1">
+				<strong><span>견적관리</span></strong>
+				<ol>
+					<li class="on"><a href="/e-best/ver4/template/process/new_step.html">신규견적</a></li>
+					<li><a href="/e-best/ver4/template/process/estimate_list.html">견적조회</a></li>
+					<li><a onclick="funcGoURL3('할부계산기');">할부계산기</a></li>
+				</ol>
+			</li>
+			<li class="mni2">
+				<strong><span>계출관리</span></strong>
+				<ol>
+					<li><a href="/e-best/ver4/template/process/registration_staus.html">계출현황</a></li>
+					<li><a href="/e-best/ver4/template/process/sales_contract.html">매출계약 조회</a></li>
+					<li><a href="/e-best/ver4/template/process/acceptance.html">인수증</a></li>
+					<!-- <li class="notNow"> --> <li><a href="/e-best/ver4/template/process/contract_history_view.html">계약구매이력 조회</a></li><!-- 2019-08-08 -->
+					<!-- <li class="notNow"> --> <li><a href="/e-best/ver4/template/process/ots_view.html">OTS 조회</a></li>
+					<!-- <li class="notNow"> --> <li><a href="/e-best/ver4/template/process/card_point_view.html">카드포인트 조회</a></li>
+				</ol>
+			</li>
+			<li class="mni3">
+				<strong><span>재고조회</span></strong>
+				<ol>
+					<li><a href="/e-best/ver4/template/available_inventory.html">가용재고</a></li>
+					<li><a href="/e-best/ver4/template/delivery_inquiry.html">납기문의</a></li>
+					<!-- <li class="notNow"> --> <li><a href="/e-best/ver4/template/display_car.html">전시차 조회</a></li>
+					<!-- <li class="notNow"> --> <li><a href="/e-best/ver4/template/discount_car.html">감가차 조회</a></li>
+				</ol>
+			</li>
+			<!-- <li class="mni4">
+				<a href="/e-best/ver4/template/contract/possibility.html"><span>가망고객</span></a>
+			</li> -->
+			<li class="mni5">
+				<strong><span>고객활동</span></strong>
+				<ol>
+					<li><a href="/e-best/ver4/template/contract/possibility_start.html">가망고객 등록</a></li>
+					<li><a href="/e-best/ver4/template/customer/customer_list.html">고객 조회</a></li>
+					<!-- <li class="notNow"> --> <li><a href="/e-best/ver4/template/customer/customer_eCommerce.html">eCommerce 고객관리</a></li>
+					<!-- <li class="notNow"> --> <li><a href="/e-best/ver4/template/customer/customer_eShowroom.html">eShowroom 견적</a></li>
+				</ol>
+			</li>
+			<li class="mni10">
+				<strong><span>발송관리</span></strong>
+				<ol>
+					<!-- <li class="notNow"> --> <li><a href="/e-best/ver4/template/customer/sms_send_regist.html">SMS 발송</a></li>
+					<!-- <li class="notNow"> --> <li><a href="/e-best/ver4/template/customer/email_send_regist.html">e-mail 발송</a></li>
+					<!-- <li class="notNow"> --> <li><a href="/e-best/ver4/template/customer/fax_send_regist.html">FAX 발송</a></li>
+					<!-- <li class="notNow"> --> <li><a href="/e-best/ver4/template/customer/send_result_list.html">발송결과 조회</a></li>
+					<!-- <li class="notNow"> --> <li><a href="/e-best/ver4/template/customer/point_using_list.html">포인트 관리</a></li>
+					<!-- <li class="notNow"> --> <li><a href="/e-best/ver4/template/customer/send_format_regist.html">발송서식 관리</a></li>
+				</ol>
+			</li>
+			<!-- <li class="mni11">
+				<strong><span>셀프플래너</span></strong>
+				<ol>
+					<li><a onclick="funcGoURL2('셀프플래너');">셀프플래너</a></li>
+					<li><a onclick="funcGoURL2('활동모델 관리');">활동모델 관리</a></li>
+				</ol>
+			</li> -->
+			<li class="mni12">
+				<strong><span>MCA관리</span></strong>
+				<ol>
+					<li><a href="/e-best/ver4/template/customer/my_mca_list.html">My MCA관리</a></li>
+					<li><a href="/e-best/ver4/template/customer/mca_result_list.html">MCA실적 조회</a></li>
+				</ol>
+			</li>
+			<li class="mni6">
+				<strong><span>홈페이지</span></strong>
+				<ol>
+					<li><a href="https://www.renaultsamsungm.com/2017/main/main.jsp" target="_blank">홈페이지 바로가기</a></li>
+					<li><a href="https://www.renaultsamsungm.com/2017/side/catalog_download.jsp" target="_blank">가격표&카탈로그 보기</a></li>
+					<!-- <li><a onclick="funcGoURL('영업담당 개인홈페이지');">영업담당 개인홈페이지</a></li> -->
+				</ol>
+			</li>
+			<li class="mni7">
+				<strong><span>업무연락</span></strong>
+				<ol>
+					<li><a onclick="funcGoURL('개인 e-mail');">개인 e-mail</a></li>
+					<li><a onclick="funcGoURL('터치클래스');">터치클래스</a></li>
+					<li><a onclick="funcGoURL('G.N.T');">G.N.T</a></li>
+				</ol>
+			</li>
+			<li class="mni8">
+				<strong><span>통합게시판</span></strong>
+				<ol>
+					<li><a href="/e-best/ver4/template/notice.html">공지사항</a></li>
+					<li><a href="/e-best/ver4/template/data.html">자료실</a></li>
+					<li><a onclick="funcGoURL2('용품 정보 및 A/S');">용품정보 및 A/S</a></li>
+					<li><a onclick="funcGoURL2('월간공지');">월간공지</a></li>
+					<li><a onclick="funcGoURL2('납기정보');">납기정보</a></li>
+				</ol>
+			</li>
+			<li class="mni9">
+				<strong><span>[관리] 통계</span></strong>
+				<ol>
+					<li><a href="/e-best/ver4/template/mypage_statement2.html">판매수수료(거점장)</a></li>	
+					<li><a href="/e-best/ver4/template/mypage_statement3.html">판매수수료(영업본부)</a></li>	
+					<li><a href="/e-best/ver4/template/mypage_statement4.html">판매수수료(지역본부)</a></li>	
+					<li><a href="/e-best/ver4/template/performance_status.html">실적현황</a></li>
+					<!-- <li><a onclick="funcGoURL2('전자계약이용');">전자계약이용</a></li> -->
+				</ol>
+			</li>
+			<!-- <li class="mni13">
+				<a onclick="funcGoURL2('시스템관리');"><span>시스템관리</span></a>
+			</li> -->
+		</ul>
+	</nav>
+</div>
+
+<!-- 퍼블리싱용입니다. --> 
+<script>
+	function funcGoURL(s){
+		alert( s + " 서비스로 이동");
+	}
+	function funcGoURL2(s){
+		alert( s + " 페이지로 이동");
+	}
+	function funcGoURL3(s){
+		alert( s + " 팝업 노출");
+	}
+</script>
+<!-- //퍼블리싱용입니다. --> 
+	</body>
+</html>

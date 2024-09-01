@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ThinkTree Visitor</title>
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/navmenu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.btnArea .white').click(function(){
+				$('.popDim').show();
+				$('.pageOutPop').show();
+			});
+			$('.alertPop button, .basicPop button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			$('.sign').click(function(){
+				$('.popDim, .popDim .signPop').show();
+			});
+			$('.signPop button').click(function(){
+				$('.popDim').hide();
+				$('.sign img').show();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<button class="btnPrev" onclick="history.back()">이전</button>
+					<h1>방문객 등록</h1>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- snb 생략 -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<div class="visitorLayout">
+                        <div class="dlstyle writeCase">
+                            <dl>
+                                <dt>방문일정 <sup>필수항목</sup></dt>
+                                <dd>
+                                    <span class="dateSet">
+										<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+                                    </span>
+                                    <span class="selectDubSet">
+										<span class="selectSet">
+	    									<select>
+	    										<option selected>15:30</option>
+	    										<option>16:30</option>
+	    									</select>
+	    								</span>
+										<em>~</em>
+	                                    <span class="selectSet">
+	    									<select>
+	    										<option selected>15:30</option>
+	    										<option>16:30</option>
+	    									</select>
+	    								</span>
+                                    </span>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>방문목적 <sup>필수항목</sup></dt>
+                                <dd>
+                                    <input type="text" placeholder="일정 제목을 입력해 주세요 (최대 50글자)" />
+                                </dd>
+                            </dl>
+                            <dl class="attendCompany">
+                                <dt>업체명</dt>
+                                <dd><input type="text" placeholder="자동완성 입력입니다"/></dd>
+                            </dl>
+                        </div>
+						<div class="attendData case2">
+							<h3>방문자 정보 <button class="btnM green entypo-plus">추가</button></h3>
+							<span class="checkSet">
+								<input type="checkbox" id="chk1" name="chk1">
+								<label for="chk1"><i></i><span>개인정보제공 동의 및 서명 사전진행</span></label>
+							</span>
+							<ul class="dlstyle writeCase">
+								<li>
+									<dl>
+										<dt>이름 <sup>필수항목</sup></dt>
+										<dd><input type="text" class="wHalf" /></dd>
+									</dl>
+									<dl>
+										<dt>휴대번호 <sup>필수항목</sup></dt>
+										<dd>
+											<div class="phoneNum">
+												<span class="selectSet">
+													<select>
+														<option>010</option>
+														<option>011</option>
+														<option>017</option>
+														<option>018</option>
+														<option>019</option>
+													</select>
+												</span>
+												<span class="txt">-</span>
+												<input type="tel" id="middleNum" />
+												<span class="txt">-</span>
+												<input type="tel" id="lastNum" />
+											</div>
+										</dd>
+									</dl>
+								</li>
+								<li>
+									<dl>
+										<dt>이름 <sup>필수항목</sup></dt>
+										<dd><input type="text" class="wHalf" /></dd>
+									</dl>
+									<dl>
+										<dt>휴대번호 <sup>필수항목</sup></dt>
+										<dd>
+											<div class="phoneNum">
+												<span class="selectSet">
+													<select>
+														<option>010</option>
+														<option>011</option>
+														<option>017</option>
+														<option>018</option>
+														<option>019</option>
+													</select>
+												</span>
+												<span class="txt">-</span>
+												<input type="tel" id="middleNum" />
+												<span class="txt">-</span>
+												<input type="tel" id="lastNum" />
+											</div>
+										</dd>
+									</dl>
+									<button class="delete">삭제</button>
+								</li>
+							</ul>
+                        </div>
+						<div class="btnArea tC">
+							<button class="btnM white">취소</button>
+							<button class="btnM blue" onClick="location.href='visitor_view.html'">확인</button>
+						</div>
+					</div>
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>TOP</button></div>
+		</div>
+		<!-- //Wrap -->
+	</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.primary').click(function(){
+				$(location).attr('href','main.html');
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- Login Wrap -->
+		<div id="loginWrap">
+			<div class="loginTit">
+				<!--2021-02-02 문구 변경 -->
+				<div>
+					<span><img src="../images/i_logoting.svg" alt="" /></span>
+					<h1><img src="../images/img_logoTit.png" alt="ANDU:OFFICE LIF" /></h1><!--2021-02-10 네임 변경-->
+					<p><em>비대면 업무협업 서비스</em></p>
+				</div>
+				<!--2021-02-02 문구 변경 -->
+			</div>
+			<div class="loginForm">
+				<div class="formBack pwFind">
+					<p>
+						<strong>패스워드찾기</strong>
+						이메일(아이디)로 인증하여 패스워드 초기화를 진행해 주시기 바랍니다.
+					</p>
+					<form id="" action="" method="post">
+						<div class="inputBox">
+							<label>이메일(아이디)</label>
+							<input type="text" id="" name="" placeholder="" />
+							<button class="btnL blue">인증번호 발송</button>
+							<button class="btnL" style="display:none;">재발송</button>
+						</div>
+						<div class="inputBox numberCase">
+							<label>인증번호</label>
+							<input type="text" id="" name="" placeholder="" />
+							<span>3:00</span>
+							<button class="btnL green">확인</button>
+						</div>
+						<em>이메일(아이디)가 바르지 않습니다. 다시 한번 확인해 주세요.</em>
+						<em>인증번호가 맞지 않습니다. 재입력을 혹은 인증번호 재발송하여 다시 입력해 주시기 바랍니다</em>
+						<div class="btnArea">
+							<button type="button" class="btnL white">취소</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- //Login Wrap -->
+    </body>
+</html>

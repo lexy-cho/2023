@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('.btnToggleVert').click(function(){
+				$(this).parents('tr').next('tr').toggle();
+			});
+			$('.salaryDetail th .btnS').click(function(){
+				$('.popDim').show();
+				$('#newSalaryPop').show();
+			});
+			$('.salaryDetail td .btnS').click(function(){
+				$('.popDim').show();
+				$('#reSalaryPop').show();
+			});
+			$('.alertPop button, .basicPop .pBtn button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			/* 파일업로드 */
+			$('.fileSet input[type=file]').change(function() {
+				var fileValue = $(this).val().split("\\");
+				var fileName = fileValue[fileValue.length-1];
+				$('.fileSet .loadEnd em').text(fileName);
+				$('.fileSet .fileFind').hide();
+				$('.fileSet .loadIng').show();
+				setTimeout(function() {
+					$('.fileSet .loadIng').hide();
+					$('.fileSet .loadFail').show();
+				}, 3000);
+				setTimeout(function() {
+					$('.fileSet .loadFail').hide();
+					$('.fileSet .loadEnd').show();
+				}, 6000);
+			});
+			$('.fileSet .loadEnd button').click(function() {
+				$('.fileSet .fileFind').show();
+				$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+			});
+			/* end 파일업로드 */
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>급여명세서 관리</h2>
+					<div class="pagePos"><span>Home</span><span>경영지원</span><strong>급여명세서 관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="">
+						<!---->
+						<div class="boardTop">
+							<em>전체 10,000건</em>
+							<span class="right">
+								<span class="searchBasic">
+									<span class="selectSet">
+										<select>
+											<option>전체</option>
+											<option selected>2020</option>
+											<option>2019</option>
+											<option>2018</option>
+										</select>
+									</span>
+									<span class="checkSet">
+										<input type="checkbox" id="chk04" />
+										<label for="chk04"><i></i>퇴사자 포함</label>
+									</span>
+									<input type="text" placeholder="이름 입력" />
+									<input type="submit" value="검색" class="btnSearch" />
+									<button class="btnReset">초기화</button>
+								</span>
+								<button class="btnM">엑셀다운로드</button>
+							</span>
+						</div>
+						<!---->
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="40"/>
+									<col width="200"/>
+									<col width="200"/>
+									<col width="200"/>
+									<col width="200"/>
+									<col width="200"/>
+								</colgroup>
+								<thead>
+									<tr>
+										<th></th>
+										<th>이름</th>
+										<th>입사일</th>
+										<th>발송갯수</th>
+										<th>마지막 발송일자</th>
+										<th>마지막 발송이메일</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td><button class="btnToggleVert">+</button></td>
+										<td>홍길동 (000000)</td>
+										<td>2019-01-01</td>
+										<td>4개</td>
+										<td>2020-04-11 00:00</td>
+										<td>abcdefg@think-tree.co.kr</td>
+									</tr>
+									<tr style="display:none;">
+										<td colspan="6" class="salaryDetail">
+											<div class="tls">
+												<table>
+												    <!--2020-05-21-->
+													<colgroup>
+														<col width="50" />
+														<col width="150" />
+														<col width="100" />
+														<col width="120" />
+														<col width="180" /> 
+														<col width="250" />
+														<col width="250" />
+														<col width="100" />
+														<col />
+													</colgroup>
+												    <!--//2020-05-21-->
+													<thead>
+														<tr>
+															<th>No.</th>
+															<th>발송일자</th>
+															<th>년월</th>
+															<th>구분</th>
+															<th>기간</th><!--2020-05-21-->
+															<th>발송PDF</th>
+															<th>발송이메일</th>
+															<th><button class="btnS white">신규발송</button></th>
+															<th>개별/재발송사유</th>
+														</tr>
+													</thead>
+													<tbody>
+														<!--Loop-->
+														<tr>
+															<td>4</td>
+															<td>2020-04-05 00:00</td>
+															<td>2020-04</td>
+															<td>기본급여</td>
+															<td>2020-04-01 ~ 2020-04-30</td><!--2020-05-21-->
+															<td class="tL">4월급여명세서(홍길동).pdf</td>
+															<td class="tL">abcdefg@think-tree.co.kr</td>
+															<td><button class="btnS white">재발송</button></td>
+															<th class="tL">
+																2020-05-20 재발송 2 사유<br/>
+																2020-05-10 재발송 1 사유
+															</th>
+														</tr>
+														<!--//Loop-->
+														<tr>
+															<td>3</td>
+															<td>2020-03-05 00:00</td>
+															<td>2020-03</td>
+															<td>기본급여</td>
+															<td>2020-03-01 ~ 2020-03-31</td><!--2020-05-21-->
+															<td class="tL">3월급여명세서(홍길동).pdf</td>
+															<td class="tL">abcdefg@think-tree.co.kr</td>
+															<td><button class="btnS white">재발송</button></td>
+															<th class="tL">-</th>
+														</tr>
+														<tr>
+															<td>2</td>
+															<td>2020-02-05 00:00</td>
+															<td>2020-02</td>
+															<td>기본급여</td>
+															<td>2020-02-01 ~ 2020-02-30</td><!--2020-05-21-->
+															<td class="tL">2월급여명세서(홍길동).pdf</td>
+															<td class="tL">abcdefg@think-tree.co.kr</td>
+															<td><button class="btnS white">재발송</button></td>
+															<th class="tL">-</th>
+														</tr>
+														<tr>
+															<td>1</td>
+															<td>2020-01-05 00:00</td>
+															<td>2020-01</td>
+															<td>기본급여</td>
+															<td>2020-01-01 ~ 2020-01-30</td><!--2020-05-21-->
+															<td class="tL">1월급여명세서(홍길동).pdf</td>
+															<td class="tL">abcdefg@think-tree.co.kr</td>
+															<td><button class="btnS white">재발송</button></td>
+															<th class="tL">-</th>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td><button class="btnToggleVert">+</button></td>
+										<td>이영희 (000000)</td>
+										<td>2019-01-01</td>
+										<td>5개</td>
+										<td>2020-04-11 00:00</td>
+										<td>abcdefg@think-tree.co.kr</td>
+									</tr>
+									<tr style="display:none;">
+										<td colspan="6" class="salaryDetail">
+											<div class="tls">
+												<table>
+												    <!--2020-05-21-->
+													<colgroup>
+														<col width="50" />
+														<col width="150" />
+														<col width="100" />
+														<col width="120" />
+														<col width="180" /> 
+														<col width="250" />
+														<col width="250" />
+														<col width="100" />
+														<col />
+													</colgroup>
+												    <!--//2020-05-21-->
+													<thead>
+														<tr>
+															<th>No.</th>
+															<th>발송일자</th>
+															<th>년월</th>
+															<th>구분</th>
+															<th>기간</th><!--2020-05-21-->
+															<th>발송PDF</th>
+															<th>발송이메일</th>
+															<th><button class="btnS white">신규발송</button></th>
+															<th>개별/재발송사유</th>
+														</tr>
+													</thead>
+													<tbody>
+														<!--Loop--> 
+														<tr>
+															<td>5</td>
+															<td>2020-05-04 00:00</td>
+															<td>2020-05</td>
+															<td>기본급여</td>
+															<td>2020-05-01 ~ 2020-05-31</td><!--2020-05-21-->
+															<td class="tL">5월급여명세서(이영희).pdf</td>
+															<td class="tL">abcdefg@think-tree.co.kr</td>
+															<td><button class="btnS white">재발송</button></td>
+															<th class="tL">-</th>
+														</tr>
+														<!--//Loop-->
+														<tr>
+															<td>4</td>
+															<td>2020-04-05 00:00</td>
+															<td>2020-04</td>
+															<td>기본급여</td>
+															<td>2020-04-01 ~ 2020-04-30</td><!--2020-05-21-->
+															<td class="tL">4월급여명세서(이영희).pdf</td>
+															<td class="tL">abcdefg@think-tree.co.kr</td>
+															<td><button class="btnS white">재발송</button></td>
+															<th class="tL">-</th>
+														</tr>
+														<tr>
+															<td>3</td>
+															<td>2020-03-05 00:00</td>
+															<td>2020-03</td>
+															<td>기본급여</td>
+															<td>2020-03-01 ~ 2020-03-31</td><!--2020-05-21-->
+															<td class="tL">3월급여명세서(이영희).pdf</td>
+															<td class="tL">abcdefg@think-tree.co.kr</td>
+															<td><button class="btnS white">재발송</button></td>
+															<th class="tL">-</th>
+														</tr>
+														<tr>
+															<td>2</td>
+															<td>2020-02-05 00:00</td>
+															<td>2020-02</td>
+															<td>기본급여</td>
+															<td>2020-02-01 ~ 2020-02-29</td><!--2020-05-21-->
+															<td class="tL">2월급여명세서(이영희).pdf</td>
+															<td class="tL">abcdefg@think-tree.co.kr</td>
+															<td><button class="btnS white">재발송</button></td>
+															<th class="tL">-</th>
+														</tr>
+														<tr>
+															<td>1</td>
+															<td>2020-01-05 00:00</td>
+															<td>2020-01</td>
+															<td>기본급여</td>
+															<td>2020-01-01 ~ 2020-01-30</td><!--2020-05-21-->
+															<td class="tL">1월급여명세서(이영희).pdf</td>
+															<td class="tL">abcdefg@think-tree.co.kr</td>
+															<td><button class="btnS white">재발송</button></td>
+															<th class="tL">-</th>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><button class="btnToggleVert">+</button></td>
+										<td>김철수 (000000)</td>
+										<td>2019-01-01</td>
+										<td>5개</td>
+										<td>2020-04-11 00:00</td>
+										<td>abcdefg@think-tree.co.kr</td>
+									</tr>
+									<tr style="display:none;">
+										<td colspan="6" class="salaryDetail">
+											<div class="tls">
+												<table>
+												    <!--2020-05-21-->
+													<colgroup>
+														<col width="50" />
+														<col width="150" />
+														<col width="100" />
+														<col width="120" />
+														<col width="180" /> 
+														<col width="250" />
+														<col width="250" />
+														<col width="100" />
+														<col />
+													</colgroup>
+												    <!--//2020-05-21-->
+													<thead>
+														<tr>
+															<th>No.</th>
+															<th>발송일자</th>
+															<th>년월</th>
+															<th>구분</th>
+															<th>기간</th><!--2020-05-21-->
+															<th>발송PDF</th>
+															<th>발송이메일</th>
+															<th><button class="btnS white">신규발송</button></th>
+															<th>개별/재발송사유</th>
+														</tr>
+													</thead>
+													<tbody>
+														<!--Loop--> 
+														<tr>
+															<td>5</td>
+															<td>2020-05-04 00:00</td>
+															<td>2020-05</td>
+															<td>기본급여</td>
+															<td>2020-05-01 ~ 2020-05-31</td><!--2020-05-21-->
+															<td class="tL">5월급여명세서(김철수).pdf</td>
+															<td class="tL">abcdefg@think-tree.co.kr</td>
+															<td><button class="btnS white">재발송</button></td>
+															<th class="tL">-</th>
+														</tr>
+														<!--//Loop-->
+														<tr>
+															<td>4</td>
+															<td>2020-04-05 00:00</td>
+															<td>2020-04</td>
+															<td>기본급여</td>
+															<td>2020-04-01 ~ 2020-04-30</td><!--2020-05-21-->
+															<td class="tL">4월급여명세서(김철수).pdf</td>
+															<td class="tL">abcdefg@think-tree.co.kr</td>
+															<td><button class="btnS white">재발송</button></td>
+															<th class="tL">-</th>
+														</tr>
+														<tr>
+															<td>3</td>
+															<td>2020-03-05 00:00</td>
+															<td>2020-03</td>
+															<td>기본급여</td>
+															<td>2020-03-01 ~ 2020-03-31</td><!--2020-05-21-->
+															<td class="tL">3월급여명세서(김철수).pdf</td>
+															<td class="tL">abcdefg@think-tree.co.kr</td>
+															<td><button class="btnS white">재발송</button></td>
+															<th class="tL">-</th>
+														</tr>
+														<tr>
+															<td>2</td>
+															<td>2020-02-05 00:00</td>
+															<td>2020-02</td>
+															<td>기본급여</td>
+															<td>2020-02-01 ~ 2020-02-29</td><!--2020-05-21-->
+															<td class="tL">2월급여명세서(김철수).pdf</td>
+															<td class="tL">abcdefg@think-tree.co.kr</td>
+															<td><button class="btnS white">재발송</button></td>
+															<th class="tL">-</th>
+														</tr>
+														<tr>
+															<td>1</td>
+															<td>2020-01-05 00:00</td>
+															<td>2020-01</td>
+															<td>기본급여</td>
+															<td>2020-01-01 ~ 2020-01-31</td><!--2020-05-21-->
+															<td class="tL">1월급여명세서(김철수).pdf</td>
+															<td class="tL">abcdefg@think-tree.co.kr</td>
+															<td><button class="btnS white">재발송</button></td>
+															<th class="tL">-</th>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="bpSet">
+							<div class="btnArea">
+								<span class="right">
+									<a class="btnM" href="biz_salary_write.html">급여명세서 일괄등록</a>
+								</span>
+							</div>
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+										<a class="on">1</a>
+										<a>2</a>
+										<a>3</a>
+										<a>4</a>
+										<a>5</a>
+									<a class="next">다음</a>
+								</span>
+								<span class="selectSet">
+									<select>
+										<option>10개</option>
+										<option>20개</option>
+										<option>50개</option>
+										<option>100개</option>
+									</select>
+								</span>
+							</div>
+						</div>
+						<!--//-->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!--신규발송-->
+			<div class="basicPop evidencePop salaryCase" id="newSalaryPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>급여명세서 신규발송</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="130"/>
+								<col width="130"/>
+								<col width="90"/>
+								<col />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>이름</th>
+									<td>홍길동</td>
+									<th>사번</th>
+									<td>000000</td>
+								</tr>
+								<tr>
+									<th>발송일자</th>
+									<td>2020-01-21</td>
+									<th>해당년월 <sup>필수항목</sup></th>
+									<td>
+										<span class="selectSet wAuto">
+											<select>
+												<option>2020</option>
+												<option>2019</option>
+											</select>
+										</span> 년
+										<span class="selectSet wAuto">
+											<select>
+												<option>05</option>
+												<option>04</option>
+												<option>03</option>
+												<option>02</option>
+												<option>01</option>
+											</select>
+										</span> 월
+									</td>
+								</tr>
+								<tr>
+									<th>첨부파일 <sup>필수항목</sup></th>
+									<td colspan="3">
+										<span class="fileSet pt5px">
+											<span class="fileFind">
+												<input type="file" id="file1" />
+												<label for="file1">파일찾기</label>
+											</span> <!--파일선택:버튼만있는형식:초록색버전-->
+											<span class="loadIng" style="display:none;">업로드 중</span>
+											<strong class="loadEnd" style="display:none;">
+												<em>샘플 데이터.png</em>
+												<button>취소</button>
+											</strong>
+											<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>개별발송사유 <sup>필수항목</sup></th>
+									<td colspan="3"><textarea></textarea></td>
+								</tr>
+								<tr>
+									<th>발송 이메일</th>
+									<td colspan="3">
+										<span class="checkSet">
+											<input type="checkbox" id="chk3" />
+											<label for="chk3"><i></i>회사메일</label>
+										</span>
+										<span class="checkSet">
+											<input type="checkbox" id="chk4" />
+											<label for="chk4"><i></i>기타메일</label>
+										</span>
+										<input type="text" class="wAuto" />
+									</td>
+								</tr>
+								<!-- 2020-05-25 -->
+								<tr>
+									<th>구분</th>
+									<td colspan="3">
+										<span class="selectSet">
+											<select>
+												<option>구분을 선택해주세요</option>
+												<option>기본급여</option>
+												<option>연말 추가보너스</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+								<!-- //2020-05-25 -->
+								<!-- 2020-05-21 -->
+								<tr>
+									<th>기간</th>
+									<td colspan="3">
+										<span class="calDupSet">
+											<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+											<em>~</em>
+											<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+										</span>
+									</td>
+								</tr>
+								<!-- //2020-05-21 -->
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">발송</button>
+				</div>
+			</div>
+			<!--//신규발송-->
+			<!--재발송-->
+			<div class="basicPop evidencePop salaryCase" id="reSalaryPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>급여명세서 재발송</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="130"/>
+								<col width="130"/>
+								<col width="90"/>
+								<col />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>이름 (사번)</th>
+									<td>홍길동 (000000)</td>
+									<th>발송일자</th>
+									<td>2020-01-21</td>
+								</tr>
+								<tr>
+									<th>재발송일자</th>
+									<td>2020-01-21</td>
+									<th>해당년월 <sup>필수항목</sup></th>
+									<td>2020년 04월
+									</td>
+								</tr>
+								<tr>
+									<th>첨부파일 <sup>필수항목</sup></th>
+									<td colspan="3">
+										<span class="fileSet pt5px">
+											<span class="fileFind" style="display:none;">
+												<input type="file" id="file1" />
+												<label for="file1">파일찾기</label>
+											</span> <!--파일선택:버튼만있는형식:초록색버전-->
+											<span class="loadIng" style="display:none;">업로드 중</span>
+											<strong class="loadEnd">
+												<em>4월급여명세서(홍길동).pdf</em>
+											</strong>
+											<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>재발송사유 <sup>필수항목</sup></th>
+									<td colspan="3"><textarea></textarea></td>
+								</tr>
+								<tr>
+									<th>발송 이메일</th>
+									<td colspan="3">
+										<span class="checkSet">
+											<input type="checkbox" id="chk3" />
+											<label for="chk3"><i></i>회사메일</label>
+										</span>
+										<span class="checkSet">
+											<input type="checkbox" id="chk4" />
+											<label for="chk4"><i></i>기타메일</label>
+										</span>
+										<input type="text" class="wAuto" />
+									</td>
+								</tr>
+								<!-- 2020-05-25 -->
+								<tr>
+									<th>구분</th>
+									<td colspan="3">
+										<span class="selectSet">
+											<select>
+												<option>구분을 선택해주세요</option>
+												<option>기본급여</option>
+												<option>연말 추가보너스</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+								<!-- //2020-05-25 -->
+								<!-- 2020-05-21 -->
+								<tr>
+									<th>기간</th>
+									<td colspan="3">
+										<span class="calDupSet">
+											<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+											<em>~</em>
+											<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+										</span>
+									</td>
+								</tr>
+								<!-- //2020-05-21 -->
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">발송</button>
+				</div>
+			</div>
+			<!--//재발송-->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

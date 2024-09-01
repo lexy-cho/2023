@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/push.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.dpApplyPop .designate .selectSet select').change(function(){
+					if($('.dpApplyPop .designate .selectSet select').find("option:selected").val() == 0){
+						$('.pBtn .red').attr('disabled', true);
+					} else {
+						$('.pBtn .red').attr('disabled', false);
+					}
+				}); // 2020-06-16 드라이버&차량 지정이 미완료이면 배차신청 버튼 비활성화 처리
+				$('.recommendPop .btnConfirm').click(function(){
+					$('.popDim').show();
+					$('.dpApplyPop').show();
+					scrollClose();
+				});
+				$(".orderlist li.firstOpen").click(function(){
+					$(this).removeClass('firstOpen');
+				});
+				$('.orderlist li:nth-child(1)').click(function(){
+					$('.popDim').show();
+					$('.dpApplyAfterPop.waitCase').show();
+					$('.dpApplyAfterPop.waitCase .listScroll .tls').hide();
+					$('.dpApplyAfterPop.waitCase .listScroll .tls.case1').show();
+					scrollClose();
+				}); // 2020-06-16 신청 후 팝업의 대기&승인 케이스
+				$('.orderlist li:nth-child(2)').click(function(){
+					$('.popDim').show();
+					$('.dpApplyAfterPop.waitCase').show();
+					$('.dpApplyAfterPop.waitCase .listScroll .tls').hide();
+					$('.dpApplyAfterPop.waitCase .listScroll .tls.case2').show();
+					scrollClose();
+				}); //2020-06-16 신청 후 팝업의 승인&미승인 케이스
+				$('.orderlist li:nth-child(3)').click(function(){
+					$('.popDim').show();
+					$('.dpApplyAfterPop.endCase').show();
+					scrollClose();
+				}); //2020-06-16 신청 완료 팝업의 미승인 케이스
+				$('.orderlist li:nth-child(4)').click(function(){
+					$('.popDim').show();
+					$('.recommendPop, .recommendPop .rcdCase').hide();
+					$('.recommendPop, .recommendPop .rcdCase.importCase').show();
+					scrollClose();
+				});
+				$('.orderlist li:nth-child(5)').click(function(){
+					$('.popDim').show();
+					$('.recommendPop, .recommendPop .rcdCase').hide();
+					$('.recommendPop, .recommendPop .rcdCase.exportCase').show();
+					scrollClose();
+				});
+				$('.orderlist li:nth-child(6)').click(function(){
+					$('.popDim').show();
+					$('.recommendPop, .recommendPop .rcdCase').hide();
+					$('.recommendPop, .recommendPop .rcdCase.transshipCase').show();
+					scrollClose();
+				});
+				$('.orderlist li:nth-child(7)').click(function(){
+					$('.popDim').show();
+					$('.recommendPop, .recommendPop .rcdCase').hide();
+					$('.recommendPop, .recommendPop .rcdCase.addImportCase').show();
+					scrollClose();
+				});
+				$('.orderlist li:nth-child(8)').click(function(){
+					$('.popDim').show();
+					$('.recommendPop, .recommendPop .rcdCase').hide();
+					$('.recommendPop, .recommendPop .rcdCase.addExportCase').show();
+					scrollClose();
+				});
+				$('.orderlist li:nth-child(9)').click(function(){
+					$('.popDim').show();
+					$('.recommendPop, .recommendPop .rcdCase').hide();
+					$('.recommendPop, .recommendPop .rcdCase.addTransshipCase').show();
+					scrollClose();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<div class="grayOptionArea">
+				<span>2020.02.01</span><!-- 2020-06-16 날짜 수정 -->
+				<div>
+					<!-- <button class="btnOption">옵션</button> -->
+					<span class="selectSet">
+						<select>
+							<option selected>오늘</option>
+							<option>1일</option><!-- 2020-06-16 옵션 '1일' 추가 -->
+							<option>최근 1주일</option>
+							<option>최근 1개월</option>
+							<!-- 2020-06-16 옵션 '전체' 삭제 -->
+						</select>
+					</span>
+				</div>
+			</div>
+			<div class="orderlist">
+				<div class="nullBox" style="display:none;">표시할 추천정보가 없습니다.</div><!-- 2020-08-04 표시할 정보가 없을 경우 띄움 -->
+				<ul>
+					<li class="standBy">
+						<div class="orderData">
+							<div class="listDate">[<strong class="red">수입</strong> / 왕복] 2020-01-22</div>
+							<div class="listMap">
+								<strong>부산항(05:00) – 충북/안산(09:00)</strong> – 부산항(15:00)<!-- 2020-06-16 strong 위치 수정 -->
+								<span>(Open Top / 40ft High Cube / 30ton / 5대)</span><!-- 2020-06-16 텍스트 추가 -->
+							</div>
+							<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+							<div class="listPrice">
+								<span class="disCode">오더번호 200100001</span>
+								<span class="price right"><strong>560,000</strong> 원</span>
+							</div>
+						</div>
+					</li>
+					<li class="standBy">
+						<div class="orderData">
+							<div class="listDate">[<strong class="blue">수출</strong> / 왕복] 2020-01-22</div>
+							<div class="listMap">
+								부산항(05:00) – <strong>충북/안산(09:00) – 부산항(15:00)</strong><!-- 2020-06-16 strong 위치 수정 -->
+								<span>(Open Top / 40ft High Cube / 30ton / 5대)</span><!-- 2020-06-16 텍스트 추가 -->
+							</div>
+							<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+							<div class="listPrice">
+								<span class="disCode">오더번호 200100001</span>
+								<span class="price right"><strong>560,000</strong> 원</span>
+							</div>
+						</div>
+					</li>
+					<!-- 2020-06-16 standByCase 추가 -->
+					<li class="standBy">
+						<div class="orderData">
+							<div class="listDate">[<strong class="blue">수출</strong> / 왕복] 2020-01-22</div>
+							<div class="listMap">
+								부산항(05:00) – <strong>충북/안산(09:00) – 부산항(15:00)</strong><!-- 2020-06-16 strong 위치 수정 -->
+								<span>(Open Top / 40ft High Cube / 30ton / 5대)</span><!-- 2020-06-16 텍스트 추가 -->
+							</div>
+							<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+							<div class="listPrice">
+								<span class="disCode">오더번호 200100001</span>
+								<span class="price right"><strong>560,000</strong> 원</span>
+							</div>
+						</div>
+					</li>
+					<!-- //2020-06-16 standByCase 추가 -->
+					<li class="firstOpen">
+						<div class="orderData">
+							<div class="listDate">[<strong class="red">수입</strong> / 왕복] 2020-01-22</div>
+							<div class="listMap">
+								<strong>부산항(05:00) – 충북/안산(09:00)</strong> – 부산항(15:00)<!-- 2020-06-16 strong 위치 수정 -->
+								<span>(Open Top / 40ft High Cube / 30ton / 5대)</span><!-- 2020-06-16 텍스트 추가 -->
+							</div>
+							<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+							<div class="listPrice">
+								<span class="disCode">오더번호 200100001</span>
+								<span class="price right"><strong>560,000</strong> 원</span>
+							</div>
+						</div>
+					</li>
+					<li class="firstOpen">
+						<div class="orderData">
+							<div class="listDate">[<strong class="blue">수출</strong> / 왕복] 2020-01-22</div>
+							<div class="listMap">
+								부산항(05:00) – <strong>충북/안산(09:00) – 부산항(15:00)</strong><!-- 2020-06-16 strong 위치 수정 -->
+								<span>(Open Top / 40ft High Cube / 30ton / 5대)</span><!-- 2020-06-16 텍스트 추가 -->
+							</div>
+							<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+							<div class="listPrice">
+								<span class="disCode">오더번호 200100001</span>
+								<span class="price right"><strong>560,000</strong> 원</span>
+							</div>
+						</div>
+					</li>
+					<li class="firstOpen">
+						<div class="orderData">
+							<div class="listDate">[<strong class="blue">수출</strong> / 환적] 2020-01-22</div>
+							<div class="listMap">
+								<strong>부산항(15:00) - 부산항(15:00)</strong><!-- 2020-06-16 strong 위치 수정 -->
+								<span>(Open Top / 40ft High Cube / 30ton / 5대)</span><!-- 2020-06-16 텍스트 추가 -->
+							</div>
+							<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+							<div class="listPrice">
+								<span class="disCode">오더번호 200100001</span>
+								<span class="price right"><strong>560,000</strong> 원</span>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="orderData">
+							<div class="listDate">[<strong class="red">수입</strong> / 왕복] 2020-01-22</div>
+							<div class="listMap">
+								<strong>부산항(05:00) – 충북/안산(09:00)</strong> – 부산항(15:00)<!-- 2020-06-16 strong 위치 수정 -->
+								<span>(Open Top / 40ft High Cube / 30ton / 5대)</span><!-- 2020-06-16 텍스트 추가 -->
+							</div>
+							<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+							<div class="listPrice">
+								<span class="disCode">오더번호 200100001</span>
+								<span class="price right"><strong>560,000</strong> 원</span>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="orderData">
+							<div class="listDate">[<strong class="blue">수출</strong> / 왕복] 2020-01-22</div>
+							<div class="listMap">
+								부산항(05:00) – <strong>충북/안산(09:00) – 부산항(15:00)</strong><!-- 2020-06-16 strong 위치 수정 -->
+								<span>(Open Top / 40ft High Cube / 30ton / 5대)</span><!-- 2020-06-16 텍스트 추가 -->
+							</div>
+							<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+							<div class="listPrice">
+								<span class="disCode">오더번호 200100001</span>
+								<span class="price right"><strong>560,000</strong> 원</span>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="orderData">
+							<div class="listDate">[<strong class="red">수입</strong><!-- 2020-06-16 class 수정 --> / 환적] 2020-01-22</div>
+							<div class="listMap">
+								<strong>부산항(15:00) - 부산항(15:00)</strong><!-- 2020-06-16 strong 위치 수정 -->
+								<span>(Open Top / 40ft High Cube / 30ton / 5대)</span><!-- 2020-06-16 텍스트 추가 -->
+							</div>
+							<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+							<div class="listPrice">
+								<span class="disCode">오더번호 200100001</span>
+								<span class="price right"><strong>560,000</strong> 원</span>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 배차 추천 -->
+			<div class="basicPop recommendPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>배차 추천</h1>
+				</div>
+				<div class="pBack">
+					<strong><span>홍길동</span> 고객님! 씽크트리<!-- 2020-10-29 텍스트 변경 -->에서 추천하는 최적 배차입니다.<br/>배차 확정 하시겠어요?</strong>
+					<div class="rcdCase importCase" style="display:none;">
+						<span class="simpleTit">
+							<em>[<span class="red">수입</span> / 왕복]</em>
+							<!-- 2020-06-16 날짜 삭제 -->
+							<div class="disCode">오더번호 200100001</div>
+						</span>
+						<div class="tls map"><!-- 2020-06-16 import class 삭제 -->
+							<table>
+								<colgroup>
+									<col width="80" />
+									<col width="40" />
+									<col width="80" />
+									<col width="80" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>운송일자</th>
+										<th>운송시간</th>
+										<th>출발/작업/도착지</th>
+										<th>운송금액(원)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+										<td rowspan="3">560,000</td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="rcdCase exportCase" style="display:none;">
+						<span class="simpleTit">
+							<em>[<span class="blue">수출</span> / 왕복]</em>
+							<!-- 2020-06-16 날짜 삭제 -->
+							<div class="disCode">오더번호 200100001</div>
+						</span>
+						<div class="tls map"><!-- 2020-06-16 export class 삭제 -->
+							<table>
+								<colgroup>
+									<col width="80" />
+									<col width="40" />
+									<col width="80" />
+									<col width="80" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>운송일자</th>
+										<th>운송시간</th>
+										<th>출발/작업/도착지</th>
+										<th>운송금액(원)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+										<td rowspan="3">560,000</td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="rcdCase transshipCase" style="display:none;">
+						<span class="simpleTit">
+							<em>[<span class="blue">수출</span> / 환적]</em>
+							<!-- 2020-06-16 날짜 삭제 -->
+							<div class="disCode">오더번호 200100001</div>
+						</span>
+						<div class="tls map transship">
+							<table>
+								<colgroup>
+									<col width="80" />
+									<col width="40" />
+									<col width="80" />
+									<col width="80" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>운송일자</th>
+										<th>운송시간</th>
+										<th>출발/작업/도착지</th>
+										<th>운송금액(원)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+										<td rowspan="3">560,000</td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="rcdCase addImportCase" style="display:none;">
+						<span class="simpleTit">
+							<em>[<span class="red">수입</span><!-- 2020-06-16 class 수정 --> / 왕복]</em>
+							<!-- 2020-06-16 날짜 삭제 -->
+							<div class="disCode">오더번호 200100001</div>
+						</span>
+						<div class="tls map addImport">
+							<table>
+								<colgroup>
+									<col width="80" />
+									<col width="40" />
+									<col width="80" />
+									<col width="80" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>운송일자</th>
+										<th>운송시간</th>
+										<th>출발/작업/도착지</th>
+										<th>운송금액(원)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+										<td rowspan="3">560,000<br/><span class="ftRed">(공휴 O, 야간 X)</span></td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="rcdCase addExportCase" style="display:none;">
+						<span class="simpleTit">
+							<em>[<span class="blue">수출</span> / 왕복]</em>
+							<!-- 2020-06-16 날짜 삭제 -->
+							<div class="disCode">오더번호 200100001</div>
+						</span>
+						<div class="tls map addExport">
+							<table>
+								<colgroup>
+									<col width="80" />
+									<col width="40" />
+									<col width="80" />
+									<col width="80" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>운송일자</th>
+										<th>운송시간</th>
+										<th>출발/작업/도착지</th>
+										<th>운송금액(원)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+										<td rowspan="3">560,000<br/><span class="ftRed">(공휴 O, 야간 X)</span></td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="rcdCase addTransshipCase" style="display:none;">
+						<span class="simpleTit">
+							<em>[<span class="blue">수출</span> / 환적]</em>
+							<!-- 2020-06-16 날짜 삭제 -->
+							<div class="disCode">오더번호 200100001</div>
+						</span>
+						<div class="tls map addTransship">
+							<table>
+								<colgroup>
+									<col width="80" />
+									<col width="40" />
+									<col width="80" />
+									<col width="80" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>운송일자</th>
+										<th>운송시간</th>
+										<th>출발/작업/도착지</th>
+										<th>운송금액(원)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+										<td rowspan="3">560,000<br/><span class="ftRed">(공휴 O, 야간 X)</span></td>
+									</tr>
+									<tr>
+										<td>2020-01-22</td>
+										<td>05:00</td>
+										<td>부산항</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="tls">
+						<table>
+							<colgroup>
+								<col width="80" />
+								<col width="80" />
+								<col width="40" />
+								<col width="50" />
+							</colgroup>
+							<thead>
+								<tr>
+									<th>컨테이너 유형</th>
+									<th>컨테이너 사이즈</th>
+									<th>총 중량</th>
+									<th>운송 대수</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Open Top</td>
+									<td>40ft High Cube</td>
+									<td>50ton</td>
+									<td>5대</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="memo">
+						<strong>품목</strong>
+						<p>
+							공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.
+							공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기,
+							빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.
+						</p>
+						<strong>운송 메모</strong>
+						<p>
+							공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.
+							공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기,
+							빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.
+						</p>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteOrange">거절</button>
+					<button class="btnM orange btnConfirm">신청하기</button>
+				</div>
+			</div>
+			<!-- //배차 추천 -->
+			<!-- 배차 신청 -->
+			<div class="basicPop dpApplyPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>배차신청</h1>
+				</div>
+				<div class="pBack">
+					<div class="orderData popCase">
+						<div class="simpleTit">
+							<em>[<span class="red">수입</span> / 왕복]</em>
+							<strong class="date">2020-01-22</strong>
+							<span class="disCode">오더번호 A00001</span>
+						</div>
+						<div class="listMap">
+							<strong>부산항(05:00) – 충북/안산(09:00)</strong> – 부산항(15:00)
+							<!-- 2020-06-16 strong 위치 수정 -->
+							<span>(Open Top / 40ft High Cube / 30ton / 5대)</span>
+							<!-- 2020-06-16 대수 추가 -->
+						</div>
+						<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+						<div class="listPrice">
+							<span class="price right"><strong>560,000</strong> 원</span>
+						</div>
+					</div>
+					<div class="middleArea">
+						<dl class="inputBox">
+							<dt>배차 신청 대수</dt>
+							<dd>
+								<span class="selectSet">
+									<select>
+										<option>선택</option>
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<div class="blueUl">
+							<ul>
+								<li>※1. 지정 1번부터 우선순위로 배차가 할당됩니다.</li>
+								<li>※2. 신청한 배차가 확정되면 '운송실행' 메뉴에서 확인 가능합니다.</li>
+								<li>※3. 배차 확정 후 취소 시 추천정보 2시간 동안 열람 불가합니다.</li>
+							</ul>
+						</div>
+					</div>
+					<div class="designate">
+						<strong>드라이버/차량 지정</strong>
+						<div class="pickBox">
+							<span class="numIcon">1</span>
+							<dl class="inputBox iner">
+								<dt>드라이버 선택</dt>
+								<dd>
+									<span class="selectSet">
+										<select>
+											<option value="0" selected>선택(성명 + 연락처)</option><!-- 2020-06-16 value 추가 -->
+											<option>홍길동 (010-1234-5678)</option>
+											<option>홍길동 (010-1234-5678)</option>
+											<option>홍길동 (010-1234-5678)</option>
+										</select>
+									</span>
+								</dd>
+							</dl>
+							<dl class="inputBox iner">
+								<dt>차량 선택</dt>
+								<dd>
+									<span class="selectSet">
+										<select>
+											<option value="0" selected>선택</option><!-- 2020-06-16 value 추가 -->
+											<option>(자차) 123가 1234</option>
+											<!-- 2020-06-16 '다른 차 선택' option 삭제 -->
+										</select>
+									</span>
+								</dd>
+							</dl>
+						</div>
+						<div class="pickBox">
+							<span class="numIcon">2</span>
+							<dl class="inputBox iner">
+								<dt>드라이버 선택</dt>
+								<dd>
+									<span class="selectSet">
+										<select>
+											<option value="0" selected>선택(성명 + 연락처)</option><!-- 2020-06-16 value 추가 -->
+											<option>홍길동 (010-1234-5678)</option>
+											<option>홍길동 (010-1234-5678)</option>
+											<option>홍길동 (010-1234-5678)</option>
+										</select>
+									</span>
+								</dd>
+							</dl>
+							<dl class="inputBox iner">
+								<dt>차량 선택</dt>
+								<dd>
+									<span class="selectSet">
+										<select>
+											<option value="0" selected>선택</option><!-- 2020-06-16 value 추가 -->
+											<option>(자차) 123가 1234</option>
+											<!-- 2020-06-16 '다른 차 선택' option 삭제 -->
+										</select>
+									</span>
+								</dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM gray">신청 취소</button>
+					<button class="btnM red" disabled>배차 신청</button><!-- 2020-06-16 기본 disabled 처리 -->
+				</div>
+			</div>
+			<!-- //배차 신청 -->
+			<!-- 배차 신청 흐 -->
+			<div class="basicPop dpApplyAfterPop waitCase" style="display:none;"><!-- 2020-06-16 case class로 변경  -->
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>배차신청 내역</h1><!-- 2020-06-16 타이틀 수정 -->
+				</div>
+				<div class="pBack">
+					<strong>배차 신청 내역<span class="applicant">(신청자:유관순, 2020-04-20 13:00)</span></strong>
+					<div class="listArea">
+						<div class="listTop">
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="60"/>
+										<col width="140"/>
+										<col width="140"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>상태</th>
+											<th>차량</th>
+											<th>드라이버</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
+						</div>
+						<div class="listScroll">
+							<!-- 2020-06-16 대기&승인 / 미승인&승인 case로 각각 구분 -->
+							<div class="tls case1">
+								<table>
+									<colgroup>
+										<col width="60"/>
+										<col width="140"/>
+										<col width="140"/>
+									</colgroup>
+									<tbody>
+										<!--Loop-->
+										<tr>
+											<td>대기</td>
+											<td>(자차) 123가 1234</td>
+											<td>홍길동 (010-1234-5678)</td>
+										</tr>
+										<!--//Loop-->
+										<tr>
+											<td>승인</td>
+											<td>(자차) 123가 1234</td>
+											<td>홍길동 (010-1234-5678)</td>
+										</tr>
+										<tr><!-- 2020-06-16 fail class 삭제 -->
+											<td>승인</td><!-- 2020-06-16 텍스트 수정 -->
+											<td>(자차) 123가 1234</td>
+											<td>홍길동 (010-1234-5678)</td>
+										</tr>
+										<tr>
+											<td>대기</td>
+											<td>(자차) 123가 1234</td>
+											<td>홍길동 (010-1234-5678)</td>
+										</tr>
+										<tr>
+											<td>대기</td>
+											<td>(자차) 123가 1234</td>
+											<td>홍길동 (010-1234-5678)</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tls case2" style="display:none;">
+								<table>
+									<colgroup>
+										<col width="60"/>
+										<col width="140"/>
+										<col width="140"/>
+									</colgroup>
+									<tbody>
+										<!--Loop-->
+										<tr class="fail">
+											<td>미승인</td>
+											<td>(자차) 123가 1234</td>
+											<td>홍길동 (010-1234-5678)</td>
+										</tr>
+										<!--//Loop-->
+										<tr>
+											<td>승인</td>
+											<td>(자차) 123가 1234</td>
+											<td>홍길동 (010-1234-5678)</td>
+										</tr>
+										<tr class="fail">
+											<td>미승인</td>
+											<td>(자차) 123가 1234</td>
+											<td>홍길동 (010-1234-5678)</td>
+										</tr>
+										<tr>
+											<td>승인</td>
+											<td>(자차) 123가 1234</td>
+											<td>홍길동 (010-1234-5678)</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- 2020-06-16 대기&승인 / 미승인&승인 case로 각각 구분 -->
+						</div>
+					</div>
+					<strong>오더정보</strong>
+					<div class="orderData popCase">
+						<div class="simpleTit">
+							<em>[<span class="red">수입</span> / 왕복]</em>
+							<strong class="date">2020-01-22</strong>
+							<span class="disCode">오더번호 A00001</span>
+						</div>
+						<div class="listMap">
+							<strong>부산항(05:00) – 충북/안산(09:00)</strong> – 부산항(15:00)
+							<!-- 2020-06-16 strong 위치 수정 -->
+							<span>(Open Top / 40ft High Cube / 30ton / 5대)</span>
+							<!-- 2020-06-16 대수 추가 -->
+						</div>
+						<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+						<div class="listPrice">
+							<span class="price right"><strong>560,000</strong> 원</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //배차 신청 흐 -->
+			<!-- 배차 신청 완료 -->
+			<div class="basicPop dpApplyAfterPop endCase" style="display:none;"><!-- 2020-06-16 case class로 변경  -->
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>배차신청 내역</h1><!-- 2020-06-16 타이틀 수정 -->
+				</div>
+				<div class="pBack">
+					<strong>배차 신청 내역<span class="applicant">(신청자:유관순, 2020-04-20 13:00)</span></strong>
+					<div class="listArea">
+						<div class="listTop">
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="60"/>
+										<col width="140"/>
+										<col width="140"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>상태</th>
+											<th>차량</th>
+											<th>드라이버</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
+						</div>
+						<div class="listScroll">
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="60"/>
+										<col width="120"/>
+										<col width="140"/>
+									</colgroup>
+									<tbody>
+										<!-- 2020-06-16 전체 미승인으로 변경 -->
+										<!--Loop-->
+										<tr class="fail">
+											<td>미승인</td>
+											<td>(자차) 123가 1234</td>
+											<td>홍길동 (010-1234-5678)</td>
+										</tr>
+										<!--//Loop-->
+										<tr class="fail">
+											<td>미승인</td>
+											<td>(자차) 123가 1234</td>
+											<td>홍길동 (010-1234-5678)</td>
+										</tr>
+										<tr class="fail">
+											<td>미승인</td>
+											<td>(자차) 123가 1234</td>
+											<td>홍길동 (010-1234-5678)</td>
+										</tr>
+										<tr class="fail">
+											<td>미승인</td>
+											<td>(자차) 123가 1234</td>
+											<td>홍길동 (010-1234-5678)</td>
+										</tr>
+										<tr class="fail">
+											<td>미승인</td>
+											<td>(자차) 123가 1234</td>
+											<td>홍길동 (010-1234-5678)</td>
+										</tr>
+										<!-- //2020-06-16 전체 미승인으로 변경 -->
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<strong>오더정보</strong>
+					<div class="orderData popCase">
+						<div class="simpleTit">
+							<em>[<span class="red">수입</span> / 왕복]</em>
+							<strong class="date">2020-01-22</strong>
+							<span class="disCode">오더번호 A00001</span>
+						</div>
+						<div class="listMap">
+							<strong>부산항(05:00) – 충북/안산(09:00)</strong> – 부산항(15:00)
+							<!-- 2020-06-16 strong 위치 수정 -->
+							<span>(Open Top / 40ft High Cube / 30ton / 5대)</span>
+							<!-- 2020-06-16 대수 추가 -->
+						</div>
+						<p>품목: 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.</p>
+						<div class="listPrice">
+							<span class="price right"><strong>560,000</strong> 원</span>
+						</div>
+					</div>
+				</div>
+				<!-- 2020-07-16 전체 미승인된 팝업의 하단버튼 삭제 -->
+			</div>
+			<!-- //배차 신청 완료 -->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$(".btnGuide").click(function(){
+				$(".guideDim, .guidePop").show();
+			});
+			$(".gClose").click(function(){
+				$(".guideDim, .guidePop").hide();
+			});
+			var swiper2 = new Swiper('.guidePop .swiper-container', {
+				pagination: {
+					el: '.swiper-pagination',
+				},
+				autoplay: false,
+		    });
+			/**/
+			$('.feverChkBtn.chkIn').click(function(){
+				$('.fullPop.feverChkPop#inRig').addClass('show');
+			}); //2020-09-01 입실 등록
+			$('.feverChkBtn.chkOut').click(function(){
+				$('.fullPop.feverChkPop#outRig').addClass('show');
+			}); //2020-09-01 퇴실 등록
+			$('.btnAgree').click(function(){
+				$('.fullPop.feverChkPop#bAgree').addClass('show');
+			}); //2020-11-23
+			$('.fullPop.feverChkPop .pclose, .fullPop .btnArea button').click(function() {
+				$('.fullPop.feverChkPop').removeClass('show');
+			})
+			$('.btnTermShow').click(function(){
+				$('.feverTerm').toggleClass('on');
+			});
+			$('.gridItem dl dd .temper.chkIn').click(function(){
+				$('.popDim, .feverDetailPop#inView').show();
+			}); //2020-09-01 입실 상세
+			$('.gridItem dl dd .temper.chkOut').click(function(){
+				$('.popDim, .feverDetailPop#outView').show();
+			}); //2020-09-01 퇴실 상세
+			$('.basicPop .pclose, .pBtn button').click(function() {
+				$('.popDim, .basicPop').hide();
+			})
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<h1>발열체크<button class="btnGuide">가이드 보기</button></h1>
+					<button class="btnNav">햄버거</button>
+					<button class="btnAgree">기본동의</button><!-- 2020-11-23 기본동의 버튼 -->
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb">
+				<section>
+					<div class="c-menu c-menu--slide-left"><!-- 우측 Slide 일 경우 -->
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</section>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<span class="sortSet">
+						<span>
+							<input type="radio" id="chk000" name="feverSort" checked />
+							<label for="chk000">이번 달</label>
+						</span>
+						<span>
+							<input type="radio" name="feverSort" id="chk001" />
+							<label for="chk001">전체</label>
+						</span>
+					</span>
+					<span class="right">00개</span>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="feverLayout">
+						<div class="mobileList">
+							<ul>
+								<!--Loop-->
+								<li>
+									<div class="gridSet grid2">
+										<div class="gridItem">
+											<span class="date">2020-07-31 (금)</span>
+										</div>
+										<div class="gridItem">
+											<dl>
+												<dt>입실</dt><!-- 2020-09-01 문구 변경 -->
+												<dd><!-- 2020-11-23 버튼 삭제 --></dd>
+											</dl>
+											<dl>
+												<dt>퇴실</dt><!-- 2020-09-01 문구 변경 -->
+												<dd><!-- 2020-11-23 버튼 삭제 --></dd>
+											</dl>
+										</div>
+									</div>
+								</li>
+								<!--//Loop-->
+								<li>
+									<div class="gridSet grid2">
+										<div class="gridItem">
+											<span class="date">2020-07-31 (금)</span>
+										</div>
+										<div class="gridItem">
+											<dl>
+												<dt>입실</dt><!-- 2020-09-01 문구 변경 -->
+												<dd><div class="temper chkIn">36.4°C</div><!-- 2020-09-01 class 추가 --></dd>
+											</dl>
+											<dl>
+												<dt>퇴실</dt><!-- 2020-09-01 문구 변경 -->
+												<dd><!-- 2020-11-23 버튼 삭제 --></dd>
+											</dl>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="gridSet grid2">
+										<div class="gridItem">
+											<span class="date">2020-07-31 (금)</span>
+										</div>
+										<div class="gridItem">
+											<dl>
+												<dt>입실</dt><!-- 2020-09-01 문구 변경 -->
+												<dd><div class="temper chkIn">36.4°C</div><!-- 2020-09-01 class 추가 --></dd>
+											</dl>
+											<dl>
+												<dt>퇴실</dt><!-- 2020-09-01 문구 변경 -->
+												<dd><div class="temper">미등록</div></dd>
+											</dl>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="gridSet grid2">
+										<div class="gridItem">
+											<span class="date">2020-07-31 (금)</span>
+										</div>
+										<div class="gridItem">
+											<dl>
+												<dt>입실</dt><!-- 2020-09-01 문구 변경 -->
+												<dd><div class="temper chkIn">36.4°C</div><!-- 2020-09-01 class 추가 --></dd>
+											</dl>
+											<dl>
+												<dt>퇴실</dt><!-- 2020-09-01 문구 변경 -->
+												<dd><div class="temper chkOut">36.4°C</div><!-- 2020-09-01 class 추가 --></dd>
+											</dl>
+										</div>
+									</div>
+								</li>
+								<li class="bgGray">
+									<div class="gridSet grid2">
+										<div class="gridItem">
+											<span class="date">2020-07-31 (금)</span>
+										</div>
+										<div class="gridItem">
+											<strong>휴가</strong>
+										</div>
+									</div>
+								</li>
+								<li class="bgGray">
+									<div class="gridSet grid2">
+										<div class="gridItem">
+											<span class="date">2020-07-31 (금)</span>
+										</div>
+										<div class="gridItem">
+											<strong>현장근무</strong>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!--//-->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>상단으로</button></div>
+		</div>
+		<!-- //Wrap -->
+		<!-- guide -->
+		<div class="guideDim">
+			<div class="guideDimAlign">
+				<div class="guidePop">
+					<div class="gBack">
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="gImg"><img src="../images/guide_fever_step01.png" alt=""></div>
+									<div class="gText">
+										<span class="number">1</span>
+										<strong>입실 시에는 입실을,<br/>퇴실 시에는 퇴실 버튼을 선택합니다.</strong>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="gImg"><img src="../images/guide_fever_step02.png" alt=""></div>
+									<div class="gText">
+										<span class="number">2</span>
+										<strong>체온을 측정하고 체온 입력 1차에 입력합니다.</strong>
+										<p>2차, 3차 시에도 적정 체온을 초과 했을 경우,<br/>경영지원팀으로 문의 주시기 바랍니다.</p>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="gImg"><img src="../images/guide_fever_step03.png" alt=""></div>
+									<div class="gText">
+										<span class="number">3</span>
+										<strong>모든 항목을 작성하고 등록 버튼을<br/>누르면 발열체크가 완료됩니다.</strong>
+										<p>한번 입력하면 수정이 불가합니다.</p>
+									</div>
+								</div>
+							</div>
+							<!-- Add Pagination -->
+							<div class="swiper-pagination"></div>
+						</div>
+					</div>
+					<div class="gFooter">
+						<span class="checkSet">
+							<input type="checkbox" id="chk1">
+							<label for="chk1"><i></i>다시 안보기</label>
+						</span>
+						<button class="gClose">닫기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //guide -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<div class="basicPop feverDetailPop" id="inView" style="display:none;">
+				<div class="tt">
+					<h1>발열체크 보기</h1>
+					<button class="pclose">닫기</button>
+				</div>
+				<div class="pBack">
+					<p class="infomation">발열체크 외에 기본정보는 2020-00-00에 등록된 정보입니다.</p><!-- 2020-11-23 안내문구 -->
+					<div class="dlstyle">
+						<div class="gridSet grid3">
+							<div class="gridItem">
+								<dl>
+									<dt>체크일시</dt>
+									<dd>2020-00-00 09:00</dd>
+								</dl>
+							</div>
+							<div class="gridItem">
+								<dl>
+									<dt>구분</dt>
+									<dd>입실</dd><!-- 2020-09-01 문구 변경 -->
+								</dl>
+							</div>
+							<!-- 2020-11-23 체온란 -->
+							<div class="gridItem">
+								<dl>
+									<dt>1차 체온</dt>
+									<dd>37.5°C</dd>
+								</dl>
+							</div>
+							<!-- //2020-11-23 체온란 -->
+						</div>
+					</div>
+					<div class="feverChkList">
+						<ul>
+							<li>
+								<strong>발열 증상 유무</strong>
+								<span class="right">
+									<span class="iChk">체크</span>
+								</span>
+							</li>
+							<li>
+								<strong>호흡기 증상 유무</strong>
+								<span class="right">
+									<span class="iChk">체크</span>
+								</span>
+							</li>
+							<li>
+								<strong>마스크 착용 유무</strong>
+								<span class="right">
+									<span class="iChk on">체크</span>
+								</span>
+							</li>
+							<li>
+								<strong>개인정보 수집 &middot; 이용 동의</strong>
+								<span class="right">
+									<span class="iChk on">체크</span>
+								</span>
+								<div class="tws">
+									<table>
+										<colgroup>
+											<col width="100"/>
+											<col width="100"/>
+											<col width="60"/>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>항목</th>
+												<th>수집목적</th>
+												<th>보유기간</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>성명, 거주지, 연락처</td>
+												<td>코로나19 감염 예방 및 확산 방지</td>
+												<td class="ftOrange">1년</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</li>
+							<li>
+								<strong>개인정보 3자 제공 동의</strong>
+								<span class="right">
+									<span class="iChk on">체크</span>
+								</span>
+								<div class="tws">
+									<table>
+										<colgroup>
+											<col width="100"/>
+											<col width="100"/>
+											<col width="100"/>
+											<col width="60"/>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>제공받는 기관</th>
+												<th>제공목적</th>
+												<th>제공하는 항목</th>
+												<th>보유기간</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>보건소, 질병관리본부</td>
+												<td>코로나19 관련 확진환자, 자가격리자, 유증상자 등 신분 확인</td>
+												<td>성명(홍OO처리), 연락처, 거주지, 해외방문 이력</td>
+												<td class="ftOrange">해당기관 내부 규정에 따름</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM">닫기</button>
+				</div>
+			</div><!-- 2020-09-01 id 추가 -->
+			<!-- 2020-09-01 퇴실 발열체크 상세 -->
+			<div class="basicPop feverDetailPop" id="outView" style="display:none;">
+				<div class="tt">
+					<h1>발열체크 보기</h1>
+					<button class="pclose">닫기</button>
+				</div>
+				<div class="pBack">
+					<p class="infomation">발열체크 외에 기본정보는 2020-00-00에 등록된 정보입니다.</p><!-- 2020-11-23 안내문구 -->
+					<div class="dlstyle">
+						<div class="gridSet grid3">
+							<div class="gridItem">
+								<dl>
+									<dt>체크일시</dt>
+									<dd>2020-00-00 09:00</dd>
+								</dl>
+							</div>
+							<div class="gridItem">
+								<dl>
+									<dt>구분</dt>
+									<dd>퇴실</dd>
+								</dl>
+							</div>
+							<!-- 2020-11-23 체온란 -->
+							<div class="gridItem">
+								<dl>
+									<dt>1차 체온</dt>
+									<dd>37.5°C</dd>
+								</dl>
+							</div>
+							<!-- //2020-11-23 체온란 -->
+						</div>
+					</div>
+					<div class="feverChkList">
+						<ul>
+							<li>
+								<strong>발열 증상 유무</strong>
+								<span class="right">
+									<span class="iChk">체크</span>
+								</span>
+							</li>
+							<li>
+								<strong>호흡기 증상 유무</strong>
+								<span class="right">
+									<span class="iChk">체크</span>
+								</span>
+							</li>
+							<li>
+								<strong>마스크 착용 유무</strong>
+								<span class="right">
+									<span class="iChk on">체크</span>
+								</span>
+							</li>
+							<li>
+								<p>입실 발열체크에서 동의한 개인정보 수집 &middot; 이용 및 제공 동의 정보는 퇴실 발열체크에도 동일하게 적용됩니다.</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM">닫기</button>
+				</div>
+			</div>
+			<!-- //2020-09-01 퇴실 발열체크 상세 -->
+		</div>
+		<!-- //Popup -->
+		<!-- fullPop -->
+		<!-- 입실 발열체크 등록 -->
+		<div class="fullPop feverChkPop" id="inRig"><!-- 2020-09-01 id 추가 -->
+			<div class="tt">
+				<h1>발열체크</h1>
+				<button class="pclose">닫기</button>
+			</div>
+			<div class="pBack">
+				<div class="dlstyle">
+					<div class="gridSet grid3"><!-- 2020-11-23 클래스명 변경 -->
+						<div class="gridItem">
+							<dl>
+								<dt>체크일시</dt>
+								<dd>2020-00-00 09:00</dd>
+							</dl>
+						</div>
+						<div class="gridItem">
+							<dl>
+								<dt>구분</dt>
+								<dd>입실</dd><!-- 2020-09-01 문구 변경 -->
+							</dl>
+						</div>
+						<!-- 2020-11-23 체온란 -->
+						<div class="gridItem">
+							<dl>
+								<dt>체온 (°C)</dt>
+								<dd>
+									<input type="text" />
+								</dd>
+							</dl>
+						</div>
+						<!-- //2020-11-23 체온란 -->
+					</div>
+				</div>
+				<div class="feverChkList">
+					<ul>
+						<li>
+							<strong>발열 증상 유무</strong>
+							<span class="right">
+								<span class="toggleSet">
+									<input type="checkbox" id="chk1"/>
+									<label for="chk1">
+										<span>X</span>
+										<span>O</span>
+									</label>
+								</span>
+							</span>
+						</li>
+						<li>
+							<strong>호흡기 증상 유무</strong>
+							<span class="right">
+								<span class="toggleSet">
+									<input type="checkbox" id="chk2"/>
+									<label for="chk2">
+										<span>X</span>
+										<span>O</span>
+									</label>
+								</span>
+							</span>
+							<p>호흡기 증상이란? 기침, 호흡곤란, 인후통(침이나 음식물 삼킬때의 목통증), 후각 및 미각소실 등의 코로나19 주요 임상증상.</p><!-- 2020-08-14 위치 이동 -->
+						</li>
+						<li>
+							<strong>마스크 착용 유무</strong>
+							<span class="right">
+								<span class="toggleSet">
+									<input type="checkbox" id="chk3" checked/>
+									<label for="chk3">
+										<span>X</span>
+										<span>O</span>
+									</label>
+								</span>
+							</span>
+						</li>
+						<li>
+							<strong>개인정보 수집 &middot; 이용 및 제공 동의</strong>
+							<span class="right">
+								<button class="btnTermShow">전문보기</button>
+							</span>
+						</li>
+					</ul>
+				</div>
+				<div class="feverTerm">
+					<div class="terms">
+						<p>
+							본사에서는 코로나19 예방을 위해 문진표 작성을 실시하여 아래와 같이 개인정보를 수집 &middot; 이용 및 제3자에게 제공하고자 합니다.<br/>내용을 자세히 읽으신 후 동의 여부를 결정하여 주십시오.
+							<span>* 개인정보 수집 &middot; 이용 및 제공에 대한 동의를 거부할 권리가 있습니다. 그러나 동의를 거부할 경우 방문에 제한을 받을 수 있습니다.</span>
+						</p>
+						<div class="termBox">
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="100"/>
+										<col width="100"/>
+										<col width="60"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>항목</th>
+											<th>수집목적</th>
+											<th>보유기간</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>성명, 거주지, 연락처</td>
+											<td>코로나19 감염 예방 및 확산 방지</td>
+											<td class="ftOrange">1년</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<strong>개인정보 수집 &middot; 이용 동의</strong>
+							<span class="right">
+								<span class="radioSet">
+									<input type="radio" id="chk11" name="agree1"/>
+									<label for="chk11"><i></i>네</label>
+								</span>
+								<span class="radioSet">
+									<input type="radio" id="chk12" name="agree1" checked/>
+									<label for="chk12"><i></i>아니요</label>
+								</span>
+							</span>
+						</div>
+						<div class="termBox">
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="100"/>
+										<col width="100"/>
+										<col width="100"/>
+										<col width="60"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>제공받는 기관</th>
+											<th>제공목적</th>
+											<th>제공하는 항목</th>
+											<th>보유기간</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>보건소, 질병관리본부</td>
+											<td>코로나19 관련 확진환자, 자가격리자, 유증상자 등 신분 확인</td>
+											<td>성명(홍OO처리), 연락처, 거주지, 해외방문 이력</td>
+											<td class="ftOrange">해당기관 내부 규정에 따름</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<strong>개인정보 3자 제공 동의</strong>
+							<span class="right">
+								<span class="radioSet">
+									<input type="radio" id="chk21" name="agree2"/>
+									<label for="chk21"><i></i>네</label>
+								</span>
+								<span class="radioSet">
+									<input type="radio" id="chk22" name="agree2" checked/>
+									<label for="chk22"><i></i>아니요</label>
+								</span>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="btnArea tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue" onclick="if(!alert('입실 발열체크가 완료되었습니다.')){return false;}">등록</button><!-- 2020-09-01 -->
+				</div>
+			</div>
+		</div>
+		<!-- //입실 발열체크 등록 -->
+		<!-- 2020-09-01 퇴실 발열체크 등록 -->
+		<div class="fullPop feverChkPop" id="outRig">
+			<div class="tt">
+				<h1>발열체크</h1>
+				<button class="pclose">닫기</button>
+			</div>
+			<div class="pBack">
+				<div class="dlstyle">
+					<div class="gridSet grid3">
+						<div class="gridItem">
+							<dl>
+								<dt>체크일시</dt>
+								<dd>2020-00-00 09:00</dd>
+							</dl>
+						</div>
+						<div class="gridItem">
+							<dl>
+								<dt>구분</dt>
+								<dd>퇴실</dd>
+							</dl>
+						</div>
+						<!-- 2020-11-23 체온란 -->
+						<div class="gridItem">
+							<dl>
+								<dt>체온 (°C)</dt>
+								<dd>
+									<input type="text" />
+								</dd>
+							</dl>
+						</div>
+						<!-- //2020-11-23 체온란 -->
+					</div>
+				</div>
+				<div class="feverChkList">
+					<ul>
+						<li>
+							<strong>발열 증상 유무</strong>
+							<span class="right">
+								<span class="toggleSet">
+									<input type="checkbox" id="chk4"/>
+									<label for="chk4">
+										<span>X</span>
+										<span>O</span>
+									</label>
+								</span>
+							</span>
+						</li>
+						<li>
+							<strong>호흡기 증상 유무</strong>
+							<span class="right">
+								<span class="toggleSet">
+									<input type="checkbox" id="chk5"/>
+									<label for="chk5">
+										<span>X</span>
+										<span>O</span>
+									</label>
+								</span>
+							</span>
+							<p>호흡기 증상이란? 기침, 호흡곤란, 인후통(침이나 음식물 삼킬때의 목통증), 후각 및 미각소실 등의 코로나19 주요 임상증상.</p>
+						</li>
+						<li>
+							<strong>마스크 착용 유무</strong>
+							<span class="right">
+								<span class="toggleSet">
+									<input type="checkbox" id="chk6"/>
+									<label for="chk6">
+										<span>X</span>
+										<span>O</span>
+									</label>
+								</span>
+							</span>
+						</li>
+						<li>
+							<p>입실 발열체크에서 동의한 개인정보 수집 &middot; 이용 및 제공 동의 정보는 퇴실 발열체크에도 동일하게 적용됩니다.</p>
+						</li>
+					</ul>
+				</div>
+				<div class="btnArea tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue" onclick="if(!alert('퇴실 발열체크가 완료되었습니다.')){return false;}">등록</button>
+				</div>
+			</div>
+		</div>
+		<!-- //2020-09-01 퇴실 발열체크 등록 -->
+		<!-- 2020-11-23 기본 동의 -->
+		<div class="fullPop feverChkPop" id="bAgree">
+			<div class="tt">
+				<h1>발열체크 기본 동의</h1>
+				<button class="pclose">닫기</button>
+			</div>
+			<div class="pBack">
+				<p class="infomation">본 기본동의는 2주 단위로 등록해야합니다.<br/>등록된 정보는 데일리 발열체크 정보에 적용됩니다.</p>
+				<div class="dlstyle">
+					<dl>
+						<dt>체크일시</dt>
+						<dd>2020-00-00 09:00</dd>
+					</dl>
+				</div>
+				<div class="feverChkList">
+					<ul>
+						<li>
+							<strong>호흡기 증상 유무</strong>
+							<span class="right">
+								<span class="toggleSet">
+									<input type="checkbox" id="chk2"/>
+									<label for="chk2">
+										<span>X</span>
+										<span>O</span>
+									</label>
+								</span>
+							</span>
+							<p>호흡기 증상이란? 기침, 호흡곤란, 인후통(침이나 음식물 삼킬때의 목통증), 후각 및 미각소실 등의 코로나19 주요 임상증상.</p>
+						</li>
+						<li>
+							<strong>마스크 착용 유무</strong>
+							<span class="right">
+								<span class="toggleSet">
+									<input type="checkbox" id="chk3" checked/>
+									<label for="chk3">
+										<span>X</span>
+										<span>O</span>
+									</label>
+								</span>
+							</span>
+						</li>
+						<li>
+							<strong>개인정보 수집 &middot; 이용 및 제공 동의</strong>
+							<span class="right">
+								<button class="btnTermShow">전문보기</button>
+							</span>
+						</li>
+					</ul>
+				</div>
+				<div class="feverTerm">
+					<div class="terms">
+						<p>
+							본사에서는 코로나19 예방을 위해 문진표 작성을 실시하여 아래와 같이 개인정보를 수집 &middot; 이용 및 제3자에게 제공하고자 합니다.<br/>내용을 자세히 읽으신 후 동의 여부를 결정하여 주십시오.
+							<span>* 개인정보 수집 &middot; 이용 및 제공에 대한 동의를 거부할 권리가 있습니다. 그러나 동의를 거부할 경우 방문에 제한을 받을 수 있습니다.</span>
+						</p>
+						<div class="termBox">
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="100"/>
+										<col width="100"/>
+										<col width="60"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>항목</th>
+											<th>수집목적</th>
+											<th>보유기간</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>성명, 거주지, 연락처</td>
+											<td>코로나19 감염 예방 및 확산 방지</td>
+											<td class="ftOrange">1년</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<strong>개인정보 수집 &middot; 이용 동의</strong>
+							<span class="right">
+								<span class="radioSet">
+									<input type="radio" id="chk11" name="agree1"/>
+									<label for="chk11"><i></i>네</label>
+								</span>
+								<span class="radioSet">
+									<input type="radio" id="chk12" name="agree1" checked/>
+									<label for="chk12"><i></i>아니요</label>
+								</span>
+							</span>
+						</div>
+						<div class="termBox">
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="100"/>
+										<col width="100"/>
+										<col width="100"/>
+										<col width="60"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>제공받는 기관</th>
+											<th>제공목적</th>
+											<th>제공하는 항목</th>
+											<th>보유기간</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>보건소, 질병관리본부</td>
+											<td>코로나19 관련 확진환자, 자가격리자, 유증상자 등 신분 확인</td>
+											<td>성명(홍OO처리), 연락처, 거주지, 해외방문 이력</td>
+											<td class="ftOrange">해당기관 내부 규정에 따름</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<strong>개인정보 3자 제공 동의</strong>
+							<span class="right">
+								<span class="radioSet">
+									<input type="radio" id="chk21" name="agree2"/>
+									<label for="chk21"><i></i>네</label>
+								</span>
+								<span class="radioSet">
+									<input type="radio" id="chk22" name="agree2" checked/>
+									<label for="chk22"><i></i>아니요</label>
+								</span>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="btnArea tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">저장</button>
+				</div>
+			</div>
+		</div>
+		<!-- //2020-11-23 기본 동의 -->
+		<!-- //fullPop -->
+	</body>
+</html>

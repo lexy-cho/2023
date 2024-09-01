@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/jstree.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/basicTree.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$('.treeBox .allOpen').click(function () {
+				$(this).hide();
+				$('.treeBox .allClose').show();
+			});
+			$('.treeBox .allClose').click(function () {
+				$(this).hide();
+				$('.treeBox .allOpen').show();
+			}); // jstree 그룹 열기닫기 토글
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>사용자관리</h2>
+					<div class="pagePos"><span>Home</span><span>관리자</span><strong>사용자관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="userLayout">
+						<!-- 조직도 -->
+						<div class="treeBox left">
+							<div class="top">
+								<button onclick="chartAllOpen();" class="btnM allOpen">전체 그룹 열기</button>
+								<button onclick="chartAllClose();" class="btnM allClose" style="display:none;">전체 그룹 닫기</button>
+								<span class="checkSet">
+									<input type="checkbox" id="chk1" />
+									<label for="chk1"><i></i>퇴사자 포함</label>
+								</span>
+								<span class="searchBasic right">
+									<input type="text" placeholder="이름, 아이디 입력" />
+									<input type="submit" value="검색" class="btnSearch" />
+								</span>
+							</div>
+							<div class="jstreeBack">
+								<div id="jstree" style="100%"></div>
+							</div>
+							<div class="bottom">
+								<button onclick="groupAdd()" class="btnM">그룹 추가</button>
+								<button onclick="groupDelete();" class="btnM">그룹 삭제</button>
+								<button onclick="groupRename();" class="btnM">폴더명 변경</button>
+								<button class="btnM right">엑셀다운로드</button>
+							</div>
+						</div>
+						<!-- //조직도 -->
+						<!-- 사용자 정보 -->
+						<div class="userInfo right">
+							<h3 class="firstH3">사용자 정보</h3>
+							<div class="top">
+								<p>조직도는 사용자의 권한 및 시스템 정보 연동을 고려하여 수정하기 바랍니다.</p>
+								<button class="btnM right">신규 등록</button>
+							</div>
+							<!-- 사용자 -->
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="120">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>이름</th>
+											<td colspan="3"><input type="text" class="wHalf" /></td>
+										</tr>
+										<tr>
+											<th>ID</th>
+											<td colspan="3">
+												<div class="duplyForm">
+													<input type="text" />
+													<button class="btnM">중복확인</button>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th>비밀번호</th>
+											<td colspan="3"><button class="btnM">비밀번호 재설정</button><br/>
+												신규등록 혹은 비밀번호 재설정시에는 아이디와 동일하게 변경됩니다
+											</td>
+										</tr>
+										<tr>
+											<th>소속회사/부서</th>
+											<td colspan="3">
+												<input type="text" value="depth > 1depth > 1-1depth 1-1" class="w270" readonly />
+												<p>소속부서 변경은 좌측의 조직도에서 직접 선택하세요.</p>
+											</td>
+										</tr>
+										<tr>
+											<th>직함</th>
+											<td colspan="3"><input type="text" class="wHalf" /></td>
+										</tr>
+										<tr>
+											<th>권한</th>
+											<td colspan="3">
+												<span class="selectSet wHalf">
+													<select>
+														<option>일반 사용자</option>
+														<option>고객사 사용자</option>
+														<option>관리자</option>
+													</select>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th>연락처</th>
+											<td colspan="3">
+												<!-- phoneNum -->
+												<div class="phoneNum">
+													<span class="selectSet">
+														<select>
+															<option>010</option>
+															<option>011</option>
+															<option>017</option>
+															<option>018</option>
+															<option>019</option>
+														</select>
+													</span>
+													<span class="txt">-</span>
+													<input type="tel" id="middleNum" />
+													<span class="txt">-</span>
+													<input type="tel" id="lastNum" />
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th>E-mail</th>
+											<td colspan="3">
+												<!-- email -->
+												<div class="emailForm">
+													<input type="text" />
+													<span class="emailDomain">
+														<em>@</em>
+														<span class="selectSet">
+															<select>
+																<option>선택해주세요</option>
+																<option>nave.com</option>
+																<option>gmail.com</option>
+																<option>hanmail.net</option>
+																<option>직접입력</option>
+															</select>
+														</span>
+														<input type="text" />
+													</span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th>계정 생성일</th>
+											<td>2020-02-06</td>
+											<th>구분</th>
+											<td>
+												<span class="selectSet wFull">
+													<select>
+														<option>해당사항 없음</option>
+														<option>입사</option>
+														<option>퇴사</option>
+													</select>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th>입사일</th>
+											<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+											<th>퇴사일</th>
+											<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+										</tr>
+										<tr>
+											<th>참여 프로젝트</th>
+											<td colspan="3"></td>
+										</tr>
+										<tr>
+											<th>마지막 접속일자</th>
+											<td colspan="3">
+												YY-MM-DD 00:00:00 <button class="btnM">전체 접속정보</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="bottom tR">
+									<button class="btnM">저장</button>
+									<button class="btnM">삭제</button>
+								</div>
+							</div>
+						</div>
+						<!-- //사용자 정보 -->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		</div>
+    </body>
+</html>

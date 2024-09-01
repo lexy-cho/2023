@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('#feverChkBtn').click(function(){
+				$('.popDim').show();
+				$('.feverInfoPop.newCase').show();
+			});
+			$('.tls td a').click(function(){
+				$('.popDim').show();
+				$('.feverInfoPop.detailCase').show();
+			});
+			$('.tls td button.white, .tls td .remark').click(function(){
+				$('.popDim').show();
+				$('.remarkPop').show();
+			});
+			$('.btnFeverSet').click(function(){
+				$('.popDim, .feverSetPop').show();
+			});
+			$('.alertPop button, .basicPop button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>발열체크</h2>
+					<div class="pagePos"><span>Home</span><span>경영지원</span><strong>발열체크</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="feverLayout">
+						<!---->
+						<div class="boardTop">
+							<!-- 2020-11-23 temperatureSet 삭제 -->
+							<span class="left">
+								<em>전체 10,000건</em>
+								<button class="btnM white btnFeverSet ml1">설정</button>
+							</span>
+							<span class="right">
+								<span class="radioSet2">
+									<label for="lb1"><input type="radio" id="lb1" name="radio1" value="오늘" /><span>오늘</span></label>
+									<label for="lb2"><input type="radio" id="lb2" name="radio1" value="1주일" /><span>1주일</span></label>
+									<label for="lb3"><input type="radio" id="lb3" name="radio1" value="한달" /><span>한달</span></label>
+								</span>
+								<span class="calDupSet">
+									<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									<em>~</em>
+									<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+								</span>
+								<span class="searchBasic">
+									<span class="selectSet">
+										<select>
+											<option>이름</option>
+											<option>체온</option>
+											<!-- 2020-11-23 option 변경 -->
+										</select>
+									</span>
+									<input type="text" placeholder="이름, 체온 구분" />
+									<input type="submit" value="검색" class="btnSearch" />
+									<button class="btnReset">초기화</button>
+								</span>
+								<button class="btnM">서식</button>
+								<button class="btnM">엑셀다운로드</button>
+							</span>
+						</div>
+						<!---->
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="50"/>
+									<col width="80"/><!-- 2020-08-12 -->
+									<col width="60"/><!-- 2020-08-12 -->
+									<col width="100"/><!-- 2020-08-12 -->
+									<col width="60"/>
+									<col width="60"/><!-- 2020-08-12 -->
+									<col width="80"/>
+									<col width="80"/>
+									<col width="80"/>
+									<col width="80"/>
+									<col width="80"/>
+									<col width="80"/>
+									<col width="80"/>
+									<col width="80"/>
+									<col width="80"/>
+									<col width="80"/>
+								</colgroup>
+								<thead>
+									<tr>
+										<th>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkall" />
+												<label for="chkall"><i></i></label>
+											</span>
+										</th>
+										<th>체크일시</th>
+										<th>성명</th><!-- 2020-11-23 텍스트 변경 -->
+										<th>거주지(구까지)</th>
+										<th>구분</th>
+										<th>시간</th>
+										<th>체온측정(°C)</th><!-- 2020-11-23 텍스트 변경 -->
+										<!-- 2020-11-23 2,3차 측정 삭제 -->
+										<th>최근 2주사이 해외여행</th>
+										<th>발열 증상유무</th>
+										<th>호흡기 증상유무</th>
+										<th>마스크 착용</th>
+										<th>개인정보 동의</th>
+										<th>개인정보 제3자 제공 동의</th>
+										<th>비고</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<!-- 2020-11-23 loop 수정 -->
+									<tr>
+										<td rowspan="2">
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk1" />
+												<label for="chk1"><i></i></label>
+											</span>
+										</td>
+										<td rowspan="2">2020-00-00</td>
+										<td rowspan="2">홍길동</td>
+										<td rowspan="2"><div class="guTxt">서울시 구로구로구로구로구로구</div></td>
+										<td><a>입실</a></td>
+										<td>09:13</td>
+										<td>38°C</td>
+										<td>X</td>
+										<td>X</td>
+										<td>X</td>
+										<td>O</td>
+										<td></td>
+										<td></td>
+										<td><button class="btnS white">비고</button></td>
+									</tr>
+									<tr>
+										<td><a>퇴실</a></td>
+										<td>19:14</td>
+										<td>38°C</td>
+										<td>X</td>
+										<td>X</td>
+										<td>X</td>
+										<td>O</td>
+										<td></td>
+										<td></td>
+										<td><button class="btnS white">비고</button></td>
+									</tr>
+									<!-- //2020-11-23 loop 수정 -->
+									<!--//Loop-->
+									<!-- 2020-08-12 수정 -->
+									<tr>
+										<td rowspan="2">
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk2" />
+												<label for="chk2"><i></i></label>
+											</span>
+										</td>
+										<td rowspan="2">2020-00-00</td>
+										<td rowspan="2">나문희</td>
+										<td rowspan="2"><div class="guTxt">서울시 서대문구</div></td>
+										<td><a>입실</a></td>
+										<td>09:23</td>
+										<td>36.4°C</td>
+										<td>X</td>
+										<td>X</td>
+										<td>X</td>
+										<td>O</td>
+										<td></td>
+										<td></td>
+										<td><button class="btnS white">비고</button></td>
+									</tr>
+									<tr>
+										<td><a>퇴실</a></td>
+										<td>18:11</td>
+										<td>36.1°C</td>
+										<td>X</td>
+										<td>X</td>
+										<td>X</td>
+										<td>O</td>
+										<td></td>
+										<td></td>
+										<td><span class="remark">2020-00-00 18:11</span></td>
+									</tr>
+									<!-- //2020-08-12 수정 -->
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk3" />
+												<label for="chk3"><i></i></label>
+											</span>
+										</td>
+										<td>2020-00-00</td>
+										<td>라미란</td>
+										<td><div class="guTxt">서울시 은평구</div></td><!-- 2020-08-12 -->
+										<td colspan="7">휴가</td><!-- 2020-11-23 -->
+										<td></td>
+										<td></td>
+										<td><button class="btnS white">비고</button></td><!-- 2020-08-12 -->
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk4" />
+												<label for="chk4"><i></i></label>
+											</span>
+										</td>
+										<td>2020-00-00</td>
+										<td>라미란</td>
+										<td><div class="guTxt">서울시 은평구</div></td><!-- 2020-08-12 -->
+										<td colspan="7">현장근무</td><!-- 2020-11-23 -->
+										<td></td>
+										<td></td>
+										<td><button class="btnS white">비고</button></td><!-- 2020-08-12 -->
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="bpSet">
+							<div class="btnArea">
+								<span class="left">
+									<button class="btnM">선택 삭제</button>
+									<a class="btnM" href="biz_fever_access.html" target="_blank">전체기록</a>
+								</span>
+								<span class="right">
+									<button class="btnM" id="feverChkBtn">입실 신규등록</button><!-- 2020-12-07 -->
+								</span>
+							</div>
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+										<a class="on">1</a>
+										<a>2</a>
+										<a>3</a>
+										<a>4</a>
+										<a>5</a>
+									<a class="next">다음</a>
+								</span>
+								<span class="selectSet">
+									<select>
+										<option>10개</option>
+										<option>20개</option>
+										<option>50개</option>
+										<option>100개</option>
+									</select>
+								</span>
+							</div>
+						</div>
+						<!--//-->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 발열체크 신규 등록 -->
+			<div class="basicPop feverChkPop" id="newCase" style="display:none;"><!-- 2020-08-12 -->
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>직원 정보 신규 추가</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="60"/>
+								<col width="160"/>
+								<col width="60"/>
+								<col width="120"/>
+								<col width="60"/>
+								<col width="120"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>체크일시</th>
+									<td>
+										<div class="calTimeSet">
+											<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+											<input type="text" placeholder="00:00"/>
+										</div>
+									</td>
+									<th>구분</th>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option>입퇴실</option><!-- 2020-09-01 문구 변경 -->
+												<option>휴가</option><!-- 2020-09-01 문구 변경 -->
+												<option>현장근무</option>
+											</select>
+										</span>
+									</td>
+									<th>직원 성명</th>
+									<td><input type="text" placeholder="자동완성"/></td>
+								</tr>
+								<tr>
+									<th>1차 체온측정</th>
+									<td><input type="text"/></td>
+									<th>2차 체온측정</th>
+									<td><input type="text"/></td>
+									<th>3차 체온측정</th>
+									<td><input type="text"/></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tws pt1 tCtable">
+						<table>
+							<colgroup>
+								<col width="70"/>
+								<col width="70"/>
+								<col width="70"/>
+								<col width="70"/>
+								<col width="70"/>
+								<col width="70"/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>최근 2주사이 해외여행</th>
+									<th>발열 증상유무</th>
+									<th>호흡기 증상여부</th>
+									<th>마스크 착용</th>
+									<th>개인정보 동의</th>
+									<th>개인정보 제3자 제공 동의</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverChk1" />
+											<label for="feverChk1"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverChk2" />
+											<label for="feverChk2"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverChk3" />
+											<label for="feverChk3"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverChk4" checked/>
+											<label for="feverChk4"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverChk5" checked/>
+											<label for="feverChk5"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverChk6" checked/>
+											<label for="feverChk6"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">저장</button>
+				</div>
+			</div>
+			<!-- //발열체크 신규 등록 -->
+			<!-- 2020-08-12 발열체크 수정 -->
+			<div class="basicPop feverChkPop" id="detailCase" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>직원 정보 신규 추가</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="60"/>
+								<col width="160"/>
+								<col width="60"/>
+								<col width="120"/>
+								<col width="60"/>
+								<col width="120"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>체크일시</th>
+									<td>
+										<div class="calTimeSet">
+											<span class="calSet"><input type="tel" placeholder="2020-01-21" value="2020-08-12" readonly/><button>달력열기</button></span>
+											<input type="text" placeholder="00:00" value="09:13" readonly/>
+										</div>
+									</td>
+									<th>구분</th>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option selected>입실</option><!-- 2020-09-01 문구 변경 -->
+												<option>퇴실</option><!-- 2020-09-01 문구 변경 -->
+												<option>현장근무</option>
+											</select>
+										</span>
+									</td>
+									<th>직원 성명</th>
+									<td><input type="text" placeholder="자동완성" value="홍길동" readonly/></td>
+								</tr>
+								<tr>
+									<th>1차 체온측정</th>
+									<td><input type="text" value="38°C"/></td>
+									<th>2차 체온측정</th>
+									<td><input type="text" value="37.7°C"/></td>
+									<th>3차 체온측정</th>
+									<td><input type="text" value="36.5°C"/></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tws pt1 tCtable">
+						<table>
+							<colgroup>
+								<col width="70"/>
+								<col width="70"/>
+								<col width="70"/>
+								<col width="70"/>
+								<col width="70"/>
+								<col width="70"/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>최근 2주사이 해외여행</th>
+									<th>발열 증상유무</th>
+									<th>호흡기 증상여부</th>
+									<th>마스크 착용</th>
+									<th>개인정보 동의</th>
+									<th>개인정보 제3자 제공 동의</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverChk21" checked/>
+											<label for="feverChk21"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverChk22"/>
+											<label for="feverChk22"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverChk23"/>
+											<label for="feverChk23"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverChk24" checked/>
+											<label for="feverChk24"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverChk25" checked/>
+											<label for="feverChk25"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverChk26" checked/>
+											<label for="feverChk26"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">저장</button>
+				</div>
+			</div>
+			<!-- //2020-08-12 발열체크 수정 -->
+			<!-- 비고 입력 -->
+			<div class="basicPop remarkPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>비고 입력</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<textarea placeholder="비고를 입력해주세요"></textarea>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">저장</button>
+				</div>
+			</div>
+			<!-- 비고 입력 -->
+			<!-- 적정체온 설정 -->
+			<div class="basicPop temperatureSetPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>적정체온 설정</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<input type="text" placeholder="적정체온(°C)"/>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">저장</button>
+				</div>
+			</div>
+			<!-- 적정체온 설정 -->
+			<!-- 2020-11-23 발열체크 설정 -->
+			<div class="basicPop feverSetPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>발열체크 설정하기</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="50">
+								<col width="90">
+								<col width="60">
+								<col width="110">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>적정체온 <sup>필수</sup></th>
+									<td><input type="text"/></td>
+									<th>개인정보 동의 주기</th>
+									<td><input type="text"/></td>
+								</tr>
+								<tr>
+									<th>출근시간 <sup>필수</sup></th>
+									<td><input type="text"/></td>
+									<th>오후반차 출근시간</th>
+									<td><input type="text"/></td>
+								</tr>
+								<tr>
+									<th>퇴근 시작시간 <sup>필수</sup></th>
+									<td><input type="text"/></td>
+									<th>퇴근 완료시간</th>
+									<td>
+										<div class="sInSet">
+											<span class="selectSet">
+												<select>
+													<option>선택</option>
+													<option>금일</option>
+													<option>익일</option>
+												</select>
+											</span>
+											<input type="text"/>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="setGuide">
+						<!-- 2020-12-07 -->
+						<ul>
+							<li>출근시간 : 해당 시간 이후 첫번째 인증 및 발열정보 데이터를 수집합니다.</li>
+							<li>퇴근시간 : 해당 시간 이후에 마지막 인증 및 발열정보 데이터를 갱신됩니다.</li>
+							<li>퇴근 완료시간 : 퇴근시간 갱신을 설정한 완료시간까지 갱신됩니다.</li>
+							<li>오후반차 출근시간 : 오후반차에 해당하는 직원만 출근시간을 변경합니다.</li>
+							<li>개인정보 동의 주기 : 안면인식 및 발열체크 시 필요한 기본정보동의 주기 입니다. <br/>&nbsp;&nbsp;&nbsp;&nbsp;본 주기에 맞춰 Ting APP에서 동의를 진행합니다.</li>
+						</ul>
+						<!-- //2020-12-07 -->
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //2020-11-23 발열체크 설정 -->
+			<!-- 2020-11-23 직원정보 신규 추가 -->
+			<div class="basicPop feverInfoPop newCase" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>직원 정보 신규 추가</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="60"/>
+								<col width="120"/>
+								<col width="60"/>
+								<col width="120"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>체크일시</th>
+									<td>
+										<div class="calTimeSet">
+											<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+											<input type="text" placeholder="00:00"/>
+										</div>
+									</td>
+									<th>구분</th>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option>선택</option>
+												<option>입실</option>
+												<option>퇴실</option>
+												<option>현장근무</option>
+											</select>
+										</span>
+										<span class="selectSet">
+											<select>
+												<option>선택</option>
+												<option>오전</option>
+												<option>오후</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>직원 설명</th>
+									<td><input type="text" placeholder="자동완성"/></td>
+									<th>체온측정(°C)</th>
+									<td><input type="text"/></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tws pt1">
+						<table>
+							<colgroup>
+								<col width="50"/>
+								<col width="50"/>
+								<col width="50"/>
+								<col width="50"/>
+								<col width="50"/>
+								<col width="50"/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th class="tC">최근 2주사이 해외여행</th>
+									<th class="tC">발열 증상유무</th>
+									<th class="tC">호흡기 증상여부</th>
+									<th class="tC">마스크 착용</th>
+									<th class="tC">개인정보 동의</th>
+									<th class="tC">개인정보 제3자 제공 동의</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverOp1" />
+											<label for="feverOp1"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverOp2" />
+											<label for="feverOp2"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverOp3" />
+											<label for="feverOp3"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverOp4" />
+											<label for="feverOp4"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverOp5" />
+											<label for="feverOp5"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverOp6" />
+											<label for="feverOp6"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p class="pt1">퇴실의 경우 목록에서 수정으로 진행해주시기 바랍니다.</p> <!--2020-12-07-->
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">저장</button>
+				</div>
+			</div>
+			<!-- //2020-11-23 직원정보 신규 추가 -->
+			<!-- 2020-11-23 직원정보 -->
+			<div class="basicPop feverInfoPop detailCase" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>직원 정보</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="60"/>
+								<col width="120"/>
+								<col width="60"/>
+								<col width="120"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>체크일시</th>
+									<td>
+										<div class="calTimeSet">
+											<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+											<input type="text" placeholder="00:00" value="09:33"/>
+										</div>
+									</td>
+									<th>구분</th>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option>선택</option>
+												<option selected>입실</option>
+												<option>퇴실</option>
+												<option>현장근무</option>
+											</select>
+										</span>
+										<span class="selectSet">
+											<select>
+												<option selected>오전</option>
+												<option>오후</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>직원 성명</th>
+									<td><input type="text" placeholder="자동완성" value="나무니"/></td>
+									<th>체온측정(°C)</th>
+									<td><input type="text" value="36.2"/></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tws pt1">
+						<table>
+							<colgroup>
+								<col width="50"/>
+								<col width="50"/>
+								<col width="50"/>
+								<col width="50"/>
+								<col width="50"/>
+								<col width="50"/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th class="tC">최근 2주사이 해외여행</th>
+									<th class="tC">발열 증상유무</th>
+									<th class="tC">호흡기 증상여부</th>
+									<th class="tC">마스크 착용</th>
+									<th class="tC">개인정보 동의</th>
+									<th class="tC">개인정보 제3자 제공 동의</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverOp11" />
+											<label for="feverOp11"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverOp22" />
+											<label for="feverOp22"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverOp33" />
+											<label for="feverOp33"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverOp44" checked/>
+											<label for="feverOp44"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverOp55" checked/>
+											<label for="feverOp55"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+									<td>
+										<span class="labelToggleSet">
+											<input type="checkbox" id="feverOp66" checked/>
+											<label for="feverOp66"><span>X</span><span>O</span></label>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">저장</button>
+				</div>
+			</div>
+			<!-- //2020-11-23 직원정보 -->
+		</div>
+		<div class="alertDim" style="display:none;">
+			<!-- PDF 다운로드 -->
+			<div class="alertPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>PDF 생성중입니다. <br/>생성이 완료되면 다운로드 버튼이 <br/>활성화 됩니다.</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue" disabled>다운로드</button>
+				</div>
+			</div>
+			<!-- 비고 입력 -->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

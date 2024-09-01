@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/jstree.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/basicTree.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>청구서 관리</h2>
+					<div class="pagePos"><span>Home</span><span>문서 관리</span><strong>청구서 관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="documentViewLayout">
+							<!---->
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="100"/>
+										<col width="250"/>
+										<col width="100"/>
+										<col width="250"/>
+										<col width="100"/>
+										<col width="250"/>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>작성자</th>
+											<td>홍길동(000000)</td>
+											<th>작성일자</th>
+											<td>2020-01-01 (월)</td>
+											<th>문서번호</th>
+											<td>TDO-201100001</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="100"/>
+										<col width="500"/>
+										<col width="100"/>
+										<col width="200"/>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>수신처</th>
+											<td><input type="text" placeholder="거래처 자동완성"/></td>
+											<th>영업담당자</th>
+											<td><input type="text" placeholder="자동완성" /></td>
+										</tr>
+										<tr>
+											<th>견적내용</th>
+											<td colspan="3">
+												<textarea></textarea>
+												<span class="right txtNum">0/200</span>
+											</td>
+										</tr>
+										<tr>
+											<th>수신이메일</th>
+											<td><input type="text" placeholder="거래처 담당자 자동완성 (이름, 이메일)"/></td>
+											<th>사내 참조</th>
+											<td><input type="text" placeholder="정직원 자동완성" /></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tws thTc">
+								<table>
+									<colgroup>
+										<col width="100"/>
+										<col width="140"/>
+										<col width="*"/>
+										<col width="80"/>
+										<col width="80"/>
+										<col width="120"/>
+										<col width="120"/>
+										<col width="150"/>
+										<col width="80"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th></th>
+											<th>날짜</th>
+											<th>내용</th>
+											<th>수량</th>
+											<th>단위</th>
+											<th>단가</th>
+											<th>금액</th>
+											<th>비고</th>
+											<th><button class="btnS white">행추가</button></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="tC">
+												<button class="listArrow up">위</button>
+												<button class="listArrow down">아래</button>
+											</td>
+											<td class="tC"><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+											<td><input type="text"/></td>
+											<td><input type="text" class="tC"/></td>
+											<td>
+												<span class="selectSet wFull">
+													<select>
+														<option>개</option>
+														<option>박스</option>
+														<option>set</option>
+													</select>
+												</span>
+											</td>
+											<td><input type="text" class="tR"/></td>
+											<td class="tR"></td>
+											<td><input type="text"/></td>
+											<td class="tC">
+												<button class="btnS white">삭제</button>
+											</td>
+										</tr>
+										<tr>
+											<td class="tC">
+												<button class="listArrow up">위</button>
+												<button class="listArrow down">아래</button>
+											</td>
+											<td class="tC"><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+											<td><input type="text"/></td>
+											<td><input type="text" class="tC"/></td>
+											<td>
+												<span class="selectSet wFull">
+													<select>
+														<option>개</option>
+														<option>박스</option>
+														<option>set</option>
+													</select>
+												</span>
+											</td>
+											<td><input type="text" class="tR"/></td>
+											<td class="tR"></td>
+											<td><input type="text"/></td>
+											<td class="tC">
+												<button class="btnS white">삭제</button>
+											</td>
+										</tr>
+										<tr>
+											<td class="tC">
+												<button class="listArrow up">위</button>
+												<button class="listArrow down">아래</button>
+											</td>
+											<td class="tC"><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+											<td><input type="text"/></td>
+											<td><input type="text" class="tC"/></td>
+											<td>
+												<span class="selectSet wFull">
+													<select>
+														<option>개</option>
+														<option>박스</option>
+														<option>set</option>
+													</select>
+												</span>
+											</td>
+											<td><input type="text" class="tR" placeholder="100,000,000"/></td>
+											<td class="tR"></td>
+											<td><input type="text"/></td>
+											<td class="tC">
+												<button class="btnS white">삭제</button>
+											</td>
+										</tr>
+									</tbody>
+									<tFoot>
+										<tr>
+											<th colspan="3" class="tR">소계</th>
+											<td colspan="2" class="tC">12</td>
+											<td class="tR">2,000</td>
+											<td class="tR">24,000</td>
+											<td colspan="3"></td>
+										</tr>
+										<tr>
+											<th colspan="3" class="tR">부가세 (V.A.T)</th>
+											<td colspan="2" class="tC"></td>
+											<td class="tR"></td>
+											<td class="tR"></td>
+											<td colspan="3"></td>
+										</tr>
+										<tr>
+											<th colspan="3" class="tR">합계 (TOTAL)</th>
+											<td colspan="2" class="tC"></td>
+											<td class="tR"></td>
+											<td class="tR"></td>
+											<td colspan="3"></td>
+										</tr>
+									</tFoot>
+								</table>
+							</div>
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="100"/>
+										<col width="*"/>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>비고</th>
+											<td>
+												<textarea></textarea>
+												<span class="right txtNum">0/200</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!---->
+							<div class="btnArea tC">
+								<a href="biz_document_invoice.html" class="btnM" onclick="if(!confirm('입력한 정보가 저장되지 않습니다. 취소하시겠습니까?')){return false;}">취소</a>
+								<a href="biz_document_invoice_view.html" class="btnM blue">저장</a>
+							</div>
+							<!--//-->
+						</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;"></div>
+		<!-- //Popup -->
+    </body>
+</html>

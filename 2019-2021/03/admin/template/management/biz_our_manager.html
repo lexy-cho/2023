@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.highcharts.com/highcharts.src.js"></script>
+		<script type="text/javascript" src="../../js/tree/jstree.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/fullTree.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/* 파일업로드 */
+			$('.fileSet input[type=file]').change(function() {
+				var fileValue = $(this).val().split("\\");
+				var fileName = fileValue[fileValue.length-1];
+				$('.fileSet .loadEnd em').text(fileName);
+				$('.fileSet .fileFind').hide();
+				$('.fileSet .loadIng').show();
+				setTimeout(function() {
+					$('.fileSet .loadIng').hide();
+					$('.fileSet .loadFail').show();
+				}, 3000);
+				setTimeout(function() {
+					$('.fileSet .loadFail').hide();
+					$('.fileSet .loadEnd').show();
+				}, 6000);
+			});
+			$('.fileSet .loadEnd button').click(function() {
+				$('.fileSet .fileFind').show();
+				$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+			});
+			/* end 파일업로드 */
+			$('.basicPop .pBtn button, .pclose').click(function(){
+				$('.popDim, .basicPop').hide();
+			});
+			$('.btnSensitiveSet').click(function(){
+				$('.popDim, .sensitiveSetPop').show();
+			});
+			$('.btnSensitivePw').click(function(){
+				$('.popDim, .sensitivePwPop').show();
+			});
+			$('.btnAdminSet').click(function(){
+				$('.popDim, .adminSetPop').show();
+			});
+			$('.treeBox .allOpen').click(function () {
+				$(this).hide();
+				$('.treeBox .allClose').show();
+			});
+			$('.treeBox .allClose').click(function () {
+				$(this).hide();
+				$('.treeBox .allOpen').show();
+			}); // jstree 그룹 열기닫기 토글
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>회사관리자</h2>
+					<div class="pagePos"><span>Home</span><span>경영지원</span><strong>회사 관리</strong><strong>회사관리자</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="ourLayout">
+						<div class="guideArea">
+							<div class="left">
+								<ul>
+									<li>우리 회사 관리자 설정입니다.</li>
+									<li>우리 회사 관리자 설정 시 모든 화면의 관리자 권한으로 등록, 수정, 삭제가 가능합니다.</li>
+									<li>관리자의 주요 권한 안내
+										<ul>
+											<li>조직설정 (부서 추가/수정/삭제, 구성원 추가/수정/삭제)</li>
+											<li>직급/직책 체계 설정</li>
+											<li>회사정보 관리</li>
+											<li>구성원의 경영지원 승인 권한</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<div class="right">
+								<ul>
+									<li>회사관리자만 확인 가능한 화면 중 민감화면 접근시 비밀번호를 입력하게 됩니다.</li>
+									<li>민감화면 접근 비밀번호는 관리자만 수정 가능합니다.</li>
+								</ul>
+								<div class="btnSet tC pt2">
+									<button class="btnL white btnSensitiveSet">민감화면 설정</button>
+									<button class="btnL white btnSensitivePw">민감화면 비밀번호</button>
+								</div>
+							</div>
+						</div>
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="60"/>
+									<col width="60"/>
+									<col width="180"/>
+									<col width="200"/>
+									<col width="200"/>
+									<col width="300"/>
+									<col width="500"/>
+								</colgroup>
+								<thead>
+									<tr>
+										<th>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkall" />
+												<label for="chkall"><i></i></label>
+											</span>
+										</th>
+										<th>No</th>
+										<th>사용자명</th>
+										<th>부서</th>
+										<th>직급</th>
+										<th>연락처</th>
+										<th>이메일</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk3" />
+												<label for="chk3"><i></i></label>
+											</span>
+										</td>
+										<td>3</td>
+										<td>홍길동</td>
+										<td>대표이사</td>
+										<td>대표이사</td>
+										<td>010-0000-0000</td>
+										<td class="tL">abcdefg@abcdefg.co.kr</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk2" />
+												<label for="chk2"><i></i></label>
+											</span>
+										</td>
+										<td>2</td>
+										<td>김순자</td>
+										<td>경영지원</td>
+										<td>실장</td>
+										<td>010-0000-0000</td>
+										<td class="tL">abcdefg@abcdefg.co.kr</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk1" />
+												<label for="chk1"><i></i></label>
+											</span>
+										</td>
+										<td>1</td>
+										<td>김철수</td>
+										<td>전략기획</td>
+										<td>매니저</td>
+										<td>010-0000-0000</td>
+										<td class="tL">abcdefg@abcdefg.co.kr</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="bpSet">
+							<div class="btnArea">
+								<span class="left">
+									<button class="btnM">선택삭제</button>
+								</span>
+								<span class="right">
+									<button class="btnM btnAdminSet">설정</button>
+								</span>
+							</div>
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+										<a class="on">1</a>
+										<a>2</a>
+										<a>3</a>
+										<a>4</a>
+										<a>5</a>
+									<a class="next">다음</a>
+								</span>
+								<span class="selectSet">
+									<select>
+										<option>10개</option>
+										<option>20개</option>
+										<option>50개</option>
+										<option>100개</option>
+									</select>
+								</span>
+							</div>
+						</div>
+						<!--//-->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!--민감화면 비밀번호-->
+			<div class="basicPop sensitivePwPop"  style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>민감화면 비밀번호</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="inputBox pwSet">
+						<label>신규 비밀번호 :</label>
+						<input type="password" id="" name="" placeholder="영문, 숫자, 특수기호 8~16자 이내" />
+						<i class="off"></i>
+					</div>
+					<div class="inputBox pwSet">
+						<label>비밀번호 확인 :</label>
+						<input type="password" id="" name="" placeholder="영문, 숫자, 특수기호 8~16자 이내" />
+						<i class="off"></i>
+					</div>
+					<p class="pt1">※ 비밀번호는 영문, 숫자, 특수기호 8~16자 이내로 입력해주시기 바랍니다.</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!--//민감화면 비밀번호-->
+			<!--민감화면 설정-->
+			<div class="basicPop sensitiveSetPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>민감화면 설정</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="left">
+						<div class="treeBox">
+							<div class="jstreeBack">
+								<div id="jstree" style="width:100%"></div>
+							</div>
+						</div>
+						<button class="btnL white">적용</button>
+					</div>
+					<div class="right">
+						<div class="grayBox">
+							<strong><선택한 화면 목록></strong>
+							<ul>
+								<li>시스템관리 > 경영지원 > 사용자관리 > 퇴사자 현황 <button class="btnDel">삭제</button></li>
+								<li>시스템관리 > 경영지원 > 급여명세서 관리 <button class="btnDel">삭제</button></li>
+							</ul>
+						</div>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!--//민감화면 설정-->
+			<!-- 회사 관리자 설정 -->
+			<div class="basicPop adminSetPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>회사 관리자 설정</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="inputBox">
+						<input type="text" placeholder="사용자 이름, 사번 검색"/>
+					</div>
+					<div class="receiver">
+						<div class="workerWrap">
+							<span class="worker">홍길동 (0000000) <button class="btnDel">삭제</button></span>
+							<span class="worker">홍길동 (0000000) <button class="btnDel">삭제</button></span>
+							<span class="worker">홍길동 (0000000) <button class="btnDel">삭제</button></span>
+						</div>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //회사 관리자 설정 -->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

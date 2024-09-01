@@ -1,0 +1,194 @@
+<script type="text/javascript" src="../../js/tree/jstree.min.js"></script>
+<script type="text/javascript" src="../../js/tree/basicTree.js"></script>
+<script>
+	$(document).ready(function(){
+		$('.saveList input').click(function(){
+			$('.saveList ul').toggle();
+		});
+		$('.saveList ul li').click(function(){
+			var listTit = $(this).find('strong').text();
+			$('.saveList input').val(listTit);
+			$('.saveList ul').toggle();
+		});
+		$('.setList .white').click(function(){
+			$('.alertDim, .apprLineDelPop').show();
+			$('.apprLineDelPop .pBtn button').click(function(){
+				$('.popDim, .apprLinePop').show();
+			});
+		}); // 결재선 라인 삭제
+		$(".save .checkSet input").on('click', function() {
+			if($(this).prop('checked')){
+				$('.save > input').attr('disabled', false);
+			}else{
+				$('.save > input').attr('disabled', true);
+			}
+		});
+		$('.searchBox .tls tbody tr').click(function(){
+			$('.searchBox .tls tbody tr').removeClass('on');
+			$(this).addClass('on');
+		});
+	});
+</script>
+<div class="apprLineBox">
+	<div class="treeArea">
+		<div class="gridSet grid2">
+			<div class="gridItem">
+				<div class="treeBox">
+					<div class="jstreeBack">
+						<div id="jstree" style="width:100%"></div>
+					</div>
+				</div>
+			</div>
+			<div class="gridItem">
+				<div class="searchBox">
+					<div class="search">
+						<input type="text" placeholder="성명"/>
+						<button class="btnM white">검색</button>
+					</div>
+					<div class="tls">
+						<table>
+							<colgroup>
+								<col width="60"/>
+								<col width="60"/>
+								<col width="60"/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>부서</th>
+									<th>성명</th>
+									<th>직위</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>개발팀</td>
+									<td>홍길동</td>
+									<td>사원</td>
+								</tr>
+								<tr>
+									<td>개발팀</td>
+									<td>김철수</td>
+									<td>대리</td>
+								</tr>
+								<tr>
+									<td>개발팀</td>
+									<td>박무개</td>
+									<td>팀장</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="controlArea">
+		<div>
+			<span class="radioSet">
+				<input type="radio" id="addToAppr" name="addTo" />
+				<label for="addToAppr"><i></i>결재</label>
+			</span>
+			<span class="radioSet">
+				<input type="radio" id="addToAgree" name="addTo" />
+				<label for="addToAgree"><i></i>합의</label>
+			</span>
+		</div>
+	</div>
+	<div class="setArea">
+		<div class="saveList">
+			<div class="inputBox">
+				<input type="text" placeholder="저장한 결재선 선택" /><!-- 저장된 결재선이 없을 경우 disabled 처리 -->
+			</div>
+			<ul style="display:none;">
+				<li>
+					<div>
+						<strong>저장한 결재선 선택</strong>
+					</div>
+				</li>
+				<li>
+					<div>
+						<strong>휴가 상신 결재</strong>
+						<span class="date">2020-08-08</span>
+						<button class="btnDel">삭제</button>
+					</div>
+				</li>
+				<li>
+					<div>
+						<strong>변경된 상신 결제</strong>
+						<span class="date">2020-08-08</span>
+						<button class="btnDel">삭제</button>
+					</div>
+				</li>
+				<li>
+					<div>
+						<strong>변경된 상신 결제 2</strong>
+						<span class="date">2020-08-08</span>
+						<button class="btnDel">삭제</button>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="setTable">
+			<div class="setList">
+				<ul>
+					<li>
+						<span class="ftBold">시작</span>
+						<span class="ftBold">상신</span>
+						<div class="tL">홍길동 사원 / 개발1팀</div>
+						<span></span>
+					</li>
+					<li>
+						<span>
+							<button class="btnSwich">이동</button>
+						</span>
+						<span>
+							<span class="selectSet">
+								<select>
+									<option>합의</option>
+									<option>결재</option>
+								</select>
+							</span>
+						</span>
+						<div class="tL">김남이 대리 / 경영지원팀</div>
+						<span><button class="btnM pink">X</button></span>
+					</li>
+					<li>
+						<span>
+							<button class="btnSwich">이동</button>
+						</span>
+						<span>
+							<span class="selectSet">
+								<select>
+									<option>합의</option>
+									<option>결재</option>
+								</select>
+							</span>
+						</span>
+						<div class="tL">김철수 팀장 / 개발1팀</div>
+						<span><button class="btnM pink">X</button></span>
+					</li>
+					<li>
+						<span>최종</span>
+						<span>
+							<span class="selectSet">
+								<select>
+									<option>합의</option>
+									<option>결재</option>
+								</select>
+							</span>
+						</span>
+						<div class="tL">최미진 부장 / 개발2팀</div>
+						<span><button class="btnM pink">X</button></span>
+					</li>
+				</ul>
+			</div>
+			<div class="save">
+				<span class="checkSet">
+					<input type="checkbox" id="saveLine" />
+					<label for="saveLine"><i></i>현재 결제선 저장</label>
+				</span>
+				<input type="text" placeholder="결재선 이름" disabled/>
+			</div>
+		</div>
+	</div>
+</div>

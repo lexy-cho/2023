@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('#deleteBtn').click(function(){
+				$('.popDim').show();
+				$('.alertPop').show();
+			});
+			$('.pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			/**/
+			$('#roomColorBtn').click(function(){
+				$('.popDim').show();
+				$('.roomColorPop').show();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>회의실 예약현황</h2>
+					<div class="pagePos"><span>Home</span><span>경영지원</span><span>회의 관리</span><strong>회의실 예약현황</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="visitorLayout">
+						<!---->
+						<div class="boardTop">
+							<div>
+								<span class="left">
+									<button class="btnM" onclick="location.href='task_visitor_calendar.html'">달력</button>
+									<button class="btnM blue">전체목록</button>
+									전체 : 00 건
+								</span>
+								<span class="right">
+									<span class="searchBasic">
+										<span class="selectSet">
+											<select>
+												<option>회의실</option>
+												<option>Ocean</option>
+												<option>Mountain</option>
+												<option>Sunshine</option>
+												<option>Windy</option>
+											</select>
+										</span>
+										<span class="selectSet">
+											<select>
+												<option>구분</option>
+												<option>업무미팅</option>
+												<option>영업미팅</option>
+											</select>
+										</span>
+										<span class="selectSet">
+											<select>
+												<option>상태</option>
+												<option>예약</option>
+												<option>진행중</option>
+												<option>완료</option>
+												<option>취소</option>
+											</select>
+										</span>
+										<span class="calDupSet">
+											<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+											<em>~</em>
+											<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+										</span>
+										<input type="text" placeholder="회의제목, 담당자 입력" />
+										<input type="submit" value="검색" class="btnSearch" />
+										<button class="btnReset">초기화</button>
+									</span>
+									<button class="btnM">엑셀다운로드</button>
+								</span>
+							</div>
+							<div>
+								<em>회의실 구분 : <span class="roomColor" style="background:#00b0f0;">Ocean</span>Ocean / <span class="roomColor" style="background:#45b474;">Mountain</span>Mountain / <span class="roomColor" style="background:#f79646;">Sunshine</span>Sunshine / <span class="roomColor" style="background:#0070c0;">Windy</span>Windy</em>
+							</div>
+						</div>
+						<!---->
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="10" />
+									<col width="120" />
+									<col width="120" />
+									<col width="200" />
+									<col width="120" />
+									<col />
+									<col width="120" />
+									<col width="200" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkall" />
+												<label for="chkall"><i></i></label>
+											</span>
+										</th>
+										<th>일자</th>
+										<th>예약시간</th>
+										<th>회의실</th>
+										<th>구분</th>
+										<th>회의제목</th>
+										<th>상태</th>
+										<th>담당자</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk10" />
+												<label for="chk10"><i></i></label>
+											</span>
+										</td>
+										<td>2020-03-02</td>
+										<td>00:00 ~ 00:00</td>
+										<td class="tL"><span class="roomColor" style="background:#00b0f0;">Ocean</span>Ocean</td>
+										<td>업무미팅</td>
+										<td class="tL"><a href="task_visitor_view.html">[물류미팅] 투자 사전 업무 미팅</a></td>
+										<td>예정</td>
+										<td>조명진 [퍼블리싱팀]</td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk9" />
+												<label for="chk9"><i></i></label>
+											</span>
+										</td>
+										<td>2020-03-02</td>
+										<td>00:00 ~ 00:00</td>
+										<td class="tL"><span class="roomColor" style="background:#45b474;">Mountain</span>Mountain</td>
+										<td>영업미팅</td>
+										<td class="tL"><a href="task_visitor_view.html">[물류미팅] 투자 사전 업무 미팅</a></td>
+										<td>진행중</td>
+										<td>조명진 [퍼블리싱팀]</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk8" />
+												<label for="chk8"><i></i></label>
+											</span>
+										</td>
+										<td>2020-03-02</td>
+										<td>00:00 ~ 00:00</td>
+										<td class="tL"><span class="roomColor" style="background:#f79646;">Sunshine</span>Sunshine</td>
+										<td>업무미팅</td>
+										<td class="tL"><a href="task_visitor_view.html">[물류미팅] 투자 사전 업무 미팅</a></td>
+										<td>완료</td>
+										<td>조명진 [퍼블리싱팀]</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk7" />
+												<label for="chk7"><i></i></label>
+											</span>
+										</td>
+										<td>2020-03-02</td>
+										<td>00:00 ~ 00:00</td>
+										<td class="tL"><span class="roomColor" style="background:#0070c0;">Windy</span>Windy</td>
+										<td>업무미팅</td>
+										<td class="tL"><a href="task_visitor_view.html">[물류미팅] 투자 사전 업무 미팅</a></td>
+										<td>완료</td>
+										<td>조명진 [퍼블리싱팀]</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk6" />
+												<label for="chk6"><i></i></label>
+											</span>
+										</td>
+										<td>2020-03-02</td>
+										<td>00:00 ~ 00:00</td>
+										<td class="tL"><span class="roomColor" style="background:#45b474;">Mountain</span>Mountain</td>
+										<td>영업미팅</td>
+										<td class="tL"><a href="task_visitor_view.html">[물류미팅] 투자 사전 업무 미팅</a></td>
+										<td>취소</td>
+										<td>조명진 [퍼블리싱팀]</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk5" />
+												<label for="chk5"><i></i></label>
+											</span>
+										</td>
+										<td>2020-03-02</td>
+										<td>00:00 ~ 00:00</td>
+										<td class="tL"><span class="roomColor" style="background:#00b0f0;">Ocean</span>Ocean</td>
+										<td></td>
+										<td class="tL"><a href=""></a></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk4" />
+												<label for="chk4"><i></i></label>
+											</span>
+										</td>
+										<td>2020-03-01</td>
+										<td>00:00 ~ 00:00</td>
+										<td class="tL"><span class="roomColor" style="background:#00b0f0;">Ocean</span>Ocean</td>
+										<td></td>
+										<td class="tL"><a href=""></a></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk3" />
+												<label for="chk3"><i></i></label>
+											</span>
+										</td>
+										<td>2020-03-01</td>
+										<td>00:00 ~ 00:00</td>
+										<td class="tL"><span class="roomColor" style="background:#00b0f0;">Ocean</span>Ocean</td>
+										<td></td>
+										<td class="tL"><a href=""></a></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk2" />
+												<label for="chk2"><i></i></label>
+											</span>
+										</td>
+										<td>2020-03-01</td>
+										<td>00:00 ~ 00:00</td>
+										<td class="tL"><span class="roomColor" style="background:#00b0f0;">Ocean</span>Ocean</td>
+										<td></td>
+										<td class="tL"><a href=""></a></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk1" />
+												<label for="chk1"><i></i></label>
+											</span>
+										</td>
+										<td>2020-03-01</td>
+										<td>00:00 ~ 00:00</td>
+										<td class="tL"><span class="roomColor" style="background:#00b0f0;">Ocean</span>Ocean</td>
+										<td></td>
+										<td class="tL"><a href=""></a></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="bpSet">
+							<div class="btnArea">
+								<span class="left">
+									<button class="btnM" id="deleteBtn">선택삭제</button>
+								</span>
+								<span class="right">
+									<button class="btnM" id="newReservationBtn" onclick="location.href='task_visitor_write.html'">신규등록</button>
+								</span>
+							</div>
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+									<a class="on">1</a>
+									<a>2</a>
+									<a>3</a>
+									<a>4</a>
+									<a>5</a>
+									<a class="next">다음</a>
+								</span>
+								<span class="selectSet">
+									<select>
+										<option>10개</option>
+										<option>20개</option>
+										<option>50개</option>
+										<option>100개</option>
+									</select>
+								</span>
+							</div>
+						</div>
+						<!--//-->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<div class="alertPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>입력한 정보가 삭제됩니다.<br/>삭제하시겠습니까?</p>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

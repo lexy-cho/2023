@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<style media="screen">
+			body,html {overflow:auto;}
+		</style>
+	</head>
+	<body>
+		<!-- Page Layout -->
+		<div class="contractDetail">
+			<div class="detailTop">
+				<span class="left">
+					<button class="btnM red btnNewOrder">신규계약</button>
+					<button class="btnM whiteRed">계약삭제</button>
+				</span>
+				<span class="right">
+					<button class="btnM orange">변경저장</button>
+				</span>
+			</div>
+			<div class="">
+				<div class="infoBar">
+					<span class="left">
+						<dl>
+							<dt>배차번호 :</dt>
+							<dd>999999999 (오더번호 : 999999999)</dd>
+						</dl>
+						<button class="statusSet receive">오더접수</button>
+					</span>
+					<span class="right">
+						<dl>
+							<dt>오더일자 :</dt>
+							<dd>2019.12.19 오전 09:00<span>계약오더</span></dd>
+						</dl>
+					</span>
+				</div>
+				<div class="detailContents">
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="100"/>
+								<col width="160"/>
+								<col width="170"/>
+								<col />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th class="thTit">계약일자</th>
+									<td colspan="3"><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+								</tr>
+								<tr>
+									<th class="thTit">계약기간</th>
+									<td colspan="3">
+										<span class="calDupSet">
+											<span class="calSet"><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span>
+											<em>~</em>
+											<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th class="thTit">운송타입</th>
+									<td colspan="3">
+										<span class="selectSet">
+										    <select>
+										        <option selected>선택</option>
+										        <option>수입</option>
+										        <option>수출</option>
+										        <option>환적</option>
+										    </select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th class="thTit">계약금액</th>
+									<td colspan="3"><input class="wAuto" type="text" value="250000"/>원</td>
+								</tr>
+								<tr>
+									<th class="thTit">계약거리</th>
+									<td>
+										<input class="wHalf tC" type="text" value="125"/>km
+									</td>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option selected>빠른길</option>
+												<option>무료도로</option>
+												<option>최단거리</option>
+												<option>자동차전용제외</option>
+												<option>큰길우선</option>
+												<option>고속도로우선</option>
+												<option>일반도로우선</option>
+											</select>
+										</span>
+									</td>
+									<td><input type="text" value="5종 (4축이상 특수화물차)"></td>
+								</tr>
+								<tr>
+									<th class="thTit">컨테이너 크기</th>
+									<td>
+										<span class="selectSet">
+										    <select>
+										        <option selected>20</option>
+										        <option>40</option>
+										        <option>40 High Cube</option>
+										        <option>45 High Cube</option>
+										    </select>
+										</span>
+									</td>
+									<th>컨테이너 타입</th>
+									<td>
+										<span class="selectSet">
+										    <select>
+										        <option selected>Dry</option>
+										        <option>Reefer</option>
+										        <option>Open Top. Sliding</option>
+										        <option>Open Top</option>
+										        <option>Flat Rack</option>
+										        <option>Super Rack</option>
+										    </select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th rowspan="5" class="thTit">계약회사</th>
+									<th>계약자 아이디</th>
+									<td colspan="2"><span class="addressArea"><input class="wHalf tL" type="text" value="시화중공업"><button class="searchCompany">회원검색</button></span></td>
+								</tr>
+								<tr>
+									<th>회사명</th>
+									<td colspan="2"><span class="addressArea"><input class="wHalf tL" type="text" value="시화중공업"><button class="searchCompany">회사검색</button></span></td>
+								</tr>
+								<tr>
+									<th>담당자(성명)</th>
+									<td colspan="2"><input type="text" value="홍길동"/></td>
+								</tr>
+								<tr>
+									<th>담당자(직급)</th>
+									<td colspan="2"><input type="text" value="차장"/></td>
+								</tr>
+								<tr>
+									<th>담당자(연락처)</th>
+									<td colspan="2"><input type="text" value="010-9999-9999"/></td>
+								</tr>
+								<tr>
+									<th rowspan="8" class="thTit">계약정보</th>
+									<th rowspan="2">출발지(주소)</th>
+									<td><span class="addressArea"><button class="btnAdress">주소검색</button><input type="text" value="83909"/></span></td>
+									<td><div class="portArea"><input type="text" placeholder="인천광역시 중구 서해대로 366"/><span class="port">인천항</span></div></td>
+								</tr>
+								<tr>
+									<td colspan="2"><input type="text" value="시화8단지 A-09"/></td>
+								</tr>
+								<tr>
+									<th>작업지</th>
+									<td colspan="2"><input type="text" value="시화중공업 (제 1공장)"/></td>
+								</tr>
+								<tr>
+									<th rowspan="2">작업지(주소)</th>
+									<td><span class="addressArea"><button class="btnAdress">주소검색</button><input type="text" value="83909"/></span></td>
+									<td><div class="portArea"><input type="text" placeholder="경기도 안산시 단원구 성곡동 번영로 109"/><span class="port">인천항</span></div></td>
+								</tr>
+								<tr>
+									<td colspan="3"><input type="text" value="2층 하역장"/></td>
+								</tr>
+								<tr>
+									<th rowspan="2">도착지(주소)</th>
+									<td><span class="addressArea"><button class="btnAdress">주소검색</button><input type="text" value="83909"/></span></td>
+									<td><div class="portArea"><input type="text" placeholder="인천광역시 중구 서해대로 366"/><span class="port">인천항</span></div></td>
+								</tr>
+								<tr>
+									<td colspan="2"><input type="text" value="1층 하역장"/></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //page Layout -->
+    </body>
+	<!-- popup -->
+	<div class="popDim" style="display:none">
+		<!-- 신규 오더 -->
+		<div class="basicPop newOrderPop" id="samplePop5" style="display:none">
+			<button class="pclose">닫기</button>
+			<div class="tt">
+				<h1>신규 오더</h1>
+			</div>
+			<div class="pBack">
+				<div class="tws">
+					<div class="tab">
+						<!-- tab -->
+						<div class="tabBack">
+							<div class="tabNav">
+								<nav>
+									<ul>
+										<li class="on"><button data-name="1">고객정보</button></li>
+										<li><button data-name="2">오더정보</button></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<!--// tab -->
+						<div class="tabLayout">
+							<div class="tabData tData1" style="display:block;">
+								<div class="optionArea">
+									<span class="selectSet">
+										<select>
+											<option selected>오더선택</option>
+											<option>메뉴2</option>
+										</select>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option selected>운송선택</option>
+											<option>메뉴2</option>
+										</select>
+									</span>
+								</div>
+								<div class="tws">
+									<div class="transType blue"><strong>수출</strong></div>
+									<table>
+										<colgroup>
+											<col width="100"/>
+											<col width="100"/>
+											<col width="160"/>
+											<col width="40"/>
+											<col width="100"/>
+											<col/>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th rowspan="5" class="thTit">발주자</th>
+												<th>회사명</th>
+												<td colspan="2"><span class="addressArea"><input type="text"><button class="searchCompany">회사검색</button></span></td>
+												<th>사업자번호</th>
+												<td><input type="text"></td>
+											</tr>
+											<tr>
+												<th>담당자(성명)</th>
+												<td colspan="2"><input type="text"></td>
+												<th>담당자 연락처</th>
+												<td><input type="text"></td>
+											</tr>
+											<tr>
+												<th rowspan="2">주소</th>
+												<td><span class="addressArea"><button class="btnAdress">주소검색</button><input type="text"/></span></td>
+												<td colspan="3"><input type="text"/></td>
+											</tr>
+											<tr>
+												<td colspan="5"><input type="text"/></td>
+											</tr>
+											<tr class="lastTr">
+												<th>업태</th>
+												<td colspan="2"><input type="text"/></td>
+												<th>연락처</th>
+												<td><input type="text"/></td>
+											</tr>
+											<tr>
+												<th rowspan="5" class="thTit">청구자</th>
+												<th>회사명</th>
+												<td colspan="2"><input type="text"/></td>
+												<th>사업자번호</th>
+												<td><input type="text"/></td>
+											</tr>
+											<tr>
+												<th>담당자(성명)</th>
+												<td colspan="2"><input type="text"/></td>
+												<th>담당자(연락처)</th>
+												<td><input type="text"/></td>
+											</tr>
+											<tr>
+												<th rowspan="2">주소</th>
+												<td><span class="addressArea"><button class="btnAdress">주소검색</button><input type="text"/></span></td>
+												<td colspan="3"><input type="text"/></td>
+											</tr>
+											<tr>
+												<td colspan="5"><input type="text"/></td>
+											</tr>
+											<tr class="lastTr">
+												<th>업태</th>
+												<td colspan="2"><input type="text"/></td>
+												<th>업종</th>
+												<td><input type="text"/></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="tabData tData2">
+								<div class="optionArea">
+									<span class="selectSet">
+										<select>
+											<option selected>오더선택</option>
+											<option>메뉴2</option>
+										</select>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option selected>운송선택</option>
+											<option>메뉴2</option>
+										</select>
+									</span>
+								</div>
+								<div class="tws">
+									<div class="transType blue"><strong>수출</strong></div>
+									<table>
+										<colgroup>
+											<col width="90"/>
+											<col width="90"/>
+											<col width="200"/>
+											<col width="90"/>
+											<col/>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th rowspan="5" class="thTit">기본정보</th>
+												<th>B/L</th>
+												<td><span class="unipassArea"><input type="text"/><button class="searchUnipass">UNIPASS 검색</button></span></td>
+												<th>D/O</th>
+												<td><input type="text"/></td>
+											</tr>
+											<tr>
+												<th>입항일자</th>
+												<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+												<th>선사</th>
+												<td><input type="text"/></td>
+											</tr>
+											<tr>
+												<th>모선</th>
+												<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+												<th>항차</th>
+												<td><input type="text" value="항차정보표기"/></td>
+											</tr>
+											<tr>
+												<th>운송요청</th>
+												<td colspan="3"><input type="text" value="운송요청입력"/></td>
+											</tr>
+											<tr class="lastTr">
+												<th>기타메모</th>
+												<td colspan="3"><input type="text" value="기타메모입력"/></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="tws">
+									<table>
+										<colgroup>
+											<col width="90"/>
+											<col width="90"/>
+											<col width="200"/>
+											<col width="90"/>
+											<col/>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th rowspan="5" class="thTit">컨테이너정보</th>
+												<th>계약단가</th>
+												<td>
+													<span class="selectSet">
+														<select>
+															<option selected>[계약금액/종류] 출발지/작업지</option>
+															<option>수입</option>
+														</select>
+													</span>
+												</td>
+												<th>운송유형</th>
+												<td><input type="text"/></td>
+											</tr>
+											<tr>
+												<th>운송요청일자</th>
+												<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+												<th>유형</th>
+												<td><input type="text"/></td>
+											</tr>
+											<tr>
+												<th>크기(ft)</th>
+												<td><input type="text" value="모선정보표기"/></td>
+												<th>중량(ton)</th>
+												<td><input type="text" value="항차정보표기"/></td>
+											</tr>
+											<tr class="lastTr">
+												<th>컨테이너 번호</th>
+												<td><input type="text"/></td>
+												<th>Seal 번호</th>
+												<td><input type="text"/></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="tws">
+									<table>
+										<colgroup>
+											<col width="90"/>
+											<col width="90"/>
+											<col width="140"/>
+											<col width="60"/>
+											<col width="90"/>
+											<col/>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th rowspan="4" class="thTit">상차<span>(출발지)</span></th>
+												<th>출발일시</th>
+												<td colspan="4"><input type="text" value="2020-01-01 12:00:00"/></td>
+											</tr>
+											<tr>
+												<th rowspan="2">주소</th>
+												<td><span class="addressArea"><button class="btnAdress">주소검색</button><input type="text"/></span></td>
+												<td colspan="3"><input type="text" placeholder="인천광역시 중구 서해대로 366"/></td>
+											</tr>
+											<tr>
+												<td colspan="4"><input type="text"/></td>
+											</tr>
+											<tr class="lastTr">
+												<th>담당자명</th>
+												<td colspan="2"><input type="text"/></td>
+												<th>연락처</th>
+												<td><input type="text"/></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="tws">
+									<table>
+										<colgroup>
+											<col width="90"/>
+											<col width="90"/>
+											<col width="140"/>
+											<col width="60"/>
+											<col width="90"/>
+											<col/>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th rowspan="5" class="thTit">작업1<span>(작업지)</span></th>
+												<th>출발일시</th>
+												<td colspan="4"><input type="text"/></td>
+											</tr>
+											<tr>
+												<th>회사명</th>
+												<td colspan="2"><span class="addressArea"><input type="text"/><button class="searchCompany">회사검색</button></span></td>
+												<td colspan="3"><input type="text"/></td>
+											</tr>
+											<tr>
+												<th rowspan="2">주소</th>
+												<td><span class="addressArea"><button class="btnAdress">주소검색</button><input type="text"/></span></td>
+												<td colspan="4"><input type="text"/></td>
+											</tr>
+											<tr>
+												<td colspan="4"><input type="text"/></td>
+											</tr>
+											<tr class="lastTr">
+												<th>담당자명</th>
+												<td colspan="2"><input type="text"/></td>
+												<th>연락처</th>
+												<td><input type="text"/></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<button class="btnS whiteBlue" id="btnWorkspace">+ 작업지 추가</button>
+								<div class="tws">
+									<table>
+										<colgroup>
+											<col width="90"/>
+											<col width="90"/>
+											<col width="140"/>
+											<col width="60"/>
+											<col width="90"/>
+											<col/>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th rowspan="4" class="thTit">반납<span>(도착지)</span></th>
+												<th>출발일시</th>
+												<td colspan="4"><input type="text"/></td>
+											</tr>
+											<tr>
+												<th rowspan="2">주소</th>
+												<td><span class="addressArea"><button class="btnAdress">주소검색</button><input type="text"/></span></td>
+												<td colspan="3"><input type="text"/></td>
+											</tr>
+											<tr>
+												<td colspan="4"><input type="text"/></td>
+											</tr>
+											<tr class="lastTr">
+												<th>담당자명</th>
+												<td colspan="2"><input type="text"/></td>
+												<th>연락처</th>
+												<td><input type="text"/></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="costBox">
+									<strong>컨테이너 운송비용</strong>
+									<dl class="inputBox">
+										<dt>총 예상비용</dt>
+										<dd class="tR"><input type="number">원</dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pBtn">
+				<button class="btnM whiteBlack">취소</button>
+				<button class="btnM black">확인</button>
+			</div>
+		</div>
+		<!--//신규 오더-->
+		<!-- 주소검색 -->
+		<div class="basicPop searchPop" id="samplePop12" style="display:none">
+			<button class="pclose">닫기</button>
+			<div class="tt">
+				<h1>주소검색</h1>
+			</div>
+			<div class="pBack">
+				<div class="seachArea">
+					<div class="searchInput">
+						<input type="text" placeholder="도로명 + 번지로 검색"/>
+						<button class="btnSearch">조회</button>
+					</div>
+					<div class="tip">
+						<dl>
+							<dt><strong>Search tip</strong></dt>
+							<dd><span>도로명 + 건물번호</span>예) 세종대로 207,  매봉산로 37</dd>
+							<dd><span>지역명(동/리) + 번지</span>예) 역삼동 68-1,  상암동 1682</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="listBox">
+					<div class="tls">
+						<table>
+							<colgroup>
+								<col width="80" />
+								<col width="400" />
+								<col width="80" />
+							</colgroup>
+							<thead>
+								<tr>
+									<th>우편번호</th>
+									<th>회사명</th>
+									<th>위치</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!--Loop-->
+								<tr>
+									<td>03186</td>
+									<td class="tL">
+										<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+										<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+									</td>
+									<td><a href="">지도보기</a></td>
+								</tr>
+								<!--//Loop-->
+								<tr>
+									<td>03186</td>
+									<td class="tL">
+										<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+										<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+									</td>
+									<td><a href="">지도보기</a></td>
+								</tr>
+								<tr class="on">
+									<td>03186</td>
+									<td class="tL">
+										<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+										<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+									</td>
+									<td><a href="">지도보기</a></td>
+								</tr>
+								<tr>
+									<td>03186</td>
+									<td class="tL">
+										<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+										<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+									</td>
+									<td><a href="">지도보기</a></td>
+								</tr>
+								<tr>
+									<td>03186</td>
+									<td class="tL">
+										<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+										<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+									</td>
+									<td><a href="">지도보기</a></td>
+								</tr>
+								<tr>
+									<td>03186</td>
+									<td class="tL">
+										<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+										<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+									</td>
+									<td><a href="">지도보기</a></td>
+								</tr>
+								<tr>
+									<td>03186</td>
+									<td class="tL">
+										<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+										<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+									</td>
+									<td><a href="">지도보기</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="pBtn">
+				<button class="btnM whiteBlack">취소</button>
+				<button class="btnM black">확인</button>
+			</div>
+		</div>
+		<!--//주소검색-->
+		<!-- 회사검색 -->
+		<div class="basicPop searchPop" id="samplePop13" style="display:none">
+			<button class="pclose">닫기</button>
+			<div class="tt">
+				<h1>회사검색</h1>
+			</div>
+			<div class="pBack">
+				<div class="seachArea">
+					<div class="searchInput">
+						<input type="text" placeholder="회사명, 위치로 검색"/>
+						<button class="btnSearch">조회</button>
+					</div>
+				</div>
+				<div class="listBox">
+					<div class="tls comapySearch">
+						<table>
+							<colgroup>
+								<col width="50" />
+								<col width="350" />
+								<col width="70" />
+							</colgroup>
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>회사명</th>
+									<th>위치</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!--Loop-->
+								<tr>
+									<td>99</td>
+									<td class="tL">주식회사 에비에스중공업</td>
+									<td>경남창원</td>
+								</tr>
+								<!--//Loop-->
+								<tr>
+									<td>98</td>
+									<td class="tL">마블소더비 주식회사</td>
+									<td>경기인천</td>
+								</tr>
+								<tr class="on">
+									<td>97</td>
+									<td class="tL">성원엔팍스</td>
+									<td>서울마포</td>
+								</tr>
+								<tr>
+									<td>96</td>
+									<td class="tL">주식회사 에비에스중공업</td>
+									<td>경남창원</td>
+								</tr>
+								<tr>
+									<td>95</td>
+									<td class="tL">마블소더비 주식회사</td>
+									<td>경기인천</td>
+								</tr>
+								<tr>
+									<td>94</td>
+									<td class="tL">성원엔팍스</td>
+									<td>서울마포</td>
+								</tr>
+								<tr>
+									<td>93</td>
+									<td class="tL">주식회사 에비에스중공업</td>
+									<td>경남창원</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="pBtn">
+				<button class="btnM whiteBlack">취소</button>
+				<button class="btnM black">확인</button>
+			</div>
+		</div>
+		<!--//회사검색-->
+	</div>
+	<!-- //Popup -->
+</html>

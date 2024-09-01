@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			/* 파일업로드 */
+			$('.fileSet input[type=file]').change(function() {
+				var fileValue = $(this).val().split("\\");
+				var fileName = fileValue[fileValue.length-1];
+				$('.fileSet .loadEnd em').text(fileName);
+				$('.fileSet .fileFind').hide();
+				$('.fileSet .loadIng').show();
+				setTimeout(function() { 
+					$('.fileSet .loadIng').hide();
+					$('.fileSet .loadFail').show();
+				}, 3000);
+				setTimeout(function() { 
+					$('.fileSet .loadFail').hide();
+					$('.fileSet .loadEnd').show();
+				}, 6000);
+			});
+			$('.fileSet .loadEnd button').click(function() {
+				$('.fileSet .fileFind').show();
+				$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+			});
+			/**/
+			$('.projectGuideSet .white').click(function(){
+				$('.popDim').show();
+				$('.designPop').show();
+			});
+			$('.alertPop button, .basicPop button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			/**/
+			$(function() {
+				var availableTags = [
+				"고현우",   
+				"김용배",    
+				"김재성", 
+				"김준석",    
+				"김진훈",    
+				"박지훈",    
+				"석민현",    
+				"선혜", 
+				"안병찬",  
+				"양승건", 
+				"오유진",     
+				"유현태",   
+				"윤성원", 
+				"이민균", 
+				"조명진", 
+				"조혜란",    
+				"지선주"
+				];
+				$(".autoCom").autocomplete({
+					source: availableTags,
+					select: function(event, ui) {
+						var newTag = ui.item.value;
+						$(this).val("");
+						$('.autoComResult').append('<span>'+ newTag +' (일반) <button>x</button></span>');
+						$('.autoComResult span button').click(function(){
+							$(this).parent().hide();
+						});
+						event.preventDefault();
+					},
+				});
+			}); // 자동완성
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>프로젝트 관리</h2>
+					<div class="pagePos"><span>Home</span><span>관리자</span><strong>프로젝트 관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div>
+						<!---->
+						<h3 class="firstH3">프로젝트 상세 관리</h3>
+						<div class="tws">
+							<table>
+								<colgroup>
+									<col width="140"/>
+									<col width="100"/>
+									<col width="70"/>
+									<col width="150"/>
+									<col width="180"/>
+									<col width="180"/>
+									<col/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>프로젝트 관리 코드</th>
+										<td colspan="6">TT191121_scanit(TT)(04)_TSI</td>
+									</tr>
+									<tr>
+										<th>발주처</th>
+										<td colspan="2">씽크트리</td>
+										<th>고객사</th>
+										<td>씽크트리</td>
+										<th>대상 디바이스 및 브라우져</th>
+										<td>MobileWEB(Phone, Tablet)</td>
+									</tr>
+									<tr>
+										<th>참여 인력</th>
+										<td colspan="6">
+											<div>
+												<span class="selectSet">
+													<select>
+														<option>PM</option> 
+														<option>일반 </option> 
+													</select>
+												</span>
+												<input type="text" placeholder="자동입력완성" class="autoCom wAuto" />
+												<button class="btnM white">조직도보기</button>
+											</div>
+											<div class="autoComResult"></div>
+										</td>
+									</tr>
+									<tr>
+										<th>디자인</th>
+										<th class="subTit">활성화</th>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="project1" />
+												<label for="project1"></label>
+											</span> 
+										</td>
+										<td colspan="4" class="projectGuideSet">
+											<ul>
+												<li>
+													<strong><input type="text" value="시안"/></strong>
+													<span class="versionArea">
+														<span class="selectSet">
+															<select>
+																<option>1차 (2020-01-10)</option> 
+																<option>2차 (2020-01-11)</option> 
+															</select>
+														</span>
+														<button class="btnM white">관리</button>
+														<button class="btnM white">버전 등록</button>
+													</span>
+
+													<span class="arrowUpDown"><button class="entypo-up-circled">위로</button><button class="entypo-down-circled">아래로</button></span>
+
+													<button class="btnM red">삭제</button>
+												</li>
+												<li>
+													<strong><input type="text" value="본디자인"/></strong>
+													<span class="versionArea">
+														<span class="selectSet">
+															<select>
+																<option>1차 (2020-01-20)</option> 
+															</select>
+														</span>
+														<button class="btnM white">관리</button>
+														<button class="btnM white">버전 등록</button>
+													</span>
+													<span class="arrowUpDown"><button class="entypo-up-circled">위로</button><button class="entypo-down-circled">아래로</button></span>
+
+													<button class="btnM red">삭제</button>
+												</li>
+												<li>
+													<strong><input type="text" value="관리자"/></strong>
+													<span class="versionArea">
+														<span class="selectSet">
+															<select>
+																<option>1차 (2020-01-20)</option> 
+															</select>
+														</span>
+														<button class="btnM white">관리</button>
+														<button class="btnM white">버전 등록</button>
+													</span>
+													<span class="arrowUpDown"><button class="entypo-up-circled">위로</button><button class="entypo-down-circled">아래로</button></span>
+
+													<button class="btnM red">삭제</button>
+												</li>
+												<li>
+													<strong><input type="text" value="추가메뉴"/></strong>
+													<span class="versionArea">
+														<button class="btnM white">버전 등록</button>
+													</span>
+													<span class="arrowUpDown"><button class="entypo-up-circled">위로</button><button class="entypo-down-circled">아래로</button></span>
+													<button class="btnM red">삭제</button>
+												</li>
+											</ul>
+											<button class="btnS orange">추가</button>
+										</td>
+									</tr>
+									<tr>
+										<th>마크업 설계정책</th>
+										<th class="subTit">활성화</th>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="project2" />
+												<label for="project2"></label>
+											</span> 
+										</td>
+										<td colspan="4" class="projectGuideSet">
+											<ul>
+												<li>
+													<strong><em>Layout</em> <button class="btnM white">관리</button></strong>
+													<span class="arrowUpDown"><button class="entypo-up-circled">위로</button><button class="entypo-down-circled">아래로</button></span>
+													<button class="btnS red">삭제</button></li>
+												<li>
+													<strong><em>폴더 구조</em> <button class="btnM white">관리</button></strong>
+													<span class="arrowUpDown"><button class="entypo-up-circled">위로</button><button class="entypo-down-circled">아래로</button></span>
+													<button class="btnS red">삭제</button></li>
+												<li>
+													<strong><em>컴포넌트</em> <button class="btnM white">관리</button></strong>
+													<span class="arrowUpDown"><button class="entypo-up-circled">위로</button><button class="entypo-down-circled">아래로</button></span>
+													<button class="btnS red">삭제</button>
+												</li>
+												<li>
+													<strong><em>추가메뉴</em> <button class="btnM white">관리</button></strong>
+													<span class="arrowUpDown"><button class="entypo-up-circled">위로</button><button class="entypo-down-circled">아래로</button></span>
+													<button class="btnS red">삭제</button>
+												</li>
+											</ul>
+											<button class="btnS orange">추가</button>
+										</td>
+									</tr>
+									<tr>
+										<th>마크업 작업현황</th>
+										<th class="subTit">활성화</th>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="project3" />
+												<label for="project3"></label>
+											</span> 
+										</td>
+										<td colspan="4">
+											<button class="btnM white">worklist 관리</button>
+											<button class="btnM white">본화면 관리</button>
+										</td>
+									</tr>
+									<tr>
+										<th>개발</th>
+										<th class="subTit">활성화</th>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="project4" />
+												<label for="project4"></label>
+											</span> 
+										</td>
+										<td colspan="4"></td>
+									</tr>
+									<tr>
+										<th>산출물</th>
+										<th class="subTit">활성화</th>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="project5" />
+												<label for="project5"></label>
+											</span> 
+										</td>
+										<td colspan="4"></td>
+									</tr>
+									<tr>
+										<th>게시판</th>
+										<th class="subTit">활성화</th>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="project6" />
+												<label for="project6"></label>
+											</span> 
+										</td>
+										<td colspan="4">
+											<span class="checkSet">
+												<input type="checkbox" id="chk1" />
+												<label for="chk1"><i></i>댓글사용여부</label>
+											</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div> 
+						<!---->
+						<div class="btnArea tC">
+							<a href="project_list.html" class="btnM">목록</a>
+							<a href="project_write.html" class="btnM right">프로젝트 정보수정</a>
+						</div> 
+						<!--//-->
+
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">		
+			<div class="basicPop designPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>프로젝트 디자인관리</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="100"/>
+								<col />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>메뉴명</th>
+									<td colspan="5"><input type="text" /></td>
+								</tr>
+								<tr>
+									<th>첨부파일</th>
+									<td colspan="5">
+										<script src="../../js/dropzone.js"></script>
+										<link rel="stylesheet" href="../../css/dropzone.css" />
+										<form action="/upload-target" class="dropzone"></form>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">저장</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

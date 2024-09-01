@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.listArea .listScroll tbody tr').click(function(){
+					$('.listArea .listScroll tbody tr').removeClass('on');
+					$(this).addClass('on');
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back">
+						<div data-include="include/snb.html"></div>
+					</div>
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- header -->
+			<div id="header">
+				<header>
+					 <h2>코드 관리</h2>
+					 <div class="layoutSet">
+						 <button class="btnLayoutR">오른쪽 레이아웃 펼치기</button>
+						 <button class="btnLayoutL">왼쪽 레이아웃 펼치기</button>
+						 <button class="btnLayoutP">레이아웃 합치기</button>
+					 </div>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="searchArea">
+					<fieldset>
+						<button class="btnM red btnNewCode">신규코드 등록</button>
+					</fieldset>
+				</div>
+				<div class="content">
+					<div class="contentScroll">
+						<div class="listArea">
+						<article>
+							<!-- Page Layout -->
+							<div class="">
+								<div class="listTop">
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="90" />
+												<col width="120" />
+												<col width="340" />
+											</colgroup>
+											<thead>
+												<tr>
+													<th>그룹코드</th>
+													<th>그룹명</th>
+													<th class="tL">설명</th>
+												</tr>
+											</thead>
+										</table>
+									</div>
+								</div>
+								<div class="listScroll">
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="90" />
+												<col width="120" />
+												<col width="340" />
+											</colgroup>
+											<tbody>
+												<!--Loop-->
+												<tr class="on">
+													<td>G0001</td>
+													<td>운송유형1</td>
+													<td class="tL">운송유형: 수입, 수출, 환적</td>
+												</tr>
+												<!--//Loop-->
+												<tr>
+													<td>G0002</td>
+													<td>회원 구분</td>
+													<td class="tL">코드명</td>
+												</tr>
+												<tr>
+													<td>G0003</td>
+													<td>사업자 유형</td>
+													<td class="tL">코드명</td>
+												</tr>
+												<tr>
+													<td>G0004</td>
+													<td>회원 상태</td>
+													<td class="tL">코드명</td>
+												</tr>
+												<tr>
+													<td>G0005</td>
+													<td>오더 상태</td>
+													<td class="tL">코드명</td>
+												</tr>
+												<tr>
+													<td>G0006</td>
+													<td>배차 상태</td>
+													<td class="tL">코드명</td>
+												</tr>
+												<tr>
+													<td>G0007</td>
+													<td>주야간 구분</td>
+													<td class="tL">코드명</td>
+												</tr>
+												<tr>
+													<td>G0008</td>
+													<td>컨테이너 유형</td>
+													<td class="tL">코드명</td>
+												</tr>
+												<tr>
+													<td>G0009</td>
+													<td>컨테이너 크기</td>
+													<td class="tL">코드명</td>
+												</tr>
+												<tr>
+													<td>G0010</td>
+													<td>위치 유형</td>
+													<td class="tL">코드명</td>
+												</tr>
+												<tr>
+													<td>G0011</td>
+													<td>운송상태</td>
+													<td class="tL">코드명</td>
+												</tr>
+												<tr>
+													<td>G0012</td>
+													<td>계약상태</td>
+													<td class="tL">코드명</td>
+												</tr>
+												<tr>
+													<td>G0013</td>
+													<td>정산상태</td>
+													<td class="tL">코드명</td>
+												</tr>
+												<tr>
+													<td>G0014</td>
+													<td>비용 구분</td>
+													<td class="tL">코드명</td>
+												</tr>
+												<tr>
+													<td>G0015</td>
+													<td>로케이션</td>
+													<td class="tL">로케이션명, 권역, 시도, 시군구</td>
+												</tr>
+												<tr>
+													<td>G0016</td>
+													<td>서비스 범위</td>
+													<td class="tL">코드명</td>
+												</tr>
+												<tr>
+													<td>G0017</td>
+													<td>터미널</td>
+													<td class="tL">터미널명, 항만, 환적구분</td>
+												</tr>
+												<tr>
+													<td>G0018</td>
+													<td>선사</td>
+													<td class="tL">선사명(영문), 선사명(한글)</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="listBottom">
+								<!-- btn Area & paginate Set -->
+								<div class="bpSet">
+									<div class="paginate">
+										<span>
+											<a class="first">처음</a>
+											<a class="prev">이전</a>
+											<a class="on">1</a>
+											<a>2</a>
+											<a>3</a>
+											<a>4</a>
+											<a>5</a>
+											<a>6</a>
+											<a>7</a>
+											<a>8</a>
+											<a>9</a>
+											<a class="next">다음</a>
+											<a class="last">마지막</a>
+										</span>
+										<span class="selectSet">
+											<select>
+												<option selected>20</option>
+												<option>50</option>
+												<option>100</option>
+											</select>
+										</span>
+									</div>
+								</div>
+							</div>
+							<!-- //page Layout -->
+						</article>
+						</div>
+						<div class="detailArea">
+						<article>
+							<!-- Page Layout -->
+							<div>
+								<div data-include="code_detail.html"></div>
+							</div>
+							<!-- //page Layout -->
+						</article>
+						</div>
+					</div>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+    </body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function (){
+				$(".noticeList dl dt").click(function () {
+					$(this).parents("dl").toggleClass("on");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- panelBack -->
+			<div id="panelBack">
+				<div class="mypage">
+					<div class="panelTit">
+						<span class="left"><button class="btnBack" onclick="location.href='mypage.html'">이전</button></span>
+						<span class="profile"><span class="btnProfile">프로필</span><strong>010-1234-4567</strong></span>
+					</div>
+					<div class="panelArea">
+						<!-- 마이페이지 상세화면 -->
+						<h3>시스템 공지</h3>
+						<div class="noticeList">
+							<dl class="on">
+								<dt>
+									<span class="dateFormat news"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-07-27 날짜 컴포넌트 수정, 신규소식일 경우 news class 추가 -->
+									<strong>[긴급] 긴급 점검에 따른 서비스 일시 중단 안내 (11.13(수) 18:30~20:30)</strong>
+									<span class="oAndC">여닫기</span>
+								</dt>
+								<dd>
+									<p>
+										금일 16:00 경 통합정보시스템 내 일부서비스에서 장애 현상을 발견하여,
+										<br/>긴급 점검 및 패치 작업을 진행하고 있습니다.
+										<br/>이에 다음과 같이 통합정보시스템 서비스가 일시 중단될 예정이므로 참고해주시기 바랍니다.
+										<br/>- 서비스 중단 기간: '19.11.13(수) 18:30​~20:30
+										<br/>이용에 불편을 드려서 죄송합니다.
+									</p>
+								</dd>
+							</dl>
+							<dl>
+								<dt>
+									<span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-07-27 날짜 컴포넌트 수정 -->
+									<strong>붕어빵, 호떡, 군고구마…겨울간식들과 함께 찾아온 1.0.6 업데이트 안내</strong>
+									<span class="oAndC">여닫기</span>
+								</dt>
+								<dd>
+									<p>dummy text dummy text dummy text<br/>dummy text dummy text<br/>.<br/>.<br/>.<br/>.<br/>.</p>
+								</dd>
+							</dl>
+							<dl>
+								<dt>
+									<span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-07-27 날짜 컴포넌트 수정 -->
+									<strong>붕어빵, 호떡, 군고구마…겨울간식들과 함께 찾아온 1.0.6 업데이트 안내</strong>
+									<span class="oAndC">여닫기</span>
+								</dt>
+								<dd>
+									<p>겨울간식들과 함께 찾아온 1.0.6 업데이트 안내 내용 상세 영역 상세 내용 영역 - text</p>
+								</dd>
+							</dl>
+							<dl>
+								<dt>
+									<span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-07-27 날짜 컴포넌트 수정 -->
+									<strong>붕어빵, 호떡, 군고구마…겨울간식들과 함께 찾아온 1.0.6 업데이트 안내</strong>
+									<span class="oAndC">여닫기</span>
+								</dt>
+								<dd>
+									<p>겨울간식들과 함께 찾아온 1.0.6 업데이트 안내 내용 상세 영역 상세 내용 영역 - text</p>
+								</dd>
+							</dl>
+							<dl>
+								<dt>
+									<span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-07-27 날짜 컴포넌트 수정 -->
+									<strong>붕어빵, 호떡, 군고구마…겨울간식들과 함께 찾아온 1.0.6 업데이트 안내</strong>
+									<span class="oAndC">여닫기</span>
+								</dt>
+								<dd>
+									<p>겨울간식들과 함께 찾아온 1.0.6 업데이트 안내 내용 상세 영역 상세 내용 영역 - text</p>
+								</dd>
+							</dl>
+							<dl>
+								<dt>
+									<span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-07-27 날짜 컴포넌트 수정 -->
+									<strong>붕어빵, 호떡, 군고구마…겨울간식들과 함께 찾아온 1.0.6 업데이트 안내</strong>
+									<span class="oAndC">여닫기</span>
+								</dt>
+								<dd>
+									<p>겨울간식들과 함께 찾아온 1.0.6 업데이트 안내 내용 상세 영역 상세 내용 영역 - text</p>
+								</dd>
+							</dl>
+							<dl>
+								<dt>
+									<span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-07-27 날짜 컴포넌트 수정 -->
+									<strong>붕어빵, 호떡, 군고구마…겨울간식들과 함께 찾아온 1.0.6 업데이트 안내</strong>
+									<span class="oAndC">여닫기</span>
+								</dt>
+								<dd>
+									<p>겨울간식들과 함께 찾아온 1.0.6 업데이트 안내 내용 상세 영역 상세 내용 영역 - text</p>
+								</dd>
+							</dl>
+							<dl>
+								<dt>
+									<span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-07-27 날짜 컴포넌트 수정 -->
+									<strong>붕어빵, 호떡, 군고구마…겨울간식들과 함께 찾아온 1.0.6 업데이트 안내</strong>
+									<span class="oAndC">여닫기</span>
+								</dt>
+								<dd>
+									<p>겨울간식들과 함께 찾아온 1.0.6 업데이트 안내 내용 상세 영역 상세 내용 영역 - text</p>
+								</dd>
+							</dl>
+							<dl>
+								<dt>
+									<span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-07-27 날짜 컴포넌트 수정 -->
+									<strong>붕어빵, 호떡, 군고구마…겨울간식들과 함께 찾아온 1.0.6 업데이트 안내</strong>
+									<span class="oAndC">여닫기</span>
+								</dt>
+								<dd>
+									<p>겨울간식들과 함께 찾아온 1.0.6 업데이트 안내 내용 상세 영역 상세 내용 영역 - text</p>
+								</dd>
+							</dl>
+						</div>
+						<!-- //마이페이지 상세화면 -->
+					</div>
+				</div>
+			</div>
+			<!-- //panelBack -->
+		</div>
+		<!-- //Wrap -->
+    </body>
+</html>

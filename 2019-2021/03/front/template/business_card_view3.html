@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('#memoAddBtn, .memoList div').click(function(){
+				$('.memoAddPop').show();
+				$('html, body').css({'overflow':'hidden'});
+			});
+			$('#shareAddBtn').click(function(){
+				$('.popDim').show();
+				$('.shareAddPop').show();
+				$('html, body').css({'overflow':'hidden'});
+			});
+			$('.fullPop .tt button, .basicPop button').click(function(){
+				$('.popDim').hide();
+				$('.fullPop').hide();
+				$('html, body').css({'overflow':'auto'});
+			});
+			$('.btnTrashcan').click(function(){
+				$(this).parents('li').hide();
+			});
+			var swiper = new Swiper('.bsCardImgMainSwiper .swiper-container', {
+			  slidesPerView: 'auto',
+			  spaceBetween: 5
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<button class="btnPrev" onclick="history.back()">이전</button>
+					<h1>명함관리</h1>
+					<!-- <button class="btnNav">햄버거</button> -->
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu : 서브일 경우 삭제 -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="bcardViewLayout">
+						<!-- Swiper -->
+						<div class="bsCardImgMainSwiper">
+							<div class="swiper-container">
+								<ul class="swiper-wrapper">
+									<li class="swiper-slide">
+										<!-- <button class="shooting" onClick="location.href='business_card_write.html'">재촬영</button> -->
+										<div><span><img src="../images/sample5.png" alt="" /></span></div>
+										<!-- 2020-10-07  -->
+										<em>
+											<a class="zoom" href="business_card_zoom.html">확대보기</a>
+											<button class="reCamera">촬영</button>
+										</em>
+										<!-- //2020-10-07  -->
+									</li>
+									<li class="swiper-slide">
+										<!-- <button class="shooting" onClick="location.href='business_card_write.html'">촬영</button> -->
+										<div><span></span></div>
+										<!-- 2020-10-07  -->
+										<em>
+											<a class="zoom" href="business_card_zoom.html">확대보기</a>
+											<button class="reCamera">촬영</button>
+										</em>
+										<!-- //2020-10-07  -->
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- //Swiper -->
+						<div class="bcName">
+							<strong>정해욱</strong>
+							과장 / IST
+							<em>르노삼성자동차</em>
+						</div>
+						<div class="dlstyle">
+                            <dl>
+                                <dt>휴대폰</dt>
+                                <dd>
+									010-0001-0002
+									<a class="iconPhone" href="tel:010-1234-5678">전화걸기</a>
+								</dd>
+                            </dl>
+                            <dl>
+                                <dt>대표전화</dt>
+                                <dd>
+									000-0000-0000
+									<a class="iconCall" href="tel:010-1234-5678">전화걸기</a>
+								</dd>
+                            </dl>
+                            <dl>
+                                <dt>이메일</dt>
+                                <dd>
+									abcdefg@abcd.co.kr
+									<a class="iconMail" href="mailto:help@think-tree.co.kr">이메일 보내기</a>
+								</dd>
+                            </dl>
+                            <dl>
+                                <dt>팩스</dt>
+                                <dd>000-0000-0000</dd>
+                            </dl>
+                            <dl>
+                                <dt>홈페이지</dt>
+                                <dd>abcdefg@abcd.co.kr</dd>
+                            </dl>
+                            <dl>
+                                <dt>주소</dt>
+                                <dd>서울시 마포구 상암동 DMC산학혁력연구센터 4층 404호</dd>
+                                <dd class="bcMap">
+									<div class="gmap">
+										<div id="map" style="width:100%;height:100%"></div>
+										<script>
+										  function initMap() {
+											var uluru = {lat: 37.576012, lng: 126.890563};
+											var map = new google.maps.Map(document.getElementById('map'), {
+											  zoom: 17,
+											  center: uluru,
+											  mapTypeControl: false,
+											  streetViewControl: false
+											});
+											var marker = new google.maps.Marker({
+											  position: uluru,
+											  map: map
+											});
+										  }
+										</script>
+										<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVxcEsC5EN6RL8T8O_g5j2jSYYPSOpctA&callback=initMap"></script>
+									</div>
+									<div class="go">
+										<button class="btnS">지도앱</button>
+										<button class="btnS">네비게이션</button>
+										<button class="btnS">주소복사</button>
+										<!-- <button class="btnS">택시호출</button> -->
+									</div>
+								</dd>
+                            </dl>
+                        </div>
+						<div class="dlstyle">
+                            <dl>
+                                <dt>메모</dt>
+                                <!-- <dd class="memoList">
+									<ul>
+										<li>
+											<span>2020-05-07 00:00 <button class="btnTrashcan">삭제</button></span>
+											<div>입력한 메모 내용이 나옵니다</div>
+										</li>
+										<li>
+											<span>2020-05-07 00:00 <button class="btnTrashcan">삭제</button></span>
+											<div>입력한 메모 내용이 나옵니다 입력한 메모 내용이 나옵니다 입력한 메모 내용이 나옵니다 입력한 메모 내용이 나옵니다입력한 메모 내용이 나옵니다</div>
+										</li>
+									</ul>
+								</dd> -->
+                                <dd><button class="btnS white entypo-plus" id="memoAddBtn">메모 추가하기</button></dd>
+                            </dl>
+                        </div>
+						<div class="dlstyle">
+                            <dl>
+                                <dt>명함등록일</dt>
+                                <dd>2020-05-07</dd>
+                            </dl>
+                        </div>
+						<div class="dlstyle">
+                            <dl>
+                                <dt>명함공유</dt>
+                                <!-- <dd class="shareList">
+									<div class="workerWrap">
+										<em class="worker"><strong>[160201] 조명진</strong><button class="btnDel">삭제</button></em>
+										<em class="worker"><strong>[000000] 홍길동</strong><button class="btnDel">삭제</button></em>
+									</div>
+								</dd> -->
+                                <dd><button class="btnS white entypo-plus" id="shareAddBtn">공유자 선택하기</button></dd>
+                            </dl>
+                        </div>
+						<div class="btnArea tC">
+							<button class="btnM white" onClick="location.href='business_card.html'">공유해제</button>
+						</div>
+
+					</div>
+					<!--//-->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>상단으로</button></div>
+		</div>
+		<!-- //Wrap -->
+		<!-- fullPop -->
+		<div class="fullPop memoAddPop" style="display:none;">
+			<div class="tt">
+				<button class="pclose">닫기</button>
+				<h1>메모추가하기</h1>
+				<button class="btnS white">저장</button>
+			</div>
+			<div class="pBack">
+				<textarea></textarea>
+			</div>
+		</div>
+		<div class="fullPop shareAddPop" style="display:none;">
+			<div class="tt">
+				<button class="pclose">닫기</button>
+				<h1>공유자 선택하기</h1>
+				<button class="btnS white">저장</button>
+			</div>
+			<div class="pBack">
+			</div>
+		</div>
+		<!-- //fullPop -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 공유자 선택 팝업 -->
+			<div class="basicPop shareAddPop">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>공유자 선택하기</h1>
+				</div>
+				<div class="pBack">
+					<div class="optionBox">
+						<span class="selectSet">
+							<select>
+								<option>부서선택</option>
+								<option>메뉴2</option>
+							</select>
+						</span>
+						<input type="text" placeholder="성명 혹은 사번 입력"/>
+						<input class="btnM blue" type="submit" value="검색" />
+					</div>
+					<div class="tls">
+						<table>
+							<colgroup>
+								<col width="25"/>
+								<col width="100"/>
+								<col/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chkAll" />
+											<label for="chkAll"><i></i></label>
+										</span>
+									</th>
+									<th>부서</th>
+									<th>성명(사번)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk1" />
+											<label for="chk1"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk2" />
+											<label for="chk2"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk3" />
+											<label for="chk3"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk4" />
+											<label for="chk4"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk5" />
+											<label for="chk5"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk6" />
+											<label for="chk6"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">공유하기</button>
+				</div>
+			</div>
+			<!-- //수신자 선택 팝업 -->
+		</div>
+		<!-- //Popup -->
+	</body>
+</html>

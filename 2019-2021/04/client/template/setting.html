@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function (){
+				$(".noticeList dl dt").click(function () {
+					$(this).parents("dl").toggleClass("on");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back c-menu c-menu--slide-left">
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- header -->
+			<div id="header" class="mypageCase">
+				<header>
+					<span class="left">
+						<button class="btnList" onclick="location.href='mypage_m.html' ">목록</button>
+					</span>
+					 <h2>MY</h2>
+					 <span class="right">
+						<button class="btnM grayBlack" onclick="location.href='login.html'">로그아웃</button>
+					 </span>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="mypageLayout">
+						<div class="pd2">
+							<!-- 2020-06-25 오더현황 삭제 -->
+							<div class="mypageContents">
+								<div class="tabBox">
+									<nav>
+										<ul>
+											<li><a href="mypage.html">회원정보</a></li>
+											<li><a href="user_approval.html">사용자 승인</a></li>
+											<li class="on"><a href="notice.html" class="news tabNotice">푸시알림</a></li><!-- 2020-07-08 공백삭제 -->
+											<li><a href="system_notice.html" class="news">공지사항</a></li>
+										</ul>
+									</nav>
+								</div>
+								<h3>환경설정</h3>
+								<div class="tabData setting"><!-- 2020-06-26 setting 클래스 추가 -->
+									<div class="settingList">
+										<ul>
+											<li>
+												<!-- 2020-06-26 구조 변경 -->
+												<strong>앱 실행 중 알림</strong>
+												<span>
+													<span class="toggleSet">
+														<input type="checkbox" id="push2" />
+														<label for="push2"><span>ON</span></label>
+													</span>
+												</span>
+												<!-- //2020-06-26 구조 변경 -->
+											</li>
+										</ul>
+									</div>
+									<h4>버전정보</h4>
+									<div class="settingList">
+										<ul>
+											<li>
+												<!-- 2020-06-26 구조 변경 -->
+												<strong>설치된 버전</strong>
+												<span>V 8.4.5</span>
+												<!-- //2020-06-26 구조 변경 -->
+											</li>
+											<li>
+												<!-- 2020-06-26 구조 변경 -->
+												<strong>상담센터</strong>
+												<span>1577-8899<button class="btnS blue">전화걸기</button></span>
+												<!-- //2020-06-26 구조 변경 -->
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //page Layout -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+    </body>
+</html>

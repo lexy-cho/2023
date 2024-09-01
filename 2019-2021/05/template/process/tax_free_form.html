@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			// 2019-03-15 달력형식 변경, 공통으로 사용
+            $('.calendarSet button').duDatepicker({
+                format: 'yyyy-mm-dd', // Determines the date format
+                theme: 'yellow',        // Determines the color theme of the date picker
+				readOnly: true,       // Determines if input element is readonly (key input is disabled)
+				clearBtn: false,      // Determines if Clear button is displayed
+				cancelBtn: true,     // Determines if Cancel button is displayed
+				overlayClose: true    // Determines if clicking the overlay will close the date picker
+			}).on('datechanged', function(event){
+                $(this).prev().val(event.date);
+            });
+
+			
+            // 스크롤
+            /* 2019-04-18 스크롤 plugin 삭제 $(".lstScroll").mCustomScrollbar({
+                axis:"yx",
+                theme:"dark",
+                contentTouchScroll:true
+            });*/
+            
+            // 전체보기
+            $(".scrollToggle").click(function(){
+                if($(this).hasClass("open")){
+                    $(this).removeClass("open");
+					$(this).parents(".listView").find(".lstBox").addClass("lstScroll"); // 2019-04-18 scroll 삭제후 적용
+                    /* 2019-04-18 스크롤 plugin 삭제 $(this).parents(".listView").find(".lstBox").addClass("lstScroll").mCustomScrollbar({
+                        axis:"yx",
+                        theme:"dark",
+                        contentTouchScroll:true
+                    });*/
+                }else{
+                    $(this).addClass("open");
+					$(this).parents(".listView").find(".lstBox").removeClass("lstScroll"); // 2019-04-18 scroll 삭제후 적용
+                    /*  2019-04-18 스크롤 plugin 삭제  $(this).parents(".listView").find(".lstBox").mCustomScrollbar("destroy").removeClass("lstScroll");*/
+                }
+            });
+            
+            // 우편번호 검색
+            $(".openPop7").click(function(){
+				$('.dimPop, #openPop7').show();
+			});
+			// 2019-04-24 주소Tab 적용
+			$(".newABtn").click(function () {
+				$(".newAdd").show();
+				$(".oldAdd").hide();
+			});
+			$(".oldABtn").click(function () {
+				$(".newAdd").hide();
+				$(".oldAdd").show();
+			});
+			// end 2019-04-24 주소Tab 적용
+            
+            // 등록
+            $(".taxfreeSubmit").click(function(){
+				$('.dimPop, #taxfreeSubmit').show();
+			});
+		});
+		</script>
+	</head>
+	<body><!-- 2019-03-21 estColor class 삭제 -->
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="goPrev" onclick="history.back()">뒤로가기</button>
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+                        <span class="hBtnRight newStep">
+							<!--<a href="main.html" class="goMain process">메인으로 이동</a>-->
+							<button class="btnApproval taxfreeSubmit"><span>등록</span></button>
+						</span>
+					</div>
+					<div class="headSub">
+						<!-- <h2>1Depth title</h2> -->
+						<h2 class="sCase"><span>계출현황 &gt; </span>면세구입신고서 등록</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+                        <div class="estColor online"><!-- 2019-03-21 지류/전자 구분 html(div) 추가, 지류일 경우 online class 삭제 -->
+                            <div class="estimateDetail">                                
+                                <div class="estimateDtlbody">
+                                    <!-- 장애인/국가유공자(신고인) 인적사항 -->
+                                    <dl class="estimateDtlBox type2">
+                                        <dt class="estDtlTit">
+                                            장애인/국가유공자(신고인) 인적사항
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+												<div class="gridSet grid2">
+                                                    <div class="gridItem inlineBL">
+                                                        <dl class="listView frmType">
+                                                            <dt>성명</dt>
+                                                            <dd>
+                                                                <span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+                                                                    <select>
+                                                                        <option>홍길동</option>
+                                                                        <option>박길동</option>
+                                                                        <option>김길동</option>
+                                                                        <option>018</option>
+                                                                        <option>019</option>
+                                                                    </select>
+                                                                </span>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!--2019-04-19 데이터 위치 변경 -->
+                                                <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>운전면허증번호</dt>
+                                                            <dd>
+                                                                <div class="iptDouble">
+                                                                    <input type="text" id="mainDriLicense01">
+                                                                    <input type="tel" id="mainDriLicense02">
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>용도</dt>
+                                                            <dd>
+                                                                <!-- 2019-03-21 input > combobox로 변경 -->
+                                                                <span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+                                                                    <select disabled>
+                                                                        <option>선택</option>
+                                                                        <option selected>용도내용1</option>
+                                                                        <option>용도내용2</option>
+                                                                    </select>
+                                                                </span>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>생년월일</dt>
+                                                            <dd>
+                                                                <div class="iptDouble">
+                                                                    <input type="tel" id="mainPerLicense">
+                                                                    <span class="txt">- *******</span>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>직업</dt>
+                                                            <dd><input type="text" id="job"></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <!-- 2019-04-19 기존소스 <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>운전면허증번호</dt>
+                                                            <dd>
+                                                                <div class="iptDouble">
+                                                                    <input type="text" id="mainDriLicense01">
+                                                                    <input type="tel" id="mainDriLicense02">
+                                                                </div>
+                                                            </dd>
+                                                            <dt>생년월일</dt>
+                                                            <dd>
+                                                                <div class="iptDouble">
+                                                                    <input type="tel" id="mainPerLicense">
+                                                                    <span class="txt">- *******</span>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>용도</dt>
+                                                            <dd>
+                                                                <span class="selectSet">
+                                                                    <select disabled>
+                                                                        <option>선택</option>
+                                                                        <option selected>용도내용1</option>
+                                                                        <option>용도내용2</option>
+                                                                    </select>
+                                                                </span>
+                                                            </dd>
+                                                            <dt>직업</dt>
+                                                            <dd><input type="text" id="job"></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>-->
+                                                <div class="dotLine"></div>
+                                                <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>신청인구분</dt>
+                                                            <dd>
+                                                                <button class="scrollToggle">전체보기</button>
+                                                                <div class="lstBox lstScroll">
+                                                                    <ul>
+                                                                        <li><span class="radioSet"><input type="radio" id="discountPrdt01" name="discountPrdt" checked /><label for="discountPrdt01"><i></i>선택해주세요</label></span></li>
+                                                                        <li><span class="radioSet"><input type="radio" id="discountPrdt02" name="discountPrdt" /><label for="discountPrdt02"><i></i>장애인</label></span></li>
+                                                                        <li><span class="radioSet"><input type="radio" id="discountPrdt03" name="discountPrdt" /><label for="discountPrdt03"><i></i>국가유공자</label></span></li>
+                                                                        <li><span class="radioSet"><input type="radio" id="discountPrdt04" name="discountPrdt" /><label for="discountPrdt04"><i></i>광주민주화운동부상자</label></span></li>
+                                                                        <li><span class="radioSet"><input type="radio" id="discountPrdt05" name="discountPrdt" /><label for="discountPrdt05"><i></i>고엽제후유증환자</label></span></li>
+                                                                    </ul>
+                                                                </div>   
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>구입목적</dt>
+                                                            <dd>
+                                                                <button class="scrollToggle">전체보기</button>
+                                                                <div class="lstBox lstScroll">
+                                                                    <ul>
+                                                                        <li><span class="radioSet"><input type="radio" id="useType01" name="useType" checked /><label for="useType01"><i></i>선택해주세요</label></span></li>
+                                                                        <li><span class="radioSet"><input type="radio" id="useType02" name="useType" /><label for="useType02"><i></i>통학용</label></span></li>
+                                                                        <li><span class="radioSet"><input type="radio" id="useType03" name="useType" /><label for="useType03"><i></i>통근용</label></span></li>
+                                                                        <li><span class="radioSet"><input type="radio" id="useType04" name="useType" /><label for="useType04"><i></i>사업용</label></span></li>
+                                                                        <li><span class="radioSet"><input type="radio" id="useType05" name="useType" /><label for="useType05"><i></i>통원치료용</label></span></li>
+                                                                        <li class="twoTypes"><span class="radioSet"><input type="radio" id="useType06" name="useType" /><label for="useType06"><i></i>기타</label></span><input type="text"/></li> <!-- 2019-04-02 -->
+                                                                    </ul>
+                                                                </div>   
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 장애인/국가유공자(신고인) 인적사항 -->
+
+                                    <!-- 장애인/국가유공자증 정보 -->
+                                    <dl class="estimateDtlBox type2">
+                                        <dt class="estDtlTit">
+                                            장애인/국가유공자증 정보
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+												<!--2019-04-19 데이터 위치 변경 -->
+												<div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>발급정보</dt>
+                                                            <dd><input type="text" id="idInfo"></dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>장애인등록일자</dt>
+                                                            <dd>
+                                                                <div class="calendarSet"><input type="tel" id="" name="" /><button>달력열기</button></div><!--2019-03-15--->
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+												<div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>발급번호</dt>
+                                                            <dd><input type="tel" id="idNumber"></dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>발급일자</dt>
+                                                            <dd>
+                                                                <div class="calendarSet"><input type="tel" id="" name="" /><button>달력열기</button></div><!--2019-03-15--->
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+												<div class="gridSet grid2">
+                                                    <div class="gridItem inlineBL">
+                                                        <dl class="listView frmType">
+                                                            <dt>장애등급</dt>
+                                                            <dd><input type="text" id="disabledGrade"></dd>
+                                                        </dl>
+                                                    </div>
+													<!--2019-11-29-->
+                                                    <div class="gridItem inlineBL">
+                                                        <dl class="listView frmType">
+                                                            <dt>장애정보구분코드</dt>
+                                                            <dd>
+                                                                <span class="selectSet">
+                                                                    <select>
+                                                                        <option></option>
+                                                                        <option></option>
+                                                                    </select>
+                                                                </span>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+													<!--//2019-11-29-->
+                                                </div>
+                                                <!-- 2019-04-19 기존소스 <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>발급정보</dt>
+                                                            <dd><input type="text" id="idInfo"></dd>
+                                                            <dt>발급번호</dt>
+                                                            <dd><input type="tel" id="idNumber"></dd>
+                                                            <dt>장애등급</dt>
+                                                            <dd><input type="text" id="disabledGrade"></dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>장애인등록일자</dt>
+                                                            <dd>
+                                                                <div class="calendarSet"><input type="tel" id="" name="" /><button>달력열기</button></div>
+                                                            </dd>
+                                                            <dt>발급일자</dt>
+                                                            <dd>
+                                                                <div class="calendarSet"><input type="tel" id="" name="" /><button>달력열기</button></div>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 장애인/국가유공자증 정보 -->
+
+                                    <!-- 공동등록자 인적사항 -->
+                                    <dl class="estimateDtlBox type2">
+                                        <dt class="estDtlTit">
+                                            공동등록자 인적사항
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+												<!--2019-04-19 데이터 위치 변경 -->
+												<div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>성명</dt>
+                                                            <dd>
+                                                                <span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+                                                                    <select>
+                                                                        <option>홍길동</option>
+                                                                        <option>박길동</option>
+                                                                        <option>김길동</option>
+                                                                        <option>018</option>
+                                                                        <option>019</option>
+                                                                    </select>
+                                                                </span>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>관계</dt>
+                                                            <dd><input type="text" id="duoRelation"></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+												<div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>생년월일</dt>
+                                                            <dd>
+                                                                <div class="iptDouble">
+                                                                    <input type="tel" id="duoPerLicense">
+                                                                    <span class="txt">- *******</span>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>운전면허증번호</dt>
+                                                            <dd>
+                                                                <div class="iptDouble">
+                                                                    <input type="text" id="duoDriLicense01">
+                                                                    <input type="tel" id="duoDriLicense02">
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <!-- 2019-04-19 기존소스 <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>성명</dt>
+                                                            <dd>
+                                                                <span class="selectSet">
+                                                                    <select>
+                                                                        <option>홍길동</option>
+                                                                        <option>박길동</option>
+                                                                        <option>김길동</option>
+                                                                        <option>018</option>
+                                                                        <option>019</option>
+                                                                    </select>
+                                                                </span>
+                                                            </dd>
+                                                            <dt>생년월일</dt>
+                                                            <dd>
+                                                                <div class="iptDouble">
+                                                                    <input type="tel" id="duoPerLicense">
+                                                                    <span class="txt">- *******</span>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>관계</dt>
+                                                            <dd><input type="text" id="duoRelation"></dd>
+                                                            <dt>운전면허증번호</dt>
+                                                            <dd>
+                                                                <div class="iptDouble">
+                                                                    <input type="text" id="duoDriLicense01">
+                                                                    <input type="tel" id="duoDriLicense02">
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>-->
+                                                <div class="gridSet">
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>자택주소</dt>
+                                                            <dd>
+                                                                <ul class="addrForm">
+                                                                    <li>
+                                                                        <input type="text" id="duoPostNum" class="post" readonly />
+                                                                        <button class="btnBG openPop7">우편번호 찾기</button>
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="text" id="duoAddr" readonly />
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="text" id="duoAddrDtl" placeholder="상세주소 입력" />
+                                                                    </li>
+                                                                </ul>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 공동등록자 인적사항 -->
+
+                                    <!-- 보호운전자 인적사항 -->
+                                    <dl class="estimateDtlBox type2">
+                                        <dt class="estDtlTit">
+                                            보호운전자 인적사항
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+												<!--2019-04-19 데이터 위치 변경 -->
+												<div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>성명</dt>
+                                                            <dd>
+                                                                <span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+                                                                    <select>
+                                                                        <option>홍길동</option>
+                                                                        <option>박길동</option>
+                                                                        <option>김길동</option>
+                                                                        <option>018</option>
+                                                                        <option>019</option>
+                                                                    </select>
+                                                                </span>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>관계</dt>
+                                                            <dd><input type="text" id="duoRelation"></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+												<div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>생년월일</dt>
+                                                            <dd>
+                                                                <div class="iptDouble">
+                                                                    <input type="tel" id="duoPerLicense">
+                                                                    <span class="txt">- *******</span>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>운전면허증번호</dt>
+                                                            <dd>
+                                                                <div class="iptDouble">
+                                                                    <input type="text" id="duoDriLicense01">
+                                                                    <input type="tel" id="duoDriLicense02">
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <!-- 2019-04-19 기존소스 <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>성명</dt>
+                                                            <dd>
+                                                                <span class="selectSet">
+                                                                    <select>
+                                                                        <option>홍길동</option>
+                                                                        <option>박길동</option>
+                                                                        <option>김길동</option>
+                                                                        <option>018</option>
+                                                                        <option>019</option>
+                                                                    </select>
+                                                                </span>
+                                                            </dd>
+                                                            <dt>생년월일</dt>
+                                                            <dd>
+                                                                <div class="iptDouble">
+                                                                    <input type="tel" id="duoPerLicense">
+                                                                    <span class="txt">- *******</span>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>관계</dt>
+                                                            <dd><input type="text" id="duoRelation"></dd>
+                                                            <dt>운전면허증번호</dt>
+                                                            <dd>
+                                                                <div class="iptDouble">
+                                                                    <input type="text" id="duoDriLicense01">
+                                                                    <input type="tel" id="duoDriLicense02">
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>-->
+                                                <div class="gridSet">
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>자택주소</dt>
+                                                            <dd>
+                                                                <ul class="addrForm">
+                                                                    <li>
+                                                                        <input type="text" id="prtPostNum" class="post" readonly />
+                                                                        <button class="btnBG openPop7">우편번호 찾기</button>
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="text" id="prtAddr" readonly />
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="text" id="prtAddrDtl" placeholder="상세주소 입력" />
+                                                                    </li>
+                                                                </ul>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 보호운전자 인적사항 -->
+
+                                    <!-- 보호자 인적사항 -->
+                                    <dl class="estimateDtlBox type2">
+                                        <dt class="estDtlTit">
+                                            보호자 인적사항
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+                                                <div class="gridSet grid2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>성명</dt>
+                                                            <dd>
+                                                                <span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+                                                                    <select>
+                                                                        <option>홍길동</option>
+                                                                        <option>박길동</option>
+                                                                        <option>김길동</option>
+                                                                        <option>018</option>
+                                                                        <option>019</option>
+                                                                    </select>
+                                                                </span>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>생년월일</dt>
+                                                            <dd>
+                                                                <div class="iptDouble">
+                                                                    <input type="tel" id="guaPerLicense">
+                                                                    <span class="txt">- *******</span>
+                                                                </div>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <div class="gridSet">
+                                                    <div class="gridItem">
+                                                        <dl class="listView frmType">
+                                                            <dt>자택주소</dt>
+                                                            <dd>
+                                                                <ul class="addrForm">
+                                                                    <li>
+                                                                        <input type="text" id="guaPostNum" class="post" readonly />
+                                                                        <button class="btnBG openPop7">우편번호 찾기</button>
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="text" id="guaAddr" readonly />
+                                                                    </li>
+                                                                    <li>
+                                                                        <input type="text" id="guaAddrDtl" placeholder="상세주소 입력" />
+                                                                    </li>
+                                                                </ul>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 보호자 인적사항 -->
+                                </div>
+                            </div>
+                        </div><!-- 2019-03-21 html(div) 추가 -->
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+        
+        <!-- DimPopUp -->
+		<div class="dimPop" style="display: none;">
+            <!-- 면세구입신고서 등록 -->
+            <div id="taxfreeSubmit" class="popSMCase iptCase" style="display: none;">
+                <div class="popCnt">
+                    <h1 class="tit">면세구입신고서 등록<span class="sub">법인 계약자 이십니까?</span></h1>
+                    <dl class="iptGrayBox">
+                        <dt><label for="corpNumber">법인번호<sup>필수항목</sup></label></dt>
+                        <dd><input type="tel" id="corpNumber"></dd>
+                        <dt><label for="corpSubmitNm">신고인명<sup>필수항목</sup></label></dt>
+                        <dd><input type="text" id="corpSubmitNm"></dd>
+                        <dt><label for="corpUse">용도<sup>필수항목</sup></label></dt>
+                        <dd><input type="text" id="corpUse"></dd>
+                    </dl>
+                </div>
+				<div class="btn mt15">
+                    <button class="btnLB">취소</button>
+					<button class="btnBY">발송접수</button>
+				</div>
+			</div>
+            <!-- // 면세구입신고서 등록 -->
+            
+            <!-- 우편번호 찾기 -->
+			<div class="popLGCase zipPop" id="openPop7" style="display:none">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>우편번호 찾기</h1>
+				</div>
+				<div class="popBack">
+					<div class="popScrollArea">
+						<div class="popTab">
+							<span class="newABtn on">도로 명</span>
+							<span class="oldABtn">지번주소</span><!--2019-04-24 지번용 버튼명 변경 --><!--2019-04-24 지번용 버튼명 변경 -->
+						</div>
+						<div class="newAdd"><!--2019-04-24 도로명용 div 추가 -->
+							<div class="inputInfo">
+								<dl>
+									<dt>새주소(도로명 주소) 찾기</dt>
+									<dd>
+										도로명과 건물번호를 입력 후 검색하세요.<br/>
+										예) 찾고자 하는 주소 : 강원 강릉시 임영로 197
+											<span>도로명+건물번호 → ‘임영로 197’로 검색</span>
+									</dd>
+								</dl>
+								<p>도로명과 주소가 검색되지 않는 경우는 행정안전부 새주소 안내시스템 (http://www.juso.go.kr)에서 확인하시기 바랍니다.</p>
+							</div>
+							<div class="popSearch">
+								<div>
+									<dl>
+										<dt>시 도</dt>
+										<dd>
+											<span class="selectSet w15">
+												<select>
+													<option>선택</option>
+													<option>서울시</option>
+												</select>
+											</span> <!-- 2019-04-17 select 스크립트 삭제 -->
+										</dd>
+									</dl>
+									<dl>
+										<dt>시군구</dt>
+										<dd>
+											<span class="selectSet w15">
+												<select>
+													<option>선택</option>
+													<option>마포구</option>
+												</select>
+											</span> <!-- 2019-04-17 select 스크립트 삭제 -->
+										</dd>
+									</dl>
+									<span class="inputArea">
+										<dl>
+											<dt>도로명</dt>
+											<dd><input type="text" /></dd>
+										</dl>
+										<dl>
+											<dt>건물명</dt>
+											<dd><input type="text" /></dd>
+										</dl>
+									</span>
+									<button class="btnBY">조회</button>
+								</div>
+							</div>
+						</div><!--//2019-04-24 도로명용 div 추가 -->
+						<!--2019-04-24 지번용 추가 -->
+						<div class="oldAdd" style="display:none;">
+							<div class="inputInfo">
+								<dl>
+									<dt>지번주소로 도로명주소 찾기</dt>
+									<dd>지번주소를 차례대로 고르세요<br/>지번 주소에 해당하는 도로명 주소를 표시해줍니다</dd>
+								</dl>
+							</div>
+							<div class="popSearch">
+								<div>
+									<dl>
+										<dt>시 도</dt>
+										<dd>
+											<span class="selectSet w15">
+												<select>
+													<option>선택</option>
+													<option>서울시</option>
+												</select>
+											</span>
+										</dd>
+									</dl>
+									<dl>
+										<dt>시군구</dt>
+										<dd>
+											<span class="selectSet w15">
+												<select>
+													<option>선택</option>
+													<option>마포구</option>
+												</select>
+											</span>
+										</dd>
+									</dl>
+									<span class="inputArea">
+										<dl>
+											<dt>동면읍</dt>
+											<dd>
+												<span class="selectSet w15">
+													<select>
+														<option>선택</option>
+														<option>마포구</option>
+													</select>
+												</span>
+											</dd>
+										</dl>
+										<dl>
+											<dt>번지입력</dt>
+											<dd class="last">
+												<input type="text" /><em>-</em>
+												<input type="text" />
+											</dd>
+										</dl>
+									</span>
+									<button class="btnBY">조회</button>
+								</div>
+							</div>
+						</div>
+						<!--//2019-04-24 지번용 추가 -->
+						<div class="poplist">
+							<table>
+								<tbody>
+									<!-- Loop -->
+									<tr>
+										<th><strong>13480</strong></th>
+										<td class="tEllipsis">
+											<div><span>도로명</span><p>경기 성남시 분당구 서판교로 32</p></div><!--2019-05-06 주소영역 p 추가 -->
+											<div><span>지번</span><p>경기 성남시 분당구 판교동 577-3</p></div>
+										</td>
+									</tr>
+									<!-- //Loop -->
+									<tr class="on">
+										<th><strong>13480</strong></th>
+										<td class="tEllipsis">
+											<div><span>도로명</span><p>경기 성남시 분당구 서판교로 32</p></div><!--2019-05-06 주소영역 p 추가 -->
+											<div><span>지번</span><p>경기 성남시 분당구 판교동 577-3</p></div>
+										</td>
+									</tr>
+									<tr>
+										<th><strong>13480</strong></th>
+										<td class="tEllipsis">
+											<div><span>도로명</span><p>경기 성남시 분당구 서판교로 32</p></div><!--2019-05-06 주소영역 p 추가 -->
+											<div><span>지번</span><p>경기 성남시 분당구 판교동 577-3</p></div>
+										</td>
+									</tr>
+									<tr>
+										<th><strong>13480</strong></th>
+										<td class="tEllipsis">
+											<div><span>도로명</span><p>경기 성남시 분당구 서판교로 32</p></div><!--2019-05-06 주소영역 p 추가 -->
+											<div><span>지번</span><p>경기 성남시 분당구 판교동 577-3</p></div>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" class="listNone">
+											<span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //우편번호 찾기 -->
+        </div>
+        <!-- // DimPopUp -->
+	</body>
+</html>

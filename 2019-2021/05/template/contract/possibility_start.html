@@ -1,0 +1,256 @@
+<!-- <!DOCTYPE html> -->
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<!-- <script type="text/javascript" src="js/jquery-ui.min.js"></script> -->
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$(document).on('click tab', '.gnbOpen', function(e){
+				$('.gnbScroll').load('../gnb.html',function(){
+					funcGnbOpen();
+				});
+				return false;
+			});// 2019-03-15 gnb html load (퍼블리시용)
+			//
+			var cTabConSwiper = new Swiper('.cTabCon .swiper-container', {
+				autoHeight: true,
+				spaceBetween: 14,
+				onSlideChangeStart: function (swiper) {
+					$('.cTab li').removeClass('on');
+					if (swiper.activeIndex == 0) {
+						$('.cTab li:eq(0)').addClass('on');
+					}else if (swiper.activeIndex == 1) {
+						$('.cTab li:eq(1)').addClass('on');
+					}
+				}
+			});
+			$(".cTab li button").click(function () {
+				$(".cTab li").removeClass("on");
+				$(this).parent("li").addClass("on");
+				var activeTab = $(this).attr("data-name");
+				cTabConSwiper.slideTo(activeTab);
+			});
+
+            // 고객구분
+            $("[name='ckind']").click(function(){
+                if($(this).attr("id") == "a1"){
+                    $(".customerKind").removeClass("corpCase");
+                }else{
+                    $(".customerKind").addClass("corpCase");
+                }
+            });
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button> 
+							<!-- <button class="goPrev" onclick="history.back()">뒤로가기</button> -->
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="../main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2>가망고객 등록</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>                        
+						<div class="customerKind"><!-- 개인 / 회사 구분 corpCase 추가 -->
+							<!-- possibilityStart -->
+							<div class="possibilityStart">
+								<h3><strong>고객구분</strong></h3>
+								<div class="startBack">
+									<dl class="dlStyle">
+										<dt><strong>구분<sup>필수항목</sup></strong></dt>
+										<dd class="ckind">
+											<div class="ckPerson">
+												<span class="radioSet"><input type="radio" id="a1" name="ckind" checked /><label for="a1"><i></i><strong>개인 <em>(개인사업자 포함)</em></strong></label></span>
+											</div>
+											<div class="ckCorp">
+												<span class="radioSet"><input type="radio" id="a2" name="ckind" /><label for="a2"><i></i><strong>법인</strong></label></span>
+											</div>
+										</dd>
+									</dl>
+								</div>
+								<h3><strong>고객정보입력</strong> <span>고객님의 소중한 정보를 입력해 주세요</span></h3>
+								<!-- 개인고객등록 용 -->
+								<div class="startBack base personBase">
+									<dl class="dlStyle">
+										<dt><strong>고객명<sup>필수항목</sup></strong></dt>
+										<dd class="noline inMust"> <!--2019-04-18 필수class추가--><input type="text" placeholder="입력해 주세요" class="wFull" /></dd>
+									</dl>
+									<dl class="dlStyle">
+										<dt><strong>휴대전화번호<sup>필수항목</sup></strong></dt>
+										<dd class="noline inMust"> <!--2019-04-18 필수class추가-->
+											<div class="phoneNum">
+												<span class="selectSet">
+													<select>
+														<option>010</option>
+														<option>011</option>
+														<option>016</option>
+														<option>017</option>
+														<option>018</option>
+														<option>019</option>
+														<option>0505</option>
+													</select>
+												</span>
+												<span class="txt">-</span>
+												<input type="tel" id="middleNum">
+												<span class="txt">-</span>
+												<input type="tel" id="lastNum">
+											</div> <!-- 2019-04-17 select 스크립트 삭제 -->
+										</dd>
+									</dl>
+									<dl class="dlStyle">
+										<dt><strong>광고성정보<sup>필수항목</sup></strong></dt><!--2019-07-15 타이틀변경-->
+										<dd class="inMust"> <!--2019-04-18 필수class추가-->
+											<span class="radioSet"><input type="radio" id="b1" name="b" checked /><label for="b1"><i></i>수신허용</label></span>
+											<span class="radioSet"><input type="radio" id="b2" name="b" checked /><label for="b2"><i></i>수신거부</label></span>
+										</dd>
+									</dl>
+									<dl class="dlStyle">
+										<dt><strong>희망차량<sup>필수항목</sup></strong></dt>
+										<dd class="noline inMust"> <!--2019-04-18 필수class추가-->
+											<span class="selectSet w15">
+												<select>
+													<option>선택해주세요.</option>
+													<option>SM3</option>
+													<option>SM5</option>
+													<option>SM5 Taxi</option>
+													<option>All New SM7</option>
+													<option>SM3 ZE</option>
+													<option>QM3</option>
+													<option>SM7 LPe</option>
+													<option>SM5</option>
+												</select>
+											</span> <!-- 2019-04-17 select 스크립트 삭제 -->
+										</dd>
+									</dl>
+									<dl class="dlStyle">
+										<dt><strong>희망구입시기<sup>필수항목</sup></strong></dt>
+										<dd class="noline inMust"> <!--2019-04-18 필수class추가-->
+											<span class="selectSet w10">
+												<select>
+													<option>선택해주세요.</option>
+													<option>1개월 <!-- 등록날자 : 2018-07-01 > 예정날짜 : 2018-08-01 --></option>
+													<option>3개월 <!-- 등록날자 : 2018-07-01 > 예정날짜 : 2018-10-01 --></option>
+													<option>6개월 <!-- 등록날자 : 2018-07-01 > 예정날짜 : 2019-01-01 --></option>
+													<option>1년이내 <!-- 등록날자 : 2018-07-01 > 예정날짜 : 2019-07-01 --></option>
+													<option>1년이상 <!-- 등록날자 : 2018-07-01 > 예정날짜 : 2019-07-01 --></option>
+													<option>접촉종료 <!-- 등록날자 : 2018-07-01 > 예정날짜 : -- --></option>
+												</select>
+											</span> <!-- 2019-04-17 select 스크립트 삭제 -->
+											<strong class="arrowDate">2018-08-01</strong>
+										</dd>
+									</dl>
+								</div>
+								<!-- //개인고객등록 용 -->
+								<!-- 법인고객등록 용 -->
+								<div class="startBack base corpBase">
+									<dl class="dlStyle">
+										<dt><strong>사업자명<sup>필수항목</sup></strong></dt>
+										<dd class="noline inMust"> <!--2019-04-18 필수class추가--><input type="text" placeholder="입력해 주세요" class="wFull" /></dd>
+									</dl>
+									<dl class="dlStyle">
+										<dt><strong>대표자명<sup>필수항목</sup></strong></dt>
+										<dd class="noline inMust"> <!--2019-04-18 필수class추가--><input type="text" placeholder="입력해 주세요" class="wFull" /></dd>
+									</dl>
+									<dl class="dlStyle">
+										<dt><strong>사업자번호<sup>필수항목</sup></strong></dt>
+										<dd class="noline inMust"> <!--2019-04-18 필수class추가--><input type="number" placeholder="숫자로 입력해 주세요" class="wFull" /></dd>
+									</dl>
+									<dl class="dlStyle">
+										<dt><strong>법인등록번호<sup>필수항목</sup></strong></dt>
+										<dd class="noline inMust"> <!--2019-04-18 필수class추가--><input type="number" placeholder="숫자로 입력해 주세요" class="wFull" /></dd>
+									</dl>
+									<dl class="dlStyle">
+										<dt><strong>업종<sup>필수항목</sup></strong></dt>
+										<dd class="noline inMust"> <!--2019-04-18 필수class추가--><input type="text" placeholder="입력해 주세요" class="wFull" /></dd>
+									</dl>
+									<dl class="dlStyle">
+										<dt><strong>업태<sup>필수항목</sup></strong></dt>
+										<dd class="noline inMust"> <!--2019-04-18 필수class추가--><input type="text" placeholder="입력해 주세요" class="wFull" /></dd>
+									</dl>
+								</div>
+								<!-- //법인고객등록 용 -->
+								<h3><strong>고객확보채널</strong></h3>
+								<div class="startBack base">
+									<dl class="dlStyle">
+										<dt><strong>고객확보채널<sup>필수항목</sup></strong></dt>
+										<dd class="noline">
+											<span class="radioSet"><input type="radio" id="c1" name="c" checked /><label for="c1"><i></i>개척</label></span>
+											<span class="radioSet"><input type="radio" id="c2" name="c" checked /><label for="c2"><i></i>방문</label></span>
+											<span class="radioSet"><input type="radio" id="c3" name="c" checked /><label for="c3"><i></i>소개</label></span>
+										</dd>
+									</dl>
+								</div>
+								<div class="btnArea">
+									<button>초기화</button>
+									<a href="possibility_person.html" class="okPs">확인</a>
+									<a href="possibility_corporate.html" class="okCorp">확인</a>
+								</div>
+							</div>
+							<!-- //possibilityStart -->
+						</div>
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

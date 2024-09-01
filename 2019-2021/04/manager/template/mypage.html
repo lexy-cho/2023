@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).click(function(){
+				$('.btnPwChange').click(function(){
+					$('.popDim').show();
+					$('.pwChangePop').show();
+					$('.pwChangePop .pBtn button:last').click(function(){
+						$('.popDim').show();
+						$('.pwChangePop').show();
+						$('.pwChangePop .pBack .ftRed').show();
+						$(this).click(function(){
+							$('.popDim').hide();
+							$('.pwChangePop').hide();
+							$('.pwChangePop .pBack .ftRed').hide();
+						});
+					});
+				});
+				$('.btnAdress').click(function(){
+					$('.popDim').show();
+					$('.searchPop#addressPop').show();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back">
+						<div data-include="include/snb.html"></div>
+					</div>
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- header -->
+			<div id="header">
+				<header>
+					 <h2>마이페이지</h2>
+					 <span class="right">
+					 	<button class="btnS red" onclick="location.href='login.html'">로그아웃</button>
+					 </span>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- container -->
+			<div id="container" class="mypageLayout">
+			<section>
+				<div class="content">
+					<h3>내 정보 변경</h3>
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="140"/>
+								<col width="*"/>
+							</colgroup>
+							<tbody>
+								<!-- 2020-07-13 아이디, 성명 위치 변경 -->
+								<tr>
+									<th>아이디</th>
+									<td>gildong2020</td>
+								</tr>
+								<tr>
+									<th>성명</th>
+									<td>홍길동</td>
+								</tr>
+								<!-- //2020-07-13 아이디, 성명 위치 변경 -->
+								<tr>
+									<th>구분</th>
+									<td>관리자</td>
+								</tr>
+								<tr>
+									<th>비밀번호</th><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+									<td><span class="passwordSet"><input type="password" value="123123123" readonly/><button class="btnS blue btnPwChange">비밀번호 변경</button></span></td><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+								</tr>
+								<tr>
+									<th>휴대전화번호</th><!-- 2020-07-13 텍스트 수정 -->
+									<td><input type="text" value="010-1234-1234"/></td>
+								</tr>
+								<tr>
+									<th>이메일</th>
+									<td><input type="text" value="gildonghi1234@naver.com"/></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h3>세금계산서 발행 정보</h3>
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="140"/>
+								<col width="300"/>
+								<col width="140"/>
+								<col width="300"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>회사명</th>
+									<td><input type="text" value="로지플랫폼"/></td>
+									<th>사업자번호</th>
+									<td><input type="text" value="123-45-67890"/></td>
+								</tr>
+								<!-- 2020-07-13 대표자명 추가 -->
+								<tr>
+									<th>대표자명</th>
+									<td><input type="text" value="김준후"/></td>
+									<th></th>
+									<td></td>
+								</tr>
+								<!-- //2020-07-13 대표자명 추가 -->
+								<tr>
+									<th rowspan="2">주소</th>
+									<td colspan="3">
+										<span class="addressArea">
+											<button class="btnAdress">주소검색</button>
+											<input class="zipCode" type="text" value="83909" readonly/>
+											<input class="address" type="text" value="인천광역시 중구 서해대로 366" readonly/>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3"><input type="text" value="월드컵 아파트 12단지 1209동 2302호"/></td>
+								</tr>
+								<tr>
+									<th>업태</th>
+									<td><input type="text" value="차량운송"/></td>
+									<th>업종</th>
+									<td><input type="text" value="배송"/></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- popup -->
+		<div class="popDim" style="display:none">
+			<!-- 패스워드 변경 -->
+			<div class="basicPop pwChangePop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>비밀번호 변경</h1><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+				</div>
+				<div class="pBack">
+					<div class="before">
+						<dl class="inputBox iner wFull">
+							<dt>기존 비밀번호</dt><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+							<dd><input type="password" placeholder="영,숫자 포함하여 8자리 이상"/></dd>
+						</dl>
+					</div>
+					<div class="grayBox">
+						<dl class="inputBox iner wFull">
+							<dt>신규 비밀번호</dt><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+							<dd><input type="password" placeholder="영,숫자 포함하여 8자리 이상"/></dd>
+						</dl>
+						<dl class="inputBox iner wFull">
+							<dt>신규 비밀번호(확인)</dt><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+							<dd><input type="password" placeholder="영,숫자 포함하여 8자리 이상"/></dd>
+						</dl>
+						<p class="errorMsg">기존 비밀번호를 다시 한번 확인해 주세요.</p><!-- 2020-07-13 ftred 삭제, errorMsg 추가 --><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//패스워드 변경-->
+			<!-- 주소검색 -->
+			<div class="basicPop searchPop" id="addressPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>주소검색</h1>
+				</div>
+				<div class="pBack">
+					<div class="seachArea">
+						<div class="searchInput">
+							<input type="text" placeholder="도로명 + 번지로 검색"/>
+							<button class="btnSearch">조회</button>
+						</div>
+						<div class="tip">
+							<dl>
+								<dt><strong>Search tip</strong></dt>
+								<dd><span>도로명 + 건물번호</span>예) 세종대로 207,  매봉산로 37</dd>
+								<dd><span>지역명(동/리) + 번지</span>예) 역삼동 68-1,  상암동 1682</dd>
+							</dl>
+						</div>
+					</div>
+					<div class="listBox">
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="80" />
+									<col width="400" />
+									<col width="80" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>우편번호</th>
+										<th>회사명</th>
+										<th>위치</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr class="on">
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//주소검색-->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

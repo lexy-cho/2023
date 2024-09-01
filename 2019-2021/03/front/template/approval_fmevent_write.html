@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/approval.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/tree/jstree.min.js"></script>
+		<script type="text/javascript" src="../js/tree/basicTree.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			function scrollDisable(){
+				$('body').addClass('hidden').on('scroll touchmove mousewheel', function(e){
+					e.preventDefault();
+				});
+			} // body 스크롤 막기
+			function scrollAble(){
+				$('body').removeClass('hidden').off('scroll touchmove mousewheel');
+			} // body 스크롤 가능
+			$('.alertPop button, .miniPop button, .basicPop .pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .miniPop, .basicPop').hide();
+				scrollAble();
+			});
+			$('#btnSave').click(function(){
+				$('.alertDim, .savePop').show();
+				$('.pBtn .primary').click(function(){
+					location.href='approval.html';
+				});
+			}); // 임시저장
+			$('#btnCancel').click(function(){
+				$('.alertDim, .cancelPop').show();
+				$('.pBtn .primary').click(function(){
+					location.href='approval.html';
+				});
+			}); // 취소
+			$('#btnFinish').click(function(){
+				$('.alertDim, .requirePop').show();
+				$('.requirePop .pBtn button').click(function(){
+					$('.popDim, .apprAbsPop').show();
+					$('.apprAbsPop .pBtn .primary').click(function(){
+						$('.alertDim, .finishPop').show();
+						setTimeout(function(){
+							location.href='approval_fmevent_view.html';
+						}, 2000);
+					});
+				});
+			}); // 결재요청
+			$('#btnApprLine').click(function(){
+				$('.apprLinePop').addClass('show');
+				scrollDisable();
+			});
+			$('.apprLinePop .btnArea button, .apprLinePop .pclose').click(function(){
+				$('.apprLinePop').removeClass('show');
+			});
+			// $('.btnSearch').click(function(){
+			// 	$('.search').toggle();
+			// 	$('.apprLineBox').toggleClass('open');
+			// });
+			$('.apprLinePop .treeBox').click(function(){
+				$('.treeBox').hide();
+				$('.searchBody .tls').show();
+				$('.searchTop .btnTeam').show();
+			});
+			$('#fmeventSort1 select').on('change', function(){
+				var reason = $('#fmeventSort1 select option:selected').val();
+				$('#fmeventSort2 select option').hide();
+				$('.tws.sort3Case').hide();
+				if(reason == 0){
+					$('#fmeventSort2 select option[value=0]').show();
+				}else if(reason == 'sort1'){
+					$('option.sort1').show();
+				}else if(reason == 'sort2'){
+					$('option.sort2').show();
+				}else if(reason == 'sort3'){
+					$('option.sort3').show();
+					$('.tws.sort3Case').show();
+				}
+			}); // 휴가 사유
+			$('.btnSearch').click(function(){
+				$('.btnSearch').toggle();
+				$('.search').toggle();
+				$('.apprLineBox').toggleClass('open');
+				if($('.apprLineBox').hasClass('open')){
+					$('.saveList .inputBox input').attr('disabled',true);
+				}else{
+					$('.saveList .inputBox input').attr('disabled',false);
+				}
+			});
+			$('.apprLinePop .treeBox').click(function(){
+				$('.treeBox').hide();
+				$('.searchBody .tls').show();
+				$('.searchTop .btnTeam').show();
+			});
+			$('.apprLinePop .btnTeam').click(function(){
+				$('.treeBox').show();
+				$('.searchBody .tls').hide();
+				$(this).hide();
+			});
+			$('.saveList .inputBox input').click(function(){
+				$('.saveList ul').toggle();
+			});
+			$('.saveList ul li').click(function(){
+				var listTit = $(this).find('strong').text();
+				$('.saveList input').val(listTit);
+				$('.saveList ul').hide();
+			});
+			$('.setList .white').click(function(){
+				$('.alertDim, .apprLineDelPop').show();
+				$('.apprLineDelPop .pBtn button').click(function(){
+					$('.popDim, .apprLinePop').show();
+				});
+			}); // 결재선 라인 삭제
+			$(".save .checkSet input").on('click', function() {
+				if($(this).prop('checked')){
+					$('.save > input').attr('disabled', false);
+				}else{
+					$('.save > input').attr('disabled', true);
+				}
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<button class="btnPrev" onClick="location.href='approval.html'">이전</button>
+					<h1>전자결재</h1>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb">
+				<section>
+					<div class="c-menu c-menu--slide-left"><!-- 우측 Slide 일 경우 -->
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</section>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="apprWriteLayout">
+						<h2>경조사 휴가 신청서</h2>
+						<div class="apprLine">
+							<dl>
+								<dt>결재 :</dt>
+								<dd>홍길동 (팀원) > 김철수 (파트장)</dd>
+							</dl>
+							<dl>
+								<dt>합의 :</dt>
+								<dd>박지원 (파트장)</dd>
+							</dl>
+						</div>
+						<div class="btnArea">
+							<span class="right">
+								<button class="btnS white" id="btnApprLine">결재선 추가</button>
+							</span>
+						</div>
+						<div class="tws">
+							<table>
+								<colgroup>
+									<col width="70"/>
+									<col width="110"/>
+									<col width="70"/>
+									<col width="110"/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>문서번호</th>
+										<td>자동채번</td>
+										<th>기안일자</th>
+										<td>2020-00-00</td>
+									</tr>
+									<tr>
+										<th>기안자</th>
+										<td colspan="3">홍길동 (개발팀)</td>
+									</tr>
+									<tr>
+										<th>참조자</th>
+										<td colspan="3">
+											<input type="text" placeholder="자동완성"/>
+											<div class="workerWrap">
+												<em class="worker"><strong>김미나 [기획팀]</strong><button class="btnDel">삭제</button></em>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="tws">
+							<table>
+								<colgroup>
+									<col width="70"/>
+									<col width="290"/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>휴가기간</th>
+										<td>
+											<div class="calDupSet">
+												<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+												<em>~</em>
+												<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+											</div>
+											<div>
+												<span>(일수 : 3)</span>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<th>휴가사유</th>
+										<td>
+											<div class="tdRow">
+												<span class="selectSet" id="fmeventSort1">
+													<select>
+														<option value="0">선택하세요</option>
+														<option value="sort1">결혼</option>
+														<option value="sort2">경사(회갑,칠순,고희)</option>
+														<option value="sort3">애사</option>
+													</select>
+												</span>
+											</div>
+											<span class="selectSet" id="fmeventSort2">
+												<select>
+													<option value="0">선택하세요</option>
+													<option class="sort1">본인</option>
+													<option class="sort1">자녀</option>
+													<option class="sort1">형제, 자매</option>
+													<option class="sort1">배우자 형제, 자매</option>
+													<option class="sort2">부모</option>
+													<option class="sort2">배우자 부모</option>
+													<option class="sort3">배우자</option>
+													<option class="sort3">부모</option>
+													<option class="sort3">배우자 부모</option>
+													<option class="sort3">자녀</option>
+													<option class="sort3">형제, 자매</option>
+													<option class="sort3">배우자 형제, 자매</option>
+													<option class="sort3">조부모</option>
+													<option class="sort3">외조부모</option>
+												</select>
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<th>업무백업</th>
+										<td>
+											<div class="workerSet">
+												<input type="text" placeholder="자동완성"/>
+												<div class="workerWrap">
+													<em class="worker"><strong>김미나 [기획팀]</strong><button class="btnDel">삭제</button></em>
+												</div>
+											</div>
+											<textarea placeholder="백업 담당자에게 인수인계 할 업무내용을 기입하세요"></textarea>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="tws sort3Case" style="display:none;">
+							<table>
+								<colgroup>
+									<col width="70"/>
+									<col width="290"/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>발인일</th>
+										<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+									</tr>
+									<tr>
+										<th>상주명</th>
+										<td><input type="text"/></td>
+									</tr>
+									<tr>
+										<th>장례식장</th>
+										<td>
+											<span class="address">
+												<div>
+													<button class="btnM white">우편번호</button>
+													<input type="text" readonly/>
+												</div>
+												<input type="text" placeholder="상세주소"/>
+											</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<p class="noticeP">※ 결혼일 경우 증빙서류를 첨부해주시기 바랍니다.<br/>(ex – 청첩장 촬영본 등)</p>
+						<div class="fileBox">
+							<script src="../js/dropzone.js"></script>
+							<link rel="stylesheet" href="../css/dropzone.css" />
+							<form action="/upload-target" class="dropzone"></form>
+						</div>
+						<div class="btnArea">
+							<span class="left">
+								<button class="btnM white" id="btnSave">임시저장</button>
+								<button class="btnM white" id="btnCancel">취소</button>
+							</span>
+							<span class="right">
+								<button class="btnM primary" id="btnFinish">결재요청</button>
+							</span>
+						</div>
+					</div>
+					<!--//-->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>상단으로</button></div>
+		</div>
+		<!-- //Wrap -->
+		<!-- Alert Popup -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop requirePop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>필수입력 항목을 기입해주세요.</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<div class="alertPop savePop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>휴가신청서가 임시저장 되었습니다.<br/>임시저장 목록으로 이동 하시겠습니까?</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<div class="alertPop cancelPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>작성한 신청서 정보가 삭제됩니다.<br/>취소 하시겠습니까?</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<div class="alertPop finishPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>상신이 완료되었습니다. <br/>상세화면으로 이동합니다.</p>
+					<!--//-->
+				</div>
+			</div>
+		</div>
+		<!-- //Alert Popup -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 휴가 상신으로 인한 부재 시 -->
+			<div class="basicPop apprAbsPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<strong>전자결제 권한이 부여되어 있습니다.<br/>휴가 상신으로 인한 부재 시 전자결제 방법을 선택해 주세요</strong>
+					<div class="lineBox">
+						<span class="radioSet">
+							<input type="radio" id="apprAbs1" name="apprAbs" />
+							<label for="apprAbs1"><i></i>결제 (휴가중에도 결제진행)</label>
+						</span>
+						<span class="radioSet">
+							<input type="radio" id="apprAbs2" name="apprAbs" />
+							<label for="apprAbs2"><i></i>전결 (자동 PASS)</label>
+						</span>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<!-- //휴가 상신으로 인한 부재 시 -->
+		</div>
+		<!-- //Popup -->
+		<!-- Full Popup -->
+		<div class="fullPop apprLinePop">
+			<div class="tt">
+				<h1>결재선 선택</h1>
+				<button class="pclose">닫기</button>
+			</div>
+			<div class="pBack">
+				<div class="apprLineBox">
+					<div class="setArea">
+						<div class="saveList">
+							<div class="inputBox">
+								<input type="text" placeholder="저장한 결재선 선택"/><!-- 저장된 결재선이 없을 경우 disabled 처리 -->
+							</div>
+							<ul style="display:none;">
+								<li>
+									<div>저장한 결재선 선택</div>
+								</li>
+								<li>
+									<div>
+										<strong>휴가 상신 결재</strong>
+										<span class="date">2020-08-08</span>
+										<button class="btnDel">삭제</button>
+									</div>
+								</li>
+								<li>
+									<div>
+										<strong>변경된 상신 결제</strong>
+										<span class="date">2020-08-08</span>
+										<button class="btnDel">삭제</button>
+									</div>
+								</li>
+								<li>
+									<div>
+										<strong>변경된 상신 결제 2</strong>
+										<span class="date">2020-08-08</span>
+										<button class="btnDel">삭제</button>
+									</div>
+								</li>
+							</ul>
+							<button class="btnM white btnSearch">직접선택</button>
+							<button class="btnM white btnSearch" style="display:none;">선택완료</button>
+						</div>
+						<div class="search" style="display:none;">
+							<div class="searchTop">
+								<button class="btnTeam" style="display:none;">< 팀 선택</button>
+								<span class="right">
+									<input type="text">
+									<button class="btnM white">검색</button>
+									<button class="btnM white">초기화</button>
+								</span>
+							</div>
+							<div class="searchBody">
+								<div class="treeBox">
+									<div class="jstreeBack">
+										<div id="jstree" style="width:100%"></div>
+									</div>
+								</div>
+								<div class="tls" style="display:none;">
+									<table>
+										<colgroup>
+											<col width="80"/>
+											<col width="50"/>
+											<col width="50"/>
+											<col width="100"/>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>부서</th>
+												<th>성명</th>
+												<th>직위</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>개발팀</td>
+												<td>홍길동</td>
+												<td>사원</td>
+												<td>
+													<button class="btnS white">합의</button>
+													<button class="btnS white">결재</button>
+												</td>
+											</tr>
+											<tr>
+												<td>개발팀</td>
+												<td>김철수</td>
+												<td>대리</td>
+												<td>
+													<button class="btnS white">합의</button>
+													<button class="btnS white">결재</button>
+												</td>
+											</tr>
+											<tr>
+												<td>개발팀</td>
+												<td>박무개</td>
+												<td>팀장</td>
+												<td>
+													<button class="btnS white">합의</button>
+													<button class="btnS white">결재</button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="setTable">
+						<div class="setList">
+							<ul>
+								<li>
+									<span class="ftBold">시작</span>
+									<span class="ftBold">상신</span>
+									<div class="tL">홍길동 사원 / 개발1팀</div>
+									<span></span>
+								</li>
+								<li>
+									<span>
+										<button class="btnSwich up">이동</button>
+										<button class="btnSwich down">이동</button>
+									</span>
+									<span>
+										<span class="selectSet">
+											<select>
+												<option>합의</option>
+												<option>결재</option>
+											</select>
+										</span>
+									</span>
+									<div class="tL">김남이 대리 / 경영지원팀</div>
+									<span><button class="btnM pink">X</button></span>
+								</li>
+								<li>
+									<span>
+										<button class="btnSwich up">이동</button>
+										<button class="btnSwich down">이동</button>
+									</span>
+									<span>
+										<span class="selectSet">
+											<select>
+												<option>합의</option>
+												<option>결재</option>
+											</select>
+										</span>
+									</span>
+									<div class="tL">김철수 팀장 / 개발1팀</div>
+									<span><button class="btnM pink">X</button></span>
+								</li>
+								<li>
+									<span>최종</span>
+									<span>
+										<span class="selectSet">
+											<select>
+												<option>합의</option>
+												<option>결재</option>
+											</select>
+										</span>
+									</span>
+									<div class="tL">최미진 부장 / 개발2팀</div>
+									<span><button class="btnM pink">X</button></span>
+								</li>
+							</ul>
+						</div>
+						<div class="save">
+							<span class="checkSet">
+								<input type="checkbox" id="saveLine" />
+								<label for="saveLine"><i></i>현재 결제선 저장</label>
+							</span>
+							<input type="text" placeholder="결재선 이름" disabled/>
+						</div>
+					</div>
+					<div class="btnArea tC">
+						<button class="btnM white">취소</button>
+						<button class="btnM primary">적용</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //Full Popup -->
+	</body>
+</html>

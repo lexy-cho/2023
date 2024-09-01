@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.btnLogout').click(function(){
+					$('.alertDim').show();
+					$('.logoutPop').show();
+				});
+				$('.logoutPop .btnOut').click(function(){
+					$(location).attr('href','login.html');
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- panelBack -->
+			<div id="panelBack">
+				<div class="masking">
+					<div class="panelTit">
+						<span class="left"><button class="btnBack" onclick="history.back()">이전</button></span>
+						<span class="right"><button class="btnProofFin" onclick="history.back()">완료</button></span>
+					</div>
+					<div class="panelArea">
+						<!-- maskingLayout -->
+						<div class="maskingLayout">
+							<div class="palette">
+								<div class="plOption">
+									<!-- 연필용 --> 
+									<div class="penCase">
+										<div class="colorPl">
+											<ul>
+												<li class="pColor1"><input type="radio" id="pc1" name="psColor"><label for="pc1">빨강</label></li>
+												<li class="pColor2"><input type="radio" id="pc2" name="psColor"><label for="pc2">주황</label></li>
+												<li class="pColor3"><input type="radio" id="pc3" name="psColor"><label for="pc3">노랑</label></li>
+												<li class="pColor4"><input type="radio" id="pc4" name="psColor"><label for="pc4">녹색</label></li>
+												<li class="pColor5"><input type="radio" id="pc5" name="psColor" checked ><label for="pc5">파랑</label></li>
+												<li class="pColor6"><input type="radio" id="pc6" name="psColor"><label for="pc6">보라</label></li>
+												<li class="pColor7"><input type="radio" id="pc7" name="psColor"><label for="pc7">회색</label></li>
+												<li class="pColor8"><input type="radio" id="pc8" name="psColor"><label for="pc8">검정</label></li>
+												<li class="pColor9"><input type="radio" id="pc8" name="psColor"><label for="pc9">흰색</label></li>
+											</ul>
+										</div>
+										<div class="sizePl">
+											<ul>
+												<li class="pSize1"><input type="radio" id="pes1" name="pes"><label for="pes1"><em>size1</em></label></li>
+												<li class="pSize2"><input type="radio" id="pes2" name="pes"><label for="pes2"><em>size2</em></label></li>
+												<li class="pSize3"><input type="radio" id="pes3" name="pes"><label for="pes3"><em>size3</em></label></li>
+												<li class="pSize4"><input type="radio" id="pes4" name="pes"><label for="pes4"><em>size4</em></label></li>
+												<li class="pSize5"><input type="radio" id="pes5" name="pes"><label for="pes5"><em>size5</em></label></li>
+												<li class="pSize6"><input type="radio" id="pes6" name="pes" checked ><label for="pes6"><em>size6</em></label></li>
+											</ul>
+										</div>
+									</div>
+									<!-- //연필용 --> 
+									<!-- 지우개용 --> 
+									<div class="eraserCase" style="display:none;">
+										<div class="sizePl">
+											<ul>
+												<li class="pSize1"><input type="radio" id="es1" name="es"><label for="es1"><em>size1</em></label></li>
+												<li class="pSize2"><input type="radio" id="es2" name="es"><label for="es2"><em>size2</em></label></li>
+												<li class="pSize3"><input type="radio" id="es3" name="es"><label for="es3"><em>size3</em></label></li>
+												<li class="pSize4"><input type="radio" id="es4" name="es"><label for="es4"><em>size4</em></label></li>
+												<li class="pSize5"><input type="radio" id="es5" name="es"><label for="es5"><em>size5</em></label></li>
+												<li class="pSize6"><input type="radio" id="es6" name="es" checked ><label for="es6"><em>size6</em></label></li>
+											</ul>
+										</div>
+									</div>
+									<!-- //지우개용 --> 
+								</div>
+								<div class="plKind">
+									<span class="pen"><input type="radio" name="pl" id="pl1" value="01" checked /><label for="pl1">연필</label></span>
+									<span class="eraser"><input type="radio" name="pl" id="pl2" value="02" /><label for="pl2">지우개</label></span>
+									<span class="zoomin"><input type="radio" name="pl" id="pl3" value="03" /><label for="pl3">지우개</label></span>
+								</div>
+							</div>
+							<div class="img"><div><img src="images/img_possibility_form.png" alt="" /></div></div>
+						</div>
+						<!--// maskingLayout -->
+					</div>
+				</div>
+			</div>
+			<!-- //panelBack -->
+		</div>
+		<!-- //Wrap -->
+    </body>
+</html>

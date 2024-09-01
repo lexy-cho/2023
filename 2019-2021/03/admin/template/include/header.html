@@ -1,0 +1,32 @@
+
+			<header>
+				<h1>
+					<a href="main.html">ANDU</a><!-- 2021-02-09 텍스트 변경 -->
+					<span class="selectSet">
+						<select id="partGo2">
+							<option selected>서비스 선택</option>
+							<option value="6">HOMEPAGE/ 홈페이지</option>
+							<option value="4">PLAN/ 기획</option>
+							<option value="2">D·PUB/ 퍼블리싱</option>
+							<option value="5">PROJECT/ 프로젝트</option>
+							<option value="3">MANAGER/ 시스템관리</option>
+							<option value="7">VIDEO/ 화상회의</option>
+						</select>
+					</span>
+				</h1>
+				<nav></nav>
+				<div>
+					<span>
+						<button onclick="location.href='mypage.html'">마이페이지</button>
+						<a href="../../admin/menual/template/admin.html" target="_blank" class="btnMenual">매뉴얼</a>
+						<a href="https://mail.think-tree.com/" target="_blank" class="btnMail">메일</a>
+						<button class="btnLogout">로그아웃</button>
+						<script>
+							$('.btnLogout').click(function(){
+								$('.alertDim').show();
+								$('.logoutPop').show();
+							});
+						</script>
+					</span>
+				</div>
+			</header>

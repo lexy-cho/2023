@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/editor/ckeditor.js"></script>
+		<script type="text/javascript" src="../../js/editor/sample.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>사내 갤러리</h2>
+					<div class="pagePos"><span>Home</span><span>게시판관리</span><span>AndU 게시판</span><strong>사내 갤러리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div>
+						<!---->
+						<div class="boardTop">
+							<em>전체 10,000건</em>
+							<span class="right">
+								<span class="searchBasic">
+									<span class="selectSet">
+										<select>
+											<option>구분</option>
+											<option>공지사항</option>
+											<option>게시판</option>
+											<option>갤러리</option>
+										</select>
+									</span>
+									<input type="text" placeholder="제목, 작성자 입력" />
+									<input type="submit" value="검색" class="btnSearch" />
+									<button class="btnReset">초기화</button>
+								</span>
+								<button class="btnM">엑셀다운로드</button>
+							</span>
+						</div>
+						<!---->
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="10"/>
+									<col width="10"/>
+									<col width="60"/>
+									<col width="110"/>
+									<col/>
+									<col width="110"/>
+									<col width="60"/>
+									<col width="130"/>
+									<col width="60"/>
+								</colgroup>
+								<thead>
+									<tr>
+										<th>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkall" />
+												<label for="chkall"><i></i></label>
+											</span>
+										</th>
+										<th>No.</th>
+										<th>구분</th>
+										<th>카테고리</th>
+										<th>글제목</th>
+										<th>작성자</th>
+										<th>해당년도</th>
+										<th>등록일자</th>
+										<th>개시중지</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr class="noti"><!-- 상단고정 class -->
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk5" />
+												<label for="chk5"><i></i></label>
+											</span>
+										</td>
+										<td>공지</td>
+										<td>전체</td>
+										<td>일반</td>
+										<td class="tL"><span class="new">신규</span><a href="board_gallery_view.html">글제목이 노출할 영역입니다 글제목은 최대 2줄까지 고려해 게시판 높이를 정했습니다.</a><span class="reNum">[1]</span></td>
+										<td>홍길동(000000)</td>
+										<td>2020</td>
+										<td>2020-01-01 00:00</td>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="push51" />
+												<label for="push51"></label>
+											</span>
+										</td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk4" />
+												<label for="chk4"><i></i></label>
+											</span>
+										</td>
+										<td>4</td>
+										<td>전체</td>
+										<td>MT</td>
+										<td class="tL"><a href="board_gallery_view.html">글제목이 노출할 영역입니다 글제목은 최대 2줄까지 고려해 게시판 높이를 정했습니다.</a><span class="file">첨부파일</span></td>
+										<td>홍길동(000000)</td>
+										<td>2020</td>
+										<td>2020-01-01 00:00</td>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="push41" />
+												<label for="push41"></label>
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk3" />
+												<label for="chk3"><i></i></label>
+											</span>
+										</td>
+										<td>3</td>
+										<td>전체</td>
+										<td>MT</td>
+										<td class="tL"><a href="board_gallery_view.html">글제목이 노출할 영역입니다 글제목은 최대 2줄까지 고려해 게시판 높이를 정했습니다.</a><span class="reNum">[99]</span></td>
+										<td>홍길동(000000)</td>
+										<td>2020</td>
+										<td>2020-01-01 00:00</td>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="push31" />
+												<label for="push31"></label>
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk2" />
+												<label for="chk2"><i></i></label>
+											</span>
+										</td>
+										<td>2</td>
+										<td>전체</td>
+										<td>MT</td>
+										<td class="tL"><a>글제목이 노출할 영역입니다 글제목은 최대 2줄까지 고려해 게시판 높이를 정했습니다.</a><span class="file">첨부파일</span></td>
+										<td>홍길동(000000)</td>
+										<td>2020</td>
+										<td>2020-01-01 00:00</td>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="push21" />
+												<label for="push21"></label>
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk1" />
+												<label for="chk1"><i></i></label>
+											</span>
+										</td>
+										<td>1</td>
+										<td>전체</td>
+										<td>MT</td>
+										<td class="tL"><a href="board_gallery_view.html">글제목이 노출할 영역입니다 글제목은 최대 2줄까지 고려해 게시판 높이를 정했습니다.</a></td>
+										<td>홍길동(000000)</td>
+										<td>2020</td>
+										<td>2020-01-01 00:00</td>
+										<td>
+											<span class="toggleSet">
+												<input type="checkbox" id="push11" />
+												<label for="push11"></label>
+											</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="bpSet">
+							<div class="btnArea">
+								<span class="left">
+									<button class="btnM">선택삭제</button>
+								</span>
+								<span class="right">
+									<a href="board_gallery_write.html" class="btnM">새글등록</a>
+								</span>
+							</div>
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+										<a class="on">1</a>
+										<a>2</a>
+										<a>3</a>
+										<a>4</a>
+										<a>5</a>
+									<a class="next">다음</a>
+								</span>
+								<span class="selectSet">
+									<select>
+										<option>10개</option>
+										<option>20개</option>
+										<option>50개</option>
+										<option>100개</option>
+									</select>
+								</span>
+							</div>
+						</div>
+						<!--//-->
+
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		</div>
+    </body>
+</html>

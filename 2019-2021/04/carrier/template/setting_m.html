@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/push.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function (){
+				$(".tabBox li button").click(function () {
+					$(".tabBox li").removeClass("on");
+					$(this).parent("li").addClass("on");
+				});
+				$('.btnLogout').click(function(){
+					$('.alertDim').show();
+					$('.logoutPop').show();
+					$('.logoutPop .pBtn .red').click(function(){
+						location.href='login.html';
+					});
+				}); //2020-06-16 로그아웃 팝업
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap" class="mypageCase"><!-- 마이페이지 일 경우 -->
+			<!-- 모바일 마이페이지 메인은 PC SNB 없음 -->
+			<!-- 마이페이지는 모바일 메뉴 없음 -->
+			<div id="containerBack">
+				<!-- header -->
+				<div id="header">
+					<header>
+						<span class="left">
+						   <button class="btnList" onclick="location.href='dispatch_the.html'">목록</button><!-- 2020-07-16 링크 수정 -->
+						</span>
+						 <h2>설정</h2>
+					</header>
+				</div>
+				<!-- //header -->
+				<!-- container -->
+				<div id="container">
+				<section>
+					<div class="content">
+					<article>
+						<!-- Page Layout -->
+						<div class="mypageMLayout">
+							<div class="pd2-t">
+								<div class="mypageList">
+									<ul>
+										<li><a href="setting.html">자원관리</a></li>
+										<li><a href="area_setting.html">기본배차권역</a></li>
+										<li><a href="user_approval.html">사용자 승인</a></li>
+										<li><a href="mypage.html">회원정보</a></li>
+										<li><a href="matching_fee.html">매칭수수료 정산</a></li>
+										<li><a href="faq.html">자주 묻는 질문</a></li>
+										<li><a href="service_center.html">고객센터</a></li>
+										<li><a href="app_setting.html">알림설정 및 버전정보</a></li>
+									</ul>
+								</div>
+								<div class="bottomSet">
+									<button class="btnM" onclick="location.href='system_notice.html'">시스템 공지<span class="numMark">N</span></button><!-- 2020-07-27 new마크 추가 -->
+									<button class="btnM btnLogout">로그아웃</button><!-- 2020-06-16 class 수정 -->
+								</div>
+							</div>
+						</div>
+						<!-- //page Layout -->
+					</article>
+					</div>
+				</section>
+				</div>
+				<!-- //container -->
+			</div>
+		</div>
+		<!-- //Wrap -->
+		<!-- 2020-06-16 alertpop 영역 추가 -->
+		<!-- alertPop -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop logoutPop" style="display:none;">
+				<div class="pBack">
+					<p>로그아웃 하시겠습니까?</p>
+				</div>
+				<div class="pBtn">
+					<button class="btnM gray">취소</button>
+					<button class="btnM red">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //alertPop -->
+		<!-- //2020-06-16 alertpop 영역 추가 -->
+    </body>
+</html>

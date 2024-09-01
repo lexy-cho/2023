@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/customer.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$(document).on('click tab', '.gnbOpen', function(e){
+				$('.gnbScroll').load('../gnb.html',function(){
+					funcGnbOpen();
+				});
+				return false;
+			});// 2019-03-15 gnb html load (퍼블리시용)
+            
+			// 2019-03-15 달력형식 변경, 공통으로 사용
+            $('.calendarSet button').duDatepicker({
+                format: 'yyyy-mm-dd', // Determines the date format
+                theme: 'yellow',        // Determines the color theme of the date picker
+				readOnly: true,       // Determines if input element is readonly (key input is disabled)
+				clearBtn: false,      // Determines if Clear button is displayed
+				cancelBtn: true,     // Determines if Cancel button is displayed
+				overlayClose: true    // Determines if clicking the overlay will close the date picker
+			}).on('datechanged', function(event){
+                $(this).prev().val(event.date);
+            });
+            
+            // 헤더 컨텐츠 고정 값만큼 컨텐츠에 padding-top 설정, 목록은 모두 공통 <!--2019-03-15--->
+            $(window).resize(function(){
+                $(".postList").css({
+                    "padding-top" : $(".headFixed").height()
+                });
+            }).resize();
+            
+            // 연락수단 열기
+            $(".telCnt > button").click(function(){
+                $(this).next().toggleClass("on");
+            });
+            
+            // 출고, 가망 선택에 따른 일자 label 변경
+            $("#custCarType").on("change", function(){
+                if($(this).find("option:selected").val() == 1){
+                    $("#dateLabel").html("출고일자");
+                }else if($(this).find("option:selected").val() == 2){
+                    $("#dateLabel").html("등록일자");
+                }
+            });
+
+            // 2019-04-17 개인/법인에 따른 목록 
+            $("#custKindType").on("change", function(){
+                if($(this).find("option:selected").val() == 1){
+                    window.location.href = 'customer_list.html';
+                }else if($(this).find("option:selected").val() == 2){
+                    window.location.href = 'customer_corporate_list.html';
+                }
+            });
+            
+            // mobile 한정 - 검색영역 확장 버튼, 목록은 공통으로 사용 <!--2019-03-15--->
+            $(".btnSchOpen").click(function(){
+                if($(this).hasClass("active")){
+                    $(this).removeClass("active");
+                    $(this).parent(".searchField").removeClass("on");
+                    $(".postList").css({
+                        "padding-top" : $(".headFixed").height()
+                    });
+                }else{
+                    $(this).addClass("active");
+                    $(this).parent(".searchField").addClass("on");
+                    $(".postList").css({
+                        "padding-top" : $(".headFixed").height()
+                    });
+                }
+            });
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button>
+							<!-- <button class="goPrev" onclick="history.back()">뒤로가기</button> -->
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="../main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2>고객 조회</h2> <!-- 2019-04-17 타이틀변경 -->
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<div class="postList"> <!--2019-03-15 클래스명 변경--->
+                            <!-- fixed -->
+                            <div class="headFixed">
+                                <!-- 검색 -->
+                                <div class="searchField customer">
+                                    <div class="iptSltLine">
+                                        <div class="sltGrp">
+                                            <span class="selectSet" id="custKindType">
+                                                <select>
+                                                    <option>선택</option>
+                                                    <option value="1">개인</option>
+                                                    <option value="2">법인</option>
+                                                </select>
+                                            </span>
+                                            <span class="selectSet" id="custCarType">
+                                                <select>
+                                                    <option>선택</option>
+                                                    <option value="1">출고고객</option>
+                                                    <option value="2">가망고객</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                        <div class="dateLabelCnt">
+                                            <span class="txtDot" id="dateLabel">출고일자</span>
+                                            <ul class="calGrp">
+                                                <li>
+                                                    <div class="calendarSet"><input type="tel" id="" name="" /><button>달력열기</button></div><!--2019-03-15--->
+                                                </li>
+                                                <li>
+                                                    <div class="calendarSet"><input type="tel" id="" name="" /><button>달력열기</button></div><!--2019-03-15--->
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="iptSearch">
+										<span class="w50"> <!-- 2019-05-06 input 분리 --->
+											<span class="txtDot">사업자명</span>
+											<input type="text" placeholder="사업자명 입력해주세요" />
+										</span>
+										<span class="w50 longLabel">
+											<span class="txtDot">사업자번호</span>
+											<input type="text" placeholder="사업자번호 숫자를 입력해주세요" />
+										</span>
+                                        <!-- <input type="text" placeholder="사업자명, 사업자번호" /> -->
+                                        <button class="btnBY">조회</button>
+                                    </div>
+                                    <button class="mbView btnSchOpen">열기</button>
+                                </div>
+                                <!-- // 검색 -->
+                                
+                                <div class="infoBox">
+                                    <p class="insideTag"><span class="stickerTltp">TIP</span>개입사업자 고객이 포함되어 있습니다.
+                                </div>
+                                
+                                <!-- table header / Tab -->
+                                <!-- table header -->
+                                <div class="tablet"> <!-- 2019-03-15 tab > tablet -->
+                                    <div class="tbContainer">
+                                        <p class="txtDot">Total 2610</p>
+                                        <ul class="customerList tbHead">
+                                            <li>
+                                                <span class="numbering">No</span>
+                                                <span class="custNm">사업자명</span>
+                                                <span class="contractNo">계약번호</span>
+                                                <span class="corpNo">사업자번호</span>
+                                                <span class="telInfo">휴대전화번호</span>
+                                                <span class="channelType">확보채널</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- // table header -->
+                            </div>
+                            <!-- // fixed -->
+                            
+                            <div class="postListBody"> <!--2019-03-15 클래스명 변경--->
+                                <!-- 목록 -->
+                                <div class="tbContainer">
+                                    <p class="mobileTotal txtDot">Total 2610</p>
+                                    <ul class="customerList tbBody">
+                                        <li>
+                                            <span class="numbering">1000000</span>
+                                            <span class="custNm"><a href="customer_corporate.html">김경아</a></span>
+                                            <span class="contractNo"><!-- 2019-07-10 데이터가 없는 거예요 <a href="customer_corporate.html">9000107390<i class="eIcon">전자계약</i></a> --></span>
+                                            <span class="corpNo">123-45-78965</span>
+                                            <span class="telInfo corp">
+                                                <div class="telCnt">
+                                                    <span class="txt">010-1213-1234</span>
+                                                    <button>열기</button>
+                                                    <div class="telList">
+                                                        <button>Call</button>
+                                                        <button>SMS</button>
+                                                        <button disabled>e-mail</button>
+                                                        <button>Fax</button>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                            <span class="channelType">개척</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering">999999</span>
+                                            <span class="custNm"><a href="customer_corporate.html">김경아</a></span>
+                                            <span class="contractNo"><a href="customer_corporate.html">9000107390<i class="paperIcon">지류계약</i></a></span>
+                                            <span class="corpNo">123-45-78965</span>
+                                            <span class="telInfo corp">
+                                                <div class="telCnt">
+                                                    <span class="txt">010-1213-1234</span>
+                                                    <button>열기</button>
+                                                    <div class="telList">
+                                                        <button>Call</button>
+                                                        <button>SMS</button>
+                                                        <button disabled>e-mail</button>
+                                                        <button>Fax</button>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                            <span class="channelType">방문</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering">999999</span>
+                                            <span class="custNm"><a href="customer_corporate.html">김경아</a></span>
+                                            <span class="contractNo"><a href="customer_corporate.html">9000107390<i class="paperIcon">지류계약</i></a></span>
+                                            <span class="corpNo">123-45-78965</span>
+                                            <span class="telInfo corp">
+                                                <div class="telCnt">
+                                                    <span class="txt">010-1213-1234</span>
+                                                    <button>열기</button>
+                                                    <div class="telList">
+                                                        <button>Call</button>
+                                                        <button>SMS</button>
+                                                        <button disabled>e-mail</button>
+                                                        <button>Fax</button>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                            <span class="channelType">방문</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering">1000000</span>
+                                            <span class="custNm"><a href="customer_corporate.html">김경아</a></span>
+                                            <span class="contractNo"><a href="customer_corporate.html">9000107390<i class="eIcon">전자계약</i></a></span>
+                                            <span class="corpNo">123-45-78965</span>
+                                            <span class="telInfo corp">
+                                                <div class="telCnt">
+                                                    <span class="txt">010-1213-1234</span>
+                                                    <button>열기</button>
+                                                    <div class="telList">
+                                                        <button>Call</button>
+                                                        <button>SMS</button>
+                                                        <button disabled>e-mail</button>
+                                                        <button>Fax</button>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                            <span class="channelType">개척</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering">1000000</span>
+                                            <span class="custNm"><a href="customer_corporate.html">김경아</a></span>
+                                            <span class="contractNo"><a href="customer_corporate.html">9000107390<i class="eIcon">전자계약</i></a></span>
+                                            <span class="corpNo">123-45-78965</span>
+                                            <span class="telInfo corp">
+                                                <div class="telCnt">
+                                                    <span class="txt">010-1213-1234</span>
+                                                    <button>열기</button>
+                                                    <div class="telList">
+                                                        <button>Call</button>
+                                                        <button>SMS</button>
+                                                        <button disabled>e-mail</button>
+                                                        <button>Fax</button>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                            <span class="channelType">개척</span>
+                                        </li>
+                                        <li>
+                                            <span class="numbering">1000000</span>
+                                            <span class="custNm"><a href="customer_corporate.html">김경아</a></span>
+                                            <span class="contractNo"><a href="customer_corporate.html">9000107390<i class="eIcon">전자계약</i></a></span>
+                                            <span class="corpNo">123-45-78965</span>
+                                            <span class="telInfo corp">
+                                                <div class="telCnt">
+                                                    <span class="txt">010-1213-1234</span>
+                                                    <button>열기</button>
+                                                    <div class="telList">
+                                                        <button>Call</button>
+                                                        <button>SMS</button>
+                                                        <button disabled>e-mail</button>
+                                                        <button>Fax</button>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                            <span class="channelType">개척</span>
+                                        </li>
+                                    </ul>
+                                    <!-- 조회결과가 없을 때 -->
+                                    <ul class="customerList tbBody">
+                                        <li class="listNone">
+                                            <span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+                                        </li>
+                                    </ul>
+                                    <!-- // 조회결과가 없을 때 -->
+                                </div>
+                                <!-- // 목록 -->
+                                <a href="" class="btnNewCustInsert">신규등록</a>
+                            </div>
+                        </div>  
+					</section>
+                    <button class="pageTop list type4">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

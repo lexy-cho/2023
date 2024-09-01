@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<title>E-best Publish Guide</title>
+		<meta charset="utf-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+		<link rel="stylesheet" type="text/css" href="css/layout.css" />
+		<script src="js/modernizr-latest.js"></script>
+	</head>
+	 <body>
+		<!-- wrap -->
+		<div id="wrap">
+			<div id="top">
+				<header>
+					<h1>E-best Publish Guide</h1>
+				</header>
+				<hr/>
+
+				<nav>
+					<ul>
+						<li><button onclick="location.href='html_guide.html'">Document 구조</button></li>
+						<li><button onclick="location.href='html_guide2.html'">CSS 구조</button></li>
+						<li><button onclick="location.href='html_guide3.html'">WEBDOC 구조도</button></li>
+						<li><button onclick="location.href='html_guide4.html'">이미지</button></li>
+						<li><button onclick="location.href='html_guide5.html'">컴포넌트</button></li>
+					</ul>
+				</nav>
+				<h2>CSS 구조</h2>
+			</div>
+			<hr/>
+			<div id="container">
+			<section>
+				<h1>1. CSS Structure</h1>
+				<article>
+					<ul>
+						<li>bbs.css : 견적/계출/계약을 제외한 모든 화면</li>
+						<li>common.css : 공통 레이아웃 / 컴포넌트 / 팝업 정의 / 공통 반응형 대응</li>
+						<li>contract.css : 전자계약 및 서류등록 (1,2차)</li>
+						<li>customer.css : 고객관리, 배분이관관리, MCA관리</li>
+						<li>duDatePicker.css : 데이터픽커</li>
+						<li>inview.css : 네이티브 인앱 브라우저 일 경우</li>
+						<li>jquery.mCustomScrollbar.min.css : mCustomScrollbar</li>
+						<li>preview.css : preview</li>
+						<li>process.css : 견적, 계출현황, 게시판, 재고조회, 통계</li>
+						<li>responsive.css : 모바일 대응 서브 별 상세 레이아웃</li>
+						<li>style.css : style custom version</li>
+						<li>swiper.min.css : 스와이프 css</li>
+						<li>tree.css : 폴더레이아웃</li>
+					</ul>
+				</article>
+			</section>
+			<section>
+				<h1>2. CSS Guide</h1>
+				<article>
+					<ol>
+						<li>
+							<h2>bbs.css</h2>
+							<div class="line">
+								<ul>
+									<li>
+										<strong>/* ===== 마이페이지 - 메인 & 비밀번호 변경 ===== */&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// css 파일의 해당 주석 검색 </strong><br/></strong>
+										<p>.mypageLayout 이 기본이며 중복클래스로 제어한다</p>
+									</li>									
+									<li>
+										<strong>/* ===== 판매수수료(관리 포함) & 매출명세서 ===== */</strong>
+										<p>.commissionLayout 이 기본이며 중복클래스로 제어한다</p>
+									</li>									
+									<li>
+										<strong>/* ===== 견적 맞춤설정 ===== */</strong>
+										<p> .agencySet 와 .publicSet가 기본이며 중복클래스로 제어한다</p>
+									</li>	
+									<li>
+										<strong>/* ===== 설정 ===== */</strong>
+										<dl>
+											<dt>/* Popup */ </dt>
+											<dd>.estSetPop 이 기본이며 중복클래스로 제어한다 </dd>
+											<dt>/* 약관 */</dt>
+											<dt>/* 게시판목록 */ </dt>
+											<dt>/* search field - 게시판 */</dt>
+											<dd>.searchField.board 이 기본이며 중복클래스로 제어한다</dd>
+											<dt>/* 게시판(상세) */</dt>
+											<dt>/* 통계 */</dt>
+											<dd>.tbStaus 이 기본이며 중복클래스로 제어한다 </dd>
+											<dt>/* 재고관리 */</dt>
+											<dd>.tbStaus.line 이 기본이며 중복클래스로 제어한다</dd>
+										</dl>
+									</li>	
+								</ul>
+							</div>
+						</li>
+						<li>
+							<h2>common.css</h2>
+							<div class="line">
+								<ul>
+									<li>
+										<strong>/* ===== Default ===== */&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// css 파일의 해당 주석 검색 </strong><br/>
+										<p>body,div,dl 등 기본 폼들을 제어</p>
+									</li>
+									<li>
+										<strong>/* ===== Interval ===== */</strong><br/><br/>
+										<dl>
+											<dt>/* align */</dt>
+											<dd>기본 정렬 제어 </dd>
+											<dt>/* space */</dt>
+											<dd>폼의 기본 거리 제어 </dd>
+											<dt>/* width */</dt>
+											<dd>폼의 기본 너비 제어 </dd>
+											<dt>/* height */</dt>
+											<dd>폼의 기본 높이 제어 </dd>
+										</dl>
+									</li>
+									<li>
+										<strong>/* ===== Font Guide ===== */ </strong><br/><br/>
+										<dl>
+											<dt>/* size */</dt>
+											<dd>px → rem 변환 및 사이즈 가이드</dd>
+										</dl>									
+									</li>
+									<li>
+										<strong>/* ===== components ===== */ </strong><br/><br/>
+										<dl>
+											<dt>/* radio */</dt>
+											<dd>radio 버튼 제어</dd>
+											<dt>/* checkBox */</dt>
+											<dd>체크박스 버튼 제어</dd>
+											<dt>/* input */</dt>
+											<dd>인풋박스 기본 제어</dd>
+											<dt>/* calendar */</dt>
+											<dd>캘린더 양식</dd>
+											<dt>/* clock */</dt>
+											<dd>시계 양식</dd>
+											<dt>/* calendar + clock */</dt>
+											<dd>캘린더 + 시계 양식</dd>
+											<dt>/* select */</dt>
+											<dd>셀렉터박스 양식</dd>
+											<dt>/* smselect */</dt>
+											<dd>셀렉터박스 양식</dd>
+											<dt>/* Required */</dt>
+											<dd>빨간색 인풋박스</dd>
+										</dl>
+									</li>
+									<li>
+										<strong>/* ===== Btn ===== */</strong>
+										<p>버튼  제어</p>
+									</li>
+									<li>
+										<strong>/* ===== Text ===== */</strong>
+										<p>Text 제어 </p>
+									</li>
+									<li>
+										<strong>/* ===== Icon ===== */</strong>
+										<p>Icon 제어 </p>
+									</li>		
+									<li>
+										<strong>/* ===== Grid ===== */</strong>
+										<p>그리드 </p>
+									</li>	
+									<li>
+										<strong>/* ===== Login Layout ===== */</strong>
+										<p>로그인 레이아웃 </p>
+									</li>	
+									<li>
+										<strong>/* ===== Common Layout ===== */</strong>
+										<dl>
+											<dt>/* 공통 컴포넌트 UI */</dt>
+											<dt>/* 핸드폰 번호 입력 */</dt>
+											<dt>/* Sing Setting */</dt>
+											<dt>/*마스킹 공통*/</dt>
+											<dd>마스킹 공통 으로 .maskingLayout 글래스로 제어한다. </dd>
+											<dt>/*search field*/</dt>
+											<dd>검색 </dd>												
+										</dl>
+									</li>										
+									<li>
+										<strong>/* ===== 메인 ===== */</strong>
+										<p>.mainLayout 클래스로 제어</p>
+									</li>
+									<li>
+										<strong>/* ===== Popup Layout ===== */</strong>
+										<dl>
+											<dt>/* Dim이 포함된 팝업 기본 */</dt>
+											<dt>/* Dim 내 포함된 팝업 (X 닫기 없는 버전) */</dt>
+											<dt>/* 버튼이 하나만 있을 경우 */</dt>
+											<dt>/* alert 형식 팝업 */</dt>
+											<dt>/* height 비고정 팝업 */</dt>
+											<dt>/* Dim 내 포함된 팝업 (작은버전) */</dt>
+											<dt>/* Dim 내 포함된 팝업 (큰버전) */</dt>
+											<dt>/* 저장중, 저장실패, 저장완료 */</dt>
+											<dt>/* loading 애니메이션 */</dt>
+											<dt>/* 레이어 Full 팝업 */</dt>
+											<dt><em>/*** 팝업스크롤공통 ***/</em></dt>
+											<dt><em>/*** 팝업목록기본 ***/</em></dt>
+											<dt><em>/*** 팝업개별셋팅 ***/</em></dt>
+											<dt><em>/*** 팝업반응형 ***/</em></dt>
+										</dl>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<h2>contract.css</h2>
+							<div class="line">
+								<ul>
+									<li>
+										<strong>/* ===== 전자서명===== */</strong>
+										<dl>
+											<dt>/* 정의형 목록 */</dt>
+											<dd>.dlStyle 이 기본이며 중복클래스로 제어한다.</dd>
+											
+											
+											<dt>/* summary Box  */</dt>
+											<dd>.summBox 이 기본이며 중복클래스로 제어한다.</dd>
+											
+											<dt>/*  Btn Contract Bottom */</dt>
+											<dd>.bottomContBtn 이 기본이며 중복클래스로 제어한다.</dd>
+											
+											<dt>/*  주민등록번호 키패드 */</dt>
+											<dd>.numberPop 이 기본이며 중복클래스로 제어한다.</dd>
+																						
+											<dt>/*  레몬법 */</dt>
+											<dd>.lemonLawDetail, .lemonLawSign 이 기본이며 중복클래스로 제어한다.</dd>
+											
+											<dt>/* 가망고객 */</dt>
+											<dd>.possibilityStart 이 기본이며 중복클래스로 제어한다.</dd>
+										</dl>
+									</li>	
+								</ul>
+							</div>
+						</li>
+						<li>
+							<h2>customer.css</h2>
+							<div class="line">
+								<ul>
+									<li>
+										<strong>/* ===== customer 공통 ===== */</strong>
+									</li>
+									<li>
+										<strong>/* ===== button===== */</strong>
+									</li>	
+									<li>
+										<strong>/* ===== 고객조회(목록)===== */</strong>
+										<dl>
+											<dt>/* 검색 */</dt>
+											<dd>.searchField.customer 이 기본이며 중복클래스로 제어한다.</dd>
+											<dt>/* 목록 */</dt>
+											<dd>customerList 이 기본이며 중복클래스로 제어한다.</dd>
+										</dl>
+									</li>
+									<li>
+										<strong>/* ===== 고객조회(상세)===== */</strong>
+										<p>.custDtlHdTop, .cardSummary 을 기본으로  중복클래스로 제어한다.</p>
+									</li>
+									<li>
+										<strong>/* ===== 고객조회(상세)  bottom 버튼  ===== */</strong>
+										<p>.custBottomBtn, .buttonList 을 기본으로  중복클래스로 제어한다.</p>
+									</li>
+									<li>
+										<strong>/* ===== 고객조회(상세) - 영업활동메모, 보유차량정보, 시승정보  ===== */</strong>
+									</li>
+									<li>
+										<strong>/* ===== 영업활동메모  ===== */</strong>
+										<p>.custDtlTbHead 을 기본으로  중복클래스로 제어한다.</p>
+									</li>
+									<li>
+										<strong>/* ===== 고객조회(상세) - bottom상세 : 입력/보기 ===== */</strong>
+									</li>
+									<li>
+										<strong>/* ===== 고객조회(상세) - bottom상세 : 입력/보기 ===== */<br/>/* 고객조회(상세) - bottom상세 : 입력/보기(table) ===== */</strong>
+										<p>.subDtlMain 을 기본으로  중복클래스로 제어한다.</p>
+									</li>	
+									<li>
+										<strong>/* ===== 고객조회(상세) - bottom상세 : 입력/보기 -/*/</strong>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<h2>inview.css</h2>
+							<div class="line">
+								<ul>
+									<li>
+										<strong>/* ===== 견적전체보기 ===== */</strong>
+										<p>.allEstLayout 을 기본으로 중복글래스로 제어한다. </p>
+									</li>								
+									<li>
+										<strong>/* ===== 할부견적 공통 ===== */</strong>
+									</li>
+								</ul>
+							</div>
+						</li>		
+						<li>
+							<h2>process.css</h2>
+							<div class="line">
+								<ul>
+									<li>
+										<strong>/* ===== process 공통 ===== */</strong>
+										<dl>
+											<dt>/* process 공통 */</dt>
+											<dt>/* icon */</dt>
+											<dt>/* form */</dt>
+											<dt>/* button */</dt>
+											<dt>/* 본문에 있는 버튼 */</dt>
+										</dl>										
+									</li>	
+									<li>
+										<strong>/* ===== 신규견적 ===== */</strong>
+										<dl>
+											<dt>/* 메뉴 공통 */</dt>
+											<dt>/* 메뉴 Top */</dt>
+											<dt>/* 메뉴 Body */</dt>
+											<dt>/* active */</dt>
+											<dt>/* 메뉴 footer */</dt>
+											<dt>/* 컨텐츠 공통 */</dt>
+											<dt>/* 컨텐츠 */</dt>
+											<dt>/* estimateBtn / 신규견적 bottom 버튼 */</dt>
+										</dl>
+									</li>
+									<li>
+										<strong>/* ===== 견적조회, 계출현황, 게시판, 통계, 재고조회 ===== */</strong>
+										<dl>
+											<dt>/* search field - 통계/실적현황 */</dt>
+											<dd>.searchField.type2 을 기본으로 중복클래스를 제어한다.</dd>
+											<dt>/* search field - 재고조회 */</dt>
+											<dt>/* table - 견적조회, 계출현황, 게시판 */</dt>
+											<dt>/* 계출현황(목록) 공통 */</dt>
+											<dt>/* 계출현황 swiper tab */</dt>
+											<dt>/* 계출현황(상세) / Top */</dt>
+											<dt>/* 계출현황(상세) / 컨텐츠 */</dt>
+											<dt>/* 계출현황(상세) - 2depth */</dt>
+											<dt>/* rgstBottomBtn / 계출현황(상세) bottom 버튼 */</dt>
+											<dt>/* 계출관리 - OTS 조회 : 2019-03-18 */</dt>
+											<dt>/* 계출관리 - 인수증 : 2019-03-18 */</dt>
+											<dt>/* 계출관리 - 카드포인트 조회 : 2019-03-21 */</dt>
+											<dt>/* 스크롤 plugin 수정 */</dt>
+											<dt>/* 계출관리 - 계약/구매이력 조회 : 2019-03-19 */</dt> 
+										</dl>
+									</li>
+									<li>
+										<strong>/* ===== process layer 팝업 ===== */</strong>
+										<dl>
+											<dt>/* 승인요청, 계약서 번호수정, 조건변경, 책임보험사 등록, 면세구입신고서 등록 */</dt>
+											<dt>/* 면세구입신고서 등록 */</dt>
+											<dt>/* 조건변경 */</dt>
+											<dt>/* 필수값 체크 */</dt>
+											<dt>/* 재고조회 - 옵션선택 */</dt>
+											<dt>/* 재고조회 - 전시차 정보 */</dt>
+										</dl>
+									</li>	
+									<li>
+										<strong>/* ===== 계약종류에 따른 색 변환  ===== */</strong>
+										<dl>
+											<dt>/* 공통 */</dt>
+											<dt>/* 신규견적 */</dt>
+											<dt>/* 스크롤 plugin 수정 */</dt>
+											<dt>/* 계출현황 */</dt>
+											<dt>/* gnb 오픈 시 grid 정렬 변환 */</dt>
+											<dt>/* android case */</dt>
+											<dt>/* ios case */ </dt>
+										</dl>
+									</li>	
+								</ul>
+							</div>
+						</li>										
+					</ol>
+				</article>
+			</section>
+			<hr/>
+			</div>
+			<footer>
+				<div><strong>Think-tree </strong>&nbsp;|&nbsp;copyright (c) think-tree all right reserved.</div>
+				<p>Last Update 2016-08-29 by Park, Kyoung Min</p>
+			</footer>
+		</div> 
+		<!-- //wrap -->
+	</body>
+</html>

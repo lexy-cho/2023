@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/*$('.bcardLayout li').click(function(){
+				location.href = 'business_card_view.html';
+			});*/
+			$('.searchOpner').click(function(){
+				$('.searchBasic').slideToggle();
+			});
+			$('.btnEdit').click(function(){
+				$('.pageTit .basicCase, .pageTit .editCase').toggle();
+				$('.mobileList').toggleClass('editCase');
+				$('#container').toggleClass('listTabCase');
+				$('.bcardLayout .mobileList .date em').toggle();
+			});
+			$('.listTab li').click(function(){
+				$('.listTab li').removeClass('on');
+				$(this).addClass('on');
+			});
+			$('.btnBcFolder').click(function(){
+				$('.popDim, .bcFolderPop').show();
+			});
+			$('.btnGrouping').click(function(){
+				$('.popDim, .groupingPop').show();
+				$('.pclose, .pBtn button').click(function(){
+					$('.popDim, .groupingPop').hide();
+				})
+			});
+			$('.bcFolderPop').each(function(){
+				$('.pclose').click(function(){
+					$('.popDim, .bcFolderPop').hide();
+				})
+				$('.tws .btnS.blue').click(function(){
+					$('.addFolderLine').show();
+				});
+				$('.tws input').focus(function(){
+					$(this).attr('readonly', false);
+				});
+				$('.tws input').blur(function(){
+					$(this).attr('readonly', true);
+				});
+				$('.tws .btnS.white').click(function(){
+					$('.alertDim, .bcFolderAlertPop').show();
+					$('.bcFolderAlertPop .pBtn button').click(function(){
+						$('.alertDim, .bcFolderAlertPop').hide();
+					});
+				});
+			});
+			$('.btnFilter').click(function(){
+				$('.popDim, .filterPop').show();
+				$('.filterPop li').click(function(){
+					$('.popDim, .filterPop').hide();
+				});
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<h1>명함관리</h1>
+					<button class="btnNav">햄버거</button>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb">
+				<section>
+					<div class="c-menu c-menu--slide-left"><!-- 우측 Slide 일 경우 -->
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</section>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container" class="listTabCase">
+			<section>
+				<div class="pageTit">
+					<div class="basicCase cardCase"><!-- 2020-09-16 class 추가 -->
+						<span class="sortSet">
+							<span>
+								<input type="checkbox" id="chk000" checked />
+								<label for="chk000">내 명함</label>
+							</span>
+							<span>
+								<input type="checkbox" id="chk001" />
+								<label for="chk001">공유명함</label>
+							</span>
+						</span>
+						<span class="right">
+							<span class="btnFilter">필터</span>
+							<button class="searchOpner">검색</button>
+						</span>
+					</div>
+					<div class="editCase" style="display:none;">
+						<!--2020-10-23-->
+						<span class="checkSet">
+							<input type="checkbox" id="all1" />
+							<label for="all1"><i></i>전체 선택</label>
+						</span>
+						<!--//2020-10-23-->
+						<button class="btnUngroup titBtn">그룹해제</button>
+						<button class="btnGrouping titBtn">그룹설정</button>
+						<span class="right">
+							<button class="btnEdit titBtn">취소</button>
+						</span>
+					</div>
+				</div>
+				<!-- 검색영역 -->
+				<div class="searchBasic online"> <!-- 2020-07-17 class 변경 및 검색조건 변경 -->
+					<div class="searchBack cardCase"> <!-- 2020-10-07 class 추가 -->
+						<div class="term">
+							<span class="selectSet">
+								<select>
+									<option>전체</option>
+									<option>회사</option>
+									<option>성명</option>
+									<option>전화번호</option>
+									<option>메일주소</option>
+								</select>
+							</span>
+							<input type="text" placeholder="회사, 이름 입력" />
+						</div>
+						<input type="submit" value="검색" class="btnSearch" />
+					</div>
+				</div>
+				<!-- //검색영역 -->
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="bcardLayout">
+						<div class="listTab">
+							<ul>
+								<li class="on">전체</li>
+								<li>회사</li>
+								<li>지인</li>
+								<li>그룹명 두줄</li>
+								<li class="addTab btnBcFolder">그룹 추가</li>
+							</ul>
+							<button class="btnEdit">편집</button>
+						</div>
+						<div class="mobileList">
+							<ul>
+								<!--Loop-->
+								<li>
+									<span class="checkSet noLabel">
+										<input type="checkbox" id="chk1" />
+										<label for="chk1"><i></i></label>
+									</span>
+									<a href="business_card_view.html">
+										<span class="date"><em style="display:none">(편집시그룹명)</em> 2020-01-04 00:00</span>
+										<span class="kind">내 명함</span>
+										<div class="tL bcName ing">
+											명함 정보 취합중입니다.
+										</div>
+									</a>
+								</li>
+								<!--//Loop-->
+								<!--Loop-->
+								<li>
+									<span class="checkSet noLabel">
+										<input type="checkbox" id="chk2" />
+										<label for="chk2"><i></i></label>
+									</span>
+									<a href="business_card_view2.html">
+										<span class="date"><em style="display:none">(편집시그룹명)</em>2020-01-03 00:00</span>
+										<span class="kind">내 명함</span>
+										<div class="tL bcName">
+											<strong>김복희</strong>
+											책임 / 책임 컨설턴트 / 다복솔시스템
+											<em>KB 금융그룹 / KB 이노베이션 HUB</em>
+										</div>
+									</a>
+									<div class="contactGo">
+										<a class="mail" href="mailto:help@think-tree.co.kr">이메일 보내기</a>
+										<span><a class="phone" href="tel:010-1234-5678">전화걸기</a></span>
+									</div>
+								</li>
+								<!--//Loop-->
+								<li>
+									<span class="checkSet noLabel">
+										<input type="checkbox" id="chk3" />
+										<label for="chk3"><i></i></label>
+									</span>
+									<a href="business_card_view3.html">
+										<span class="date">2020-01-02 00:00</span>
+										<span class="kind">공유명함</span>
+										<div class="tL bcName">
+											<strong>정해욱</strong>
+											과장 / IST
+											<em>르노삼성자동차</em>
+										</div>
+									</a>
+									<div class="contactGo">
+										<a class="mail" href="mailto:help@think-tree.co.kr">이메일 보내기</a>
+										<span><a class="phone" href="tel:010-1234-5678">전화걸기</a></span>
+									</div>
+								</li>
+								<li>
+									<span class="checkSet noLabel">
+										<input type="checkbox" id="chk4" />
+										<label for="chk4"><i></i></label>
+									</span>
+									<a href="business_card_view4.html">
+										<span class="date">2020-01-01 00:00</span>
+										<span class="kind">내 명함</span>
+										<div class="tL bcName reIng">
+												명함을 재촬영해주시기 바랍니다.
+										</div>
+									</a>
+								</li>
+								<!---->
+								<li class="notList">
+									<div>
+										등록된 게시글이 없습니다
+									</div>
+								</li>
+								<!--//-->
+							</ul>
+						</div>
+						<span class="fab"><button class="apply camera" onClick="location.href='business_card_write.html'">등록하기</button></span>
+					</div>
+					<!--//-->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>상단으로</button></div>
+		</div>
+		<!-- //Wrap -->
+		<!-- Alert Popup -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop bcFolderAlertPop" style="display:none;">
+				<div class="pBack tC">
+					폴더 삭제 시 포함된 명함은 미등록 카테고리로 자동 이동됩니다.
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //Alert Popup -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 필터 -->
+			<div class="miniPop filterPop" style="display:none;">
+				<div class="pBack">
+					<ul>
+						<li>
+							<span class="checkSet">
+								<input type="radio" id="filter01" name="filter" checked/>
+								<label for="filter01"><i></i>최신 등록순</label>
+							</span>
+						</li>
+						<li>
+							<span class="checkSet">
+								<input type="radio" id="filter02" name="filter"/>
+								<label for="filter02"><i></i>가나다순</label>
+							</span>
+						</li>
+						<li>
+							<span class="checkSet">
+								<input type="radio" id="filter03" name="filter"/>
+								<label for="filter03"><i></i>회사명순</label>
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- //필터 -->
+			<div class="basicPop bcFolderPop" style="display:none;">
+				<div class="tt">
+					<h1>폴더관리</h1>
+					<button class="pclose">닫기</button>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="40"/>
+								<col width="220"/>
+								<col width="60"/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th></th>
+									<th class="tL">전체 (9)</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="bc1" />
+											<label for="bc1"><i></i></label>
+										</span>
+									</td>
+									<td><input type="text" placeholder="폴더명 입력" value="회사  (5)" readonly/></td>
+									<td><button class="btnS white">삭제</button></td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="bc2" />
+											<label for="bc2"><i></i></label>
+										</span>
+									</td>
+									<td><input type="text" placeholder="폴더명 입력" value="지인  (0)" readonly/></td>
+									<td><button class="btnS white">삭제</button></td>
+								</tr>
+								<tr class="addFolderLine" style="display:none;">
+									<td></td>
+									<td><input type="text" placeholder="폴더명 입력"/></td>
+									<td><button class="btnS white">취소</button></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><button class="btnS blue">+ 그룹추가</button></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>미등록 (4)</td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<!-- 버튼영역 삭제  -->
+			</div>
+			<!-- 2020-09-04 그룹설정 팝업 -->
+			<div class="basicPop groupingPop" style="display:none;">
+				<div class="tt">
+					<h1>그룹설정</h1>
+					<button class="pclose">닫기</button>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="40"/>
+								<col width="*"/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th></th>
+									<th class="tL">전체 (9)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="group1" />
+											<label for="group1"><i></i></label>
+										</span>
+									</td>
+									<td>회사  (5)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="group2" />
+											<label for="group2"><i></i></label>
+										</span>
+									</td>
+									<td>지인  (0)</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM">확인</button>
+				</div>
+			</div>
+			<!-- 2020-09-04 그룹설정 팝업 -->
+		</div>
+		<!-- //Popup -->
+	</body>
+</html>

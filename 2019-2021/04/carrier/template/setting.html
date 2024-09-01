@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/push.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.btnPwChange').click(function(){
+					$('.popDim').show();
+					$('.pwChangePop').show();
+					scrollClose();
+				});
+				$('.btnIdChange').click(function(){
+					$('.popDim').show();
+					$('.idChangePop').show();
+					scrollClose();
+					$('.idChangePop .btnPassNumGo').click(function(){
+						$(this).hide();
+						$('.btnPassNumGo2').show();
+						$('.back.noTt').show();
+						$('.back.noTt button').click(function(){
+							$('.phonePass .redLine').show();
+						});
+					});
+				});
+				$('.resourceTop .basicBtn .blue').click(function(){
+					$(this).parent('.resourceTop .basicBtn').hide();
+					$('.resourceTop .editBtn').show();
+					// $('.tls .editCase').show();
+					$('.tls').addClass('editMode');
+				});
+				$('.resourceTop .editBtn .red').click(function(){
+					$('.resourceTop .editBtn').hide();
+					$('.tls').removeClass('editMode');
+					if($('#resourceTab select').find("option:selected").val() == 1){
+						$('.resourceTop .basicBtn.driver').show();
+					}else if($('#resourceTab select').find("option:selected").val() == 2){
+						$('.resourceTop .basicBtn.vehicle').show();
+					}
+				});
+				$("#resourceTab select").on("change", function(){
+					$('.resourceManager .tls').hide();
+					$('.resourceManager .tls').removeClass('editMode');
+					$('.resourceTop .basicBtn').hide();
+					$('.resourceTop .editBtn').hide();
+					if($(this).find("option:selected").val() == 1){
+						$('.resourceManager .tls.driver').show();
+						$('.resourceTop .basicBtn.driver').show();
+					}else if($(this).find("option:selected").val() == 2){
+						$('.resourceManager .tls.vehicle').show();
+						$('.resourceTop .basicBtn.vehicle').show();
+					}
+				}); //자원관리에서 드라이버, 차량 선택 구분
+
+				$('.resourceTop .basicBtn.driver .green').click(function(){
+					$('.popDim').show();
+					$('.driverAddPop').show();
+				}); // 드라이버 추가 팝업
+				$('.resourceTop .basicBtn.vehicle .green').click(function(){
+					$('.popDim').show();
+					$('.vehicleAddPop').show();
+				}); // 차량 추가 팝업
+				//2020-07-16 드라이버 상세 팝업 jquery 삭제
+				$('.vehicleDetail').click(function(){
+					$('.popDim').show();
+					$('.vehicleDetailPop').show();
+				}); // 차량 상세 팝업
+				$(".resourceManager .tls .selectSet select").on("change", function(){
+					if($(this).find("option:selected").val() == 1){
+						$(this).parent('.selectSet').removeClass('ftRed');
+						$(this).parent('.selectSet').addClass('ftGreen');
+					}else if($(this).find("option:selected").val() == 2){
+						$(this).parent('.selectSet').removeClass('ftGreen');
+						$(this).parent('.selectSet').addClass('ftRed');
+					}
+				});
+				$('.btnLogout').click(function(){
+					$('.alertDim').show();
+					$('.logoutPop').show();
+					$('.logoutPop .pBtn .red').click(function(){
+						location.href='login.html';
+					});
+				}); //2020-06-16 로그아웃 팝업
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap" class="mypageCase"><!-- 마이페이지 일 경우 -->
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back">
+						<div data-include="include/snb.html"></div>
+					</div>
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<!-- 마이페이지는 모바일 메뉴 없음 -->
+			<hr/>
+			<div id="containerBack">
+				<!-- header -->
+				<div id="header">
+					<header>
+						<span class="left">
+							<button class="btnList" onclick="location.href='setting_m.html' ">목록</button>
+						</span>
+						 <h2>설정</h2>
+						 <span class="right">
+							<button class="btnM grayBlack btnLogout">로그아웃</button><!-- 2020-06-16 class 수정 -->
+						 </span>
+					</header>
+				</div>
+				<!-- //header -->
+				<hr/>
+				<!-- container -->
+				<div id="container">
+				<section>
+					<div class="content">
+					<article>
+						<!-- Page Layout -->
+						<div class="mypageLayout">
+							<div class="pd2-t">
+								<div class="mypageContents">
+									<div class="tabBox">
+										<nav>
+											<ul>
+												<li class="on"><a href="setting.html">자원관리</a></li>
+												<li><a href="area_setting.html">기본배차권역</a></li><!-- 2020-07-08 기본배차권역 페이지 추가 -->
+												<li><a href="user_approval.html" class="news">사용자 승인</a></li>
+												<li><a href="mypage.html">회원정보</a></li>
+												<li><a href="matching_fee.html">매칭수수료 정산</a></li>
+												<li><a href="faq.html">자주 하는 질문</a></li>
+											</ul>
+										</nav>
+									</div>
+									<h3>자원관리</h3>
+									<div class="tabData resourceManager">
+										<div class="resourceTop">
+											<span class="selectSet" id="resourceTab">
+												<select>
+													<option value="1">드라이버 관리</option>
+													<option value="2">차량 관리</option>
+												</select>
+											</span>
+											<div class="right">
+												<span class="basicBtn driver">
+													<button class="btnM green">드라이버 추가</button>
+													<button class="btnM blue">편집</button>
+												</span>
+												<span class="basicBtn vehicle" style="display:none">
+													<button class="btnM green">차량 추가</button>
+													<button class="btnM blue">편집</button>
+												</span>
+												<span class="editBtn" style="display:none">
+													<button class="btnM lineRed">선택삭제</button>
+													<button class="btnM red">완료</button>
+												</span>
+											</div>
+										</div>
+										<div class="tls driver">
+											<table>
+												<colgroup>
+													<col class="editCase" width="50"/>
+													<col width="50"/>
+													<col width="200"/>
+													<col width="50"/>
+													<col width="100"/>
+													<col width="100"/>
+												</colgroup>
+												<thead>
+													<tr>
+														<th class="editCase">
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="drChkAll" />
+																<label for="drChkAll"><i></i></label>
+															</span>
+														</th>
+														<th>상태</th>
+														<th>성명 (휴대전화)</th>
+														<th colspan="3">배정 차량</th>
+													</tr>
+												</thead>
+												<tbody>
+													<!-- loop -->
+													<tr>
+														<td class="editCase">
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="drChk1" />
+																<label for="drChk1"><i></i></label>
+															</span>
+														</td>
+														<td>
+															<span class="selectSet ftGreen">
+																<select>
+																	<option value="1" selected>O</option>
+																	<option value="2">X</option>
+																</select>
+															</span>
+														</td>
+														<td>홍길동 <span class="phoneNum">(010-1233-1234)</span></td><!-- 2020-06-25 번호 영역 추가 -->
+														<td>자차</td>
+														<td>321가 5678</td>
+														<td><button class="btnFileChk">첨부확인</button></td>
+													</tr>
+													<!-- //loop -->
+													<tr>
+														<td class="editCase">
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="drChk2" />
+																<label for="drChk2"><i></i></label>
+															</span>
+														</td>
+														<td>
+															<span class="selectSet ftGreen">
+																<select>
+																	<option value="1" selected>O</option>
+																	<option value="2">X</option>
+																</select>
+															</span>
+														</td>
+														<td>홍길동 <span class="phoneNum">(010-1233-1234)</span></td><!-- 2020-06-25 번호 영역 추가 -->
+														<td>자차</td>
+														<td>321가 5678</td>
+														<td><button class="btnFileChk">첨부확인</button></td>
+													</tr>
+													<tr>
+														<td class="editCase">
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="drChk3" />
+																<label for="drChk3"><i></i></label>
+															</span>
+														</td>
+														<td>
+															<span class="selectSet ftRed">
+																<select>
+																	<option value="1">O</option>
+																	<option value="2" selected>X</option>
+																</select>
+															</span>
+														</td>
+														<td>김철수 <span class="phoneNum">(010-1233-1234)</span></td><!-- 2020-06-25 번호 영역 추가 -->
+														<td>지입</td>
+														<td>321가 5678</td>
+														<td><button class="btnFileChk">첨부확인</button></td>
+													</tr>
+													<tr>
+														<td class="editCase">
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="drChk4" />
+																<label for="drChk4"><i></i></label>
+															</span>
+														</td>
+														<td>미접속</td><!-- 2020-07-16 미가입->미접속으로 변경 -->
+														<td>김길동 <span class="phoneNum">(010-1233-1234)</span></td><!-- 2020-06-25 번호 영역 추가 --><!-- 2020-07-16 driverDetail class 삭제 -->
+														<td>자차</td>
+														<td>321가 5678</td>
+														<td><button class="btnFileChk" disabled>미첨부</button></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<div class="tls vehicle" style="display:none;">
+											<table>
+												<colgroup>
+													<col class="editCase" width="50"/>
+													<col width="50"/>
+													<col width="50"/>
+													<col width="150"/>
+													<col width="50"/>
+													<col width="100"/>
+													<col width="100"/>
+												</colgroup>
+												<thead>
+													<tr>
+														<th class="editCase">
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="veChkAll" />
+																<label for="veChkAll"><i></i></label>
+															</span>
+														</th>
+														<th>상태</th>
+														<th>구분</th>
+														<th colspan="2">차량번호</th>
+														<th>차량검사 유효일</th>
+														<th>차량보험 갱신일</th>
+													</tr>
+												</thead>
+												<tbody>
+													<!-- loop -->
+													<tr>
+														<td class="editCase">
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="veChk1" />
+																<label for="veChk1"><i></i></label>
+															</span>
+														</td>
+														<td>
+															<span class="selectSet ftGreen">
+																<select>
+																	<option value="1" selected>O</option>
+																	<option value="2">X</option>
+																</select>
+															</span>
+														</td>
+														<td>자차</td>
+														<td>321가 5678</td>
+														<td><button class="btnFileChk">첨부확인</button></td>
+														<td>2019-12-20</td>
+														<td>2020-12-31</td>
+													</tr>
+													<!-- //loop -->
+													<tr>
+														<td class="editCase">
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="veChk2" />
+																<label for="veChk2"><i></i></label>
+															</span>
+														</td>
+														<td>
+															<span class="selectSet ftGreen">
+																<select>
+																	<option value="1" selected>O</option>
+																	<option value="2">X</option>
+																</select>
+															</span>
+														</td>
+														<td>자차</td>
+														<td>321가 5678</td>
+														<td><button class="btnFileChk">첨부확인</button></td>
+														<td>2018-12-20</td>
+														<td>2020-12-31</td>
+													</tr>
+													<tr>
+														<td class="editCase">
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="veChk3" />
+																<label for="veChk3"><i></i></label>
+															</span>
+														</td>
+														<td>
+															<span class="selectSet ftGreen">
+																<select>
+																	<option value="1" selected>O</option>
+																	<option value="2">X</option>
+																</select>
+															</span>
+														</td>
+														<td>자차</td>
+														<td>321가 5678</td>
+														<td><button class="btnFileChk">첨부확인</button></td>
+														<td>2017-12-20</td>
+														<td>2020-12-31</td>
+													</tr>
+													<tr>
+														<td class="editCase">
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="veChk4" />
+																<label for="veChk4"><i></i></label>
+															</span>
+														</td>
+														<td>
+															<span class="selectSet ftGreen">
+																<select>
+																	<option value="1" selected>O</option>
+																	<option value="2">X</option>
+																</select>
+															</span>
+														</td>
+														<td>자차</td>
+														<td>321가 5678</td>
+														<td><button class="btnFileChk">첨부확인</button></td>
+														<td>2017-03-01</td>
+														<td>2020-12-31</td>
+													</tr>
+													<tr>
+														<td class="editCase">
+															<span class="checkSet noLabel">
+																<input type="checkbox" id="veChk5" />
+																<label for="veChk5"><i></i></label>
+															</span>
+														</td>
+														<td>
+															<span class="selectSet ftGreen">
+																<select>
+																	<option value="1" selected>O</option>
+																	<option value="2">X</option>
+																</select>
+															</span>
+														</td>
+														<td>지입</td>
+														<td class="vehicleDetail">선택 링크</td>
+														<td><button class="btnFileChk" disabled>미첨부</button></td>
+														<td>2016-12-20</td>
+														<td>2020-12-31</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- //page Layout -->
+					</article>
+					</div>
+				</section>
+				</div>
+				<!-- //container -->
+			</div>
+		</div>
+		<!-- //Wrap -->
+		<!-- alertDim -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop logoutPop" style="display:none;">
+				<div class="pBack">
+					<p>로그아웃 하시겠습니까?</p>
+				</div>
+				<div class="pBtn">
+					<button class="btnM gray">취소</button>
+					<button class="btnM red">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //alertDim -->
+		<!-- popDim -->
+		<div class="popDim" style="display:none">
+			<!-- 드라이버 추가 -->
+			<div class="basicPop driverAddPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>드라이버 추가</h1>
+				</div>
+				<div class="pBack">
+					<p class="errorMsg">※ 차량관리에 등록된 차량만 추가 가능합니다.</p><!-- 2020-08-04 안내문구 위치 변경 -->
+					<div class="grayInfoArea">
+						<dl class="inputBox iner">
+							<dt>성명</dt>
+							<dd><input type="text" placeholder="성명 입력"/></dd>
+						</dl>
+						<p class="errorMsg">※ 성명을 입력해주세요.</p><!-- 2020-07-16 에러메세지 추가 -->
+						<dl class="inputBox iner">
+							<dt>휴대번호</dt>
+							<dd><input type="text" placeholder="휴대번호 입력"/></dd>
+						</dl>
+						<p class="errorMsg">※ 휴대번호를 입력해주세요.</p><!-- 2020-07-16 에러메세지 추가 -->
+						<dl class="inputBox iner">
+							<dt>배정 차량</dt>
+							<dd><input type="text" placeholder="차량번호 입력 후 추가"/></dd><!-- 2020-07-16 버튼, dd에 클래스 삭제 -->
+						</dl>
+						<!-- 2020-08-04 에러메세지 삭제 -->
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM red">등록</button>
+				</div>
+			</div>
+			<!-- //드라이버 추가 -->
+			<!-- 드라이버 상세 -->
+			<div class="basicPop driverDetailPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>드라이버 상세</h1>
+				</div>
+				<div class="pBack">
+					<div class="grayInfoArea">
+						<dl class="inputBox iner">
+							<dt>성명</dt>
+							<dd><input type="text" value="홍길동" placeholder="성명 입력"/></dd>
+						</dl>
+						<dl class="inputBox iner">
+							<dt>휴대번호</dt>
+							<dd><input type="text" value="010-2345-6789" placeholder="휴대번호 입력"/></dd>
+						</dl>
+						<dl class="inputBox iner">
+							<dt>배정 차량</dt>
+							<dd class="vehicleSetting">
+								<input type="text" placeholder="차량번호 입력 후 추가"/>
+								<button>추가</button>
+							</dd>
+						</dl>
+						<div class="autoOjBox">
+							<p class="ftRed">※ 차량관리에 등록된 차량만 추가 가능합니다.</p>
+							<span class="autoObject">(자차) 123가4567<button>삭제</button></span>
+							<span class="autoObject">(자차) 123가4567<button>삭제</button></span>
+							<span class="autoObject">(자차) 123가4567<button>삭제</button></span>
+							<span class="autoObject">(자차) 123가4567<button>삭제</button></span>
+							<span class="autoObject">(자차) 123가4567<button>삭제</button></span>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM red">등록</button>
+				</div>
+			</div>
+			<!-- //드라이버 상세 -->
+			<!-- 차량 추가 -->
+			<div class="basicPop vehicleAddPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>차량 추가</h1>
+				</div>
+				<div class="pBack">
+					<div class="grayInfoArea">
+						<dl class="inputBox iner"><!-- 2020-06-25 wHalf class 삭제  -->
+							<dt>구분</dt>
+							<dd>
+								<span class="selectSet wFull">
+									<select>
+										<option>선택</option>
+										<option>자차</option>
+										<option>지입</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<dl class="inputBox iner">
+							<dt>차량번호</dt>
+							<dd><input type="text" placeholder="차량번호 입력"/></dd><!-- 2020-06-24 placeholder 수정 -->
+						</dl>
+						<dl class="inputBox iner notBorder">
+							<dt>차량사진</dt>
+							<dd><button class="btnCamera">차량사진 촬영</button></dd>
+						</dl>
+						<dl class="inputBox iner">
+							<dt>차량검사 <span>유효일자</span></dt><!-- 2020-08-04 모바일에서 2줄로 변경 -->
+							<dd class="pd0"><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></dd>
+						</dl>
+						<dl class="inputBox iner">
+							<dt>차량보험 <span>갱신일자</span></dt><!-- 2020-08-04 모바일에서 2줄로 변경 -->
+							<dd class="pd0"><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></dd>
+						</dl>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM red">등록</button>
+				</div>
+			</div>
+			<!-- //차량 추가 -->
+			<!-- 차량 상세 -->
+			<div class="basicPop vehicleDetailPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>차량 상세</h1>
+				</div>
+				<div class="pBack">
+					<div class="grayInfoArea">
+						<dl class="inputBox iner wHalf">
+							<dt>구분</dt>
+							<dd>
+								<span class="selectSet wFull">
+									<select>
+										<option>선택</option>
+										<option>자차</option>
+										<option>지입</option>
+									</select>
+								</span>
+							</dd>
+						</dl>
+						<dl class="inputBox iner">
+							<dt>차량번호</dt>
+							<dd><input type="text" value="321가 5678" placeholder="차량번호 입력"/></dd><!-- 2020-06-24 placeholder 수정 -->
+						</dl>
+						<dl class="inputBox iner notBorder">
+							<dt>차량사진</dt>
+							<dd><button class="btnCamera">재촬영</button><span>2020-01-25</span></dd>
+						</dl>
+						<dl class="inputBox iner">
+							<dt>차량검사 <span>유효일자</span></dt><!-- 2020-08-04 모바일에서 2줄로 변경 -->
+							<dd class="pd0"><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></dd><!-- 2020-06-25 pd0 클래스 추가 -->
+						</dl>
+						<dl class="inputBox iner">
+							<dt>차량보험 <span>갱신일자</span></dt><!-- 2020-08-04 모바일에서 2줄로 변경 -->
+							<dd class="pd0"><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></dd><!-- 2020-06-25 pd0 클래스 추가 -->
+						</dl>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM red">등록</button>
+				</div>
+			</div>
+			<!-- //차량 상세 -->
+			<!-- 휴대전화번호 변경 -->
+			<div class="basicPop idChangePop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>휴대전화번호 변경</h1>
+				</div>
+				<div class="pBack">
+					<strong>로그인 계정 아이디로 <휴대전화번호>를 사용합니다. 정확히 입력해 주세요.</strong>
+					<div class="phonePass mt1">
+						<div class="back">
+							<dl class="inputBox">
+								<dt>휴대전화</dt>
+								<dd><input type="tel" placeholder="‘ - ’ 없이 숫자로 입력"/></dd>
+							</dl>
+							<button class="btnM green btnPassNumGo">인증번호발송</button>
+							<button class="btnM gray btnPassNumGo2" style="display:none;">재발송</button>
+						</div>
+						<div class="back noTt" style="display:none;">
+							<dl class="inputBox">
+								<dt>인증번호</dt>
+								<dd><input type="tel" placeholder="6자리"/></dd>
+								<dd>2:59</dd>
+							</dl>
+							<button class="btnM green">확인</button>
+						</div>
+						<p class="redLine" style="display:none;">휴대전화번호가 올바르지 않습니다. 다시 한번 확인해 주세요.</p>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//휴대전화번호 변경-->
+			<!-- 패스워드 변경 -->
+			<div class="basicPop pwChangePop" id="samplePop2" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>비밀번호 변경</h1><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+				</div>
+				<div class="pBack">
+					<div class="before">
+						<dl class="inputBox iner wFull">
+							<dt>기존 비밀번호</dt><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+							<dd><input type="password" placeholder="영,숫자 포함하여 8자리 이상"/></dd>
+						</dl>
+					</div>
+					<div class="grayBox">
+						<dl class="inputBox iner wFull">
+							<dt>신규 비밀번호</dt><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+							<dd><input type="password" placeholder="영,숫자 포함하여 8자리 이상"/></dd>
+						</dl>
+						<dl class="inputBox iner wFull">
+							<dt>신규 비밀번호(확인)</dt><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+							<dd><input type="password" placeholder="영,숫자 포함하여 8자리 이상"/></dd>
+						</dl>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//패스워드 변경-->
+			<!-- 주소검색 -->
+			<div class="basicPop searchPop addressPop" id="samplePop5" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>주소검색</h1>
+				</div>
+				<div class="pBack">
+					<div class="tab02">
+						<!-- tab -->
+						<div class="tabBack">
+							<div class="tabNav">
+								<nav>
+									<ul>
+										<li class="on"><button data-name="1">작업지 주소</button></li>
+										<li><button data-name="2">자주 쓰는 주소</button></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<!--// tab -->
+						<div class="tabLayout">
+							<div class="tabData tData1" style="display:block;">
+								<div class="seachArea">
+									<div class="searchInput">
+										<input type="text" placeholder="도로명 + 번지로 검색"/>
+										<button class="btnSearch">조회</button>
+									</div>
+									<div class="tip">
+										<dl>
+											<dt><strong>Search tip</strong></dt>
+											<dd><span>도로명 + 건물번호</span>예) 세종대로 207,  매봉산로 37</dd>
+											<dd><span>지역명(동/리) + 번지</span>예) 역삼동 68-1,  상암동 1682</dd>
+										</dl>
+									</div>
+								</div>
+								<div class="listArea">
+									<div class="listTop">
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="100" />
+													<col width="*" />
+													<col width="100" />
+												</colgroup>
+												<thead>
+													<tr>
+														<th>우편번호</th>
+														<th>회사명</th>
+														<th>자주 쓰는</th>
+													</tr>
+												</thead>
+											</table>
+										</div>
+									</div>
+									<div class="listScroll">
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="100" />
+													<col width="560" />
+													<col width="100" />
+												</colgroup>
+												<tbody>
+													<!--Loop-->
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td><button class="btnSaveAddress">주소 저장</button></td>
+													</tr>
+													<!--//Loop-->
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td><button class="btnSaveAddress">주소 저장</button></td>
+													</tr>
+													<tr class="on">
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td><button class="btnSaveAddress">주소 저장</button></td>
+													</tr>
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td><button class="btnSaveAddress">주소 저장</button></td>
+													</tr>
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td><button class="btnSaveAddress">주소 저장</button></td>
+													</tr>
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td><button class="btnSaveAddress">주소 저장</button></td>
+													</tr>
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td><button class="btnSaveAddress">주소 저장</button></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tabData tData2">
+								<div class="listArea">
+									<div class="listTop">
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="100" />
+													<col width="*" />
+													<col width="200" />
+												</colgroup>
+												<thead>
+													<tr>
+														<th>우편번호</th>
+														<th>회사명</th>
+														<th>이름</th>
+													</tr>
+												</thead>
+											</table>
+										</div>
+									</div>
+									<div class="listScroll">
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="100" />
+													<col width="*" />
+													<col width="200" />
+												</colgroup>
+												<tbody>
+													<!--Loop-->
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td>세종 1공장</td>
+													</tr>
+													<!--//Loop-->
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td>안산중공업</td>
+													</tr>
+													<tr class="on">
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td>안산중앙도시 2공장</td>
+													</tr>
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td>안산중앙도시 1공장</td>
+													</tr>
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td>안산중앙도시 3공장</td>
+													</tr>
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td>안산중앙도시 2공장</td>
+													</tr>
+													<tr>
+														<td>03186</td>
+														<td class="tL">
+															<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+															<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+														</td>
+														<td>안산중앙도시 2공장</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//주소검색-->
+			<!-- 2020-06-24 이미지 확대 -->
+			<div class="imgZoomPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<span class="popImgBox">
+					<img src="../images/sample3.png" alt="이미지 샘플"/>
+				</span>
+			</div>
+			<!--//2020-06-24 이미지 확대 -->
+		</div>
+		<!-- //popDim -->
+    </body>
+</html>

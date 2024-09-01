@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$(document).on('click tab', '.gnbOpen', function(e){
+				$('.gnbScroll').load('../gnb.html',function(){
+					funcGnbOpen();
+				});
+				return false;
+			});// 2019-03-15 gnb html load (퍼블리시용)
+            
+            // 탭
+            $(".stepLayout").hide();
+            $(".stepLayout:first").show();
+            $(".tab li a").click(function () {
+                $(".tab li").removeClass("on");
+                $(this).parent("li").addClass("on");
+                $(".stepLayout").hide();
+                var activeTab = $(this).attr("data-name");
+                $("." + activeTab).fadeIn();
+            });
+            
+            // 탭 컨텐츠 스크롤 높이 지정
+            $(window).resize(function(){
+                var nonScrollHeight = $("#header").outerHeight(true) + $(".searchField").outerHeight(true) + $(".pointCnt.overview").outerHeight(true) + $(".pointCnt.detail > .tit").outerHeight(true) + $(".tab").outerHeight(true) + 20;
+
+                if($(window).height() - 100 < nonScrollHeight){
+                    $(".pointCnt.detail .stepLayout").css({
+                        "height" : 200,
+                        "margin-bottom" : 1.4 + "rem"
+                    });
+                    
+                    // 스크롤
+                    /*  2019-04-18 스크롤 plugin 삭제  $(".tabTbBodyScroll").mCustomScrollbar({
+                        axis:"yx",
+                        theme:"dark",
+                        contentTouchScroll:true
+                    }); */
+                }else{
+                    $(".pointCnt.detail .stepLayout").css({
+                        "height" : $(window).height() - nonScrollHeight
+                    });
+                    
+                    // 스크롤
+                    /*  2019-04-18 스크롤 plugin 삭제  $(".tabTbBodyScroll").mCustomScrollbar({
+                        axis:"yx",
+                        theme:"dark",
+                        contentTouchScroll:true
+                    }); */
+                }
+            }).resize();
+            
+            // 스크롤
+            /*  2019-04-18 스크롤 plugin 삭제  $(".tabTbBodyScroll").mCustomScrollbar({
+                axis:"yx",
+                theme:"dark",
+                contentTouchScroll:true
+            }); */
+            
+            // 포인트 적립내역
+            $(".pointInfo").click(function(){
+				$('.dimPop, #pointInfoLayer').show();
+                
+                $("#pointInfoLayer .popBack.popScroll").css({
+                    "height" : $("#pointInfoLayer").innerHeight() - 70
+                });
+			});
+            
+            // 조회 클릭 시 고객정보 없을 경우
+            /* $("#pointView").click(function(){
+				$('.dimPop, #nonCustomer').show();
+			}); */
+            
+            // 조회 클릭 시 고객정보 있을 경우
+            $("#pointView").click(function(){
+				$('.dimPop, #viewCustomer').show();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header">
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button>
+							<!-- <button class="goPrev" onclick="history.back()">뒤로가기</button> -->
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="../main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2>카드포인트 조회</h2> <!-- 2019-04-17 타이틀변경 -->
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<div class="cardPointView">
+                            <!-- 검색 -->
+                            <div class="searchField">
+                                <ul class="lebelInpGrp">
+                                    <li>
+                                        <label for="" class="">고객명</label>
+                                        <input type="text" placeholder="고객명" />
+                                    </li>
+                                    <li>
+                                        <label for="" class="">휴대폰번호</label>
+                                        <input type="tel" placeholder="휴대폰번호" />
+                                    </li>
+                                    <li>
+                                        <label for="" class="">생년월일</label>
+                                        <input type="tel" placeholder="생년월일" />
+                                    </li>
+                                    <li>
+                                        <label for="" class="">성별</label>
+                                        <span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+                                            <select>
+                                                <option>성별</option>
+                                                <option>남</option>
+                                                <option>여</option>
+                                            </select>
+                                        </span>
+                                    </li>
+                                </ul>
+                                <button id="pointView" class="btnBY">조회</button>
+                            </div>
+                            <!-- // 검색 -->
+                            
+                            <div class="pointCnt overview">
+                                <h3 class="tit">포인트 현황</h3>
+                                <table>
+                                    <colgroup>
+                                        <col width="20%" />
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>종류</th>
+                                            <th>보유</th>
+                                            <th>본인사용</th>
+                                            <th>양수사용</th>
+                                            <th>적립기준일</th>
+                                            <th>익월<span class="mbBr">소멸예정</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>RSM 포인트</th>
+                                            <td class="tRight">50,312</td>
+                                            <td class="tRight">2,000</td>
+                                            <td class="tRight">0</td>
+                                            <td>2019-03-12</td>
+                                            <td class="tRight">1,512</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="pointCnt detail">
+                                <h3 class="tit">포인트 내역</h3>
+                                <!-- tabWrap -->
+                                <div class="tabWrap">
+                                    <!-- tab -->
+                                    <div class="tab">
+                                        <nav>
+                                            <ul>
+                                                <li class="on"><a data-name="step1">사용내역</a></li>
+                                                <li><a data-name="step2">양도내역</a></li>
+                                                <li><a data-name="step3">적립내역</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <!--// tab -->
+                                    <div class="tabCon">
+                                        <!-- 사용내역 -->
+                                        <div class="stepLayout step1">
+                                            <div class="tabTbHead">
+                                                <table>
+                                                    <colgroup>
+                                                        <col width="" />
+                                                    </colgroup>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>계약번호</th>
+                                                            <th>종류</th>
+                                                            <th>상태</th>
+                                                            <th>사용일</th>
+                                                            <th>사용포인트</th>
+                                                            <th>양수포인트</th>
+                                                            <th>합계</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                            <div class="tabTbBodyScroll">
+                                                <table>
+                                                    <colgroup>
+                                                        <col width="" />
+                                                    </colgroup>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>RSM 포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td class="tRight">2,000</td>
+                                                            <td class="tRight">0</td>
+                                                            <td class="tRight total">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>구삼성포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td class="tRight">2,000</td>
+                                                            <td class="tRight">0</td>
+                                                            <td class="tRight total">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>신한카드포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td class="tRight">2,000</td>
+                                                            <td class="tRight">0</td>
+                                                            <td class="tRight total">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>RSM 포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td class="tRight">2,000</td>
+                                                            <td class="tRight">0</td>
+                                                            <td class="tRight total">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>구삼성포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td class="tRight">2,000</td>
+                                                            <td class="tRight">0</td>
+                                                            <td class="tRight total">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>신한카드포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td class="tRight">2,000</td>
+                                                            <td class="tRight">0</td>
+                                                            <td class="tRight total">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>RSM 포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td class="tRight">2,000</td>
+                                                            <td class="tRight">0</td>
+                                                            <td class="tRight total">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>구삼성포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td class="tRight">2,000</td>
+                                                            <td class="tRight">0</td>
+                                                            <td class="tRight total">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>신한카드포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td class="tRight">2,000</td>
+                                                            <td class="tRight">0</td>
+                                                            <td class="tRight total">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>RSM 포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td class="tRight">2,000</td>
+                                                            <td class="tRight">0</td>
+                                                            <td class="tRight total">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>구삼성포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td class="tRight">2,000</td>
+                                                            <td class="tRight">0</td>
+                                                            <td class="tRight total">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>신한카드포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td class="tRight">2,000</td>
+                                                            <td class="tRight">0</td>
+                                                            <td class="tRight total">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>RSM 포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td class="tRight">2,000</td>
+                                                            <td class="tRight">0</td>
+                                                            <td class="tRight total">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>구삼성포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td class="tRight">2,000</td>
+                                                            <td class="tRight">0</td>
+                                                            <td class="tRight total">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>신한카드포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td class="tRight">2,000</td>
+                                                            <td class="tRight">0</td>
+                                                            <td class="tRight total">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>RSM 포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td class="tRight">2,000</td>
+                                                            <td class="tRight">0</td>
+                                                            <td class="tRight total">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>구삼성포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td class="tRight">2,000</td>
+                                                            <td class="tRight">0</td>
+                                                            <td class="tRight total">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>신한카드포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td class="tRight">2,000</td>
+                                                            <td class="tRight">0</td>
+                                                            <td class="tRight total">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="7" class="listNone">
+                                                                <span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <!-- // 사용내역 -->
+                                        <!-- 양도내역 -->
+                                        <div class="stepLayout step2">
+                                            <div class="tabTbHead">
+                                                <table>
+                                                    <colgroup>
+                                                        <col width="" />
+                                                    </colgroup>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>계약번호</th>
+                                                            <th>종류</th>
+                                                            <th>상태</th>
+                                                            <th>사용일</th>
+                                                            <th>양수인</th>
+                                                            <th>양도포인트</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                            <div class="tabTbBodyScroll">
+                                                <table>
+                                                    <colgroup>
+                                                        <col width="" />
+                                                    </colgroup>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>RSM 포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td>홍길동</td>
+                                                            <td class="tRight">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>RSM 포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td>홍길동</td>
+                                                            <td class="tRight">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>구삼성포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td>홍길동</td>
+                                                            <td class="tRight">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>신한카드포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td>홍길동</td>
+                                                            <td class="tRight">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1234567890</td>
+                                                            <td>구삼성포인트</td>
+                                                            <td>매출</td>
+                                                            <td>2019-03-12</td>
+                                                            <td>홍길동</td>
+                                                            <td class="tRight">2,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="6" class="listNone">
+                                                                <span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <!-- // 양도내역 -->
+                                        <!-- 적립내역 -->
+                                        <div class="stepLayout step3">
+                                            <div class="tabTbHead">
+                                                <table>
+                                                    <colgroup>
+                                                        <col width="" />
+                                                    </colgroup>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>연도</th>
+                                                            <th>RSM</th>
+                                                            <th>삼성</th>
+                                                            <th>신한</th>
+                                                            <th>합계</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                            <div class="tabTbBodyScroll">
+                                                <table>
+                                                    <colgroup>
+                                                        <col width="" />
+                                                    </colgroup>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>2018</td>
+                                                            <td class="tRight"><button class="pointInfo">50,000</button></td>
+                                                            <td class="tRight"><button class="pointInfo">0</button></td>
+                                                            <td class="tRight"><button class="pointInfo">10,000</button></td>
+                                                            <td class="tRight total"><button class="pointInfo">60,000</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2017</td>
+                                                            <td class="tRight"><button class="pointInfo">50,000</button></td>
+                                                            <td class="tRight"><button class="pointInfo">0</button></td>
+                                                            <td class="tRight"><button class="pointInfo">10,000</button></td>
+                                                            <td class="tRight total"><button class="pointInfo">60,000</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2016</td>
+                                                            <td class="tRight"><button class="pointInfo">50,000</button></td>
+                                                            <td class="tRight"><button class="pointInfo">0</button></td>
+                                                            <td class="tRight"><button class="pointInfo">10,000</button></td>
+                                                            <td class="tRight total"><button class="pointInfo">60,000</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2015</td>
+                                                            <td class="tRight"><button class="pointInfo">50,000</button></td>
+                                                            <td class="tRight"><button class="pointInfo">0</button></td>
+                                                            <td class="tRight"><button class="pointInfo">10,000</button></td>
+                                                            <td class="tRight total"><button class="pointInfo">60,000</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2014</td>
+                                                            <td class="tRight"><button class="pointInfo">50,000</button></td>
+                                                            <td class="tRight"><button class="pointInfo">0</button></td>
+                                                            <td class="tRight"><button class="pointInfo">10,000</button></td>
+                                                            <td class="tRight total"><button class="pointInfo">60,000</button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5" class="listNone">
+                                                                <span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <!-- // 적립내역 -->
+                                    </div>
+                                </div>
+                                <!-- //tabWrap -->
+                            </div>
+                        </div>  
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+        <!-- DimPopUp -->
+        <div class="dimPop" style="display: none;">
+            <!-- 적립내역 -->
+			<div class="popLGCase showingInfoLayer hAuto" id="pointInfoLayer" style="display: none;">
+				<button class="close">닫기</button>
+                <div class="tt">
+                    <h1>RSM 2018년 적립내역</h1>
+                </div>
+                <div class="popBack popScroll">
+                    <table>
+                        <colgroup>
+                            <col width="120px" />
+                            <col width="*" />
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th>1월</th>
+                                <td class="tCenter">4,000</td>
+                            </tr>
+                            <tr>
+                                <th>2월</th>
+                                <td class="tCenter">4,000</td>
+                            </tr>
+                            <tr>
+                                <th>3월</th>
+                                <td class="tCenter">4,000</td>
+                            </tr>
+                            <tr>
+                                <th>4월</th>
+                                <td class="tCenter">4,000</td>
+                            </tr>
+                            <tr>
+                                <th>5월</th>
+                                <td class="tCenter">4,000</td>
+                            </tr>
+                            <tr>
+                                <th>6월</th>
+                                <td class="tCenter">4,000</td>
+                            </tr>
+                            <tr>
+                                <th>7월</th>
+                                <td class="tCenter">4,000</td>
+                            </tr>
+                            <tr>
+                                <th>8월</th>
+                                <td class="tCenter">4,000</td>
+                            </tr>
+                            <tr>
+                                <th>9월</th>
+                                <td class="tCenter">4,000</td>
+                            </tr>
+                            <tr>
+                                <th>10월</th>
+                                <td class="tCenter">4,000</td>
+                            </tr>
+                            <tr>
+                                <th>11월</th>
+                                <td class="tCenter">5,000</td>
+                            </tr>
+                            <tr>
+                                <th>12월</th>
+                                <td class="tCenter">5,000</td>
+                            </tr>
+                            <tr>
+                                <th>합계</th>
+                                <td class="tCenter">50,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+			</div>
+			<!-- //적립내역 -->
+            
+            <!-- 조회버튼 클릭 시 : 고객정보 없음 -->
+            <div id="nonCustomer" class="popSMCase alertPop large hAuto" style="display: none;">
+                <div class="alertCnt">
+                    <h1 class="tit">고객정보 없음</h1>
+                    <div class="cntTxt">
+                        조회된 고객정보가 없습니다.<br />고객명, 생년월일 재확인하시고 조회 불가 시<br />삼성카드 콜센터(1588-8700) 문의 바랍니다.
+                    </div>
+                </div>
+				<div class="btn mt15">
+                    <button class="btnBY">확인</button>
+				</div>
+			</div>
+            <!-- // 조회버튼 클릭 시 : 고객정보 없음 -->
+            
+            <!-- 조회버튼 클릭 시 : 고객정보 조회 -->
+            <div class="popLGCase lookupPop" id="viewCustomer" style="display: none;">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>카드포인트 보유자 검색</h1>
+				</div>
+				<div class="popBack">
+					<div class="poplist">
+						<table>
+							<colgroup>
+								<col width="20%" /><col/><col width="18%"/><col width="35%"/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>이름</th>
+									<th>생년월일</th>
+									<th>성별</th>
+									<th>휴대폰</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="scrollArea">
+							<table>
+								<colgroup>
+									<col width="20%" /><col/><col width="18%"/><col width="35%"/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<td>김유진</td>
+										<td>88-01-01</td>
+										<td>남</td>
+										<td>010-****-1548</td>
+									</tr>
+									<tr>
+										<td>김유진</td>
+										<td>88-01-03</td>
+										<td>남</td>
+										<td>010-****-1515</td>
+									</tr>
+									<tr>
+										<td>김유진</td>
+										<td>88-01-03</td>
+										<td>여</td>
+										<td>010-****-1515</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+            <!-- // 조회버튼 클릭 시 : 고객정보 조회 -->
+        </div>
+        <!-- // DimPopUp -->
+	</body>
+</html>

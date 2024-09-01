@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.basicPop .pBtn button, .basicPop .pclose').click(function(){
+					$('.popDim').hide();
+					$(this).parents('.basicPop').hide();
+					scrollOpen();
+				}); //팝업닫기 샘플
+
+				/*********** 증빙 팝업 관련 *************/
+				$('.tEstep.diary .btnCamera#loadingCase1, .btnFileChk#loadingCase2').click(function(){
+			        $('.popDim').show();
+			        $('.proofPop#loadingCase').show();
+					scrollClose();
+					$(this).hide();
+					$('.btnFileChk#loadingCase2').show();
+			    }); // 하역/실링 증빙 팝업
+				$('.proofPop .swiperImgArea .imgBox .btnClose').click(function(){
+					$(this).parents('li').remove();
+				}); // 등록된 하역/실링 증빙 삭제
+				$('.tEstep.diary .btnCamera#costCase1, .btnFileChk#costCase2').click(function(){
+			        $('.popDim').show();
+			        $('.proofPop#costCase').show();
+					scrollClose();
+					$(this).hide();
+					$('.btnFileChk#costCase2').show();
+					$('.proofPop#costCase .listImgArea li.staticCase .imgBox').click(function(){
+						$('.layerDim').show();
+						$('.proofPickPop').show();
+						scrollClose();
+						$('.proofPickPop button').click(function(){
+							$('.popDim').show();
+						    $('.proofPop#costCase').show();
+							scrollClose();
+						});
+					});
+			    }); // 부대비용 증빙 팝업
+				$('.proofPop .listImgArea li .btnClose').click(function(){
+					$(this).parent('li').remove();
+				}); // 등록된 부대비용 삭제
+				$('.proofPickPop .selectSet select').change(function(){
+					$('.pfContents .ipHolder').removeClass('dis');
+					$('.pfContents .ipHolder input').attr('disabled', false);
+					if($(this).val() == 0){
+						$('.pfContents .ipHolder').addClass('dis');
+						$('.pfContents .ipHolder input').attr('disabled', true);
+						$('.pfContents .ipHolder textarea').attr('placeholder', '부대비용 발생 경위 및 내용을 작성해주세요');
+					} else {
+						$('.pfContents .ipHolder textarea').attr('placeholder', '반납지에 컨테이너 반납 할 때 항만에서 반납비룔 요청했습니다. 증빙 첨부합니다.');
+					}
+				}); // 부대비용 선택 팝업
+				$('.proofPop .imgBox img').click(function(){
+					$('.imgZoomPop .popImgBox').find('img').remove();
+					$(this).clone().appendTo('.imgZoomPop .popImgBox');
+					$('.layerDim').show();
+					$('.imgZoomPop').show();
+				}); // 2020-07-24 이미지 확대 팝업
+				$('.imgZoomPop .pclose').click(function(){
+					$('.layerDim').hide();
+					$('.imgZoomPop').hide();
+				}); // 이미지 확대 팝업 닫기
+
+				/*********** 운송 드라이버, 차량 관련 *************/
+				function popReset(){
+					$('.dpChangeCase, .dpCancelCase').hide();
+				}
+				$('.btnDpSet').click(function(){
+					popReset();
+					$('.alertDim').show();
+					$('.dpAlertPop1, .dpAlertPop1 .dpChangeCase').show();
+					$('.dpAlertPop1 .pBtn button').click(function(){
+						popReset();
+						$('.alertDim').show();
+						$('.dpAlertPop2, .dpAlertPop2 .dpChangeCase').show();
+					});
+					$(this).hide();
+					$('.btnDpSetEnd').show();
+					$('.dispatchSet dl dd .setText').hide();
+					$('.dispatchSet dl dd .selectSet').show();
+			    }); //배차변경 클릭 시
+				$('.btnDpSetEnd').click(function(){
+					$(this).hide();
+					$('.btnDpSet').show();
+					$('.dispatchSet dl dd .setText').show();
+					$('.dispatchSet dl dd .selectSet').hide();
+				}); //배차변경완료 클릭 시
+				$('.btnDpCancel').click(function(){
+					popReset();
+					$('.alertDim').show();
+					$('.dpAlertPop1, .dpAlertPop1 .dpCancelCase').show();
+					$('.dpAlertPop1 .pBtn button').click(function(){
+						popReset();
+						$('.alertDim').show();
+						$('.dpAlertPop2, .dpAlertPop2 .dpCancelCase').show();
+						$('.dpAlertPop2 .pBtn button').click(function(){
+							$('.alertDim').show();
+							$('.dpCancelAlertPop').show();
+						});
+						$('.dpCancelAlertPop .pBtn .red').click(function(){
+							$('.popDim').show();
+							$('.dpCancelPop').show();
+						});
+					});
+				}); //배차취소 클릭 시
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap" class="freightCase">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<span class="left">
+						<button class="btnList" onclick="location.href='reservation.html'">목록</button>
+					</span>
+					<div class="viewTit2">
+						<span class="simpleTit">
+							<em>[<span class="red">수입</span> / 왕복]</em>
+							<strong class="date">2020-01-22</strong>
+							<span class="statusSet receive">운송실행</span>
+						</span>
+						<span class="right">
+							<dl>
+								<dt>구간거리</dt>
+								<dd><span>486</span>km</dd>
+							</dl>
+							<dl>
+								<dt>운송금액</dt>
+								<dd><span>560,000</span>원</dd>
+							</dl>
+						</span>
+					</div>
+					<div class="hiddenHead" style="display:none;">
+						<dl>
+							<dt>작업시간</dt>
+							<dd>2020-01-22  09:00</dd>
+						</dl>
+						<dl>
+							<dt>작업지</dt>
+							<dd>
+								<strong>주식회사 안산중공업 (제1공장 1층 하역장)</strong>
+								<p>[충북/안산] 충청북도 청주시 상당구 북문로2가 18-2</p>
+							</dd>
+						</dl>
+					</div>
+				</header>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="transExecutionView">
+						<div class="dispatchSetArea">
+							<span class="disCode">배차번호 20010001</span>
+							<span class="dispatchSet">
+								<dl class="inputBox iner">
+									<dt>운송 드라이버</dt>
+									<dd>
+										<span>홍길동 (010-0000-9999)</span>
+									</dd>
+								</dl>
+								<dl class="inputBox iner">
+									<dt>운송 차량</dt>
+									<dd>
+										<span class="setText">(자차) 55호 3456</span>
+										<span class="selectSet" style="display:none;">
+											<select>
+												<option>(자차) 55호 3456</option>
+												<option>(자차) 55호 3456</option>
+											</select>
+										</span>
+									</dd>
+								</dl>
+								<span class="dpBtnSet">
+									<!-- 2020-07-16 배차변경, 완료버튼 삭제 -->
+									<button class="btnM whiteBlue btnDpCancel">배차취소</button>
+								</span>
+							</span>
+						</div>
+						<div class="pd2">
+							<div class="gridSet grid2">
+								<div class="gridItem">
+									<div class="tEstep schedule">
+										<div class="tEstepTit">
+											<strong><span>1</span>운송일정</strong>
+										</div>
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="120" />
+													<col width="80" />
+													<col width="300" />
+												</colgroup>
+												<thead>
+													<tr>
+														<th>운송일자</th>
+														<th>운송시간</th>
+														<th>출발/작업/도착지</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>2020-01-22</td>
+														<td>05:00</td>
+														<td class="tL">
+															<strong>[부산북항]</strong>
+															<span>부산광역시 남구 북항로</span>
+															<div class="mBtn">
+																<button class="btnS gray">주소 복사</button>
+																<button class="btnS gray">내비게이션</button>
+															</div>
+															<!-- 2020-07-16 이름, 전화번호 영역 삭제 -->
+														</td>
+													</tr>
+													<tr>
+														<td>2020-01-22</td>
+														<td>05:00</td>
+														<td class="tL pb3"><!-- 2020-07-16 클래스추가 -->
+															<strong>[부산북항]</strong>
+															<span>주식회사 안산중공업 (제1공장 1층 하역장)</span>
+															<span>충청북도 청주시 상당구 북문로2가 18-2</span>
+															<div class="mBtn">
+																<button class="btnS gray">주소 복사</button>
+																<button class="btnS gray">내비게이션</button>
+															</div>
+															<div class="grayArea">홍길동 · <a class="phoneNum" href="tel:010-1234-5678">010-1234-5678</a></div>
+														</td>
+													</tr>
+													<tr>
+														<td>2020-01-22</td>
+														<td>05:00</td>
+														<td class="tL">
+															<strong>[부산북항]</strong>
+															<span>부산광역시 남구 북항로</span>
+															<div class="mBtn">
+																<button class="btnS gray">주소 복사</button>
+																<button class="btnS gray">내비게이션</button>
+															</div>
+															<!-- 2020-07-16 이름, 전화번호 영역 삭제 -->
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+								<div class="gridItem">
+									<div class="tEstep container">
+										<div class="tEstepTit">
+											<strong><span>2</span>컨테이너 / 물품 정보</strong>
+										</div>
+										<div class="tls">
+											<table>
+												<colgroup>
+													<col width="110" />
+													<col width="60" />
+													<col width="30" />
+													<col width="85" />
+													<col width="80"/>
+												</colgroup>
+												<thead>
+													<tr>
+														<th>유형</th>
+														<th>크기</th>
+														<th>중량</th>
+														<th>컨테이너 번호</th>
+														<th>Seal 번호</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>Open Top</td>
+														<td>40ft High Cube</td>
+														<td>30ton</td>
+														<td>999999999</td>
+														<td>888888888</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<div class="memo">
+											<strong>품목</strong>
+											<!-- 2020-08-04 메모 텍스트 상자 3줄 이상일 경우 -->
+											<p>
+												공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.<br/>
+												공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.<br/>
+												빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.<br/>
+												빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.<br/>
+											</p>
+											<!-- //2020-08-04 메모 텍스트 상자 3줄 이상일 경우 -->
+											<strong>운송 메모</strong>
+											<p>
+												공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.
+												공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기,
+												빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.
+											</p>
+											<strong>기타 메모</strong>
+											<p>
+												공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.
+												공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기,
+												빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tEstep diary">
+								<div class="tEstepTit">
+									<strong><span>3</span>운송상태</strong>
+								</div>
+								<div class="tls">
+									<table>
+										<colgroup>
+											<col width="200"/>
+											<col width="60"/>
+											<col width="200"/>
+										</colgroup>
+										<thead>
+											<tr>
+												<th>상태</th>
+												<th>진행여부</th>
+												<th>진행 시간</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>
+													<strong>운송 실행</strong>* 운송 출발 시 우측 버튼을 켜주세요
+												</td>
+												<td>
+													<span class="toggleSet">
+														<input type="checkbox" id="push1" checked/>
+														<label for="push1"></label>
+													</span>
+												</td>
+												<td>
+													<span class="dateFormat"><em>2020-01-22</em><i>오전 00:00</i></span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<strong>컨테이너 작업</strong>* 작업지에 도착하면 우측 버튼을 켜주세요
+												</td>
+												<td>
+													<span class="toggleSet">
+														<input type="checkbox" id="push2" checked/>
+														<label for="push2"></label>
+													</span>
+												</td>
+												<td>
+													<span class="dateFormat"><em>2020-01-22</em><i>오전 00:00</i></span>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<strong>운송 완료</strong> * 도착지에 도착하면 우측 버튼을 켜주세요
+												</td>
+												<td>
+													<span class="toggleSet">
+														<input type="checkbox" id="push3" />
+														<label for="push3"></label>
+													</span>
+												</td>
+												<td>-</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="btnArea tC">
+									<button class="btnCamera" id="loadingCase1">하역/실링 증빙 촬영</button>
+									<button class="btnFileChk" id="loadingCase2" style="display:none;">하역/실링 증빙 보기</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //page Layout -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<!-- 알림 -->
+			<div id="push">
+				<aside>
+					<div class="panelBack pushback c-menu--slide-right">
+						<div class="panelTit">
+							<strong>운송알림</strong>
+							<span class="right"><button class="btnClose closePush c-close">닫기</button></span>
+						</div>
+						<div class="panelArea">
+							<div data-include="push.html"></div>
+						</div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</aside>
+			</div>
+			<!-- //알림 -->
+		</div>
+		<!-- //Wrap -->
+		<!-- alertPopup -->
+		<div class="alertDim" style="display:none;">
+			<!-- 배차확정 기간이 지난 경우 -->
+			<div class="alertPop dpAlertPop1" style="display:none;">
+				<div class="pBack">
+					<div class="dpChangeCase" style="display:none;">
+						<strong>배차 변경 기한이 지난 건입니다.</strong>
+						<div class="alertUl">
+							<ul>
+								<li>※ 배차변경은 배차 확정 당일 24시까지만 가능합니다.</li>
+								<li>※ 부득이하게 [배차변경]이 필요한 경우, 물류플랫폼<!-- 2020-10-29 텍스트 변경 -->에 연락해주세요. Tel. 02) 123-4566 <span>(차후 배차 선정에 불이익이 있을 수 있습니다.)</span></li>
+							</ul>
+						</div>
+					</div>
+					<div class="dpCancelCase" style="display:none;">
+						<strong>배차 취소 기한이 지난 건입니다.</strong>
+						<div class="alertUl">
+							<ul>
+								<li>※ 배차취소는 배차 확정 당일 24시까지만 가능합니다.</li>
+								<li>※ 부득이하게 [배차변경]이 필요한 경우, 물류플랫폼<!-- 2020-10-29 텍스트 변경 -->에 연락해주세요. Tel. 02) 123-4566 <span>(차후 배차 선정에 불이익이 있을 수 있습니다.)</span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM black">닫기</button>
+				</div>
+			</div>
+			<!-- //배차확정 기간이 지난 경우 -->
+			<!-- 본인이 확정한 배차가 아닌 경우 -->
+			<div class="alertPop dpAlertPop2" style="display:none;">
+				<div class="pBack">
+					<p class="dpChangeCase" style="display:none;">배차 변경은 해당 배차를 신청한 분만 진행 가능합니다.</p>
+					<p class="dpCancelCase" style="display:none;">배차 취소는 해당 배차를 신청한 분만 진행 가능합니다.</p>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM black">닫기</button>
+				</div>
+			</div>
+			<!-- //본인이 확정한 배차가 아닌 경우 -->
+			<!-- 배차 취소 알림 팝업 -->
+			<div class="alertPop dpCancelAlertPop" style="display:none;">
+				<div class="pBack">
+					<div>
+						<strong>배차를 취소하시겠습니까?</strong>
+						<div class="alertUl">
+							<ul>
+								<li>※ [배차취소] 할 경우, 2시간동안 배차정보를 열람하실 수 없습니다.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM black">취소</button>
+					<button class="btnM red">확인</button>
+				</div>
+			</div>
+			<!-- //배차 취소 알림 팝업 -->
+			<!-- 배차 취소 알림 팝업2 -->
+			<div class="alertPop dpCancelAlertPop2" style="display:none;">
+				<div class="pBack">
+					<div>
+						<strong>배차를 취소하시겠습니까?</strong>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM black">취소</button>
+					<button class="btnM red">확인</button>
+				</div>
+			</div>
+			<!-- //배차 취소 알림 팝업2 -->
+		</div>
+		<!-- //alertPopup -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none">
+			<div class="layerDim" style="display:none;"></div>
+			<!-- 배차 취소 팝업 -->
+			<div class="basicPop dpCancelPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>배차 취소</h1>
+				</div>
+				<div class="pBack">
+					<strong>해당 배차 건을 취소하시겠습니까? 배차취소 사유를 등록해 주세요.</strong>
+					<span class="radioSet">
+						<input type="radio" id="dpc1" name="dpCancel" />
+						<label for="dpc1"><i></i>해당 날짜에 운송할 수 없는 상황이 발생함</label>
+					</span>
+					<span class="radioSet">
+						<input type="radio" id="dpc2" name="dpCancel" />
+						<label for="dpc2"><i></i>화주와의 트러블이 발생함</label>
+					</span>
+					<span class="radioSet">
+						<input type="radio" id="dpc3" name="dpCancel" />
+						<label for="dpc3"><i></i>마음에 들지 않는 운송건인데 잘못 신청함</label>
+					</span>
+					<span class="radioSet">
+						<input type="radio" id="dpc4" name="dpCancel" />
+						<label for="dpc4"><i></i>기타 (사유를 입력해 주세요)</label>
+					</span>
+					<textarea></textarea>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">닫기</button>
+					<button class="btnM red">배차취소하기</button>
+				</div>
+			</div>
+			<!-- //배차 취소 팝업 -->
+			<!-- 하역/실링 증빙 팝업 -->
+			<div class="basicPop proofPop" id="loadingCase" style="display:none">
+				<button class="pclose">닫기</button>
+				<button class="btnProofFin">완료</button>
+				<div class="tt">
+					<h1>하역/실링 증빙</h1>
+				</div>
+				<div class="pBack">
+					<div class="addressArea">
+						<strong>[작업지] 주식회사 안산중공업 (제1공장 1층 하역장)</strong>[충북/안산] 충청북도 청주시 상당구 북문로2가 18-2
+					</div>
+					<div class="swiperImgArea">
+						<ul>
+							<li class="staticCase" onclick="location.href='masking.html';">사진(0/3)</li>
+							<li>
+								<div class="imgBox">
+									<button class="btnClose white">삭제</button>
+									<img src="../images/sample1.png" alt="증빙샘플1"/>
+								</div>
+							</li>
+							<li>
+								<div class="imgBox">
+									<button class="btnClose white">삭제</button>
+									<img src="../images/sample2.png" alt="증빙샘플2"/>
+								</div>
+							</li>
+							<li>
+								<div class="imgBox">
+									<button class="btnClose white">삭제</button>
+									<img src="../images/sample3.png" alt="증빙샘플3"/>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="alertUl">
+						<ul>
+							<li>※ 사진은 하역/실링 작업하시는 과정이 잘 보이도록 찍어주세요.</li>
+							<li>※ 사진은 3장까지 첨부 가능합니다.</li>
+							<li>※ 미리 찍어 두신 타 작업지의 사진을 첨부하시면 안돼요! 반드시 현장에서 촬영한 사진을 첨부해주세요.</li>
+						</ul>
+					</div>
+					<div class="tipLine">
+						<div class="theTip">
+							<strong>물류플랫폼<!-- 2020-10-29 텍스트 변경 -->’s TIP</strong>
+							<p>
+								작업지에서 <span class="orange">컨테이너 하역/실링 작업</span>을 하실 때 증빙 사진을 촬영해주세요.<br/>
+								<span class="red">촬영한 사진은 운임 정산 시에 필요한 정보입니다.</span><br/>
+								운송사에서도 함께 확인 가능합니다.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //하역/실링 증빙 팝업 -->
+			<!-- 부대비용 증빙 팝업 -->
+			<div class="basicPop proofPop" id="costCase" style="display:none">
+				<button class="pclose">닫기</button>
+				<button class="btnProofFin">완료</button>
+				<div class="tt">
+					<h1>부대비용 증빙</h1>
+				</div>
+				<div class="pBack">
+					<div class="addressArea">
+						<strong>부대비용 :</strong> Port 사용료, 컨테이너 반납비, 픽업료, 상하차료, 경유비, 대기료, 기타
+					</div>
+					<div class="listImgArea">
+						<ul>
+							<li class="staticCase">
+								<div class="imgBox"></div>
+								<div class="alertUl">
+									<ul>
+										<li>※ 부대비용 증빙(영수증 등)이 잘 보이도록 촬영해주세요.</li>
+										<li>※ 사진은 부대비용 종류별로 1장만 첨부 가능합니다.</li>
+										<li>※ 미리 찍어 두신 타 작업지의 사진을 첨부하시면 안돼요! 반드시 현장에서 촬영한 사진을 첨부해주세요.</li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<button class="btnClose white">삭제</button>
+								<div class="imgBox">
+									<img src="../images/img_proof_example.jpg" alt="증빙샘플"/>
+								</div>
+								<div class="pfBox">
+									<dl>
+										<dt>[컨테이너 반납비]</dt>
+										<dd>15,000원</dd>
+									</dl>
+									<textarea>반납지에 컨테이너 반납 할 때 항만에서 반납비룔 요청했습니다. 증빙 첨부합니다.</textarea>
+								</div>
+							</li>
+							<li>
+								<button class="btnClose white">삭제</button>
+								<div class="imgBox">
+									<img src="../images/img_proof_example.jpg" alt="증빙샘플"/>
+								</div>
+								<div class="pfBox">
+									<dl>
+										<dt>[Port 사용료]</dt>
+										<dd>15,000원</dd>
+									</dl>
+									<textarea>반납지에 컨테이너 반납 할 때 항만에서 반납비룔 요청했습니다. 증빙 첨부합니다.</textarea>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="tipLine">
+						<div class="theTip">
+							<strong>물류플랫폼<!-- 2020-10-29 텍스트 변경 -->’s TIP</strong>
+							<p>
+								<span class="orange">운송 과정에서 부대비용이 발생하셨다면</span> 부대비용 종류별로 증빙 사진을 촬영해주시고, 비용 및 내용을 입력해주세요.<br/>
+								<span class="red">촬영한 사진은 운임 정산 시에 필요한 정보입니다.</span><br/>
+								운송사에서도 함께 확인 가능합니다.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //부대비용 증빙 팝업 -->
+			<!-- 부대비용 선택 팝업 -->
+			<div class="basicPop proofPickPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>부대비용 선택</h1>
+				</div>
+				<div class="pBack">
+					<span class="selectSet dis">
+						<select>
+							<option value="0">선택</option>
+							<option value="1">Port 사용료</option>
+							<option value="2">컨테이너 반납비</option>
+							<option value="3">픽업료</option>
+							<option value="4">상하차료</option>
+							<option value="5">경유비</option>
+							<option value="6">대기료</option>
+							<option value="7">기타</option>
+						</select>
+					</span>
+					<div class="pfContents">
+						<dl>
+							<dt>금액</dt>
+							<dd>
+								<div class="ipHolder dis"><input type="text" disabled>원</div>
+							</dd>
+						</dl>
+						<dl>
+							<dt>내용
+								<span class="checkSet">
+									<input type="checkbox" id="chk1"/>
+									<label for="chk1"><i></i>이 문구 사용하기</label>
+								</span>
+							</dt>
+							<dd>
+								<div class="ipHolder"><textarea placeholder="부대비용 발생 경위 및 내용을 작성해주세요"></textarea></div>
+								<span class="letterNum">0/200</span>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">완료</button>
+					<button class="btnM red">촬영하기</button>
+				</div>
+			</div>
+			<!-- //부대비용 선택 팝업 -->
+			<!-- 이미지 확대 -->
+			<div class="imgZoomPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<span class="popImgBox"></span>
+			</div>
+			<!--//이미지 확대 -->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

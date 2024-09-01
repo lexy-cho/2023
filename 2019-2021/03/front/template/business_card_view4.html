@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			var swiper = new Swiper('.bsCardImgMainSwiper .swiper-container', {
+			  slidesPerView: 'auto',
+			  spaceBetween: 5
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap" class="headFix">
+			<!-- header -->
+			<div id="header" class="subCase">
+				<header>
+					<button class="btnPrev" onClick="location.href='business_card.html'">이전</button>
+					<h1>명함관리</h1>
+					<!-- <button class="btnNav">햄버거</button> -->
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu : 서브일 경우 삭제 -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="bcardViewLayout">
+						<!-- Swiper -->
+						<div class="bsCardImgMainSwiper">
+							<div class="swiper-container">
+								<ul class="swiper-wrapper">
+									<li class="swiper-slide">
+										<!-- <button class="shooting" onClick="location.href='business_card_write.html'">재촬영</button> -->
+										<div><span><img src="../images/sample5.png" alt="" /></span></div>
+										<!-- 2020-10-07  -->
+										<em>
+											<a class="zoom" href="business_card_zoom.html">확대보기</a>
+											<button class="reCamera">촬영</button>
+										</em>
+										<!-- //2020-10-07  -->
+									</li>
+									<li class="swiper-slide">
+										<!-- <button class="shooting" onClick="location.href='business_card_write.html'">촬영</button> -->
+										<div><span></span></div>
+										<!-- 2020-10-07  -->
+										<em>
+											<a class="zoom" href="business_card_zoom.html">확대보기</a>
+											<button class="reCamera">촬영</button>
+										</em>
+										<!-- //2020-10-07  -->
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- //Swiper -->
+						<p class="info reIng">명함을 재촬영해주시기 바랍니다.</p>
+						<div class="dlstyle">
+                            <dl>
+                                <dt>메모</dt>
+                                <dd class="memoList">
+									<ul>
+										<li>
+											<span>2020-05-08 00:00 <em>관리자</em> </span>
+											<div>명함 이미지 재촬영 요청하였습니다. 다시 촬영해주시기 바랍니다.</div>
+										</li>
+										<li>
+											<span>2020-05-07 00:00 <button class="btnTrashcan">삭제</button></span>
+											<div>아직 취합이 안되었을까요?</div>
+										</li>
+										<li>
+											<span>2020-05-07 00:00 <button class="btnTrashcan">삭제</button></span>
+											<div>촬영한 이미지가 조금 흐릿한데 나쁘지 않으면 일단 이걸로 정보취합해주세요</div>
+										</li>
+									</ul>
+								</dd>
+                                <dd><button class="btnS white entypo-plus" id="memoAddBtn">메모 추가하기</button></dd>
+                            </dl>
+                        </div>
+						<!-- <div class="btnArea tC">
+							<button class="btnM white" onClick="location.href='business_card_write.html'">편집</button>
+						</div> -->
+					</div>
+					<!--//-->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>상단으로</button></div>
+		</div>
+		<!-- //Wrap -->
+		<!-- fullPop -->
+		<div class="fullPop memoAddPop" style="display:none;">
+			<div class="tt">
+				<button class="pclose">닫기</button>
+				<h1>메모추가하기</h1>
+				<button class="btnS white">저장</button>
+			</div>
+			<div class="pBack">
+				<textarea></textarea>
+			</div>
+		</div>
+		<div class="fullPop shareAddPop" style="display:none;">
+			<div class="tt">
+				<button class="pclose">닫기</button>
+				<h1>공유자 선택하기</h1>
+				<button class="btnS white">저장</button>
+			</div>
+			<div class="pBack">
+			</div>
+		</div>
+		<!-- //fullPop -->
+	</body>
+</html>

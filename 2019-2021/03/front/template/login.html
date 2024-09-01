@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+	</head>
+	<body>
+		<div id="loginWrap">
+			<div class="back">
+				<div class="loginTit">
+					<!--2021-02-02 문구 변경 -->
+					<div>
+						<span><img src="../images/i_logoting.svg" alt="" /></span>
+						<h1><img src="../images/img_logoTit.png" alt="Ting:OFFICE LIF" /></h1>
+					</div>
+					<!--2021-02-02 문구 변경 -->
+				</div>
+				<div class="loginForm">
+					<div class="formBack">
+						<form id="" action="" method="post">
+							<div class="inputBack">
+								<div class="inputBox">
+									<input type="text" id="" name="" placeholder="USER ID"/>
+								</div>
+								<div class="inputBox pwCase pwSet"><!-- 2020-05-29 pwSet class 추가 -->
+									<input type="password" id="" name="" placeholder="영문, 숫자, 특수기호 8~20자 이내" /><!-- 2020-04-08 placeholder 수정 -->
+									<i class="off"></i><!-- 2020-05-29 i 추가 (클릭 토클 class off) -->
+								</div>
+								<span class="checkSet">
+									<input type="checkbox" id="chk1" />
+									<label for="chk1"><i></i>아이디 저장</label>
+								</span>
+								<span class="checkSet">
+									<input type="checkbox" id="chk1" />
+									<label for="chk1"><i></i>자동로그인</label>
+								</span>
+								<div class="goPwFind">
+									<a href="pwFind.html">비밀번호 찾기</a>
+								</div>
+							</div>
+							<button type="button" class="btnLogin" onClick="location.href='main.html'">Login</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<div class="miniPop authorityPop">
+				<div class="tt">
+					<h1>ANDU 이용을 위한 권한안내</h1><!--2021-02-10 네임 변경-->
+				</div>
+				<div class="pBack">
+					<!---->
+					<dl>
+						<dt>필수 접근 권한</dt>
+						<dd class="folder">
+							<strong>저장공간 (사진/미디어/파일)</strong>
+							테이터 캐싱 및 파일 읽기 또는 저장,글저장
+						</dd>
+						<dd class="camera">
+							<strong>카메라</strong>
+							명함등록을 위한 사진첨부 또는 화면 촬영
+						</dd>
+					</dl>
+					<dl>
+						<dt>선택적 접근 권한</dt>
+						<dd class="location">
+							<strong>위치정보</strong>
+							사용자 위치 확인
+						</dd>
+					</dl>
+					<p>선택적 접근 권한은 관련 기능 이용시 동의가 필요하며, 미동의 시에도 해당 기능 외 서비스는 이용 가능합니다.</p>
+					<p><strong>접근권한 변경 방법</strong>
+					휴대폰 설정 > 애플리케이션 관리 > Ting</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button onclick="if(!alert('필수접근권한 네이티브 허용이 나옵니다.')){$('.popDim').hide();return false;}">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //Popup -->
+	</body>
+</html>

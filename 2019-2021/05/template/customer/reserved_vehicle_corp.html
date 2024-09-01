@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/customer.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){            
+            // 스크롤 영역 외 높이
+            var nonSclHeight = $("#header").height() + $(".searchField").outerHeight(true) + $(".dtTopBtn").outerHeight(true) + $(".custDtlTbHead").outerHeight(true) + 20;
+            
+            // 2019-04-17 스크롤 plugin 삭제 테이블 스크롤
+            /*$(".custDtlTbBody").css({
+                "height" : $(window).height() - nonSclHeight
+            }).mCustomScrollbar({
+                axis:"yx",
+                theme:"dark",
+                contentTouchScroll:true
+            });*/
+			$(".custDtlTbBody").css({"height" : $(window).height() - nonSclHeight});
+            
+            // bottom PopUp
+            function bottomPop(id, index) {
+                $(".subDtlBox").css({
+                    "transform" : "translateY(800px)"
+                });
+                $(id).css({
+                    "transform" : "translateY(0)"
+                });
+                
+                if(window.matchMedia("(max-width:420px), (orientation : landscape) and (max-width:820px)").matches){ // 모바일일때 dim show
+                    $("body").append("<div class='subDtlBoxDim'></div>");
+                }else{
+                    $(".custDtlTbBody").css({ // 그 외 팝업 크기에 맞춰 테이블 높이 조정
+                        "height" : ($(window).height() - ($(id).outerHeight(true) + nonSclHeight + 20))
+                    });
+                }
+                
+                if(index == 1){ // 예외처리
+                    /* 2019-04-17 스크롤 plugin 삭제 $(id).find(".subDtlBoxBody").mCustomScrollbar({
+                        axis:"yx",
+                        theme:"dark",
+                        contentTouchScroll:true
+                    }); */
+                }else{ // 팝업높이 보다 컨텐츠 내용이 길 경우 스크롤 생성
+                    if($(id).find(".subDtlMain").height() > $(id).find(".subDtlBoxBody").height()){
+                        /* 2019-04-17 스크롤 plugin 삭제 $(id).find(".subDtlBoxBody").mCustomScrollbar({
+                            axis:"yx",
+                            theme:"dark",
+                            contentTouchScroll:true
+                        }); */
+                    }   
+                }
+            }
+            
+            // 차량입력
+            $(".newInsert").click(function(){
+                bottomPop("#carInsert");
+            });
+            
+            // 차량보기
+            $(".custDtlTbBody tbody tr").click(function(){
+                bottomPop("#carView");
+            });
+            
+            // 차량조회
+            $(".openPop6").click(function(){
+				$('.dimPop, #openPop6').show();
+			});
+            
+            // 닫기
+            $(".boxClose").click(function(){
+                $(this).parent(".subDtlBox").css({
+                    "transform" : "translateY(800px)"
+                });
+                $(".custDtlTbBody").css({
+                    "height" : $(window).height() - nonSclHeight
+                });
+                $(".subDtlBoxDim").remove();
+            });
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<!--<button class="gnbOpen">GNB 열기</button>-->
+							<button class="goPrev" onclick="history.back()">뒤로가기</button>
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="../main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<!-- <h2>1Depth title</h2> -->
+						<h2 class="sCase"><span>고객 조회 &gt; </span>보유차량이력</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<div class="custDetail">
+                            <div class="dtTopBtn type2 two">
+                                <button class="btnLB sltDelete">선택삭제</button>
+                                <button class="btnBY newInsert">신규등록</button>
+                            </div>
+                            
+                            <div class="custDtlTbScroll">
+                                <!-- table header -->
+                                <div class="custDtlTbHead">
+                                    <table>
+                                        <colgroup>
+                                            <col style="width:10%;">
+                                            <col style="width:18%;">
+                                            <col style="width:18%;">
+                                            <col style="width:*;">
+                                            <col style="width:16%;">
+                                            <col style="width:*;">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>선택</th>
+                                                <th>구매년도<button class=sort><i></i>정렬</button></th>
+                                                <th>차량코드<button class=sort><i></i>정렬</button></th>
+                                                <th>차명</th>
+                                                <th>구매차수</th>
+                                                <th>메모</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <!-- // table header -->
+                                
+                                <!-- table list -->
+                                <div class="custDtlTbBody">
+                                    <table>
+                                        <colgroup>
+                                            <col style="width:10%;">
+                                            <col style="width:18%;">
+                                            <col style="width:18%;">
+                                            <col style="width:*;">
+                                            <col style="width:16%;">
+                                            <col style="width:*;">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td><span class="checkSet"><input type="checkbox" id="car1" name="carHistory" /><label for="car1"><i></i></label></span></td>
+                                                <td>2012</td>
+                                                <td>R0301</td>
+                                                <td class="tLeft">SM3 1.5</td>
+                                                <td>1</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="checkSet"><input type="checkbox" id="car2" name="carHistory" /><label for="car2"><i></i></label></span></td>
+                                                <td>2012</td>
+                                                <td>R0301</td>
+                                                <td class="tLeft">SM3 1.5</td>
+                                                <td>1</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="checkSet"><input type="checkbox" id="car3" name="carHistory" /><label for="car3"><i></i></label></span></td>
+                                                <td>2012</td>
+                                                <td>R0301</td>
+                                                <td class="tLeft">SM3 1.5</td>
+                                                <td>1</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="checkSet"><input type="checkbox" id="car4" name="carHistory" /><label for="car4"><i></i></label></span></td>
+                                                <td>2012</td>
+                                                <td>R0301</td>
+                                                <td class="tLeft">All New SM7</td>
+                                                <td>1</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="checkSet"><input type="checkbox" id="car5" name="carHistory" /><label for="car5"><i></i></label></span></td>
+                                                <td>2012</td>
+                                                <td>R0301</td>
+                                                <td class="tLeft">SM3 1.5</td>
+                                                <td>1</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="checkSet"><input type="checkbox" id="car6" name="carHistory" /><label for="car6"><i></i></label></span></td>
+                                                <td>2012</td>
+                                                <td>R0301</td>
+                                                <td class="tLeft">SM3 1.5</td>
+                                                <td>1</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="checkSet"><input type="checkbox" id="car7" name="carHistory" /><label for="car7"><i></i></label></span></td>
+                                                <td>2012</td>
+                                                <td>R0301</td>
+                                                <td class="tLeft">SM3 1.5</td>
+                                                <td>1</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="checkSet"><input type="checkbox" id="car8" name="carHistory" /><label for="car8"><i></i></label></span></td>
+                                                <td>2012</td>
+                                                <td>R0301</td>
+                                                <td class="tLeft">SM3 1.5</td>
+                                                <td>1</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="checkSet"><input type="checkbox" id="car9" name="carHistory" /><label for="car9"><i></i></label></span></td>
+                                                <td>2012</td>
+                                                <td>R0301</td>
+                                                <td class="tLeft">All New SM7</td>
+                                                <td>1</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="checkSet"><input type="checkbox" id="car10" name="carHistory" /><label for="car10"><i></i></label></span></td>
+                                                <td>2012</td>
+                                                <td>R0301</td>
+                                                <td class="tLeft">SM3 1.5</td>
+                                                <td>1</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <!--<tr>
+                                                <td colspan="6" class="listNone">
+                                                    <span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+                                                </td>
+                                            </tr>-->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- // table list -->
+                            </div>
+                            
+                            <!-- 2019-06-14 차량보기(리스트 목록에서 선택 시) -->
+                            <div id="carView" class="subDtlBox">
+                                <button class="boxClose">닫기</button>
+                                <h2 class="sdBoxTit">보유차량</h2>
+                                <div class="subDtlBoxBody">
+                                    <div class="subDtlMain">
+                                        <div class="sdMainHead">
+                                            <h3 class="sdMainTit"><i class="iCar"></i>차량보기</h3> <!-- 2019-06-14 목록에서 선택 시 이름변경 -->
+                                            <div class="sdBtnRight">
+                                                <button class="btnLB">삭제</button>
+                                                <button class="btnBY">저장</button>
+                                            </div>
+                                        </div>
+                                        <div class="gridContainer listViewCase"> <!-- 2019-06-14 목록에서 선택 시 class 변경 -->
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>구매년도<sup>필수입력</sup></dt>
+                                                        <dd class="inMust"> <!--2019-04-18 필수class추가-->
+                                                            <input type="tel" id="" name="" placeholder="_ _ _ _" />
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>구매차수</dt>
+                                                        <dd>
+                                                            <input type="tel" id="" name="" />
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>차량코드<sup>필수입력</sup></dt>
+                                                        <dd class="inMust"> <!--2019-04-18 필수class추가-->
+                                                            <div class="inpInnerBtn">
+                                                                <input type="text" id="" name="" />
+                                                                <button class="btnBG openPop6">조회</button>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>차량명<sup>필수입력</sup></dt>
+                                                        <dd class="inMust"> <!--2019-04-18 필수class추가-->
+                                                            <input type="text" id="" name="" placeholder="_ _ _ _" />
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>메모</dt>
+                                                        <dd><textarea id="" name="" placeholder="내용을 입력해 주세요" ></textarea></dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // 차량보기 -->
+                            
+                            <!-- 차량입력 -->
+                            <div id="carInsert" class="subDtlBox">
+                                <button class="boxClose">닫기</button>
+                                <h2 class="sdBoxTit">보유차량</h2>
+                                <div class="subDtlBoxBody">
+                                    <div class="subDtlMain">
+                                        <div class="sdMainHead">
+                                            <h3 class="sdMainTit"><i class="iCar"></i>차량입력</h3>
+                                            <div class="sdBtnRight">
+                                                 <!-- 2019-06-14 삭제는 목록에서 선택했을 때만 -->
+                                                <button class="btnBG reflesh">새로고침</button>
+                                                <button class="btnBY">저장</button>
+                                            </div>
+                                        </div>
+                                        <div class="gridContainer tbType">
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>구매년도<sup>필수입력</sup></dt>
+                                                        <dd class="inMust"> <!--2019-04-18 필수class추가-->
+                                                            <input type="tel" id="" name="" placeholder="_ _ _ _" />
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>구매차수</dt>
+                                                        <dd>
+                                                            <input type="tel" id="" name="" />
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>차량코드<sup>필수입력</sup></dt>
+                                                        <dd class="inMust"> <!--2019-04-18 필수class추가-->
+                                                            <div class="inpInnerBtn">
+                                                                <input type="text" id="" name="" />
+                                                                <button class="btnBG openPop6">조회</button>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>차량명<sup>필수입력</sup></dt>
+                                                        <dd class="inMust"> <!--2019-04-18 필수class추가-->
+                                                            <input type="text" id="" name="" placeholder="_ _ _ _" />
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet">
+                                                <div class="gridItem">
+                                                    <dl class="tbView">
+                                                        <dt>메모</dt>
+                                                        <dd><textarea id="" name="" placeholder="내용을 입력해 주세요" ></textarea></dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // 차량입력 -->
+                        </div>  
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+        
+        <!-- DimPopUp -->
+		<div class="dimPop" style="display:none;">
+            <!-- 보유차량 -->
+			<div class="popLGCase searchPop" id="openPop6" style="display:none">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>보유차량</h1>
+				</div>
+				<div class="popBack">
+					<div class="popSearch kindCase">
+						<div>
+							<span class="selectSet">
+								<select>
+									<option>선택</option>
+									<option>전체</option>
+									<option>제조사</option>
+									<option>제조사</option>
+								</select>
+							</span>
+							<input type="text" placeholder="차량명을 조회해 주세요" />
+							<button class="btnBY">조회</button>
+						</div>
+					</div>
+					<div class="poplist uCase">
+						<table>
+							<colgroup>
+								<col width="12%" /><col width="17%"/><col width="39%"/><col/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>코드</th>
+									<th class="tInGrid">
+										<div class="listGrid">
+											<div class="lgTd">제조사 <em class="pHide">및 차급명</em></div>
+											<span class="lgTd mHide">차급명</span>
+										</div>
+									</th>
+									<th>차명</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="popScrollArea">
+							<table>
+								<colgroup>
+									<col width="12%" /><col width="17%"/><col width="39%"/><col/>
+								</colgroup>
+								<tbody>
+									<!-- Loop -->
+									<tr>
+										<td>1</td>
+										<td>K0101</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<div class="lgTd">기아</div>
+												<span class="lgTd">Mini(경)</span>
+											</div>
+										</td>
+										<td>올 뉴 모닝</td>
+									</tr>
+									<!-- //Loop -->
+									<tr class="on">
+										<td>1</td>
+										<td>K0101</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<div class="lgTd">기아</div>
+												<span class="lgTd">Mini(경)</span>
+											</div>
+										</td>
+										<td>올 뉴 모닝</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>K0101</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<div class="lgTd">기아</div>
+												<span class="lgTd">Mini(경)</span>
+											</div>
+										</td>
+										<td>올 뉴 모닝</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>K0101</td>
+										<td class="tInGrid">
+											<div class="listGrid">
+												<div class="lgTd">기아</div>
+												<span class="lgTd">Mini(경)</span>
+											</div>
+										</td>
+										<td>올 뉴 모닝</td>
+									</tr>
+									<tr>
+										<td colspan="4" class="listNone">
+											<span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="btn">
+					<button class="btnLB">취소</button>
+					<button class="btnBY">선택완료</button>
+				</div>
+			</div>
+			<!-- //보유차량 -->
+        </div>
+        <!-- // DimPopUp -->
+	</body>
+</html>

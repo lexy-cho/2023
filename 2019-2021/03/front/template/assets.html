@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ANDU : OFFICE LIFE</title><!--2021-02-10 로고변경-->
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/lightgallery.min.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/lightgallery-all.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$(".btnGuide").click(function(){
+				$(".guideDim, .guidePop").show();
+			});
+			$(".gClose").click(function(){
+				$(".guideDim, .guidePop").hide();
+			});
+			var swiper2 = new Swiper('.guidePop .swiper-container', {
+				pagination: {
+					el: '.swiper-pagination',
+				},
+				autoplay: false,
+		    });
+			/**/
+			$('.alertPop button, .miniPop button, .basicPop .pBtn button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .miniPop, .basicPop').hide();
+			});
+			$('.btnArea .red').click(function(){
+				$('.popDim, .popDim .signPop').show();
+			});
+			$('.signPop button').click(function(){
+				$('.popDim').hide();
+				$('.signPop, #firstP, #firstBtn').hide();
+				$('.sign img, .addAssets').show();
+			});
+			$('.repair button').click(function(){
+				$('.popDim, .popDim .etcReasonsPop').show();
+			});
+			$('h3 button.white').click(function(){
+				$('.popDim, .popDim .repairHistoyPop').show();
+			});
+			$('h3 button.blue').click(function(){
+				$('.popDim, .popDim .inoutPop').show();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<h1>자산현황<button class="btnGuide">가이드 보기</button></h1>
+					<button class="btnNav">햄버거</button>
+					<a class="btnGo" href="inout.html">반출/입 현황</a>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb">
+				<section>
+					<div class="c-menu c-menu--slide-left"><!-- 우측 Slide 일 경우 -->
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</section>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="assetsLayout">
+						<!-- 2020-07-09 추가 지급일 경우 -->
+						<div class="addAssets" style="display:none;">
+							<p><span class="new">신규</span> 2018년 01월 01일<br/>추가 지급된 HW/SW 현황을 확인 후 하단의 수령확인을 해주시기 바랍니다.</p>
+							<div class="mobileList">
+								<ul>
+									<li>
+										<span class="uniqueNum">[HW] NT1-001</span>
+										<div class="tL"><strong>노트북</strong>[Apple] MC511KH/A</div>
+									</li>
+									<li>
+										<span class="uniqueNum">[SW] SW1-001</span>
+										<div class="tL">[MS Office] microsoft</div>
+									</li>
+								</ul>
+							</div>
+							<div class="btnArea tC">
+								<button class="btnM red">수령확인</button>
+							</div>
+						</div>
+						<!-- //2020-07-09 추가 지급일 경우 -->
+						<p id="firstP">신규로 지급된 HW/SW 현황을 확인 후 하단의 수령확인을 해주시기 바랍니다.</p>
+						<h3 class="first">하드웨어
+							<button class="btnS blue">반출 신청</button>
+							<span class="right">
+								<button class="btnS white">이력</button>
+							</span>
+						</h3>
+						<div class="mobileList">
+							<ul>
+								<li>
+									<span class="uniqueNum">NT1-001</span>
+									<div class="tL"><strong>노트북</strong>[Apple] MC511KH/A</div>
+									<span class="date">수령일자 : 2018-01-01</span>
+									<span class="repair"><button>수리요청</button></span>
+								</li>
+								<li>
+									<span class="uniqueNum">NT1-001</span>
+									<div class="tL"><strong>테스트디바이스</strong>[Apple] MC511KH/A</div>
+									<span class="date">수령일자 : 2018-01-01</span>
+									<span class="repair"><em>수리중</em></span>
+								</li>
+								<li>
+									<span class="uniqueNum">NT1-001</span>
+									<div class="tL"><strong>모니터</strong>[Apple] MC511KH/A</div>
+									<span class="date">수령일자 : 2018-01-01</span>
+									<span class="repair"><em>요청대기중</em></span>
+								</li>
+								<li>
+									<span class="uniqueNum">NT1-001</span>
+									<div class="tL"><strong>키보드마우스</strong>[Apple] MC511KH/A</div>
+									<span class="date">수령일자 : 2018-01-01</span>
+									<span class="repair"><button>수리요청</button></span>
+								</li>
+							</ul>
+						</div>
+						<h3>소프트웨어</h3>
+						<div class="mobileList">
+							<ul>
+								<li>
+									<span class="uniqueNum">SW1-001</span>
+									<div class="tL">[MS Office] microsoft</div>
+									<span class="date">수령일자 : 2018-01-01</span>
+								</li>
+								<li>
+									<span class="uniqueNum">SW1-001</span>
+									<div class="tL">[MS Office] microsoft</div>
+									<span class="date">수령일자 : 2018-01-01</span>
+								</li>
+								<li>
+									<span class="uniqueNum">SW1-001</span>
+									<div class="tL">[MS Office] microsoft</div>
+									<span class="date">수령일자 : 2018-01-01</span>
+								</li>
+							</ul>
+						</div>
+						<div class="btnArea tC" id="firstBtn">
+							<button class="btnM red">수령확인</button>
+						</div>
+						<!--2020-07-24-->
+						<div class="notList">
+							<div>지급된 자산이 없습니다.</div>
+						</div>
+						<!--//2020-07-24-->
+					</div>
+					<!--//-->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>상단으로</button></div>
+		</div>
+		<!-- //Wrap -->
+		<!-- guide -->
+		<div class="guideDim">
+			<div class="guideDimAlign">
+				<div class="guidePop">
+					<div class="gBack">
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="gImg"><img src="../images/guide_assets_step01.png" alt=""></div>
+									<div class="gText">
+										<span class="number">1</span>
+										<strong>지급받은 자산 확인 후 수령 확인을 선택합니다.</strong>
+										<p>수령이 완료되면 목록에서 확인이 가능합니다.</p>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="gImg"><img src="../images/guide_assets_step02.png" alt=""></div>
+									<div class="gText">
+										<span class="number">2</span>
+										<strong>수리가 필요할 경우 수리요청을 선택합니다.</strong>
+										<p>요청이 등록되면 ‘요청대기중 ‘ 상태로 변경됩니다.<br/>이력 버튼을 선택하면 수리 이력을 확인 할 수 있습니다.</p>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="gImg"><img src="../images/guide_assets_step03.png" alt=""></div>
+									<div class="gText">
+										<span class="number">3</span>
+										<strong>반입/반출을 해야 할 때 반출 신청을 선택합니다.</strong>
+										<p>반출 진행 할 물품을 선택 후,<br/>내용을 입력하고 확인을 선택합니다.</p>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="gImg"><img src="../images/guide_assets_step04.png" alt=""></div>
+									<div class="gText">
+										<span class="number">4</span>
+										<strong>반출입 현황에서 기간연장을 신청할 수 있습니다.</strong>
+										<p>반입예정일을 연장할 물품을 선택 후,<br/>내용을 입력하고 확인을 선택합니다</p>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="gImg"><img src="../images/guide_assets_step05.png" alt=""></div>
+									<div class="gText">
+										<span class="number">5</span>
+										<strong>장비 반입 시, 상세내역에서<br/>날짜 입력을 선택합니다.</strong>
+										<p>날짜 입력 시 당일로 반입일이 표출되고<br/>관리자에게 반입 확인 요청됩니다.</p>
+									</div>
+								</div>
+							</div>
+							<!-- Add Pagination -->
+							<div class="swiper-pagination"></div>
+						</div>
+					</div>
+					<div class="gFooter">
+						<span class="checkSet">
+							<input type="checkbox" id="chk1">
+							<label for="chk1"><i></i>다시 안보기</label>
+						</span>
+						<button class="gClose">닫기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //guide -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 사인 -->
+			<div class="signPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<p>※ 크게 서명해주세요.</p>
+				<div class="signSet">
+					<div class="signArea">
+						<strong>서명</strong>
+						<div class="cvsArea">
+							<canvas></canvas>
+						</div>
+					</div>
+					<div class="btnArea">
+                        <button class="btnM white">초기화</button>
+						<button class="btnM white">이전 휙</button>
+						<button class="btnM blue">확인</button>
+					</div>
+				</div>
+			</div>
+			<!-- //사인 -->
+			<!-- 수리요청 사유입력 -->
+			<div class="miniPop etcReasonsPop" style="display:none;">
+				<div class="tt">
+					<h1>수리요청 사유입력</h1>
+				</div>
+				<div class="pBack">
+					<textarea placeholder="수리요청 사유를 입력 해주세요"></textarea>
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //수리요청 사유입력 -->
+			<!-- 하드웨어 수리요청 이력 -->
+			<div class="basicPop repairHistoyPop" style="display:none;">
+				<div class="tt">
+					<h1>하드웨어 수리요청 이력</h1>
+				</div>
+				<div class="pBack">
+					<div>
+						<ul>
+							<li>
+								<span>NT1-001</span>
+								<div class="tL">[Apple] MC511KH/A</div>
+								<em>수리요청 : 2018-01-01</em>
+							</li>
+							<li>
+								<span>NT1-001</span>
+								<div class="tL">[Apple] MC511KH/A</div>
+								<em>수리요청 : 2018-01-01</em>
+								<em class="last">재지급 : 2018-01-01</em>
+							</li>
+							<li>
+								<span>NT1-001</span>
+								<div class="tL">[Apple] MC511KH/A</div>
+								<em>수리요청 : 2018-01-01</em>
+								<em class="last">재지급 : 2018-01-01</em>
+							</li>
+							<li>
+								<span>NT1-001</span>
+								<div class="tL">[Apple] MC511KH/A</div>
+								<em>수리요청 : 2018-01-01</em>
+								<em class="last">재지급 : 2018-01-01</em>
+							</li>
+							<li>
+								<span>NT1-001</span>
+								<div class="tL">[Apple] MC511KH/A</div>
+								<em>수리요청 : 2018-01-01</em>
+								<em class="last">반려 : 2018-01-01</em>
+								<div class="tL etc">반려사유가 나오는 영역입니다</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //하드웨어 수리요청 이력 -->
+			<!-- 반출신청 -->
+			<div class="basicPop inoutPop" style="display:none;">
+				<div class="tt">
+					<h1>반출 신청</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="dlstyle writeCase">
+						<dl>
+							<dt>하드웨어 선택</dt>
+							<dd>
+								<ul class="hwChoice">
+									<li>
+										<span class="checkSet">
+											<input type="checkbox" id="chk1">
+											<label for="chk1"><i></i>노트북(NT1-001)<strong>Apple<em>MC511KH/A</em> </strong></label>
+										</span>
+									</li>
+									<li>
+										<span class="checkSet">
+											<input type="checkbox" id="chk2">
+											<label for="chk2"><i></i>노트북(NT1-001)<strong>Apple<em>MC511KH/A</em> </strong></label>
+										</span>
+									</li>
+									<li>
+										<span class="checkSet">
+											<input type="checkbox" id="chk3">
+											<label for="chk3"><i></i>노트북(NT1-001)<strong>Apple<em>MC511KH/A</em> </strong></label>
+										</span>
+									</li>
+									<li>
+										<span class="checkSet">
+											<input type="checkbox" id="chk4">
+											<label for="chk4"><i></i>노트북(NT1-001)<strong>Apple<em>MC511KH/A</em> </strong></label>
+										</span>
+									</li>
+									<li>
+										<span class="checkSet">
+											<input type="checkbox" id="chk5">
+											<label for="chk5"><i></i>노트북(NT1-001)<strong>Apple<em>MC511KH/A</em> </strong></label>
+										</span>
+									</li>
+									<li>
+										<span class="checkSet">
+											<input type="checkbox" id="chk6">
+											<label for="chk6"><i></i>노트북(NT1-001)<strong>Apple<em>MC511KH/A</em> </strong></label>
+										</span>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<div class="gridSet grid2">
+							<div class="gridItem">
+								<dl>
+									<dt>반출일</dt>
+									<dd><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></dd>
+								</dl>
+							</div>
+							<div class="gridItem">
+								<dl>
+									<dt>반입예정일</dt>
+									<dd><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></dd>
+								</dl>
+							</div>
+						</div>
+						<dl>
+							<dt>반출사유</dt>
+							<dd><textarea placeholder="반출사유를 입력하세요"></textarea></dd>
+						</dl>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue" onclick="if(!alert('반출증 요청이 완료되었습니다. 관리자의 승인은 반출입 현황에서 확인해주세요')){return false;}">신청</button>
+				</div>
+			</div>
+			<!-- //반출신청 -->
+		</div>
+		<!-- //Popup -->
+	</body>
+</html>

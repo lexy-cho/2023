@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('#deleteBtn').click(function(){
+				$('.popDim').show();
+				$('.alertPop').show();
+			});
+			$('.pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			/**/
+			/*$('.tls tbody tr').dblclick(function(){
+				location.href = 'app_push_view.html';
+			});*/
+			$('.btnResend').click(function() {
+				confirm('재발송 하시겠습니까?');
+			}); // 재발송
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>메세지 관리</h2>
+					<div class="pagePos"><span>Home</span><span>APP 관리</span><span>Push 관리</span><strong>메세지 관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="pushListLayout">
+						<div class="boardTop">
+							<em>전체 10,000건</em>
+							<span class="right">
+								<span class="searchBasic">
+									<span class="selectSet">
+										<select>
+											<option>서비스</option>
+											<option>Ting</option>
+											<option>Visitor</option>
+										</select>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option>발송상태</option>
+											<option>발송대기</option>
+											<option>성공</option>
+											<option>실패</option>
+										</select>
+									</span>
+									<span class="calDupSet">
+									    <span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									    <em>~</em>
+									    <span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									</span>
+									<span class="searchSet">
+										<input type="text" placeholder="타이틀 입력">
+										<input type="submit" value="검색" class="btnSearch">
+										<button class="btnReset">초기화</button>
+									</span>
+								</span>
+								<button class="btnM">엑셀 다운로드</button>
+							</span>
+						</div>
+						<div class="tls pushView">
+							<table>
+								<colgroup>
+									<col width="10"/>
+									<col width="50"/>
+									<col width="100"/>
+									<col width="120"/>
+									<col width="800"/>
+									<col width="220"/>
+									<col width="180"/>
+									<col width="100"/>
+									<col width="100"/>
+									<col width="200"/>
+								</colgroup>
+								<thead>
+									<tr>
+										<th>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkall" />
+												<label for="chkall"><i></i></label>
+											</span>
+										</th>
+										<th>No</th>
+										<th>서비스</th>
+										<th>카테고리</th>
+										<th>타이틀</th>
+										<th>수신성공 / 전체 수신자</th>
+										<th>발송시간</th>
+										<th>발송자</th>
+										<th>발송형태</th>
+										<th>발송상태</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk8" />
+												<label for="chk8"><i></i></label>
+											</span>
+										</td>
+										<td>8</td>
+										<td>Ting</td>
+										<td>공지사항</td>
+										<td class="tL"><a href="app_push_view.html">타이틀이 노출될 영역입니다.</a></td>
+										<td>- / 120명</td>
+										<td>2016-12-31 00:00</td>
+										<td>홍길동</td>
+										<td>예약발송</td>
+										<td class="ftBlue">발송대기</td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk7" />
+												<label for="chk7"><i></i></label>
+											</span>
+										</td>
+										<td>7</td>
+										<td>Visitor</td>
+										<td>공지사항</td>
+										<td class="tL"><a href="app_push_view.html">타이틀이 노출될 영역입니다.</a></td>
+										<td>100명 / 120명</td>
+										<td>2016-12-31 00:00</td>
+										<td>홍길동</td>
+										<td>즉시발송</td>
+										<td class="ftRed">실패(20명) <button class="btnS white btnResend">재발송</button></td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk6" />
+												<label for="chk6"><i></i></label>
+											</span>
+										</td>
+										<td>6</td>
+										<td>Visitor</td>
+										<td>공지사항</td>
+										<td class="tL"><a href="app_push_view.html">타이틀이 노출될 영역입니다.</a></td>
+										<td>- / 120명</td>
+										<td>2016-12-31 00:00</td>
+										<td>홍길동</td>
+										<td>예약발송</td>
+										<td class="ftBlue">발송대기</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk5" />
+												<label for="chk5"><i></i></label>
+											</span>
+										</td>
+										<td>5</td>
+										<td>Visitor</td>
+										<td>알림</td>
+										<td class="tL"><a href="app_push_view.html">타이틀이 노출될 영역입니다.</a></td>
+										<td>50명 / 50명</td>
+										<td>2016-12-31 00:00</td>
+										<td>홍길동</td>
+										<td>즉시발송</td>
+										<td class="ftGreen">성공</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk4" />
+												<label for="chk4"><i></i></label>
+											</span>
+										</td>
+										<td>4</td>
+										<td>Visitor</td>
+										<td>알림</td>
+										<td class="tL"><a href="app_push_view.html">타이틀이 노출될 영역입니다.</a></td>
+										<td>50명 / 50명</td>
+										<td>2016-12-31 00:00</td>
+										<td>홍길동</td>
+										<td>즉시발송</td>
+										<td class="ftGreen">성공</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk3" />
+												<label for="chk3"><i></i></label>
+											</span>
+										</td>
+										<td>3</td>
+										<td>Ting</td>
+										<td>광고</td>
+										<td class="tL"><a href="app_push_view.html">타이틀이 노출될 영역입니다.</a></td>
+										<td>100명 / 120명</td>
+										<td>2016-12-31 00:00</td>
+										<td>홍길동</td>
+										<td>즉시발송</td>
+										<td class="ftRed">실패(20명) <button class="btnS white btnResend">재발송</button></td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk2" />
+												<label for="chk2"><i></i></label>
+											</span>
+										</td>
+										<td>2</td>
+										<td>Ting</td>
+										<td>공지사항</td>
+										<td class="tL"><a href="app_push_view.html">타이틀이 노출될 영역입니다.</a></td>
+										<td>- / 70명</td>
+										<td>2016-12-31 00:00</td>
+										<td>홍길동</td>
+										<td>예약발송</td>
+										<td class="ftBlue">발송대기</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk1" />
+												<label for="chk1"><i></i></label>
+											</span>
+										</td>
+										<td>1</td>
+										<td>Visitor</td>
+										<td>공지사항</td>
+										<td class="tL"><a href="app_push_view.html">타이틀이 노출될 영역입니다.</a></td>
+										<td>100명 / 120명</td>
+										<td>2016-12-31 00:00</td>
+										<td>홍길동</td>
+										<td>즉시발송</td>
+										<td class="ftRed">실패(20명) <button class="btnS white btnResend">재발송</button></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="bpSet">
+							<div class="btnArea">
+								<span class="left">
+									<button class="btnM" id="deleteBtn">선택삭제</button>
+								</span>
+								<span class="right">
+									<a href="app_push_write.html" class="btnM">신규등록</a>
+								</span>
+							</div>
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+									<a class="on">1</a>
+									<a>2</a>
+									<a>3</a>
+									<a>4</a>
+									<a>5</a>
+									<a class="next">다음</a>
+								</span>
+								<span class="selectSet">
+									<select>
+										<option>10개</option>
+										<option>20개</option>
+										<option>50개</option>
+										<option>100개</option>
+									</select>
+								</span>
+							</div>
+						</div>
+						<!--//-->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<div class="alertPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>입력한 정보가 삭제됩니다.<br/>삭제하시겠습니까?</p>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

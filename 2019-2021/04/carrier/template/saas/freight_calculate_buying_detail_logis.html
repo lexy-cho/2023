@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/navmenu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back">
+						<div data-include="../include/saas_snb.html"></div>
+					</div>
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<!-- mobile Menu -->
+			<div id="headerM">
+				<div data-include="../include/saas_headM.html"></div>
+			</div>
+			<!-- //mobile Menu -->
+			<hr/>
+			<div id="containerBack">
+				<!-- header -->
+				<div id="header">
+					<header>
+						<span class="left">
+							<button class="btnM gray" onclick="location.href='freight_calculate_buying.html'">목록</button><!-- 2020-06-16 버튼 class 변경 -->
+						</span>
+						<h2 class="viewTit">
+							<div class="txtCover">[2020-01]</div>
+							<strong>로지플랫</strong>
+						</h2>
+						<span class="right">
+							<dl class="inputBox">
+								<dt>정렬</dt>
+								<dd>
+									<span class="selectSet">
+										<select>
+											<option>수령 순</option>
+											<option>미수령 순</option>
+											<option>운송일 순</option>
+										</select>
+									</span>
+								</dd>
+							</dl>
+						</span>
+					</header>
+				</div>
+				<!-- //header -->
+				<hr/>
+				<!-- container -->
+				<div id="container">
+				<section>
+					<div class="content">
+					<article>
+						<!-- Page Layout -->
+						<div class="freightCalculate">
+							<div class="pCase" data-include="freight_calculate_buying_detail_logis_pc.html"></div>
+							<div class="mCase" data-include="freight_calculate_buying_detail_logis_m.html"></div>
+						</div>
+						<!-- //page Layout -->
+					</article>
+					</div>
+				</section>
+				</div>
+				<!-- //container -->
+			</div>
+		</div>
+		<!-- //Wrap -->
+    </body>
+</html>

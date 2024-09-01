@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.highcharts.com/highcharts.src.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('#etcReasonsBtn1').click(function(){
+				$('.popDim, #etcReasonsPop1').show();
+			});//
+			$('#etcReasonsBtn2').click(function(){
+				$('.popDim, #etcReasonsPop2').show();
+			});//
+			$('.etcReasonsBtn3').click(function(){
+				$('.popDim, #etcReasonsPop3').show();
+			});//
+			$('#assetsInoutBtn1').click(function(){
+				$('.popDim, #assetsInoutPop1').show();
+			});//
+			$('#assetsInoutBtn2').click(function(){
+				$('.popDim, #assetsInoutPop2').show();
+			});//
+			$('#assetsInoutBtn3').click(function(){
+				$('.popDim, #assetsInoutPop3').show();
+			});//
+			$('.pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});//
+			$('#assetsInoutPop3 .pBtn button ').click(function(){
+				$('.popDim, #etcReasonsPop4').show();
+			});//
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>반입/반출대장</h2>
+					<div class="pagePos"><span>Home</span><span>자산관리</span><strong>반입/반출대장</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="assetsInoutLayout">
+						<!---->
+						<div class="boardTop">
+							<em>전체 10,000건</em>
+							<span class="right">
+								<span class="checkSet">
+									<input type="checkbox" id="chka" />
+									<label for="chka"><i></i>반입완료 제외</label>
+								</span>
+								<span class="calDupSet">
+									<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									<em>~</em>
+									<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+								</span>
+								<span class="searchBasic">
+									<input type="text" placeholder="이름, 사번 입력" />
+									<input type="submit" value="검색" class="btnSearch" />
+									<button class="btnReset">초기화</button>
+								</span>
+								<button class="btnM">엑셀다운로드</button>
+							</span>
+						</div>
+						<!---->
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="30" />
+									<col width="50" />
+									<col width="100" />
+									<col width="70" />
+									<col width="100" />
+									<col width="120" />
+									<col width="120" />
+									<col width="80" />
+									<col width="80" />
+									<col width="80" />
+									<col width="120" />
+									<col width="200" />
+									<col width="120" />
+									<col width="120" />
+									<col width="80" />
+									<col width="80" />
+									<col width="140" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkall" />
+												<label for="chkall"><i></i></label>
+											</span>
+										</th>
+										<th>No.</th>
+										<th>종류</th>
+										<th>고유번호</th>
+										<th>브랜드</th>
+										<th>기기명</th>
+										<th>사용자</th>
+										<th>반출요청일</th>
+										<th>반출일</th>
+										<th>반입예정일</th>
+										<th>반출처</th>
+										<th>반출사유</th>
+										<th>반출승인여부</th>
+										<th>반입연장</th>
+										<th>반입일</th>
+										<th>반입확인여부</th>
+										<th>반출증</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkal2" />
+												<label for="chkal2"><i></i></label>
+											</span>
+										</td>
+										<td>5</td>
+										<td>노트북</td>
+										<td>NT1-001</td>
+										<td>apple</td>
+										<td>aa-aaaaa</td>
+										<td>홍길동 (000000)</td>
+										<td>2020-06-26</td>
+										<td>2020-06-27</td>
+										<td>2020-06-27</td>
+										<td></td>
+										<td class="tL"><span class="new">NEW</span> 반출사유입니다</td>
+										<td>
+											<button class="btnS white" onclick="if(!alert('승인처리 완료되었습니다.')){return false;}">승인</button>
+											<button class="btnS white" id="etcReasonsBtn1">반려</button>
+										</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkal3" />
+												<label for="chkal3"><i></i></label>
+											</span>
+										</td>
+										<td>4</td>
+										<td>키보드/마우스</td>
+										<td>KB1-001</td>
+										<td>apple</td>
+										<td>aa-aaaaa</td>
+										<td>홍길동 (000000)</td>
+										<td>2020-06-15</td>
+										<td>2020-06-15</td>
+										<td>2020-06-16</td>
+										<td></td>
+										<td class="tL">반출이 반려되었을 경우입니다</td>
+										<td class="orangeTxt">2020-06-15 <button class="btnS" id="etcReasonsBtn2">사유</button></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkal4" />
+												<label for="chkal4"><i></i></label>
+											</span>
+										</td>
+										<td>3</td>
+										<td>노트북</td>
+										<td>NT1-001</td>
+										<td>apple</td>
+										<td>aa-aaaaa</td>
+										<td>홍길동 (000000)</td>
+										<td>2020-06-10</td>
+										<td>2020-06-10</td>
+										<td>2020-06-10</td>
+										<td></td>
+										<td class="tL">일반적인 반출프로세스일 경우입니다</td>
+										<td>2020-06-10</td>
+										<td><button class="btnS white" id="assetsInoutBtn2">연장</button></td>
+										<td></td>
+										<td></td>
+										<td>
+											<button class="btnS white">발행</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkal4" />
+												<label for="chkal4"><i></i></label>
+											</span>
+										</td>
+										<td>3</td>
+										<td>노트북</td>
+										<td>NT1-001</td>
+										<td>apple</td>
+										<td>aa-aaaaa</td>
+										<td>홍길동 (000000)</td>
+										<td>2020-06-10</td>
+										<td>2020-06-10</td>
+										<td>2020-06-10</td>
+										<td></td>
+										<td class="tL">관리자가 연장한 프로세스일 경우입니다</td>
+										<td>2020-06-10</td>
+										<td>2020-07-21 <button class="btnS etcReasonsBtn3">사유</button></td><!-- 2020-07-21 연장한 날짜와 사유 -->
+										<td></td>
+										<td></td>
+										<td>
+											<button class="btnS white">발행</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkal5" />
+												<label for="chkal5"><i></i></label>
+											</span>
+										</td>
+										<td>2</td>
+										<td>노트북</td>
+										<td>NT1-001</td>
+										<td>apple</td>
+										<td>aa-aaaaa</td>
+										<td>홍길동 (000000)</td>
+										<td>2020-06-05</td>
+										<td>2020-06-05</td>
+										<td>2020-06-06</td>
+										<td></td>
+										<td class="tL">연장요청 반입프로세스일 경우입니다</td>
+										<td>2020-06-10</td>
+										<td><button class="btnS white" id="assetsInoutBtn3">연장요청</button></td>
+										<td></td>
+										<td></td>
+										<td>
+											<button class="btnS white">발행</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkal5" />
+												<label for="chkal5"><i></i></label>
+											</span>
+										</td>
+										<td>2</td>
+										<td>노트북</td>
+										<td>NT1-001</td>
+										<td>apple</td>
+										<td>aa-aaaaa</td>
+										<td>홍길동 (000000)</td>
+										<td>2020-06-05</td>
+										<td>2020-06-05</td>
+										<td>2020-06-06</td>
+										<td></td>
+										<td class="tL">연장요청 반려된 프로세스일 경우입니다</td>
+										<td>2020-06-10</td>
+										<td class="orangeTxt">2020-06-15 <button class="btnS etcReasonsBtn3">사유</button></td><!-- 2020-07-21 연장반려한 날짜와 사유 -->
+										<td></td>
+										<td></td>
+										<td>
+											<button class="btnS white">발행</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkal5" />
+												<label for="chkal5"><i></i></label>
+											</span>
+										</td>
+										<td>2</td>
+										<td>노트북</td>
+										<td>NT1-001</td>
+										<td>apple</td>
+										<td>aa-aaaaa</td>
+										<td>홍길동 (000000)</td>
+										<td>2020-06-05</td>
+										<td>2020-06-05</td>
+										<td>2020-06-06</td>
+										<td></td>
+										<td class="tL">연장된 반입프로세스일 경우입니다</td>
+										<td>2020-06-06</td>
+										<td></td>
+										<td>2020-06-06</td>
+										<td><button class="btnS white">완료</button></td>
+										<td>
+											<button class="btnS white">재발행</button>
+											<button class="btnS white openView">미리보기</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkal5" />
+												<label for="chkal5"><i></i></label>
+											</span>
+										</td>
+										<td>2</td>
+										<td>노트북</td>
+										<td>NT1-001</td>
+										<td>apple</td>
+										<td>aa-aaaaa</td>
+										<td>홍길동 (000000)</td>
+										<td>2020-06-05</td>
+										<td>2020-06-05</td>
+										<td>2020-06-06</td>
+										<td></td>
+										<td class="tL">일반적인 반입프로세스일 경우입니다</td>
+										<td>2020-06-06</td>
+										<td></td>
+										<td>2020-06-06</td>
+										<td><button class="btnS white">완료</button></td>
+										<td>
+											<button class="btnS white">재발행</button>
+											<button class="btnS white openView">미리보기</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkal6" />
+												<label for="chkal6"><i></i></label>
+											</span>
+										</td>
+										<td>1</td>
+										<td>노트북</td>
+										<td>NT1-001</td>
+										<td>apple</td>
+										<td>aa-aaaaa</td>
+										<td>홍길동 (000000)</td>
+										<td>2020-06-01</td>
+										<td>2020-06-01</td>
+										<td>2020-06-03</td>
+										<td></td>
+										<td class="tL">일반적인 반입완료 프로세스일 경우입니다</td>
+										<td>2020-06-01</td>
+										<td></td>
+										<td>2020-06-02</td>
+										<td>2020-06-02</td>
+										<td>
+											<button class="btnS white">재발행</button>
+											<button class="btnS white openView">미리보기</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="bpSet">
+							<div class="btnArea">
+								<span class="left">
+									<button class="btnM" onclick="if(!confirm('선택한 항목을 삭제 하시겠습니끼?')){return false;}">선택삭제</button>
+								</span>
+								<span class="right">
+									<button class="btnM" id="assetsInoutBtn1">신규등록</button>
+								</span>
+							</div>
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+										<a class="on">1</a>
+										<a>2</a>
+										<a>3</a>
+										<a>4</a>
+										<a>5</a>
+									<a class="next">다음</a>
+								</span>
+								<span class="selectSet">
+									<select>
+										<option>10개</option>
+										<option>20개</option>
+										<option>50개</option>
+										<option>100개</option>
+									</select>
+								</span>
+							</div>
+						</div>
+						<!--//-->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 반려사유 입력 -->
+			<div class="basicPop etcReasonsPop" id="etcReasonsPop1" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>반려 사유입력</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<textarea placeholder="반납사유를 입력 해주세요" class="h11"></textarea>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">저장</button>
+				</div>
+			</div>
+			<!--//반려사유 입력-->
+			<!-- 반려사유 보기 -->
+			<div class="basicPop etcReasonsPop" id="etcReasonsPop2" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>반려사유</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<p>사유가 나옵니다. 사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다사유랍니다 영문abcdefgabcdefgabcdefgabcdefg</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!--//반려사유 보기-->
+			<!-- 신규등록하기 -->
+			<div class="basicPop assetsInoutPop" id="assetsInoutPop1" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>신규반출 등록하기</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="115" />
+								<col width="200" />
+								<col width="115" />
+								<col width="200" />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>사용자 <sup>필수항목</sup></th>
+									<td colspan="3"><input type="text" placeholder="자동완성" value="" class="autoCom wAuto" /></td>
+								</tr>
+								<tr>
+									<th>종류 <sup>필수항목</sup></th>
+									<td>		
+										<span class="selectSet wFull">
+											<select>
+												<option>노트북</option>
+												<option>데스크탑</option>
+												<option>모니터</option>
+												<option>키보드/마우스</option>
+												<option>젠더</option>
+												<option>테스트기기</option>
+											</select>
+										</span>
+									</td>
+									<th>고유번호 <sup>필수항목</sup></th>
+									<td>		
+										<span class="selectSet wFull">
+											<select>
+												<option>NT1-001</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>브랜드</th>
+									<td>apple</td>
+									<th>기기명</th>
+									<td>aa-aaaaa</td>
+								</tr>
+								<tr>
+									<th>반출사유 <sup>필수항목</sup></th>
+									<td colspan="3"><textarea placeholder="반출사유를 입력 해주세요"></textarea></td>
+								</tr>
+								<tr>
+									<th>반출일 <sup>필수항목</sup></th>
+									<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+									<th>반입예정일 <sup>필수항목</sup></th>
+									<td><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+								</tr>
+								<tr>
+									<th>승인여부</th>
+									<td colspan="3">
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chka8" />
+											<label for="chka8"><i></i>관리자 승인을 진행하지 않습니다</label>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">저장</button>
+				</div>
+			</div>
+			<!--//신규등록하기-->
+			<!-- 2020-07-09 기간연장 사유 보기 -->
+			<div class="basicPop etcReasonsPop" id="etcReasonsPop3" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>기간연장 이력</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<ul>
+						<li>
+							<span>[2020-07-09] 관리자</span>
+							<div>기간연장 사유가 나타납니다.</div>
+						</li>
+						<li>
+							<span>[2020-07-09] 홍길동본인</span>
+							<div>기간연장 사유가 나타납니다.</div>
+						</li>
+						<li>
+							<span>[2020-07-09] 관리자</span>
+							<div>기간연장 반려사유가 나옵니다</div>
+						</li>
+					</ul>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!--//2020-07-09 기간연장 사유 보기-->
+			<!-- 2020-07-21 기간연장하기 -->
+			<div class="basicPop assetsInoutPop termCase" id="assetsInoutPop2" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>기간연장</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="130" />
+								<col width="200" />
+								<col width="90" />
+								<col width="200" />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>사용자</th>
+									<td colspan="3">홍길동 (000000)</td>
+								</tr>
+								<tr>
+									<th>종류</th>
+									<td>키보드/마우스</td>
+									<th>고유번호</th>
+									<td>NT1-001</td>
+								</tr>
+								<tr>
+									<th>브랜드</th>
+									<td>apple</td>
+									<th>기기명</th>
+									<td>aa-aaaaa</td>
+								</tr>
+								<!-- 2020-07-21 타이틀 외 항목 변경 -->
+								<tr>
+									<th>반출사유</th>
+									<td colspan="3">반출사유입니다</td>
+								</tr>
+								<tr>
+									<th>연장사유 <sup>필수항목</sup></th>
+									<td colspan="3">
+										<textarea placeholder="연장사유를 입력해주세요"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<th>반출일</th>
+									<td>2020-01-21</td>
+									<th>반입예정일</th>
+									<td>2020-01-21</td>
+								</tr>
+								<tr>
+									<th>연장반납예정일 <sup>필수항목</sup></th>
+									<td colspan="3"><span class="calSet"><input type="tel" value="2020-01-21" /><button>달력열기</button></span></td>
+								</tr>
+								<!-- //2020-07-21 타이틀 외 항목 변경 -->
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">저장</button>
+				</div>
+			</div>
+			<!--//기간연장하기-->
+			<!-- 2020-07-21 기간연장 요청일 경우 -->
+			<div class="basicPop assetsInoutPop termCase" id="assetsInoutPop3" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>기간연장 요청</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="130" />
+								<col width="200" />
+								<col width="90" />
+								<col width="200" />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>사용자</th>
+									<td colspan="3">홍길동 (000000)</td>
+								</tr>
+								<tr>
+									<th>종류</th>
+									<td>키보드/마우스</td>
+									<th>고유번호</th>
+									<td>NT1-001</td>
+								</tr>
+								<tr>
+									<th>브랜드</th>
+									<td>apple</td>
+									<th>기기명</th>
+									<td>aa-aaaaa</td>
+								</tr>
+								<!-- 2020-07-21 타이틀 외 항목 변경 -->
+								<tr>
+									<th>반출사유</th>
+									<td colspan="3">반출사유입니다</td>
+								</tr>
+								<tr>
+									<th>연장사유 <sup>필수항목</sup></th>
+									<td colspan="3">
+										<textarea placeholder="연장사유를 입력해주세요"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<th>반출일</th>
+									<td>2020-01-21</td>
+									<th>반입예정일</th>
+									<td>2020-01-21</td>
+								</tr>
+								<tr>
+									<th>연장반납예정일 <sup>필수항목</sup></th>
+									<td colspan="3"><span class="calSet"><input type="tel" value="2020-01-21" /><button>달력열기</button></span></td>
+								</tr>
+								<!-- //2020-07-21 타이틀 외 항목 변경 -->
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">반려</button>
+					<button class="btnM blue" onclick="if(!alert('승인처리 완료되었습니다.')){return false;}">승인</button>
+				</div>
+			</div>
+			<!-- //기간연장 요청일 경우 -->
+			<!-- 2020-07-21 기간연장 반려사유 입력 -->
+			<div class="basicPop etcReasonsPop" id="etcReasonsPop4" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>기간연장 반려 사유입력</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<textarea placeholder="반납사유를 입력 해주세요" class="h11"></textarea>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">저장</button>
+				</div>
+			</div>
+			<!--//기간연장 반려사유 입력-->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

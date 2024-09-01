@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('#newholidayBtn').click(function(){
+				$('.popDim').show();
+				$('.holidayPop').show();
+			});
+			$('.alertPop button, .basicPop button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			$('.btnToggleVert').click(function(){
+				$(this).parents('tr').next('tr').toggle();
+			});
+			/**/
+			$(function() {
+				var availableTags = [
+				"고현우",
+				"김용배",
+				"김재성",
+				"김준석",
+				"김진훈",
+				"박지훈",
+				"석민현",
+				"선혜",
+				"안병찬",
+				"양승건",
+				"오유진",
+				"유현태",
+				"윤성원",
+				"이민균",
+				"조명진",
+				"조혜란",
+				"지선주"
+				];
+				$( ".autoCom" ).autocomplete({
+				  source: availableTags
+				});
+			}); // 자동완성
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>휴가관리</h2>
+					<div class="pagePos"><span>Home</span><span>경영지원</span><strong>휴가관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="">
+						<!---->
+						<div class="boardTop">
+							<em>전체 10,000건</em>
+							<span class="right">
+								<span class="searchBasic">
+									<input type="text" placeholder="이름 입력" />
+									<input type="submit" value="검색" class="btnSearch" />
+									<button class="btnReset">초기화</button>
+								</span>
+								<button class="btnM">엑셀다운로드</button>
+							</span>
+						</div>
+						<!---->
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="35"/>
+									<col width="100"/>
+									<col width="100"/>
+									<col width="130"/>
+									<col width="150" />
+									<col span="7" width="120"/>
+								</colgroup>
+								<thead>
+									<tr>
+										<th></th>
+										<th>이름</th>
+										<th>입사일</th>
+										<th>근속기간</th>
+										<th>지급사용기간</th>
+										<th>발생 휴가일수</th>
+										<th>근속 휴가일수</th>
+										<th>사용 휴가일수</th>
+										<th class="txtRed">잔여 휴가일수</th><!-- 2020-05-12 -->
+										<th>교육 진행일수</th>
+										<th>특별휴가 지급일수</th>
+										<th>경조사 지급일수</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td><button class="btnToggleVert">+</button></td>
+										<td>홍길동</td>
+										<td>2019-01-01</td>
+										<td>OO년 OO개월 OO일</td>
+										<td>20.01.01 ~ 20.12.31</td>
+										<td>15</td>
+										<td>3</td>
+										<td>3</td>
+										<td class="txtRed">12.00</td><!-- 2020-05-12 -->
+										<td>1</td>
+										<td>1</td>
+										<td>0</td>
+									</tr>
+									<tr style="display:none;">
+										<td colspan="12" class="holidayDetail"><!-- 2020-05-12 -->
+											<div class="tls">
+												<table>
+													<colgroup>
+														<col width="100" />
+														<col width="100" />
+														<col width="100" />
+														<col width="100" />
+														<col />
+														<col width="50" />
+													</colgroup>
+													<thead>
+														<tr>
+															<th>휴가종류</th>
+															<th>시작일</th>
+															<th>종료일</th>
+															<th>휴가일수</th>
+															<th>휴가사유</th>
+															<th><button class="btnS white">일괄삭제</button></th>
+														</tr>
+													</thead>
+													<tbody>
+														<!--Loop-->
+														<tr>
+															<td>년/월차</td>
+															<td>2020-02-05</td>
+															<td>2020-02-06</td>
+															<td>2일</td>
+															<td class="tL"></td>
+															<td><button class="btnS white">X</button></td>
+														</tr>
+														<!--//Loop-->
+														<tr>
+															<td>오전반차</td>
+															<td>2020-02-01</td>
+															<td>2020-02-01</td>
+															<td>0.5일</td>
+															<td class="tL">오전 반차사유가 노출될 영역입니다</td>
+															<td><button class="btnS white">X</button></td>
+														</tr>
+														<tr>
+															<td>오후반차</td>
+															<td>2020-01-04</td>
+															<td>2020-01-04</td>
+															<td>0.5일</td>
+															<td class="tL">오후 반차사유가 노출될 영역입니다</td>
+															<td><button class="btnS white">X</button></td>
+														</tr>
+														<tr>
+															<td>년/월차</td>
+															<td>2020-01-02</td>
+															<td>2020-01-02</td>
+															<td>1일</td>
+															<td class="tL"></td>
+															<td><button class="btnS white">X</button></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td><button class="btnToggleVert">+</button></td>
+										<td>홍길동2</td>
+										<td>2019-01-01</td>
+										<td>OO년 OO개월 OO일</td>
+										<td>20.01.01 ~ 20.12.31</td>
+										<td>15</td>
+										<td>3</td>
+										<td>3</td>
+										<td class="txtRed">12.00</td><!-- 2020-05-12 -->
+										<td>1</td>
+										<td>1</td>
+										<td>0</td>
+									</tr>
+									<tr style="display:none;">
+										<td colspan="12" class="holidayDetail"><!-- 2020-05-12 -->
+											<div class="tls">
+												<table>
+													<colgroup>
+														<col width="100" />
+														<col width="100" />
+														<col width="100" />
+														<col width="100" />
+														<col />
+														<col width="50" />
+													</colgroup>
+													<thead>
+														<tr>
+															<th>휴가종류</th>
+															<th>시작일</th>
+															<th>종료일</th>
+															<th>휴가일수</th>
+															<th>휴가사유</th>
+															<th><button class="btnS white">일괄삭제</button></th>
+														</tr>
+													</thead>
+													<tbody>
+														<!--Loop-->
+														<tr>
+															<td>년/월차</td>
+															<td>2020-02-05</td>
+															<td>2020-02-06</td>
+															<td>2일</td>
+															<td class="tL"></td>
+															<td><button class="btnS white">X</button></td>
+														</tr>
+														<!--//Loop-->
+														<tr>
+															<td>오전반차</td>
+															<td>2020-02-01</td>
+															<td>2020-02-01</td>
+															<td>0.5일</td>
+															<td class="tL">오전 반차사유가 노출될 영역입니다</td>
+															<td><button class="btnS white">X</button></td>
+														</tr>
+														<tr>
+															<td>오후반차</td>
+															<td>2020-01-04</td>
+															<td>2020-01-04</td>
+															<td>0.5일</td>
+															<td class="tL">오후 반차사유가 노출될 영역입니다</td>
+															<td><button class="btnS white">X</button></td>
+														</tr>
+														<tr>
+															<td>년/월차</td>
+															<td>2020-01-02</td>
+															<td>2020-01-02</td>
+															<td>1일</td>
+															<td class="tL"></td>
+															<td><button class="btnS white">X</button></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><button class="btnToggleVert">+</button></td>
+										<td>홍길동</td>
+										<td>2019-01-01</td>
+										<td>OO년 OO개월 OO일</td>
+										<td>20.01.01 ~ 20.12.31</td>
+										<td>15</td>
+										<td>3</td>
+										<td>3</td>
+										<td class="txtRed">12.00</td><!-- 2020-05-12 -->
+										<td>1</td>
+										<td>1</td>
+										<td>0</td>
+									</tr>
+									<tr style="display:none;">
+										<td colspan="12" class="holidayDetail"><!-- 2020-05-12 -->
+											<div class="tls">
+												<table>
+													<colgroup>
+														<col width="100" />
+														<col width="100" />
+														<col width="100" />
+														<col width="100" />
+														<col />
+														<col width="50" />
+													</colgroup>
+													<thead>
+														<tr>
+															<th>휴가종류</th>
+															<th>시작일</th>
+															<th>종료일</th>
+															<th>휴가일수</th>
+															<th>휴가사유</th>
+															<th><button class="btnS white">일괄삭제</button></th>
+														</tr>
+													</thead>
+													<tbody>
+														<!--Loop-->
+														<tr>
+															<td>년/월차</td>
+															<td>2020-02-05</td>
+															<td>2020-02-06</td>
+															<td>2일</td>
+															<td class="tL"></td>
+															<td><button class="btnS white">X</button></td>
+														</tr>
+														<!--//Loop-->
+														<tr>
+															<td>오전반차</td>
+															<td>2020-02-01</td>
+															<td>2020-02-01</td>
+															<td>0.5일</td>
+															<td class="tL">오전 반차사유가 노출될 영역입니다</td>
+															<td><button class="btnS white">X</button></td>
+														</tr>
+														<tr>
+															<td>오후반차</td>
+															<td>2020-01-04</td>
+															<td>2020-01-04</td>
+															<td>0.5일</td>
+															<td class="tL">오후 반차사유가 노출될 영역입니다</td>
+															<td><button class="btnS white">X</button></td>
+														</tr>
+														<tr>
+															<td>년/월차</td>
+															<td>2020-01-02</td>
+															<td>2020-01-02</td>
+															<td>1일</td>
+															<td class="tL"></td>
+															<td><button class="btnS white">X</button></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="bpSet">
+							<div class="btnArea">
+								<span class="right">
+									<button class="btnM" id="newholidayBtn">휴가사용 등록</button>
+								</span>
+							</div>
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+										<a class="on">1</a>
+										<a>2</a>
+										<a>3</a>
+										<a>4</a>
+										<a>5</a>
+									<a class="next">다음</a>
+								</span>
+								<span class="selectSet">
+									<select>
+										<option>10개</option>
+										<option>20개</option>
+										<option>50개</option>
+										<option>100개</option>
+									</select>
+								</span>
+							</div>
+						</div>
+						<!--//-->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<div class="basicPop holidayPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>휴가사용</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="100"/>
+								<col />
+								<col width="100"/>
+								<col />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>이름 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+									<td colspan="3">
+										<input type="text" placeholder="자동입력완성" class="autoCom" />
+									</td>
+								</tr>
+								<tr>
+									<th>아이디</th>
+									<td colspan="3">
+										<input type="text" disabled />
+									</td>
+								</tr>
+								<tr>
+									<th>입사일</th>
+									<td colspan="3">2019-01-01</td>
+								</tr>
+								<tr>
+									<th>근속기간</th>
+									<td colspan="3">OO년 OO개월 OO일</td>
+								</tr>
+								<tr>
+									<th>휴가발생일</th>
+									<td>15</td>
+									<th>누적사용일수</th>
+									<td>15</td>
+								</tr>
+								<tr>
+									<th>휴가종류 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+									<td colspan="3">
+										<span class="selectSet">
+											<select>
+												<option>선택하세요</option>
+												<option>오전반차</option>
+												<option>오후반차</option>
+												<option>년/월차</option>
+												<option>교육</option>
+												<option>특별휴가</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>시작일 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+									<td colspan="3"><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+								</tr>
+								<tr>
+									<th>종료일 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+									<td colspan="3"><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></td>
+								</tr>
+								<tr>
+									<th>휴가일수</th>
+									<td colspan="3">0일</td>
+								</tr>
+								<tr>
+									<th>휴가사유 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+									<td colspan="3"><input type="text" placeholder="" /></td>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">발행</button>
+				</div>
+			</div>
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

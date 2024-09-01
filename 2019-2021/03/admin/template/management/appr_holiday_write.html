@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/approval.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/jstree.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/basicTree.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/* 파일업로드 */
+			$('.fileSet input[type=file]').change(function() {
+				var fileValue = $(this).val().split("\\");
+				var fileName = fileValue[fileValue.length-1];
+				$('.fileSet .loadEnd em').text(fileName);
+				$('.fileSet .fileFind').hide();
+				$('.fileSet .loadIng').show();
+				setTimeout(function() {
+					$('.fileSet .loadIng').hide();
+					$('.fileSet .loadFail').show();
+				}, 3000);
+				setTimeout(function() {
+					$('.fileSet .loadFail').hide();
+					$('.fileSet .loadEnd').show();
+				}, 6000);
+			});
+			$('.fileSet .loadEnd button').click(function() {
+				$('.fileSet .fileFind').show();
+				$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+			});
+			/* end 파일업로드 */
+			/**/
+			$('.alertPop .pBtn button, .basicPop .pBtn button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			$('#btnSave').click(function(){
+				$('.alertDim, .savePop').show();
+				$('.pBtn .primary').click(function(){
+					location.href='appr_save.html';
+				});
+			}); // 임시저장
+			$('#btnCancel').click(function(){
+				$('.alertDim, .cancelPop').show();
+				$('.pBtn .primary').click(function(){
+					location.href='appr_main.html';
+				});
+			}); // 취소
+			$('#btnFinish').click(function(){
+				$('.alertDim, .requirePop').show();
+				$('.requirePop .pBtn button').click(function(){
+					$('.popDim, .apprAbsPop').show();
+					$('.apprAbsPop .pBtn .primary').click(function(){
+						$('.alertDim, .finishPop').show();
+						setTimeout(function(){
+							location.href='appr_holiday_view.html';
+						}, 2000);
+					});
+				});
+			}); // 결재요청
+			$('#btnApprLine').click(function(){
+				$('.popDim, .apprLinePop').show();
+			}); // 결재선 팝업
+			$('#btnApprLineEnd').click(function(){
+				$('.apprLine td span').show();
+				$('.alertDim, .apprLineSavePop').show();
+				setTimeout(function(){
+					$('.alertDim, .apprLineSavePop').hide();
+					$('.alertDim, .apprLineEndPop').show();
+					setTimeout(function(){
+						$('.alertDim, .apprLineEndPop').hide();
+					}, 2000);
+				}, 2000);
+			}); // 결재선 적용
+			$('.reasonSet select').on('change', function(){
+				var reason = $('.reasonSet select option:selected').val();
+				if(reason == 'other'){
+					$('.reasonSet > input').show();
+				}else{
+					$('.reasonSet > input').hide();
+				}
+			}); // 휴가 사유
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>전자결재</h2>
+					<div class="pagePos"><span>Home</span><strong>전자결재</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="apprWriteLayout">
+						<h3>휴가 신청서</h3>
+						<div class="apprTop gridSet grid2">
+							<div class="gridItem"></div>
+							<div class="gridItem">
+								<div class="apprLine">
+									<span>
+										<table>
+											<colgroup>
+												<col width="40"/>
+												<col width="100"/>
+												<col width="100"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th rowspan="2">결재</th>
+													<th>팀원</th>
+													<th>파트장</th>
+												</tr>
+												<tr>
+													<td>홍길동</td>
+													<td></td>
+												</tr>
+											</thead>
+										</table>
+									</span>
+									<span>
+										<table>
+											<colgroup>
+												<col width="40"/>
+												<col width="100"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th rowspan="2">합의</th>
+													<th>팀원</th>
+												</tr>
+												<tr>
+													<td><span style="display:none;">김철수</span></td>
+												</tr>
+											</thead>
+										</table>
+									</span>
+									<button class="btnM white" id="btnApprLine">결재선 추가</button>
+								</div>
+							</div>
+						</div>
+						<div class="grayBox">
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="150"/>
+										<col width="490"/>
+										<col width="150"/>
+										<col width="490"/>
+										<col width="150"/>
+										<col width="490"/>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>문서번호</th>
+											<td>자동채번</td>
+											<th>기안일자</th>
+											<td>2020-00-00 23:59</td>
+											<th>기안자</th>
+											<td>홍길동</td>
+										</tr>
+										<tr>
+											<th>참조자</th>
+											<td colspan="3">
+												<div class="workerSet">
+													<input type="text" placeholder="자동완성"/>
+													<div class="workerWrap">
+														<span class="worker"><strong>[999999999] 홍길동</strong><button class="btnDel">삭제</button></span>
+													</div>
+												</div>
+											</td>
+											<th>기안부서</th>
+											<td>개발팀</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="tws">
+							<table>
+								<colgroup>
+									<col width="150"/>
+									<col width="490"/>
+									<col width="150"/>
+									<col width="1130"/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>휴가구분 <sup>필수항목</sup></th>
+										<td>
+											<span class="selectSet">
+												<select>
+													<option>선택하세요</option>
+													<option>연차</option>
+													<option>월차</option>
+												</select>
+											</span>
+										</td>
+										<th>전일/반일 <sup>필수항목</sup></th>
+										<td>
+											<span class="selectSet">
+												<select>
+													<option>선택하세요</option>
+													<option>전일</option>
+													<option>오전반차</option>
+													<option>오후반차</option>
+												</select>
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<th>휴가기간 <sup>필수항목</sup></th>
+										<td colspan="3">
+											<span class="calDupSet">
+												<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+												<em>~</em>
+												<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+											</span>
+											<span>(일수 : 3)</span>
+											<span>[잔여휴가일 : 11.5일]</span>
+										</td>
+									</tr>
+									<tr>
+										<th>휴가사유 <sup>필수항목</sup></th>
+										<td colspan="3">
+											<div class="reasonSet">
+												<span class="selectSet">
+													<select>
+														<option>선택하세요</option>
+														<option>refresh 휴가</option>
+														<option>병가</option>
+														<option>개인사유</option>
+														<option>전체휴무</option>
+														<option value="other">기타</option>
+													</select>
+												</span>
+												<input type="text" style="display:none;"/>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<th>업무백업</th>
+										<td colspan="3">
+											<div class="workerSet">
+												<input type="text" placeholder="자동완성"/>
+												<div class="workerWrap">
+													<span class="worker"><strong>[999999999] 홍길동</strong><button class="btnDel">삭제</button></span>
+												</div>
+											</div>
+											<textarea name="name" placeholder="백업 담당자에게 인수인계 할 업무내용을 기입하세요"></textarea>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="fileBox">
+							<div>
+								<strong>[첨부파일]</strong>
+							</div>
+							<script src="../../js/dropzone.js"></script>
+							<link rel="stylesheet" href="../../css/dropzone.css" />
+							<form action="/upload-target" class="dropzone"></form>
+						</div>
+						<div class="btnArea">
+							<span class="left">
+								<button class="btnM white" id="btnSave">임시저장</button>
+								<button class="btnM white" id="btnCancel">취소</button>
+							</span>
+							<span class="right">
+								<button class="btnM primary" id="btnFinish">결재요청</button>
+							</span>
+						</div>
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Alert Popup -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop requirePop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>필수입력 항목을 기입해주세요.</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<div class="alertPop savePop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>휴가신청서가 임시저장 되었습니다.<br/>임시저장 목록으로 이동 하시겠습니까?</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<div class="alertPop cancelPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>작성한 신청서 정보가 삭제됩니다.<br/>취소 하시겠습니까?</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<div class="alertPop finishPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>상신이 완료되었습니다. <br/>상세화면으로 이동합니다.</p>
+					<!--//-->
+				</div>
+			</div>
+			<div class="alertPop apprLineDelPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>선택한 결제선은 다시 확인이 어렵습니다.<br/>삭제 하시겠습니까?</p>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<div class="alertPop apprLineSavePop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>결제선 저장은 최대 10개까지 가능합니다.<br/>결제선 선택 목록에서 삭제 후<br/>입력해주시기 바랍니다.</p>
+					<!--//-->
+				</div>
+			</div>
+			<div class="alertPop apprLineEndPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>선택한 결제선이 적용되었습니다.</p>
+					<!--//-->
+				</div>
+			</div>
+		</div>
+		<!-- //Alert Popup -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 휴가 상신으로 인한 부재 시 -->
+			<div class="basicPop apprAbsPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<strong>휴가 상신으로 인한 부재 시 전자결재 방법을 선택해 주세요.</strong>
+					<div class="lineBox">
+						<span class="radioSet">
+							<input type="radio" id="apprAbs1" name="apprAbs" />
+							<label for="apprAbs1"><i></i>결제 (휴가중에도 결제진행)</label>
+						</span>
+						<span class="radioSet">
+							<input type="radio" id="apprAbs2" name="apprAbs" />
+							<label for="apprAbs2"><i></i>전결 (자동 PASS)</label>
+						</span>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+			<!-- //휴가 상신으로 인한 부재 시 -->
+			<!-- 결재선 팝업 -->
+			<div class="basicPop apprLinePop" style="display:none;">
+				<div class="tt">
+					<h1>결재선 추가</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div id="apprLine" data-include="appr_line.html"></div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<span class="left">
+						<p>* 합의는 병렬 진행이며, 합의가 완료된 후 결제가 진행됩니다.</p>
+					</span>
+					<span class="right">
+						<button class="btnM white">취소</button>
+						<button class="btnM primary" id="btnApprLineEnd">적용</button>
+					</span>
+				</div>
+			</div>
+			<!-- //결재선 팝업 -->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

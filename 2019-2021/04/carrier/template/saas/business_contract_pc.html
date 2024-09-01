@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.tls tbody tr').click(function(){
+					location.href='business_contract_view.html';
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="grayBox searchArea">
+			<fieldset>
+				<button class="btnM lineRed">선택삭제</button>
+				<button class="btnM lineOrange">엑셀다운로드</button>
+				<span class="right">
+					<span class="calendarSet">
+						<span class="calDupSet">
+							<span class="calSet inLabel"><label for="searchDate">계약일자</label><input type="tel" name="searchDate" placeholder="2020-04-01" /><button>달력열기</button></span>
+							<em>~</em>
+							<span class="calSet"><input type="tel" placeholder="2020-04-19" /><button>달력열기</button></span>
+						</span>
+						<span class="radioChoose">
+							<label for="lb1"><input type="radio" id="lb1" name="radio1" value="1개월" checked/><span>1개월</span></label>
+							<label for="lb2"><input type="radio" id="lb2" name="radio1" value="3개월" /><span>3개월</span></label>
+							<label for="lb3"><input type="radio" id="lb3" name="radio1" value="1년" /><span>1년</span></label>
+							<label for="lb4"><input type="radio" id="lb4" name="radio1" value="전체" /><span>전체</span></label>
+						</span>
+					</span>
+					<dl class="inputBox">
+						<dt>운송형태</dt>
+						<dd>
+							<span class="selectSet">
+								<select>
+									<option selected>전체</option>
+									<option>왕복</option>
+									<option>편도</option>
+									<option>환적</option>
+								</select>
+							</span>
+						</dd>
+					</dl>
+				</span>
+			</fieldset>
+		</div>
+		<div class="pd2">
+			<div class="tls">
+				<table>
+					<colgroup>
+						<col width="60" />
+						<col width="120" />
+						<col width="180" />
+						<col width="180" />
+						<col width="150" />
+						<col width="80" />
+						<col width="80" />
+						<col width="100" />
+						<col width="100" />
+						<col width="100" />
+						<col width="100" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chkAll" />
+									<label for="chkAll"><i></i></label>
+								</span>
+							</th>
+							<th>계약번호</th>
+							<th>계약회사</th>
+							<th>계약기간</th>
+							<th>계약금액(원)</th>
+							<th>운송유형</th>
+							<th>형태</th>
+							<th>출발지</th>
+							<th>작업지</th>
+							<th>도착지</th>
+							<th>계약내용</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!--Loop-->
+						<tr>
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk1" />
+									<label for="chk1"><i></i></label>
+								</span>
+							</td>
+							<td>M999999</td>
+							<td>대림물류㈜</td>
+							<td>2020-01-01 ~ 2020-12-31</td>
+							<td class="tR">999,000</td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td>XX CY</td>
+							<td>경남창원</td>
+							<td>XX CY</td>
+							<td><button class="btnS green wFull">상세보기</button></td>
+						</tr>
+						<!--//Loop-->
+						<tr>
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk2" />
+									<label for="chk2"><i></i></label>
+								</span>
+							</td>
+							<td>M999999</td>
+							<td>미화중공업㈜</td>
+							<td>2020-01-01 ~ 2020-12-31</td>
+							<td class="tR">999,000</td>
+							<td class="ftRed">수입</td>
+							<td>편도</td>
+							<td>의왕ICD</td>
+							<td>경남창원</td>
+							<td>XX CY</td>
+							<td><button class="btnS green wFull">상세보기</button></td>
+						</tr>
+						<tr>
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk3" />
+									<label for="chk3"><i></i></label>
+								</span>
+							</td>
+							<td>M999999</td>
+							<td>대림물류㈜</td>
+							<td>2020-01-01 ~ 2020-12-31</td>
+							<td class="tR">999,000</td>
+							<td class="ftRed">수입</td>
+							<td>환적</td>
+							<td>XX CY</td>
+							<td>-</td>
+							<td>신부산항</td>
+							<td><button class="btnS green wFull">상세보기</button></td>
+						</tr>
+						<tr>
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk4" />
+									<label for="chk4"><i></i></label>
+								</span>
+							</td>
+							<td>M999999</td>
+							<td>대림물류㈜</td>
+							<td>2020-01-01 ~ 2020-12-31</td>
+							<td class="tR">999,000</td>
+							<td class="ftBlue">수출</td>
+							<td>왕복</td>
+							<td>XX CY</td>
+							<td>경남창원</td>
+							<td>XX CY</td>
+							<td><button class="btnS green wFull">상세보기</button></td>
+						</tr>
+						<tr>
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk5" />
+									<label for="chk5"><i></i></label>
+								</span>
+							</td>
+							<td>M999999</td>
+							<td>대림물류㈜</td>
+							<td>2020-01-01 ~ 2020-12-31</td>
+							<td class="tR">999,000</td>
+							<td class="ftBlue">수출</td>
+							<td>왕복</td>
+							<td>XX CY</td>
+							<td>경남창원</td>
+							<td>XX CY</td>
+							<td><button class="btnS green wFull">상세보기</button></td>
+						</tr>
+						<tr>
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk6" />
+									<label for="chk6"><i></i></label>
+								</span>
+							</td>
+							<td>M999999</td>
+							<td>대림물류㈜</td>
+							<td>2020-01-01 ~ 2020-12-31</td>
+							<td class="tR">999,000</td>
+							<td class="ftBlue">수출</td>
+							<td>왕복</td>
+							<td>XX CY</td>
+							<td>경남창원</td>
+							<td>XX CY</td>
+							<td><button class="btnS green wFull">상세보기</button></td>
+						</tr>
+						<tr>
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk7" />
+									<label for="chk7"><i></i></label>
+								</span>
+							</td>
+							<td>M999999</td>
+							<td>대림물류㈜</td>
+							<td>2020-01-01 ~ 2020-12-31</td>
+							<td class="tR">999,000</td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td>XX CY</td>
+							<td>경남창원</td>
+							<td>XX CY</td>
+							<td><button class="btnS green wFull">상세보기</button></td>
+						</tr>
+						<tr>
+							<td>
+								<span class="checkSet noLabel">
+									<input type="checkbox" id="chk8" />
+									<label for="chk8"><i></i></label>
+								</span>
+							</td>
+							<td>M999999</td>
+							<td>대림물류㈜</td>
+							<td>2020-01-01 ~ 2020-12-31</td>
+							<td class="tR">999,000</td>
+							<td class="ftRed">수입</td>
+							<td>왕복</td>
+							<td>XX CY</td>
+							<td>경남창원</td>
+							<td>XX CY</td>
+							<td><button class="btnS green wFull">상세보기</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+    </body>
+</html>

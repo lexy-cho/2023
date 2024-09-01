@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/timepicki.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/push.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../js/timepicki.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('.btnHarbor').click(function(){
+					$('.popDim').show();
+					$('.harborPop').show();
+					scrollClose();
+				});
+				$('.harborPop .harborBox ul li').click(function(){
+					$(this).toggleClass('on');
+				}); //2020-08-04 항만팝업 항만선택 이벤트
+				$('.btnShipperSearch').click(function(){
+					$('.popDim').show();
+					$('.searchPop.shipperPop').show();
+					scrollClose();
+				});
+				$('.btnAdress').click(function(){
+					$('.popDim').show();
+					$('.addressPop').show();
+					scrollClose();
+					$('.addressPop .btnSaveAddress').click(function(){
+						$('.addressPop').hide();
+						$('.saveAddressPop').show();
+						$('.saveAddressPop button').click(function(){
+							$('.popDim').show();
+							$('.saveAddressPop').hide();
+							$('.addressPop').show();
+						});
+					});
+				});
+				$('.btnSaveAddress').click(function(){
+					$('.popDim').show();
+					$('.saveAddressPop').show();
+					scrollClose();
+				});
+				/* 작업지 추가,삭제 대응 */
+				$('.work .whiteBlue').click(function(){
+					$(this).prev('dl').show();
+				});
+				$('.work .btnTrash').click(function(){
+					$(this).parents('dl').hide();
+				});
+				/* end 작업지 추가,삭제 대응 */
+
+				/* 컨테이너 2개 선택 대응 2020-06-16 갯수 팝업으로 변경 */
+				$('.openNumber').click(function(){
+					$('.popDim').show();
+					$('.containerNumberPop').show();
+					scrollClose();
+				});
+				$('.containerNumberPop .pBtn *').click(function(){
+					$('#containerAddArea').show();
+					$(".openNumber").val("2");
+				});
+				$('.containerSet .btnDelete').click(function(){
+					$('#containerAddArea').hide();
+					$(".openNumber").val("1");
+				});
+				/* end 컨테이너 2개 선택 대응 */
+
+				$('#popBtn7').click(function(){
+					$('.popDim').show();
+					$('#samplePop7').show();
+					scrollClose();
+				}); //최근실적 불러오기
+
+				/* containerSet 활성화비활성화 */
+				$(".inputBox input, .inputBox select, .inputBox textarea, .company input, .address input, .calSet input").focus(function(){
+					$(this).parents(".orderStepBox").addClass('focusOn');
+					$(".containerArea").removeClass('focusOn');
+					$(this).parents(".containerArea").addClass('focusOn');
+				});
+				$(".inputBox input, .inputBox select, .inputBox textarea, .company input, .address input, .calSet input").blur(function(){
+					$(this).parents(".orderStepBox").removeClass('focusOn');
+					$(this).parents(".containerArea").addClass('focusOn');
+				});
+				/* end containerSet 활성화비활성화 */
+
+				$("#kindSelect select").on("change", function(){
+					if($(this).find("option:selected").val() == 0){
+						$("#kindSelect").removeClass('blue').removeClass('green').addClass('red');
+						$(".taxInfo .transType").removeClass('blue').removeClass('green').addClass('red').text('수입');
+						$("#bdArea").show();
+						$("#boArea").hide();
+					}else if($(this).find("option:selected").val() == 1){
+						$("#kindSelect").removeClass('red').removeClass('green').addClass('blue');
+						$(".taxInfo .transType").removeClass('red').removeClass('green').addClass('blue').text('수출');
+						$("#boArea").show();
+						$("#bdArea").hide();
+					}
+				}); //수입,수출 구분에 따른 대응
+
+				$('.freightShape select').change(function(){
+					if($(this).find("option:selected").val() == 2){
+						$(".containerArea .map").addClass('change');
+					} else {
+						$(".containerArea .map").removeClass('change');
+					}
+				});
+				/* 운임형태 - 환적 대응 */
+
+				/* 2020-08-04 컨테이너 별 써머리 모바일대응 */
+				function open_chatroom(){
+					var windowWidth = $( window ).width();
+
+					if(windowWidth < 800) {
+						$('.notSubmit').click(function(){
+							$(this).hide();
+						});
+					}else {
+						$('.notSubmit').show();
+					}
+				}
+				open_chatroom();
+				$( window ).resize(function() {
+					open_chatroom();
+				});
+				/* end 컨테이너 별 써머리 모바일대응 */
+
+				$(".containerSet .btnOpner").click(function(){
+					var containerCloseHeight = $(this).siblings('.containerArea').children('.info').outerHeight();
+					if($(this).siblings('.containerArea').hasClass('opnerOn') == false){
+						$(this).siblings('.containerArea').addClass('opnerOn').css('height', containerCloseHeight);
+					} else if($(this).siblings('.containerArea').hasClass('opnerOn') ==  true){
+						$(this).siblings('.containerArea').removeClass('opnerOn').css('height', 'auto');
+					}
+				});// 컨테이너 여닫기
+
+				/* 신고하기 관련 대응샘플 */
+				$("#st01").click(function(){
+					$("#st01Cancel").show();
+				});
+				$("#st01Cancel").click(function(){
+					$(this).hide();
+					$("#st01 button").show();
+					$("#st01").removeClass('on');
+				});
+				$("#st02").click(function(){
+					$("#st02Cancel").show();
+				});
+				$("#st02Cancel").click(function(){
+					$(this).hide();
+					$("#st02 button").show();
+					$("#st02").removeClass('on');
+				});
+				/* end 신고하기 관련 대응샘플 */
+
+				$('.timeSet input').timepicki({reset:true}); //Timer
+
+				$("#header .mSmallBtn .red").click(function(){
+					$('.alertDim, .submitPop').show();
+					$('.submitPop .pBtn .red').click(function(){
+						location.href = 'order_view.html';
+					})
+				}); //2020-07-16 오더제출 alert 팝업
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap" class="detailCase"><!-- 2020-06-22 상단고정 상세일 경우 -->
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back c-menu c-menu--slide-left">
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<div id="containerBack">
+				<!-- header -->
+				<div id="header">
+					<header>
+						 <span class="left">
+							<button class="btnList" onClick="location.href='call_order.html'">목록</button>
+						 </span>
+						 <h2 class="viewTit">콜오더 <div class="txtCover">[작성중]</div></h2><!-- 2020-06-16 class 추가 및 변경 -->
+						 <span class="right mSmallBtn">
+							<button class="btnM black" onClick="location.href='order_view.html'">저장</button>
+							<button class="btnM red" onClick="location.href='order_view.html'">콜오더 제출</button>
+						 </span>
+					</header>
+				</div>
+				<!-- //header -->
+				<hr/>
+				<!-- container -->
+				<div id="container">
+				<section>
+					<div class="content">
+					<article>
+						<div class="notSubmit">
+							<div>
+								해당 오더 건은 작성 중(임시저장) 상태로 <span>접수가 되지 않은 상태 입니다.</span>
+								<span class="pCase">
+									<strong>[콜오더 제출]을 클릭</strong>하여 접수해 주세요.
+								</span>
+								<span class="mCase">
+									<strong>[콜오더 제출]</strong>을 선택하여 접수해 주세요.
+									<em>콜오더제출</em>
+								</span>
+							</div>
+						</div>
+						<!-- Page Layout -->
+						<div class="orderWriteLayout">
+							<div class="orderDate">
+								<button class="btnLoadResult">최근실적 불러오기</button>
+							</div>
+							<!--화물구분-->
+							<div class="orderStepBox stepKind">
+								<div class="osTit">
+									<h3>1</h3>
+									<span class="selectSet red" id="kindSelect">
+										<select>
+											<option selected value="0">수입</option>
+											<option value="1">수출</option>
+										</select>
+									</span>
+								</div>
+								<div class="osData basicCase">
+									<div id="bdArea"><!-- 2020-06-22 수입 경우 -->
+										<div class="gridSet grid2 notPd unipassSet">
+											<div class="gridItem">
+												<dl class="inputBox">
+													<dt>D/O</dt>
+													<dd><input type="tel"/></dd><!-- 2020-07-08 placeholder 삭제 -->
+												</dl>
+											</div>
+											<div class="gridItem">
+												<dl class="inputBox">
+													<dt>B/L</dt>
+													<dd><input type="text"/></dd><!-- 2020-07-08 placeholder 삭제 -->
+												</dl>
+											</div>
+											<button class="searchUnipass">통관검색 (UNIPASS)</button>
+										</div>
+									</div>
+									<div id="boArea" style="display:none;"><!-- 2020-06-22 수출 경우 -->
+										<div class="gridSet grid2 notPd unipassSet oneCAse">
+											<div class="gridItem">
+												<dl class="inputBox">
+													<dt>B/O</dt>
+													<dd><input type="text"/></dd><!-- 2020-07-08 placeholder 삭제 -->
+												</dl>
+											</div>
+											<button class="searchUnipass">통관검색 (UNIPASS)</button>
+										</div>
+									</div>
+									<div class="gridSet grid2 locate">
+										<div class="gridItem halfInputBox">
+											<dl class="inputBox">
+												<dt>선사</dt>
+												<dd>
+													<div class="searchInput">
+														<input type="text" class="autoShipper" value="HMM / HYUNDAI MERCHANT MARINE CO.,LTD HMM"/><!-- 2020-06-24 선사 자동완성  --><!-- 2020-07-08 placeholder 삭제, value 추가 -->
+														<button class="btnSearch btnShipperSearch">검색하기</button>
+													</div>
+												</dd>
+											</dl>
+											<dl class="inputBox">
+												<dt>모선</dt>
+												<dd><input type="text" value="ZIM KINGSTON"/></dd><!-- 2020-07-08 placeholder 삭제, value 추가 -->
+											</dl>
+										</div>
+										<div class="gridItem withDate">
+											<span class="calSet inLabel">
+												<label for="searchDate">입항일</label>
+												<input type="tel" name="searchDate" value="2020-04-01" /><button>달력열기</button><!-- 2020-07-08  value 수정 -->
+											</span>
+											<dl class="inputBox">
+												<dt>항차</dt>
+												<dd><input type="text" /></dd><!-- 2020-07-08 placeholder 삭제 -->
+											</dl>
+										</div>
+									</div>
+									<dl class="inputBox">
+										<dt>적재품목</dt>
+										<dd><textarea>Prnm(300) CRYOVAN PLAIN CURVED END SEAL BB4L BAGS STRAIGHT END SEAL AND ETC</textarea></dd><!-- 2020-07-21 적재품목, 운송메모, 기타메모 textarea로 변경 -->
+									</dl>
+									<dl class="inputBox mt10px">
+										<dt>운송메모</dt>
+										<dd><textarea>Prnm(300) CRYOVAN PLAIN CURVED END SEAL BB4L BAGS STRAIGHT END SEAL AND ETC</textarea></dd><!-- 2020-07-21 적재품목, 운송메모, 기타메모 textarea로 변경 -->
+									</dl>
+									<dl class="inputBox mt10px">
+										<dt>기타메모</dt>
+										<dd><textarea>Prnm(300) CRYOVAN PLAIN CURVED END SEAL BB4L BAGS STRAIGHT END SEAL AND ETC</textarea></dd><!-- 2020-07-21 적재품목, 운송메모, 기타메모 textarea로 변경 -->
+									</dl>
+								</div>
+							</div>
+							<!--//화물구분-->
+							<!--위치정보-->
+							<div class="orderStepBox stepMap">
+								<div class="osTit">
+									<h3>2</h3>
+									<span class="txt">컨테이너 상세</span>
+									<em>※ 총 컨테이너 수 = 콜 차량 총수</em>
+									<div class="ctSetNum">
+										<dl class="inputBox cell1">
+											<dt>총 <span>컨테이너 수</span></dt>
+											<dd><input type="text" value="1" readonly class="openNumber" /></dd>
+											<dd>EA</dd>
+										</dl>
+										<dl class="inputBox cell2">
+											<dt>총 <span>적재 중량</span></dt>
+											<dd><input type="text" value="9,856"/></dd><!-- 2020-07-08 placeholder 삭제, value 값 추가 -->
+											<dd>ton</dd>
+										</dl>
+										<dl class="inputBox cell3">
+											<dt>운임형태</dt>
+											<dd>
+												<span class="selectSet freightShape">
+													<select>
+														<option value="0">왕복</option>
+														<option value="1">편도</option>
+														<option value="2">환적</option>
+													</select>
+												</span>
+											</dd>
+										</dl>
+										<dl class="inputBox cell4">
+											<dt>유형</dt>
+											<dd>
+												<span class="selectSet">
+													<select>
+														<option>Dry</option>
+														<option>steel Reefer</option>
+														<option selected>Open Top</option>
+														<option>Sliding Open Top</option>
+														<option>Flat Rack</option>
+														<option>Super Rack</option>
+													</select>
+												</span>
+											</dd>
+										</dl>
+										<dl class="inputBox cell5">
+											<dt>크기(ft)</dt>
+											<dd>
+												<span class="selectSet">
+													<select>
+														<option>선택</option>
+														<option>20</option>
+														<option>40</option>
+														<option selected>40 High Cube</option><!-- 2020-07-08 선택된 option 이동 -->
+														<option>45 High Cube</option>
+													</select>
+												</span>
+											</dd>
+										</dl>
+									</div>
+								</div>
+								<div class="osData">
+									<!-- 컨테이너 셋트 (기본) -->
+									<div class="containerSet">
+										<div class="containerArea">
+											<div class="info">
+												<div class="numIconBack"><span class="numIcon">1</span></div>
+												<dl class="inputBox cell1"><!-- 2020-08-04 iner 클래스 삭제 -->
+													<dt>중량(ton)</dt>
+													<dd><input class="tC" type="tel" value="15"/></dd><!-- 2020-07-08 placeholder 삭제 -->
+												</dl>
+												<dl class="inputBox cell2"><!-- 2020-08-04 iner 클래스 삭제 -->
+													<dt>컨테이너 번호</dt>
+													<dd><input type="tel" value="A000001"/></dd><!-- 2020-07-08 placeholder 삭제 -->
+												</dl>
+												<dl class="inputBox cell3"><!-- 2020-08-04 iner 클래스 삭제 -->
+													<dt>Seal No.</dt><!-- 2020-08-04 seal번호 텍스트 수정 -->
+													<dd><input type="tel" value="S001"/></dd><!-- 2020-07-08 placeholder 삭제 -->
+												</dl>
+												<!-- 2020-06-16 e-trans 반입/반출신고 삭제 -->
+											</div>
+											<div class="map"><!-- 환적Case ="map change" -->
+												<!-- 출발지 -->
+												<div class="start">
+													<dl>
+														<dt>상차<span>(출발지)</span></dt>
+														<dd>
+															<div class="dateNcompay">
+																<div class="dateArea">
+																	<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+																	<span class="timeSet">
+																		<input type="text" placeholder="시간 ▼ 00 : 00" class="soloInput" readonly /><!-- 2020-07-08 placeholder 수정 -->
+																	</span>
+																</div>
+																<!-- 2020-08-04 dateNcompay 안으로 이동, 도/시 지역 추가 -->
+																<div class="address inlineCase">
+																	<div><button class="btnHarbor">출발지 검색</button><em>[도/시 지역]</em><input type="text" placeholder="출발지를 검색해주세요" class="soloInput" readonly/></div>
+																</div>
+																<!-- //2020-08-04 dateNcompay 안으로 이동, 도/시 지역 추가 -->
+															</div>
+														</dd>
+													</dl>
+												</div>
+												<!-- //출발지 -->
+												<!-- 작업지 -->
+												<div class="work">
+													<!---->
+													<dl>
+														<dt>작업1<span>(작업지)</span></dt>
+														<dd>
+															<div class="dateNcompay">
+																<div class="dateArea">
+																	<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+																	<span class="timeSet">
+																		<input type="text" placeholder="시간 ▼ 00 : 00" class="soloInput" readonly /><!-- 2020-07-08 placeholder 수정 -->
+																	</span>
+																</div>
+																<!-- 2020-06-16 회사검색 -->
+																<dl class="inputBox priceSelect">
+																	<dt>회사검색</dt>
+																	<dd>
+																		<div>
+																			<input type="text" class="autoCom"><!--  2020-06-23 자동완성 class 추가 --><!-- 2020-07-08 placeholder 삭제 -->
+																			<!-- 2020-06-24 더보기 삭제 -->
+																		</div>
+																	</dd>
+																</dl>
+																<!-- //2020-06-16 회사검색 -->
+															</div>
+															<div class="address inlineCase">
+																<div><button class="btnAdress">주소검색</button><em>[도/시 지역]</em><input type="text" class="inputAuto" readonly/></div><!-- 2020-07-08 placeholder 삭제 -->
+																<input type="text" class="soloInput"/><!-- 2020-07-08 placeholder 삭제 -->
+															</div>
+															<div class="gridSet grid2">
+																<div class="gridItem">
+																	<dl class="inputBox">
+																		<dt>담당</dt>
+																		<dd><input type="text" placeholder="성명"/></dd>
+																	</dl>
+																</div>
+																<div class="gridItem">
+																	<dl class="inputBox">
+																		<dt>연락처</dt>
+																		<dd><input type="tel" placeholder="'-' 빼고 숫자 입력"/></dd><!-- 2020-07-08 placeholder 수정 -->
+																	</dl>
+																</div>
+															</div>
+														</dd>
+													</dl>
+													<!--//-->
+													<!---->
+													<dl style="display:none;">
+														<dt>작업2<span>(작업지)</span><button class="btnTrash">삭제</button></dt>
+														<dd>
+															<div class="dateNcompay">
+																<div class="dateArea">
+																	<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+																	<span class="timeSet">
+																		<input type="text" placeholder="시간 ▼ 00 : 00" class="soloInput" readonly /><!-- 2020-07-08 placeholder 수정 -->
+																	</span>
+																</div>
+																<!-- 2020-06-16 회사검색 -->
+																<dl class="inputBox priceSelect">
+																	<dt>회사검색</dt>
+																	<dd>
+																		<div>
+																			<input type="text" class="autoCom"><!--  2020-06-23 자동완성 class 추가 --><!-- 2020-07-08 placeholder 삭제 -->
+																			<!-- 2020-06-24 더보기 삭제 -->
+																		</div>
+																	</dd>
+																</dl>
+																<!-- //2020-06-16 회사검색 -->
+															</div>
+															<div class="address inlineCase">
+																<div><button class="btnAdress">주소검색</button><em>[도/시 지역]</em><input type="text" class="inputAuto" readonly/></div><!-- 2020-07-08 placeholder 삭제 -->
+																<input type="text" class="soloInput"/><!-- 2020-07-08 placeholder 삭제 -->
+															</div>
+															<div class="gridSet grid2">
+																<div class="gridItem">
+																	<dl class="inputBox">
+																		<dt>담당</dt>
+																		<dd><input type="text" placeholder="성명"/></dd>
+																	</dl>
+																</div>
+																<div class="gridItem">
+																	<dl class="inputBox">
+																		<dt>연락처</dt>
+																		<dd><input type="tel" placeholder="'-' 빼고 숫자 입력"/></dd><!-- 2020-07-08 placeholder 수정 -->
+																	</dl>
+																</div>
+															</div>
+														</dd>
+													</dl>
+													<!--//-->
+													<button class="btnM whiteBlue">작업지 추가</button>
+												</div>
+												<!-- //작업지 -->
+												<!-- 도착지 -->
+												<div class="end">
+													<dl>
+														<dt>반납<span>(도착지)</span></dt>
+														<dd>
+															<div class="dateNcompay">
+																<div class="dateArea">
+																	<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+																	<span class="timeSet">
+																		<input type="text" placeholder="시간 ▼ 00 : 00" class="soloInput" readonly /><!-- 2020-07-08 placeholder 수정 -->
+																	</span>
+																</div>
+																<!-- 2020-08-04 dateNcompay 안으로 이동, 도/시 지역 추가 -->
+																<div class="address inlineCase">
+																	<div><button class="btnHarbor">도착지 검색</button><em>[도/시 지역]</em><input type="text" placeholder="도착지를 검색해주세요" class="soloInput" readonly/></div>
+																</div>
+																<!-- //2020-08-04 dateNcompay 안으로 이동, 도/시 지역 추가 -->
+															</div>
+														</dd>
+													</dl>
+												</div>
+												<!-- //도착지 -->
+											</div>
+											<div class="total">
+												<label><strong class="crNum">1</strong>번 컨테이너</label>
+												<span class="left">
+													<span class="radioSet">
+														<input type="radio" id="chk1" name="chk" />
+														<label for="chk1"><i></i>직접 입력</label>
+													</span>
+													<span class="radioSet">
+														<input type="radio" id="chk2" name="chk" />
+														<label for="chk2"><i></i>로지플랫폼 추천 운임 적용</label>
+													</span>
+												</span>
+												<dl class="inputBox">
+													<dt>운임비용</dt>
+													<dd><input type="text" value="0" class="soloInput" />원</dd>
+												</dl>
+											</div>
+											<div class="guid">
+												<strong>
+													운임 기준 안내
+													<span>
+														국토교통부가 고지한 안전운임제 운임표를 기준으로 운임 기준을 안내합니다. 안전위탁운임을 준수해주세요.
+														<a href="https://www.safetruck.go.kr/notice/noticeView.do" target="_blank">화물자동차 안전운임고시</a><!-- 2020-06-16 위치변경 -->
+													</span>
+												</strong>
+												<div class="standard">
+													<em>[왕복]</em>
+													<!-- 2020-08-04 dl 감싸는 영역 -->
+													<div class="stdDetail">
+														<dl>
+															<dt>구간거리</dt>
+															<dd>150 km</dd>
+														</dl>
+														<dl>
+															<dt>안전운송운임</dt>
+															<dd>1,123,200 원</dd>
+														</dl>
+													</div>
+													<!-- //2020-08-04 dl 감싸는 영역 -->
+													<div class="freightArea">
+														<span class="costFreight">휴일운임가산 (20%)</span>
+														<span class="costFreight">심야운임가산 (20%)</span>
+													</div>
+												</div>
+												<ul>
+													<li>의왕ICD, 인천항, 평택항 등 수도권 컨테이너 장치장에서 공(空)컨테이너를 반납 또는 수령하는 경우에는 편도 운임을 적용합니다.</li>
+													<li>일요일 및 공휴일에 작업하는 경우 20%가산됩니다. 심야(22:00-06:00)에 운행하는 경우 20%가산됩니다. 물류플랫폼은<!-- 2020-10-29 텍스트 변경 --> 휴일운임가산과 야간운임가산 두 조건만 운임 안내에 반영하였습니다.</li>
+													<li>운임비용 계산  = 안전운임제 기준 단가 X (휴일운임가산 20% + 야간운임가산 20%)</li>
+													<li>주간에 화물자동차 운행이 제한되어 허가를 받아야 되는 지역은 해당구간 운임의 30% 이상을 가산합니다. 상기 추천금액에는 이 조건이 반영되어 있지 않습니다.</li>
+													<li>산간벽지 등 오지의 경우는 화주, 운수사업자, 화물차주 간에 협의하여 운임을 가산 적용합니다.</li>
+													<li>도로통행 제한 높이 또는 길이의 초과로 발생되는 “제한차량 운행허가” 수수료 등은 화주가 실비 정산하여 지급합니다.</li>
+													<li>가산적용의 총 비율은 거리당 운임단가의 50%를 초과할 수 없습니다.</li>
+												</ul>
+											</div>
+										</div>
+										<button class="btnOpner">여닫기</button>
+									</div>
+									<!--//컨테이너 셋트 (기본) -->
+									<!-- 컨테이너 셋트 (추가) -->
+									<div class="containerSet" id="containerAddArea" style="display:none">
+										<!-- 2020-07-14 컨테이너 정보 복사버튼영역 -->
+										<span class="containerCopy">상기 &lt;<strong class="crNum">1</strong>번 컨테이너&gt;의 정보 <button class="btnS black">가져오기</button></span>
+										<!-- //2020-07-14 컨테이너 정보 복사버튼영역 -->
+										<div class="containerArea">
+											<div class="info">
+												<div class="numIconBack"><span class="numIcon">2</span></div>
+												<dl class="inputBox cell1"><!-- 2020-08-04 iner 클래스 삭제 -->
+													<dt>중량(ton)</dt>
+													<dd><input class="tC" type="tel" placeholder="숫자입력" value="15"/></dd>
+												</dl>
+												<dl class="inputBox cell2"><!-- 2020-08-04 iner 클래스 삭제 -->
+													<dt>컨테이너 번호</dt>
+													<dd><input type="tel" placeholder="_ _ _ _ _ _ _" value="A000001"/></dd>
+												</dl>
+												<dl class="inputBox cell3"><!-- 2020-08-04 iner 클래스 삭제 -->
+													<dt>Seal No.</dt><!-- 2020-08-04 seal번호 텍스트 수정 -->
+													<dd><input type="tel" placeholder="_ _ _ _" value="S001"/></dd>
+												</dl>
+												<div class="btn">
+													<!-- 2020-06-16 e-trans 반입/반출신고 삭제 -->
+													<button class="btnDelete">삭제</button>
+												</div>
+											</div>
+											<div class="map"><!-- 환적Case ="map change" -->
+												<!-- 출발지 -->
+												<div class="start">
+													<dl>
+														<dt>상차<span>(출발지)</span></dt>
+														<dd>
+															<div class="dateNcompay">
+																<div class="dateArea">
+																	<span class="calSet"><input type="tel" placeholder="2020-01-21" readonly/><button disabled>달력열기</button></span>
+																	<span class="timeSet">
+																		<input type="text" placeholder="시간 ▼ 00 : 00" class="soloInput" readonly /><!-- 2020-07-08 placeholder 수정 -->
+																	</span>
+																</div>
+																<!-- 2020-08-04 dateNcompay 안으로 이동, 도/시 지역 추가 -->
+																<div class="address inlineCase">
+																	<div><button class="btnHarbor">출발지 검색</button><em>[도/시 지역]</em><input type="text" placeholder="출발지를 검색해주세요" class="soloInput" readonly/></div>
+																</div>
+																<!-- //2020-08-04 dateNcompay 안으로 이동, 도/시 지역 추가 -->
+															</div>
+														</dd>
+													</dl>
+												</div>
+												<!-- //출발지 -->
+												<!-- 작업지 -->
+												<div class="work">
+													<!---->
+													<dl>
+														<dt>작업1<span>(작업지)</span></dt>
+														<dd>
+															<div class="dateNcompay">
+																<div class="dateArea">
+																	<span class="calSet"><input type="tel" placeholder="2020-01-21" readonly/><button disabled>달력열기</button></span>
+																	<span class="timeSet">
+																		<input type="text" placeholder="시간 ▼ 00 : 00" class="soloInput" readonly /><!-- 2020-07-08 placeholder 수정 -->
+																	</span>
+																</div>
+																<!-- 2020-06-16 회사검색 -->
+																<dl class="inputBox priceSelect">
+																	<dt>회사검색</dt>
+																	<dd>
+																		<div>
+																			<input type="text" class="autoCom"><!--  2020-06-23 자동완성 class 추가 --><!-- 2020-07-08 placeholder 삭제 -->
+																			<!-- 2020-06-24 더보기 삭제 -->
+																		</div>
+																	</dd>
+																</dl>
+																<!-- //2020-06-16 회사검색 -->
+															</div>
+															<div class="address inlineCase">
+																<div><button class="btnAdress">주소검색</button><em>[도/시 지역]</em><input type="text" class="inputAuto" readonly/></div><!-- 2020-07-08 placeholder 삭제 -->
+																<input type="text" class="soloInput"/><!-- 2020-07-08 placeholder 삭제 -->
+															</div>
+															<div class="gridSet grid2">
+																<div class="gridItem">
+																	<dl class="inputBox">
+																		<dt>담당</dt>
+																		<dd><input type="text" placeholder="성명"/></dd>
+																	</dl>
+																</div>
+																<div class="gridItem">
+																	<dl class="inputBox">
+																		<dt>연락처</dt>
+																		<dd><input type="tel" placeholder="'-' 빼고 숫자 입력"/></dd><!-- 2020-07-08 placeholder 수정 -->
+																	</dl>
+																</div>
+															</div>
+														</dd>
+													</dl>
+													<!--//-->
+													<!---->
+													<dl style="display:none;">
+														<dt>작업2<span>(작업지)</span><button class="btnTrash">삭제</button></dt>
+														<dd>
+															<div class="dateNcompay">
+																<div class="dateArea">
+																	<span class="calSet"><input type="tel" placeholder="2020-01-21" readonly/><button disabled>달력열기</button></span>
+																	<span class="timeSet">
+																		<input type="text" placeholder="시간 ▼ 00 : 00" class="soloInput" readonly /><!-- 2020-07-08 placeholder 수정 -->
+																	</span>
+																</div>
+																<!-- 2020-06-16 회사검색 -->
+																<dl class="inputBox priceSelect">
+																	<dt>회사검색</dt>
+																	<dd>
+																		<div>
+																			<input type="text" class="autoCom"><!--  2020-06-23 자동완성 class 추가 --><!-- 2020-07-08 placeholder 삭제 -->
+																			<!-- 2020-06-24 더보기 삭제 -->
+																		</div>
+																	</dd>
+																</dl>
+																<!-- //2020-06-16 회사검색 -->
+															</div>
+															<div class="address inlineCase">
+																<div><button class="btnAdress">주소검색</button><em>[도/시 지역]</em><input type="text" class="inputAuto" readonly/></div><!-- 2020-07-08 placeholder 삭제 -->
+																<input type="text" class="soloInput"/><!-- 2020-07-08 placeholder 삭제 -->
+															</div>
+															<div class="gridSet grid2">
+																<div class="gridItem">
+																	<dl class="inputBox">
+																		<dt>담당</dt>
+																		<dd><input type="text" placeholder="성명"/></dd>
+																	</dl>
+																</div>
+																<div class="gridItem">
+																	<dl class="inputBox">
+																		<dt>연락처</dt>
+																		<dd><input type="tel" placeholder="'-' 빼고 숫자 입력"/></dd><!-- 2020-07-08 placeholder 수정 -->
+																	</dl>
+																</div>
+															</div>
+														</dd>
+													</dl>
+													<!--//-->
+													<button class="btnM whiteBlue">작업지 추가</button>
+												</div>
+												<!-- //작업지 -->
+												<!-- 도착지 -->
+												<div class="end">
+													<dl>
+														<dt>반납<span>(도착지)</span></dt>
+														<dd>
+															<div class="dateNcompay">
+																<div class="dateArea">
+																	<span class="calSet"><input type="tel" placeholder="2020-01-21" readonly/><button disabled>달력열기</button></span>
+																	<span class="timeSet">
+																		<input type="text" placeholder="시간 ▼ 00 : 00" class="soloInput" readonly /><!-- 2020-07-08 placeholder 수정 -->
+																	</span>
+																</div>
+																<!-- 2020-08-04 dateNcompay 안으로 이동, 도/시 지역 추가 -->
+																<div class="address inlineCase">
+																	<div><button class="btnHarbor">도착지 검색</button><em>[도/시 지역]</em><input type="text" placeholder="도착지를 검색해주세요" class="soloInput" readonly/></div>
+																</div>
+																<!-- //2020-08-04 dateNcompay 안으로 이동, 도/시 지역 추가 -->
+															</div>
+														</dd>
+													</dl>
+												</div>
+												<!-- //도착지 -->
+											</div>
+											<div class="total">
+												<label><strong class="crNum">2</strong>번 컨테이너</label>
+												<span class="left">
+													<span class="radioSet">
+														<input type="radio" id="chk3" name="chk2" />
+														<label for="chk3"><i></i>직접 입력</label>
+													</span>
+													<span class="radioSet">
+														<input type="radio" id="chk4" name="chk2" />
+														<label for="chk4"><i></i>로지플랫폼 추천 운임 적용</label>
+													</span>
+												</span>
+												<dl class="inputBox">
+													<dt>운임비용</dt>
+													<dd><input type="text" value="0" class="soloInput" />원</dd>
+												</dl>
+											</div>
+											<div class="guid">
+												<strong>
+													운임 기준 안내
+													<span>
+														국토교통부가 고지한 안전운임제 운임표를 기준으로 운임 기준을 안내합니다. 안전위탁운임을 준수해주세요.
+														<a href="https://www.safetruck.go.kr/notice/noticeView.do" target="_blank">화물자동차 안전운임고시</a><!-- 2020-06-16 위치변경 -->
+													</span>
+												</strong>
+												<div class="standard">
+													<em>[편도]</em><!--  2020-06-24 case에 따른 문구변경 -->
+													<!-- 2020-08-04 dl 감싸는 영역 -->
+													<div class="stdDetail">
+														<dl>
+															<dt>기점~종점거리</dt>
+															<dd>150 km</dd>
+														</dl>
+														<dl>
+															<dt>장치장</dt>
+															<dd>의왕ICD</dd>
+														</dl>
+														<div class="line">
+															<dl>
+																<dt>안전위탁운임</dt>
+																<dd>1,123,200 원</dd>
+															</dl>
+														</div>
+													</div>
+													<!-- //2020-08-04 dl 감싸는 영역 -->
+													<div class="freightArea">
+														<span class="costFreight">휴일운임가산 (20%)</span>
+														<span class="costFreight">심야운임가산 (20%)</span>
+													</div>
+												</div>
+												<ul>
+													<li>의왕ICD, 인천항, 평택항 등 수도권 컨테이너 장치장에서 공(空)컨테이너를 반납 또는 수령하는 경우에는 편도 운임을 적용합니다.</li>
+													<li>일요일 및 공휴일에 작업하는 경우 20%가산됩니다. 심야(22:00-06:00)에 운행하는 경우 20%가산됩니다. 물류플랫폼은<!-- 2020-10-29 텍스트 변경 --> 휴일운임가산과 야간운임가산 두 조건만 운임 안내에 반영하였습니다.</li>
+													<li>운임비용 계산  = 안전운임제 기준 단가 X (휴일운임가산 20% + 야간운임가산 20%)</li>
+													<li>주간에 화물자동차 운행이 제한되어 허가를 받아야 되는 지역은 해당구간 운임의 30% 이상을 가산합니다. 상기 추천금액에는 이 조건이 반영되어 있지 않습니다.</li>
+													<li>산간벽지 등 오지의 경우는 화주, 운수사업자, 화물차주 간에 협의하여 운임을 가산 적용합니다.</li>
+													<li>도로통행 제한 높이 또는 길이의 초과로 발생되는 “제한차량 운행허가” 수수료 등은 화주가 실비 정산하여 지급합니다.</li>
+													<li>가산적용의 총 비율은 거리당 운임단가의 50%를 초과할 수 없습니다.</li>
+												</ul>
+											</div>
+										</div>
+										<button class="btnOpner">여닫기</button>
+									</div>
+									<!--//컨테이너 셋트 (추가) -->
+								</div>
+							</div>
+							<!--//위치정보-->
+							<!--가격-->
+							<div class="orderStepBox stepPrice">
+								<div class="osTit">
+									<h3>3</h3>
+									<span class="txt">총 합계 [컨테이너<strong class="crNum">1</strong> ~ <strong class="crNum">3</strong>]</span>
+								</div>
+								<div class="osData">
+									<dl class="inputBox">
+										<dt>총 운임비용</dt>
+										<dd><strong>0</strong>원</dd>
+									</dl>
+									<div>
+										<span><strong class="crNum">1</strong>번 컨테이너 계약단가 <em>0원</em></span>
+										<span><strong class="crNum">2</strong>번 컨테이너 계약단가 <em>0원</em></span>
+										<span><strong class="crNum">3</strong>번 컨테이너 계약단가 <em>0원</em></span>
+									</div>
+								</div>
+							</div>
+							<!--//가격-->
+						</div>
+						<!-- //page Layout -->
+					</article>
+					</div>
+				</section>
+				</div>
+				<!-- //container -->
+			</div>
+		</div>
+		<!-- //Wrap -->
+		<!-- 2020-07-17 콜오더 제출 alert 팝업 -->
+		<!-- Alert Popup -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop submitPop" style="display:none;">
+				<div class="pBack">
+					<p><물류플랫폼<!-- 2020-10-29 텍스트 변경 -->>는 화주와 운송사(차주) 간의 매칭서비스를 운영하고 있습니다. 따라서 운송 중에 발생할 수 있는 사고에 관하여서는 책임을 갖지 아니합니다. 오더를 제출하시겠습니까?</p>
+				</div>
+				<div class="pBtn">
+					<button class="btnM red">예</button>
+					<button class="btnM black">아니오</button>
+				</div>
+			</div>
+		</div>
+		<!-- //Alert Popup -->
+		<!-- //2020-07-17 콜오더 제출 alert 팝업 -->
+		<!-- popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 2020-06-16 차량수선텍 -->
+			<div class="alertPop containerNumberPop" style="display:none">
+				<div class="pBack">
+					<div>
+						<button class="plus">Plus</button>
+						<span><label>총 컨테이너 수 : </label><input type="text" value="200"  class="numInput"/></span><!-- 2020-08-04 lebel 수정 -->
+						<button class="minus">Minus</button>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!-- //2020-06-16 차량수선텍 -->
+			<!-- 2020-06-16 e-trans 반입/반출신고 삭제 -->
+			<!-- 최근 실적 불러오기 -->
+			<div class="basicPop loadResultPop" id="samplePop4" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>최근 실적 불러오기</h1>
+				</div>
+				<div class="pBack">
+					<div class="calendarSet">
+						<span class="calDupSet">
+							<span class="calSet"><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span><!-- 2020-08-04 label 삭제 -->
+							<em>~</em>
+							<span class="calSet"><input type="tel" placeholder="____.__.__" /><button>달력열기</button></span><!-- 2020-07-08 placeholder 수정 -->
+						</span>
+						<span class="radioChoose">
+							<!-- 2020-08-04 label 텍스트 변경 -->
+							<label for="lb2"><input type="radio" id="lb2" name="radio1" value="이번달" /><span>이번달</span></label>
+							<label for="lb3"><input type="radio" id="lb3" name="radio1" value="다음달" /><span>다음달</span></label>
+							<!-- 2020-08-04 label 텍스트 변경 -->
+						</span>
+					</div>
+					<div class="resultContents">
+						<ul class="resultList">
+							<li>
+								<div>
+									<div class="listHead">
+										<strong>출</strong><!-- 2020-06-26 수출 case 텍스트 수정 -->
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="on"><!-- 2020-07-29 활성화일 때 on 추가 -->
+								<div>
+									<div class="listHead">
+										<strong>출</strong><!-- 2020-06-26 수출 case 텍스트 수정 -->
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div>
+									<div class="listHead">
+										<strong>출</strong><!-- 2020-06-26 수출 case 텍스트 수정 -->
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div>
+									<div class="listHead">
+										<strong>출</strong><!-- 2020-06-26 수출 case 텍스트 수정 -->
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="red">
+								<div>
+									<div class="listHead">
+										<strong>입</strong>
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div>
+									<div class="listHead">
+										<strong>출</strong><!-- 2020-06-26 수출 case 텍스트 수정 -->
+										<span><em>오더날짜</em>2019.12.22</span>
+									</div>
+									<div class="listBody">
+										<div>
+											<dl>
+												<dt>상</dt>
+												<dd>경기인천</dd>
+											</dl>
+											<dl>
+												<dt>반</dt>
+												<dd>경기성남</dd>
+											</dl>
+										</div>
+										<div>
+											<dl>
+												<dt>EA</dt>
+												<dd>20ft*3</dd>
+											</dl>
+											<dl>
+												<dt>ton</dt>
+												<dd>55</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//최근 실적 불러오기-->
+			<!-- 주소검색 -->
+			<div class="basicPop searchPop addressPop" id="samplePop5" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>주소검색</h1>
+				</div>
+				<div class="pBack">
+					<div class="tab02">
+						<!-- tab -->
+						<div class="tabBack">
+							<div class="tabNav">
+								<nav>
+									<ul>
+										<li class="on"><button data-name="1">작업지 주소</button></li>
+										<li><button data-name="2">자주 쓰는 주소</button></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<!--// tab -->
+						<div class="tabLayout">
+							<div class="tabData tData1" style="display:block;">
+								<div class="seachArea">
+									<div class="searchInput">
+										<input type="text" placeholder="도로명 + 번지로 검색"/>
+										<button class="btnSearch">조회</button>
+									</div>
+									<div class="tip">
+										<dl>
+											<dt><strong>Search tip</strong></dt>
+											<dd><span>도로명 + 건물번호</span>예) 세종대로 207,  매봉산로 37</dd>
+											<dd><span>지역명(동/리) + 번지</span>예) 역삼동 68-1,  상암동 1682</dd>
+										</dl>
+									</div>
+								</div>
+								<div class="listArea">
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="40" />
+												<col width="450" />
+												<col width="40" />
+											</colgroup>
+											<thead>
+												<tr>
+													<th>우편번호</th>
+													<th>회사명</th>
+													<th>자주 쓰는</th>
+												</tr>
+											</thead>
+											<tbody>
+												<!--Loop-->
+												<tr>
+													<td>03186</td>
+													<td class="tL">
+														<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+														<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+													</td>
+													<td><button class="btnSaveAddress">주소 저장</button></td>
+												</tr>
+												<!--//Loop-->
+												<tr>
+													<td>03186</td>
+													<td class="tL">
+														<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+														<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+													</td>
+													<td><button class="btnSaveAddress">주소 저장</button></td>
+												</tr>
+												<tr class="on">
+													<td>03186</td>
+													<td class="tL">
+														<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+														<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+													</td>
+													<td><button class="btnSaveAddress">주소 저장</button></td>
+												</tr>
+												<tr>
+													<td>03186</td>
+													<td class="tL">
+														<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+														<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+													</td>
+													<td><button class="btnSaveAddress">주소 저장</button></td>
+												</tr>
+												<tr>
+													<td>03186</td>
+													<td class="tL">
+														<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+														<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+													</td>
+													<td><button class="btnSaveAddress">주소 저장</button></td>
+												</tr>
+												<tr>
+													<td>03186</td>
+													<td class="tL">
+														<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+														<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+													</td>
+													<td><button class="btnSaveAddress">주소 저장</button></td>
+												</tr>
+												<tr>
+													<td>03186</td>
+													<td class="tL">
+														<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+														<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+													</td>
+													<td><button class="btnSaveAddress">주소 저장</button></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="tabData tData2">
+								<div class="listArea">
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="40" />
+												<col width="450" />
+												<col width="140" />
+											</colgroup>
+											<thead>
+												<tr>
+													<th>우편번호</th>
+													<th>회사명</th>
+													<th>이름</th>
+												</tr>
+											</thead>
+											<tbody>
+												<!--Loop-->
+												<tr>
+													<td>03186</td>
+													<td class="tL">
+														<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+														<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+													</td>
+													<td>세종 1공장</td>
+												</tr>
+												<!--//Loop-->
+												<tr>
+													<td>03186</td>
+													<td class="tL">
+														<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+														<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+													</td>
+													<td>안산중공업</td>
+												</tr>
+												<tr class="on">
+													<td>03186</td>
+													<td class="tL">
+														<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+														<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+													</td>
+													<td>안산중앙도시 2공장</td>
+												</tr>
+												<tr>
+													<td>03186</td>
+													<td class="tL">
+														<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+														<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+													</td>
+													<td>안산중앙도시 1공장</td>
+												</tr>
+												<tr>
+													<td>03186</td>
+													<td class="tL">
+														<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+														<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+													</td>
+													<td>안산중앙도시 3공장</td>
+												</tr>
+												<tr>
+													<td>03186</td>
+													<td class="tL">
+														<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+														<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+													</td>
+													<td>안산중앙도시 2공장</td>
+												</tr>
+												<tr>
+													<td>03186</td>
+													<td class="tL">
+														<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+														<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+													</td>
+													<td>안산중앙도시 2공장</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//주소검색-->
+			<!-- 자주 쓰는 주소 저장 -->
+			<div class="basicPop saveAddressPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>자주 쓰는 주소 저장</h1>
+				</div>
+				<div class="pBack">
+					<div class="grayArea">
+						<em>03186</em>
+						<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+						<span>서울특별시 종로구 세종로 1-80 가로판매대</span>
+						<input type="text" placeholder="상세 주소" />
+					</div>
+					<div class="inputBtnSet">
+						<dl class="inputBox">
+							<dt>주소 이름</dt>
+							<dd><input type="text" value="주식회사 활빈당"/></dd>
+						</dl>
+						<button class="btnS orange">저장</button>
+					</div>
+				</div>
+			</div>
+			<!-- //자주 쓰는 주소 저장 -->
+			<!-- 2020-06-16 회사검색 삭제 -->
+			<!-- 선사검색 -->
+			<div class="basicPop searchPop shipperPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>선사 정보</h1>
+				</div>
+				<div class="pBack">
+					<div class="seachArea">
+						<div class="searchInput">
+							<input type="text" placeholder="선사코드, 선사명으로 검색"/>
+							<button class="btnSearch">조회</button>
+						</div>
+					</div>
+					<div class="listArea">
+						<div class="listTop">
+							<div class="tls">
+								<table>
+									<!-- 2020-08-04 col 너비 수정 -->
+									<colgroup>
+										<col width="100" />
+										<col width="500" />
+										<col width="200" />
+									</colgroup>
+									<!-- //2020-08-04 col 너비 수정 -->
+									<thead>
+										<tr>
+											<th>선사코드</th>
+											<th>선사명(영문)</th>
+											<th>선사명(한글)</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
+						</div>
+						<div class="listScroll">
+							<div class="tls">
+								<table>
+									<!-- 2020-08-04 col 너비 수정 -->
+									<colgroup>
+										<col width="100" />
+										<col width="500" />
+										<col width="200" />
+									</colgroup>
+									<!-- //2020-08-04 col 너비 수정 -->
+									<tbody>
+										<!--Loop-->
+										<tr>
+											<td>HMM</td>
+											<td class="tL">HYUNDAI MERCHANT MARINE CO.,LTD</td>
+											<td>현대상선</td>
+										</tr>
+										<!--//Loop-->
+										<tr>
+											<td>YML</td>
+											<td class="tL">YANG MING MARINE TRANSPORT CORP</td>
+											<td>양밍한국주식회사</td>
+										</tr>
+										<tr class="on">
+											<td>HLC</td>
+											<td class="tL">HAPAG LLOYD KOREA</td>
+											<td>하파그로이드코리아</td>
+										</tr>
+										<tr>
+											<td>POL</td>
+											<td class="tL">PAN OCEAN CO.,LTD</td>
+											<td>팬오션주식회사</td>
+										</tr>
+										<tr>
+											<td>MAE</td>
+											<td class="tL">MAERSK KOREA LIMITED</td>
+											<td>한국머스크(주)</td>
+										</tr>
+										<tr>
+											<td>MSC</td>
+											<td class="tL">Mediterranean Shipping COMPANY SA</td>
+											<td>엠에쓰씨코리아</td>
+										</tr>
+										<tr>
+											<td>KMD</td>
+											<td class="tL">KOREA MARINE TRANSPORT CO.,LTD</td>
+											<td>고려해운(주)</td>
+										</tr>
+										<tr>
+											<td>KMD</td>
+											<td class="tL">KOREA MARINE TRANSPORT CO.,LTD</td>
+											<td>고려해운(주)</td>
+										</tr>
+										<tr>
+											<td>KMD</td>
+											<td class="tL">KOREA MARINE TRANSPORT CO.,LTD</td>
+											<td>고려해운(주)</td>
+										</tr>
+										<tr>
+											<td>KMD</td>
+											<td class="tL">KOREA MARINE TRANSPORT CO.,LTD</td>
+											<td>고려해운(주)</td>
+										</tr>
+										<tr>
+											<td>KMD</td>
+											<td class="tL">KOREA MARINE TRANSPORT CO.,LTD</td>
+											<td>고려해운(주)</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//선사검색-->
+			<!-- 항만정보 -->
+			<div class="basicPop harborPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>항만 정보</h1>
+				</div>
+				<div class="pBack">
+					<div class="harborStep">
+						<strong>1. 항만 선택</strong>
+						<div class="harborBox">
+							<ul>
+								<li>부산신항</li>
+								<li>부산북항</li>
+								<li>인천항</li>
+								<li>인천신항</li>
+								<li>경인항</li>
+								<li>울산신항</li>
+								<li>울산항</li>
+								<li>광양항</li>
+								<li>대산항</li>
+								<li>포항항</li>
+								<li>평택항</li>
+								<li>군산항</li>
+								<li>마산항</li>
+								<li>목포항</li>
+								<li>의왕ICD</li>
+							</ul>
+						</div>
+					</div>
+					<div class="harborStep">
+						<strong>2. 터미널 선택</strong>
+						<div class="listArea">
+							<div class="listTop">
+								<div class="tls">
+									<table>
+										<colgroup>
+											<col width="10" />
+											<col width="200" />
+										</colgroup>
+										<thead>
+											<tr>
+												<th>터미널코드</th>
+												<th>터미널명</th>
+											</tr>
+										</thead>
+									</table>
+								</div>
+							</div>
+							<div class="listScroll">
+								<div class="tls">
+									<table>
+										<colgroup>
+											<col width="10" />
+											<col width="200" />
+										</colgroup>
+										<tbody>
+											<!--Loop-->
+											<tr>
+												<td>03012240</td>
+												<td class="tL">허치슨부산터미널(HBCT)</td>
+											</tr>
+											<!--//Loop-->
+											<tr class="on">
+												<td>03012257</td>
+												<td class="tL">우암터미널(UTC)</td>
+											</tr>
+											<tr>
+												<td>03012226</td>
+												<td class="tL">부산인터내셔널터미널(BIT)</td>
+											</tr>
+											<tr>
+												<td>03077016</td>
+												<td class="tL">대한통운부산컨테이너터미널(KBCT)</td>
+											</tr>
+											<tr>
+												<td>03012312</td>
+												<td class="tL">동부감만터미널(DPCT)</td>
+											</tr>
+											<tr>
+												<td>03912047</td>
+												<td class="tL">KCTC UAM CY</td>
+											</tr>
+											<tr>
+												<td>03912047</td>
+												<td class="tL">KCTC UAM CY</td>
+											</tr>
+											<tr>
+												<td>03912047</td>
+												<td class="tL">KCTC UAM CY</td>
+											</tr>
+											<tr>
+												<td>03912047</td>
+												<td class="tL">KCTC UAM CY</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!-- //항만정보 -->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

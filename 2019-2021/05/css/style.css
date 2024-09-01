@@ -1,0 +1,417 @@
+
+/* =================================================================================
+* INFORMATION
+* -----------------------------------------------------------------------
+* @File Name: style.css
+* @Version: 1.0
+* @Descration: style custom version
+* @Create Date: 2019-01-30
+* @Update Date: N/A
+* @History: FONTS Delete
+            BOX SIZING RESET Delete
+			ROOT ELEMENTS Delete
+			HEADING ELEMENTS Delete
+			TEXT ELEMENTS Delete
+			MEDIA ELEMENTS Delete
+			HEADER OBJECT Delete
+			MAIN OBJECT Delete
+			BUTTONS Delete 
+			CARBONAD COMPONENT Delete
+			SUB-NAVIGATION OBJECT Delete
+			FOOTER OBJECT Delete
+			CONTAINER OBJECTS Delete
+* ================================================================================= */
+
+/* -----------------------------------------------------------------------------
+  WRAPPER OBJECT
+----------------------------------------------------------------------------- */
+.wrapper {
+  -webkit-transition: -webkit-transform 0.3s;
+          transition: transform 0.3s;
+  overflow-x: hidden;
+}
+/* -----------------------------------------------------------------------------
+
+  SLIDE AND PUSH MENUS COMPONENT
+  
+----------------------------------------------------------------------------- */
+/**
+ * Menu overview.
+ */
+.slideDefault {position:fixed;z-index:100;/* background-color:#67b5d1; */
+  -webkit-transition: -webkit-transform 0.3s;
+          transition: transform 0.3s;
+}
+.slideDefault.gnbArea {z-index:130;}
+.slideDefault.fullWrap {z-index:120;}
+.slideDefault.fullWrap.zindexUp {z-index:220;}
+/**
+ * Left and right menus
+ *
+ * Slide and push menus coming in from the left and right inherit a lot of
+ * common styles. We'll start each of them off by doing up the common styles
+ * for each version, followed by individual styles.
+ *
+ * The various versions are governed by modifier classes.
+ */
+/**
+ * Common modifiers for left/right menus.
+ */
+.com-slide-left,
+.com-slide-right,
+.com-push-left,
+.com-push-right {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+.com-slide-left {overflow-y:auto}
+.com-push-left {overflow-y:hidden}
+@media all and (min-width: 320px) {
+  /* .com-slide-left, */
+  .com-slide-right,
+  .com-push-left,
+  .com-push-right {
+    width: 300px;
+  }
+}
+@media all and (min-width: 440px) {
+  .com-slide-left {width:400px;}
+}
+@media all and (max-width:420px), (orientation : landscape) and (max-width:820px) {
+  .com-slide-left {width:300px;}
+}
+
+/* .com-slide-left .c-menu__item,
+.com-slide-right .c-menu__item,
+.com-push-left .c-menu__item,
+.com-push-right .c-menu__item {
+  display: block;
+  text-align: center;
+  border-top: solid 1px #b5dbe9;
+  border-bottom: solid 1px #3184a1;
+}
+.com-slide-left .c-menu__item:first-child,
+.com-slide-right .c-menu__item:first-child,
+.com-push-left .c-menu__item:first-child,
+.com-push-right .c-menu__item:first-child {
+  border-top: none;
+}
+.com-slide-left .c-menu__item:last-child,
+.com-slide-right .c-menu__item:last-child,
+.com-push-left .c-menu__item:last-child,
+.com-push-right .c-menu__item:last-child {
+  border-bottom: none;
+}
+
+.com-slide-left .c-menu__link,
+.com-slide-right .c-menu__link,
+.com-push-left .c-menu__link,
+.com-push-right .c-menu__link {
+  display: block;
+  padding: 12px 24px;
+  color: #fff;
+}
+
+.com-slide-left .c-menu__close,
+.com-slide-right .c-menu__close,
+.com-push-left .c-menu__close,
+.com-push-right .c-menu__close {
+  display: block;
+  padding: 12px 24px;
+  width: 100%;
+} */
+
+/**
+ * Slide/Push Menu Left.
+ */
+.com-slide-left,
+.com-push-left {
+  top: 0;
+  left: 0;
+  -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+@media all and (min-width: 320px) {
+  /* .com-slide-left, */
+  .com-push-left {
+    -webkit-transform: translateX(-300px);
+        -ms-transform: translateX(-300px);
+            transform: translateX(-300px);
+  }
+}
+
+@media all and (max-width:420px), (orientation : landscape) and (max-width:820px) {
+  .com-slide-left {
+    -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+}
+@media all and (min-width: 440px) {
+  .com-slide-left {
+    -webkit-transform: translateX(-400px);
+        -ms-transform: translateX(-400px);
+            transform: translateX(-400px);
+  }
+}
+
+
+.com-slide-left.is-active,
+.com-push-left.is-active {
+  -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+          transform: translateX(0);
+}
+
+/**
+ * Slide/Push Menu Right.
+ */
+.com-slide-right,
+.com-push-right {
+  top: 0;
+  right: 0;
+  -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+          transform: translateX(100%);
+}
+@media all and (min-width: 320px) {
+  .com-slide-right,
+  .com-push-right {
+    -webkit-transform: translateX(300px);
+        -ms-transform: translateX(300px);
+            transform: translateX(300px);
+  }
+}
+
+.com-slide-right.is-active,
+.com-push-right.is-active {
+  -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+          transform: translateX(0);
+}
+
+/**
+ * Top and bottom menus
+ *
+ * Slide and push menus coming in from the top and bottom inherit a lot of
+ * common styles. We'll start each of them off by doing up the common styles
+ * for each version, followed by individual styles.
+ *
+ * The various versions are governed by modifier classes.
+
+/**
+ * Common modifiers for top/bottom menus
+ */
+.com-slide-top,
+.com-push-top,{
+  vertical-align: middle;
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  overflow-x: hidden;
+}
+.com-slide-bottom,
+.com-push-bottom {
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* .com-slide-top .c-menu__items,
+.com-slide-bottom .c-menu__items,
+.com-push-top .c-menu__items,
+.com-push-bottom .c-menu__items {
+  display: inline-block;
+  text-align: center;
+}
+
+.com-slide-top .c-menu__item,
+.com-slide-bottom .c-menu__item,
+.com-push-top .c-menu__item,
+.com-push-bottom .c-menu__item {
+  display: inline-block;
+  line-height: 60px;
+}
+
+.com-slide-top .c-menu__link,
+.com-slide-bottom .c-menu__link,
+.com-push-top .c-menu__link,
+.com-push-bottom .c-menu__link {
+  display: block;
+  padding: 0 4px;
+  color: #fff;
+}
+
+.com-slide-top .c-menu__close,
+.com-slide-bottom .c-menu__close,
+.com-push-top .c-menu__close,
+.com-push-bottom .c-menu__close {
+  display: inline-block;
+  margin-right: 12px;
+  padding: 0 24px;
+  height: 60px;
+  line-height: 60px;
+} */
+
+/**
+ * Slide/Push Menu Top.
+ */
+.com-slide-top,
+.com-push-top {
+  top: 0;
+  left: 0;
+  -webkit-transform: translateY(-60px);
+      -ms-transform: translateY(-60px);
+          transform: translateY(-60px);
+}
+
+.com-slide-top.is-active,
+.com-push-top.is-active {
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0);
+}
+
+/**
+ * Slide/Push Menu Bottom.
+ */
+.com-slide-bottom,
+.com-push-bottom {
+  bottom: 0;
+  left: 0;
+  -webkit-transform: translateY(100%);
+      -ms-transform: translateY(100%);
+          transform: translateY(100%);
+}
+
+.com-slide-bottom.is-active,
+.com-push-bottom.is-active {
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0);
+}
+
+/**
+ * Wrapper states.
+ *
+ * Various wrapper states occur depending on if a menu is pushing into view, in
+ * which case, the wrapper has to be pushed by the respective distance.
+ */
+.wrapper.has-push-left {
+  -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+          transform: translateX(100%);
+}
+@media all and (min-width: 320px) {
+  .wrapper.has-push-left {
+    -webkit-transform: translateX(300px);
+        -ms-transform: translateX(300px);
+            transform: translateX(300px);
+  }
+}
+
+.wrapper.has-push-right {
+  -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+@media all and (min-width: 320px) {
+  .wrapper.has-push-right {
+    -webkit-transform: translateX(-300px);
+        -ms-transform: translateX(-300px);
+            transform: translateX(-300px);
+  }
+}
+
+.wrapper.has-push-top {
+  -webkit-transform: translateY(60px);
+      -ms-transform: translateY(60px);
+          transform: translateY(60px);
+}
+
+.wrapper.has-push-bottom {
+  -webkit-transform: translateY(-60px);
+      -ms-transform: translateY(-60px);
+          transform: translateY(-60px);
+}
+
+/**
+ * Body states.
+ *
+ * When a menu is active, we want to hide the overflows on the body to prevent
+ * awkward document scrolling.
+ */
+body.has-active-menu {
+  overflow: hidden;
+}
+
+/**
+ * Close button resets.
+ */
+/* .c-menu__close {
+  color: #fff;
+  background-color: #3184a1;
+  font-size: 14px;
+  border: none;
+  box-shadow: none;
+  border-radius: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.c-menu__close:focus {
+  outline: none;
+}
+ */
+.gnbClose {
+  -webkit-transition: -webkit-transform 0.3s;
+          transition: transform 0.3s;}
+.gnbClose {
+  -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+.wrapper.has-slide-left .gnbClose {
+  -webkit-transform: translateX(415px);
+      -ms-transform: translateX(415px);
+          transform: translateX(415px);
+}
+@media all and (max-width:420px), (orientation : landscape) and (max-width:820px) {
+	.wrapper.has-slide-left .gnbClose {
+	  -webkit-transform: translateX(315px);
+		  -ms-transform: translateX(315px);
+			  transform: translateX(315px);
+	}
+}
+/* -----------------------------------------------------------------------------
+
+  MASK COMPONENT
+  
+----------------------------------------------------------------------------- */
+.c-mask {
+  position: fixed;
+  z-index: 125;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  background-color: #000;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s, width 0s 0.3s, height 0s 0.3s;
+          transition: opacity 0.3s, width 0s 0.3s, height 0s 0.3s;
+}
+
+.c-mask.is-active {
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  -webkit-transition: opacity 0.3s;
+          transition: opacity 0.3s;
+}

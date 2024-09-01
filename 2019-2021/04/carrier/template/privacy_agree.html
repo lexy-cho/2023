@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/push.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				if($(window).width() <600) {
+					$('.easyLogin').addClass('type2');
+				} else {
+					$('.easyLogin').removeClass('type2');
+				}
+				$('.step1Data .blue').click(function(){
+					$('.step1Data').hide();
+					$('.step2Data').show();
+					$('.stepBack h3').text('회원정보 입력');
+					$('.stepBack .step').hide();
+					$('.stepBack .step.case2').show();
+				});
+				$('.step2Data .blue').click(function(){
+					$('.step2Data').hide();
+					$('.step12Data').hide();
+					$('.step3Data').show();
+					$('.stepBack h3').text('회원정보 확인');
+					$('.stepBack .step').hide();
+					$('.stepBack .step.case3').show();
+				});
+				$('.step3Data .blue').click(function(){
+					$('.step3Data').hide();
+					$('.step4Data').show();
+					$('.stepBack h3').text('회원가입 완료');
+					$('.stepBack .step').hide();
+					$('.stepBack .step.case4').show();
+				});
+				$('.agreArea .btnAllowRight').click(function(){
+					$('.popDim').show();
+					$('.agreePop').show();
+				});
+				$('.btnPassNumGo').click(function(){
+					$(this).hide();
+					$('.btnPassNumGo2').show();
+					$('.back.noTt').show();
+					$('.back.noTt button').click(function(){
+						$('.phonePass .redLine').show();
+						$('.back.noTt button').click(function(){
+							$('.step1Data').hide();
+							$('.step2Data').show();
+							$('.stepBack h3').text('회원정보 입력');
+							$('.stepBack .step').hide();
+							$('.stepBack .step.case2').show();
+						});
+					});
+				});
+				$('.agreePop .btnSet button').click(function(){
+					$('.popDim').hide();
+					$('.agreePop').hide();
+				});
+				$('.carrierKind button.black').click(function(){
+					$('.alertDim, .newCarrierPop').show();
+					$('.newCarrierPop .pBtn .red').click(function(){
+						$('.carrierKind .inputBox.readCase input').attr('readonly', false);
+						$('.carrierKind .inputBox.readCase input').attr('placeholder', '정확하게 입력해주세요. 추후 변경 불가합니다.');
+						$('.carrierKind .inputBox.readCase').removeClass('readCase');
+						$('.infoArea .newCarrier').show();
+					});
+				}); // 2020-07-16 사업자번호 검색 버튼 클릭시
+
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap" class="joinCase">
+			<!-- header -->
+			<div id="header">
+				<header>
+					 <span class="left">
+						<h1>씽크트리<!-- 2020-10-29 텍스트 변경 --></h1>
+					 </span>
+					 <h2>회원가입</h2>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="joinLayout">
+						<div class="stepBack">
+							<h3>약관동의</h3>
+							<div class="step step4 case1">
+								<span class="now"><em>step1</em></span>
+								<span><em>step2</em></span>
+								<span><em>step3</em></span>
+								<span><em>step4</em></span>
+							</div>
+							<div class="step step4 case2" style="display:none;">
+								<span class="fin"><em>step1</em></span>
+								<span class="now"><em>step2</em></span>
+								<span><em>step3</em></span>
+								<span><em>step4</em></span>
+							</div>
+							<div class="step step4 case3" style="display:none;">
+								<span class="fin"><em>step1</em></span>
+								<span class="fin"><em>step2</em></span>
+								<span class="now"><em>step3</em></span>
+								<span><em>step4</em></span>
+							</div>
+							<div class="step step4 case4" style="display:none;">
+								<span class="fin"><em>step1</em></span>
+								<span class="fin"><em>step2</em></span>
+								<span class="fin"><em>step3</em></span>
+								<span class="now"><em>step4</em></span>
+							</div>
+						</div>
+						<div class="whiteBox">
+							<!-- step 1 -->
+							<div class="step1Data">
+								<h4>약관동의</h4>
+								<div class="joinDetail">
+									<ul class="agreArea">
+										<li>
+											<div>
+												<span class="agreeSet">
+													<input type="checkbox" id="chk0" checked />
+													<label for="chk0"><i></i>이용 약관 <em>(필수)</em></label>
+												</span>
+												<button class="btnAllowRight">더보기</button>
+											</div>
+										</li>
+										<li>
+											<div>
+												<span class="agreeSet">
+													<input type="checkbox" id="chk1" checked/>
+													<label for="chk1"><i></i>개인정보 수집·이용 · 제공 동의  <em>(필수)</em></label>
+												</span>
+												<button class="btnAllowRight">더보기</button>
+											</div>
+										</li>
+										<li>
+											<div>
+												<span class="agreeSet">
+													<input type="checkbox" id="chk2"/>
+													<label for="chk2"><i></i>운송약관에 동의  <em>(필수)</em></label>
+												</span>
+												<button class="btnAllowRight">더보기</button>
+											</div>
+										</li>
+										<li>
+											<div>
+												<span class="agreeSet">
+													<input type="checkbox" id="chk3"/>
+													<label for="chk3"><i></i>마케팅 정보수신 동의  <em>(선택)</em></label>
+												</span>
+												<button class="btnAllowRight">더보기</button>
+											</div>
+										</li>
+										<li>
+											<div>
+												<span class="agreeSet all">
+													<input type="checkbox" id="chk4" />
+													<label for="chk4"><i></i>전체 동의</label>
+												</span>
+											</div>
+										</li>
+									</ul>
+									<p class="errorMsg" style="/*display:none;*/">필수 약관에 동의해주시기 바랍니다.</p>
+									<!-- btn Area -->
+									<div class="btnSet">
+										<button class="btnL whiteBlue" onclick="location.href='login.html'">취소</button>
+										<button class="btnL blue" >다음</button>
+									</div>
+								</div>
+								<!---->
+							</div>
+							<!-- //step 1 -->
+							<!-- step 2 -->
+							<div class="step2Data" style="display:none;">
+								<div class="joinDetail infoWrite">
+									<ul class="infoArea">
+										<li>
+											<div class="inputBtnSet">
+												<div class="importBox">
+													<dl>
+														<dt>아이디(이메일)</dt>
+														<dd><input type="text" placeholder="이메일 주소를 입력해주세요"/></dd>
+													</dl>
+												</div>
+												<button class="btnM black">중복 확인</button><!-- 2020-07-16 띄어쓰기 -->
+											</div>
+											<p class="errorMsg blue" style="/*display:none;*/">사용 가능한 아이디입니다.</p>
+											<p class="errorMsg" style="/*display:none;*/">이미 사용중인 아이디입니다.</p>
+											<p class="errorMsg" style="/*display:none;*/">아이디 중복확인을 해주세요.</p>
+										</li>
+										<li>
+											<dl class="inputBox">
+												<dt>비밀번호</dt><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+												<dd><input type="password" placeholder="영, 숫자 포함하여 8자리 이상 입력해주세요"/></dd>
+											</dl>
+											<p class="errorMsg" style="/*display:none;*/">비밀번호 형식에 맞게 입력해주세요.</p><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+										</li>
+										<li>
+											<dl class="inputBox">
+												<dt>비밀번호(확인)</dt><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+												<dd><input type="password" placeholder="영, 숫자 포함하여 8자리 이상 입력해주세요"/></dd>
+											</dl>
+											<p class="errorMsg" style="/*display:none;*/">비밀번호 일치하지 않습니다.</p><!-- 2020-07-28 패스워드 -> 비밀번호로 텍스트 변경 -->
+										</li>
+										<li>
+											<dl class="inputBox">
+												<dt>성명</dt>
+												<dd><input type="text" placeholder="성명을 입력해주세요"/></dd>
+											</dl>
+											<p class="errorMsg" style="/*display:none;*/">성명은 두 자 이상 입력해주세요.</p>
+										</li>
+										<li>
+											<div class="phonePass">
+												<div class="back">
+													<dl class="inputBox">
+														<dt>휴대전화</dt>
+														<dd><input type="tel" placeholder="‘ - ’ 없이 숫자로 입력"/></dd>
+													</dl>
+													<button class="btnM black btnPassNumGo">휴대전화 인증</button>
+													<button class="btnM gray btnPassNumGo2" style="display:none;">재발송</button>
+												</div>
+												<div class="back noTt" style="display:none;">
+													<dl class="inputBox">
+														<dt>인증번호</dt>
+														<dd><input type="tel" placeholder="6자리"/></dd>
+														<dd>2:59</dd>
+													</dl>
+													<button class="btnM green">확인</button>
+												</div>
+												<p class="errorMsg" style="/*display:none;*/;">휴대전화 인증을 해주세요.</p>
+												<p class="errorMsg" style="/*display:none;*/;">인증받은 휴대전화 번호와 일치하지 않습니다. 다시 휴대전화 인증을 해주세요.</p>
+												<p class="errorMsg" style="/*display:none;*/;">인증되었습니다.</p><!-- 2020-07-16 항목 추가 -->
+											</div>
+										</li>
+										<!-- 2020-07-16 운송사 radio 영역 삭제 -->
+										<li class="carrierKind"><!-- 2020-07-16 class 수정 -->
+											<div class="inputBtnSet">
+												<dl class="inputBox">
+													<dt>사업자 번호</dt>
+													<dd><input type="tel" placeholder="‘ - ’ 없이 숫자로 입력"/></dd>
+												</dl>
+												<button class="btnM black">운송사 검색</button>
+											</div>
+										</li>
+										<li class="carrierKind"><!-- 2020-07-16 class 수정 -->
+											<dl class="inputBox readCase">
+												<dt>회사명</dt>
+												<dd><input type="text" readonly/></dd><!-- 2020-07-16 placeholder 삭제 -->
+											</dl>
+										</li>
+										<!-- 2020-07-16 항목 추가 -->
+										<li class="newCarrier" style="display:none;">
+											<dl class="inputBox">
+												<dt>대표자명</dt>
+												<dd><input type="tel" placeholder="정확하게 입력해주세요. 추후 변경 불가합니다."/></dd>
+											</dl>
+										</li>
+										<li class="newCarrier" style="display:none;">
+											<dl class="inputBox">
+												<dt>계산서 발행 이메일</dt>
+												<dd><input type="text" placeholder="세금계산서 발행 이메일을 입력해주세요"/></dd>
+											</dl>
+										</li>
+										<!-- //2020-07-16 항목 추가 -->
+									</ul>
+									<p class="errorMsg" style="/*display:none;*/">아이디 중복확인을 다시 진행해주세요.</p>
+
+									<!-- btn Area -->
+									<div class="btnSet">
+										<button class="btnL whiteBlue">이전</button>
+										<button class="btnL blue" >다음</button>
+									</div>
+								</div>
+							</div>
+							<!-- //step 2 -->
+							<!-- step 3 -->
+							<div class="step3Data" style="display:none;">
+								<div class="joinDetail infoDetail">
+									<ul class="infoArea">
+										<li>
+											<div class="importBox">
+												<dl>
+													<dt>아이디(이메일)</dt>
+													<dd>hong@naver.com</dd>
+												</dl>
+											</div>
+										</li>
+										<li>
+											<dl class="inputBox">
+												<dt>성명</dt>
+												<dd>홍길동</dd>
+											</dl>
+										</li>
+										<li>
+											<dl class="inputBox">
+												<dt>휴대전화</dt>
+												<dd>010-1234-9999</dd>
+											</dl>
+										</li>
+										<li>
+											<dl class="inputBox">
+												<dt>사업자번호</dt>
+												<dd>123-12-12345</dd>
+											</dl>
+										</li>
+										<li>
+											<dl class="inputBox">
+												<dt>회사명</dt>
+												<dd>컨테이너로드㈜</dd>
+											</dl>
+										</li>
+										<!-- 2020-07-16 항목 추가 -->
+										<li>
+											<dl class="inputBox">
+												<dt>대표자명</dt>
+												<dd>김거리</dd>
+											</dl>
+										</li>
+										<li>
+											<dl class="inputBox">
+												<dt>계산서 발행 이메일</dt>
+												<dd>containerroad.tax@naver.com</dd>
+											</dl>
+										</li>
+										<!-- //2020-07-16 항목 추가 -->
+									</ul>
+									<p class="p2 tL"><!-- 2020-07-16 class 추가 -->
+										상기에 입력한 회원정보로 물류플랫폼<!-- 2020-10-29 텍스트 변경 -->에 가입을 원하신다면,<br/>
+										<strong>[다음] 버튼을 클릭하여 회원가입을 완료해 주세요.</strong>
+									</p>
+									<p class="errorMsg" style="/*display:none;*/;">회원정보가 올바르지 않습니다. 이전 단계부터 다시 진행해주세요.</p>
+									<!-- btn Area -->
+									<div class="btnSet">
+										<button class="btnL whiteBlue">이전</button>
+										<button class="btnL blue">다음</button>
+									</div>
+								</div>
+							</div>
+							<!-- //step 3 -->
+							<!-- step 4 -->
+							<div class="step4Data" style="display:none;">
+								<div class="joinDetail">
+									<div class="joinEnd">
+										<p>
+											<strong>물류플랫폼<!-- 2020-10-29 텍스트 변경 --> 회원가입이 완료되었습니다!</strong>
+											컨테이너 로드의 최초 가입 회원이십니다.<br/>로그인하셔서 바로 이용해보세요!
+										</p><!-- 2020-07-16 텍스트 수정 -->
+										<p style="display:none;">
+											<strong>물류플랫폼<!-- 2020-10-29 텍스트 변경 --> 회원가입이 완료되었습니다!</strong>
+											컨테이너 로드㈜ 의 마스터가 가입을 승인한 후 서비스 이용이 가능합니다.<br/>마스터는 [설정] > [사용자 승인] 메뉴에서 승인 가능합니다.
+										</p>
+									</div>
+									<!-- btn Area -->
+									<div class="btnSet tC">
+										<a href="login.html" class="btnL whiteBlack">완료</a>
+									</div>
+								</div>
+							</div>
+							<!-- //step 4 -->
+						</div>
+					</div>
+					<!-- //page Layout -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- alertPop -->
+		<div class="alertDim" style="display:none;">
+			<!-- 신규운송사 등록 여부 -->
+			<div class="alertPop newCarrierPop" style="display:none;">
+				<div class="pBack">
+					<p>사업자 번호가 존재하지 않습니다.<br/>신규 운송사로 등록하시겠습니까?</p>
+				</div>
+				<div class="pBtn"><!-- 2020-06-22 가운데 정렬 class 추가 -->
+					<button class="btnM black">아니오</button>
+					<button class="btnM red">신규운송사 등록</button>
+				</div>
+			</div>
+			<!-- //신규운송사 등록 여부 -->
+		</div>
+		<!-- //alertPop -->
+		<!-- popup -->
+		<div class="popDim" style="display:none;">
+			<div class="basicPop agreePop" style="display:none;">
+				<div class="popBack">
+					<button class="pclose">닫기</button>
+					<div class="tt">
+						<h2>개인신용정보 동의서 전문보기</h2>
+					</div>
+					<div class="back">
+						<div class="left">
+							<ul class="agreePList">
+								<li>
+									<div class="on">
+										<span class="agreeSet">
+											<input type="checkbox" id="agChk1" checked />
+											<label for="agChk1"><strong class="must">(필수)</strong> 이용 약관<i></i></label>
+										</span>
+									</div>
+								</li>
+								<li>
+									<div>
+										<span class="agreeSet">
+											<input type="checkbox" id="agChk2" />
+											<label for="agChk2"><strong class="must">(필수)</strong> 개인정보 수집·이용 · 제공 동의<i></i></label>
+										</span>
+									</div>
+								</li>
+								<li>
+									<div>
+										<span class="agreeSet">
+											<input type="checkbox" id="agChk3" />
+											<label for="agChk3"><strong class="must">(필수)</strong> 운송약관에 동의<i></i></label>
+										</span>
+									</div>
+								</li>
+								<li>
+									<div>
+										<span class="agreeSet">
+											<input type="checkbox" id="agChk4" />
+											<label for="agChk4"><strong>(선택)</strong> 마케팅 정보수신 동의<i></i></label>
+										</span>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="right">
+							<div class="agreeScroll" style="display:none;">
+								<div class="first">개인신용정보동의서를 선택해주세요.<br/>필수 항목인 경우 반드시 전문보기를 진행해야 합니다.</div>
+							</div>
+							<div class="agreeScroll">
+								<h3><strong class="must">(필수)</strong> 이용 약관</h3>
+								<div class="txt"></div>
+							</div>
+						</div>
+						<div class="btnSet">
+							<button class="btnM whiteBlue">취소</button><!-- 2020-06-16 버튼색 변경 -->
+							<button class="btnM blue">완료 (전체약관 동의)</button><!-- 2020-06-24 글자추가 // 2020-06-16 버튼색 변경 -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

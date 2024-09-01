@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/push.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function (){
+				$(".noticeList dl dt").click(function () {
+					$(this).parents("dl").toggleClass("on");
+				});
+				$('.btnWithdraw').click(function(){
+					$('.popDim').show();
+					$('.withdrawPop').show();
+					scrollClose();
+					$('.withdrawPop .pBtn .orange').click(function(){
+						location.href='login.html';
+					});
+				}); //2020-06-16 회원탈퇴 팝업
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap" class="mypageCase"><!-- 마이페이지 일 경우 -->
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back">
+						<div data-include="include/snb.html"></div>
+					</div>
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<!-- 마이페이지는 모바일 메뉴 없음 -->
+			<hr/>
+			<div id="containerBack">
+				<!-- header -->
+				<div id="header">
+					<header>
+						<span class="left">
+							<button class="btnList" onclick="location.href='setting_m.html'">목록</button>
+						</span>
+						 <h2>시스템공지</h2>
+					</header>
+				</div>
+				<!-- //header -->
+				<hr/>
+				<!-- container -->
+				<div id="container">
+				<section>
+					<div class="content">
+					<article>
+						<!-- Page Layout -->
+						<div class="mypageLayout">
+							<div class="pd2-t">
+								<div class="mypageContents">
+									<h3>고객센터</h3>
+									<div class="tabData">
+										<div class="centerInfo">
+											<dl class="roundDl">
+												<dt>대표번호</dt>
+												<dd><a href="tel:010-1234-5678">010-1234-5678</a></dd>
+											</dl>
+											<dl>
+												<dt>운영시간</dt>
+												<dd>오전: 9:00 ~ 오후 6:00 <br/>토요일, 일요일 및 공휴일 휴무</dd>
+											</dl>
+											<dl>
+												<dt>Fax</dt>
+												<dd>02-123-4567</dd>
+											</dl>
+										</div>
+										<div class="btnSet tC">
+											<button class="btnM whiteBlack btnWithdraw">회원탈퇴</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- //page Layout -->
+					</article>
+					</div>
+				</section>
+				</div>
+				<!-- //container -->
+			</div>
+		</div>
+		<!-- //Wrap -->
+		<!-- 2020-06-16 팝업 추가 -->
+		<!-- popuo -->
+		<div class="popDim" style="display:none;">
+			<!-- 2020-06-16 회원탈퇴  -->
+			<div class="basicPop withdrawPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>회원탈퇴</h1>
+				</div>
+				<div class="pBack">
+					<div class="grayBox">
+						<p>
+							회원탈퇴 전, 개인 이용정보가 필요할 경우 별도로 저장해주세요.<br/>
+							탈퇴 후 회원님의 개인정보 및 이용정보가 삭제되어 복구가 불가능합니다.<br/>
+							회원 탈퇴 시 App에서 제공하는 모든 서비스를 이용하실 수 없습니다.<br/>
+							탈퇴 후 내 설정 정보는 모두 삭제되며, 서비스 구매 관련 정보 등은 관련 법령에 따라 일정기간 보관됨을 안내 드립니다.<br/><br/>
+							회원 탈퇴 시 1주일 경과 후 재가입 가능하며, 모든 혜택 정보는 소멸됩니다.
+						</p>
+					</div>
+					<strong>그동안 씽크트리를<!-- 2020-10-29 텍스트 변경 --> 이용해 주셔서 감사합니다.</strong>
+				</div>
+				<div class="pBtn">
+					<button class="btnM gray">취소</button>
+					<button class="btnM orange btnBye">회원탈퇴</button>
+				</div>
+			</div>
+			<!--//2020-06-16 회원탈퇴 -->
+		</div>
+		<!-- //popup -->
+		<!-- //2020-06-16 팝업 추가 -->
+    </body>
+</html>

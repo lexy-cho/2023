@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/jstree.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/basicTree.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>발주서 관리</h2>
+					<div class="pagePos"><span>Home</span><span>문서 관리</span><strong>발주서 관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="documentLayout">
+							<!---->
+							<div class="boardTop">
+								<em>전체 10,000건</em>
+								<span class="right">
+									<span class="searchBasic">
+										<span class="selectSet">
+											<select>
+												<option selected>전체</option>
+												<option>업체명</option>
+												<option>작성자</option>
+											</select>
+										</span>
+										<input type="text" placeholder="키워드 입력" />
+										<input type="submit" value="검색" class="btnSearch" />
+										<button class="btnReset">초기화</button>
+									</span>
+									<button class="btnM">엑셀다운로드</button>
+								</span>
+							</div>
+							<!---->
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="60"/>
+										<col width="200"/>
+										<col width="150"/>
+										<col width="350"/><!-- 2020-11-16 넓이조절 -->
+										<col width="130" span="2" />
+										<col width="150" span="2" />
+										<col width="150"/><!-- 2020-11-16 넓이조절 -->
+										<col width="100"/>
+										<col width="140"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="chkall" />
+													<label for="chkall"><i></i></label>
+												</span>
+											</th>
+											<th>수신처</th>
+											<th>수신자</th>
+											<th>발주내용</th>
+											<th>납기일</th>
+											<th>작성자</th>
+											<th>등록일자</th>
+											<th>발송일자</th>
+											<th>문서번호</th>
+											<th colspan="2"></th>
+										</tr>
+									</thead>
+									<tbody>
+										<!--Loop-->
+										<tr>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="chk1" />
+													<label for="chk1"><i></i></label>
+												</span>
+											</td>
+											<td><a href="biz_document_view.html">업체명1㈜가나다라마바사</a></td>
+											<td>김철수 외 1인</td>
+											<td class="tL"><div class="txtOver">발주내용이 나옵니다 발주내용이 나옵니다발주내용이 나옵니다 발주내용이 나옵니다</div></td><!-- 2020-11-16 말줄임 적용 -->
+											<td>2020-07-16</td>
+											<td>홍길동(000000)</td>
+											<td>2020-06-30 00:00</td>
+											<td></td>
+											<td>TOD-201100001</td>
+											<td></td>
+											<td></td>
+										</tr>
+										<!--//Loop-->
+										<tr>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="chk1" />
+													<label for="chk1"><i></i></label>
+												</span>
+											</td>
+											<td><a href="biz_document_view.html">업체명1㈜가나다라마바사</a></td>
+											<td>김철수</td>
+											<td class="tL"><div class="txtOver">발주내용이 나옵니다</div></td><!-- 2020-11-16 말줄임 적용 -->
+											<td>2020-07-16</td>
+											<td>홍길동(000000)</td>
+											<td>2020-06-30 00:00</td>
+											<td></td>
+											<td>TOD-201100001</td>
+											<td></td>
+											<td>
+												<button class="btnS white openView">미리보기</button>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span class="checkSet noLabel">
+													<input type="checkbox" id="chk1" />
+													<label for="chk1"><i></i></label>
+												</span>
+											</td>
+											<td><a href="biz_document_view.html">업체명1㈜가나다라마바사</a></td>
+											<td>김홍도</td>
+											<td class="tL"><div class="txtOver">발주내용이 나옵니다</div></td><!-- 2020-11-16 말줄임 적용 -->
+											<td>2020-07-16</td>
+											<td>홍길동(000000)</td>
+											<td>2020-06-30 00:00</td>
+											<td>2020-06-30 00:00</td>
+											<td>TOD-201100001</td>
+											<td><button class="btnS green">청구서 발행</button></td>
+											<td>
+												<button class="btnS white openView">미리보기</button>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="11">등록된 정보가 없습니다.</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!---->
+							<div class="bpSet">
+								<div class="btnArea">
+									<span class="left">
+										<button class="btnM" onclick="if(!confirm('선택한 항목을 삭제 하시겠습니끼?')){return false;}">선택삭제</button>
+									</span>
+									<span class="right">
+										<a href="biz_document_write.html" class="btnM">신규등록</a>
+									</span>
+								</div>
+								<div class="paginate">
+									<span>
+										<a class="first">이전</a>
+											<a class="on">1</a>
+											<a>2</a>
+											<a>3</a>
+											<a>4</a>
+											<a>5</a>
+										<a class="next">다음</a>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option>10개</option>
+											<option>20개</option>
+											<option>50개</option>
+											<option>100개</option>
+										</select>
+									</span>
+								</div>
+							</div>
+							<!--//-->
+						</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;"></div>
+		<!-- //Popup -->
+    </body>
+</html>

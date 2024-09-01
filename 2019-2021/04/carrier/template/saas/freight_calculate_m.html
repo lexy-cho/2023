@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/push.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.totalBtnSet button:first-child').click(function(){
+				    $('.totalBtnSet.case1, .totalBtnSet.case2').toggle();
+					$('.btnBilling').toggle();
+					if($(".totalBtnSet.case1").css("display") == "none"){
+						$('.payList li .checkSet').show();
+					} else {
+						$('.payList li .checkSet').hide();
+					}
+			    });
+				$('.freightMobleList .freBox .companyArea').click(function(){
+				    location.href = 'freight_calculate_detail.html';
+			    });
+
+				$('.btnTrash').click(function(){
+					$(this).parent('.freBox').remove();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="freightMobleList">
+			<ul>
+				<li class="freBox">
+					<!-- 2020-08-04 휴지통 버튼 삭제 -->
+					<div class="gridSet grid2">
+						<div class="gridItem">
+							<div class="companyArea">
+								<strong><span class="calCaption tHE">tHE</span>미화중공업㈜</strong>
+								<span class="radiusBox"><em class="green">발행 4건</em>미발행 3건</span>
+							</div>
+						</div>
+						<div class="gridItem">
+							<div class="costArea">
+								<dl>
+									<dt>운송 실행</dt>
+									<dd>7건</dd>
+								</dl>
+								<span class="cost">4,880,000 원</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="freBox">
+					<!-- 2020-08-04 휴지통 버튼 삭제 -->
+					<div class="gridSet grid2">
+						<div class="gridItem">
+							<div class="companyArea">
+								<strong>미화중공업㈜</strong>
+								<span class="radiusBox"><em class="green">발행 4건</em>미발행 3건</span>
+							</div>
+						</div>
+						<div class="gridItem">
+							<div class="costArea">
+								<dl>
+									<dt>운송 실행</dt>
+									<dd>7건</dd>
+								</dl>
+								<span class="cost">4,880,000 원</span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!-- popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 검색필터 -->
+			<div class="basicPop filterPop" id="samplePop8" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>검색필터</h1>
+				</div>
+				<div class="pBack">
+					<dl>
+						<dt>오더일자</dt>
+						<dd>
+							<span class="radioChoose">
+								<label for="lb1"><input type="radio" id="lb1" name="radio1" value="오늘" /><span>오늘</span></label>
+								<label for="lb2"><input type="radio" id="lb2" name="radio1" value="10일" /><span>10일</span></label>
+								<label for="lb3"><input type="radio" id="lb3" name="radio1" value="지난달" /><span>지난달</span></label>
+								<label for="lb4"><input type="radio" id="lb4" name="radio1" value="이번달" /><span>이번달</span></label>
+							</span>
+							<span class="calDupSet">
+								<span class="calSet"><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span>
+								<em>~</em>
+								<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+							</span>
+						</dd>
+					</dl>
+					<dl>
+						<dt>작업지 검색</dt>
+						<dd>
+							<input class="wFull" type="text" placeholder="작업지를 입력해주세요">
+						</dd>
+					</dl>
+				</div>
+				<div class="pBtn">
+					<button class="btnM orange">적용하기</button>
+				</div>
+			</div>
+			<!--//검색필터-->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

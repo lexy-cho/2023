@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){			
+			$(document).on('click tab', '.gnbOpen', function(e){
+				$('.gnbScroll').load('../gnb.html',function(){
+					funcGnbOpen();
+				});
+				return false;
+			});// 2019-03-15 gnb html load (퍼블리시용)
+            
+            // 계약번호 클릭 팝업
+            $(".popupOpen").click(function(event){
+				$('.dimPop, .alertPop').show();
+                
+                event.preventDefault();
+			});
+            
+            // 헤더 컨텐츠 고정 값만큼 컨텐츠에 padding-top 설정, 목록은 모두 공통 <!--2019-03-15--->
+            $(window).resize(function(){
+                $(".postList").css({
+                    "padding-top" : $(".headFixed").height()
+                });
+            }).resize();
+            
+            // mobile 한정 - 검색영역 확장 버튼, 목록은 공통으로 사용 <!--2019-03-15--->
+            $(".btnSchOpen").click(function(){
+                if($(this).hasClass("active")){
+                    $(this).removeClass("active");
+                    $(this).parent(".searchField").removeClass("on");
+                    $(".postList").css({
+                        "padding-top" : $(".headFixed").height()
+                    });
+                }else{
+                    $(this).addClass("active");
+                    $(this).parent(".searchField").addClass("on");
+                    $(".postList").css({
+                        "padding-top" : $(".headFixed").height()
+                    });
+                }
+            });
+            
+            // 2019-03-15 달력형식 변경, 공통으로 사용
+            $('.calendarSet button').duDatepicker({
+                format: 'yyyy-mm-dd', // Determines the date format
+                theme: 'yellow',        // Determines the color theme of the date picker
+				readOnly: true,       // Determines if input element is readonly (key input is disabled)
+				clearBtn: false,      // Determines if Clear button is displayed
+				cancelBtn: true,     // Determines if Cancel button is displayed
+				overlayClose: true    // Determines if clicking the overlay will close the date picker
+			}).on('datechanged', function(event){
+                $(this).prev().val(event.date);
+            });
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button>
+							<!-- <button class="goPrev" onclick="history.back()">뒤로가기</button> -->
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="../main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2>견적조회</h2> <!-- 2019-04-17 타이틀변경 -->
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<div class="postList"> <!--2019-03-15 클래스명 변경--->
+                            <!-- fixed -->
+                            <div class="headFixed">
+                                <!-- 검색 -->
+                                <div class="searchField">
+                                    <ul class="srhGrpLine">
+                                        <li>
+                                            <span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+                                                <select>
+                                                    <option>본부선택</option>
+                                                    <option>전체</option>
+                                                    <option>영업본부</option>
+                                                    <option>동부 DB</option>
+                                                </select>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+                                                <select>
+                                                    <option>지점선택</option>
+                                                    <option>강릉지점</option>
+                                                    <option>구성지점</option>
+                                                    <option>북수원지점</option>
+                                                </select>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+                                                <select>
+                                                    <option>영업사원</option>
+                                                    <option>강릉지점</option>
+                                                    <option>구성지점</option>
+                                                    <option>북수원지점</option>
+                                                </select>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+                                                <select>
+                                                    <option>모델</option>
+                                                    <option>SM7-L47</option>
+                                                    <option>SM6-LFD</option>
+                                                    <option>SM5-L43</option>
+                                                </select>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    <div class="iptGrpLine">
+                                        <span class="checkSet"><input type="checkbox" id="prevMonth" /><label for="prevMonth"><i></i>전월</label></span>
+                                        <ul class="calGrp">
+                                            <li>
+                                                <div class="calendarSet"><input type="tel" id="" name="" /><button>달력열기</button></div><!--2019-03-15--->
+                                            </li>
+                                            <li>
+                                                <div class="calendarSet"><input type="tel" id="" name="" /><button>달력열기</button></div><!--2019-03-15--->
+                                            </li>
+                                        </ul>
+                                        <div class="iptSearch">
+                                            <input type="text" id="searchWord" class="searchInp" placeholder="고객명, 계약번호" />
+                                            <button class="btnBY">조회</button>
+                                            <button class="btnBG reflesh">새고로침</button>
+                                        </div>
+                                    </div>
+                                    <button class="mbView btnSchOpen">열기</button>
+                                </div>
+                                <!-- // 검색 -->
+                                <!-- table header / Tab -->
+                                <div class="tablet"> <!-- 2019-03-15 tab > tablet -->
+                                    <div class="tbContainer">
+                                        <table class="tbList">
+                                            <colgroup>
+                                                <col width="11%" />
+                                                <col width="12%" />
+                                                <col width="120" />
+                                                <col width="*" />
+                                                <col width="100" />
+                                                <col width="120" />
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>모델</th>
+                                                    <th>기준일자</th>
+                                                    <th>계약번호<button class=sort><i></i>정렬</button></th>
+                                                    <th class="tLeft">차량정보</th>
+                                                    <th>고객정보</th>
+                                                    <th>본부<small>(지점/영업사원)</small></th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- // table header / Tab -->
+                            </div>
+                            <!-- // fixed -->
+                            
+                            <div class="postListBody"> <!--2019-03-15 클래스명 변경--->
+                                <!-- 목록 / Tab -->
+                               <div class="tablet"> <!-- 2019-03-15 tab > tablet -->
+                                    <div class="tbContainer">
+                                        <table class="tbList">
+                                            <colgroup>
+                                                <col width="11%" />
+                                                <col width="12%" />
+                                                <col width="120" />
+                                                <col width="*" />
+                                                <col width="100" />
+                                                <col width="120" />
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td>2018-12-03<br />12:40</td>
+                                                    <td><button class="contractNum popupOpen">9000107390<i class="paperIcon">지류계약</i></button></td>
+                                                    <td class="tLeft">
+                                                        <a href="new_step01.html">
+                                                            <p class="first txtEllipsis"><strong>SM7-L47 (2018)</strong> / 차종 : <span class="txtRD">GDe 2WD RE SignatGDe 2WD RE Signat</span></p>
+                                                            <p class="second"><span class="txtEllipsis">외장색 : 블랙 위도우블랙 위도우블랙 위도우</span><span class="txt"> / </span><span class="txtEllipsis">내장색 : 블랙가죽시트블랙가죽시트블랙가죽시트</span></p>
+                                                            <p class="third txtEllipsis"><span class="txtCYN">옵션 : </span>-S---, --E-- / <span>Free Gift, LED 라이팅Free Gift, LED 라이팅Free Gift, LED 라이팅</span></p>
+                                                        </a>
+                                                    </td>
+                                                    <td>홍길동<br />(010-1235-4858)<br /><button class="btnTel">전화걸기</button></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td>2018-12-03<br />12:40</td>
+                                                    <td><button class="contractNum popupOpen">9000107390<i class="eIcon">전자계약</i></button></td>
+                                                    <td class="tLeft">
+                                                        <a href="new_step01.html">
+                                                            <p class="first txtEllipsis"><strong>SM7-L47 (2018)</strong> / 차종 : <span class="txtRD">GDe 2WD RE SignatGDe 2WD RE Signat</span></p>
+                                                            <p class="second"><span class="txtEllipsis">외장색 : 블랙 위도우블랙 위도우블랙 위도우</span><span class="txt"> / </span><span class="txtEllipsis">내장색 : 블랙가죽시트블랙가죽시트블랙가죽시트</span></p>
+                                                            <p class="third txtEllipsis"><span class="txtCYN">옵션 : </span>-S---, --E-- / <span>Free Gift, LED 라이팅Free Gift, LED 라이팅Free Gift, LED 라이팅</span></p>
+                                                        </a>
+                                                    </td>
+                                                    <td>홍길동<br />(010-1235-4858)<br /><button class="btnTel">전화걸기</button></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td>2018-12-03<br />12:40</td>
+                                                    <td></td>
+                                                    <td class="tLeft">
+                                                        <a href="new_step01.html">
+                                                            <p class="first txtEllipsis"><strong>SM7-L47 (2018)</strong> / 차종 : <span class="txtRD">GDe 2WD RE SignatGDe 2WD RE Signat</span></p>
+                                                            <p class="second"><span class="txtEllipsis">외장색 : 블랙 위도우블랙 위도우블랙 위도우</span><span class="txt"> / </span><span class="txtEllipsis">내장색 : 블랙가죽시트블랙가죽시트블랙가죽시트</span></p>
+                                                            <p class="third txtEllipsis"><span class="txtCYN">옵션 : </span>-S---, --E-- / <span>Free Gift, LED 라이팅Free Gift, LED 라이팅Free Gift, LED 라이팅</span></p>
+                                                        </a>
+                                                    </td>
+                                                    <td>홍길동<br />(-)<br /><button class="btnTel" disabled>전화걸기</button></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td>2018-12-03<br />12:40</td>
+                                                    <td><button class="contractNum popupOpen">9000107390<i class="paperIcon">지류계약</i></button></td>
+                                                    <td class="tLeft">
+                                                        <a href="new_step01.html">
+                                                            <p class="first txtEllipsis"><strong>SM7-L47 (2018)</strong> / 차종 : <span class="txtRD">GDe 2WD RE SignatGDe 2WD RE Signat</span></p>
+                                                            <p class="second"><span class="txtEllipsis">외장색 : 블랙 위도우블랙 위도우블랙 위도우</span><span class="txt"> / </span><span class="txtEllipsis">내장색 : 블랙가죽시트블랙가죽시트블랙가죽시트</span></p>
+                                                            <p class="third txtEllipsis"><span class="txtCYN">옵션 : </span>-S---, --E-- / <span>Free Gift, LED 라이팅Free Gift, LED 라이팅Free Gift, LED 라이팅</span></p>
+                                                        </a>
+                                                    </td>
+                                                    <td>홍길동<br />(010-1235-4858)<br /><button class="btnTel">전화걸기</button></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td>2018-12-03<br />12:40</td>
+                                                    <td><button class="contractNum popupOpen">9000107390<i class="eIcon">전자계약</i></button></td>
+                                                    <td class="tLeft">
+                                                        <a href="new_step01.html">
+                                                            <p class="first txtEllipsis"><strong>SM7-L47 (2018)</strong> / 차종 : <span class="txtRD">GDe 2WD RE SignatGDe 2WD RE Signat</span></p>
+                                                            <p class="second"><span class="txtEllipsis">외장색 : 블랙 위도우블랙 위도우블랙 위도우</span><span class="txt"> / </span><span class="txtEllipsis">내장색 : 블랙가죽시트블랙가죽시트블랙가죽시트</span></p>
+                                                            <p class="third txtEllipsis"><span class="txtCYN">옵션 : </span>-S---, --E-- / <span>Free Gift, LED 라이팅Free Gift, LED 라이팅Free Gift, LED 라이팅</span></p>
+                                                        </a>
+                                                    </td>
+                                                    <td>홍길동<br />(010-1235-4858)<br /><button class="btnTel">전화걸기</button></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td>2018-12-03<br />12:40</td>
+                                                    <td><button class="contractNum popupOpen">9000107390<i class="paperIcon">지류계약</i></button></td>
+                                                    <td class="tLeft">
+                                                        <a href="new_step01.html">
+                                                            <p class="first txtEllipsis"><strong>SM7-L47 (2018)</strong> / 차종 : <span class="txtRD">GDe 2WD RE SignatGDe 2WD RE Signat</span></p>
+                                                            <p class="second"><span class="txtEllipsis">외장색 : 블랙 위도우블랙 위도우블랙 위도우</span><span class="txt"> / </span><span class="txtEllipsis">내장색 : 블랙가죽시트블랙가죽시트블랙가죽시트</span></p>
+                                                            <p class="third txtEllipsis"><span class="txtCYN">옵션 : </span>-S---, --E-- / <span>Free Gift, LED 라이팅Free Gift, LED 라이팅Free Gift, LED 라이팅</span></p>
+                                                        </a>
+                                                    </td>
+                                                    <td>홍길동<br />(010-1235-4858)<br /><button class="btnTel">전화걸기</button></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td>2018-12-03<br />12:40</td>
+                                                    <td><button class="contractNum popupOpen">9000107390<i class="eIcon">전자계약</i></button></td>
+                                                    <td class="tLeft">
+                                                        <a href="new_step01.html">
+                                                            <p class="first txtEllipsis"><strong>SM7-L47 (2018)</strong> / 차종 : <span class="txtRD">GDe 2WD RE SignatGDe 2WD RE Signat</span></p>
+                                                            <p class="second"><span class="txtEllipsis">외장색 : 블랙 위도우블랙 위도우블랙 위도우</span><span class="txt"> / </span><span class="txtEllipsis">내장색 : 블랙가죽시트블랙가죽시트블랙가죽시트</span></p>
+                                                            <p class="third txtEllipsis"><span class="txtCYN">옵션 : </span>-S---, --E-- / <span>Free Gift, LED 라이팅Free Gift, LED 라이팅Free Gift, LED 라이팅</span></p>
+                                                        </a>
+                                                    </td>
+                                                    <td>홍길동<br />(010-1235-4858)<br /><button class="btnTel">전화걸기</button></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td>2018-12-03<br />12:40</td>
+                                                    <td><button class="contractNum popupOpen">9000107390<i class="eIcon">전자계약</i></button></td>
+                                                    <td class="tLeft">
+                                                        <a href="new_step01.html">
+                                                            <p class="first txtEllipsis"><strong>SM7-L47 (2018)</strong> / 차종 : <span class="txtRD">GDe 2WD RE SignatGDe 2WD RE Signat</span></p>
+                                                            <p class="second"><span class="txtEllipsis">외장색 : 블랙 위도우블랙 위도우블랙 위도우</span><span class="txt"> / </span><span class="txtEllipsis">내장색 : 블랙가죽시트블랙가죽시트블랙가죽시트</span></p>
+                                                            <p class="third txtEllipsis"><span class="txtCYN">옵션 : </span>-S---, --E-- / <span>Free Gift, LED 라이팅Free Gift, LED 라이팅Free Gift, LED 라이팅</span></p>
+                                                        </a>
+                                                    </td>
+                                                    <td>홍길동<br />(010-1235-4858)<br /><button class="btnTel">전화걸기</button></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td>2018-12-03<br />12:40</td>
+                                                    <td><button class="contractNum popupOpen">9000107390<i class="eIcon">전자계약</i></button></td>
+                                                    <td class="tLeft">
+                                                        <a href="new_step01.html">
+                                                            <p class="first txtEllipsis"><strong>SM7-L47 (2018)</strong> / 차종 : <span class="txtRD">GDe 2WD RE SignatGDe 2WD RE Signat</span></p>
+                                                            <p class="second"><span class="txtEllipsis">외장색 : 블랙 위도우블랙 위도우블랙 위도우</span><span class="txt"> / </span><span class="txtEllipsis">내장색 : 블랙가죽시트블랙가죽시트블랙가죽시트</span></p>
+                                                            <p class="third txtEllipsis"><span class="txtCYN">옵션 : </span>-S---, --E-- / <span>Free Gift, LED 라이팅Free Gift, LED 라이팅Free Gift, LED 라이팅</span></p>
+                                                        </a>
+                                                    </td>
+                                                    <td>홍길동<br />(010-1235-4858)<br /><button class="btnTel">전화걸기</button></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td>2018-12-03<br />12:40</td>
+                                                    <td><button class="contractNum popupOpen">9000107390<i class="eIcon">전자계약</i></button></td>
+                                                    <td class="tLeft">
+                                                        <a href="new_step01.html">
+                                                            <p class="first txtEllipsis"><strong>SM7-L47 (2018)</strong> / 차종 : <span class="txtRD">GDe 2WD RE SignatGDe 2WD RE Signat</span></p>
+                                                            <p class="second"><span class="txtEllipsis">외장색 : 블랙 위도우블랙 위도우블랙 위도우</span><span class="txt"> / </span><span class="txtEllipsis">내장색 : 블랙가죽시트블랙가죽시트블랙가죽시트</span></p>
+                                                            <p class="third txtEllipsis"><span class="txtCYN">옵션 : </span>-S---, --E-- / <span>Free Gift, LED 라이팅Free Gift, LED 라이팅Free Gift, LED 라이팅</span></p>
+                                                        </a>
+                                                    </td>
+                                                    <td>홍길동<br />(010-1235-4858)<br /><button class="btnTel">전화걸기</button></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SM7-L47</td>
+                                                    <td>2018-12-03<br />12:40</td>
+                                                    <td><button class="contractNum popupOpen">9000107390<i class="eIcon">전자계약</i></button></td>
+                                                    <td class="tLeft">
+                                                        <a href="new_step01.html">
+                                                            <p class="first txtEllipsis"><strong>SM7-L47 (2018)</strong> / 차종 : <span class="txtRD">GDe 2WD RE SignatGDe 2WD RE Signat</span></p>
+                                                            <p class="second"><span class="txtEllipsis">외장색 : 블랙 위도우블랙 위도우블랙 위도우</span><span class="txt"> / </span><span class="txtEllipsis">내장색 : 블랙가죽시트블랙가죽시트블랙가죽시트</span></p>
+                                                            <p class="third txtEllipsis"><span class="txtCYN">옵션 : </span>-S---, --E-- / <span>Free Gift, LED 라이팅Free Gift, LED 라이팅Free Gift, LED 라이팅</span></p>
+                                                        </a>
+                                                    </td>
+                                                    <td>홍길동<br />(010-1235-4858)<br /><button class="btnTel">전화걸기</button></td>
+                                                    <td>중부 JB<br />(용인대리점/황자연)</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- // 목록 / Tab -->
+
+                                <!-- 목록 / mobile -->
+                                <div class="mobile">
+                                    <ul class="estList estCase">
+                                        <li>
+                                            <div class="estListHead">
+                                                <div class="estHeadInner">
+                                                    <span class="estShop">중부 JB (용인대리점/황자연)</span>
+                                                    <span class="estModel">SM7-L47</span>
+                                                </div>
+                                            </div>
+                                            <div class="estListBody">
+                                                <div class="estBodyMain">
+                                                    <span class="estStatus">출고준비중</span>
+                                                    <button class="estNum popupOpen">9000107390<i class="eIcon">전자계약</i></button>
+                                                    <span class="estDate">2018-12-03 12:45</span>
+                                                </div>
+                                                <div class="estBodySub">
+                                                    <a href="">
+                                                        <p class="first txtEllipsis"><strong>모델명 (연식)</strong> / 차종 : <span class="txtRD">GDe 2WD RE SignatGDe 2WD RE Signat</span></p>
+                                                        <p class="second"><span class="txtEllipsis">외장색 : 블랙 위도우블랙 위도우블랙 위도우</span><span class="txt"> / </span><span class="txtEllipsis">내장색 : 블랙가죽시트블랙가죽시트블랙가죽시트</span></p>
+                                                        <p class="third txtEllipsis"><span class="txtCYN">옵션 : </span>-S---, --E-- / <span>Free Gift, LED 라이팅Free Gift, LED 라이팅Free Gift, LED 라이팅</span></p>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="estListFoot">
+                                                <div class="estFootInner">
+                                                    <span>홍길동 님(김길동 님)</span>
+                                                    <button class="btnTel">전화걸기</button>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="estListHead">
+                                                <div class="estHeadInner">
+                                                    <span class="estShop">중부 JB (용인대리점/황자연)</span>
+                                                    <span class="estModel">SM7-L47</span>
+                                                </div>
+                                            </div>
+                                            <div class="estListBody">
+                                                <div class="estBodyMain">
+                                                    <span class="estStatus">작성중</span>
+                                                    <button class="estNum popupOpen">9000107390<i class="paperIcon">지류계약</i></button>
+                                                    <span class="estDate">2018-12-03 12:45</span>
+                                                </div>
+                                                <div class="estBodySub">
+                                                    <a href="">
+                                                        <p class="first txtEllipsis"><strong>모델명 (연식)</strong> / 차종 : <span class="txtRD">GDe 2WD RE SignatGDe 2WD RE Signat</span></p>
+                                                        <p class="second"><span class="txtEllipsis">외장색 : 블랙 위도우블랙 위도우블랙 위도우</span><span class="txt"> / </span><span class="txtEllipsis">내장색 : 블랙가죽시트블랙가죽시트블랙가죽시트</span></p>
+                                                        <p class="third txtEllipsis"><span class="txtCYN">옵션 : </span>-S---, --E-- / <span>Free Gift, LED 라이팅Free Gift, LED 라이팅Free Gift, LED 라이팅</span></p>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="estListFoot">
+                                                <div class="estFootInner">
+                                                    <span>홍길동 님(김길동 님)</span>
+                                                    <button class="btnTel">전화걸기</button>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- // 목록 / mobile -->
+                            </div>
+                        </div>  
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+        
+        <!-- DimPopUp -->
+		<div class="dimPop" style="display:none;">
+			<div class="popSMCase alertPop" style="display:none;">
+                <div class="alertCnt">
+                    <h1 class="tit">반려된 계약입니다</h1>
+                    <div class="cntTxt">
+                        해당 건은 최초서명 이후 계약내용<br />수정이 있었던 건으로 인수 전에<br />반드시 재서명을 진행하셔야 합니다.
+                    </div>
+                </div>
+				<div class="btn">
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //DimPopUp -->
+	</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/approval.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/* 파일업로드 */
+			$('.fileSet input[type=file]').change(function() {
+				var fileValue = $(this).val().split("\\");
+				var fileName = fileValue[fileValue.length-1];
+				$('.fileSet .loadEnd em').text(fileName);
+				$('.fileSet .fileFind').hide();
+				$('.fileSet .loadIng').show();
+				setTimeout(function() {
+					$('.fileSet .loadIng').hide();
+					$('.fileSet .loadFail').show();
+				}, 3000);
+				setTimeout(function() {
+					$('.fileSet .loadFail').hide();
+					$('.fileSet .loadEnd').show();
+				}, 6000);
+			});
+			$('.fileSet .loadEnd button').click(function() {
+				$('.fileSet .fileFind').show();
+				$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+			});
+			/* end 파일업로드 */
+			/**/
+			$('.alertPop button, .basicPop button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			$('#btnListDel').click(function(){
+				$('.alertDim, .listDelPop').show();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>임시보관함</h2>
+					<div class="pagePos"><span>Home</span><span>전자결재</span><strong>임시보관함</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="apprListLayout">
+						<div class="grayBox">
+							<span class="searchBasic">
+								<span class="calSet"><input type="tel" placeholder="임시저장일" /><button>달력열기</button></span>
+								<input type="text" placeholder="문서제목"/>
+								<input type="submit" class="btnSearch" value="검색"/>
+							</span>
+						</div>
+						<div class="boardTop">
+							<em>전체 10개</em>
+						</div>
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="50"/>
+									<col width="120"/>
+									<col width="400"/>
+									<col width="200"/>
+									<col width="150"/>
+								</colgroup>
+								<thead>
+									<tr>
+										<th>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkall" />
+												<label for="chkall"><i></i></label>
+											</span>
+										</th>
+										<th>구분</th>
+										<th>사유</th>
+										<th>기간</th>
+										<th>임시 저장일</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk1" />
+												<label for="chk1"><i></i></label>
+											</span>
+										</td>
+										<td>휴가</td>
+										<td class="tL"><a href="appr_holiday_write.html">refresh 휴가</a></td>
+										<td>2020-01-01 ~ 2020-01-01 (1일)</td>
+										<td>2020-01-01 23:59</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk2" />
+												<label for="chk2"><i></i></label>
+											</span>
+										</td>
+										<td>휴가</td>
+										<td class="tL"><a href="appr_holiday_write.html">병가</a></td>
+										<td>2020-01-01 ~ 2020-01-01 (2일)</td>
+										<td>2020-01-01 23:59</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk3" />
+												<label for="chk3"><i></i></label>
+											</span>
+										</td>
+										<td>휴가</td>
+										<td class="tL"><a href="appr_holiday_write.html">개인사유</a></td>
+										<td>2020-01-01 ~ 2020-01-01 (3일)</td>
+										<td>2020-01-01 23:59</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk4" />
+												<label for="chk4"><i></i></label>
+											</span>
+										</td>
+										<td>휴가</td>
+										<td class="tL"><a href="appr_holiday_write.html">전체휴무</a></td>
+										<td>2020-01-01 ~ 2020-01-01 (1일)</td>
+										<td>2020-01-01 23:59</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk5" />
+												<label for="chk5"><i></i></label>
+											</span>
+										</td>
+										<td>휴가</td>
+										<td class="tL"><a href="appr_holiday_write.html">기타</a></td>
+										<td>2020-01-01 ~ 2020-01-01 (1일)</td>
+										<td>2020-01-01 23:59</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk6" />
+												<label for="chk6"><i></i></label>
+											</span>
+										</td>
+										<td>교육</td>
+										<td class="tL"><a href="appr_education_write.html">민방위</a></td>
+										<td>2020-01-01 ~ 2020-01-01 (1일)</td>
+										<td>2020-01-01 23:59</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk7" />
+												<label for="chk7"><i></i></label>
+											</span>
+										</td>
+										<td>교육</td>
+										<td class="tL"><a href="appr_education_write.html">예비군</a></td>
+										<td>2020-01-01 ~ 2020-01-01 (1일)</td>
+										<td>2020-01-01 23:59</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk8" />
+												<label for="chk8"><i></i></label>
+											</span>
+										</td>
+										<td>교육</td>
+										<td class="tL"><a href="appr_education_write.html">외부교육</a></td>
+										<td>2020-01-01 ~ 2020-01-01 (1일)</td>
+										<td>2020-01-01 23:59</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk9" />
+												<label for="chk9"><i></i></label>
+											</span>
+										</td>
+										<td>경조사</td>
+										<td class="tL"><a href="appr_fmevent_write.html">결혼</a></td>
+										<td>2020-01-01 ~ 2020-01-01 (1일)</td>
+										<td>2020-01-01 23:59</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk10" />
+												<label for="chk10"><i></i></label>
+											</span>
+										</td>
+										<td>경조사</td>
+										<td class="tL"><a href="appr_fmevent_write.html">조사</a></td>
+										<td>2020-01-01 ~ 2020-01-01 (1일)</td>
+										<td>2020-01-01 23:59</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk11" />
+												<label for="chk11"><i></i></label>
+											</span>
+										</td>
+										<td>경조사</td>
+										<td class="tL"><a href="appr_fmevent_write.html">조사</a></td>
+										<td>2020-01-01 ~ 2020-01-01 (1일)</td>
+										<td>2020-01-01 23:59</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk12" />
+												<label for="chk12"><i></i></label>
+											</span>
+										</td>
+										<td>특별휴가</td>
+										<td class="tL"><a href="appr_spholiday_write.html">홍길동 대상</a></td>
+										<td>2020-01-01 ~ 2020-01-01 (1일)</td>
+										<td>2020-01-01 23:59</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="btnArea">
+							<span class="left">
+								<button class="btnM" id="btnListDel">선택 삭제</button>
+							</span>
+						</div>
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Alert Popup -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop listDelPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>작성한 신청서 정보가 삭제됩니다.<br/>삭제 하시겠습니까?</p>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM primary">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //Alert Popup -->
+    </body>
+</html>

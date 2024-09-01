@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+		<!-- <script type="text/javascript" src="js/swiper.min.js"></script> -->
+		<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../js/menu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$(document).on('click tab', '.gnbOpen', function(e){
+				$('.gnbScroll').load('gnb.html',function(){
+					funcGnbOpen();
+				});
+				return false;
+			});// 2019-03-15 gnb html load (퍼블리시용)
+            
+            $(document).on('click tab', '.commissionLayout table td', function(e){
+				$('.dimPop, #commissionPop').show();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button>
+						</span>
+						<h1><img src="../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2>차종 별 예상 판매수수료</h2> <!-- 2019-04-17 타이틀변경 -->
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<!-- myPage -->
+						<div class="commissionLayout">
+							<div class="sorting">
+								<div>
+									<span class="selectSet">
+										<select>
+											<option>본부선택</option>
+											<option>전체</option>
+											<option>영업본부</option>
+											<option>동부 DB</option>
+										</select>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option selected>지점선택</option>
+											<option>전체</option>
+											<option>강릉지점</option>
+											<option>구성지점</option>
+										</select>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option selected>2019년</option>
+											<option>2018년</option>
+											<option>2017년</option>
+										</select>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option>전체</option>
+											<option>1월</option>
+											<option selected>2월</option>
+										</select>
+									</span>
+								</div>
+								<input type="submit" value="조회" class="btnBY" />
+							</div>
+							<h3><strong>판매수수료</strong> (홍길동/ 2019) <span>(단위: 대 / 수수료: 원)</span></h3>
+							<div class="ttList"><!-- 2019-04-29 고정을 위한 추가 -->
+								<table>
+									<colgroup>
+										<col span="3" width="33.3%"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>2019</th>
+											<th>대수</th>
+											<th>판매수수료(예상)</th>
+										</tr>
+									</thead>
+									<tbody class="total">
+										<tr>
+											<td>Total</td>
+											<td>316</td>
+											<td><span>89,567,348</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<table>
+								<colgroup>
+									<col span="3" width="33.3%"/><!-- 2019-04-29 넓이조절 -->
+								</colgroup>
+								<!-- 2019-04-29 고정을 위한 thead tbody 중 total 삭제-->
+								<tbody>
+									<tr>
+										<td>청라지점</td>
+										<td>13</td>
+										<td><span>699,678</span></td><!-- 2019-04-29 span 추가 -->
+									</tr>
+									<tr>
+										<td>구성지점</td>
+										<td>21</td>
+										<td><span>2,178,643</span></td><!-- 2019-04-29 span 추가 -->
+									</tr>
+									<tr>
+										<td>소계</td>
+										<td>34</td>
+										<td><span>2,878,321</span></td><!-- 2019-04-29 span 추가 -->
+									</tr>
+									<tr>
+										<td>청라지점</td>
+										<td>13</td>
+										<td><span>699,678</span></td><!-- 2019-04-29 span 추가 -->
+									</tr>
+									<tr>
+										<td>구성지점</td>
+										<td>21</td>
+										<td><span>2,178,643</span></td><!-- 2019-04-29 span 추가 -->
+									</tr>
+									<tr>
+										<td>소계</td>
+										<td>34</td>
+										<td><span>2,878,321</td><!-- 2019-04-29 span 추가 -->
+									</tr>
+                                    <tr>
+                                        <td colspan="3" class="listNone">
+                                            <span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+                                        </td>
+                                    </tr>
+								</tbody>
+							</table>
+						</div>
+						<!-- //myPage -->
+					</section>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+        
+        <!-- DimPopUp -->
+		<div class="dimPop" style="display: none;">
+            <!-- 차종별 예상 판매수수료 -->
+            <div class="popLGCase" id="commissionPop" style="display: none;">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>판매수수료</h1> <!-- 2019-04-29 일부내용 위치변경 / 2019-03-26 월 추가 -->
+				</div>
+				<div class="popBack">
+					<div class="commissionLayout">
+                        <h3><strong>2019-03, 경인본부 &gt; 청라지점</strong><span>(단위: 대 / 수수료: 원)</span></h3> <!-- 2019-04-29 타이틀 위치 변경 -->
+                        <table>
+                            <colgroup>
+                                <col span="4" width="25%"/>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>이름</th>
+                                    <th>모델</th>
+                                    <th>대수</th>
+                                    <th>판매수수료(예상)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="total">
+                                <tr>
+                                    <td colspan="2">Total</td>
+                                    <td>316</td>
+                                    <td><span>89,567,348</span></td><!-- 2019-04-29 span 추가 -->
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <th rowspan="5">홍길동</th><!-- 2019-04-29 td->th 로 변경 -->
+                                    <td>SM7-L47</td>
+                                    <td>2</td>
+                                    <td><span>699,678</span></td><!-- 2019-04-29 span 추가 -->
+                                </tr>
+                                <tr>
+                                    <td>SM7-L47</td>
+                                    <td>2</td>
+                                    <td><span>699,678</span></td><!-- 2019-04-29 span 추가 -->
+                                </tr>
+                                <tr>
+                                    <td>SM7-L47</td>
+                                    <td>2</td>
+                                    <td><span>699,678</span></td>
+                                </tr>
+                                <tr>
+                                    <td>SM7-L47</td>
+                                    <td>2</td>
+                                    <td><span>699,678</span></td><!-- 2019-04-29 span 추가 -->
+                                </tr>
+                                <tr>
+                                    <td>소계</td>
+                                    <td>34</td>
+                                    <td><span>2,878,321</span></td><!-- 2019-04-29 span 추가 -->
+                                </tr>
+                                <tr>
+                                    <th rowspan="3">김철수</th><!-- 2019-04-29 td->th 로 변경 -->
+                                    <td>SM7-L47</td>
+                                    <td>2</td>
+                                    <td><span>699,678</span></td><!-- 2019-04-29 span 추가 -->
+                                </tr>
+                                <tr>
+                                    <td>SM7-L47</td>
+                                    <td>2</td>
+                                    <td><span>699,678</span></td><!-- 2019-04-29 span 추가 -->
+                                </tr>
+                                <tr>
+                                    <td>소계</td>
+                                    <td>34</td>
+                                    <td><span>2,878,321</span></td><!-- 2019-04-29 span 추가 -->
+                                </tr>
+                                <tr>
+                                    <th rowspan="5">김영희</th><!-- 2019-04-29 td->th 로 변경 -->
+                                    <td>SM7-L47</td>
+                                    <td>2</td>
+                                    <td><span>699,678</span></td><!-- 2019-04-29 span 추가 -->
+                                </tr>
+                                <tr>
+                                    <td>SM7-L47</td>
+                                    <td>2</td>
+                                    <td><span>699,678</span></td><!-- 2019-04-29 span 추가 -->
+                                </tr>
+                                <tr>
+                                    <td>SM7-L47</td>
+                                    <td>2</td>
+                                    <td><span>699,678</span></td><!-- 2019-04-29 span 추가 -->
+                                </tr>
+                                <tr>
+                                    <td>SM7-L47</td>
+                                    <td>2</td>
+                                    <td><span>699,678</span></td><!-- 2019-04-29 span 추가 -->
+                                </tr>
+                                <tr>
+                                    <td>소계</td>
+                                    <td>34</td>
+                                    <td><span>2,878,321</span></td><!-- 2019-04-29 span 추가 -->
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="listNone">
+                                        <span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+				</div>
+				<!-- 2019-04-29 버튼 삭제 : 상단 X 버튼으로 대체 -->
+			</div>
+            <!-- // 차종별 예상 판매수수료 -->
+        </div>
+        <!-- // DimPopUp -->
+	</body>
+</html>

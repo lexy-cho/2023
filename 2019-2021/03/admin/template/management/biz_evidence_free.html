@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('#newEvidenceBtn').click(function(){
+				$('.popDim').show();
+				$('.evidencePop').show();
+			});
+			$('.pBtn button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			/**/
+			$('.openView').click(function(){
+				$('.popDim').show();
+				$('.evidenceViewPop').show();
+			});
+			/**/
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>계약직 서류발급</h2>
+					<div class="pagePos"><span>Home</span><span>경영지원</span><span>증빙서류 관리</span><strong>계약직 서류발급</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="">
+						<!---->
+						<div class="boardTop">
+							<em>전체 10,000건</em>
+							<span class="right">
+								<span class="calDupSet">
+									<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									<em>~</em>
+									<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+								</span>
+								<span class="searchBasic">
+									<span class="selectSet">
+										<select>
+											<option>신청서류 구분</option>
+											<option>해촉증명서</option>
+										</select>
+									</span>
+									<input type="text" placeholder="이름, 문서번호 입력" />
+									<input type="submit" value="검색" class="btnSearch" />
+									<button class="btnReset">초기화</button>
+								</span>
+								<button class="btnM">엑셀다운로드</button>
+							</span>
+						</div>
+						<!---->
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="10" />
+									<col width="40" />
+									<col />
+									<col />
+									<col />
+									<col />
+									<col />
+									<col />
+									<col />
+									<col />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkall" />
+												<label for="chkall"><i></i></label>
+											</span>
+										</th>
+										<th>No.</th>
+										<th>이름</th>
+										<th>신청일</th>
+										<th>신청서류</th>
+										<th>사용처</th>
+										<th>요청기간</th>
+										<th>발송일자</th>
+										<th>발송 메일주소</th>
+										<th>문서번호</th>
+										<th>관리</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk5" />
+												<label for="chk5"><i></i></label>
+											</span>
+										</td>
+										<td>5</td>
+										<td>홍길동</td>
+										<td>2020-02-11</td>
+										<td>해촉증명서</td>
+										<td>건강보험 공단</td>
+										<td>19.05.13 ~ 19.10.17<br/>19.03.13 ~ 19.04.12</td>
+										<td></td>
+										<td>abcdefghijk@think-tree.co.kr</td>
+										<td>TLW-2002001</td>
+										<td>
+											<button class="btnS white openView">미리보기</button>
+											<button class="btnS white">발송</button>
+										</td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk4" />
+												<label for="chk4"><i></i></label>
+											</span>
+										</td>
+										<td>4</td>
+										<td>홍길동</td>
+										<td>2020-02-11</td>
+										<td>해촉증명서</td>
+										<td>건강보험 공단</td>
+										<td>19.05.13 ~ 19.10.17</td>
+										<td></td>
+										<td>abcdefghijk@think-tree.co.kr</td>
+										<td>TLW-2002001</td>
+										<td>
+											<button class="btnS white openView">미리보기</button>
+											<button class="btnS white">발송</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk3" disabled />
+												<label for="chk3"><i></i></label>
+											</span>
+										</td>
+										<td>3</td>
+										<td>홍길동</td>
+										<td>2020-02-11</td>
+										<td>해촉증명서</td>
+										<td>건강보험 공단</td>
+										<td>19.05.13 ~ 19.10.17</td>
+										<td>2020-02-15</td>
+										<td>abcdefghijk@think-tree.co.kr</td>
+										<td>TLW-2002001</td>
+										<td>
+											<button class="btnS white openView">미리보기</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk2" disabled />
+												<label for="chk2"><i></i></label>
+											</span>
+										</td>
+										<td>2</td>
+										<td>홍길동</td>
+										<td>2020-02-11</td>
+										<td>해촉증명서</td>
+										<td>건강보험 공단</td>
+										<td>19.05.13 ~ 19.10.17</td>
+										<td>2020-02-15</td>
+										<td>abcdefghijk@think-tree.co.kr</td>
+										<td>TLW-2002001</td>
+										<td>
+											<button class="btnS white openView">미리보기</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk1" disabled />
+												<label for="chk1"><i></i></label>
+											</span>
+										</td>
+										<td>1</td>
+										<td>홍길동</td>
+										<td>2020-02-11</td>
+										<td>해촉증명서</td>
+										<td>건강보험 공단</td>
+										<td>19.05.13 ~ 19.10.17</td>
+										<td>2020-02-15</td>
+										<td>abcdefghijk@think-tree.co.kr</td>
+										<td>TLW-2002001</td>
+										<td>
+											<button class="btnS white openView">미리보기</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="bpSet">
+							<div class="btnArea">
+								<span class="left">
+									<button class="btnM">선택삭제</button>
+								</span>
+								<span class="right">
+									<button class="btnM" id="newEvidenceBtn">신규발행</button>
+								</span>
+							</div>
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+										<a class="on">1</a>
+										<a>2</a>
+										<a>3</a>
+										<a>4</a>
+										<a>5</a>
+									<a class="next">다음</a>
+								</span>
+								<span class="selectSet">
+									<select>
+										<option>10개</option>
+										<option>20개</option>
+										<option>50개</option>
+										<option>100개</option>
+									</select>
+								</span>
+							</div>
+						</div>
+						<!--//-->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<!--신규발행-->
+			<div class="basicPop evidencePop freeCase" style="display:none;"> <!-- 2020-03-31 계약직일 경우 class 추가 -->
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>증빙서류 신규발행</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<!-- 2020-03-31 th,td 합치기 -->
+						<table>
+							<colgroup>
+								<col width="90"/>
+								<col />
+								<col width="90"/>
+								<col />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>이름 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+									<td><input type="text" placeholder="" /></td>
+									<th>신청일</th>
+									<td><input type="tel" value="2020-01-21" disabled /></td>
+								</tr>
+								<tr>
+									<th>발송메일</th>
+									<td><input type="tel" value="" disabled /></td>
+									<th>신청서류 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+									<td>
+										<span class="selectSet">
+											<select>
+												<option>선택하세요</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>사용처 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+									<td colspan="3">
+										<span class="selectSet">
+											<select>
+												<option>선택하세요</option>
+												<option>은행 제출용</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>요청기간 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+									<td colspan="3" class="requestDate">
+										<div>
+											<!-- 2020-03-31 프로젝트 선택 -->
+											<span class="selectSet">
+												<select>
+													<option>선택하세요</option>
+													<option>프로젝트명1</option>
+													<option>프로젝트명2</option>
+													<option>직접입력</option>
+												</select>
+											</span>
+											<!-- //2020-03-31 프로젝트 선택 -->
+											<input type="text" class="etcInput" /><!-- 2020-04-16 추가 -->
+											<span class="calDupSet">
+												<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+												<em>~</em>
+												<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+											</span>
+											<button class="btnS pink">X</button>
+										</div>
+										<div>
+											<!-- 2020-03-31 프로젝트 선택 -->
+											<span class="selectSet">
+												<select>
+													<option>선택하세요</option>
+													<option>프로젝트명1</option>
+													<option>프로젝트명2</option>
+													<option>선택안함</option>
+												</select>
+											</span>
+											<!-- //2020-03-31 프로젝트 선택 -->
+											<input type="text" class="etcInput" /><!-- 2020-04-16 추가 -->
+											<span class="calDupSet">
+												<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+												<em>~</em>
+												<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+											</span>
+											<button class="btnS pink">X</button>
+										</div>
+										<button class="btnS green">기간 추가</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- //2020-03-31 th,td 합치기 -->
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">발행</button>
+				</div>
+			</div>
+			<!--//신규발행-->
+			<!--미리보기-->
+			<div class="basicPop evidenceViewPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>증빙서류 미리보기</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<iframe frameborder="1" scrolling="yes" align="left"></iframe>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!--//미리보기-->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

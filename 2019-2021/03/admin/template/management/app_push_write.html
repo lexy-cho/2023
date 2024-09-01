@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('input:radio[name="sendWay"]').change(function(){
+				if($(this).val() == 'now'){
+					$('.timeSet *').attr('disabled', true);
+				} else {
+					$('.timeSet *').removeAttr('disabled');
+				}
+			});
+			/* 파일업로드 */
+			$('.fileSet input[type=file]').change(function() {
+				var fileValue = $(this).val().split("\\");
+				var fileName = fileValue[fileValue.length-1];
+				$('.fileSet .loadEnd em').text(fileName);
+				$('.fileSet .fileFind').hide();
+				$('.fileSet .loadIng').show();
+				setTimeout(function() {
+					$('.fileSet .loadIng').hide();
+					$('.fileSet .loadFail').show();
+				}, 3000);
+				setTimeout(function() {
+					$('.fileSet .loadFail').hide();
+					$('.fileSet .loadEnd').show();
+				}, 6000);
+			});
+			$('.fileSet .loadEnd button').click(function() {
+				$('.fileSet .fileFind').show();
+				$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+			});
+			/* end 파일업로드 */
+			$('#deleteBtn').click(function(){
+				$('.popDim').show();
+				$('.alertPop').show();
+			});
+			$('.pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop, .pushPreviewPop').hide();
+			});
+			$('.btnPushPreview').click(function() {
+				$('.popDim').show();
+				$('.pushPreviewPop').show();
+			}); // 푸시 미리보기
+			$('.btnMessageEx').click(function() {
+				$('.popDim').show();
+				$('.MessageExPop').show();
+			});
+			$('.btnReceiver').click(function() {
+				$('.popDim').show();
+				$('.receiverPop').show();
+			});
+			$('.btnInsertUrl').click(function() {
+				$('.popDim').show();
+				$('.insertUrlPop').show();
+			});
+			$('.btnIcon').click(function() {
+				$('.popDim').show();
+				$('.insertImgPop').show();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>메세지 관리</h2>
+					<div class="pagePos"><span>Home</span><span>APP 관리</span><span>Push 관리</span><strong>메세지 관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="pushWriteLayout">
+						<div class="pushBoxLine">
+							<div class="tvs2 pushWrite">
+								<table>
+									<colgroup>
+										<col width="100"/>
+										<col width="300"/>
+										<col width="100"/>
+										<col width="300" />
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>서비스</th>
+											<td>
+												<span class="selectSet">
+													<select>
+														<option>선택</option>
+														<option>Ting</option>
+														<option>Visitor</option>
+													</select>
+												</span>
+											</td>
+											<th>카테고리</th>
+											<td>
+												<span class="selectSet">
+													<select>
+														<option>선택</option>
+														<option>공지사항</option>
+														<option>알림</option>
+														<option>광고</option>
+														<option>홍보</option>
+													</select>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th>메시지 예시</th>
+											<td colspan="3">
+												<span class="selectSet w90p">
+													<select>
+														<option>선택</option>
+														<option>업데이트 공지입니다.</option>
+														<option>오류 해결 방법 안내입니다.</option>
+													</select>
+												</span>
+												<button class="btnM btnMessageEx">예시관리</button>
+											</td>
+										</tr>
+										<tr>
+											<th>타이틀</th>
+											<td colspan="3"><input type="text" class="w90p" /> 0/50</td>
+										</tr>
+										<tr>
+											<th>발송자</th>
+											<td colspan="3">홍길동</td>
+										</tr>
+										<tr>
+											<th>수신자</th>
+											<td colspan="3">
+												<button class="btnM btnReceiver">수신자 선택하기</button>
+												<div>
+													<strong>[00명]</strong>
+													<span>홍길동 (퍼블리싱팀/9999999)</span>,
+													<span>홍길동 (퍼블리싱팀/9999999)</span>,
+													<span>홍길동 (퍼블리싱팀/9999999)</span>,
+													<span>홍길동 (퍼블리싱팀/9999999)</span>
+												</div>
+											</td>
+										</tr>
+										<!-- 2020-05-06 -->
+										<tr>
+											<th rowspan="4">
+												내용 <button class="btnS white btnPushPreview">미리보기</button>
+											</th>
+											<td colspan="3">
+												<textarea rows="5"></textarea>
+												<span class="right">0/150</span>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="3" class="pushImage">
+												오른쪽 이미지용 (비율 1:1 정사각형)<br/> <!-- 2020-05-22 -->
+												<span class="sampleArea">
+													<img src="../../images/img_pushSample1.png" />
+												</span>
+												<div class="uploadArea">
+													<span class="fileSet">
+														<span class="fileFind">
+															<input type="file" id="file1" />
+															<label for="file1">파일 찾기</label>
+														</span>
+														<span class="loadIng" style="display:none;">업로드 중</span>
+														<strong class="loadEnd thumbnailCase" style="display:none;">
+															<em>Ting_ANDROID.jpg</em>
+															<span><img src="../../images/img_library_thumbnail.png" alt="" /></span>
+															<button>취소</button>
+														</strong>
+														<button class="loadFail" style="display:none;">업로드 실패</button>
+													</span>
+													<!-- <input type="text" placeholder="이미지 링크 URL을 입력해주세요" class="wFull mt1" /> 2020-05-28 -->
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="3" class="pushImage hCase"> <!-- 2020-05-28 -->
+												하단 이미지용 (비율 2:1 가로 직사각형)<br/> <!-- 2020-05-22 -->
+												<span class="sampleArea">
+													<img src="../../images/img_pushSample2.png" />
+												</span>
+												<div class="uploadArea">
+													<span class="fileSet">
+														<span class="fileFind">
+															<input type="file" id="file1" />
+															<label for="file1">파일 찾기</label>
+														</span>
+														<span class="loadIng" style="display:none;">업로드 중</span>
+														<strong class="loadEnd thumbnailCase" style="display:none;">
+															<em>Ting_ANDROID.jpg</em>
+															<span><img src="../../images/img_library_thumbnail.png" alt="" /></span>
+															<button>취소</button>
+														</strong>
+														<button class="loadFail" style="display:none;">업로드 실패</button>
+													</span>
+													<!-- <input type="text" placeholder="이미지 링크 URL을 입력해주세요" class="wFull mt1" /> 2020-05-28 -->
+												</div>
+											</td>
+										</tr>
+										<!-- //2020-05-06 -->
+										<tr>     
+ 											<td colspan="3">
+												<input type="text" placeholder="URL을 입력해주세요" class="wFull" />
+											</td>
+										</tr>
+										<tr>
+											<th>발송형태</th>
+											<td colspan="3">
+												<span class="radioSet">
+												    <input type="radio" id="radio5" name="sendWay" value="now"/>
+												    <label for="radio5"><i></i>바로 발송</label>
+												</span>
+												<span class="radioSet">
+												    <input type="radio" id="radio6" name="sendWay" value="reservation" checked />
+												    <label for="radio6"><i></i>예약 발송</label>
+												</span>
+												<span class="timeSet">
+													<span class="calSet"><input type="tel" placeholder="2020-01-21"/><button>달력열기</button></span>
+													<span class="selectSet">
+														<select>
+															<option>00</option>
+															<option>01</option>
+															<option>02</option>
+															<option>03</option>
+															<option>04</option>
+														</select>
+													</span>
+													시
+													<span class="selectSet">
+														<select id="sendTime">
+															<option>00</option>
+															<option>01</option>
+															<option>02</option>
+															<option>02</option>
+														</select>
+													</span>
+													분
+												</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!---->
+						<div class="btnArea">
+							<span class="left">
+								<button class="btnM white" onclick="location.href='app_push.html'">목록</button>
+							</span>
+							<span class="right">
+								<button class="btnM blue" onclick="location.href='app_push_view.html'">메세지 보내기</button>
+								<button class="btnM" onclick="location.href='app_push.html'">취소</button>
+							</span>
+						</div>
+						<!---->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<div class="alertPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>입력한 정보가 삭제됩니다.<br/>삭제하시겠습니까?</p>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- 푸시 삽입 이미지 미리보기 -->
+			<div class="pushPreviewPop preArea img_hp msg_preview" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="img_txt">
+					<div class="title">PUSH 제목가 나옵니다.PUSH 제목가 나옵니다.PUSH 제목가 나옵니다.</div>
+					<div class="push">
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+						PUSH 메세지가 나옵니다.
+					</div>
+				</div>
+			</div>
+			<!-- //푸시 삽입 이미지 미리보기 -->
+			<!-- 메시지 예시 관리 찾기 팝업-->
+			<div class="basicPop MessageExPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>메시지 예시 관리</h1>
+				</div>
+				<div class="pBack">
+					<div class="left">
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="50" />
+									<col width="50" />
+									<col width="50" />
+									<col width="150" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkAll" />
+												<label for="chkAll"><i></i></label>
+											</span>
+										</th>
+										<th>No</th>
+										<th>카테고리</th>
+										<th>타이틀</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!-- Loop -->
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk1" />
+												<label for="chk1"><i></i></label>
+											</span>
+										</td>
+										<td>100</td>
+										<td>공지</td>
+										<td>타이틀입니다.</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk2" />
+												<label for="chk2"><i></i></label>
+											</span>
+										</td>
+										<td>99</td>
+										<td>공지</td>
+										<td>타이틀입니다.</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk3" />
+												<label for="chk3"><i></i></label>
+											</span>
+										</td>
+										<td>98</td>
+										<td>공지</td>
+										<td>타이틀입니다.</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk4" />
+												<label for="chk4"><i></i></label>
+											</span>
+										</td>
+										<td>97</td>
+										<td>공지</td>
+										<td>타이틀입니다.</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk5" />
+												<label for="chk5"><i></i></label>
+											</span>
+										</td>
+										<td>96</td>
+										<td>공지</td>
+										<td>타이틀입니다.</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk6" />
+												<label for="chk6"><i></i></label>
+											</span>
+										</td>
+										<td>95</td>
+										<td>공지</td>
+										<td>타이틀입니다.</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk7" />
+												<label for="chk7"><i></i></label>
+											</span>
+										</td>
+										<td>94</td>
+										<td>공지</td>
+										<td>타이틀입니다.</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk8" />
+												<label for="chk8"><i></i></label>
+											</span>
+										</td>
+										<td>93</td>
+										<td>공지</td>
+										<td>타이틀입니다.</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk9" />
+												<label for="chk9"><i></i></label>
+											</span>
+										</td>
+										<td>92</td>
+										<td>공지</td>
+										<td>타이틀입니다.</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk10" />
+												<label for="chk10"><i></i></label>
+											</span>
+										</td>
+										<td>91</td>
+										<td>공지</td>
+										<td>타이틀입니다.</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="btnArea">
+							<span class="right">
+								<button class="btnM">선택삭제</button>
+								<button class="btnM white">선택수정</button>
+							</span>
+						</div>
+					</div>
+					<div class="right">
+						<div class="pushBoxLine">
+							<div class="tvs2">
+								<table>
+									<colgroup>
+										<col width="60" />
+										<col />
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>카테고리</th>
+											<td>
+												<span class="selectSet">
+													<select>
+														<option>선택</option>
+														<option>공지사항</option>
+														<option>알림</option>
+														<option>광고</option>
+														<option>홍보</option>
+													</select>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th>타이틀 입력</th>
+											<td>
+												<input type="text" />
+												<span class="right">0/25</span>
+											</td>
+										</tr>
+										<tr>
+											<th>내용입력</th>
+											<td>
+												<textarea class="wFull"></textarea>
+												<span class="right">0/150</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="btnArea">
+							<span class="right"><button class="btnM blue">신규저장</button></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //메시지 예시 관리 찾기 팝업 -->
+			<!-- 수신자 선택 팝업 -->
+			<div class="basicPop receiverPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>수신자 선택하기</h1>
+				</div>
+				<div class="pBack">
+					<div class="optionBox">
+						<span class="selectSet">
+							<select>
+								<option>부서 선택</option>
+								<option>메뉴2</option>
+							</select>
+						</span>
+						<input type="text" placeholder="성명 혹은 사변을 입력하세요"/>
+						<input class="btnSearch" type="submit" value="검색" />
+					</div>
+					<div class="tls">
+						<table>
+							<colgroup>
+								<col width="50"/>
+								<col width="120"/>
+								<col/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chkAll" />
+											<label for="chkAll"><i></i></label>
+										</span>
+									</th>
+									<th>부서</th>
+									<th>성명(사번)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk1" />
+											<label for="chk1"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk2" />
+											<label for="chk2"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk3" />
+											<label for="chk3"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk4" />
+											<label for="chk4"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk5" />
+											<label for="chk5"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="checkSet noLabel">
+											<input type="checkbox" id="chk6" />
+											<label for="chk6"><i></i></label>
+										</span>
+									</td>
+									<td>퍼블리싱팀</td>
+									<td>홍길동(9999999)</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //수신자 선택 팝업 -->
+			<!-- 이미지 삽입 팝업 -->
+			<div class="basicPop insertImgPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>이미지 삽입하기</h1>
+				</div>
+				<div class="pBack">
+					<span class="fileSet">
+						<span class="fileFind">
+							<input type="file" id="file1" />
+							<label for="file1">이미지 찾기</label>
+						</span>
+						<span class="loadIng" style="display:none;">업로드 중</span>
+						<strong class="loadEnd" style="display:none;">
+							<em>샘플 데이터.png</em>
+							<button>취소</button>
+						</strong>
+						<button class="loadFail" style="display:none;">업로드 실패</button>
+					</span>
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //이미지 삽입 팝업 -->
+			<!-- url 삽입 팝업 -->
+			<div class="basicPop insertUrlPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>URL 삽입하기</h1>
+				</div>
+				<div class="pBack">
+					<input type="text" placeholder="URL을 입력하세요"/>
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!-- //url 삽입 팝업 -->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

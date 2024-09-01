@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<!-- <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/swiper.min.js"></script> -->
+		<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../js/menu.js"></script>
+		<!-- <script type="text/javascript" src="js/duDatepicker.js"></script> -->
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$(".btnLogin.errorCase").click(function(){
+				$(".error p").show();
+				$(this).hide();
+				$(".btnLogin.okCase").show();
+			});
+			$(".find button").click(function(){
+				$(".find .findInfo").toggle();
+			});
+			$(".find .findInfo").click(function(){
+				$(this).hide();
+			});
+			$('.inputBox input').focusin(function(){
+				//console.log('인풋 focusin!');
+				$('.rsmLogo').addClass('onKeypad');
+			});
+			$('.inputBox input').focusout(function(){
+				$('.rsmLogo').removeClass('onKeypad');
+			});
+
+			// 2019-08-01
+			$("#devicePop01 .btnBY").click(function(){
+				$(this).hide();
+				$(".dimPop").show();
+				$("#devicePop02").show();
+			});
+			$("#devicePop02 .btnBY").click(function(){
+				$(this).hide();
+				$(".dimPop").show();
+				$("#devicePop03").show();
+			});
+
+			$("#devicePop03 .btnBY").click(function(){
+				$(this).hide();
+				$(".dimPop").show();
+				$("#devicePop04").show();
+			});
+
+			$("#devicePop04 .btnBY").click(function(){
+				$(this).hide();
+				$(".dimPop").show();
+				$("#devicePop05").show();
+			});
+
+			$("#devicePop05 .btnBY").click(function(){
+				$(this).hide();
+				$(".dimPop").show();
+				$("#devicePop06").show();
+			});
+
+			$("#devicePop06 .btnBY").click(function(){
+				$(this).hide();
+				$(".dimPop").show();
+				$("#devicePop07").show();
+			});
+
+			$("#devicePop07 .btnBY").click(function(){
+				$(this).hide();
+				$(".dimPop").show();
+				$("#devicePop08").show();
+			});
+
+			$("#devicePop08 .btnBY").click(function(){
+				$(this).hide();
+				$(".dimPop").show();
+				$("#devicePop09").show();
+			});
+
+			$("#devicePop09 .btnBY").click(function(){
+				$(this).hide();
+				$(".dimPop").show();
+				$("#devicePop10").show();
+			});
+
+
+		});
+		</script>
+	</head>
+	<body class="loginCase">
+		
+		<!-- loginWrap -->
+		<div id="loginWrap">
+			<div class="loginBack">
+				<!---->
+				<div class="loginForm">
+					<h1><strong>e-BEST</strong></h1>
+					<form>
+						<div class="inputBox idBox">
+							<input type="text" id="identity" />
+							<label for="identity">아이디</label>
+						</div>
+						<div class="inputBox pwBox">
+							<input type="password" id="pw" />
+							<label for="pw">비밀번호</label>
+						</div>
+						<div class="error">
+							<p style="display:none;">
+								로그인 계정정보가 올바르지 않습니다.<br/>아이디와 비밀번호를 다시 한번 확인해 주세요.
+							</p>
+						</div>
+						<button type="button" class="btnLogin errorCase">로그인</button>
+						<button type="button" class="btnLogin okCase" onClick="location.href='main.html'" style="display:none;">로그인</button>
+						<div class="useCheck">
+							<span class="checkSet">
+								<input type="checkbox" name="" id="chk_01" /><label for="chk_01"><i></i>아이디를 저장합니다</label>
+							</span>
+						</div>
+					</form>
+					<div class="find">
+						<button>e-BEST 처음 사용하시나요?</button>
+						<div class="findInfo">
+							<div>
+								<p>e-BEST 관리자에게 문의해 주세요.<br/>최초 로그인은 관리자에게 부여 받은 PIN 번호로 가능합니다.<br/>로그인 후에는 반드시 마이페이지에서 비밀번호를 변경해 주세요.</p>
+								<dl>
+									<dt>IT Helpdesk</dt> <!-- 2019-09-18 -->
+									<dd>
+										<span>Tel : 02-3789-6800</span> <!-- 2019-09-18 -->
+										<span>운영시간 : 09:00~18:00</span>
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="rsmLogo"><span>Discover the Difference</span></div>
+				<!---->
+			</div>
+		</div>
+		<!-- //loginWrap -->
+		
+		<!-- DimPopUp -->
+		<div class="dimPop" style="">
+
+            <!-- -->
+            <div class="popSMCase devicePop" id="devicePop01" style="">
+                <div class="alertCnt">
+					<h1 class="tit">기기 등록</h1>
+                    <p>이미 등록된 개인기기가 있습니다. <br/>기존의 기기를 해제 하시겠습니까?</p>
+					<div class="deviceSelect">
+						<span class="radioSet"><input type="radio" id="a1" name="a" checked /><label for="a1"><i></i>Phone/iPhone11.6 <em>(등록일:2019-07-01)</em></label></span>
+					</div>
+                    <p>해제를 원하시는 디바이스를 선택한 후 확인을 눌러주세요</p>
+                </div>
+				<div class="btn">
+                    <button class="btnLB">취소</button>
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+            <!-- // -->
+            <!-- -->
+            <div class="popSMCase devicePop" id="devicePop02" style="display:none;">
+                <div class="alertCnt">
+					<h1 class="tit">기기 등록</h1>
+                    <p>pk10826'에 등록된 핸드폰 번호로 인증코드를 발송하시겠습니까?</p>
+				</div>
+				<div class="btn">
+                    <button class="btnLB">취소</button>
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+            <!-- // -->
+
+            <!-- -->
+            <div class="popSMCase devicePop" id="devicePop03" style="display:none;">
+                <div class="alertCnt">
+					<h1 class="tit">기기 등록</h1>
+                    <p>인증 코드를 입력해 주세요.</p>
+					<div class="deviceCode">
+						<input type="text" />
+						<span>00:00</span>
+					</div>
+                </div>
+				<div class="btn">
+                    <button class="btnLB">취소</button>
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+            <!-- // -->
+
+            <!-- -->
+            <div class="popSMCase alertPop" id="devicePop04"  style="display:none;">
+                <div class="alertCnt">
+                    <h1 class="tit">기기 등록</h1>
+                    <div class="cntTxt">
+						개인기기 등록이 정상처리 되었습니다.
+                    </div>
+                </div>
+				<div class="btn">
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+            <!-- // -->
+
+            <!-- -->
+           <div class="popSMCase devicePop" id="devicePop05" style="display:none;">
+                <div class="alertCnt">
+                    <h1 class="tit">기기 등록</h1>
+                    <p>공공기기로 등록하시겠습니까?</p>
+                </div>
+				<div class="btn">
+                    <button class="btnLB">개인기기 등록</button>
+					<button class="btnBY">공용기기 등록</button>
+				</div>
+			</div>
+            <!-- // -->
+
+            <!-- -->
+            <div class="popSMCase devicePop" id="devicePop06" style="display:none;">
+                <div class="alertCnt">
+					<h1 class="tit">기기 등록</h1>
+                    <p>이미 등록된 공용기기가 있습니다. <br/>기존의 기기를 해제 하시겠습니까?</p>
+					<div class="deviceSelect">
+						<span class="radioSet"><input type="radio" id="a1" name="a" checked /><label for="a1"><i></i>Phone/iPhone11.6</label></span>
+						<span class="radioSet"><input type="radio" id="a1" name="a" checked /><label for="a1"><i></i>Phone/iPhone11.6</label></span>
+						<span class="radioSet"><input type="radio" id="a1" name="a" checked /><label for="a1"><i></i>Phone/iPhone11.6</label></span>
+					</div>
+                    <p>해제를 원하시는 디바이스를 선택한 후 확인을 눌러주세요</p>
+                </div>
+				<div class="btn">
+                    <button class="btnLB">취소</button>
+					<button class="btnBY">해제</button>
+				</div>
+			</div>
+            <!-- // -->
+
+            <!-- -->
+            <div class="popSMCase devicePop" id="devicePop07" style="display:none;">
+                <div class="alertCnt">
+					<h1 class="tit">기기 등록</h1>
+                    <p>인증 코드를 입력해 주세요.</p>
+					<div class="deviceCode">
+						<input type="text" />
+						<span>00:00</span>
+					</div>
+                </div>
+				<div class="btn">
+                    <button class="btnLB">취소</button>
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+            <!-- // -->
+
+            <!-- -->
+            <div class="popSMCase devicePop" id="devicePop08" style="display:none;">
+                <div class="alertCnt">
+					<h1 class="tit">기기 등록</h1>
+                    <p>해당기기를 공용패드로 등록합니다. <br/>기기명을 입력해 주세요.</p>
+					<div class="deviceCode">
+						<input type="text" />
+					</div>
+                </div>
+				<div class="btn tCenter">
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+            <!-- // -->
+
+            <!-- -->
+            <div class="popSMCase devicePop" id="devicePop09" style="display:none;">
+                <div class="alertCnt">
+					<h1 class="tit">기기 등록</h1>
+                    <p>공용패드 등록이 최소 되었습니다. <br/>개인기기로 등록 하시겠습니까?</p>
+                </div>
+				<div class="btn">
+                    <button class="btnLB">취소</button>
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+            <!-- // -->
+
+            <!-- -->
+            <div class="popSMCase alertPop" id="devicePop10" style="display:none;">
+                <div class="alertCnt">
+					<h1 class="tit">기기 등록</h1>
+                    <div class="cntTxt">
+						공용기기 등록이 정상처리 되었습니다.
+                    </div>
+                </div>
+				<div class="btn">
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+            <!-- // -->
+
+		</div>
+		<!-- //DimPopUp -->
+
+	</body>
+</html>

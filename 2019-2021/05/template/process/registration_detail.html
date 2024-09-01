@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+            //$('.gnbScroll').load('../gnb.html');
+            
+            // 스와이프 탭 (상태위치)
+            var swiper = new Swiper('.swiper-container', {
+                slidesPerView: 'auto'
+            });
+            
+            // slide
+            $(".estDtlTit button").click(function(){
+                var slidBtn = $(this);
+                
+                if(slidBtn.hasClass("active")){
+                    slidBtn.parent().next().slideUp(300, function(){
+                        slidBtn.removeClass("active");
+                    });
+                }else{
+                    slidBtn.addClass("active").parent().next().slideDown(300);
+                }
+            });
+            
+            // bottom 열기
+            $(".btnBottomOpen").click(function(){
+                if($(this).hasClass("active")){
+                    $(this).removeClass("active");
+                    $(".rgstBottomBtn").css({
+                        "transform": "translateY(" + $(".rgstBottomBtn").outerHeight() + "px)"   
+                    });
+                }else{
+                    $(this).addClass("active");
+                    $(".rgstBottomBtn").css("transform", "translateY(0)");
+                }
+            });
+            
+            // PC에서 화면 전환 시 bottom 위치 조정
+            $(window).resize(function(){
+                if(!$(".btnBottomOpen").hasClass("active")){
+                    $(".rgstBottomBtn").css({
+                        "transform": "translateY(" + $(".rgstBottomBtn").outerHeight() + "px)"   
+                    });  
+                }
+            }).resize();
+            
+            // 지점조회
+            $(".openPop4").click(function(){
+				$('.dimPop, #openPop4').show();
+			});
+            
+            // 계약서 번호수정
+            $(".contractNumModify").click(function(){
+				$('.dimPop, #contractNumModify').show();
+			});
+            
+            // 조건변경
+            $(".conditionChange").click(function(){
+				$('.dimPop, #conditionChange').show();
+			});
+            
+            // 계약서 재발송
+            $(".contractResend").click(function(){
+				$('.dimPop, #contractResend').show();
+			});
+
+            // 할부승인서
+            $("#loanLetterBtn").click(function(){
+				$('.dimPop, .loanLetterPop').show();
+			});
+
+            // 배정요청
+            $("#assBtn").click(function(){
+				$('.dimPop, .assRequestPop').show();
+			});
+
+			$(".estimateAll").click(function(){
+				$('.wrapper').css('overflow','hidden');
+				$('#allEstimates').show();
+				$('.fullWrap .fullHeader h2').text('견적서 발송');
+			});
+
+		});
+		</script>
+	</head>
+	<body><!-- 2019-03-21 estColor class 삭제 -->
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<!-- <button class="gnbOpen">GNB 열기</button> -->
+							<button class="goPrev" onclick="history.back()">뒤로가기</button>
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="../main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2>계출현황</h2> <!-- 2019-04-17 타이틀변경 -->
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+                        <div class="estColor online"><!-- 2019-03-21 지류/전자 구분 html(div) 추가, 지류일 경우 online class 삭제 -->
+                            <div class="estimateDetail">
+                                <div class="estimateDtlHead">
+                                    <!-- 계약서 진행상태 -->
+                                    <div class="rgstProcess">
+                                        <div class="swiper-container">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide first">
+                                                    <span class="processPoint">
+                                                        <span>계약승인요청</span>
+                                                    </span>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <span class="processPoint">
+                                                        <span>계약승인</span>
+                                                    </span>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <span class="processPoint">
+                                                        <span>배정요청</span>
+                                                    </span>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <span class="processPoint">
+                                                        <span>배정완료</span>
+                                                    </span>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <span class="processPoint">
+                                                        <span>출고요청</span>
+                                                    </span>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <span class="processPoint">
+                                                        <span>판매조건승인</span>
+                                                    </span>
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <span class="processPoint"> <!-- 현재 진행상태 위치에 active 클래스 추가 -->
+                                                        <span>출고승인</span>
+                                                    </span>
+                                                </div>
+                                                <div class="swiper-slide last">
+                                                    <span class="processPoint active">
+                                                        <span>매출확정</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- // 계약서 진행상태 -->
+                                </div>
+
+                                <div class="estimateDtlbody">
+									<!------------2019-07-31------------>
+									<div class="estimateNoti">
+										<p>
+											<span class="stickerTltp">TIP</span>e-BEST에서는 배정요청, 배정요청취소만 가능합니다.
+											<button class="btnBY" id="assBtn">배정요청</button>
+											<button class="btnBY">배정요청취소</button>
+										</p>
+										<button class="slideTotal active">전체 여닫기</button>
+									</div>
+									<!------------//2019-07-31------------>
+                                    <!-- 계약정보 -->
+                                    <dl class="estimateDtlBox">
+                                        <dt class="estDtlTit">
+                                            <button class="slideBtn active">계약정보<span class="btnSlideOpen"></span></button>
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+												<!--2019-04-19 데이터 위치 변경 -->
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>계약번호</dt>
+                                                            <dd>3001198479<button class="btnBG reflesh right">새로고침</button></dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>계약상태</dt>
+                                                            <dd class="txtRD">차량등록</dd><!-- 2019-03-19 -->
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>과세구분</dt>
+                                                            <dd>
+                                                                면세
+                                                                <button onclick="location.href='tax_free_form.html'" class="btnBG right">신고서 등록</button>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>계약거점</dt>
+                                                            <dd>004/도봉사업소</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>영업담당</dt>
+                                                            <dd>이병규</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>지불조건</dt>
+                                                            <dd>할부정상조건</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>법인팀 관리</dt>
+                                                            <dd>비대상</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>고객분류</dt>
+                                                            <dd>개인-일반개인판매</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>계약서번호</dt>
+                                                            <dd>0443425</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+                                                <!-- 2019-04-19 기존소스 <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>계약번호</dt>
+                                                            <dd>3001198479<button class="btnBG reflesh right">새로고침</button></dd>
+                                                            <dt>계약거점</dt>
+                                                            <dd>004/도봉사업소</dd>
+                                                            <dt>법인팀 관리</dt>
+                                                            <dd>비대상</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>계약상태</dt>
+                                                            <dd class="txtRD">차량등록</dd>
+                                                            <dt>영업담당</dt>
+                                                            <dd>이병규</dd>
+                                                            <dt>고객분류</dt>
+                                                            <dd>개인-일반개인판매</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>과세구분</dt>
+                                                            <dd>
+                                                                면세
+                                                                <button onclick="location.href='tax_free_form.html'" class="btnBG right">신고서 등록</button>
+                                                            </dd>
+                                                            <dt>지불조건</dt>
+                                                            <dd>할부정상조건</dd>
+                                                            <dt>계약서번호</dt>
+                                                            <dd>0443425</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 계약정보 -->
+
+                                    <!-- 고객정보 -->
+                                    <dl class="estimateDtlBox">
+                                        <dt class="estDtlTit type2">
+                                            <button class="slideBtn active">고객정보<span class="btnSlideOpen"></span></button>
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+												<!--2019-04-19 데이터 위치 변경 -->
+												<div class="gridSet grid3">
+													<div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>주민등록번호</dt>
+                                                            <dd>881231-*******</dd>
+                                                        </dl>
+                                                    </div>
+													<div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>고객명</dt>
+                                                            <dd>김상필</dd>
+                                                        </dl>
+                                                    </div>
+													<div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>계약서 종류</dt>
+                                                            <dd>
+                                                                <span class="radioSet"><input type="radio" id="contractOnline" name="contractType" checked /><label for="contractOnline"><i></i>전자</label></span>
+                                                                <span class="radioSet"><input type="radio" id="contractTypePaper" name="contractType" /><label for="contractTypePaper"><i></i>종이</label></span>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+												<div class="gridSet grid3">
+													<div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>사업자등록번호</dt>
+                                                            <dd>___-___-______</dd>
+                                                        </dl>
+                                                    </div>
+													<div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>상호</dt>
+                                                            <dd>이병규</dd>
+                                                        </dl>
+                                                    </div>
+													<div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>업종</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+												<div class="gridSet grid3">
+													<div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>법인등록번호</dt>
+                                                            <dd>___-___-______</dd>
+                                                        </dl>
+                                                    </div>
+													<div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>법인명</dt>
+                                                            <dd>개인-일반개인판매</dd>
+                                                        </dl>
+                                                    </div>
+													<div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>업태</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+												<div class="gridSet grid3">
+													<div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>휴대폰</dt>
+                                                            <dd>010-1234-5687</dd>
+                                                        </dl>
+                                                    </div>
+													<div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>이메일</dt>
+                                                            <dd>abcdefg@naver.com</dd>
+                                                        </dl>
+                                                    </div>
+													<div class="gridItem"><!--공란--></div>
+                                                </div>
+                                                <!-- 2019-04-19 기존소스 <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>주민등록번호</dt>
+                                                            <dd>881231-*******</dd>
+                                                            <dt>사업자등록번호</dt>
+                                                            <dd>___-___-______</dd>
+                                                            <dt>법인등록번호</dt>
+                                                            <dd>___-___-______</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>고객명</dt>
+                                                            <dd>김상필</dd>
+                                                            <dt>상호</dt>
+                                                            <dd>이병규</dd>
+                                                            <dt>법인명</dt>
+                                                            <dd>개인-일반개인판매</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>계약서 종류</dt>
+                                                            <dd>
+                                                                <span class="radioSet"><input type="radio" id="contractOnline" name="contractType" checked /><label for="contractOnline"><i></i>전자</label></span>
+                                                                <span class="radioSet"><input type="radio" id="contractTypePaper" name="contractType" /><label for="contractTypePaper"><i></i>종이</label></span>
+                                                            </dd>
+                                                            <dt>업종</dt>
+                                                            <dd>-</dd>
+                                                            <dt>업태</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <div class="gridSet grid2 type2">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>휴대폰</dt>
+                                                            <dd>010-1234-5687</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>이메일</dt>
+                                                            <dd>abcdefg@naver.com</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div> -->
+                                                <div class="gridSet">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>주소</dt>
+                                                            <dd>[03456] 서울특별시 은평구 서오롱로 17길 20-33(구산동) 구텐베르텔 1302호</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>계약확보채널</dt>
+                                                            <dd>비대상</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>차량용도</dt>
+                                                            <dd>개인-일반개인판매</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>신규/교체</dt>
+                                                            <dd>0443425</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 고객정보 -->
+
+                                    <!-- 차량정보 -->
+                                    <dl class="estimateDtlBox">
+                                        <dt class="estDtlTit">
+                                            <button class="slideBtn active">차량정보<span class="btnSlideOpen"></span></button>
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+												<!--2019-04-19 데이터 위치 변경 -->
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>모델</dt>
+                                                            <dd>SM5-L43</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>연식</dt>
+                                                            <dd>18MY</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>차종</dt>
+                                                            <dd>SM6</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>외장색</dt>
+                                                            <dd>___-___-______</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>내장색</dt>
+                                                            <dd>___-___-______</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>해피케어상품명</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>선택옵션</dt>
+                                                            <dd class="nonBorder">
+                                                                <ul class="dashlineList">
+                                                                    <li>--E--</li>
+                                                                    <li>-S---</li>
+                                                                </ul>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>선택용품</dt>
+                                                            <dd class="nonBorder">
+                                                                <ul class="dashlineList">
+                                                                    <li>IR2</li>
+                                                                    <li>IR2</li>
+                                                                    <li>IR2</li>
+                                                                    <li>NZ8</li>
+                                                                </ul>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt></dt>
+                                                            <dd>E3/E324/BDRULBZE32ED7/KXCE3/E324/BDRULBZE32ED7/KXC</dd>
+                                                        </dl> <!--2019-04-23 추가분리 -->
+                                                        <dl class="listView"> <!--2019-04-23 추가분리 -->
+                                                            <dt>하이패스</dt>
+                                                            <dd class="nonBorder">
+                                                                <ul class="solidlineList">
+                                                                    <li><span class="txtRD">0000001063111 1545504 458856</span></li>
+                                                                    <li>Knma4C2BBMJP167714</li>
+                                                                    <li>2018-12-22</li>
+                                                                </ul>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <!-- 2019-04-19 기존소스 <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>모델</dt>
+                                                            <dd>SM5-L43</dd>
+                                                            <dt>외장색</dt>
+                                                            <dd>___-___-______</dd>
+                                                            <dt>선택옵션</dt>
+                                                            <dd class="nonBorder">
+                                                                <ul class="dashlineList">
+                                                                    <li>--E--</li>
+                                                                    <li>-S---</li>
+                                                                </ul>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>연식</dt>
+                                                            <dd>18MY</dd>
+                                                            <dt>내장색</dt>
+                                                            <dd>___-___-______</dd>
+                                                            <dt>선택용품</dt>
+                                                            <dd class="nonBorder">
+                                                                <ul class="dashlineList">
+                                                                    <li>IR2</li>
+                                                                    <li>IR2</li>
+                                                                    <li>IR2</li>
+                                                                    <li>NZ8</li>
+                                                                </ul>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>차종</dt>
+                                                            <dd>SM6</dd>
+                                                            <dt>해피케어상품명</dt>
+                                                            <dd>-</dd>
+                                                            <dt></dt>
+                                                            <dd>E3/E324/BDRULBZE32ED7/KXCE3/E324/BDRULBZE32ED7/KXC</dd>
+                                                            <dt>하이패스</dt>
+                                                            <dd class="nonBorder">
+                                                                <ul class="solidlineList">
+                                                                    <li><span class="txtRD">0000001063111 1545504 458856</span></li>
+                                                                    <li>Knma4C2BBMJP167714</li>
+                                                                    <li>2018-12-22</li>
+                                                                </ul>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 차량정보 -->
+
+                                    <!-- 인도정보 -->
+                                    <dl class="estimateDtlBox">
+                                        <dt class="estDtlTit type2">
+                                            <button class="slideBtn active">인도정보<span class="btnSlideOpen"></span></button>
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="gridContainer">
+												<!--2019-04-19 데이터 위치 변경 -->
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>계약일자</dt>
+                                                            <dd>2018-12-23</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>출고장</dt>
+                                                            <dd>김상필</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>인도방법</dt>
+                                                            <dd>타지점
+                                                                 <!-- 2019-03-19 버튼 Case 추가 -->
+                                                                <button class="btnBG right openPop4">타지점 출고요청</button> <!-- 일반 활성화 인 경우 -->
+                                                                <button class="btnBG right openPop4 off" style="display:none;">타지점 출고요청</button> <!-- 비활성화 인 경우 -->
+                                                                 <!-- //2019-03-19 버튼 Case 추가 -->
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>인도예정일</dt>
+                                                            <dd>2018-12-31</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>최초인도예정일</dt>
+                                                            <dd>2018-12-31</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>배정일자</dt>
+                                                            <dd>2018-12-28</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+												<!---->
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>출고승인일</dt>
+                                                            <dd>2018-12-29</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>매출일자</dt>
+                                                            <dd>2018-12-29</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>등록대행여부</dt>
+                                                            <dd>등록대행</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <!-- 2019-04-19 기존소스 <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>계약일자</dt>
+                                                            <dd>2018-12-23</dd>
+                                                            <dt>인도예정일</dt>
+                                                            <dd>2018-12-31</dd>
+                                                            <dt>출고승인일</dt>
+                                                            <dd>2018-12-29</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>출고장</dt>
+                                                            <dd>김상필</dd>
+                                                            <dt>최초인도예정일</dt>
+                                                            <dd>2018-12-31</dd>
+                                                            <dt>매출일자</dt>
+                                                            <dd>2018-12-29</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>인도방법</dt>
+                                                            <dd>타지점
+                                                                <button class="btnBG right openPop4">타지점 출고요청</button>
+                                                                <button class="btnBG right openPop4 off" style="display:none;">타지점 출고요청</button>
+                                                            </dd>
+                                                            <dt>배정일자</dt>
+                                                            <dd>2018-12-28</dd>
+                                                            <dt>등록대행여부</dt>
+                                                            <dd>등록대행</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>-->
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 인도정보 -->
+
+                                    <!-- 납부내역 -->
+                                    <dl class="estimateDtlBox">
+                                        <dt class="estDtlTit">
+                                            <button class="slideBtn active">납부내역<span class="btnSlideOpen"></span></button>
+                                        </dt>
+                                        <dd class="estDtlMain">
+                                            <div class="receiptContainer">
+                                                <div class="receiptBox left">
+                                                    <h2 class="rcptTit">입금내역(현금)</h2>
+                                                    <table>
+                                                        <colgroup>
+                                                            <col style="width:15%;">
+                                                            <col style="width:25%;">
+                                                            <col style="width:35%;">
+                                                            <col style="width:25%;">
+                                                        </colgroup>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>No</th>
+                                                                <th>유형</th>
+                                                                <th>금액</th>
+                                                                <th>재화</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>입금</td>
+                                                                <td class="tRight">100,000</td>
+                                                                <td>현금</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td>출금</td>
+                                                                <td class="tRight">1,295,535</td>
+                                                                <td>가상계좌</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3</td>
+                                                                <td>출금</td>
+                                                                <td class="tRight">1,665,345</td>
+                                                                <td>송금</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4</td>
+                                                                <td>출금</td>
+                                                                <td class="tRight">100,000</td>
+                                                                <td>송금</td>
+                                                            </tr>
+                                                            <!-- 2019-03-19 추가 -->
+                                                            <tr>
+                                                                <td colspan="4" class="listNone">
+                                                                    <span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+                                                                </td>
+                                                            </tr>
+                                                            <!-- //2019-03-19 추가 -->
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="receiptBox right">
+                                                    <h2 class="rcptTit">입금내역(카드)</h2>
+                                                    <table>
+                                                        <colgroup>
+                                                            <col style="width:15%;">
+                                                            <col style="width:40%;">
+                                                            <col style="width:45%;">
+                                                        </colgroup>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>No</th>
+                                                                <th>카드사</th>
+                                                                <th>금액</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>비씨카드</td>
+                                                                <td class="tRight">100,000</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td>현대카드</td>
+                                                                <td class="tRight">1,295,535</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3</td>
+                                                                <td>삼성카드</td>
+                                                                <td class="tRight">1,665,345</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4</td>
+                                                                <td>롯데카드</td>
+                                                                <td class="tRight">100,000</td>
+                                                            </tr>
+                                                            <!-- 2019-03-19 추가 -->
+                                                            <tr>
+                                                                <td colspan="3" class="listNone">
+                                                                    <span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+                                                                </td>
+                                                            </tr>
+                                                            <!-- //2019-03-19 추가 -->
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="receiptContainer mt15">
+                                                <div class="receiptBox">
+                                                    <h2 class="rcptTit">인도금 후불</h2>
+                                                    <div class="left">
+                                                        <table>
+                                                            <colgroup>
+                                                                <col style="width:25%;">
+                                                                <col style="width:25%;">
+                                                                <col style="width:25%;">
+                                                                <col style="width:25%;">
+                                                            </colgroup>
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>후불금액</th>
+                                                                    <th>만기일</th>
+                                                                    <th>후불사유</th>
+                                                                    <th>납부일</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>31,292,535</td>
+                                                                    <td>2019-12-31</td>
+                                                                    <td></td>
+                                                                    <td>2019-02-26</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>31,292,535</td>
+                                                                    <td>2019-12-31</td>
+                                                                    <td></td>
+                                                                    <td>2019-02-26</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>31,292,535</td>
+                                                                    <td>2019-12-31</td>
+                                                                    <td></td>
+                                                                    <td>2019-02-26</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>31,292,535</td>
+                                                                    <td>2019-12-31</td>
+                                                                    <td></td>
+                                                                    <td>2019-02-26</td>
+                                                                </tr>
+                                                                <!-- 2019-03-19 추가 -->
+                                                                <tr> 
+                                                                    <td colspan="4" class="listNone">
+                                                                        <span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <!-- //2019-03-19 추가 -->
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <dl class="solidlineList right">
+                                                        <dt>상품</dt>
+                                                        <dd>저리할부(1.99%)</dd>
+                                                        <dt>원금</dt>
+                                                        <dd>21,000,000</dd>
+                                                        <dt>기간(이자율)</dt>
+                                                        <dd>36(1.99%)</dd>
+                                                        <dt>할부승인서</dt>
+                                                        <dd><button class="btnCYN" id="loanLetterBtn">보기</button></dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- // 납부내역 -->
+
+                                    <!--------------------------------------------------------------------------------->
+                                    <!------------------------ 2019-08-05 비용정보 layout 변경 ------------------------>
+                                    <!-- 비용정보 -->
+                                    <dl class="estimateDtlBox">
+                                        <dt class="estDtlTit red">
+                                            <button class="slideBtn active">비용정보<span class="btnSlideOpen"></span></button>
+                                        </dt>
+                                        <dd class="estDtlMain priceAlign2"><!-- 2019-07-23 비용정렬 변경 class 추가 -->
+                                            <div class="gridContainer">
+												<div class="gridSet grid2">
+													<div class="gridItem">
+														<dl class="listView">
+															<dt>총판매가격</dt>
+															<dd>21,404,400</dd>
+														</dl>
+														<dl class="listView">
+															<dt>탁송료</dt>
+															<dd>293,000</dd>
+														</dl>
+														<dl class="listView">
+															<dt>매출할인</dt>
+															<dd>1,606,600</dd>
+														</dl>
+														<dl class="listView">
+															<dt>카드포인트</dt>
+															<dd>0</dd>
+														</dl>
+														<dl class="listView">
+															<dt>현금판매가격</dt>
+															<dd>21,404,400</dd>
+														</dl>
+														<dl class="listView">
+															<dt>등록제비용</dt>
+															<dd>263,075</dd>
+														</dl>
+														<dl class="listView">
+															<dt>취득세</dt>
+															<dd>1,362,060</dd>
+														</dl>
+														<dl class="listView">
+															<dt>인지대</dt>
+															<dd>0</dd>
+														</dl>
+														<dl class="listView red">
+															<dt>총 구입비용</dt>
+															<dd>21,404,400</dd>
+														</dl>
+													</div>
+													<div class="gridItem">
+														<dl class="listView">
+															<dt>할부원금</dt>
+															<dd>21,404,400</dd>
+														</dl>
+														<dl class="listView">
+															<dt>선포인트2</dt>
+															<dd>0</dd>
+														</dl>
+														<dl class="listView">
+															<dt>인도금후불</dt>
+															<dd>0</dd>
+														</dl>
+														<dl class="listView">
+															<dt>계약금</dt>
+															<dd>100,000</dd>
+														</dl>
+														<dl class="listView">
+															<dt>선수인도금</dt>
+															<dd>304,400</dd>
+														</dl>
+														<dl class="listView">
+															<dt>인지대</dt>
+															<dd>0</dd>
+														</dl>
+														<dl class="listView cyn">
+															<dt>출고전 입금금액</dt>
+															<dd>2,029,535</dd>
+														</dl>
+													</div>
+												</div>
+											</div>
+                                        </dd>
+                                    </dl>
+                                    <!------------------------ //2019-08-05 비용정보 layout 변경 ------------------------>
+                                    <!--------------------------------------------------------------------------------->
+                                    <!-- 비용정보 -->
+                                    <!-- <dl class="estimateDtlBox">
+                                        <dt class="estDtlTit red">
+                                            <button class="slideBtn active">비용정보 : Old Version<span class="btnSlideOpen"></span></button>
+                                        </dt>
+                                        <dd class="estDtlMain priceAlign">
+                                            <div class="gridContainer">
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>총판매가격</dt>
+                                                            <dd>21,404,400</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>할부원금</dt>
+                                                            <dd>21,404,400</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>선수금</dt>
+                                                            <dd>100,000</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>탁송료</dt>
+                                                            <dd>293,000</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>인지대</dt>
+                                                            <dd>0</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>손실액</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>매출할인</dt>
+                                                            <dd>1,606,600</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>선포인트2</dt>
+                                                            <dd>0</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>이손액</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>카드포인트</dt>
+                                                            <dd>0</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>인도금후불</dt>
+                                                            <dd>0</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>이손징구액</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>현금판매가격</dt>
+                                                            <dd>21,404,400</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>계약금</dt>
+                                                            <dd>100,000</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem"></div>
+                                                </div>
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>인지대</dt>
+                                                            <dd>0</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>선수인도금</dt>
+                                                            <dd>304,400</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem"></div>
+                                                </div>
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>등록제비용</dt>
+                                                            <dd>263,075</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem"></div>
+                                                    <div class="gridItem"></div>
+                                                </div>
+                                                <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>취득세</dt>
+                                                            <dd>1,362,060</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem"></div>
+                                                    <div class="gridItem"></div>
+                                                </div>
+                                                2019-04-19 기존소스 <div class="gridSet grid3">
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>총판매가격</dt>
+                                                            <dd>21,404,400</dd>
+                                                            <dt>탁송료</dt>
+                                                            <dd>293,000</dd>
+                                                            <dt>매출할인</dt>
+                                                            <dd>1,606,600</dd>
+                                                            <dt>카드포인트</dt>
+                                                            <dd>0</dd>
+                                                            <dt>현금판매가격</dt>
+                                                            <dd>21,404,400</dd>
+                                                            <dt>인지대</dt>
+                                                            <dd>0</dd>
+                                                            <dt>등록제비용</dt>
+                                                            <dd>263,075</dd>
+                                                            <dt>취득세</dt>
+                                                            <dd>1,362,060</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>할부원금</dt>
+                                                            <dd>21,404,400</dd>
+                                                            <dt>인지대</dt>
+                                                            <dd>0</dd>
+                                                            <dt>선포인트2</dt>
+                                                            <dd>0</dd>
+                                                            <dt>인도금후불</dt>
+                                                            <dd>0</dd>
+                                                            <dt>계약금</dt>
+                                                            <dd>100,000</dd>
+                                                            <dt>선수인도금</dt>
+                                                            <dd>304,400</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView">
+                                                            <dt>선수금</dt>
+                                                            <dd>100,000</dd>
+                                                            <dt>손실액</dt>
+                                                            <dd>-</dd>
+                                                            <dt>이손액</dt>
+                                                            <dd>-</dd>
+                                                            <dt>이손징구액</dt>
+                                                            <dd>-</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <div class="gridSet grid2 result">
+                                                    <div class="gridItem">
+                                                        <dl class="listView red">
+                                                            <dt>총구입비용</dt>
+                                                            <dd>23,029,535</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="gridItem">
+                                                        <dl class="listView cyn">
+                                                            <dt>출고전 입금금액</dt>
+                                                            <dd>2,029,535</dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </dd>
+                                    </dl> -->
+                                    <!-- // 비용정보 -->
+                                </div>
+                                <div class="rgstBottomBtn">
+                                    <button class="btnBottomOpen"><i></i>열기</button>
+                                    <ul class="buttonList"> <!-- 2019-03-20 클래스명 변경 -->
+                                        <li><button class="fullOpen estimateAll">견적서 발송</button></li>
+                                        <li><button class="contractResend">계약서 재발송</button></li>
+                                        <li><button onclick="location.href='vehicle_deli_Info.html'" class="vehicleDeliInfo">차량인도정보</button></li>
+                                        <li><button onclick="location.href='customer_info.html'" class="customerInfo">고객정보</button></li>
+                                        <li><button onclick="location.href='car_pre_sales_dint.html'" class="carPreSalesDint">차량가격 및<br />매출할인정보</button></li>
+                                        <li><button onclick="location.href='terms_payment.html'" class="termsPayment">지불조건</button></li>
+                                        <li><button onclick="location.href='deposit_info.html'" class="depositInfo">입금정보</button></li>
+                                        <li><button onclick="location.href='contract_history.html'" class="contractHistory">계약이력정보</button></li>
+                                        <li><button onclick="location.href='vehicle_regist.html'" class="vehicleRegist">차량등록</button></li>
+                                        <li><button onclick="location.href='../contract/document_list.html'" class="documentRegist">서류등록</button></li>
+                                        <li><button onclick="location.href='new_step01.html'" class="conditionChange">조건변경</button></li>
+                                        <li><button class="contractNumModify">계약서번호수정</button></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!-- 2019-03-21 html(div) 추가 -->
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+            <!-- fullWrap : 하단 > 상단 -->
+			<div class="fullWrap slideDefault com-slide-bottom zindexUp" id="allEstimates">
+				<section>
+					<!-- header -->
+					<div class="fullHeader"> 
+						<head>
+							<h2>1Depth title &gt; 2Depth title</h2>
+							<button class="fullClose">닫기</button>
+						</head>
+					</div>
+					<!-- //header -->
+					<article>
+						<div class="fullContainer">
+							견적서 발송
+						</div>
+					</article>
+				</section>
+			</div>
+			<!-- //fullWrap -->
+		</div>
+		<!-- //wrap -->
+        
+        <!-- DimPopUp -->
+		<div class="dimPop" style="display:none">
+            <!-- 계약서 재발송 -->
+            <div id="contractResend" class="popSMCase alertPop large hAuto" style="display:none;">
+                <div class="alertCnt">
+                    <h1 class="tit">수정 계약서 재발송</h1>
+                    <div class="cntTxt">
+                        해당 계약은 고객의 서명이 아직<br />작성되지 않았습니다.<br />변경된 계약 내용만 반영되어 있습니다.<br />계약서 재발송 하시겠습니까?
+                    </div>
+                </div>
+				<div class="btn mt15">
+                    <button class="btnLB">취소</button>
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+            <!-- // 계약서 재발송 -->
+            
+            <!-- 조건변경 -->
+            <div id="conditionChange" class="popSMCase iptCase" style="display: none;">
+                <div class="popCnt">
+                    <h1 class="tit">조건변경<span class="sub small">해당 계약서의 조건을 변경하시겠습니까?<br />해당계약의 견적화면으로 이동합니다.<br />수정 후 반드시 저장버튼을 클릭해 주세요.</span></h1>
+                    <div class="iptGrayBox type2">
+                        <div class="layerTxtInfo">
+                            <span class="stickerTltp type2">TIP</span>
+                            계약조건이 변경될 경우 재서명이 필요합니다.<br />
+                            인수완료 전까지 계액서에 재서명을 해주세요.<br />
+							<em style="color:red;">(전자계약일 경우 계출현황 화면의 [재서명] 버튼 선택)</em>
+                        </div>
+                    </div>
+                </div>
+				<div class="btn mt15">
+                    <button class="btnLB">취소</button>
+					<button class="btnBY">변경</button>
+				</div>
+			</div>
+            <!-- // 조건변경 -->
+            
+            <!-- 계약서 번호수정 -->
+            <div id="contractNumModify" class="popSMCase iptCase" style="display: none;">
+                <div class="popCnt">
+                    <h1 class="tit">계약서 번호수정<span class="sub">계약서 번호를 수정하시겠습니까?</span></h1>
+                    <div class="iptGrayBox">
+                        <span class="selectSet"> <!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 -->
+                            <select>
+                                <option>선택</option>
+                                <option>박길동</option>
+                                <option>김길동</option>
+                                <option>018</option>
+                                <option>019</option>
+                            </select>
+                        </span>
+                    </div>
+                </div>
+				<div class="btn mt15">
+                    <button class="btnLB">취소</button>
+					<button class="btnBY">발송접수</button>
+				</div>
+			</div>
+            <!-- // 계약서 번호수정 -->
+            
+            <!-- 지점조회 -->
+			<div class="popLGCase searchPop" id="openPop4" style="display:none">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>지점조회</h1>
+				</div>
+				<div class="popBack">
+					<div class="popSearch">
+						<div class="halfCase"><!-- 2019-05-06 class 추가 --> 
+							<!-- 2019-05-06 검색조건 분리 -->
+							<span class="w50">
+								<span class="txtDot">지점 명</span>
+								<input type="text" placeholder="지점 명을 입력해주세요" />
+							</span>
+							<span class="w50">
+								<span class="txtDot">지점번호</span>
+								<input type="text" placeholder="지점번호를 숫자로 입력해주세요" />
+							</span>
+							<!-- //2019-05-06 -->
+							<!-- <input type="text" placeholder="지점 명 혹은 지점번호로 조회해 주세요" /> -->
+							<button class="btnBY">조회</button>
+						</div>
+					</div>
+					<div class="poplist oCase">
+						<table>
+							<colgroup>
+								<col width="15%" /><col/><col width="12%"/>
+							</colgroup>
+							<thead>
+								<tr>
+									<th>지점번호</th>
+									<th class="tInGrid">
+										<div class="listGrid">
+											<span class="lgTd">지점명 <em>및 주소</em></span>
+											<div class="lgTd mHide">주소</div>
+										</div>
+									</th>
+									<th>SC</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="popScrollArea">
+							<table>
+								<colgroup>
+									<col width="15%" /><col/><col width="12%"/>
+								</colgroup>
+								<tbody>
+									<!-- Loop -->
+									<tr>
+										<td>599</td>
+										<td class="tInGrid tLeft">
+											<div class="listGrid">
+												<span class="lgTd">EV영업팀</span>
+												<div class="lgTd tEllipsis"><div>서울특별시 금천구 가산디지털2로 30 (가산)</div></div>
+											</div>
+										</td>
+										<td>002</td>
+									</tr>
+									<!-- //Loop -->
+									<tr>
+										<td>599</td>
+										<td class="tInGrid tLeft">
+											<div class="listGrid">
+												<span class="lgTd">EV영업팀</span>
+												<div class="lgTd tEllipsis"><div>서울특별시 금천구 가산디지털2로 30 (가산) 서울특별시 금천구 가산디지털2로 30 (가산)</div></div>
+											</div>
+										</td>
+										<td>002</td>
+									</tr>
+									<tr class="on">
+										<td>599</td>
+										<td class="tInGrid tLeft">
+											<div class="listGrid">
+												<span class="lgTd">EV영업팀</span>
+												<div class="lgTd tEllipsis"><div>서울특별시 금천구 가산디지털2로 30 (가산)</div></div>
+											</div>
+										</td>
+										<td>002</td>
+									</tr>
+									<tr>
+										<td>599</td>
+										<td class="tInGrid tLeft">
+											<div class="listGrid">
+												<span class="lgTd">EV영업팀</span>
+												<div class="lgTd tEllipsis"><div>서울특별시 금천구 가산디지털2로 30 (가산) 서울특별시 금천구 가산디지털2로 30 (가산)</div></div>
+											</div>
+										</td>
+										<td>002</td>
+									</tr>
+									<tr>
+										<td colspan="3" class="listNone">
+											<span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="btn">
+					<button class="btnLB">취소</button>
+					<button class="btnBY">선택완료</button>
+				</div>
+			</div>
+			<!-- //지점조회 -->
+            
+            <!-- 2019-07-31 배정요청 -->
+			<div class="popSMCase assRequestPop" style="display:none">
+				<div class="popCnt">
+					<h1 class="tit">배정요청</h1>
+					<div class="popBack">
+						<div class="poplist">
+							<table>
+								<colgroup>
+									<col width="35%" /><col/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>계약분류</th>
+										<td>??</td>
+									</tr>
+									<tr>
+										<th>출고장</th>
+										<td>부산</td>
+									</tr>
+									<tr>
+										<th>년식</th>
+										<td>19MY</td>
+									</tr>
+									<tr>
+										<th>인도예시일자</th>
+										<td>2019-08-01</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<p>* 출고장이나 년식을 확인하십시요.</p>
+					</div>
+				</div>
+				<div class="btn">
+					<button class="btnLB">취소</button>
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+			<!-- //2019-07-31 배정요청 -->
+            
+            <!-- 2019-07-23 할부승인서 -->
+			<div class="popLGCase loanLetterPop" style="display:none;">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>대출승인확인서</h1>
+				</div>
+				<div class="popBack">
+					<div><strong>▣ 수신</strong> 르노삼성자동차(주) 중량대리점</div>
+					<strong>▣ 대출내역</strong>
+					<div class="gridSet grid2">
+						<div class="gridItem">
+							<dl>
+								<dt>접수일자</dt>
+								<dd>2019-03-04</dd>
+							</dl>
+							<dl>
+								<dt>고객명</dt>
+								<dd>홍길동</dd>
+							</dl>
+							<dl>
+								<dt>주민번호</dt>
+								<dd>670918-******</dd>
+							</dl>
+							<dl>
+								<dt>계약번호</dt>
+								<dd>7001171344</dd>
+							</dl>
+							<dl>
+								<dt>차종</dt>
+								<dd>QM3 RE SP</dd>
+							</dl>
+							<dl>
+								<dt>차량설정액</dt>
+								<dd>0(원)</dd>
+							</dl>
+							<dl>
+								<dt>승인일시</dt>
+								<dd>2019-03-04 12:00:00</dd>
+							</dl>
+						</div>
+						<div class="gridItem">
+							<dl>
+								<dt>대출번호</dt>
+								<dd>112028-19-000367</dd>
+							</dl>
+							<dl>
+								<dt>할부상품</dt>
+								<dd>잔가보장할부(60개월/6.9% Autoloan)</dd>
+							</dl>
+							<dl>
+								<dt>대출원금</dt>
+								<dd>23,310,000(원)</dd>
+							</dl>
+							<dl>
+								<dt>대출기간</dt>
+								<dd>36개월</dd>
+							</dl>
+							<dl>
+								<dt>이자율</dt>
+								<dd>0.00 (%)</dd>
+							</dl>
+							<dl>
+								<dt>취급수수료</dt>
+								<dd>0(원)</dd>
+							</dl>
+							<dl>
+								<dt>취급수수료납입구분</dt>
+								<dd></dd>
+							</dl>
+						</div>
+					</div>
+					<p>
+						단, 차량 설정 조건인 경우 대출금 지급후 15일 이내 미설정시 대출승인은 취소됩니다.<br/>
+						본건은 차량 출고를 전제로 대출금 지급을 확정한 건임
+					</p>
+					<strong>▣ 특이사항</strong>
+					<div class="loanEtc"></div>
+					<div class="loanOK">
+						상기 고객에 대하여 대출 승인 하였음을 확인합니다.
+						<span>2019년 03월 05일</span>
+						르 노 캐 피 탈
+					</div>
+				</div>
+				<div class="btn">
+					<button class="btnBY">닫기</button>
+				</div>
+			</div>
+			<!-- //2019-07-23 할부승인서 -->
+        </div>
+        <!-- // DimPopUp -->
+	</body>
+</html>

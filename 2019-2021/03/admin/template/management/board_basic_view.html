@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/editor/ckeditor.js"></script>
+		<script type="text/javascript" src="../../js/editor/sample.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>공지사항</h2>
+					<div class="pagePos"><span>Home</span><span>게시판관리</span><span>AndU 게시판</span><strong>공지사항</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div>
+						<!---->
+                        <div class="tvs">
+                            <div class="tvsHead"><span class="new">신규</span><strong>[카테고리] 글제목이 노출할 영역입니다 글제목은 최대 2줄까지 고려하여 게시판 높이를 정했습니다 글제목이 노출할 영역입니다 글제목은 최대 2줄까지 고려하여 게시판 높이를 정했습니다</strong><span class="lock">잠금</span></div>
+                            <div class="tvsInfo">
+                                <dl>
+                                    <dt>작성자 :</dt>
+                                    <dd class="pr1">홍길동 (000000)</dd>
+                                    <dt>마지막 수정자 :</dt>
+                                    <dd>홍길동 (000000)</dd>
+                                </dl>
+                                <dl>
+                                    <dt>등록일자 :</dt>
+                                    <dd class="pr1">2020-01-01 00:00</dd>
+                                    <dt>수정일자 :</dt>
+                                    <dd>2020-01-01 00:00</dd>
+                                </dl>
+                            </div>
+                            <div class="tvsInfo">
+                                <dl class="left">
+                                    <dt>구분 :</dt>
+                                    <dd class="pr1">전체</dd>
+                                    <dt>게시글 옵션정보 :</dt>
+									<dd>공지(O) / 개시중지(X) / 메인노출(O)</dd>
+                                </dl>
+							</div>
+                            <div class="tvsContents"><p>글 내용이 나온다면 이 부분에서 표기됩니다. 글 내용이 나온다면 이 부분에서 표기됩니다. 글 내용이 나온다면 이 부분에서 표기됩니다. 글 내용이 나온다면 이 부분에서 표기됩니다. 글 내용이 나온다면 이 부분에서 표기됩니다. 글 내용이 나온다면 이 부분에서 표기됩니다. 글 내용이 나온다면 이 부분에서 표기됩니다.</p></div>
+							<div>
+							<div class="tvsFile">
+								<div class="all"><span class="file">첨부파일</span> <strong>00개</strong> <button class="btnS blue">미리보기</button></div>
+							</div>
+                        </div>
+						<div class="pnvBtn">
+							<a href="" class="btnM white">이전글</a>
+							<a href="" class="btnM white right">다음글</a>
+						</div>
+						<!---->
+						<div class="btnArea tC">
+							<a href="board_basic_write.html" class="btnM">수정</a>
+							<a href="board_basic.html" class="btnM">목록</a>
+							<a href="board_basic.html" class="btnM">삭제</a>
+						</div> 
+						<!--//-->
+
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">	
+			<!--미리보기-->
+			<div class="basicPop evidenceViewPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>첨부파일 미리보기</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<iframe frameborder="1" scrolling="yes" align="left"></iframe>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+			<!--//미리보기-->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

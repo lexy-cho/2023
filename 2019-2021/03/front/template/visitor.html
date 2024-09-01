@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ThinkTree Visitor</title>
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/jquery.toast.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('.entypo-popup').click(function(){
+				$('.mainGo').toggle();
+			});
+			$('.alertPop button, .basicPop button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			/**/
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<h1>방문객 이력</h1>
+					<button class="btnNav">햄버거</button>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+
+			<div id="snb">
+				<section>
+					<div class="c-menu c-menu--slide-left"><!-- 우측 Slide 일 경우 -->
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</section>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+                <div class="pageTit">
+					<span class="sortSet">
+						<span>
+							<input type="radio" id="chk000" name="visitorSort" checked/>
+							<label for="chk000">내 담당</label>
+						</span>
+						<span>
+							<input type="radio" id="chk001" name="visitorSort" />
+							<label for="chk001">전체</label>
+						</span>
+						<span>
+							<input type="radio" id="chk002" name="visitorSort" />
+							<label for="chk002">완료</label>
+						</span>
+					</span>
+					<span class="right">00개</span>
+				</div>
+				<div class="content">
+				<article>
+					<div class="visitorLayout">
+						<div class="mobileList">
+							<ul>
+								<!-- Loop -->
+								<li>
+									<a href="visitor_view.html">
+										<div class="date">2020-03-13 09:15 ~ 09:30</div>
+										<div class="tL">
+											<strong>(주)르노삼성자동차 / 홍길동</strong>
+											(업무미팅) 퍼블리싱 Scrum
+										</div>
+										<!-- 2020-09-14 -->
+										<span class="visitStatus"><em>예정</em></span>
+										<span class="time">
+											<dl>
+												<dt>입실시간 :</dt>
+												<dd></dd>
+											</dl>
+											<dl>
+												<dt>퇴실시간 :</dt>
+												<dd></dd>
+											</dl>
+										</span>
+										<!-- //2020-09-14 -->
+									</a>
+								</li>
+								<!--//Loop -->
+								<li>
+									<a href="visitor_view2.html">
+										<div class="date">2020-03-13 09:15 ~ 09:30</div>
+										<div class="tL">
+											<strong>(주)르노삼성자동차 / 홍길동</strong>
+											(업무미팅) 퍼블리싱 Scrum
+										</div>
+										<!-- 2020-09-14 -->
+										<span class="visitStatus"><em class="agree">사전 동의</em></span>
+										<span class="time">
+											<dl>
+												<dt>입실시간 :</dt>
+												<dd></dd>
+											</dl>
+											<dl>
+												<dt>퇴실시간 :</dt>
+												<dd></dd>
+											</dl>
+										</span>
+										<!-- //2020-09-14 -->
+									</a>
+								</li>
+								<!-- 2020-09-14 입퇴실 시간 입력된 경우 -->
+								<li>
+									<a href="visitor_view3.html">
+										<div class="date">2020-03-13 09:15 ~ 09:30</div>
+										<div class="tL">
+											<strong>(주)르노삼성자동차 / 홍길동</strong>
+											(업무미팅) 퍼블리싱 Scrum
+										</div>
+										<span class="time">
+											<dl>
+												<dt>입실시간 :</dt>
+												<dd>00:00</dd>
+											</dl>
+											<dl>
+												<dt>퇴실시간 :</dt>
+												<dd>00:00</dd>
+											</dl>
+										</span>
+									</a>
+								</li>
+								<!-- //2020-09-14 -->
+								<!-- 2020-05-15 -->
+								<li class="notList">
+									<div>
+										등록된 방문객 이력이 없습니다
+									</div>
+								</li>
+								<!-- //2020-05-15 -->
+							</ul>
+						</div>
+						<!-- 2020-06-05 페이징 없어짐 -->
+						<span class="fab"><button class="apply" onClick="location.href='visitor_write.html'">신청하기</button></span>
+					</div>
+					<!--//-->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>TOP</button></div>
+		</div>
+		<!-- //Wrap -->
+	</body>
+</html>

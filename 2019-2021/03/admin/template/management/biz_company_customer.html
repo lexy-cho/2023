@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/jstree.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/basicTree.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.customerList .tls tr td, #newCustomerBtn').click(function () {
+				$('.tls tr').removeClass('on');
+				$(this).parent().addClass('on');
+				$('.customerDetail').show();
+			});
+			$('.customerDetail .btnArea *').click(function () {
+				$('.tls tr').removeClass('on');
+				$('.customerDetail').hide();
+			});
+			$('#imgViewBtn').click(function(){
+				$('.popDim').show();
+				$('.bcardImgViewPop').show();
+			});
+			$('.pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>담당자 계정</h2>
+					<div class="pagePos"><span>Home</span><span>고객정보 관리</span><strong>담당자 계정</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="customerLayout">
+						<div class="customerList">
+							<!---->
+							<div class="boardTop">
+								<em>전체 10,000건</em>
+								<span class="right">
+									<span class="searchBasic">
+										<span class="selectSet">
+											<select>
+												<option selected>전체</option>
+												<option>업체명</option>
+												<option>이름</option>
+												<option>아이디</option>
+											</select>
+										</span>
+										<input type="text" placeholder="키워드 입력" />
+										<input type="submit" value="검색" class="btnSearch" />
+										<button class="btnReset">초기화</button>
+									</span>
+									<button class="btnM">엑셀다운로드</button>
+								</span>
+							</div>
+							<!---->
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="40"/>
+										<col width="120"/>
+										<col width="70"/>
+										<col width="70"/>
+										<col width="70"/>
+										<col width="70"/>
+										<col width="40"/>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>No</th>
+											<th>업체명</th>
+											<th>소속팀</th>
+											<th>직급</th>
+											<th>이름</th>
+											<th>이메일</th>
+											<th>성별</th>
+										</tr>
+									</thead>
+									<tbody>
+										<!--Loop-->
+										<tr>
+											<td>10</td>
+											<td>업체명1㈜가나다라마바사</td>
+											<td>IST</td>
+											<td>차장</td>
+											<td>홍길동</td>
+											<td>abcdefg</td>
+											<td>남</td>
+										</tr>
+										<!--//Loop-->
+									</tbody>
+								</table>
+							</div>
+							<!---->
+							<div class="bpSet">
+								<div class="btnArea">
+									<span class="right">
+										<button class="btnM" id="newCustomerBtn">신규등록</button>
+									</span>
+								</div>
+								<div class="paginate">
+									<span>
+										<a class="first">이전</a>
+											<a class="on">1</a>
+											<a>2</a>
+											<a>3</a>
+											<a>4</a>
+											<a>5</a>
+										<a class="next">다음</a>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option>10개</option>
+											<option>20개</option>
+											<option>50개</option>
+											<option>100개</option>
+										</select>
+									</span>
+								</div>
+							</div>
+							<!--//-->
+						</div>
+						<!-- customerDetail -->
+						<div class="customerDetail">
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="100">
+										<col width="320">
+										<col width="100">
+										<col width="100">
+										<col width="220">
+										<col width="100">
+										<col width="280">
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>업체명 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+											<td>
+												<span class="selectSet wFull">
+													<select>
+														<option>선택하세요</option>
+														<option>업체명1㈜가나다라마바사</option>
+														<option>업체명1㈜가나다라마바사</option>
+													</select>
+												</span>
+											</td>
+											<th>소속팀</th>
+											<td colspan="2"><input type="text" /></td>
+											<th>직급 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+											<td><input type="text" /></td>
+										</tr>
+										<tr>
+											<th>이름 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+											<td><input type="text" class="wAuto" /></td>
+											<th>성별 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+											<td colspan="2">
+												<span class="radioSet">
+													<input type="radio" id="radio5" name="rd3" />
+													<label for="radio5"><i></i>남</label>
+												</span>
+												<span class="radioSet">
+													<input type="radio" id="radio6" name="rd3" />
+													<label for="radio6"><i></i>여</label>
+												</span>
+											</td>
+											<!-- 2020-06-18 fax 추가 -->
+											<th>Fax 번호</th>
+											<td>
+												<div class="phoneNum">
+													<input type="tel" />
+													<span class="txt">-</span>
+													<input type="tel" class="middleNum" />
+													<span class="txt">-</span>
+													<input type="tel" class="lastNum" />
+												</div>
+											</td>
+											<!-- //2020-06-18 fax 추가 -->
+										</tr>
+										<tr>
+											<th>비밀번호</th>
+											<td colspan="6">
+												<button class="btnM">비밀번호 재설정</button>
+												신규등록 혹은 비밀번호 재설정시에는 아이디와 동일하게 변경됩니다
+											</td>
+										</tr>
+										<tr>
+											<th>휴대번호</th>
+											<td>
+												<!-- phoneNum -->
+												<div class="phoneNum">
+													<span class="selectSet">
+														<select>
+															<option>010</option>
+															<option>011</option>
+															<option>017</option>
+															<option>018</option>
+															<option>019</option>
+														</select>
+													</span>
+													<span class="txt">-</span>
+													<input type="tel" class="middleNum" />
+													<span class="txt">-</span>
+													<input type="tel" class="lastNum" />
+												</div>
+											</td>
+											<th>직통번호 1</th>
+											<td colspan="2">
+												<div class="phoneNum">
+													<input type="tel" />
+													<span class="txt">-</span>
+													<input type="tel" class="middleNum" />
+													<span class="txt">-</span>
+													<input type="tel" class="lastNum" />
+												</div>
+											</td>
+											<th>직통번호 2</th>
+											<td>
+												<div class="phoneNum">
+													<input type="tel" />
+													<span class="txt">-</span>
+													<input type="tel" class="middleNum" />
+													<span class="txt">-</span>
+													<input type="tel" class="lastNum" />
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th>이메일 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+											<td colspan="2">
+												<!-- email -->
+												<div class="emailForm duplicateCase">
+													<input type="text" />
+													<span class="emailDomain">
+														<em>@</em>
+														<span class="selectSet">
+															<select>
+																<option>선택해주세요</option>
+																<option>nave.com</option>
+																<option>gmail.com</option>
+																<option>hanmail.net</option>
+																<option>직접입력</option>
+															</select>
+														</span>
+														<input type="text" />
+													</span>
+												</div>
+												<button class="btnM">중복확인</button>
+											</td>
+											<th>명함이미지</th>
+											<td colspan="3">
+												<span class="fileSet">
+													<span class="fileFind">
+														<input type="file" id="file1" />
+														<label for="file1">앞면이미지 첨부</label>
+													</span> <!--파일선택:버튼만있는형식:초록색버전-->
+													<span class="loadIng" style="display:none;">업로드 중</span>
+													<strong class="loadEnd" style="display:none;">
+														<em>샘플 데이터.png</em>
+														<button>취소</button>
+													</strong>
+													<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+												</span>
+												<button class="btnM white" id="imgViewBtn">앞면보기</button>
+												<span class="fileSet">
+													<span class="fileFind">
+														<input type="file" id="file1" />
+														<label for="file1">뒷면이미지 첨부</label>
+													</span> <!--파일선택:버튼만있는형식:초록색버전-->
+													<span class="loadIng" style="display:none;">업로드 중</span>
+													<strong class="loadEnd" style="display:none;">
+														<em>샘플 데이터.png</em>
+														<button>취소</button>
+													</strong>
+													<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+												</span>		
+												<button class="btnM white">뒷면보기</button>								
+											</td>
+										</tr>
+										<tr>
+											<th>메모</th>
+											<td colspan="6">
+												<textarea></textarea>
+											</td>
+										</tr>
+										<tr>
+											<th>마지막 접속일자</th>
+											<td colspan="6">YY-MM-DD 00:00:00</td> 
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!----->
+							<div class="btnArea tC">
+								<button class="btnM white left">복사</button>
+								<button class="btnM">저장</button>
+								<button class="btnM">삭제</button>
+							</div>
+						</div>
+						<!-- //customerDetail -->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<div class="basicPop bcardImgViewPop" style="display:none;">
+				<div class="tt">
+					<h1>명함이미지 (앞면)</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="bcardImg">
+						<img src="../../images/sample5.png" alt=""/>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

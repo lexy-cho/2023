@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('#addOpenBtn').click(function(){
+				$('.popDim').show();
+				$('.newVisitorHistoryPop').show();
+			});
+			$('.pBtn button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.newVisitorHistoryPop, .basicPop').hide();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>방문객 관리</h2>
+					<div class="pagePos"><span>Home</span><span>경영지원</span><strong>방문객 관리</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div>
+						<!---->
+						<div class="boardTop">
+							<div>* 주차권 지급은 최대 2시간 지급됩니다 사전 방문객에게 공지되도록 하여주시기 바랍니다</div>
+							<em>전체 10,000건 </em>
+							<span class="right">
+								<span class="searchBasic">
+									<span class="selectSet">
+										<select>
+											<option>업체명</option>
+											<option>업체명1㈜가나다라마바사</option>
+											<option>업체명1㈜가나다라마바사</option>
+											<option>업체명2ABCDEFG</option>
+											<option>업체명3 아자차</option>
+										</select>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option>담당자명</option>
+											<option>홍길동1</option>
+											<option>홍길동2</option>
+										</select>
+									</span>
+									<span class="calDupSet">
+										<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+										<em>~</em>
+										<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+									</span>
+									<input type="text" placeholder="업체명, 목적, 담당자 입력" />
+									<input type="submit" value="검색" class="btnSearch" />
+									<button class="btnReset">초기화</button>
+								</span>
+								<button class="btnM">엑셀다운로드</button>
+							</span>
+						</div>
+						<!---->
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="40" />
+									<col width="40" />
+									<col />
+									<col />
+									<col />
+									<col />
+									<col />
+									<col />
+									<col />
+									<col />
+									<col />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chkall" />
+												<label for="chkall"><i></i></label>
+											</span>
+										</th>
+										<th>No.</th>
+										<th>방문날짜</th>
+										<th>방문시간</th>
+										<th>퇴실시간</th>
+										<th>업체명</th>
+										<th>방문자명</th>
+										<th>전화번호</th>
+										<th>방문목적</th>
+										<th>서명여부</th>
+										<th>담당자</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk10" />
+												<label for="chk10"><i></i></label>
+											</span>
+										</td>
+										<td>10</td>
+										<td>2020-02-02</td>
+										<td>00:00</td>
+										<td>00:00</td>
+										<td>업체명1㈜가나다라마바사</td>
+										<td>홍길동</td>
+										<td>000-0000-0000</td>
+										<td>[물류미팅] 투자 사전 업무 미팅</td>
+										<td>Y</td>
+										<td>조명진 [퍼블리싱팀]</td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk9" />
+												<label for="chk9"><i></i></label>
+											</span>
+										</td>
+										<td>9</td>
+										<td>2020-02-02</td>
+										<td>00:00</td>
+										<td>00:00</td>
+										<td>업체명1㈜가나다라마바사</td>
+										<td>홍길동</td>
+										<td>000-0000-0000</td>
+										<td>[물류미팅] 투자 사전 업무 미팅</td>
+										<td>Y</td>
+										<td>조명진 [퍼블리싱팀]</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk8" />
+												<label for="chk8"><i></i></label>
+											</span>
+										</td>
+										<td>8</td>
+										<td>2020-02-02</td>
+										<td>00:00</td>
+										<td>00:00</td>
+										<td>업체명1㈜가나다라마바사</td>
+										<td>홍길동</td>
+										<td>000-0000-0000</td>
+										<td>[물류미팅] 투자 사전 업무 미팅</td>
+										<td>Y</td>
+										<td>조명진 [퍼블리싱팀]</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk7" />
+												<label for="chk7"><i></i></label>
+											</span>
+										</td>
+										<td>7</td>
+										<td>2020-02-02</td>
+										<td>00:00</td>
+										<td>00:00</td>
+										<td>업체명1㈜가나다라마바사</td>
+										<td>홍길동</td>
+										<td>000-0000-0000</td>
+										<td>[물류미팅] 투자 사전 업무 미팅</td>
+										<td>Y</td>
+										<td>조명진 [퍼블리싱팀]</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk6" />
+												<label for="chk6"><i></i></label>
+											</span>
+										</td>
+										<td>6</td>
+										<td>2020-02-02</td>
+										<td>00:00</td>
+										<td>00:00</td>
+										<td>업체명1㈜가나다라마바사</td>
+										<td>홍길동</td>
+										<td>000-0000-0000</td>
+										<td>[물류미팅] 투자 사전 업무 미팅</td>
+										<td>Y</td>
+										<td>조명진 [퍼블리싱팀]</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk5" />
+												<label for="chk5"><i></i></label>
+											</span>
+										</td>
+										<td>5</td>
+										<td>2020-02-02</td>
+										<td>00:00</td>
+										<td>00:00</td>
+										<td>업체명1㈜가나다라마바사</td>
+										<td>홍길동</td>
+										<td>000-0000-0000</td>
+										<td>[물류미팅] 투자 사전 업무 미팅</td>
+										<td>Y</td>
+										<td>조명진 [퍼블리싱팀]</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk4" />
+												<label for="chk4"><i></i></label>
+											</span>
+										</td>
+										<td>4</td>
+										<td>2020-02-02</td>
+										<td>00:00</td>
+										<td>00:00</td>
+										<td>업체명1㈜가나다라마바사</td>
+										<td>홍길동</td>
+										<td>000-0000-0000</td>
+										<td>[물류미팅] 투자 사전 업무 미팅</td>
+										<td>Y</td>
+										<td>조명진 [퍼블리싱팀]</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk3" />
+												<label for="chk3"><i></i></label>
+											</span>
+										</td>
+										<td>3</td>
+										<td>2020-02-02</td>
+										<td>00:00</td>
+										<td>00:00</td>
+										<td>업체명1㈜가나다라마바사</td>
+										<td>홍길동</td>
+										<td>000-0000-0000</td>
+										<td>[물류미팅] 투자 사전 업무 미팅</td>
+										<td>Y</td>
+										<td>조명진 [퍼블리싱팀]</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk2" />
+												<label for="chk2"><i></i></label>
+											</span>
+										</td>
+										<td>2</td>
+										<td>2020-02-02</td>
+										<td>00:00</td>
+										<td>00:00</td>
+										<td>업체명1㈜가나다라마바사</td>
+										<td>홍길동</td>
+										<td>000-0000-0000</td>
+										<td>[물류미팅] 투자 사전 업무 미팅</td>
+										<td>Y</td>
+										<td>조명진 [퍼블리싱팀]</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="checkSet noLabel">
+												<input type="checkbox" id="chk1" />
+												<label for="chk1"><i></i></label>
+											</span>
+										</td>
+										<td>1</td>
+										<td>2020-02-02</td>
+										<td>00:00</td>
+										<td>00:00</td>
+										<td>업체명1㈜가나다라마바사</td>
+										<td>홍길동</td>
+										<td>000-0000-0000</td>
+										<td>[물류미팅] 투자 사전 업무 미팅</td>
+										<td>Y</td>
+										<td>조명진 [퍼블리싱팀]</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!---->
+						<div class="bpSet">
+							<div class="btnArea">
+								<span class="left">
+									<button class="btnM">선택 삭제</button>
+								</span>
+								<span class="right">
+									<button class="btnM" id="addOpenBtn">신규등록</button>
+								</span>
+							</div>
+							<div class="paginate">
+								<span>
+									<a class="first">이전</a>
+										<a class="on">1</a>
+										<a>2</a>
+										<a>3</a>
+										<a>4</a>
+										<a>5</a>
+									<a class="next">다음</a>
+								</span>
+								<span class="selectSet">
+									<select>
+										<option>10개</option>
+										<option>20개</option>
+										<option>50개</option>
+										<option>100개</option>
+									</select>
+								</span>
+							</div>
+						</div>
+						<!--//-->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<div class="basicPop newVisitorHistoryPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>방문객 등록</h1>
+				</div>
+				<div class="pBack">
+					<!---->
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="90"/>
+								<col width="200"/>
+								<col width="90"/>
+								<col />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>방문일시 <sup>필수항목</sup></th>
+									<td colspan="3">
+										<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+										<span class="selectSet">
+											<select>
+												<option>15:30</option>
+												<option>15:30</option>
+											</select>
+										</span> ~
+										<span class="selectSet">
+											<select>
+												<option>15:30</option>
+												<option>15:30</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>방문목적 <sup>필수항목</sup></th>
+									<td colspan="3">
+										<div class="radioSet2">
+	                                        <label for="lb1"><input type="radio" id="lb1" name="radio1" value="회의" /><span>업무미팅</span></label>
+	                                        <label for="lb2"><input type="radio" id="lb2" name="radio1" value="면접" /><span>영업미팅</span></label>
+	                                        <label for="lb3"><input type="radio" id="lb3" name="radio1" value="기타" /><span>기타</span></label>
+	                                    </div>
+	                                    <input type="text" placeholder="목적을 입력해 주세요 (최대 50글자)" />
+									</td>
+								</tr>
+								<tr>
+									<th>담당자</th>
+									<td>
+										<span class="selectSet wFull">
+											<select>
+												<option>선택하세요</option>
+												<option>홍길동</option>
+											</select>
+										</span>
+									</td>
+									<th>업체</th>
+									<td>
+										<span class="selectSet wFull">
+											<select>
+												<option>선택하세요</option>
+												<option>업체명1㈜가나다라마바사</option>
+												<option>업체명1㈜가나다라마바사</option>
+												<option>업체명1㈜가나다라마바사</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="btnArea">
+						방문자 정보
+						<button class="btnS green right">추가</button>
+					</div>
+					<div class="tws person">
+						<table>
+							<colgroup>
+								<col width="70"/>
+								<col width="110"/>
+								<col width="60"/>
+								<col />
+								<col width="60"/>
+								<col />
+								<col width="40"/>
+							</colgroup>
+							<tbody>
+								<!-- Loop -->
+								<tr>
+									<th>이름  <sup>필수항목</sup></th>
+									<td><input type="text"/></td>
+									<th>전화번호</th>
+									<td>
+										<div class="phoneNum">
+										    <span class="selectSet">
+										        <select>
+										            <option>010</option>
+										            <option>011</option>
+										            <option>017</option>
+										            <option>018</option>
+										            <option>019</option>
+										        </select>
+										    </span>
+										    <span class="txt">-</span>
+										    <input type="tel" id="middleNum" />
+										    <span class="txt">-</span>
+										    <input type="tel" id="lastNum" />
+										</div>
+									</td>
+									<th>차량번호</th>
+									<td>
+										<input type="text" />
+									</td>
+									<td class="tC"><button class="btnS pink">삭제</button></td>
+								</tr>
+								<!-- //Loop -->
+								<tr>
+									<th>이름  <sup>필수항목</sup></th>
+									<td><input type="text"/></td>
+									<th>전화번호</th>
+									<td>
+										<div class="phoneNum">
+										    <span class="selectSet">
+										        <select>
+										            <option>010</option>
+										            <option>011</option>
+										            <option>017</option>
+										            <option>018</option>
+										            <option>019</option>
+										        </select>
+										    </span>
+										    <span class="txt">-</span>
+										    <input type="tel" id="middleNum" />
+										    <span class="txt">-</span>
+										    <input type="tel" id="lastNum" />
+										</div>
+									</td>
+									<th>차량번호</th>
+									<td>
+										<input type="text" />
+									</td>
+									<td class="tC"><button class="btnS pink">삭제</button></td>
+								</tr>
+								<tr>
+									<th>이름  <sup>필수항목</sup></th>
+									<td><input type="text"/></td>
+									<th>전화번호</th>
+									<td>
+										<div class="phoneNum">
+										    <span class="selectSet">
+										        <select>
+										            <option>010</option>
+										            <option>011</option>
+										            <option>017</option>
+										            <option>018</option>
+										            <option>019</option>
+										        </select>
+										    </span>
+										    <span class="txt">-</span>
+										    <input type="tel" id="middleNum" />
+										    <span class="txt">-</span>
+										    <input type="tel" id="lastNum" />
+										</div>
+									</td>
+									<th>차량번호</th>
+									<td>
+										<input type="text" />
+									</td>
+									<td class="tC"><button class="btnS pink">삭제</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">등록완료</button>
+				</div>
+			</div>
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

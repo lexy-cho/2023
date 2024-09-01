@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ThinkTree Visitor</title>
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/navmenu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<!-- <script type="text/javascript" src="../../js/jquery.toast.js"></script> -->
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.btnArea .white').click(function(){
+				$('.popDim').show();
+				$('.pageOutPop').show();
+			});
+			$('.alertPop button, .basicPop button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			$('.signStatus').click(function(){
+				$('.popDim, .popDim .signPop').show();
+			});
+			$('.signPop button').click(function(){
+				$('.popDim, .popDim .signPop').hide();
+				$('.signStatus em').addClass('on');
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<button class="btnPrev" onclick="history.back()">이전</button>
+					<h1>방문객 이력</h1>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- snb 생략 -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<div class="visitorLayout">
+                        <div class="dlstyle">
+                            <dl>
+                                <dt>방문 예정일시</dt>
+                                <dd>2020-03-13 09:15 ~ 09:30</dd>
+                            </dl>
+                            <dl>
+                                <dt>방문목적</dt>
+                                <dd>일정 제목을 입력해 주세요 (최대 50글자)</dd>
+                            </dl>
+							<dl>
+								<dt>담당자</dt>
+								<dd>오유진 [전략기획팀]</dd>
+							</dl>
+                            <dl>
+                                <dt>업체명</dt>
+                                <dd>(주)가나다라마바사</dd>
+                            </dl>
+							<dl>
+								<dt>성명</dt>
+								<dd class="signStemp">
+									홍길동
+									<span class="signStatus"><em class="on">서명완료</em></span>
+								</dd>
+							</dl>
+							<dl>
+								<dt>전화번호</dt>
+								<dd>000-****-0000</dd>
+							</dl>
+							<dl>
+								<dt>QR코드 고유번호</dt>
+								<dd>a1s1d2f5</dd>
+							</dl>
+							<div class="time">
+								<div class="gridSet grid2">
+									<div class="gridItem">
+										<dl>
+											<dt>입실시간</dt>
+											<dd>00:00</dd>
+										</dl>
+									</div>
+									<div class="gridItem">
+										<dl>
+											<dt>퇴실시간</dt>
+											<dd>00:00</dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+							<p class="smallBox">주차증 발급은 경영지원팀에 별도 문의해주시기 바랍니다</p>
+                        </div>
+                    </div>
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>TOP</button></div>
+		</div>
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<div class="alertPop pageOutPop" style="display:none;">
+				<div class="pBack">
+					<p class="tC">입력한 정보가 삭제됩니다.<br/>삭제하시겠습니까?</p>
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue" onclick="history.back()">확인</button>
+				</div>
+			</div>
+			<div class="signPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<p>※ 크게 서명해주세요.</p>
+				<div class="signSet">
+					<div class="signArea">
+						<strong>서명</strong>
+						<div class="cvsArea">
+							<canvas></canvas>
+						</div>
+					</div>
+					<div class="btnArea">
+                        <button class="btnM white">초기화</button>
+						<button class="btnM white">이전 휙</button>
+						<button class="btnM blue">확인</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //Popup -->
+	</body>
+</html>

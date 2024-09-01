@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+		<!-- <script type="text/javascript" src="js/swiper.min.js"></script> -->
+		<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../js/menu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$("input[name=pl]").change(function() {
+				var radioValue = $(this).val();
+				if (radioValue == "01") {
+					$('.penCase').show();
+					$('.eraserCase').hide();
+				} else if (radioValue == "02") {
+					$('.eraserCase').show();
+					$('.penCase').hide();
+				} else if (radioValue == "03") {
+					$('.eraserCase').hide();
+					$('.penCase').hide();
+				}
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+
+			<!-- maskingLayout -->			
+			<div class="pcMaskingLayout">
+				<!-- maskingBox -->
+				<div class="maskingBox">
+					<span class="btnBack"><a href="document_camera.html">Back</a></span>
+					<strong class="docTt txtEllipsis">팝업에 쓴 서류 제목이 여기에</strong>
+					<ul class="mskList">
+						<li>
+							<strong>연필</strong>
+							<div class="psSize">
+								<em>크기</em>
+								<ul>
+									<li><input type="radio" id="ps1" class="pSize1" name="psSize"><label for="ps1">size1</label></li>
+									<li><input type="radio" id="ps2" class="pSize2" name="psSize"><label for="ps2">size2</label></li>
+									<li><input type="radio" id="ps3" class="pSize3" name="psSize"><label for="ps3">size3</label></li>
+									<li><input type="radio" id="ps4" class="pSize4" name="psSize" checked><label for="ps4">size4</label></li>
+									<li><input type="radio" id="ps5" class="pSize5" name="psSize"><label for="ps5">size5</label></li>
+								</ul>
+							</div>
+							<div class="psColor">
+								<em>색상</em>
+								<ul>
+									<li><input type="radio" id="pc1" class="pColor1" name="psColor"><label for="pc1">red</label></li>
+									<li><input type="radio" id="pc2" class="pColor2" name="psColor"><label for="pc2">red</label></li>
+									<li><input type="radio" id="pc3" class="pColor3" name="psColor"><label for="pc3">red</label></li>
+									<li><input type="radio" id="pc4" class="pColor4" name="psColor"><label for="pc4">red</label></li>
+									<li><input type="radio" id="pc5" class="pColor5" name="psColor"><label for="pc5">red</label></li>
+									<li><input type="radio" id="pc6" class="pColor6" name="psColor"><label for="pc6">red</label></li>
+									<li><input type="radio" id="pc7" class="pColor7" name="psColor"><label for="pc7">red</label></li>
+									<li><input type="radio" id="pc8" class="pColor8" name="psColor"><label for="pc8">red</label></li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<strong>지우개</strong>
+							<div class="eraserSize">
+								<em>크기</em>
+								<ul>
+									<li><input type="radio" id="es1" class="esSize1" name="esSize"><label for="es1">size1</label></li>
+									<li><input type="radio" id="es2" class="esSize2" name="esSize"><label for="es2">size1</label></li>
+									<li><input type="radio" id="es3" class="esSize3" name="esSize"><label for="es3">size1</label></li>
+									<li><input type="radio" id="es4" class="esSize4" name="esSize"><label for="es4">size1</label></li>
+									<li><input type="radio" id="es5" class="esSize5" name="esSize"><label for="es5">size1</label></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+					<div class="btnBox">
+						<span><button class="btnLB">취소</button></span>
+						<span><button class="btnBY" onclick="location.href='document_list.html'">등록</button></span>
+					</div>
+				</div>
+				<!--// maskingBox -->
+				<!-- docPreview -->
+				<div class="docPreview">
+					<div class="imgArea">
+						<span>
+							<img src="../images/img_terms.jpg" alt="동의서 이미지" />
+							<canvas></canvas>
+						</span>
+					</div>
+				</div>
+				<!-- //docPreview -->
+			</div>
+			<!-- maskingLayout -->	
+
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" type="text/css" href="../../js/tree/themes/default/style.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/jstree.min.js"></script>
+		<script type="text/javascript" src="../../js/tree/basicTree.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.tls tr td, #newUserBtn').click(function () {
+				$('.tls tr').removeClass('on');
+				$(this).parent().addClass('on');
+				$('.userInfo').show();
+			});//
+			$("#kind select").change(function() {
+				var optVal = $("#kind select option:selected").val();
+				if ( optVal == 'k1' ){
+					$("#k1Case").show();
+					$("#k2Case").hide();
+				} else {
+					$("#k1Case").hide();
+					$("#k2Case").show();
+				}
+			});
+			$("#k1Case select").change(function() {
+				var optVal2 = $("#k1Case select option:selected").val();
+				if ( optVal2 == 'k1subk1' ){
+					$("#projectCase").hide();
+					$("#contractCase").show();
+				} else {
+					$("#projectCase").show();
+					$("#contractCase").hide();
+				}
+			});
+			$("#k2Case select").change(function() {
+				var optVal3 = $("#k2Case select option:selected").val();
+				if ( optVal3 == 'k2subk1' ){
+					$("#projectCase").hide();
+					$("#contractCase").show();
+				} else {
+					$("#projectCase").show();
+					$("#contractCase").hide();
+				}
+			});
+			/* 파일업로드 */
+			$('.fileSet input[type=file]').change(function() {
+				var fileValue = $(this).val().split("\\");
+				var fileName = fileValue[fileValue.length-1];
+				$('.fileSet .loadEnd em').text(fileName);
+				$('.fileSet .fileFind').hide();
+				$('.fileSet .loadIng').show();
+				setTimeout(function() {
+					$('.fileSet .loadIng').hide();
+					$('.fileSet .loadFail').show();
+				}, 3000);
+				setTimeout(function() {
+					$('.fileSet .loadFail').hide();
+					$('.fileSet .loadEnd').show();
+				}, 6000);
+			});
+			$('.fileSet .loadEnd button').click(function() {
+				$('.fileSet .fileFind').show();
+				$('.fileSet .loadIng, .fileSet .loadEnd, .fileSet .loadFail').hide();
+			});
+			/* end 파일업로드 */
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>외주용역</h2>
+					<div class="pagePos"><span>Home</span><span>사용자관리</span><strong>외주용역</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="userLayout">
+						<div>
+							<!---->
+							<div class="boardTop">
+								<em>전체 10,000건</em>
+								<span class="right">
+									<span class="searchBasic">
+										<input type="text" placeholder="이름 입력" />
+										<input type="submit" value="검색" class="btnSearch" />
+										<button class="btnReset">초기화</button>
+									</span>
+									<button class="btnM">엑셀다운로드</button>
+								</span>
+							</div>
+							<!---->
+							<div class="tls">
+								<table>
+									<colgroup>
+										<col width="40"/>
+										<col width="100"/>
+										<col width="80"/>
+										<col width="100"/>
+										<col width="180"/>
+										<col />
+									</colgroup>
+									<thead>
+										<tr>
+											<th>No</th>
+											<th>이름</th>
+											<th>등록일자</th>
+											<th>핸드폰</th>
+											<th>이메일</th>
+											<th>자택주소</th>
+										</tr>
+									</thead>
+									<tbody>
+										<!--Loop-->
+										<tr>
+											<td>1</td>
+											<td>홍길동</td>
+											<td>2020-02-11</td>
+											<td>000-0000-0000</td>
+											<td class="tL">dasdasadsasdasd@naver.com</td>
+											<td class="tL">서울특별시 성동구 연무장5가길 7 W1404호(성수동2가, 성수역 현대테라스타워)</td>
+										</tr>
+										<!--//Loop-->
+										<tr>
+											<td>2</td>
+											<td>홍길동2</td>
+											<td>2020-02-11</td>
+											<td>000-0000-0000</td>
+											<td class="tL">dasdasadsasdasd@naver.com</td>
+											<td class="tL">서울특별시 성동구 연무장5가길 7 W1404호(성수동2가, 성수역 현대테라스타워)</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!---->
+							<div class="bpSet">
+								<div class="btnArea">
+									<span class="right">
+										<button class="btnM" id="newUserBtn">신규등록</button>
+									</span>
+								</div>
+								<div class="paginate">
+									<span>
+										<a class="first">이전</a>
+											<a class="on">1</a>
+											<a>2</a>
+											<a>3</a>
+											<a>4</a>
+											<a>5</a>
+										<a class="next">다음</a>
+									</span>
+									<span class="selectSet">
+										<select>
+											<option>10개</option>
+											<option>20개</option>
+											<option>50개</option>
+											<option>100개</option>
+										</select>
+									</span>
+								</div>
+							</div>
+							<!--//-->
+						</div>
+						<!-- 사용자 정보 -->
+						<div class="userInfo" style="padding:0;width:100%;display:none;">
+							<h3>인력 정보</h3>
+							<!-- 사용자 -->
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="100">
+										<col width="400">
+										<col width="100">
+										<col width="400">
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>성명 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+											<td><input type="text" class="wHalf" /></td>
+											<th>생성일</th>
+											<td><!-- 2020-04-15 -->2020-02-06</td>
+										</tr>
+										<!-- 2020-03-31 주민등록번호, 구분 input 추가로 인한 UI 변경 -->
+										<tr>
+											<th>주민등록번호</th>
+											<td>
+												<input type="text" class="w120" placeholder="숫자만 12자리" />
+												<span class="radioSet">
+													<input type="radio" id="radio5" name="rd3" />
+													<label for="radio5"><i></i>남</label>
+												</span>
+												<span class="radioSet">
+													<input type="radio" id="radio6" name="rd3" />
+													<label for="radio6"><i></i>여</label>
+												</span>
+												<span class="fileSet">
+													<span class="fileFind">
+														<input type="file" id="file1" />
+														<label for="file1">증빙서류 첨부</label>
+													</span> <!--파일선택:버튼만있는형식:초록색버전-->
+													<span class="loadIng" style="display:none;">업로드 중</span>
+													<strong class="loadEnd" style="display:none;">
+														<em>샘플 데이터.png</em>
+														<button>취소</button>
+													</strong>
+													<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+												</span>
+												<button class="btnM white">미리보기</button>
+											</td>
+											<th>핸드폰번호 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+											<td>
+												<!-- phoneNum -->
+												<div class="phoneNum w240">
+													<span class="selectSet">
+														<select>
+															<option>010</option>
+															<option>011</option>
+															<option>017</option>
+															<option>018</option>
+															<option>019</option>
+														</select>
+													</span>
+													<span class="txt">-</span>
+													<input type="tel" id="middleNum" />
+													<span class="txt">-</span>
+													<input type="tel" id="lastNum" />
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th>메일주소 <sup>필수항목</sup></th><!-- 2020-05-11 필수항목 -->
+											<td>
+												<!-- email -->
+												<div class="emailForm duplicateCase">
+													<input type="text" />
+													<span class="emailDomain">
+														<em>@</em>
+														<span class="selectSet">
+															<select>
+																<option>선택해주세요</option>
+																<option>nave.com</option>
+																<option>gmail.com</option>
+																<option>hanmail.net</option>
+																<option>직접입력</option>
+															</select>
+														</span>
+														<input type="text" />
+													</span>
+												</div>
+												<button class="btnM">중복확인</button>
+											</td>
+											<th>구분</th>
+											<td>
+												<span class="selectSet" id="kind">
+													<select>
+														<option>선택하세요</option>
+														<option value="k1">직접계약</option>
+														<option value="k2">업체계약</option>
+													</select>
+												</span>
+												<span class="selectSet" id="k1Case" style="display:none;">
+													<select>
+														<option>선택하세요</option>
+														<option value="k1subk1">내부</option>
+														<option value="k1subk2">외부</option>
+													</select>
+												</span>
+												<span class="selectSet" id="k2Case" style="display:none;">
+													<select>
+														<option>선택하세요</option>
+														<option value="k2subk1">내부</option>
+														<option value="k2subk2">외부</option>
+													</select>
+												</span>
+												<!--업체계약 일경우-->
+												<!-- <span class="selectSet">
+													<select>
+														<option>선택하세요</option>
+														<option>거래처명1</option>
+														<option>거래처명2</option>
+														<option>거래처명3</option>
+														<option>선택안함</option>
+													</select>
+												</span> -->
+												<!--//업체계약 일경우-->
+											</td>
+										</tr>
+										<!-- //2020-03-31 주민등록번호, 구분 input 추가로 인한 UI 변경 -->
+										<tr>
+											<th>자택주소</th>
+											<td colspan="3"><!-- 2020-04-15 -->
+												<!-- address -->
+												<div class="addressForm">
+													<input type="tel" readonly />
+													<button class="btnM">우편번호 찾기</button>
+													<div>
+														<input type="text" readonly />
+														<input type="text" />
+													</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th>비상연락망</th>
+											<td>
+												<!-- phoneNum -->
+												<div class="phoneNum w240">
+													<span class="selectSet">
+														<select>
+															<option>010</option>
+															<option>011</option>
+															<option>017</option>
+															<option>018</option>
+															<option>019</option>
+														</select>
+													</span>
+													<span class="txt">-</span>
+													<input type="tel" id="middleNum" />
+													<span class="txt">-</span>
+													<input type="tel" id="lastNum" />
+												</div>
+											</td>
+											<th>비상연락망 관계</th>
+											<td>
+												<span class="selectSet">
+													<select>
+														<option>선택해주세요</option>
+														<option>배우자</option>
+														<option>부모님</option>
+														<option>형제</option>
+														<option>자녀</option>
+													</select>
+												</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<!-- 2020-06-03 -->
+								<table class="mt1">
+									<colgroup>
+										<col width="100">
+										<col width="400">
+										<col width="100">
+										<col width="400">
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>회사명</th>
+											<td><input type="text" class="wHalf" /></td>
+											<td colspan="2"></td>
+										</tr>
+										<tr>
+											<th>회사주소</th>
+											<td colspan="3">
+												<!-- address -->
+												<div class="addressForm">
+													<input type="tel" readonly />
+													<button class="btnM">우편번호 찾기</button>
+													<div>
+														<input type="text" readonly />
+														<input type="text" />
+													</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th>사업자등록증</th>
+											<td>
+												<span class="fileSet">
+													<span class="fileFind">
+														<input type="file" id="file1" />
+														<label for="file1">증빙서류 첨부</label>
+													</span> <!--파일선택:버튼만있는형식:초록색버전-->
+													<span class="loadIng" style="display:none;">업로드 중</span>
+													<strong class="loadEnd" style="display:none;">
+														<em>샘플 데이터.png</em>
+														<button>취소</button>
+													</strong>
+													<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+												</span>
+												<button class="btnM white">미리보기</button>
+											</td>
+											<th>통장사본</th>
+											<td>
+												<span class="fileSet">
+													<span class="fileFind">
+														<input type="file" id="file1" />
+														<label for="file1">증빙서류 첨부</label>
+													</span> <!--파일선택:버튼만있는형식:초록색버전-->
+													<span class="loadIng" style="display:none;">업로드 중</span>
+													<strong class="loadEnd" style="display:none;">
+														<em>샘플 데이터.png</em>
+														<button>취소</button>
+													</strong>
+													<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+												</span>
+												<button class="btnM white">미리보기</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<!-- //2020-06-03 -->
+							</div>
+							<!---->
+							<div style="display:none;" id="projectCase">
+								<h3>프로젝트 투입정보</h3>
+								<div class="tls mt1">
+									<table>
+										<colgroup>
+											<col width="90" />
+											<col width="90" />
+											<col />
+											<col width="200" />
+											<col width="100" />
+											<col width="130" />
+											<col width="80" />
+											<col width="150" />
+											<col width="50" />
+										</colgroup>
+										<thead>
+											<tr>
+												<th>시작일</th>
+												<th>종료일</th>
+												<th>프로젝트 명</th>
+												<th>프로젝트 회사명</th>
+												<th>계약번호</th>
+												<th>이력서첨부</th>
+												<th>등급</th>
+												<th>계약단가(월)</th>
+												<th><button class="btnS white">추가</button></th>
+											</tr>
+										</thead>
+										<tbody>
+											<!--Loop-->
+											<tr>
+												<td><span class="calSet"><input type="tel" value="2020-01-21" /><button>달력열기</button></span></td>
+												<td><span class="calSet"><input type="tel" value="2020-01-21" /><button>달력열기</button></span></td>
+												<td><input type="text" value="인터파크 도서" /></td>
+												<td><input type="text" value="인터파크" /></td>
+												<td><input type="text" value="계약번호" /></td>
+												<td>
+													<span class="fileSet">
+														<span class="fileFind">
+															<input type="file" id="file1" />
+															<label for="file1">이력서첨부</label>
+														</span> <!--파일선택:버튼만있는형식:초록색버전-->
+														<span class="loadIng" style="display:none;">업로드 중</span>
+														<strong class="loadEnd" style="display:none;">
+															<em>샘플 데이터.png</em>
+															<button>취소</button>
+														</strong>
+														<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+													</span>
+												</td>
+												<td>
+													<span class="selectSet">
+														<select>
+															<option>선택</option>
+															<option>최고급</option>
+															<option>고급</option>
+															<option>중급</option>
+															<option>초급</option>
+														</select>
+													</span>
+												</td>
+												<td>
+													<span class="unit">
+														<input type="text" value="10,000,000" /><em>원</em>
+													</span>
+												</td>
+												<td><button class="btnS pink">삭제</button></td>
+											</tr>
+											<!--//Loop-->
+											<tr>
+												<td><span class="calSet"><input type="tel" value="2020-01-21" /><button>달력열기</button></span></td>
+												<td><span class="calSet"><input type="tel" value="2020-01-21" /><button>달력열기</button></span></td>
+												<td><input type="text" value="e-BEST 3차 개발" /></td>
+												<td><input type="text" value="르노삼성자동차" /></td>
+												<td><input type="text" value="계약번호" /></td>
+												<td>
+													<span class="fileSet">
+														<span class="fileFind">
+															<input type="file" id="file1" />
+															<label for="file1">이력서첨부</label>
+														</span> <!--파일선택:버튼만있는형식:초록색버전-->
+														<span class="loadIng" style="display:none;">업로드 중</span>
+														<strong class="loadEnd" style="display:none;">
+															<em>샘플 데이터.png</em>
+															<button>취소</button>
+														</strong>
+														<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+													</span>
+												</td>
+												<td>
+													<span class="selectSet">
+														<select>
+															<option>선택</option>
+															<option>최고급</option>
+															<option>고급</option>
+															<option>중급</option>
+															<option>초급</option>
+														</select>
+													</span>
+												</td>
+												<td>
+													<span class="unit">
+														<input type="text" value="10,000,000" /><em>원</em>
+													</span>
+												</td>
+												<td><button class="btnS pink">삭제</button></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!----->
+							<div style="display:none;" id="contractCase">
+								<h3>계약정보</h3>
+								<div class="tls mt1">
+									<table>
+										<colgroup>
+											<col width="90" />
+											<col width="90" />
+											<col />
+											<col width="200" />
+											<col width="150" />
+											<col width="130" />
+											<col width="80" />
+											<col width="150" />
+											<col width="50" />
+										</colgroup>
+										<thead>
+											<tr>
+												<th>시작일</th>
+												<th>종료일</th>
+												<th>프로젝트 명</th>
+												<th>프로젝트 회사명</th>
+												<th>계약처</th>
+												<th>계약번호</th>
+												<th>이력서첨부</th>
+												<th>계약서첨부</th>
+												<th><button class="btnS white">추가</button></th>
+											</tr>
+										</thead>
+										<tbody>
+											<!--Loop-->
+											<tr>
+												<td><span class="calSet"><input type="tel" value="2020-01-21" /><button>달력열기</button></span></td>
+												<td><span class="calSet"><input type="tel" value="2020-01-21" /><button>달력열기</button></span></td>
+												<td><input type="text" value="인터파크 도서" /></td>
+												<td><input type="text" value="인터파크" /></td>
+												<td><input type="text" value="계약처" /></td>
+												<td><input type="text" value="계약번호" /></td>
+												<td>
+													<span class="fileSet">
+														<span class="fileFind">
+															<input type="file" id="file1" />
+															<label for="file1">이력서첨부</label>
+														</span> <!--파일선택:버튼만있는형식:초록색버전-->
+														<span class="loadIng" style="display:none;">업로드 중</span>
+														<strong class="loadEnd" style="display:none;">
+															<em>샘플 데이터.png</em>
+															<button>취소</button>
+														</strong>
+														<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+													</span>
+												</td>
+												<td>
+													<span class="fileSet">
+														<span class="fileFind">
+															<input type="file" id="file1" />
+															<label for="file1">이력서첨부</label>
+														</span> <!--파일선택:버튼만있는형식:초록색버전-->
+														<span class="loadIng" style="display:none;">업로드 중</span>
+														<strong class="loadEnd" style="display:none;">
+															<em>샘플 데이터.png</em>
+															<button>취소</button>
+														</strong>
+														<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+													</span>
+												</td>
+												<td><button class="btnS pink">삭제</button></td>
+											</tr>
+											<!--//Loop-->
+											<tr>
+												<td><span class="calSet"><input type="tel" value="2020-01-21" /><button>달력열기</button></span></td>
+												<td><span class="calSet"><input type="tel" value="2020-01-21" /><button>달력열기</button></span></td>
+												<td><input type="text" value="e-BEST 3차 개발" /></td>
+												<td><input type="text" value="르노삼성자동차" /></td>
+												<td><input type="text" value="계약처" /></td>
+												<td><input type="text" value="계약번호" /></td>
+												<td>
+													<span class="fileSet">
+														<span class="fileFind">
+															<input type="file" id="file1" />
+															<label for="file1">이력서첨부</label>
+														</span> <!--파일선택:버튼만있는형식:초록색버전-->
+														<span class="loadIng" style="display:none;">업로드 중</span>
+														<strong class="loadEnd" style="display:none;">
+															<em>샘플 데이터.png</em>
+															<button>취소</button>
+														</strong>
+														<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+													</span>
+												</td>
+												<td>
+													<span class="fileSet">
+														<span class="fileFind">
+															<input type="file" id="file1" />
+															<label for="file1">이력서첨부</label>
+														</span> <!--파일선택:버튼만있는형식:초록색버전-->
+														<span class="loadIng" style="display:none;">업로드 중</span>
+														<strong class="loadEnd" style="display:none;">
+															<em>샘플 데이터.png</em>
+															<button>취소</button>
+														</strong>
+														<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+													</span>
+												</td>
+												<td><button class="btnS pink">삭제</button></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="btnArea tC">
+								<button class="btnM">저장</button>
+								<button class="btnM">삭제</button>
+							</div>
+						</div>
+						<!-- //사용자 정보 -->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		</div>
+    </body>
+</html>

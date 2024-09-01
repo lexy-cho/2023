@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function() {
+
+				$('.calSet button').duDatepicker({
+					format: 'yyyy-mm-dd',
+					theme: 'blue',
+					readOnly: true,
+					clearBtn: false,
+					cancelBtn: true,
+					overlayClose: true
+				}).on('datechanged', function(event){
+					$(this).prev().val(event.date);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back c-menu c-menu--slide-left">
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- header -->
+			<div id="header">
+				<header>
+					 <span class="left">
+						<button class="c-button btnHamburger">햄버거</button>
+						<button class="btnList" onClick="location.href='contract_order.html'">목록</button>
+					 </span>
+					 <h2>계약오더</h2>
+					 <span class="right">
+						<button class="btnM black">임시저장</button>
+						<button class="btnM red">오더제출</button>
+					 </span>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="contractOerderWrite">
+						<div class="orderDate">
+							<dl class="inputBox iner">
+								<dt>오더일시</dt>
+								<dd><span>2019.12.19</span><em>오전 12:25:00</em></dd>
+							</dl>
+							<button>최근실적 불러오기</button>
+						</div>
+						<div class="gridSet grid2">
+							<div class="gridItem">
+								<!--발주자 정보-->
+								<div class="orderStepBox stepOrderer">
+									<div class="osTit">
+										<h3>1</h3>
+										<span class="txt">발주자 정보</span>
+									</div>
+									<div class="osData basicCase">
+										<div class="company">
+											<button class="searchCompany">회사검색</button>
+											<input type="text" placeholder="회사명" class="soloInput"/>
+										</div>
+										<div class="gridSet grid2">
+											<div class="gridItem">
+												<dl class="inputBox">
+													<dt>담당</dt>
+													<dd><input type="text" placeholder="성명"/></dd>
+												</dl>
+											</div>
+											<div class="gridItem">
+												<dl class="inputBox">
+													<dt>연락처</dt>
+													<dd><input type="text" placeholder="하이픈 빼고 숫자 입력"/></dd>
+												</dl>
+											</div>
+										</div>
+										<div class="address">
+											<div><button class="btnAdress">주소검색</button><input type="text" class="inputAuto" readonly placeholder="기본 주소"/></div>
+											<input type="text" placeholder="상세 주소" class="soloInput"/>
+										</div>
+									</div>
+								</div>
+								<!--//발주자 정보-->
+							</div>
+							<div class="gridItem">
+								<!--청구자 정보-->
+								<div class="orderStepBox stepClaimant">
+									<div class="osTit">
+										<h3>2</h3>
+										<span class="txt">청구자 정보</span>
+									</div>
+									<div class="osData basicCase">
+										<div class="company">
+											<button class="searchCompany">회사검색</button>
+											<input type="text" placeholder="회사명" class="soloInput"/>
+										</div>
+										<div class="gridSet grid2">
+											<div class="gridItem">
+												<dl class="inputBox">
+													<dt>담당</dt>
+													<dd><input type="text" placeholder="성명"/></dd>
+												</dl>
+											</div>
+											<div class="gridItem">
+												<dl class="inputBox">
+													<dt>연락처</dt>
+													<dd><input type="tel" placeholder="하이픈 빼고 숫자 입력"/></dd>
+												</dl>
+											</div>
+										</div>
+										<div class="address">
+											<div><button class="btnAdress">주소검색</button><input type="text" class="inputAuto" readonly placeholder="기본 주소"/></div>
+											<input type="text" placeholder="상세 주소" class="soloInput"/>
+										</div>
+									</div>
+								</div>
+								<!--//청구자 정보-->
+							</div>
+						</div>
+						<!--화물구분-->
+						<div class="orderStepBox stepKind">
+							<div class="osTit">
+								<h3>3</h3> 
+								<span class="selectSet red">
+									<select>
+										<option selected>수입</option>
+										<option>수출</option>
+										<option>환적</option>
+									</select>
+								</span>
+							</div>
+							<div class="osData basicCase">
+								<div class="gridSet grid2 notPd">
+									<div class="gridItem">
+										<dl class="inputBox">
+											<dt>B/L</dt>
+											<dd>
+												<div class="searchInput longBtn">
+													<input type="text" placeholder="B/L번호로 검색" />
+													<button class="searchUnipass">UNIPASS 검색</button>
+												</div>
+											</dd>
+										</dl>
+									</div>
+									<div class="gridItem">
+										<dl class="inputBox">
+											<dt>D/O</dt>
+											<dd><input type="tel" placeholder="숫자 입력"/></dd>
+										</dl>
+									</div>
+								</div>
+								<div class="gridSet grid2 locate">
+									<div class="gridItem withDate">
+										<span class="calSet">
+											<label for="searchDate">입항일</label>
+											<input type="tel" name="searchDate" placeholder="2020-01-21" />
+											<button>달력열기</button>
+										</span>
+										<dl class="inputBox">
+											<dt>선사</dt>
+											<dd>
+												<div class="searchInput">
+													<input type="text" placeholder="선사명" />
+													<button class="btnSearch">검색하기</button>
+												</div>
+											</dd>
+										</dl>
+									</div>
+									<div class="gridItem halfInputBox">
+										<dl class="inputBox">
+											<dt>모선</dt>
+											<dd><input type="text" placeholder="모선명"/></dd>
+										</dl>
+										<dl class="inputBox">
+											<dt>항차</dt>
+											<dd><input type="text" placeholder="항차명"/></dd>
+										</dl>
+									</div>
+								</div>
+								<dl class="inputBox">
+									<dt>운송요청</dt>
+									<dd><input type="text" placeholder="운송 요청사항"/></dd>
+								</dl>
+								<dl class="inputBox mt10px">
+									<dt>기타메모</dt>
+									<dd><input type="text" placeholder="기타 메모"/></dd>
+								</dl>
+							</div>
+						</div>
+						<!--//화물구분-->
+						<!--위치정보-->
+						<div class="orderStepBox stepMap">
+							<div class="osTit">
+								<h3>4</h3>
+								<span class="txt">컨테이너 상세</span>
+								<em>※ 총 컨테이너 수 = 콜 차량 총수</em>
+								<div class="ctSetNum">
+									<dl class="inputBox">
+										<dt>총 컨테이너 수</dt>
+										<dd>
+											<span class="selectSet">
+												<select>
+													<option selected>선택</option>
+													<option>1</option>
+													<option>2</option>
+													<option>100</option>
+												</select>
+											</span>
+										</dd>
+										<dd>EA</dd>
+									</dl>
+									<dl class="inputBox">
+										<dt>총 적재 중량</dt>
+										<dd><input type="text" placeholder="000"/></dd>
+										<dd>ton</dd>
+									</dl>
+								</div>
+							</div>
+							<div class="osData">
+								<!-- 컨테이너 셋트 -->
+								<div class="containerSet">
+									<div class="containerArea">
+										<div class="kind">
+											<dl class="inputBox iner">
+												<dt>계약단가선택</dt>
+												<dd>
+													[계약금액/종류] 출발지/작업지 <button class="btnAllowDown">더보기</button>
+												</dd>
+											</dl>
+											<dl class="inputBox iner">
+												<dt>운송유형</dt>
+												<dd>
+													<span class="selectSet">
+														<select>
+															<option>선택</option>
+															<option>왕복</option>
+															<option>편도</option>
+														</select>
+													</span>
+												</dd>
+											</dl>
+										</div>
+										<div class="info">
+											<div class="numIconBack"><span class="numIcon">1</span></div>
+											<dl class="inputBox iner">
+												<dt>운송요청일자</dt>
+												<dd><span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span></dd>
+											</dl>
+											<dl class="inputBox iner">
+												<dt>유형</dt>
+												<dd>
+													<span class="selectSet">
+														<select>
+															<option selected>선택</option>
+															<option>Dry</option> 
+															<option>Steel Reefer</option>
+															<option>Open Top</option>
+															<option>Sliding Open Top</option> 
+															<option>Flat Rack</option>
+															<option>Super Rack</option>
+														</select>
+													</span>
+												</dd>
+											</dl>
+											<dl class="inputBox iner">
+												<dt>크기(ft)</dt>
+												<dd>
+													<span class="selectSet">
+														<select>
+															<option selected>선택</option>
+															<option>20</option>
+															<option>40</option>
+															<option>40 High Cube</option>
+															<option>45 High Cube</option>
+														</select>
+													</span>
+												</dd>
+											</dl>
+											<dl class="inputBox iner">
+												<dt>중량(ton)</dt>
+												<dd><input type="tel" placeholder="숫자입력" /></dd>
+											</dl>
+											<dl class="inputBox iner">
+												<dt>번호</dt>
+												<dd><input type="tel" placeholder="_ _ _ _ _ _" /></dd>
+											</dl>
+											<dl class="inputBox iner">
+												<dt>Seal 번호</dt>
+												<dd><input type="tel" placeholder="_ _ _ _" /></dd>
+											</dl>
+										</div>
+										<div class="map"><!-- 환적Case ="map change" -->
+											<!-- 출발지 -->
+											<div class="start">
+												<dl>
+													<dt>상차<span>(출발지)</span></dt>
+													<dd>
+														<div class="dateNcompay">
+															<div class="dateArea">
+																<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+																<span class="timeSet">
+																	<input type="text" placeholder="오전 00 : 00" class="soloInput" />
+																</span>
+															</div>
+														</div>
+														<div class="address inlineCase">
+															<div><button class="btnAdress">주소검색</button><input type="text" class="inputAuto" readonly placeholder="기본 주소"/></div>
+															<input type="text" placeholder="상세 주소" class="soloInput"/>
+														</div>
+														<div class="gridSet grid2">
+															<div class="gridItem">
+																<dl class="inputBox">
+																	<dt>담당</dt>
+																	<dd><input type="text" placeholder="성명"/></dd>
+																</dl>
+															</div>
+															<div class="gridItem">
+																<dl class="inputBox">
+																	<dt>연락처</dt>
+																	<dd><input type="tel" placeholder="하이픈 빼고 숫자 입력"/></dd>
+																</dl>
+															</div>
+														</div>
+													</dd>
+												</dl>
+											</div>
+											<!-- //출발지 -->
+											<!-- 작업지 -->
+											<div class="work">
+												<!---->
+												<dl>
+													<dt>작업1<span>(작업지)</span><button class="btnTrash">삭제</button></dt>
+													<dd>
+														<div class="dateNcompay">
+															<div class="dateArea">
+																<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+																<span class="timeSet">
+																	<input type="text" placeholder="오전 00 : 00" class="soloInput" />
+																</span>
+															</div>
+															<div class="company">
+																<button class="searchCompany">회사검색</button>
+																<input type="text" placeholder="회사명" class="soloInput"/>
+															</div>
+														</div>
+														<div class="address inlineCase">
+															<div><button class="btnAdress">주소검색</button><input type="text" class="inputAuto" readonly placeholder="기본 주소"/></div>
+															<input type="text" placeholder="상세 주소" class="soloInput"/>
+														</div>
+														<div class="gridSet grid2">
+															<div class="gridItem">
+																<dl class="inputBox">
+																	<dt>담당</dt>
+																	<dd><input type="text" placeholder="성명"/></dd>
+																</dl>
+															</div>
+															<div class="gridItem">
+																<dl class="inputBox">
+																	<dt>연락처</dt>
+																	<dd><input type="tel" placeholder="하이픈 빼고 숫자 입력"/></dd>
+																</dl>
+															</div>
+														</div>
+													</dd>
+												</dl>
+												<!--//-->
+												<!---->
+												<dl style="display:none;">
+													<dt>작업2<span>(작업지)</span><button class="btnTrash">삭제</button></dt>
+													<dd>
+														<div class="dateNcompay">
+															<div class="dateArea">
+																<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+																<span class="timeSet">
+																	<input type="text" placeholder="오전 00 : 00" class="soloInput" />
+																</span>
+															</div>
+															<div class="company">
+																<button class="searchCompany">회사검색</button>
+																<input type="text" placeholder="회사명" class="soloInput"/>
+															</div>
+														</div>
+														<div class="address inlineCase">
+															<div><button class="btnAdress">주소검색</button><input type="text" class="inputAuto" readonly placeholder="기본 주소"/></div>
+															<input type="text" placeholder="상세 주소" class="soloInput"/>
+														</div>
+														<div class="gridSet grid2">
+															<div class="gridItem">
+																<dl class="inputBox">
+																	<dt>담당</dt>
+																	<dd><input type="text" placeholder="성명"/></dd>
+																</dl>
+															</div>
+															<div class="gridItem">
+																<dl class="inputBox">
+																	<dt>연락처</dt>
+																	<dd><input type="tel" placeholder="하이픈 빼고 숫자 입력"/></dd>
+																</dl>
+															</div>
+														</div>
+													</dd>
+												</dl>
+												<!--//-->
+												<button class="btnM whiteBlue">작업지 추가</button>
+											</div>
+											<!-- //작업지 -->
+											<!-- 도착지 -->
+											<div class="end">
+												<dl>
+													<dt>반납<span>(도착지)</span></dt>
+													<dd>
+														<div class="dateNcompay">
+															<div class="dateArea">
+																<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+																<span class="timeSet">
+																	<input type="text" placeholder="오전 00 : 00" class="soloInput" />
+																</span>
+															</div>
+															<div class="company">
+																<button class="searchCompany">회사검색</button>
+																<input type="text" placeholder="회사명" class="soloInput"/>
+															</div>
+														</div>
+														<div class="address inlineCase">
+															<div><button class="btnAdress">주소검색</button><input type="text" class="inputAuto" readonly placeholder="기본 주소"/></div>
+															<input type="text" placeholder="상세 주소" class="soloInput"/>
+														</div>
+														<div class="gridSet grid2">
+															<div class="gridItem">
+																<dl class="inputBox">
+																	<dt>담당</dt>
+																	<dd><input type="text" placeholder="성명"/></dd>
+																</dl>
+															</div>
+															<div class="gridItem">
+																<dl class="inputBox">
+																	<dt>연락처</dt>
+																	<dd><input type="tel" placeholder="하이픈 빼고 숫자 입력"/></dd>
+																</dl>
+															</div>
+														</div>
+													</dd>
+												</dl>
+											</div>
+											<!-- //도착지 -->
+										</div>
+										<div class="total">
+											<label><strong class="crNum">1</strong>번 컨테이너</label>
+											<dl class="inputBox">
+												<dt>예상비용or계약단가</dt>
+												<dd><strong>0</strong>원</dd>
+											</dl>
+											<p>오더금액은 아래의 <위탁운임금액> 이상의 금액을 입력해 주세요. 씽크트리는<!-- 2020-10-29 텍스트 변경 --> 안심운임표를 준수하여 운임비용을 추천드립니다.</p>
+										</div>
+										<div class="guid">
+											<dl>
+												<dt>오더금액 추천가이드</dt>
+												<dd>
+													<span>
+														위탁운임금액
+														<em>1,000,000 원</em>
+													</span>
+													<span>
+														거리
+														<em>000 km</em>
+													</span>
+												</dd>
+												<dd>
+													<span>
+														운송운임금액
+														<em>1,100,000 원</em>
+													</span>
+													<span>
+														거리
+														<em>000 km</em>
+													</span>
+												</dd>
+											</dl>
+										</div>
+									</div>
+									<button class="btnOpner">여닫기</button>
+									<button class="btnDelete">삭제</button>
+								</div>
+								<!--//-->
+								<!---->
+								<div></div>
+								<!--//-->
+							</div>
+						</div>
+						<!--//위치정보-->
+						<!--가격-->
+						<div class="orderStepBox stepPrice">
+							<div class="osTit">
+								<h3>5</h3>
+								<span class="txt">총 합계 [컨테이너<strong class="crNum">1</strong> ~ <strong class="crNum">3</strong>]</span>
+							</div>
+							<div class="osData">
+								<dl class="inputBox">
+									<dt>총 예상비용</dt>
+									<dd><strong>0</strong>원</dd>
+								</dl>
+								<div>
+									<span><strong class="crNum">1</strong>번 컨테이너 계약단가 <em>0</em></span>
+									<span><strong class="crNum">2</strong>번 컨테이너 계약단가 <em>0</em></span>
+									<span><strong class="crNum">3</strong>번 컨테이너 계약단가 <em>0</em></span>
+								</div>
+							</div>
+						</div>
+						<!--//가격-->
+						<!--신고정보-->
+						<div class="orderStepBox stepReport">
+							<div class="osTit">
+								<h3>4</h3>
+								<span class="txt">컨테이너 반입/반출 신고</span>
+							</div>
+							<div class="osData">
+								<div class="taxInfo">
+									<div class="left">
+										<div class="taxDetail">
+											<strong>반출 신고정보</strong>
+											<div class="kind">
+												<span class="transType red">수입</span>
+												<dl class="inputBox">
+													<dt>적재중량</dt>
+													<dd>0 ton</dd>
+												</dl>
+											</div>
+											<div>
+												<dl class="inputBox">
+													<dt>D/O</dt>
+													<dd>9999999999999</dd>
+												</dl>
+												<dl class="inputBox">
+													<dt>Seal no.</dt>
+													<dd>9999999999999</dd>
+												</dl>
+												<dl class="inputBox">
+													<dt>선사</dt>
+													<dd>선사 명 </dd>
+												</dl>
+												<dl class="inputBox">
+													<dt>컨테이너번호</dt>
+													<dd>컨테이너 번호</dd>
+												</dl>
+											</div>
+											<span class="taxStamp">반입 신고 미완료</span>
+										</div>
+										<div class="taxDetail">
+											<strong>반입 신고정보</strong>
+											<div class="kind">
+												<span class="transType blue">수출</span>
+												<dl class="inputBox">
+													<dt>적재중량</dt>
+													<dd>0 ton</dd>
+												</dl>
+											</div>
+											<div>
+												<dl class="inputBox">
+													<dt>D/O</dt>
+													<dd>9999999999999</dd>
+												</dl>
+												<dl class="inputBox">
+													<dt>Seal no.</dt>
+													<dd>9999999999999</dd>
+												</dl>
+												<dl class="inputBox">
+													<dt>선사</dt>
+													<dd>선사 명 </dd>
+												</dl>
+												<dl class="inputBox">
+													<dt>컨테이너번호</dt>
+													<dd>컨테이너 번호</dd>
+												</dl>
+											</div>
+											<span class="taxStamp">반입 신고 미완료</span>
+										</div>
+									</div>
+									<div class="right">
+										<strong>배차차량정보</strong>
+										<dl class="inputBox">
+											<dt>차량기사</dt>
+											<dd>홍길동</dd>
+										</dl>
+										<dl class="inputBox">
+											<dt>차량번호</dt>
+											<dd>333가 4444</dd>
+										</dl>
+										<dl class="inputBox">
+											<dt>연락처</dt>
+											<dd>010-0000-0000</dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--//신고정보-->
+					</div>
+					<!-- //page Layout -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+    </body>
+</html>

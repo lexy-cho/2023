@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/customer.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){            
+            // slide
+            $(".custDtlTit button").click(function(){
+                var slidBtn = $(this);
+                
+                if(slidBtn.hasClass("active")){
+                    slidBtn.parent().next().slideUp(300, function(){
+                        slidBtn.removeClass("active");
+                    });
+                }else{
+                    slidBtn.addClass("active").parent().next().slideDown(300);
+                }
+            });
+		});
+		</script>
+	</head>
+	<body class="custColor"> <!-- 법인일 경우 corp 클래스 추가 -->
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<!-- <button class="gnbOpen">GNB 열기</button> -->
+							<button class="goPrev" onclick="history.back()">뒤로가기</button>
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="../main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2 class="sCase">eShowroom 견적</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<div class="customerDetail">
+                            <div class="customerDtlbody">
+                                <!-- 기본정보 -->
+                                <dl class="customerDtlBox">
+                                    <dt class="custDtlTit">
+                                        <button class="slideBtn active">기본정보<span class="btnSlideOpen"></span></button>
+                                    </dt>
+                                    <dd class="custDtlMain">
+                                        <div class="gridContainer">
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>고유번호</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                9999
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>요청일시</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                2018-09-12 11:45:39
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>영업담당</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                (경남본부 GN / 영동사거리대리점)
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>영업담당</dt>
+                                                        <dd>
+                                                            <span class="selectSet">
+                                                                <select>
+                                                                    <option>선택해 주세요</option>
+                                                                    <option>홍길동</option>
+                                                                    <option>김철수</option>
+                                                                </select>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <!-- // 기본정보 -->
+                                
+                                <!-- 고객정보 -->
+                                <dl class="customerDtlBox">
+                                    <dt class="custDtlTit type2">
+                                        <button class="slideBtn active">고객정보<span class="btnSlideOpen"></span></button>
+                                    </dt>
+                                    <dd class="custDtlMain">
+                                        <div class="gridContainer">
+                                            <div class="gridSet grid2 type2">
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>고객명</dt>
+                                                        <dd><span class="ddTxt">김아영</span></dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt class="nonTxt"></dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                <span class="radioSet"><input type="radio" id="male" name="sex" /><label for="male"><i></i>남</label></span>
+                                                                <span class="radioSet"><input type="radio" id="female" name="sex" checked /><label for="female"><i></i>여</label></span>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet grid3">
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>생년월일</dt>
+                                                        <dd><div class="calendarSet gray"><input type="tel" id="" name="" value="1984-12-05"><button disabled>달력열기</button></div></dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt class="nonTxt"></dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                <span class="radioSet"><input type="radio" id="birth01" name="birthType" checked /><label for="birth01"><i></i>양력</label></span>
+                                                                <span class="radioSet"><input type="radio" id="birth02" name="birthType" /><label for="birth02"><i></i>음력</label></span>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>DM 수신여부</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                <span class="radioSet"><input type="radio" id="dmOK" name="dmSend" checked /><label for="dmOK"><i></i>동의</label></span>
+                                                                <span class="radioSet"><input type="radio" id="dmNo" name="dmSend" /><label for="dmNo"><i></i>거부</label></span>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet grid2 type2">
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>휴대전화번호</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                010-7898-8989
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>SMS 수신여부</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                <span class="radioSet"><input type="radio" id="smsOK" name="smsSend" checked /><label for="smsOK"><i></i>동의</label></span>
+                                                                <span class="radioSet"><input type="radio" id="smsNo" name="smsSend" /><label for="smsNo"><i></i>거부</label></span>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet grid2 type2">
+                                                <div class="gridItem">
+                                                    <dl class="listView nonTb">
+                                                        <dt>e-Mail</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                abcdefg@renaultsamsungM.com
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>e-Mail 수신여부</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                <span class="radioSet"><input type="radio" id="emailOK" name="emailSend" checked /><label for="emailOK"><i></i>동의</label></span>
+                                                                <span class="radioSet"><input type="radio" id="emailNo" name="emailSend" /><label for="emailNo"><i></i>거부</label></span>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet">
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>개인정보활용동의</dt>
+                                                        <dd>
+                                                            <div class="fileTxtBtn">
+                                                                <span>개인정보수집동의서(김아영).pdf</span>
+                                                                <button class="btnBG termsView">미리보기</button>
+                                                            </div>
+                                                            <div class="dotLineTxt">
+                                                                <p>마케팅 활용 유효기간: 2020-05-01 (<strong class="txtRD">D-158</strong>)</p>
+                                                            </div>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <!-- // 고객정보 -->
+                                
+                                <!-- 계약정보 -->
+                                <dl class="customerDtlBox">
+                                    <dt class="custDtlTit">
+                                        <button class="slideBtn active">계약정보<span class="btnSlideOpen"></span></button>
+                                    </dt>
+                                    <dd class="custDtlMain">
+                                        <div class="gridContainer">
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>견적번호</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                N20181211000000016
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>상태</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                매출
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>우선접촉 리드여부</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                <span class="txtRD">HOT</span>
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>배분일자</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                2019-03-04
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>모델</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                SM6-LFD
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>차종</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                GDeRE
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="gridSet grid2">
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>고객구매예정일</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                1개월
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="gridItem">
+                                                    <dl class="listView">
+                                                        <dt>구매방법</dt>
+                                                        <dd>
+                                                            <span class="ddTxt">
+                                                                할부구매
+                                                            </span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <!-- // 계약정보 -->
+                                
+                                <div class="btnPageBottom">
+                                    <a href="customer_eShowroom.html" class="btnLB">취소</a>
+                                    <button class="btnBY">저장</button>
+                                </div>
+                            </div>
+                        </div>
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

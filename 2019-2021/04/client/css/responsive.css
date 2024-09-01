@@ -1,0 +1,658 @@
+@charset "utf-8";
+
+/*===================================================================
+* INFORMATION
+* -------------------------------------------------------------------
+* @Author : Cho, Myung Jin (lexy.cho@think-tree.co.kr)
+* @File Name: common.css
+* @Description : 공통 레이아웃 정의
+* @Create Date: 2020-01-15
+* @Last Update Date: N/A
+* @History: N/A
+* ====================================================================*/
+
+@media all and (max-width:1534px) {
+	.containerArea .map {padding:1rem 1rem 1rem 9rem;}
+	.containerArea .map > div {width:100%;}
+	.containerArea .total p {width:100%;}
+}
+@media all and (max-width:1200px) {
+	.mypageLayout .mypageTop {height:auto;}
+	.mypageLayout .totalDate {position:relative;}
+}
+@media all and (max-width:1000px) {
+	.dateNcompay {position:relative;padding:0 0 10px 0;height:auto;}
+	.dateNcompay .dateArea {position:relative;width:21rem;}
+	.dateNcompay .address {margin-top:5px;}
+	.dateNcompay .company {margin-top:10px;}
+	.orderStepBox.stepReport .taxInfo .left {width:100%;padding-right:0;}
+	.orderStepBox .osTit em {display:none;}
+	.orderStepBox .osTit dt span {display:none;}
+	.containerArea .map,
+	.containerArea .total,
+	.containerArea .guid {padding:1rem;}
+	.mypageLayout .tabBox a,
+	.mypageLayout .tabBox button {padding:0 1rem;font-size:1.2rem;}
+	.mypageLayout .tabBox ul li button.news:after {margin-left:2px;width:16px;height:16px;line-height:1.5;text-align:center;}
+}
+@media all and (max-width:960px) {
+	.mypageLayout .infoWrite {width:100%;}
+	.mypageLayout .infoWrite .address div {padding:0 0 5px calc(5.1rem + 5px);}
+	.mypageLayout .infoWrite .address .btnAdress {width:5.1rem;height:3.429rem;font-size:0.92rem;}
+	.mypageLayout .infoWrite .address.withPost div .postCode {padding:0.6rem 0;height:3rem;font-size:1rem;}
+}
+/* =============================================================================== */
+/* 타블렛 세로 (갤럭시 Tab S4 세로버전 넓이 기준) */
+/* =============================================================================== */
+@media all and (max-width:800px) {
+	/* input */
+	input[type="text"],
+	input[type="tel"],
+	input[type="email"],
+	input[type="number"],
+	input[type="date"],
+	input[type="password"],
+	input[type="search"],
+	textarea {/* height:calc(2.857rem - 2px); */font-size:1rem;}
+	::-webkit-input-placeholder {font-size:1rem;} /* WebKit browsers */
+	:-moz-placeholder {font-size:1rem;} /* Mozilla Firefox 4 to 18 */
+	::-moz-placeholder {font-size:1rem;}/* Mozilla Firefox 19+ */
+	:-ms-input-placeholder {font-size:1rem;}/* Internet Explorer 10+ */
+	.pCase {display:none !important;}
+	.mCase {display:block !important;}
+	.c-close {display:inline-block !important;}
+	.c-button {display:inline-block !important;}
+	.calSet input {height:calc(100% - 1px);width:calc(100% - 1px);}
+	/* ===== Grid ===== */
+	.gridSet {display:inline-block;width:100%;}
+	.gridItem {display:inline-block;width:100%;}
+	.gridSet.grid2 .gridItem {width:100%;}
+	.gridSet.grid3 .gridItem {width:100%;}
+	.gridSet.grid3 .gridItem:nth-child(2) {width:100%;}
+	.gridSet.grid4 .gridItem {width:100%;}
+	.gridSet.grid5 .gridItem {width:100%;}
+	/* Responsive list style */
+	.resList ul {border-bottom:none}
+	.resList ul > li {display:inline-block;padding:.5rem 0 1rem;height:auto;margin-bottom:1rem;width:100%;border:1px solid #eee;}
+	.resList ul > li:last-child {margin:0;}
+	.resList ul > li > span,
+	.resList ul > li > div {display:inline-block;padding:0 1rem;height:auto;text-align:left;border:none;}
+	.resList ul > li > div {display:inline-block;padding:.25rem 1rem;width:100%;}
+	.resList ul > li > span {width:100%;text-align:center;padding:.25rem 1rem 0;}
+	.resList ul.thead {display:none;}
+	.resList ul > li .listGrid span {height:auto;}
+	.resList ul.tbody {margin-top:0;}
+	.resList ul.tbody li:hover {border:1px solid #fd7013;box-shadow:none;background:#fff8f4;}
+	.resList ul.tbody li:hover > span,
+	.resList ul.tbody li:hover > div {border:none;}
+	.resList ul.tbody li:hover > div:first-child {border-left:none;}
+	.resList ul.tbody li:hover .listGrid span {border-color:#eee;}
+	/* listarea */
+	.listArea .listTop {height:40px;}
+	.listArea .listScroll {top:40px;}
+	/* ===== 화면개별셋팅 ===== */
+	/* 회원가입 */
+	.joinDetail {width:100%;}
+	.joinDetail .inputBox dt {width:8.5rem;}
+	.joinDetail .importBox dt {width:8.5rem;}
+	.joinDetail.phonePass div.noTt {padding-left:0;}
+	.joinDetail.phonePass .inputBox dt {width:1rem;}
+	.joinLayout .whiteBox {padding:3.75rem 2rem;}
+	/* 모니터링 */
+	.monitoringLayout .grayBox {padding:0;}
+	.monitoringLayout .grayBox .grayContent {display:block;position:relative;margin-bottom:2rem;padding:2rem 1rem 0;width:100%;text-align:center;border-bottom:1px solid #ddd;background:#fff;}
+	.monitoringLayout .grayBox .grayContent strong {display:block;padding-bottom:1rem;font-size:1.083rem;border-bottom:1px solid #bbb;}
+	.monitoringLayout .grayBox .grayContent strong span {display:block;font-size:1.083rem;}
+	.monitoringLayout .grayBox .grayContent > div {position:initial;border:none;height:auto;}
+	.monitoringLayout .grayBox .grayContent > div ul li {display:block;padding:2rem 0;width:100%;height:auto;font-size:0.9286rem;}
+	.monitoringLayout .grayBox .grayContent > div ul li:first-child {border-bottom:1px dotted #bbb;}
+	.monitoringLayout .grayBox .grayContent > div ul li:first-child:after {content:none;}
+	.monitoringLayout .grayBox .grayContent > div ul li strong {display:none;}
+	.monitoringLayout .grayBox .grayContent > div ul li button {display:block;margin:auto;width:12rem;}
+	.monitoringLayout .grayBox .grayContent > div ul li button:after {content:none;}
+	.monitoringLayout .grayBox .grayContent > div ul li span.nextLine {display:inline;line-height:normal;}
+	.monitoringLayout .grayBox .grayContent2 {border-top:1px solid #ddd;}
+	.monitoringLayout .grayBox .grayContent2 strong {padding-bottom:3rem;}
+	.monitoringLayout .grayBox .grayContent2 .billList {padding:0.5rem 2rem;border-bottom:none;}
+	.monitoringLayout .grayBox .grayContent2 .billList .bill span {font-size:1rem;}
+	.monitoringLayout .grayBox .grayContent2 .billList .bill:first-child {border-bottom:1px dotted #ddd;}
+	.monitoringLayout .grayBox .grayContent2 .billCalSet {position:absolute;display:inline-block;padding:0 1rem;width:100%;top:50px;right:0;height:auto;line-height:2;}
+	.monitoringLayout .grayBox .grayContent2 .billCalSet .selectSet {display:inline-block !important;}
+	.monitoringLayout .grayBox .grayContent2 .billCalSet .selectSet select {padding:0 2.86rem 0 0.5rem;height:2rem;}
+	.monitoringLayout .grayBox .grayContent2 .billCalSet .radioChoose {display:none;}
+	.monitoringLayout .mCase {width:100%;}
+	.monitoringLayout .pd2 {padding:2rem 1rem 1rem;width:100%;text-align:center;}
+	.monitoringLayout .pd2 strong {display:block;padding-bottom:0;}
+	.monitoringLayout .pd2 .tlsTop {display:block;width:100%;line-height:3.4;}
+	.monitoringLayout .tls table th,
+	.monitoringLayout .tls table td {padding:0.5rem 0.3rem;font-size:0.86rem;}
+	.monitoringLayout .tls table td span {font-size:0.86rem;vertical-align:middle;}
+	.monitoringLayout .tls tbody tr .multNum {margin-right:0.3rem;width:1.286rem;height:1.286rem;font-size:0.86rem;line-height:1.6;}
+	.monitoringLayout .tls table td .dateFormat * {font-size:0.86rem;}
+	.monitorMStep div strong {display:inline-block !important;}
+	/* 마이페이지 */
+	#header.mypageCase .btnList {display:block;padding:0;width:2.74rem;height:2.74rem;font-size:0;text-indent:-9999px;vertical-align:middle;overflow:hidden;border:none;background:url('../images/btn_list.png') no-repeat center center;background-size:7px auto;}
+	#header.mypageCase .right button {display:none;}
+	.mypageLayout .pd2-t {padding:0;}
+	.mypageLayout .pd2 {padding:0;}
+	.mypageLayout .mypageTop {display:none;}
+	.mypageLayout .tabBox {display:none;}
+	.mypageLayout .mypageContents {min-height:auto;border:0;}
+	.mypageLayout .tabData {padding:1rem;}
+	.mypageLayout .tabData.userApproval {padding-top:0;}
+	.mypageLayout .tabData.setting {padding:0;}
+	.mypageLayout h3 {display:block;position:relative;padding:1rem 1rem 1rem;border-bottom:1px solid #ddd;background:#f8f8f8;}
+	.mypageLayout h3 .right {position:absolute;right:1rem;top:0.7rem;}
+	.mypageLayout h3 .right button {width:5rem;height:2rem;}
+	.mypageLayout h4 {display:block;padding:1rem 1rem 1rem;border-top:1px solid #ddd;border-bottom:1px solid #ddd;background:#f8f8f8;}
+	.mypageLayout .noticeList dl dt {padding:0.7rem 3.4rem 0.7rem 1rem;min-height:auto;}
+	.mypageLayout .noticeList dl dt button {width:2.5rem;}
+	.mypageLayout .noticeList dl dd {padding:1rem;}
+	.mypageLayout .infoWrite {width:100%;}
+	.mypageLayout .infoWrite .phoneArea .right {display:none;}
+	.mypageLayout .ciDetail dl {display:table;float:none;width:100%;text-align:left;border-bottom:1px solid #000;}
+	.mypageLayout .ciDetail dl dt {display:table-cell;width:7rem;border-bottom:none;}
+	.mypageLayout .ciDetail dl dd {display:table-cell;}
+	.mypageLayout .paymentList .resList li {text-align:left;border:1px solid #bbb;}
+	.mypageLayout .paymentList .resList li * {text-align:left;}
+	.mypageLayout .paymentList .resList li em {display:inline-block;padding-right:.5rem;font-size:0.8571rem;color:#999;}
+	.mypageLayout .paymentList .resList li .num {display:none;}
+	.mypageLayout .paymentList .resList li .date {width:auto;}
+	.mypageLayout .paymentList .resList li .date em {display:block;padding:.5rem 0 0 0;font-size:1rem;color:#111;}
+	.mypageLayout .paymentList .resList li .ocnum {padding:1rem 1rem;width:auto;}
+	.mypageLayout .paymentList .resList li .ocnum span {width:auto;}
+	.mypageLayout .paymentList .resList li .kind {display:none;}
+	.mypageLayout .paymentList .resList li .ps {width:auto;}
+	.mypageLayout .paymentList .resList li .price {float:right;width:auto;}
+	.mypageLayout .paymentList .resList li .way {display:none;}
+	.mypageLayout .paymentList .resList ul > li > span {display:inline-block}
+	.mypageLayout .paymentList .resList ul > li > div {display:block;}
+	.mypageLayout .paymentList .resList ul > li .listGrid {display:block;}
+	.mypageLayout .paymentList .resList ul > li .listGrid span {display:inline-block}
+	.mypageLayout .paymentList .resList ul.thead {border:none;}
+	.mypageLayout .paymentList .resList ul.tbody {border-bottom:none;}
+	.mypageLayout .paymentList .resList ul.tbody li {border-bottom:1px solid #bbb;}
+	/* 작성중 안내 */
+	.notSubmit {position:fixed;z-index:201;top:0;right:0;bottom:0;left:0;border:none;background:rgba(0,0,0,.8);}
+	.notSubmit div {padding:8rem 0 0 0;color:#fff;text-align:center;line-height:2;background:url('../images/i_warring_arrow.png') no-repeat center 20px;background-size:10rem auto;}
+	.notSubmit div:before {display:none;}
+	.notSubmit div span {display:block;color:#fff;}
+	.notSubmit div em {position:fixed;top:1rem;right:1rem;display:inline-block;padding:0 0.9rem;height:3.429rem;font-size:1rem;line-height:3;color:#f0483b;border:1px solid #f0483b;}
+	/* 계약오더 */
+	.contractOerder .mCase {width:100%;}
+	.btnSetting {display:inline-block;vertical-align:middle;}
+	.inputBox.iner .selectSet select {padding:0 1rem 0 0;}
+	.inputBox.iner .selectSet:after {right:0}
+	.address.inlineCase {padding:0 0 .5rem 0;}
+	.address.inlineCase div {position:relative;width:100%;}
+	/*오더관리 - 상세*/
+	.orderStepBox {padding:1rem 1rem 0;}
+	.orderStepBox.stepPrice {padding:2rem 0 0;}
+	.orderStepBox.stepPrice .inputBox {width:100%;}
+	/* 오더일시 */
+	/* 오더관리 - 상세기본 */
+	.orderStepBox .osTit .ctSetNum {display:block;padding:1rem 0 0 0;}
+	.orderStepBox .osData .gridSet.grid2 {display:table;}
+	.orderStepBox .osData .gridSet.grid2 .gridItem {display:table-cell;width:50%;}
+	.containerArea .total {padding:1rem;}
+	.orderStepBox.stepPrice .osTit {padding-bottom:1rem;}
+	.orderStepBox.stepReport .osTit {padding-bottom:1rem;}
+	.orderStepBox.stepReport .taxInfo .right {padding-top:1rem;}
+	/* ====================== */
+	/* Popup Setting */
+	/* ====================== */
+	.pclose {top:1rem;right:1.4rem;background:url('../images/btn_close.png') no-repeat center;background-size:1rem auto;}
+	/* 검색공통 */
+	.basicPop.searchPop {position:absolute;top:1.4rem;left:1.4rem;bottom:1.4rem;right:1.4rem;margin:0;width:auto;height:auto;}
+	.searchPop .searchInput {width:100%;height:3.2rem;}
+	.searchPop .tip {width:100%;padding:0.5rem 0;font-size:0.8571rem;}
+	.searchPop .tip * {font-size:0.8571rem;}
+	.searchPop .listArea {height:calc(100% - 5rem);}
+	.searchPop .listArea .tls th,
+	.searchPop .listArea .tls td {padding:0.5rem;font-size:0.9286rem;}
+	.searchPop .listArea .tls td.tL strong,
+	.searchPop .listArea .tls td button {font-size:0.9286rem;}
+	.searchPop .listArea .tls.comapySearch th.pCase + th {border-left:1px solid #000}
+	.searchPop .listArea .tls.comapySearch td.pCase + td {border-left:1px solid #eee}
+	.searchPop .listArea .tls.comapySearch tr.on td.pCase + td,
+	.searchPop .listArea .tls.comapySearch tr:hover td.pCase + td {border-left-color:#fd7013;}
+	/* 비밀번호 변경 */
+	.basicPop.pwChangePop {top:50%;margin-top:-175px;height:350px;}
+	/* 오더정보 */
+	.basicPop.orderPop {position:absolute;top:1.4rem;left:1.4rem;bottom:1.4rem;right:1.4rem;margin:0;width:auto;height:auto;}
+	.orderPop .tt {padding-top:0;}
+	.orderPop .pBack {top:4.4rem;bottom:1.4rem;}
+	.orderPop .tab02 .tabNav {overflow-x:auto;overflow-y:hidden;}
+	.orderPop .tab02 .tabNav a, .orderPop .tab02 .tabNav button {padding:0 .5rem;}
+	.orderPop .tab02 .tabNav ul {width:100%;}
+	.orderPop .tab02 .tabNav button span {margin-left:1rem;}
+	.orderInfoList ul.tbody > li {display:inline-block;width:100%;}
+	.orderInfoList ul.tbody > li > span,
+	.orderInfoList ul.tbody > li > div {display:inline-block;width:100% !important;}
+	/* loadResultPop */
+	.basicPop.loadResultPop {top:0;bottom:0;right:0;left:0;}
+	.loadResultPop .pBack {left:0;right:0;}
+	.loadResultPop .calendarSet {position:relative;padding:0 1.4rem;height:3rem;}
+	.loadResultPop .calendarSet .calDupSet {width:100%;padding-right:7.5rem;margin:0;box-sizing:border-box;}
+	.loadResultPop .calendarSet .calDupSet em {width:0.5rem;line-height:2;}
+	.loadResultPop .calendarSet .calDupSet .calSet {padding:0;width:calc((100% - 1.5rem)/2);height:2rem;}
+	.loadResultPop .calendarSet .calDupSet .calSet input {padding:0 0.3rem;width:calc(100% - 23px);height:100%;font-size:0.9286rem;}
+	.loadResultPop .calendarSet .calSet input::placeholder {font-size:0.9286rem;}
+	.loadResultPop .calendarSet .calSet label {left:-4rem;top:0.3rem;}
+	.loadResultPop .calendarSet .calSet button,
+	.loadResultPop .calendarSet .calSet button:before {width:2rem;height:2rem;background-size:0.9rem auto;}
+	.loadResultPop .calendarSet .radioChoose {position:absolute;right:1.4rem;top:0;}
+	.loadResultPop .calendarSet .radioChoose label {float:left;margin-right:5px;width:calc((7rem - 5px)/2);height:2rem;}
+	.loadResultPop .calendarSet .radioChoose label:last-child {margin-right:0;}
+	.loadResultPop .calendarSet .radioChoose span {padding:0;line-height:2.2;font-size:0.9286rem;border:1px solid #bbb;}
+	.loadResultPop .resultContents {padding:1rem 1.4rem;height:calc(100% - 3rem);border-top:1px solid #ddd;border-bottom:1px solid #ddd;}
+	.loadResultPop .resultList li {padding:0 1rem 1rem 0 !important;width:calc((100% - 1rem)/2);box-sizing:content-box;}
+	.loadResultPop .resultList li:nth-child(2n) {padding-right:0 !important;}
+	.loadResultPop .resultList li:nth-last-child(-n+3) {padding-bottom:0 !important;}
+	.loadResultPop .resultList li > div {width:100%;height:11rem;}
+	.loadResultPop .resultList li .listHead strong {width:2.5rem;}
+	.loadResultPop .resultList li .listHead span {padding-left:2.5rem;}
+	.loadResultPop .resultList li .listHead span em {padding:0 0.3rem;}
+	.loadResultPop .resultList li .listBody > div {padding:0 0.4rem;text-align:center;}
+	.loadResultPop .resultList li .listBody div dl:first-child:after {left:0.6rem;}
+	.loadResultPop .resultList li .listBody div dl dt {width:20px;;height:20px;}
+	.iosCase .loadResultPop .resultList li .listBody div dl dt {padding-top:2px;}
+	.loadResultPop .resultList li .listBody div dl dd {padding-left:0;}
+	/* filterPop */
+	.filterPop .gridSet {display:table;}
+	.filterPop .gridSet.grid2 .gridItem {display:table-cell;width:50%;}
+	/* taxBillPop */
+	.basicPop.taxBillPop {top:0;right:0;bottom:0;left:0;}
+	.taxBillPop .topSet {display:none;}
+	.taxBillPop .pclose {left:1.4rem;}
+	.taxBillPop .btnDownLoad {position:absolute;display:block;right:1.4rem;top:1rem;z-index:100;padding:0.6rem;width:2rem;height:2rem;text-indent:-9999px;overflow:hidden;border:none;box-sizing:border-box;background:url('../images/btn_download.svg') no-repeat center;background-size:1.6rem auto;}
+	/* addressPop */
+	.addressPop .tab02 {height:100%;}
+	.addressPop .tab02 .tabLayout {height:calc(100% - 3.28rem - 10px);}
+	.addressPop .tab02 .tabLayout .tabData {height:100%;}
+	.addressPop .seachArea {height:8.5rem;}
+	.addressPop .listArea {height:calc(100% - 8.5rem);}
+	.addressPop .tab02 .listArea {height:100%;}
+	/* saveAddressPop */
+	.saveAddressPop .grayArea strong {display:inline-block;width:100%;line-height:1.4;}
+	/* harborPop */
+	.harborPop .tls th,
+	.harborPop .tls td {padding:0.5rem;}
+	.harborPop .harborBox ul li {margin:0.5rem 0.5rem 0 0;padding:0.6rem 0;width:calc((100% - 1.5rem)/4);}
+	.harborPop .harborBox ul li:nth-child(5n) {margin-right:0.5rem;}
+	.harborPop .harborBox ul li:nth-child(4n) {margin-right:0;}
+	.harborPop .harborStep:first-child {height:18rem;}
+	.harborPop .harborStep:last-child {height:calc(100% - 18rem);}
+	/* idChangePop */
+	.idChangePop .phonePass div.noTt {padding-left:0;}
+}
+
+/* =============================================================================== */
+/* 로그인 디자인 (넓이 600 기준) */
+/* =============================================================================== */
+@media all and (max-width:600px) {
+	.mt10px {margin-top: 5px;}
+	/* 자동완성 */
+	.ui-widget-content {max-width:20rem;padding:.5rem;font-size:1rem;}
+	.ui-widget-content * {font-size:1rem;}
+	.inputAuto {height:3rem !important;}
+	.selectSet select {font-size:1rem;}
+	.btnM {height:3rem;}
+	/* ===== sub setting ===== */
+	/* inputBox */
+	.inputBox {height:3rem;}
+	.inputBox dd {font-size:1rem;}
+	.inputBox dd .dateFormat {font-size:1rem;}
+	.inputBox dd .dateFormat * {font-size:1rem;}
+	.inputBox.iner dd {height:3rem;}
+	.importBox dt {height:3rem;}
+	.importBox dd {font-size:1rem;}
+	.inputBox dd .dateFormat {font-size:1rem;}
+	.inputBox dd .dateFormat i {font-size:1rem;}
+	.importBox dd input {height:calc(100% - 1px);}
+	.inputBox dd input {height:calc(100% - 1px);width:calc(100% - 1px);}
+	.inputBox.focusOn dd input {height:calc(100% - 1px);width:calc(100% - 1px);}
+	.inputBox dd .selectSet select {height:100%;}
+	.soloInput {height:3rem !important;}
+	.calSet {height:3rem;}
+	.calSet button {width:3rem;height:3rem;}
+	.calSet label {top:0.8rem;}
+	/* 주소 */
+	.address div {padding: 0 0 5px calc(5.1rem + 5px);}
+	.address div button {height:3rem;width:5.1rem;}
+	.address div em {left:6rem;top:.78rem;}
+	.address div em + input {padding-left:7rem;}
+	.address.inlineCase2 {position:relative;padding:0 0 0 calc(5.1rem + 5px);}
+	.address.inlineCase2 div {position:absolute;left:0;top:0;width:calc(5.1rem - 5px);}
+	.dateNcompay {padding: 0 0 5px 0;}
+	.dateNcompay .dateArea {padding-bottom:0;width:100%;}
+	.dateNcompay .priceSelect {margin-top:5px;}
+	/* 검색 Input */
+	.searchInput {height:calc(100% - 1px);}
+	/**/
+	.numIcon {width:2.21rem;height:2.21rem;font-size:1.429rem;text-indent:15px;line-height:1.6;background:url('../images/i_number_background.png') no-repeat center;background-size:100% auto;}
+	/**/
+	#loginWrap {position:absolute;}
+	#loginWrap .formBack {padding:1.5rem;}
+	#loginWrap .loginForm {width:100%;}
+	#loginWrap .loginForm.whiteBox {padding:0 9% 2rem;height:auto;}
+	#loginWrap .loginForm h1 {padding:2.143rem 0 0;font-size:2.143rem;}
+	#loginWrap .loginInput {padding-top:1.429rem;}
+	#loginWrap .loginOption {padding:1.143rem 0 0;height:4.286rem;}
+	#loginWrap h2 {padding-top:1.429rem;height:3.429rem;}
+	#loginWrap .joinGo span {padding:1rem 0;}
+	#loginWrap .copration {padding-top:2.5rem;}
+	#loginWrap .loginInput span input {height:calc(100% - 2px);}
+	/* 오더관리 - 상세기본 */
+	.btnDelete {padding:0;width:2.29rem;height:2.29rem;text-indent:-9999px;overflow:hidden;}
+	.btnDelete:before {top:9px;}
+	.contractOerderWrite .company {padding:0 0 0 calc(5.1rem + 5px);}
+	.contractOerderWrite .searchCompany {width:5.1rem;}
+	.contractOerderWrite .address {padding:0 0 5px calc(5.1rem + 5px);}
+	.contractOerderWrite .address div {padding:0 0 5px calc(5.1rem + 5px);}
+	.contractOerderWrite .address button {width:5.1rem;height:3rem;font-size:0.92rem;color:#333;border:1px solid #999;box-sizing:border-box;border-radius:4px;background:#f8f8f8;}
+	.contractOerderWrite .inputBox dt {padding:0 .5rem;width:4rem;}
+	.contractOerderWrite .calSet input {padding: 0 3.2rem 0 4rem;height:100%;}
+	/* .orderDate .inputBox dt {padding:0 1rem 0 0;width:4rem;}
+	.orderDate .inputBox em {display:none;}
+	.orderDate .inputBox.iner dd {padding:0 .2rem;} */
+	.orderDate .statusSet {width:5rem;height:2rem;line-height:2.1;box-sizing:border-box;}
+	.orderDate dl dt {width:auto !important;height:2rem;line-height:2.4;padding-right:0.5rem;font-size:0.86rem;}
+	.orderDate dl dd {height:2rem;font-size:0.92rem;line-height:2.1;}
+	.orderDate dl dd span {line-height:1;}
+	.orderDate .btnLoadResult {padding:.5rem 1rem;margin-left:0;height:3rem;}
+	.orderDate dl + .btnLoadResult {float:right;height:3.429rem;width:calc(100% - 14.2rem);}
+	.orderStepBox .osData {padding:.5rem;}
+	.orderStepBox .osData .inputBox dd textarea {padding:0.8rem 0;height:5.7rem;}
+	.orderStepBox .osData .inputBox dd .memoBox {padding:0.6rem 0.5rem 0.6rem 0;height:5.3rem;}
+	.orderStepBox .osData .gridSet {padding: 5px 0;}
+	.orderStepBox .osData .gridSet.notPd {display:block;}
+	.orderStepBox .osData .gridSet.notPd .gridItem {display:block;width:100%;}
+	.orderStepBox .osData .gridSet.notPd .inputBox {width:100%;}
+	.orderStepBox .osData .gridSet.notPd.unipassSet {padding-right:70px;}
+	.orderStepBox .osData .gridSet.notPd.unipassSet .gridItem:first-child {padding:0;}
+	.orderStepBox .osData .gridSet.notPd.unipassSet .gridItem:nth-child(2) {margin:6px 0 0 0 !important;}
+	.orderStepBox .osData .gridSet.notPd.unipassSet .searchUnipass {width:66px;position:absolute;right:0;top:0;}
+	.orderStepBox .osData.basicCase {position:relative;}
+	.orderStepBox .osData .gridSet.locate {display:block;}
+	.orderStepBox .osData .gridSet.locate .gridItem {display:inline-block;padding:0 0 0 0 !important;width:100%;}
+	.orderStepBox .osData .gridSet.locate .gridItem.halfInputBox .inputBox {margin:0 0 6px 0;width:100%;float:none;}
+	.orderStepBox .osData .gridSet.locate .calSet {margin-bottom:6px;}
+	.orderStepBox .osData .gridSet.locate .calSet label {left:0.5rem;top:0.7rem;}
+	.orderStepBox .osData .gridSet .withDate .calSet {float:none;width:100%;}
+	.orderStepBox .osData .gridSet .withDate > *:last-child {margin-bottom:0 !important;}
+	.orderStepBox .osData .gridSet .withDate .inputBox {float:none;width:100%;}
+	.orderStepBox .osTit .ctSetNum {display:inline-block;width:100%;}
+	.orderStepBox .osTit .inputBox {display:table;float:left;margin-bottom:0.4rem;}
+	.orderStepBox .osTit .inputBox dt {padding:0 0.5rem;}
+	.orderStepBox .osTit .inputBox dd:nth-child(3) {font-size:0.8571rem;text-align:center;}
+	.orderStepBox .osTit .inputBox.cell1 {width:calc(32%);}
+	.orderStepBox .osTit .inputBox.cell2 {margin:0 5px 0.4rem;width:calc(38% - 10px);}
+	.orderStepBox .osTit .inputBox.cell3 {width:calc(30%);}
+	.orderStepBox .osTit .inputBox.cell3 dt {width:1px !important;overflow:hidden;padding:0;text-indent:-9999px;}
+	.orderStepBox .osTit .inputBox.cell3 dd {text-align:center;}
+	.orderStepBox .osTit .inputBox.cell3 dd span {width:calc(100% - 4px);}
+	.orderStepBox .osTit .inputBox.cell4 {width:calc(50%);}
+	.orderStepBox .osTit .inputBox.cell5 {margin-left:5px;width:calc(50% - 5px);}
+	.orderStepBox .osTit .inputBox.cell5 dt {width:4rem;}
+	.orderStepBox .osTit .inputBox dt {width:auto;height:3rem;}
+	.orderStepBox .osTit .inputBox input {width:3rem;}
+	.orderStepBox .osTit .mapTlsSet .tls {float:none;width:100% !important;}
+	.orderStepBox .osTit .mapTlsSet .tls:first-child table thead th:last-child {border-right:1px solid #333;}
+	.orderStepBox .osTit .mapTlsSet .tls:last-child table thead th:first-child {border-left:1px solid #333;}
+	.containerArea .info {padding:.5rem .5rem .5rem;}
+	.containerArea .info .numIconBack {display:block;float:none;width:100%;padding:0 0 .5rem;}
+	.containerArea .info .inputBox {display:table;float:left;margin:0 0 5px;padding:0 0 0 0;width:calc(50%);height:3rem;border:1px solid #ddd !important;}
+	.containerArea .info .inputBox.focusOn {border-color:#ff7f76 !important;}
+	.containerArea .info .inputBox dt {display:table-cell;padding:0 .5rem 0;width:auto;}
+	.containerArea .info .inputBox dd {display:table-cell;border:0;}
+	.containerArea .info .inputBox dd input {font-size:1rem;}
+	.containerArea .info .inputBox.cell1 {width:40%;}
+	.containerArea .info .inputBox.cell1 dt {width:4.6rem;padding-right:0;}
+	.containerArea .info .inputBox.cell2 {width:calc(60% - 3px);margin-left:3px;}
+	.containerArea .info .inputBox.cell2 dt {width:6.429rem;padding-right:0;}
+	.containerArea .info .inputBox.cell3 {width:100%;}
+	.containerArea .info .inputBox.cell3 dt {width:5.714rem;padding-right:0;}
+	.containerArea .info .btn {position:initial;float:left;top:auto;bottom:auto;right:auto;margin:0;padding:0;text-align:center;}
+	.containerArea .info .btn .btnDelete {position:absolute;top:.5rem;right:.5rem;}
+	.orderStepBox.stepMap .osTit {padding-bottom:0;}
+	.orderStepBox.stepPrice {padding:3rem 0 0;}
+	.orderStepBox.stepPrice .osTit {padding:0 1rem 1rem;}
+	.orderStepBox.stepPrice .osData {padding:1rem;}
+	.orderStepBox.stepPrice .inputBox {width:100%;}
+	.orderStepBox.stepPrice .osData div {padding:1rem 0 0 0;}
+	.orderStepBox.stepPrice .osData div span {padding: 0 1rem 1rem 1.5rem;font-size:0.8571rem;}
+	.orderStepBox.stepPrice .osData div span:last-child {padding: 0 1rem 0 2rem;}
+	.orderStepBox.stepPrice .osData div span:before {font-size:1.429rem;}
+	.orderStepBox.stepReport .osData {padding:1rem;}
+	.orderStepBox.stepReport .osTit {padding:0 1rem 1rem;}
+	.orderStepBox.stepReport .taxInfo .left .taxDetail {padding:0 0 1rem 0;}
+	.orderStepBox.stepReport .taxInfo .left div.kind .inputBox {width:40%;}
+	.orderStepBox.stepReport .taxInfo .left div.kind .taxStampCancel {position: absolute;top:-11px;left:6rem;height:2.143rem;font-size:0.8571rem;}
+	.orderStepBox.stepReport .taxInfo .left .taxDetail .taxStamp {top:10px;margin-top:0;width:6.86rem;height:5rem;}
+	.orderStepBox.stepReport .taxInfo .left .taxDetail .taxStamp button {margin:-0.5rem 0 0 -2rem;width:4rem;height:1.286rem;font-size:0.8571rem;}
+	.orderStepBox.stepReport .taxInfo .right {width:100%;}
+	.orderStepBox.stepReport .taxInfo .right .inputBox {float:left;width:calc(50% - 3px);}
+	.orderStepBox.stepReport .taxInfo .right .inputBox:nth-child(odd) {margin-left:3px;}
+	.orderStepBox.stepReport .taxInfo .right .inputBox:nth-child(even) {margin-right:3px;}
+	.containerArea .map {padding:0.5rem;background:none;}
+	.containerArea .map > div > dl {display:inline-block;width:100%;}
+	.containerArea .map > div > dl > dt {display:inline-block;width:100%;padding:.5rem 0;}
+	.containerArea .map > div > dl > dt span {display:inline-block;}
+	.containerArea .map > div > dl > dt:before {display:none;}
+	.containerArea .map > div > dl > dt button {margin:0 0 0 1rem;}
+	.containerArea .map > div > dl > dd {display:inline-block;padding:1rem 0;width:100%;border:none;}
+	.containerArea .map > div > dl > dd .address.inlineCase {padding:0 0 0 0;}
+	.containerArea .map > div .dateNcompay .calSet input {padding-left:1rem;}
+	.containerArea .map > div.work {padding:0 0 3.286rem;}
+	.containerArea .map > div.work > dl > dd > .inputBox {margin-bottom:6px;}
+	.containerArea .map > div.work .whiteBlue {left:50%;bottom:1rem;margin-left:-7rem;}
+	.containerArea .map > div.end > dl > dd {padding:1rem 0;border-bottom:0;}
+	.containerArea .total .inputBox {width:100%;}
+	.containerArea .total label {padding:0 0 1rem 0;}
+	.containerArea .total .inputBox dd input {font-size:1.5rem;padding-right:0.5rem;}
+	.containerArea .total p {padding:1rem 0 0 0;}
+	.containerArea .guid {padding:1rem;}
+	.containerArea .guid strong {margin-bottom:0.5rem;}
+	.containerArea .guid strong span {display:inline-block;margin:0.3rem 0 0 0;text-indent:0;}
+	.containerArea .guid strong a {display:block;margin:0.3rem 0 0 0;}
+	.containerArea .guid .standard {padding:.5rem;margin-bottom:0.5rem;}
+	.containerArea .guid .standard em {display:block;padding:0 0 .2rem;font-size:1.143rem;}
+	/* .containerArea .guid .standard dl {float:left;display:table;width:60%;padding:0 0 1rem;}
+	.containerArea .guid .standard dl dt {display:table-cell;font-size:0.8571rem;margin:0;}
+	.containerArea .guid .standard dl dd {display:table-cell;padding:0 .5rem;text-align:right;font-size:1rem;line-height:auto} */
+	.containerArea .guid .standard dl {padding:0 0.5rem .3rem 0;}
+	.containerArea .guid .standard dl dt {font-size:0.8571rem;margin:0;}
+	.containerArea .guid .standard dl dd {padding:0 0 0 .5rem;font-size:1rem;line-height:inherit}
+	.containerArea .guid .standard em + dl dd {padding:0 .5rem;}
+	.containerArea .guid .standard .stdDetail .line {display:block;}
+	.containerArea .guid .costFreight {margin:0.3rem 0.3rem 0 0;padding:0.2rem 0.4rem;font-size:0.8571rem;}
+	/* .containerArea .guid .standard .totalSum {padding:1rem 0 0;} */
+	.dataView .dataLine dl {width:100% !important;float:none;}
+	.dataView .dataLine .gridSet.grid2 {width:100%;float:none;}
+	/*  */
+	.orderViewLayout .orderStepBox .gridSet.locate .gridItem:first-child {width:100%;}
+	.orderViewLayout .orderStepBox .osData .map .gridSet .gridItem {display:block;padding:0 0 6px 0 !important;width:100%;}
+	.orderViewLayout .orderStepBox .osData .gridSet {display:block;}
+	.orderViewLayout .orderStepBox .osData .map dd .gridSet {padding:0;}
+	.orderViewLayout .orderStepBox .osTit .ctSetNum .inputBox dd:nth-child(2) {padding:0.2rem;}
+	.orderViewLayout .orderStepBox .osData .map .gridSet.grid2 .gridItem.date {width:100%;}
+	.orderViewLayout .orderStepBox .osData .map .gridSet .gridItem .inputBox dt {display:table-cell !important;}
+	.orderViewLayout .orderStepBox .osData .map .gridSet .gridItem .inputBox dd {padding:0 !important;}
+	.orderViewLayout .containerArea .info {padding:.5rem;}
+	.orderViewLayout .containerArea .info .numIconBack .statusSet {margin:0 0 0 0.5rem;padding:0;color:#f3493c;width:auto;height:auto;font-size:1rem;line-height:initial;font-weight:bold;border:none;background:transparent;}
+	.orderViewLayout .containerArea .info .inputBox:after {display:none;}
+	.orderViewLayout .containerArea .info .inputBox {display:table;padding:0 0;margin-bottom:5px;}
+	.orderViewLayout .containerArea .info .inputBox dt {display:table-cell;vertical-align:middle;width:4.5rem;padding:0 0 0 .5rem;}
+	.orderViewLayout .containerArea .info .inputBox dd {display:table-cell;vertical-align:middle;height:3rem;font-size:1rem;}
+	.orderViewLayout .containerArea .info .inputBox.cell1 dd {text-align:center;}
+	.orderViewLayout .containerArea .info .inputBox.cell2 dt {width:6rem;}
+	.orderViewLayout .orderStepBox .osData .gridSet.notPd .gridItem {padding:0 0 6px;}
+	.orderViewLayout .orderStepBox .osData .gridSet.notPd .gridItem:last-child {padding:0;}
+	.orderViewLayout .orderStepBox .osData .map .gridSet.grid3 .gridItem.date {width: 100%;}
+	.orderViewLayout .containerArea .map > div > dl > dd {padding:5px 0 0;}
+	.orderViewLayout .containerArea .map > div.work {padding:0 0 0;}
+	.orderViewLayout .containerArea .map {padding:0.5rem 0.5rem 0;}
+	/**/
+	.mypageLayout .infoWrite .address .btnAdress {height:3rem;}
+	.mypageLayout .infoWrite .phoneArea dt {width:6.429rem;}
+	.mypageLayout .infoWrite .inputBox dt {width:6.429rem;}
+	/* ====================== */
+	/* Popup Setting */
+	/* ====================== */
+	/* 오더정보 */
+	.orderPop .tab02 .tabNav ul {width:50rem;}
+	.orderInfoList ul > li * {font-size:0.8571rem;}
+	.orderInfoList ul.thead > li > div {width:calc(100% - 5.2rem)}
+	.orderInfoList ul.thead > li > span {width:5.2rem;height:30px;}
+	.orderInfoList ul.tbody > li > span.status {font-size:1rem !important;}
+	.orderInfoList ul.tbody > li div.status2 {width:calc(100% - 5.2rem)}
+	.orderInfoList ul.tbody > li div.etc {width:5.2rem;border-right:1px solid #bbb;}
+	.orderInfoList ul.tbody > li div.etc table td span.taking {padding:0 0 0 0;background:none;}
+	.orderInfoList ul.tbody > li div.status2 table td.p {width:2.429rem;}
+	.orderInfoList ul.tbody > li div.status2 table td.txt {padding:0 .5rem;}
+	.orderInfoList ul.tbody > li div.status2 table td.date {width:6.071rem;}
+	/* etransPop */
+	.etransPop .left {float:none;width:100%;}
+	.etransPop .dataBox .gridSet .gridItem:first-child {padding:0 0 10px 0;}
+	.etransPop .pBack .right {float:none;width:100%;padding:0;}
+	.etransPop .right .taxStampSet div {float:left;width:50%;padding-bottom:0;}
+	.etransPop .taxStampSet .taxStamp {background-size:auto 80%;}
+	.btnTaxOk {width:9rem;}
+	.btnTaxCancel {width:9rem;}
+	.taxStamp {height:6.857rem;}
+}
+
+/* =============================================================================== */
+/* 모바일 세로 (iPhone 6,7,8 세로버전 넓이 기준) & 가로 (iPhone X 가로버전 넓이 기준) */
+/* =============================================================================== */
+@media all and (max-width:420px), (orientation : landscape) and (max-width:820px) {
+	/* agree checkBox */
+	.agreeSet label {font-size:1rem;line-height:1.6;}
+	.agreeSet label i {margin:-1px 6px 0 0;width:24px;height:24px;line-height:1.6;}
+	.agreeSet input + label i:before {left:6px;top:6px;width:10px;height:7px;border-width:2px;}
+	/* ===== Btn ===== */
+	/* .btnAdress {width:4.79rem;height:2.29rem;color:#fff;font-size:0.86rem;border:none;border-radius:3px;background:#999;} */
+	.btnNew {position:relative;width:3.71rem;height:1.79rem;color:#f0483b;vertical-align:middle;font-size:0;overflow:hidden;border:1px solid #f0483b;border-radius:3px;background:#fff7f6;}
+	.btnNew:before {content:'신규';display:inline-block;position:absolute;left:6px;top:6px;width:14px;height:10px;font-size:0.86rem;text-indent:17px;line-height:1;background:url('../images/btn_new.svg') no-repeat;background-size:14px auto;}
+	.btnList {padding:0;width:2.74rem;height:2.74rem;font-size:0;text-indent:-9999px;vertical-align:middle;overflow:hidden;border:none;background:url('../images/btn_list.png') no-repeat center center;background-size:7px auto;}
+	.btnSearchOrder {display:block;}
+	.btnSearch {height:calc(3rem - 2px);}
+	/* ====================== */
+	/* Common Setting */
+	/* ====================== */
+	/* Layout */
+	#header {height:40px;}
+	#header h2 {font-size:1.143rem;line-height:2.3;}
+	#header button.btnM {display:none;}
+	#header .orderFix {display:none;}
+	#header .left {left:0;top:0;}
+	#header .right {right:.5rem;top:.5rem;}
+	#header .right .guideText {display:none;}
+	#header .right.mSmallBtn button.btnM {display:inline-block;width:3.71rem;height:1.79rem;font-size:0.8571rem;border-radius:3px;padding:0 0.2rem;}
+	#header.mypageCase .right {right:0;top:0;}
+	#header.mypageCase .right .btnRing {display:block;}
+	#header.mypageCase .btnList {display:block;}
+	#container {padding:40px 0 0 0;}
+	#wrap.joinCase h1 {background-size:5rem;margin:0.8rem 0 0 0.8rem;}
+	#wrap.joinCase #container {padding:60px 0 2rem 0;}
+	#snb .snbLogo {padding:0.4rem 0 0;height:3.714rem;}
+	#snb .nav li a {padding:1.5rem 0 0 1.5rem;height:4.25rem;text-align:left;}
+	#snb .nav li a:before {vertical-align:middle;margin-right:8px;}
+	#snb .nav li a em {display:inline-block;padding:0;width:auto;vertical-align:middle;}
+	/* 이메일폼 */
+	.emailForm {padding:0 0 0 0;}
+	.emailForm:after {content:'';display:block;clear:both;}
+	.emailForm .inputBox {float:left;width:calc(100% - 9.5rem) !important;}
+	.emailForm .domain {display:block;float:right;position:relative;width:9rem;box-sizing:border-box;}
+	.emailForm .domain input {width:6rem;}
+	.emailForm .domain .selectSet {width:3rem;}
+	.emailForm .domain .selectSet select {padding:0;text-indent:9999px;overflow:hidden;}
+	/* ===== 화면개별셋팅 ===== */
+	/* 회원가입 */
+	.joinLayout h3 {font-size:1.125rem;}
+	.joinLayout h4 {display:none;}
+	.joinLayout .stepBack {padding:0 1rem 1rem;height:auto;}
+	.joinLayout .whiteBox {padding:1.286rem 1rem;min-height:calc(100vh - (120px + 2.5rem))}
+	.joinLayout .whiteBox > strong {font-size:1.143rem;padding-bottom:2rem;word-break:break-all;}
+	.joinLayout .mobileGuide {display:block;}
+	.joinDetail .agreArea li {padding:0 0 10px 10px;}
+	.joinDetail .agreArea li div {padding:5px 0 1rem;height:auto;}
+	.joinDetail .agreArea li div .agreeSet {margin:7px 0 0 -12px;}
+	.joinDetail .agreArea li div button {top:10px;width:2rem;height:2rem;}
+	.joinDetail .infoArea li .inputBox .radioSet {padding:0.5rem 0;}
+	.joinDetail p.errorMsg,
+	.joinDetail p.infoMsg {padding-left:0 !important;font-size:0.86rem;}
+	.joinDetail > p.errorMsg {padding-top:1rem;}
+	.joinDetail.phonePass div.back .inputBox {width:calc(100% - 6rem - 10px);}
+	.joinDetail.phonePass div.back button {padding:0;width:6.2rem;}
+	.joinEnd {padding:6.2rem 0 0;background-size:6rem auto;}
+	.joinEnd p {padding:3.75rem 2rem;font-size:1rem;}
+	.joinEnd p strong {font-size:1.286rem;}
+	/**/
+	.pwLayout .whiteBox {min-height:calc(100vh - (60px + 2.5rem))}
+	.joinLayout h4 {display:block;}
+	.pwLayout .joinDetail .inputBox dt,
+	.pwLayout .joinDetail .importBox dt {width:7rem;}
+	.pwLayout .alertP {padding:0.5rem 0 0 0;}
+	/* 사용자 승인 */
+	.userApproval .tls {display:none;}
+	.userApproval .approvalMobile {display:block;}
+	/* 작성중 안내 */
+	.notSubmit div em {top:.5rem;right:.5rem;width:3.71rem;height:1.79rem;font-size:0.8571rem;padding:0;line-height:2;border-radius:3px;}
+	/* ====================== */
+	/* Popup Setting */
+	/* ====================== */
+	/* Dim이 포함된 팝업 기본 */
+	.basicPop {position:absolute;top:1.4rem;left:1.4rem;bottom:1.4rem;right:1.4rem;margin:0;width:auto;height:auto;}
+	.basicPop.filterPop {position:absolute;top:50%;left:1.4rem;bottom:auto;right:1.4rem;margin-top:-200px;height:400px;}
+	/* 오더취소 팝업 */
+	.orderCancelPop {top:0;left:0;right:0;bottom:0;}
+	.orderCancelPop .tls table th {font-size:0.8571rem;}
+	.orderCancelPop .memo strong {font-size:1rem;}
+	.orderCancelPop .simpleTit div {font-size:1rem;}
+	.orderCancelPop .simpleTit div * {font-size:1rem;}
+	/* 퇴사처리 팝업 */
+	.approvalLeavePop {position:absolute;left:1.4rem;top:50%;right:1.4rem;margin:-155px 0 0 0;width:auto;height:310px;}
+}
+
+/* =============================================================================== */
+/* 모바일 세로 (iPhone 6,7,8 세로버전 넓이 기준) */
+/* =============================================================================== */
+@media all and (orientation : portrait) and (max-width:420px) {
+	.agreePop .popBack .back .btn {width:100%;padding:0.5rem;}
+	.agreePop .popBack .left {position:relative;left:auto;top:auto;width:100%;border-right:none;}
+	.agreePop .popBack .left li {height:2.7rem;}
+	.agreePop .popBack .left li div {height:2.2rem;font-size:0.9rem;}
+	.agreePop .popBack .left li div input {height:2.2rem;line-height:2.2rem;}
+	.agreePop .popBack .left li div label i {width:1.4rem;height:1.4rem;}
+	.agreePop .popBack .left li div strong {font-size:0.9rem;}
+	.agreePop .popBack .right {padding:0.5rem 1rem;height:calc(100% - 10.8rem - 76px);}
+	.agreePop .popBack .right h3 {padding:0.3rem 0.3rem 0.3rem 0.3rem;}
+	.agreePop .popBack .right .txt ol {line-height:150%;}
+	.agreePop .popBack .right .txt ol ol {padding:5px 0 0 0;}
+	.agreePop .popBack .right .txt ul {padding: 0 0 5px;}
+	.agreePop .popBack .right .txt ul li {line-height:150%;}
+	.agreePop .popBack .right .txt .checkSetWrap {position:relative;right:auto;top:auto;display:inline-block;width:100%;}
+	.agreePop .popBack .right .txt .agreeOK.etc1 p {padding:5px;}
+	.agreePop .popBack .right .txt .etc2 table {font-size:0.9rem;line-height:130%;}
+	.agreePop .popBack .right .txt .etc2 table th {padding:0.2rem 0.2rem;}
+	.agreePop .popBack .right .txt .etc2 table td {padding:0.2rem 0.2rem;}
+	.agreePop .popBack .back .btnSet {width:100%;}
+}
+
+/* =============================================================================== */
+/* 모바일 가로 (iPhone X 가로버전 넓이 기준) */
+/* =============================================================================== */
+@media all and (orientation : landscape) and (max-width:820px) {
+}
+
+/* =============================================================================== */
+/* 디바이스 특정 버전 */
+/* =============================================================================== */
+/* 갤 8 & 갤 9+ 가로버전 서명 대응 */
+@media only screen and (min-resolution: 4dppx) and (orientation : landscape) {
+}
+/* iPhone X 가로버전 서명 대응 */
+@media only screen and (min-width: 812px) and (min-resolution: 3dppx) and (orientation : landscape) {
+}

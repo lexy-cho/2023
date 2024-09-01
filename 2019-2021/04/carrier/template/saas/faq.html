@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/push.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			$(document).ready(function (){
+				$(".noticeList dl dt").click(function () {
+					$(this).parents("dl").toggleClass("on");
+				});
+				$('.btnLogout').click(function(){
+					$('.alertDim').show();
+					$('.logoutPop').show();
+					$('.logoutPop .pBtn .red').click(function(){
+						location.href='login.html';
+					});
+				}); //2020-06-16 로그아웃 팝업
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap" class="mypageCase"><!-- 마이페이지 일 경우 -->
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back">
+						<div data-include="../include/saas_snb.html"></div>
+					</div>
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<!-- 마이페이지는 모바일 메뉴 없음 -->
+			<hr/>
+			<div id="containerBack">
+				<!-- header -->
+				<div id="header">
+					<header>
+						<span class="left">
+							<button class="btnList" onclick="location.href='setting_m.html'">목록</button>
+						</span>
+						 <h2>설정</h2>
+						 <span class="right">
+							<button class="btnM grayBlack btnLogout">로그아웃</button><!-- 2020-06-16 class 수정 -->
+						 </span>
+					</header>
+				</div>
+				<!-- //header -->
+				<hr/>
+				<!-- container -->
+				<div id="container">
+				<section>
+					<div class="content">
+					<article>
+						<!-- Page Layout -->
+						<div class="mypageLayout">
+							<div class="pd2-t">
+								<div class="mypageContents">
+									<div class="tabBox">
+										<nav>
+											<ul>
+												<li><a href="setting.html">자원관리</a></li>
+												<li><a href="area_setting.html">기본배차권역</a></li><!-- 2020-07-08 기본배차권역 페이지 추가 -->
+												<li><a href="user_approval.html" class="news">사용자 승인</a></li>
+												<li><a href="mypage.html">회원정보</a></li>
+												<li><a href="service_membership.html">멤버십 서비스</a></li>
+												<li class="on"><a href="faq.html">자주 하는 질문</a></li>
+											</ul>
+										</nav>
+									</div>
+									<h3>자주 묻는 질문</h3>
+									<div class="tabData membership">
+										<div class="noticeList">
+											<dl class="on">
+												<dt>
+													<span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-16 컴포넌트 수정 -->
+													<strong>[긴급] 긴급 점검에 따른 서비스 일시 중단 안내 (11.13(수) 18:30~20:30)</strong>
+													<button>여닫기</button>
+												</dt>
+												<dd>
+													<p>
+														겨울간식들과 함께 찾아온 1.0.6 업데이트 안내 내용 상세 영역 상세 내용 영역 - text
+														겨울간식들과 함께 찾아온 1.0.6 업데이트 안내 내용 상세 영역 상세 내용 영역 - text
+														겨울간식들과 함께 찾아온 1.0.6 업데이트 안내 내용 상세 영역 상세 내용 영역 - text
+													</p>
+												</dd>
+											</dl>
+											<dl>
+												<dt>
+													<span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-16 컴포넌트 수정 -->
+													<strong>[긴급] 긴급 점검에 따른 서비스 일시 중단 안내 (11.13(수) 18:30~20:30)</strong>
+													<button>여닫기</button>
+												</dt>
+												<dd>
+													<p>겨울간식들과 함께 찾아온 1.0.6 업데이트 안내 내용 상세 영역 상세 내용 영역 - text</p>
+												</dd>
+											</dl>
+											<dl>
+												<dt>
+													<span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-16 컴포넌트 수정 -->
+													<strong>[긴급] 긴급 점검에 따른 서비스 일시 중단 안내 (11.13(수) 18:30~20:30)</strong>
+													<button>여닫기</button>
+												</dt>
+												<dd>
+													<p>겨울간식들과 함께 찾아온 1.0.6 업데이트 안내 내용 상세 영역 상세 내용 영역 - text</p>
+												</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- //page Layout -->
+					</article>
+					</div>
+				</section>
+				</div>
+				<!-- //container -->
+			</div>
+		</div>
+		<!-- //Wrap -->
+		<!-- 2020-06-16 alertpop 영역 추가 -->
+		<!-- alertPop -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop logoutPop" style="display:none;">
+				<div class="pBack">
+					<p>로그아웃 하시겠습니까?</p>
+				</div>
+				<div class="pBtn">
+					<button class="btnM gray">취소</button>
+					<button class="btnM red">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //alertPop -->
+		<!-- //2020-06-16 alertpop 영역 추가 -->
+    </body>
+</html>

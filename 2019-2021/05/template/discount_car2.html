@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../js/menu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$(document).on('click tab', '.gnbOpen', function(e){
+				$('.gnbScroll').load('gnb.html',function(){
+					funcGnbOpen();
+				});
+				return false;
+			});// 2019-03-15 gnb html load (퍼블리시용)
+
+            // 감가차 상세조회
+            $(".tbScroll .txtBU").click(function(){
+                $('.dimPop, #discountInfoLayer').show();
+            });
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header">
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button>
+							<!-- <button class="goPrev" onclick="history.back()">뒤로가기</button> -->
+						</span>
+						<h1><img src="../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2>감가차 조회</h2> <!-- 2019-04-17 타이틀변경 -->
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+                        <!-- 목록 -->
+                        <div class="tbContainer type2">
+                            <div class="discountInfo">
+                                <div class="infoBox">
+									<p class="insideTag">
+										<span class="stickerTltp">TIP</span>
+										<strong>감가차량 신청방법</strong>
+		                                계약승인 된 계약번호와 신청할 감가차량 번호 기재하여 메일 발송<span class="sender txtRD">수신: 판매운영팀 서정순 과장</span>
+									</p>
+                                </div>
+								<button class="btnLG">새로고침</button>
+                            </div>
+                            <div class="tbScroll">
+                                <table class="tbStaus line">
+                                    <colgroup>
+                                        <col width="40">
+                                        <col width="140">
+                                        <col width="80">
+                                        <col width="60">
+                                        <col width="110">
+                                        <col width="60">
+                                        <col width="110">
+                                        <col width="100">
+                                        <col width="110">
+                                        <col width="90">
+                                        <col width="90">
+                                        <col width="90">
+                                        <col width="70">
+                                        <col width="80">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">번호</th>
+                                            <th scope="col">차대번호</th>
+                                            <th scope="col">모델</th>
+                                            <th scope="col">연식</th>
+                                            <th scope="col">차종</th>
+                                            <th scope="col">옵션</th>
+                                            <th scope="col">용품</th>
+                                            <th scope="col">외장색</th>
+                                            <th scope="col">내장색</th>
+                                            <th scope="col">차량위치</th>
+                                            <th scope="col">제작일자</th>
+                                            <th scope="col">주행거리</th>
+                                            <th scope="col">할인율</th>
+                                            <th scope="col">계약상태</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>08</td>
+                                            <td>KNMA4C2BMLP074121</td>
+                                            <td>SM6-LFD</td>
+                                            <td>20MY</td>
+                                            <td class="tLeft"><button class="tLeft"><span class="txtEllipsis txtBU">GDe LE</span></button></td>
+                                            <td>V----</td>
+                                            <td class="tLeft"><span class="txtEllipsis"></span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">클라우드 펄</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">블랙(인조가죽)</span></td>
+                                            <td>부산출고장</td>
+                                            <td>2019-10-07</td>
+                                            <td>225km</td>
+                                            <td>2%</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>02</td>
+                                            <td>KNMA4C2BMLP072758</td>
+                                            <td>SM6-LFD</td>
+                                            <td>20MY</td>
+                                            <td class="tLeft"><button><span class="txtEllipsis txtBU">GDe SE</span></button></td>
+                                            <td>S----</td>
+                                            <td class="tLeft"><span class="txtEllipsis"></span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">블랙(인조가죽)</span></td>
+                                            <td>부산출고장</td>
+                                            <td>2019-08-12</td>
+                                            <td>185km</td>
+                                            <td>2%</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>03</td>
+                                            <td>KNMA4C2BMLP034452</td>
+                                            <td>SM6-LFD</td>
+                                            <td>20MY</td>
+                                            <td class="tLeft"><button class="tLeft"><span class="txtEllipsis txtBU">LPe 렌터카 SE</span></button></td>
+                                            <td>SH---</td>
+                                            <td class="tLeft"><span class="txtEllipsis"></span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">블랙(인조가죽)</span></td>
+                                            <td>부산출고장</td>
+                                            <td>2019-08-13</td>
+                                            <td>220km</td>
+                                            <td>2%</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>04</td>
+                                            <td>KNMA4C2BMLP035145</td>
+                                            <td>SM6-LFD</td>
+                                            <td>20MY</td>
+                                            <td class="tLeft"><button class="tLeft"><span class="txtEllipsis txtBU">LPe LE</span></button></td>
+                                            <td>-----</td>
+                                            <td class="tLeft"><span class="txtEllipsis"></span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">어반 그레이</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">블랙(인조가죽)</span></td>
+                                            <td>부산출고장</td>
+                                            <td>2019-09-05</td>
+                                            <td>225km</td>
+                                            <td>2%</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>05</td>
+                                            <td>KNMA4C2BMLP073406</td>
+                                            <td>SM6-LFD</td>
+                                            <td>20MY</td>
+                                            <td class="tLeft"><button class="tLeft"><span class="txtEllipsis txtBU">GDe LE</span></button></td>
+                                            <td>V----</td>
+                                            <td class="tLeft"><span class="txtEllipsis"></span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">클라우드 펄</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">블랙(인조가죽)</span></td>
+                                            <td>부산출고장</td>
+                                            <td>2019-09-06</td>
+                                            <td>225km</td>
+                                            <td>2%</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>06</td>
+                                            <td>KNMA4C2BMLP073436</td>
+                                            <td>SM6-LFD</td>
+                                            <td>20MY</td>
+                                            <td class="tLeft"><button class="tLeft"><span class="txtEllipsis txtBU">GDe SE</span></button></td>
+                                            <td>S----</td>
+                                            <td class="tLeft"><span class="txtEllipsis"></span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">어반 그레이</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">블랙(인조가죽)</span></td>
+                                            <td>부산출고장</td>
+                                            <td>2019-09-09</td>
+                                            <td>185km</td>
+                                            <td>2%</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>07</td>
+                                            <td>KNMA4C2BMLP074001</td>
+                                            <td>SM6-LFD</td>
+                                            <td>20MY</td>
+                                            <td class="tLeft"><button class="tLeft"><span class="txtEllipsis txtBU">GDe SE</span></button></td>
+                                            <td>S----</td>
+                                            <td class="tLeft"><span class="txtEllipsis"></span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">클라우드 펄</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">블랙(인조가죽)</span></td>
+                                            <td>부산출고장</td>
+                                            <td>2019-10-07</td>
+                                            <td>185km</td>
+                                            <td>2%</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>15</td>
+                                            <td>KNME5C2S5LP000532</td>
+                                            <td>QM6-HZG</td>
+                                            <td>20MY</td>
+                                            <td class="tLeft"><button class="tLeft"><span class="txtEllipsis txtBU">1.7 dCi 2WD RE Signa</span></button></td>
+                                            <td>N-T--</td>
+                                            <td class="tLeft"><span class="txtEllipsis"></span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">클라우드 펄</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">블랙 가죽시트</span></td>
+                                            <td>부산출고장</td>
+                                            <td>2019-10-07</td>
+                                            <td>75km</td>
+                                            <td>2%</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>09</td>
+                                            <td>KNMA4C2CMLP035495</td>
+                                            <td>SM6-LFD</td>
+                                            <td>20MY</td>
+                                            <td class="tLeft"><button class="tLeft"><span class="txtEllipsis txtBU">LPe LE</span></button></td>
+                                            <td>V----</td>
+                                            <td class="tLeft"><span class="txtEllipsis"></span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">블랙(인조가죽)</span></td>
+                                            <td>부산출고장</td>
+                                            <td>2019-10-07</td>
+                                            <td>220km</td>
+                                            <td>2%</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>KNMG4C2CMKP022190</td>
+                                            <td>SM7-L47</td>
+                                            <td>19MY</td>
+                                            <td class="tLeft"><button class="tLeft"><span class="txtEllipsis txtBU">2.0 LPe</span></button></td>
+                                            <td>-----</td>
+                                            <td class="tLeft"><span class="txtEllipsis"></span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">울트라 실버</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">프레스티지(가솔린)/프</span></td>
+                                            <td>부산출고장</td>
+                                            <td>2019-09-09</td>
+                                            <td>185km</td>
+                                            <td>2%</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>11</td>
+                                            <td>KNME5C2M5LP047545</td>
+                                            <td>QM6-HZG</td>
+                                            <td>20MY</td>
+                                            <td class="tLeft"><button class="tLeft"><span class="txtEllipsis txtBU">2.0 dCi 4WD RE</span></button></td>
+                                            <td>Q----</td>
+                                            <td class="tLeft"><span class="txtEllipsis"></span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">클라우드 펄</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">블랙 인조가죽시트</span></td>
+                                            <td>부산출고장</td>
+                                            <td>2019-09-11</td>
+                                            <td>77km</td>
+                                            <td>2%</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>12</td>
+                                            <td>KNME5C2B9LP052732</td>
+                                            <td>QM6-HZG</td>
+                                            <td>20MY</td>
+                                            <td class="tLeft"><button class="tLeft"><span class="txtEllipsis txtBU">GDe 2WD SE</span></button></td>
+                                            <td>-----</td>
+                                            <td class="tLeft"><span class="txtEllipsis"></span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">어반 그레이</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">블랙 인조가죽시트</span></td>
+                                            <td>부산출고장</td>
+                                            <td>2019-10-07</td>
+                                            <td>75km</td>
+                                            <td>2%</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>13</td>
+                                            <td>KNME5C2B2LP052880</td>
+                                            <td>QM6-HZG</td>
+                                            <td>20MY</td>
+                                            <td class="tLeft"><button class="tLeft"><span class="txtEllipsis txtBU">GDe 2WD SE Signatur</span></button></td>
+                                            <td>V-T--</td>
+                                            <td class="tLeft"><span class="txtEllipsis"</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">어반 그레이</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">시에나 브라운 가죽시트</span></td>
+                                            <td>부산출고장</td>
+                                            <td>2019-10-10</td>
+                                            <td>75km</td>
+                                            <td>2%</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>14</td>
+                                            <td>KNME5C2S5LP000577</td>
+                                            <td>QM6-HZG</td>
+                                            <td>20MY</td>
+                                            <td class="tLeft"><button class="tLeft"><span class="txtEllipsis txtBU">1.7 dCi 2WD SE</span></button></td>
+                                            <td>-----</td>
+                                            <td class="tLeft"><span class="txtEllipsis"></span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">어반 그레이</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">블랙 인조가죽시트</span></td>
+                                            <td>부산출고장</td>
+                                            <td>2019-10-07</td>
+                                            <td>75km</td>
+                                            <td>2%</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>01</td>
+                                            <td>KNMC4C2HMKP212257</td>
+                                            <td>SM3-L38</td>
+                                            <td>19MY</td>
+                                            <td class="tLeft"><button class="tLeft"><span class="txtEllipsis txtBU">SE</span></button></td>
+                                            <td>-S---</td>
+                                            <td class="tLeft"><span class="txtEllipsis">V7내비</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">어반 그레이</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">블랙(인조가죽)</span></td>
+                                            <td>부산출고장</td>
+                                            <td>2019-07-03</td>
+                                            <td>185km</td>
+                                            <td>2%</td>
+                                            <td>출고승인</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- // 목록 -->
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+
+        <!-- DimPopUp -->
+        <div class="dimPop" style="display: none;">
+            <!-- 감가차 상세 정보 -->
+            <div class="popLGCase showingInfoLayer hAuto" id="discountInfoLayer" style="display: none;">
+                <button class="close">닫기</button>
+                <div class="tt">
+                    <h1>감가차 상세정보</h1>
+                </div>
+                <div class="popBack">
+                    <div class="popScrollArea">
+                        <table>
+                            <colgroup>
+                                <col width="80px" />
+                                <col width="*" />
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>차대번호</th>
+                                    <td>KNMA4C2BMJP167395</td>
+                                </tr>
+                                <tr>
+                                    <th>차량위치</th>
+                                    <td>부산출고장</td>
+                                </tr>
+                                <tr>
+                                    <th>제작일자</th>
+                                    <td>2018-10-05</td>
+                                </tr>
+                                <tr>
+                                    <th>주행거리</th>
+                                    <td>222km</td>
+                                </tr>
+                                <tr>
+                                    <th>할인율</th>
+                                    <td>2%</td>
+                                </tr>
+                                <tr>
+                                    <th>계약상태</th>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- // 감가차 상세 정보 -->
+        </div>
+        <!-- // DimPopUp -->
+	</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).click(function(){
+				$('.btnPwReset').click(function(){
+					$('.popDim').show();
+					$('.pwResetPop').show();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Page Layout -->
+		<div class="cargoOwnerDetail">
+			<div class="tab">
+				<!-- tab -->
+				<div class="tabBack">
+					<div class="tabNav">
+						<nav>
+							<ul>
+								<li class="on"><button data-name="1">기본정보</button></li>
+								<li><button data-name="2">사업자 정보</button></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<!--// tab -->
+				<div class="tabLayout">
+					<!-- 기본정보 -->
+					<div class="tabData tData1" style="display:block;">
+						<div class="detailContents">
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="95" /><!-- 2020-07-13 col width 수정 -->
+										<col width="655" /><!-- 2020-07-16 col width 수정 -->
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>가입일자</th>
+											<td>2020-01-21</td>
+										</tr>
+										<tr>
+											<th>아이디</th>
+											<td>01023456789</td>
+										</tr>
+										<tr>
+											<th>패스워드</th>
+											<td><button class="btnS blue btnPwReset">패스워드 초기화</button></td>
+										</tr>
+										<tr>
+											<th>성명</th>
+											<td><input type="text" value="홍길동"/></td><!-- 2020-07-13 input으로 변경 -->
+										</tr>
+										<tr>
+											<th>직급</th>
+											<td><input type="text" value="구매부장"/></td><!-- 2020-07-13 input으로 변경 -->
+										</tr>
+										<tr>
+											<th>이메일</th>
+											<td><input type="text" value="honggildong1234@gmail.com"/></td><!-- 2020-07-13 input으로 변경 -->
+										</tr>
+										<!-- 2020-07-13 회사명, 회사전화번호 삭제 -->
+										<tr>
+											<th>활동여부</th>
+											<td>활동 중 or 휴먼상태 <button class="btnS blue">휴먼상태 해제</button></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="sharingTable">
+								<strong>회사 내의 정보공유 계정 <span class="companyName">[주식회사 활빈당]</span></strong><!-- 2020-07-13 회사명 추가 -->
+								<table>
+									<!-- 2020-07-16 col width 수정 -->
+									<colgroup>
+										<col width="95"/>
+										<col width="131"/>
+										<col width="131"/>
+										<col width="131"/>
+										<col width="131"/>
+										<col width="131"/>
+									</colgroup>
+									<!-- //2020-07-16 col width 수정 -->
+									<thead>
+										<tr>
+											<th>마스터</th>
+											<th>성명</th>
+											<th>아이디</th>
+											<th>공유승인일자</th>
+											<th>가입일자</th>
+											<th>공유</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<span class="radioSet">
+													<input type="checkbox" id="rdo1" checked/>
+													<label for="rdo1"><i></i></label>
+												</span>
+											</td>
+											<td>홍길동</td>
+											<td>010-9999-9999</td>
+											<td>2020-06-08</td>
+											<td>2020-06-06</td>
+											<td>승인 <button class="btnS red">퇴사</button></td><!-- 2020-07-13 수정 -->
+										</tr>
+										<tr>
+											<td>
+												<span class="radioSet">
+													<input type="checkbox" id="rdo2" />
+													<label for="rdo2"><i></i></label>
+												</span>
+											</td>
+											<td>김영희</td>
+											<td>010-9999-9999</td>
+											<td>2020-05-11</td>
+											<td>2020-05-06</td>
+											<td>미승인</td><!-- 2020-07-13 수정 -->
+										</tr>
+										<!-- 2020-07-13 추가 -->
+										<tr>
+											<td>
+												<span class="radioSet">
+													<input type="checkbox" id="rdo3" />
+													<label for="rdo3"><i></i></label>
+												</span>
+											</td>
+											<td>박기장</td>
+											<td>010-2222-5555</td>
+											<td>2020-06-08</td>
+											<td>2020-06-01</td>
+											<td>승인 <button class="btnS red">퇴사</button></td>
+										</tr>
+										<!-- //2020-07-13 추가 -->
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- // 기본정보 -->
+					<!-- 사업자 정보 -->
+					<div class="tabData tData2">
+						<div class="detailContents">
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="95" /><!-- 2020-07-13 col width 수정 -->
+										<col width="655" /><!-- 2020-07-16 col width 수정 -->
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>상호(법인명)</th>
+											<td>주식회사 활빈당</td>
+										</tr>
+										<!-- 2020-07-13 대표자명 추가 -->
+										<tr>
+											<th>대표자명</th>
+											<td>김을동</td>
+										</tr>
+										<!-- 2020-07-13 대표자명 추가 -->
+										<tr>
+											<th>사업자번호</th><!-- 2020-07-13 텍스트 수정 -->
+											<td>123-01-12345</td>
+										</tr>
+										<tr>
+											<th rowspan="2">사업장 주소</th>
+											<td>[83909] 서울특별시 마포구 성암로 345</td>
+										</tr>
+										<tr>
+											<td>월드컵 아파트 12단지 1209동 2302호</td>
+										</tr>
+										<tr>
+											<th>업태</th>
+											<td>제조</td>
+										</tr>
+										<tr>
+											<th>종목</th>
+											<td>건강식품</td>
+										</tr>
+										<tr>
+											<th>계산서 수령</th>
+											<td>honggildong1234@gmail.com</td>
+										</tr>
+										<!-- 2020-07-13 회사전화번호 추가 -->
+										<tr>
+											<th>회사전화번호</th>
+											<td>02-3333-8888</td>
+										</tr>
+										<!-- //2020-07-13 회사전화번호 추가 -->
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- // 사업자 정보 -->
+				</div>
+			</div>
+		</div>
+		<!-- //page Layout -->
+		<!-- popup -->
+		<div class="popDim" style="display:none">
+			<!-- 패스워드 초기화 -->
+			<div class="basicPop pwResetPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>패스워드 초기화</h1>
+				</div>
+				<div class="pBack">
+					<div class="grayBox">
+						<p>임시 패스워드를 사용자의 휴대전화(SMS)로 발송합니다. 패스워드를 초기화 하시겠습니까?</p>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!-- //패스워드 초기화 -->
+			<!-- 주소검색 -->
+			<div class="basicPop searchPop" id="samplePop12" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>주소검색</h1>
+				</div>
+				<div class="pBack">
+					<div class="seachArea">
+						<div class="searchInput">
+							<input type="text" placeholder="도로명 + 번지로 검색"/>
+							<button class="btnSearch">조회</button>
+						</div>
+						<div class="tip">
+							<dl>
+								<dt><strong>Search tip</strong></dt>
+								<dd><span>도로명 + 건물번호</span>예) 세종대로 207,  매봉산로 37</dd>
+								<dd><span>지역명(동/리) + 번지</span>예) 역삼동 68-1,  상암동 1682</dd>
+							</dl>
+						</div>
+					</div>
+					<div class="listBox">
+						<div class="tls">
+							<table>
+								<colgroup>
+									<col width="80" />
+									<col width="400" />
+									<col width="80" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th>우편번호</th>
+										<th>회사명</th>
+										<th>위치</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Loop-->
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<!--//Loop-->
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr class="on">
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+									<tr>
+										<td>03186</td>
+										<td class="tL">
+											<strong>서울특별시 종로구 세종대로 147-2(세종로)</strong>
+											<div>서울특별시 종로구 세종로 1-80 가로판매대</div>
+										</td>
+										<td><a href="">지도보기</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//주소검색-->
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

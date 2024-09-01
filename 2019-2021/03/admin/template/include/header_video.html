@@ -1,0 +1,51 @@
+
+			<header>
+				<h1>
+					<a href="../main.html">ANDU</a><!-- 2021-02-09 텍스트 변경 -->
+					<span class="selectSet">
+						<select id="partGo">
+							<option>서비스 선택</option>
+							<option value="6">HOMEPAGE/ 홈페이지</option>
+							<option value="4">PLAN/ 기획</option>
+							<option value="2">D·PUB/ 퍼블리싱</option>
+							<option value="5">PROJECT/ 프로젝트</option>
+							<!-- <option>DEV/ 개발</option>
+							<option>TEST/ 테스트</option> -->
+							<!-- <option value="1">TING/ 커뮤니티</option> -->
+							<option value="3">MANAGER/ 시스템관리</option>
+							<option value="7" selected>VIDEO/ 화상회의</option>
+						</select>
+					</span>
+				</h1>
+				<nav>
+					<ul>
+						<li class="vgnb1"><a href="video_main.html">회의실관리</a></li>
+						<li class="vgnb2"><a href="video_user.html">회의참여</a></li>
+						<li class="vgnb3"><a>회의참여 요청</a></li>
+					</ul>
+				</nav>
+				<div>
+					<span>
+						<button onclick="location.href='../mypage.html'">마이페이지</button>
+						<a href="https://mail.think-tree.com/" target="_blank" class="btnMail">메일</a>
+						<button class="btnLogout">로그아웃</button>
+						<script>
+							$('.btnLogout').click(function(){
+								$('.alertDim').show();
+								$('.logoutPop').show();
+							});
+						</script>
+					</span>
+				</div>
+			</header>
+
+			<script>
+			$( document ).ready( function() {
+					$('.vgnb3 a').click(function(){
+						$('.popDim, .videoGoPop').show();
+					});
+					$('.videoGoPop .pBtn button').click(function(){
+						$('.popDim, .videoGoPop').hide();
+					});
+			});
+			</script>

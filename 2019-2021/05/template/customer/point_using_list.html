@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/customer.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<!-- <script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script> -->
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$(document).on('click tab', '.gnbOpen', function(e){
+				$('.gnbScroll').load('../gnb.html',function(){
+					funcGnbOpen();
+				});
+				return false;
+			});// 2019-03-15 gnb html load (퍼블리시용)
+            
+			// 2019-03-15 달력형식 변경, 공통으로 사용
+            $('.calendarSet button').duDatepicker({
+                format: 'yyyy-mm-dd', // Determines the date format
+                theme: 'yellow',        // Determines the color theme of the date picker
+				readOnly: true,       // Determines if input element is readonly (key input is disabled)
+				clearBtn: false,      // Determines if Clear button is displayed
+				cancelBtn: true,     // Determines if Cancel button is displayed
+				overlayClose: true    // Determines if clicking the overlay will close the date picker
+			}).on('datechanged', function(event){
+                $(this).prev().val(event.date);
+            });
+            
+            // 헤더 컨텐츠 고정 값만큼 컨텐츠에 padding-top 설정, 목록은 모두 공통 <!--2019-03-15--->
+            $(window).resize(function(){
+                $(".postList").css({
+                    "padding-top" : $(".headFixed").height()
+                });
+            }).resize();
+
+            // sms / fax / e-mail 페이지 이동
+            $("#custCarType").on("change", function(){
+                if($(this).find("option:selected").val() == 1){
+                    window.location.href = 'point_using_list.html';
+                }else if($(this).find("option:selected").val() == 2){
+                    window.location.href = 'point_using_list2.html';
+                }
+            });
+            
+            // mobile 한정 - 검색영역 확장 버튼, 목록은 공통으로 사용 <!--2019-03-15--->
+            $(".btnSchOpen").click(function(){
+                if($(this).hasClass("active")){
+                    $(this).removeClass("active");
+                    $(this).parent(".searchField").removeClass("on");
+                    $(".postList").css({
+                        "padding-top" : $(".headFixed").height()
+                    });
+                }else{
+                    $(this).addClass("active");
+                    $(this).parent(".searchField").addClass("on");
+                    $(".postList").css({
+                        "padding-top" : $(".headFixed").height()
+                    });
+                }
+            });
+            
+            // 결제 방법 선택
+            $("[name='paykind']").click(function(){
+                if($(this).attr("id") == "paykind01" && $(this).prop("checked")){
+                    $('.pmk01').show();
+                    $('.pmk02').hide();
+                }else{
+                    $('.pmk01').hide();
+                    $('.pmk02').show();
+                }
+            });
+            
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button>
+							<!-- <button class="goPrev" onclick="history.back()">뒤로가기</button> -->
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="../main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2 class="sCase">포인트 관리</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<div class="postList"> <!--2019-03-15 클래스명 변경--->
+                            <!-- fixed -->
+                            <div class="headFixed">
+                                <!-- 검색 -->
+                                <div class="searchField point">
+                                    <div class="iptSltLine">
+										<span class="checkSet"><input type="checkbox" id="1" /><label for="1"><i></i>전월</label></span>
+                                        <div class="sltGrp">
+											<div class="dateLabelCnt">
+												<ul class="calGrp">
+													<li>
+														<div class="calendarSet"><input type="tel" id="" name="" /><button>달력열기</button></div>
+													</li>
+													<li>
+														<div class="calendarSet"><input type="tel" id="" name="" /><button>달력열기</button></div>
+													</li>
+												</ul>
+												<button class="btnBG reflesh">새고로침</button>
+											</div>
+											<span class="selectSet" id="custCarType">
+												<select>
+													<option>선택</option>
+													<option value="1">사용내역</option>
+													<option value="2">충전내역</option>
+												</select>
+											</span>
+                                        </div>
+                                    </div>
+                                    <button class="btnBY">조회</button>
+                                    <button class="mbView btnSchOpen">열기</button>
+                                </div>
+                                <!-- // 검색 -->
+								<div class="pointInfo">
+									<h3>
+										현재 포인트 내역
+										<span>
+											<button class="btnCYN">개인 결제</button>
+											<button class="btnCYN">개인 환불</button>
+										</span>
+									</h3>
+									<div class="nowNPre">
+										<table>
+											<tbody>
+												<tr class="line1">
+													<th rowspan="2">현재 포인트 <span class="a">A</span></th>
+													<td class="frist">당월회사지원</td>
+													<td class="p">2,000p</td>
+													<td rowspan="2" class="last">5,000p</td>
+												</tr>
+												<tr class="line2">
+													<td class="frist">개인포인트</td>
+													<td class="p">3,000p</td>
+												</tr>
+												<tr class="line3">
+													<th rowspan="2">지불예상포인트 <span class="b">B</span></th>
+													<td class="frist">기사용</td>
+													<td class="p">500p</td>
+													<td rowspan="2" class="last">1,500p</td>
+												</tr>
+												<tr class="line4">
+													<td class="frist">사용예상</td>
+													<td class="p">1,000p</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<dl class="useCan">
+										<dt>사용가능포인트 <span class="a">A</span> - <span class="b">B</span></dt>
+										<dd>3,500 p</dd>
+									</dl>
+								</div>
+                                <!-- table header / Tab -->
+                                <!-- table header -->
+                                <div class="tablet"> <!--  tab > tablet -->
+                                    <div class="tbContainer">
+                                        <ul class="sentList tbHead">
+                                            <li>
+												<span class="sTime">발송시각</span>
+												<span class="name">고객명(상호)</span>
+												<span class="call">고객수신번호</span>
+												<span class="kind">종류</span>
+												<span class="usePoint">사용포인트</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- // table header -->
+                            </div>
+                            <!-- // fixed -->
+                            
+                            <div class="postListBody"> <!-- 클래스명 변경--->
+                                <!-- 목록 -->
+                                <div class="tbContainer">
+                                    <ul class="sentList tbBody pointCase">
+                                        <li>
+                                            <span class="sTime">2018-12-05 09:00</span>
+											<span class="name">홍길동</span>
+											<span class="call longTxt"><span class="mTxt">고객수신번호 : </span>010-0000-0000</span>
+											<span class="kind"><span class="mTxt">종류 : </span>SMS</span>
+											<span class="usePoint">14p</span>
+                                        </li>
+                                        <li>
+                                            <span class="sTime">2018-12-05 09:00</span>
+											<span class="name">홍길동</span>
+											<span class="call longTxt"><span class="mTxt">고객수신번호 : </span>010-0000-0000</span>
+											<span class="kind"><span class="mTxt">종류 : </span>SMS</span>
+											<span class="usePoint">14p</span>
+                                        </li>
+                                        <li>
+                                            <span class="sTime">2018-12-05 09:00</span>
+											<span class="name">홍길동</span>
+											<span class="call longTxt"><span class="mTxt">고객수신번호 : </span>010-0000-0000</span>
+											<span class="kind"><span class="mTxt">종류 : </span>MMS</span>
+											<span class="usePoint">165p</span>
+                                        </li>
+                                        <li>
+                                            <span class="sTime">2018-12-05 09:00</span>
+											<span class="name">홍길동</span>
+											<span class="call longTxt"><span class="mTxt">고객수신번호 : </span>010-0000-0000</span>
+											<span class="kind"><span class="mTxt">종류 : </span>SMS</span>
+											<span class="usePoint">14p</span>
+                                        </li>
+                                        <li>
+                                            <span class="sTime">2018-12-05 09:00</span>
+											<span class="name">홍길동</span>
+											<span class="call longTxt"><span class="mTxt">고객수신번호 : </span>010-0000-0000</span>
+											<span class="kind"><span class="mTxt">종류 : </span>FAX</span>
+											<span class="usePoint">200p</span>
+                                        </li>
+                                    </ul>
+                                    <!-- 조회결과가 없을 때 -->
+                                    <ul class="sentList tbBody">
+                                        <li class="listNone">
+                                            <span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+                                        </li>
+                                    </ul>
+                                    <!-- // 조회결과가 없을 때 -->
+                                </div>
+                                <!-- // 목록 -->
+                            </div>
+                        </div>  
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+        
+        <!-- DimPopUp -->
+        <div class="dimPop" style="">
+            
+            <!-- 2019-09-01 결제클릭시 -->
+            <div class="popSMCase alertPop large hAuto pointPayment" style="display:none;">
+                <div class="alertCnt">
+                    <h1 class="tit">충전방법 및 금액</h1>
+                    <div class="cntTxt">
+						<div class="popInput">
+							<table>
+								<colgroup>
+									<col width="70">
+									<col width="*">
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>충전방법</th>
+										<td>
+											<span class="radioSet"><input type="radio" id="paykind01" name="paykind" checked /><label for="paykind01"><i></i>휴대폰</label></span>
+											<span class="radioSet"><input type="radio" id="paykind02" name="paykind" /><label for="paykind02"><i></i>신용카드</label></span>
+										</td>
+									</tr>
+									<tr class="pmk01">
+										<th>금액</th>
+										<td>
+											<ul>
+												<li><span class="radioSet"><input type="radio" id="paymentK01" name="paymentK" checked /><label for="paymentK01"><i></i>5,000원</label></span></li>
+												<li><span class="radioSet"><input type="radio" id="paymentK01" name="paymentK" /><label for="paymentK02"><i></i>10,000원</label></span></li>
+												<li><span class="radioSet"><input type="radio" id="paymentK01" name="paymentK" /><label for="paymentK03"><i></i>15,000원</label></span></li>
+												<li><span class="radioSet"><input type="radio" id="paymentK01" name="paymentK" /><label for="paymentK04"><i></i>20,000원</label></span></li>
+											</ul>
+										</td>
+									</tr>
+									<tr class="pmk02" style="display:none;">
+										<th>금액</th>
+										<td><input type="text" id="" class="tRight" value="30,900,250" />원</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+                    </div>
+                </div>
+				<div class="btn mt15">
+                    <button class="btnLB">취소</button>
+					<button class="btnBY">결제하기</button>
+				</div>
+			</div>
+            <!-- //2019-09-01 결제클릭시 -->
+            
+            <!-- 2019-09-23 결제취소 클릭시 -->
+            <div class="popSMCase alertPop large hAuto pointReturn" style="">
+                <div class="alertCnt">
+                    <h1 class="tit">발송포인트조회 - 개인포인트환불</h1>
+                    <div class="cntTxt">
+						<div class="popInput">
+							<table>
+								<colgroup>
+									<col width="115">
+									<col width="*">
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>이름</th>
+										<td><input type="text" /></td>
+									</tr>
+									<tr>
+										<th>연락처</th>
+										<td><input type="text" /></td>
+									</tr>
+									<tr>
+										<th>환불 가능 포인트</th>
+										<td><input type="text" /></td>
+									</tr>
+									<tr>
+										<th>환불 요청 포인트</th>
+										<td><input type="text" /></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<p>
+							- 환불액 입금은 월정산 후 입금됩니다. (월 1회)<br/>
+							- 환불관련 문의는 서비스 제공업체인 <br/>&nbsp;&nbsp;(주)다우기술로 문의바랍니다.<br/>
+							- 다우기술 최설아 사원 : Tel)070-8707-1272
+						</p>
+                    </div>
+                </div>
+				<div class="btn mt15">
+                    <button class="btnLB">취소</button>
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+            <!-- //2019-09-23 결제취소 클릭시 -->
+            
+
+		</div>
+		<!-- //DimPopUp -->
+
+	</body>
+</html>

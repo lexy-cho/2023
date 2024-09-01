@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.tls .toggleSet input[type="checkbox"]').change(function(){
+					if($(this).is(":checked")){
+					   $('.alertDim').show();
+					   $('.approvalPop').show();
+				   }
+				});
+				$('.approvalMobile .toggleSet input[type="checkbox"]').change(function(){
+					if($(this).is(":checked")){
+					   $('.alertDim').show();
+					   $('.approvalPop').show();
+				   }
+				});
+				$('.btnEdit, .btnEditEnd').click(function(){
+					$('.btnEdit, .btnEditEnd').toggle();
+					$('.approvalMobile li .toggleSet, .approvalMobile li .btnS.gray').toggle();
+					$('.approvalMobile li.myCase').toggle();
+				}); //2020-07-08 모바일리스트 편집모드
+				$('.btnLeave').click(function(){
+					$('.popDim').show();
+					$('.approvalLeavePop').show();
+				}); //퇴사처리 팝업
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back c-menu c-menu--slide-left">
+						<div data-include="include/snb.html"></div>
+					</div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- header -->
+			<div id="header" class="mypageCase">
+				<header>
+					<span class="left">
+						<button class="btnList" onclick="location.href='mypage_m.html'">목록</button>
+					</span>
+					 <h2>MY</h2>
+					 <span class="right">
+						<button class="btnM grayBlack" onclick="location.href='login.html'">로그아웃</button>
+					 </span>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="mypageLayout">
+						<div class="pd2">
+							<!-- 2020-06-25 오더현황 삭제 -->
+							<div class="mypageContents">
+								<div class="tabBox">
+									<nav>
+										<ul>
+											<li><a href="mypage.html">회원정보</a></li>
+											<li class="on"><a href="user_approval.html">사용자 승인</a></li>
+											<li><a href="notice.html" class="news tabNotice"> 푸시알림</a></li>
+											<li><a href="system_notice.html" class="news">공지사항</a></li>
+										</ul>
+									</nav>
+								</div>
+								<h3>사용자 승인
+									<!-- 2020-06-25 모바일 편집버튼 영역  추가 -->
+									<span class="right">
+										<button class="btnS gray btnEdit">편집</button>
+										<button class="btnS gray btnEditEnd" style="display:none;">완료</button>
+									</span>
+									<!-- //2020-06-25 모바일 편집버튼 영역  추가 -->
+								</h3>
+								<div class="tabData userApproval">
+									<!-- 2020-06-25 마스터 영역, 퇴사처리 영역 추가 -->
+									<div class="tls">
+										<table>
+											<colgroup>
+												<col width="40"/>
+												<col width="100"/>
+												<col width="150"/>
+												<col width="150"/>
+												<col width="150"/>
+												<col width="100"/>
+												<col width="100"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th>마스터</th>
+													<th>가입일자</th>
+													<th>아이디</th>
+													<th>성명</th>
+													<th>부서명</th>
+													<th>승인여부</th><!-- 2020-07-08 텍스트 수정 -->
+													<th>퇴사 처리</th>
+												</tr>
+											</thead>
+											<tbody>
+												<!-- 2020-07-08 나 자신 case 추가 -->
+												<tr>
+													<td>
+														<span class="checkSet">
+															<input type="checkbox" id="chk1" />
+															<label for="chk1"><i></i></label>
+														</span>
+													</td>
+													<td>2019-12-08</td>
+													<td>010-2345-6789</td>
+													<td>홍길동1(나)</td><!-- 2020-07-08 텍스트 수정 -->
+													<td>구매1팀</td>
+													<td></td>
+													<td></td>
+												</tr>
+												<!-- 2020-07-08 나 자신 case 추가 -->
+												<tr>
+													<td>
+														<span class="checkSet">
+															<input type="checkbox" id="chk2" />
+															<label for="chk2"><i></i></label>
+														</span>
+													</td>
+													<td>2019-12-07</td>
+													<td>010-2345-6789</td>
+													<td>홍길동2</td>
+													<td>구매1팀</td>
+													<td>
+														<span class="toggleSet">
+															<input type="checkbox" id="approval2" />
+															<label for="approval2"><span>승인완료</span><span>미승인</span></label><!-- 2020-07-08 label 문구 수정 -->
+														</span>
+													</td>
+													<td><button class="btnS gray btnLeave">퇴사처리</button></td><!-- 2020-07-08 퇴사처리 버튼 추가 -->
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet">
+															<input type="checkbox" id="chk3" />
+															<label for="chk3"><i></i></label>
+														</span>
+													</td>
+													<td>2019-12-06</td>
+													<td>010-2345-6789</td>
+													<td>홍길동3</td>
+													<td>구매2팀</td>
+													<td>
+														<span class="toggleSet">
+															<input type="checkbox" id="approval3" checked/>
+															<label for="approval2"><span>승인완료</span><span>미승인</span></label><!-- 2020-07-08 label 문구 수정 -->
+														</span>
+													</td>
+													<td><button class="btnS gray btnLeave">퇴사처리</button></td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet">
+															<input type="checkbox" id="chk4" />
+															<label for="chk4"><i></i></label>
+														</span>
+													</td>
+													<td>2019-12-05</td>
+													<td>010-2345-6789</td>
+													<td>홍길동4</td>
+													<td>구매3팀</td>
+													<td>
+														<span class="toggleSet">
+															<input type="checkbox" id="approval4" checked/>
+															<label for="approval2"><span>승인완료</span><span>미승인</span></label><!-- 2020-07-08 label 문구 수정 -->
+														</span>
+													</td>
+													<td><button class="btnS gray btnLeave">퇴사처리</button></td>
+												</tr>
+												<tr>
+													<td>
+														<span class="checkSet">
+															<input type="checkbox" id="chk5" />
+															<label for="chk5"><i></i></label>
+														</span>
+													</td>
+													<td>2019-12-01</td>
+													<td>010-2345-6789</td>
+													<td>홍길동5</td>
+													<td>구매1팀</td>
+													<td>
+														<span class="toggleSet">
+															<input type="checkbox" id="approval5" checked/>
+															<label for="approval2"><span>승인완료</span><span>미승인</span></label><!-- 2020-07-08 label 문구 수정 -->
+														</span>
+													</td>
+													<td><button class="btnS gray btnLeave">퇴사처리</button></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<!-- //2020-06-25 마스터 영역, 퇴사처리 영역 추가 -->
+									<!-- 2020-06-25 사용자승인 모바일용 -->
+									<div class="approvalMobile">
+										<ul>
+											<!-- 2020-07-08 나자신 case로 변경 -->
+											<li class="myCase">
+												<div>
+													<strong>010-2345-6789 / 홍길동1(나) / 구매1팀</strong>
+												</div>
+												<div>
+													<span class="date">2019-12-08</span>
+													<span class="toggleSet">
+														<input type="checkbox" id="approvalM1" />
+														<label for="approvalM1"><span>승인완료</span><span>미승인</span></label><!-- 2020-07-08 label 문구 수정 -->
+													</span>
+												</div>
+											</li>
+											<!-- 2020-07-08 나자신 case로 변경 -->
+											<li>
+												<div>
+													<strong>010-2345-6789 / 홍길동2 / 구매1팀</strong>
+												</div>
+												<div>
+													<span class="date">2019-12-07</span>
+													<span class="toggleSet">
+														<input type="checkbox" id="approvalM2" />
+														<label for="approvalM2"><span>승인완료</span><span>미승인</span></label><!-- 2020-07-08 label 문구 수정 -->
+													</span>
+													<button class="btnS gray btnLeave">퇴사처리</button><!-- 2020-07-08 퇴사처리 버튼 추가 -->
+												</div>
+											</li>
+											<li>
+												<div>
+													<strong>010-2345-6789 / 홍길동3 / 구매1팀</strong>
+												</div>
+												<div>
+													<span class="date">2019-12-06</span>
+													<span class="toggleSet">
+														<input type="checkbox" id="approvalM3" checked/>
+														<label for="approvalM3"><span>승인완료</span><span>미승인</span></label><!-- 2020-07-08 label 문구 수정 -->
+													</span>
+													<button class="btnS gray btnLeave">퇴사처리</button>
+												</div>
+											</li>
+											<li>
+												<div>
+													<strong>010-2345-6789 / 홍길동4 / 구매2팀</strong>
+												</div>
+												<div>
+													<span class="date">2019-12-05</span>
+													<span class="toggleSet">
+														<input type="checkbox" id="approvalM4" checked/>
+														<label for="approvalM4"><span>승인완료</span><span>미승인</span></label><!-- 2020-07-08 label 문구 수정 -->
+													</span>
+													<button class="btnS gray btnLeave">퇴사처리</button>
+												</div>
+											</li>
+											<li>
+												<div>
+													<strong>010-2345-6789 / 홍길동5 / 구매3팀</strong>
+												</div>
+												<div>
+													<span class="date">2019-12-01</span>
+													<span class="toggleSet">
+														<input type="checkbox" id="approvalM5" checked/>
+														<label for="approvalM5"><span>승인완료</span><span>미승인</span></label><!-- 2020-07-08 label 문구 수정 -->
+													</span>
+													<button class="btnS gray btnLeave">퇴사처리</button>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //page Layout -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- alertPopup -->
+		<div class="alertDim" style="display:none;">
+			<div class="alertPop approvalPop" style="display:none;">
+				<div class="pBack">
+					<p>승인한 사용자(아이디)와 사업자정보 및 오더정보(오더관리 메뉴의 정보)를 공유하게 됩니다. 승인하시겠습니까?</p>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">예</button>
+					<button class="btnM black">아니요</button>
+				</div>
+			</div>
+		</div>
+		<!-- //alertPopup -->
+		<!-- 2020-06-25 팝업 영역 추가 -->
+		<!-- popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 퇴사처리 팝업 -->
+			<div class="basicPop approvalLeavePop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>퇴사처리</h1>
+				</div>
+				<div class="pBack">
+					<div class="grayBox">
+						<p>퇴사 처리된 사용자는 더 이상 회사의 오더정보를 열람하실 수 없습니다. 퇴사처리 하시겠습니까?<br/>(퇴사자는 로그인 화면에서 신규 회사를 입력하게 됩니다)</p><!-- 2020-07-08 br 수정 -->
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!-- //퇴사처리 팝업 -->
+		</div>
+		<!-- //popup -->
+		<!-- //2020-06-25 팝업 영역 추가 -->
+    </body>
+</html>

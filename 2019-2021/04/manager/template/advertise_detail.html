@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.btnNewAdvertise').click(function(){
+					$('.popDim').show();
+					$('.newAdvertisePop').show();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Page Layout -->
+		<div class="advertiseDetail">
+			<div class="detailTop">
+				<span class="left">
+					<button class="btnM whiteRed btnNewAdvertise">신규등록</button>
+					<button class="btnM red">삭제</button>
+				</span>
+				<span class="right">
+					<button class="btnM black">변경저장</button>
+				</span>
+			</div>
+			<div class="tab">
+				<!-- tab -->
+				<div class="tabBack">
+					<div class="tabNav">
+						<nav>
+							<ul>
+								<li class="on"><button data-name="1">광고 내용</button></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<!--// tab -->
+				<div class="tabLayout">
+					<div class="tabData tData1" style="display:block;">
+						<div class="detailContents">
+							<div class="tws">
+								<table>
+									<colgroup>
+										<col width="80"/>
+										<col width="300"/>
+										<col width="80"/>
+										<col width="80"/>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>서비스 대상</th>
+											<td>
+												<span class="radioSet">
+													<input type="radio" id="rdo1" name="radio1" checked/>
+													<label for="rdo1"><i></i>전체</label>
+												</span>
+												<span class="radioSet">
+													<input type="radio" id="rdo3" name="radio1" />
+													<label for="rdo3"><i></i>운송사용(Delivery)</label>
+												</span>
+												<span class="radioSet">
+													<input type="radio" id="rdo4" name="radio1" />
+													<label for="rdo4"><i></i>차주용(Driver)</label>
+												</span>
+											</td>
+											<th>공개여부</th>
+											<td>
+												<span class="selectSet">
+													<select>
+														<option selected>공개</option>
+														<option>비공개</option>
+													</select>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<th>게시 기간</th>
+											<td>
+												<span class="calDupSet">
+													<span class="calSet"><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span>
+													<em>~</em>
+													<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+												</span>
+											</td>
+											<th>작성자</th>
+											<td>홍길동</td>
+										</tr>
+										<tr>
+											<th>제목</th>
+											<td colspan="3"><input type="text" value="겨울간식들과 함께 찾아온 1.0.6 업데이트 안내"/></td>
+										</tr>
+										<tr>
+											<th>연결링크</th>
+											<td colspan="3"><input type="text"/></td>
+										</tr>
+										<tr>
+											<th>광고이미지</th>
+											<td colspan="3">
+												<span class="fileSet">
+													<span class="fileFind">
+														<input type="file" id="file1" />
+														<label for="file1">파일 선택</label>
+													</span> <!--파일선택:버튼만있는형식:초록색버전-->
+													<span class="loadIng" style="display:none;">업로드 중</span>
+													<strong class="loadEnd" style="display:none;">
+														<em>샘플 데이터.png</em>
+														<button>취소</button>
+													</strong>
+													<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+												</span>
+												<span> * 업로드 이미지(jpg, png) : 사이즈 OOO X OOOpx</span>
+												<img src="../images/img_advertiseExample.png" alt="광고 이미지 예시"/>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //page Layout -->
+		<!-- popup -->
+		<div class="popDim" style="display:none">
+			<!-- 신규 광고 등록 -->
+			<div class="basicPop newAdvertisePop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>광고 [신규등록]</h1>
+				</div>
+				<div class="pBack">
+					<div class="tws">
+						<table>
+							<colgroup>
+								<col width="80"/>
+								<col width="300"/>
+								<col width="80"/>
+								<col width="80"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>서비스 대상</th>
+									<td>
+										<span class="radioSet">
+											<input type="radio" id="rdo1" name="radio1" />
+											<label for="rdo1"><i></i>전체</label>
+										</span>
+										<span class="radioSet">
+											<input type="radio" id="rdo3" name="radio1" checked/>
+											<label for="rdo3"><i></i>운송사용(Delivery)</label>
+										</span>
+										<span class="radioSet">
+											<input type="radio" id="rdo4" name="radio1" checked/>
+											<label for="rdo4"><i></i>차주용(Driver)</label>
+										</span>
+									</td>
+									<th>공개여부</th>
+									<td>
+										<span class="selectSet">
+											<select>
+												<option selected>공개</option>
+												<option>비공개</option>
+											</select>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>게시 기간</th>
+									<td>
+										<span class="calDupSet">
+											<span class="calSet"><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span>
+											<em>~</em>
+											<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+										</span>
+									</td>
+									<th>작성자</th>
+									<td>홍길동</td>
+								</tr>
+								<tr>
+									<th>제목</th>
+									<td colspan="3"><input type="text" value="겨울간식들과 함께 찾아온 1.0.6 업데이트 안내"/></td>
+								</tr>
+								<tr>
+									<th>연결링크</th>
+									<td colspan="3"><input type="text"/></td>
+								</tr>
+								<tr>
+									<th>광고이미지</th>
+									<td colspan="3">
+										<span class="fileSet">
+											<span class="fileFind">
+												<input type="file" id="file1" />
+												<label for="file1">파일 선택</label>
+											</span> <!--파일선택:버튼만있는형식:초록색버전-->
+											<span class="loadIng" style="display:none;">업로드 중</span>
+											<strong class="loadEnd" style="display:none;">
+												<em>샘플 데이터.png</em>
+												<button>취소</button>
+											</strong>
+											<button class="loadFail" style="display:none;">업로드 실패</button> <!--파일업로드실패-->
+										</span>
+										<span> * 업로드 이미지(jpg, png) : 사이즈 OOO X OOOpx</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">취소</button>
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!--//신규 운영자-->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

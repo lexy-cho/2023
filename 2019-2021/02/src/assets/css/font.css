@@ -1,0 +1,239 @@
+/* =================================================================================
+* INFORMATION
+* -----------------------------------------------------------------------
+* @File Name: _font.scss
+* @Description : 폰트 정의
+* @Create Date: 2021-08-09
+* @Update Date: N/A
+* @History: N/A
+* ================================================================================= */
+/* ====================== */
+/* TT UI library */
+/* ====================== */
+/* ===== Webfont ===== */
+
+/* CocoSharp */
+/* This CSS resource incorporates links to font software which is the valuable copyrighted property of Monotype and/or its suppliers. You may not attempt to copy, install, redistribute, convert, modify or reverse engineer this font software. Please contact Monotype with any questions regarding Web Fonts: http://www.fontshop.com */
+@import url("https://fast.fonts.net/lt/1.css?apiType=css&c=1f78691e-6566-469b-bd9b-b025caf8b57b&fontids=6235169,6235171,6235173,6235175,6235177,6235179,6235181,6235183,6235185,6235187,6235189,6235191");
+@font-face {
+  font-family: "CocoSharpExtralight";
+  src: url("../font/CocoSharp/47ad787f-c2b8-43a4-9281-e4c7b9ab16a2.woff2") format("woff2"), url("../font/CocoSharp/0cb2ab4f-7bca-4d4e-8e11-54d3e059a903.woff") format("woff");
+}
+@font-face {
+  font-family: "CocoSharpExtralightIt";
+  src: url("../font/CocoSharp/a43d52cd-d4e5-4e36-b8dc-eb6ee93e382b.woff2") format("woff2"), url("../font/CocoSharp/5f6f1e09-4a9a-4669-90af-253ad3fed482.woff") format("woff");
+}
+@font-face {
+  font-family: "CocoSharpLight";
+  src: url("../font/CocoSharp/7fa712ca-ee83-4854-9d8f-08fadf1327a0.woff2") format("woff2"), url("../font/CocoSharp/18d949fd-8634-4155-abbc-79d3c2593c01.woff") format("woff");
+}
+@font-face {
+  font-family: "CocoSharpLightItalic";
+  src: url("../font/CocoSharp/115ea7eb-be8b-4b15-8100-0c378d28d9fd.woff2") format("woff2"), url("../font/CocoSharp/e3a66819-964f-49b1-a0af-c16050dfe310.woff") format("woff");
+}
+@font-face {
+  font-family: "CocoSharpRegular";
+  src: url("../font/CocoSharp/8dfca5c7-f240-40cf-a9ea-033079dfa306.woff2") format("woff2"), url("../font/CocoSharp/37c1f01e-c38c-4b02-91f4-0cb84cc374b2.woff") format("woff");
+}
+@font-face {
+  font-family: "CocoSharpItalic";
+  src: url("../font/CocoSharp/fb22a7bd-38ce-49ab-9f34-4ba800168ff7.woff2") format("woff2"), url("../font/CocoSharp/00e13c9f-b3bc-48f1-9126-a7a81f931ec9.woff") format("woff");
+}
+@font-face {
+  font-family: "CocoSharpBold";
+  src: url("../font/CocoSharp/ffffea53-91b8-4ccd-8701-ff451ed4ac61.woff2") format("woff2"), url("../font/CocoSharp/e796e9f1-dd1b-4b58-9c64-80cd91822469.woff") format("woff");
+}
+@font-face {
+  font-family: "CocoSharpBoldItalic";
+  src: url("../font/CocoSharp/20011ae2-0206-4267-a5c5-70d699edbcf1.woff2") format("woff2"), url("../font/CocoSharp/39d4ee05-2c3d-46cf-b026-b8c2608edc5d.woff") format("woff");
+}
+@font-face {
+  font-family: "CocoSharpExtrabold";
+  src: url("../font/CocoSharp/20416b76-ba11-43d2-b826-94ef7fab87bf.woff2") format("woff2"), url("../font/CocoSharp/a9adf04e-49d3-44cf-ab80-36871569bbf9.woff") format("woff");
+}
+@font-face {
+  font-family: "CocoSharpExtraboldIt";
+  src: url("../font/CocoSharp/4065569d-0d93-4a23-acc7-b8d42cff2901.woff2") format("woff2"), url("../font/CocoSharp/1fe4d166-9484-4ae3-8571-49ea018781e4.woff") format("woff");
+}
+@font-face {
+  font-family: "CocoSharpHeavy";
+  src: url("../font/CocoSharp/17e622ef-8d86-4116-8dab-38ea00a8f497.woff2") format("woff2"), url("../font/CocoSharp/b7714504-9a5c-4a6e-9672-be332d8497b7.woff") format("woff");
+}
+@font-face {
+  font-family: "CocoSharpHeavyItalic";
+  src: url("../font/CocoSharp/f1888028-6efb-4f81-9ede-75f0f15679a6.woff2") format("woff2"), url("../font/CocoSharp/3738eb1f-069e-4e86-8569-ed8803bf9a7c.woff") format("woff");
+}
+
+/* NanumGothic */
+@font-face {
+ font-family: 'NanumGothic';
+ font-weight: 100;
+ src: url('../font/NanumGothic/NanumGothic-Light.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'NanumGothic';
+ font-weight: 400;
+ src: url('../font/NanumGothic/NanumGothic-Regular.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'NanumGothic';
+ font-weight: 600;
+ src: url('../font/NanumGothic/NanumGothic-Bold.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'NanumGothic';
+ font-weight: 800;
+ src: url('../font/NanumGothic/NanumGothic-ExtraBold.ttf') format('truetype');
+}
+
+/* Oswald */
+@font-face {
+ font-family: 'Oswald-ExtraLight';
+ font-weight: 200;
+ src: url('../font/Oswald/Oswald-ExtraLight.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Oswald-Light';
+ font-weight: 300;
+ src: url('../font/Oswald/Oswald-Light.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Oswald-Regular';
+ font-weight: 400;
+ src: url('../font/Oswald/Oswald-Regular.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Oswald-Medium';
+ font-weight: 500;
+ src: url('../font/Oswald/Oswald-Medium.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Oswald-SemiBold';
+ font-weight: 600;
+ src: url('../font/Oswald/Oswald-SemiBold.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Oswald-Bold';
+ font-weight: 700;
+ src: url('../font/Oswald/Oswald-Bold.ttf') format('truetype');
+}
+
+/* TitilliumWeb */
+@font-face {
+ font-family: 'TitilliumWeb-ExtraLight';
+ src: url('../font/TitilliumWeb/TitilliumWeb-ExtraLight.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'TitilliumWeb-ExtraLightItalic';
+ src: url('../font/TitilliumWeb/TitilliumWeb-ExtraLightItalic.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'TitilliumWeb-Light';
+ src: url('../font/TitilliumWeb/TitilliumWeb-Light.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'TitilliumWeb-LightItalic';
+ src: url('../font/TitilliumWeb/TitilliumWeb-LightItalic.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'TitilliumWeb-Regular';
+ src: url('../font/TitilliumWeb/TitilliumWeb-Regular.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'TitilliumWeb-Italic';
+ src: url('../font/TitilliumWeb/TitilliumWeb-Italic.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'TitilliumWeb-SemiBold';
+ src: url('../font/TitilliumWeb/TitilliumWeb-SemiBold.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'TitilliumWeb-SemiBoldItalic';
+ src: url('../font/TitilliumWeb/TitilliumWeb-SemiBoldItalic.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'TitilliumWeb-Bold';
+ src: url('../font/TitilliumWeb/TitilliumWeb-Bold.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'TitilliumWeb-BoldItalic';
+ src: url('../font/TitilliumWeb/TitilliumWeb-BoldItalic.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'TitilliumWeb-Black';
+ src: url('../font/TitilliumWeb/TitilliumWeb-Black.ttf') format('truetype');
+}
+
+/* Poppins */
+@font-face {
+ font-family: 'Poppins-Thin';
+ src: url('../font/Poppins/Poppins-Thin.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Poppins-ThinItalic';
+ src: url('../font/Poppins/Poppins-ThinItalic.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Poppins-ExtraLight';
+ src: url('../font/Poppins/Poppins-ExtraLight.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Poppins-ExtraLightItalic';
+ src: url('../font/Poppins/Poppins-ExtraLightItalic.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Poppins-Light';
+ src: url('../font/Poppins/Poppins-Light.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Poppins-LightItalic';
+ src: url('../font/Poppins/Poppins-LightItalic.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Poppins-Regular';
+ src: url('../font/Poppins/Poppins-Regular.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Poppins-Italic';
+ src: url('../font/Poppins/Poppins-Italic.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Poppins-Medium';
+ src: url('../font/Poppins/Poppins-Medium.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Poppins-MediumItalic';
+ src: url('../font/Poppins/Poppins-MediumItalic.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Poppins-SemiBold';
+ src: url('../font/Poppins/Poppins-SemiBold.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Poppins-SemiBoldItalic';
+ src: url('../font/Poppins/Poppins-SemiBoldItalic.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Poppins-Bold';
+ src: url('../font/Poppins/Poppins-Bold.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Poppins-BoldItalic';
+ src: url('../font/Poppins/Poppins-BoldItalic.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Poppins-ExtraBold';
+ src: url('../font/Poppins/Poppins-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Poppins-ExtraBoldItalic';
+ src: url('../font/Poppins/Poppins-ExtraBoldItalic.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Poppins-Black';
+ src: url('../font/Poppins/Poppins-Black.ttf') format('truetype');
+}
+@font-face {
+ font-family: 'Poppins-BlackItalic';
+ src: url('../font/Poppins/Poppins-BlackItalic.ttf') format('truetype');
+}

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>ThinkTree Visitor</title>
+		<link rel="shortcut icon" href="../images/i_favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('.btnArea .white').click(function(){
+				$('.popDim').show();
+				$('.pageOutPop').show();
+			});
+			$('.alertPop button, .basicPop button').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			$('.sign').click(function(){
+				$('.popDim, .popDim .signPop').show();
+			});
+			$('.signPop button').click(function(){
+				$('.popDim').hide();
+				$('.sign img').show();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">
+				<header>
+					<button class="btnPrev" onclick="history.back()">이전</button>
+					<h1>방문객 등록</h1>
+				</header>
+			</div>
+			<!-- //header -->
+			<hr/>
+			<!-- snb 생략 -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="content">
+				<article>
+					<div class="visitorLayout">
+                        <div class="dlstyle writeCase">
+                            <dl>
+                                <dt>방문일정 <sup>필수항목</sup></dt>
+                                <dd>
+                                    <span class="dateSet">
+										<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+                                    </span>
+                                    <span class="selectDubSet">
+										<span class="selectSet">
+	    									<select>
+	    										<option selected>15:30</option>
+	    										<option>16:30</option>
+	    									</select>
+	    								</span>
+										<em>~</em>
+	                                    <span class="selectSet">
+	    									<select>
+	    										<option selected>15:30</option>
+	    										<option>16:30</option>
+	    									</select>
+	    								</span>
+                                    </span>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>방문목적 <sup>필수항목</sup></dt>
+                                <dd>
+                                    <div class="radioBtn">
+                                        <label for="lb1"><input type="radio" id="lb1" name="radio1" value="회의" /><span>업무미팅</span></label>
+                                        <label for="lb2"><input type="radio" id="lb2" name="radio1" value="면접" /><span>영업미팅</span></label>
+                                        <label for="lb3"><input type="radio" id="lb3" name="radio1" value="기타" /><span>기타</span></label>
+                                    </div>
+                                    <input type="text" placeholder="일정 제목을 입력해 주세요 (최대 50글자)" />
+                                </dd>
+                            </dl>
+							<dl>
+								<dt>씽크트리 담당자</dt>
+								<dd>
+									<span class="selectSet">
+										<select>
+											<option selected>오유진</option>
+										</select>
+									</span>
+								</dd>
+							</dl>
+                            <dl class="attendCompany">
+                                <dt>업체명</dt>
+                                <dd><input type="text" placeholder="자동완성 입력입니다"/></dd>
+                            </dl>
+                        </div>
+						<div class="attendData">
+							<dl class="entry">
+								<dt>개인정보수집 동의
+									<button>여닫기 ▼</button>
+								</dt>
+								<dd>
+									<div class="agreeTerms">
+										<ol>
+											<li>
+												수집 및 이용 목적
+												<div>(주)씽크트리에서는 방문객등록서비스(비지터스)를 위해 다음과 같이 개인정보를 수집 및 이용 합니다.
+												수집된 개인정보는 방문객등록 목적 이외에는 이용되지 않으며, 수집 목적이 변경될 경우 사전에 알리고 동의를 받을 예정 입니다. </div>
+											</li>
+											<li>
+												수집하는 개인정보의 항목
+												<div>- 성명, 회사명, 휴대전화번호</div>
+											</li>
+											<li>
+												개인정보의 보유 및 이용 기간
+												<div>- 방문객의 개인정보는 방문 종료 후 별도의 암호화 과정을 거쳐 별도의 DB에 보관됩니다.</div>
+												<div>- 방문객의 개인정보는 방문객 등록과 동시에 저장되어 1년 동안 보관됩니다. </div>
+											</li>
+											<li>
+												개인정보의 파기 절차 및 파기방법
+												<div>- 방문객의 개인정보는 목적이 달성된 후 별도의 DB로 옮겨져 내부 방침 및 기타 관련 법령에 의한 정보보호 사유에 따라(보유 및 이용기간 참조) 일정 기간 저장된 후 파기됩니다. 별도 DB로 옮겨진 개인정보는 법률에 의한 경우가 아니고서는 보유되는 이외의 다른 목적으로 이용되지 않습니다.</div>
+												<div>- 전자적 파일형태로 저장된 개인정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제합니다. 종이에 출력된 개인정보는 분쇄기로 분쇄하거나 소각을 통하여 파기합니다. </div>
+											</li>
+											<li>
+												동의를 거부할 권리가 있다는 사실과 동의 거부에 따른 불이익 내용
+												<div>방문객은 (주)씽크트리 방문객등록서비스(비지터스)에서 수집하는 개인정보에 대해 동의를 거부할 권리가 있으며 동의 거부 시에는 방문 목적등에 따라 회사 내부 진입이 제한 됩니다. </div>
+											</li>
+										</ol>
+									</div>
+									<span class="checkSet">
+										<input type="checkbox" id="chk1">
+										<label for="chk1"><i></i><span>위 개인정보 수집 및 이용에 동의 합니다.</span></label>
+									</span>
+									<p class="smallBox">* 동의를 거부할 수 있으며, 동의 거부 시에는 방문 목적등에 따라 회사 내부 진입이 제한 됩니다.</p>
+								</dd>
+							</dl>
+							<h3>방문자 정보 <button class="btnM green entypo-plus">추가</button></h3>
+							<ul class="dlstyle writeCase">
+								<li class="gridSet grid4">
+									<div class="gridItem">
+										<dl>
+											<dt>이름 <sup>필수항목</sup></dt>
+											<dd><input type="text"/></dd>
+										</dl>
+									</div>
+									<div class="gridItem">
+										<dl>
+											<dt>서명 <sup>필수항목</sup></dt>
+											<dd>
+												<div class="sign"></div>
+											</dd>
+										</dl>
+									</div>
+									<div class="gridItem">
+										<dl>
+											<dt>휴대번호</dt>
+											<dd>
+												<div class="phoneNum">
+												    <span class="selectSet">
+												        <select>
+												            <option>010</option>
+												            <option>011</option>
+												            <option>017</option>
+												            <option>018</option>
+												            <option>019</option>
+												        </select>
+												    </span>
+												    <span class="txt">-</span>
+												    <input type="tel" id="middleNum" />
+												    <span class="txt">-</span>
+												    <input type="tel" id="lastNum" />
+												</div>
+											</dd>
+										</dl>
+									</div>
+									<div class="gridItem">
+										<dl>
+	                                        <dt>차량번호</dt>
+	                                        <dd><input type="text" placeholder=""/></dd>
+										</dl>
+									</div>
+								</li>
+								<li class="gridSet grid4">
+									<div class="gridItem">
+										<dl>
+											<dt>이름 <sup>필수항목</sup></dt>
+											<dd><input type="text"/></dd>
+										</dl>
+									</div>
+									<div class="gridItem">
+										<dl>
+											<dt>서명 <sup>필수항목</sup></dt>
+											<dd>
+												<div class="sign"></div>
+											</dd>
+										</dl>
+									</div>
+									<div class="gridItem">
+										<dl>
+											<dt>휴대번호</dt>
+											<dd>
+												<div class="phoneNum">
+												    <span class="selectSet">
+												        <select>
+												            <option>010</option>
+												            <option>011</option>
+												            <option>017</option>
+												            <option>018</option>
+												            <option>019</option>
+												        </select>
+												    </span>
+												    <span class="txt">-</span>
+												    <input type="tel" id="middleNum" />
+												    <span class="txt">-</span>
+												    <input type="tel" id="lastNum" />
+												</div>
+											</dd>
+										</dl>
+									</div>
+									<div class="gridItem">
+										<dl>
+	                                        <dt>차량번호</dt>
+	                                        <dd><input type="text" placeholder=""/></dd>
+										</dl>
+									</div>
+									<div class="tC mt5px">
+										<button class="btnS white">삭제</button>
+									</div>
+								</li>
+							</ul>
+							<p class="smallBox">주차시에는 최소 30분은 무료입니다. 차량 주차권은 30분권 1매가 발급되며, 이후 추가비용은 자가 결제가 필요합니다.<br/>※ 대중교통 이용시 작성하지 않아도 됩니다.</p>
+                        </div>
+						<div class="btnArea tC">
+							<button class="btnM white">취소</button>
+							<button class="btnM blue" onClick="location.href='visitor_view.html'">확인</button>
+						</div>
+					</div>
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+			<div class="pageTop"><button>TOP</button></div>
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<div class="alertPop pageOutPop" style="display:none;">
+				<div class="pBack">
+					<p class="tC">입력한 정보가 삭제됩니다.<br/>삭제하시겠습니까?</p>
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue" onclick="history.back()">확인</button>
+				</div>
+			</div>
+			<div class="signPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<p>※ 크게 서명해주세요.</p>
+				<div class="signSet">
+					<div class="signArea">
+						<strong>서명</strong>
+						<div class="cvsArea">
+							<canvas></canvas>
+						</div>
+					</div>
+					<div class="btnArea">
+                        <button class="btnM white">초기화</button>
+						<button class="btnM white">이전 휙</button>
+						<button class="btnM blue">확인</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //Popup -->
+	</body>
+</html>

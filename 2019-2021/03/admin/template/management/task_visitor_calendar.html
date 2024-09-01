@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>AndU</title><!-- 2021-02-09 텍스트 변경 -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconFont.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			/**/
+			$('#deleteBtn').click(function(){
+				$('.popDim').show();
+				$('.alertPop').show();
+			});
+			$('.pBtn button, .pclose').click(function(){
+				$('.popDim, .alertDim').hide();
+				$('.alertPop, .basicPop').hide();
+			});
+			/**/
+			$('.tls tbody tr').dblclick(function(){
+				location.href = 'task_visitor_view.html';
+			});
+			$('#roomColorBtn').click(function(){
+				$('.popDim').show();
+				$('.roomColorPop').show();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header" data-include="../include/header_management.html"></div>
+			<!-- //header -->
+			<hr/>
+			<!-- Sub Menu -->
+			<div id="snb" data-include="../include/snb_management.html"></div>
+			<!-- //Sub Menu -->
+			<hr/>
+			<!-- container -->
+			<div id="container">
+			<section>
+				<div class="pageTit">
+					<h2>회의실 예약현황</h2>
+					<div class="pagePos"><span>Home</span><span>경영지원</span><span>회의 관리</span><strong>회의실 예약현황</strong></div>
+				</div>
+				<div class="content">
+				<article>
+					<!-- Page Layout -->
+					<div class="visitorLayout">
+						<!---->
+						<div class="boardTop">
+							<div>
+								<span class="left">
+									<button class="btnM blue">달력</button>
+									<button class="btnM" onclick="location.href='task_visitor.html'">전체목록</button>
+									<span class="searchBasic">
+										<span class="selectSet">
+											<select>
+												<option>회의실</option>
+												<option>Ocean</option>
+												<option>Mountain</option>
+												<option>Sunshine</option>
+												<option>Windy</option>
+											</select>
+										</span>
+										<span class="selectSet">
+											<select>
+												<option>구분</option>
+												<option>업무미팅</option>
+												<option>영업미팅</option>
+											</select>
+										</span>
+										<span class="selectSet">
+											<select>
+												<option>담당자명</option>
+												<option>조명진</option>
+											</select>
+										</span>
+									</span>
+								</span>
+							</div>
+							<div>
+								<em>회의실 구분 : <span class="roomColor" style="background:#00b0f0;">Ocean</span>Ocean / <span class="roomColor" style="background:#45b474;">Mountain</span>Mountain / <span class="roomColor" style="background:#f79646;">Sunshine</span>Sunshine / <span class="roomColor" style="background:#0070c0;">Windy</span>Windy</em>
+							</div>
+						</div>
+						<!---->
+						<!---->
+						<div class="at_years">
+							<span class="btnM prev_month left">이전 달</span>
+							<strong>2020년 12월</strong>
+							<span class="btnM next_month right">다음 달</span>
+						</div>
+						<table cellpadding="0" cellspacing="0" border="0" class="calendar">
+							<colgroup>
+								<col style="width:10%">
+								<col span="5" style="width:16%">
+								<col style="width:10%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th>일</th>
+									<th>월</th>
+									<th>화</th>
+									<th>수</th>
+									<th>목</th>
+									<th>금</th>
+									<th>토</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<div class="box">
+											<strong>1</strong>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>2</strong>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>3</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>10:00 ~ 10:30 LG 스크럼</span></div>
+											<div><span class="roomColor" style="background:#45b474;">Mountain</span><span>16:00 ~ 17:30 [물류미팅] 투자 사전 업무 미팅</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>4</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>10:00 ~ 10:30 LG 스크럼</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>5</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>10:00 ~ 10:30 LG 스크럼</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>6</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>7</strong>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="box">
+											<strong>8</strong>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>9</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+											<div><span class="roomColor" style="background:#45b474;">Mountain</span><span>16:00 ~ 17:30 [물류미팅] 투자 사전 업무 미팅</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>10</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>11</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>12</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>13</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>14</strong>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="box">
+											<strong>15</strong>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>16</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>17</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>18</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>19</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>20</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>21</strong>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="box">
+											<strong>22</strong>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>23</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>24</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>25</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>26</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>27</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>28</strong>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="box">
+											<strong>29</strong>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>30</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box">
+											<strong>31</strong>
+											<div><span class="roomColor" style="background:#f79646;">Sunshine</span><span>09:15 ~ 09:30 퍼블리싱 스크럼</span></div>
+										</div>
+									</td>
+									<td>
+										<div class="box"></div>
+									</td>
+									<td>
+										<div class="box"></div>
+									</td>
+									<td>
+										<div class="box"></div>
+									</td>
+									<td>
+										<div class="box"></div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<!---->
+						<div class="btnArea">
+							<span class="right">
+								<button class="btnM" id="newReservationBtn" onclick="location.href='task_visitor_write.html'">신규등록</button>
+							</span>
+						</div>
+						<!--//-->
+					</div>
+					<!-- //page -->
+				</article>
+				</div>
+			</section>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //Wrap -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none;">
+			<div class="alertPop" style="display:none;">
+				<div class="pBack">
+					<!---->
+					<p>입력한 정보가 삭제됩니다.<br/>삭제하시겠습니까?</p>
+					<!--//-->
+				</div>
+				<div class="pBtn">
+					<button class="btnM white">취소</button>
+					<button class="btnM blue">확인</button>
+				</div>
+			</div>
+		</div>
+		<!-- //Popup -->
+    </body>
+</html>

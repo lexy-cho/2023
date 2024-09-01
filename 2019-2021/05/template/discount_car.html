@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../js/menu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$(document).on('click tab', '.gnbOpen', function(e){
+				$('.gnbScroll').load('gnb.html',function(){
+					funcGnbOpen();
+				});
+				return false;
+			});// 2019-03-15 gnb html load (퍼블리시용)
+            
+            // 감가차 상세조회
+            $(".discountInfo").click(function(){
+                $('.dimPop, #discountInfoLayer').show();
+            });
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button>
+							<!-- <button class="goPrev" onclick="history.back()">뒤로가기</button> -->
+						</span>
+						<h1><img src="../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2>감가차 조회</h2> <!-- 2019-04-17 타이틀변경 -->
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+                        <!-- 목록 -->
+                        <div class="tbContainer type2">
+                            <div class="tbScroll">
+                                <table class="tbStaus line">
+                                    <colgroup>
+                                        <col style="width:40px;">
+                                        <col style="width:80px;">
+                                        <col style="width:60px;">
+                                        <col style="width:110px;">
+                                        <col style="width:60px;">
+                                        <col style="width:110px;">
+                                        <col style="width:100px;">
+                                        <col style="width:110px;">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No.</th>
+                                            <th scope="col">모델</th>
+                                            <th scope="col">연식</th>
+                                            <th scope="col">차종</th>
+                                            <th scope="col">옵션</th>
+                                            <th scope="col">용품</th>
+                                            <th scope="col">외장색</th>
+                                            <th scope="col">내장색</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>01</td>
+                                            <td>SM7-L47</td>
+                                            <td>19MY SP</td>
+                                            <td class="tLeft"><button class="tLeft discountInfo"><span class="txtEllipsis txtBU">LPe New 장애인용 Premium Collection</span></button></td>
+                                            <td>-----4</td>
+                                            <td class="tLeft"><span class="txtEllipsis">360 스카이뷰_스마트커넥트용</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>02</td>
+                                            <td>SM7-L47</td>
+                                            <td>19MY</td>
+                                            <td class="tLeft"><button class="tLeft discountInfo"><span class="txtEllipsis txtBU">LPe New 장애인용 Premium Collection</span></button></td>
+                                            <td>-----4</td>
+                                            <td class="tLeft"><span class="txtEllipsis">360 스카이뷰_스마트커넥트용</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>03</td>
+                                            <td>SM7-L47</td>
+                                            <td>19MY</td>
+                                            <td class="tLeft"><button class="tLeft discountInfo"><span class="txtEllipsis txtBU">LPe New 장애인용 Premium Collection</span></button></td>
+                                            <td>-----4</td>
+                                            <td class="tLeft"><span class="txtEllipsis">360 스카이뷰_스마트커넥트용</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>04</td>
+                                            <td>SM7-L47</td>
+                                            <td>19MY</td>
+                                            <td class="tLeft"><button class="tLeft discountInfo"><span class="txtEllipsis txtBU">LPe New 장애인용 Premium Collection</span></button></td>
+                                            <td>-----4</td>
+                                            <td class="tLeft"><span class="txtEllipsis">360 스카이뷰_스마트커넥트용</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>05</td>
+                                            <td>SM7-L47</td>
+                                            <td>19MY</td>
+                                            <td class="tLeft"><button class="tLeft discountInfo"><span class="txtEllipsis txtBU">LPe New 장애인용 Premium Collection</span></button></td>
+                                            <td>-----4</td>
+                                            <td class="tLeft"><span class="txtEllipsis">360 스카이뷰_스마트커넥트용</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>06</td>
+                                            <td>SM7-L47</td>
+                                            <td>19MY</td>
+                                            <td class="tLeft"><button class="tLeft discountInfo"><span class="txtEllipsis txtBU">LPe New 장애인용 Premium Collection</span></button></td>
+                                            <td>-----4</td>
+                                            <td class="tLeft"><span class="txtEllipsis">360 스카이뷰_스마트커넥트용</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>07</td>
+                                            <td>SM7-L47</td>
+                                            <td>19MY</td>
+                                            <td class="tLeft"><button class="tLeft discountInfo"><span class="txtEllipsis txtBU">LPe New 장애인용 Premium Collection</span></button></td>
+                                            <td>-----4</td>
+                                            <td class="tLeft"><span class="txtEllipsis">360 스카이뷰_스마트커넥트용</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>08</td>
+                                            <td>SM7-L47</td>
+                                            <td>19MY</td>
+                                            <td class="tLeft"><button class="tLeft discountInfo"><span class="txtEllipsis txtBU">LPe New 장애인용 Premium Collection</span></button></td>
+                                            <td>-----4</td>
+                                            <td class="tLeft"><span class="txtEllipsis">360 스카이뷰_스마트커넥트용</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>09</td>
+                                            <td>SM7-L47</td>
+                                            <td>19MY</td>
+                                            <td class="tLeft"><button class="tLeft discountInfo"><span class="txtEllipsis txtBU">LPe New 장애인용 Premium Collection</span></button></td>
+                                            <td>-----4</td>
+                                            <td class="tLeft"><span class="txtEllipsis">360 스카이뷰_스마트커넥트용</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">메탈릭 블랙</span></td>
+                                            <td class="tLeft"><span class="txtEllipsis">프레스티지(가솔린)/프리미엄(2.0LPe) 블랙가죽시트</span></td>
+                                        </tr>                                                                                                
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- // 목록 -->
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+        
+        <!-- DimPopUp -->
+        <div class="dimPop" style="display: none;">
+            <!-- 감가차 상세 정보 -->
+            <div class="popLGCase showingInfoLayer hAuto" id="discountInfoLayer" style="display: none;">
+                <button class="close">닫기</button>
+                <div class="tt">
+                    <h1>감가차 상세정보</h1>
+                </div>
+                <div class="popBack">
+                    <div class="popScrollArea">
+                        <table>
+                            <colgroup>
+                                <col width="80px" />
+                                <col width="*" />
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>차대번호</th>
+                                    <td>KNMA4C2BMJP167395</td>
+                                </tr>
+                                <tr>
+                                    <th>차량위치</th>
+                                    <td>부산출고장</td>
+                                </tr>
+                                <tr>
+                                    <th>제작일자</th>
+                                    <td>2018-10-05</td>
+                                </tr>
+                                <tr>
+                                    <th>주행거리</th>
+                                    <td>222km</td>
+                                </tr>
+                                <tr>
+                                    <th>할인율</th>
+                                    <td>2%</td>
+                                </tr>
+                                <tr>
+                                    <th>계약상태</th>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- // 감가차 상세 정보 -->
+        </div>
+        <!-- // DimPopUp -->
+	</body>
+</html>

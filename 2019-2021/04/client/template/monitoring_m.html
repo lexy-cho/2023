@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nav.css">
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script> -->
+		<script type="text/javascript" src="../js/navmenu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+			$('.monitorMStep span').click(function(){
+				$('.monitorMStep ul').slideToggle();
+			});
+			$('.monitorMStep li').click(function(){
+				$('.monitorMStep ul').slideToggle();
+			});
+		</script>
+	</head>
+	<body>
+		<div class="pd2">
+			<!-- 2020-07-08 제목, 검색필터, 날짜 삭제 -->
+			<div class="monitorMStep">
+				<div>
+					<span>오더<strong>9</strong></span>
+					<ul>
+						<li>오더<strong>9</strong></li>
+						<li>배차<strong>5</strong></li>
+						<li>출발지<em>(상차/픽업)</em><strong>9</strong></li>
+						<li>작업지<strong>9</strong></li>
+						<li>도착지<em>(반납/하차)</em><strong>8</strong></li>
+					</ul>
+				</div>
+			</div>
+			<div class="tls">
+				<table>
+					<colgroup>
+						<col width="200" />
+						<col width="60"/>
+						<col width="70"/>
+					</colgroup>
+					<thead>
+						<tr>
+							<th class="tL">운송일시/오더번호/운송유형</th>
+							<th>운송비용</th><!-- 2020-07-08 제목 수정 -->
+							<th>작업지</th><!-- 2020-07-08 제목 수정 -->
+						</tr>
+					</thead>
+					<tbody>
+						<tr onclick="location.href='order_view.html'">
+							<td><span class="multNum red">입</span><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --> C999999999/A000001</span></td>
+							<td class="tR">999,000</td><!-- 2020-07-08 데이터 수정 -->
+							<td>경남부산</td><!-- 2020-07-08 데이터 수정 -->
+						</tr>
+						<tr onclick="location.href='order_view.html'">
+							<td><span class="multNum red">입</span><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --> C999999999/A000001</span></td>
+							<td class="tR">999,000</td><!-- 2020-07-08 데이터 수정 -->
+							<td>경남울산</td><!-- 2020-07-08 데이터 수정 -->
+						</tr>
+						<tr onclick="location.href='order_view.html'">
+							<td><span class="multNum red">입</span><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --> C999999999/A000001</span></td>
+							<td class="tR">999,000</td><!-- 2020-07-08 데이터 수정 -->
+							<td>경기인천</td><!-- 2020-07-08 데이터 수정 -->
+						</tr>
+						<tr onclick="location.href='order_view2.html'">
+							<td><span class="multNum blue">출</span><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --> C999999999/A000001</span></td>
+							<td class="tR">555,000</td><!-- 2020-07-08 데이터 수정 -->
+							<td>경기인천</td><!-- 2020-07-08 데이터 수정 -->
+						</tr>
+						<tr onclick="location.href='order_view2.html'">
+							<td><span class="multNum blue">출</span><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --> C999999999/A000001</span></td>
+							<td class="tR">444,000</td><!-- 2020-07-08 데이터 수정 -->
+							<td>경남울산</td><!-- 2020-07-08 데이터 수정 -->
+						</tr>
+						<tr onclick="location.href='order_view2.html'">
+							<td><span class="multNum blue">출</span><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-25 컴포넌트 수정 --> C999999999/A000001</span></td>
+							<td class="tR">999,000</td><!-- 2020-07-08 데이터 수정 -->
+							<td>경남울산</td><!-- 2020-07-08 데이터 수정 -->
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- popup -->
+		<div class="popDim" style="display:none;">
+			<!-- 검색필터 -->
+			<div class="basicPop filterPop" id="samplePop8" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>검색필터</h1>
+				</div>
+				<div class="pBack">
+					<dl>
+						<dt>운송일자</dt>
+						<dd>
+							<span class="radioChoose">
+								<label for="lb1"><input type="radio" id="lb1" name="radio1" value="오늘" /><span>오늘</span></label>
+								<label for="lb2"><input type="radio" id="lb2" name="radio1" value="10일" /><span>10일</span></label>
+								<label for="lb3"><input type="radio" id="lb3" name="radio1" value="지난달" /><span>지난달</span></label>
+								<label for="lb4"><input type="radio" id="lb4" name="radio1" value="이번달" /><span>이번달</span></label>
+							</span>
+							<span class="calDupSet">
+								<span class="calSet"><input type="tel" name="searchDate" placeholder="2020-01-21" /><button>달력열기</button></span>
+								<em>~</em>
+								<span class="calSet"><input type="tel" placeholder="2020-01-21" /><button>달력열기</button></span>
+							</span>
+						</dd>
+					</dl>
+					<dl>
+						<dt>작업지 검색</dt>
+						<dd>
+							<input class="wFull" type="text" placeholder="작업지를 입력해주세요">
+						</dd>
+					</dl>
+				</div>
+				<div class="pBtn">
+					<button class="btnM orange">적용하기</button>
+				</div>
+			</div>
+			<!--//검색필터-->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

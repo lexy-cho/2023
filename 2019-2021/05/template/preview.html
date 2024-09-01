@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../css/inview.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../css/preview.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../js/menu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+		$(document).ready(function(){
+			$(".step1").load("");
+			$(".step2").load("");
+			$(".step3").load("");
+			$(".step4").load("");
+
+			$(".stepLayout").hide();
+			$(".stepLayout:first").show();
+			$(".formatTab span").click(function () {
+				$(".formatTab span").removeClass("on");
+				$(this).addClass("on");
+				$(".stepLayout").hide();
+				var activeTab = $(this).attr("data-name");
+				$("." + activeTab).fadeIn();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- 서식 미리보기 -->
+		<div class="formatPreview">
+			<div class="formatTab">
+				<!-- 헤더 샘플 / Native 개발진행 시 삭제 필요 -->
+				<a onclick="history.back()" style="display: block; text-align: center; background: #53565b;"><img src="../images/img_preview_hd_sample.jpg" alt="" style="max-width: 100%;"></a>
+				<!-- // 헤더 샘플 / Native 개발진행 시 삭제 필요 -->
+				<span data-name="step1" class="on"><em>개인정보수집동의</em></span>
+				<span data-name="step2"><em>계약서(고객용)</em></span>
+				<span data-name="step3"><em>계약서(회사용)</em></span>
+				<span data-name="step4"><em>계약조항</em></span>
+				<span data-name="step5" class="long"><em>교환 &middot; 환불 <br/>중재제도(고객용)</em></span>
+				<span data-name="step6" class="long"><em>교환 &middot; 환불 <br/>중재제도(회사용)</em></span>
+				<span data-name="step7"><em>보증서</em></span>
+				<!-- <a href="">닫기</a> -->
+			</div>
+			<div class="mobileFormat">
+				<div class="stepLayout step1"></div>
+				<div class="stepLayout step2"></div>
+				<div class="stepLayout step3"></div>
+				<div class="stepLayout step4"></div>
+				<div class="stepLayout step5"></div>
+				<div class="stepLayout step6"></div>
+				<div class="stepLayout step7"></div>
+			</div>
+		</div>
+		<!-- // 서식 미리보기 -->
+	</body>
+</html>

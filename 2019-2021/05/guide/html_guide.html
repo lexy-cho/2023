@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<title>E-best Publish Guide</title>
+		<meta charset="utf-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+		<link rel="stylesheet" type="text/css" href="css/layout.css" />
+		<script src="js/modernizr-latest.js"></script>
+	</head>
+	 <body>
+		<!-- wrap -->
+		<div id="wrap">
+			<div id="top">
+				<header>
+					<h1>E-best Publish Guide</h1>
+				</header>
+				<hr/>
+				<nav>
+					<ul>
+						<li><button onclick="location.href='html_guide.html'">Document 구조</button></li>
+						<li><button onclick="location.href='html_guide2.html'">CSS 구조</button></li>
+						<li><button onclick="location.href='html_guide3.html'">WEBDOC 구조도</button></li>
+						<li><button onclick="location.href='html_guide4.html'">이미지</button></li>
+						<li><button onclick="location.href='html_guide5.html'">컴포넌트</button></li>
+					</ul>
+				</nav>
+				<h2>Document 구조</h2>
+			</div>
+			<hr/>
+			<div id="container">
+			<section>
+				<article>
+					<div class="line">
+						<p>본 파일은 e-best 프로젝트 퍼블리싱 영역의 가이드 입니다.</p>
+					</div>
+				</article>
+			</section>
+			<section>
+				<h1>1. Document Type</h1>
+				<article>
+					<div>
+						<p class="line">&lt;!DOCTYPE html&gt;<br/>
+						&lt;html lang="ko"&gt;</p>
+					</div>
+				</article>
+			</section>
+			<section>
+				<h1>2. HTML Head</h1>
+				<article>
+					<div>
+						<p class="line"><strong>모바일대응</strong><br/>
+						&lt;meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" /&gt;<br/>
+						&lt;meta name="format-detection" content="telephone=no"/&gt;</p>
+					
+						모든 파일은 head 에서 공통 혹은 부분공통적으로 사용되는 css및 js 파일을 불러온다.
+						<p class="line">
+						&lt;link rel="stylesheet" type="text/css" href="../css/파일명.css" /&gt;<br/>
+						&lt;script type="text/javascript" src="../js/파일명.js"&gt;&lt;/script&gt; </p>
+					</div>
+				</article>
+			</section>
+			<section>
+				<h1>3. Document Structure</h1>
+				<article>
+					<div class="line ml15">
+						<div>
+							DIV 레이아웃 사용<br/>
+							- 공통 : #wrap, #header(#headTop, #headSub), #container .content<br/>
+							- sub 공통 : .tbContainer(상단노랑색라인) .tbContainer(상단진한회색) .searchField .customerDtlBox<br/>
+						</div>
+						<ol>
+							<li><strong>공통 레이아웃</strong><br >
+								<ul>
+									<li>#wrap : 전체 레이아웃</li>
+									<li>#header<br/>
+										<ul>
+											<li>#headTop: 네비게이션, 메인로고, 홈페이지 바로이동</li>
+											<li>#headSub: 현재화면이름, 접속된유저이름, 현재세션상황, 로그아웃 </li>
+										</ul>
+									</li>
+									<li>#container .contents : 컨텐츠</li>
+								</ul>
+							</li>
+							<li><strong>sub 폼</strong><br>
+								<ul>
+									<li>sub 폼
+										<ul>
+											<li>.tbContainer 리스트(상단노랑색라인)</li>
+											<li>.tbContainer 리스트(상단진한회색)</li>
+											<li>.searchField (검색박스)</li>  
+											<li>.customerDtlBox (여닫기적용데이터)</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><strong>견적관리</strong><br/>
+								<ul>
+									<li>.estimateWrap (내용영역)</li>
+									<li>.estimateBtn (하단 버튼영역) </li>
+									<li>.estSummary (네비게이션)</li>
+								</ul>
+							</li>
+							<li><strong>발송관리</strong><br />
+								<ul>
+									<li>.sendDetail (내용 영역)</li>
+									<li>.sendBtn (하단 버튼영역)</li>
+								</ul>
+							</li>
+							<li><strong>통합게시판</strong><br />
+								<ul>
+									<li>.boardDetail (내용영역) </li>
+								</ul>
+							</li>
+							<li><strong>통계</strong><br />
+								<ul>
+									<li>.commissionLayout (내용영역)</li>
+								</ul>
+							</li>
+						</ol>
+					</div>
+				</article>
+			</section>	
+				<article>
+					<ol>
+						<li>공통 레이아웃
+						<p>
+<pre class="line">
+&lt;!-- wrap --&gt;
+&lt;div id="wrap" class="wrapper"&gt;
+	&lt;!-- GNB : 왼쪽 &gt; 오른쪽 --&gt;
+	&lt;button class="gnbClose"&gt;GNB 닫기&lt;/button&gt;
+	&lt;div class="gnbArea slideDefault com-slide-left"&gt;
+		&lt;div class="gnbScroll"&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div id="c-mask" class="c-mask"&gt;&lt;!-- GNB Mask --&gt;&lt;/div&gt;
+	&lt;!-- //GNB --&gt;
+	&lt;!-- header --&gt;
+	&lt;div id="header"&gt; 
+		
+			&lt;div class="headTop"&gt;
+				&lt;span class="hBtnLeft"&gt;
+					&lt;button class="gnbOpen"&gt;GNB 열기&lt;/button&gt;
+					&lt;!-- &lt;button class="goPrev" onclick="history.back()"&gt;뒤로가기&lt;/button&gt; --&gt;
+				&lt;/span&gt;
+				&lt;h1&gt;&lt;img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT"&gt;&lt;/h1&gt;
+				&lt;span class="hBtnRight"&gt;
+					&lt;a href="../main.html" class="goMain"&gt;메인으로 이동&lt;/a&gt;
+				&lt;/span&gt;
+			&lt;/div&gt;
+			&lt;div class="headSub"&gt;
+				&lt;h2&gt;견적조회&lt;/h2&gt; &lt;!-- 2019-04-17 타이틀변경 --&gt;
+				&lt;div class="right"&gt;
+					&lt;p class="userInfo"&gt;&lt;strong&gt;김르노&lt;/strong&gt; 님&lt;/p&gt;
+					&lt;span class="session cyanCase"&gt;
+						세션만료 &lt;strong&gt;26분 30초&lt;span&gt;&lt;!-- time progress bar --&gt;&lt;/span&gt;&lt;/strong&gt;
+					&lt;/span&gt;
+					&lt;button class="btnLogout" onclick="location.href='../login.html'"&gt;로그아웃&lt;/button&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		
+	&lt;/div&gt;
+	&lt;!-- //header --&gt;
+	&lt;!-- container --&gt;
+	&lt;div id="container"&gt;
+		&lt;div class="content"&gt;
+			&lt;section&gt;
+				&lt;div class="postList" style="padding-top: 191px;"&gt; &lt;!--2019-03-15 클래스명 변경---&gt;
+                          &lt;!-- fixed --&gt;
+                          &lt;div class="headFixed"&gt;
+                              &lt;!-- table header / Tab --&gt;
+                              &lt;div class="tablet"&gt; &lt;!-- 2019-03-15 tab &gt; tablet --&gt;
+                                  &lt;div class="tbContainer"&gt;
+                                      &lt;table class="tbList"&gt;
+                                          &lt;colgroup&gt;
+                                              &lt;col width="11%"&gt;
+                                              &lt;col width="12%"&gt;
+                                              &lt;col width="120"&gt;
+                                              &lt;col width="*"&gt;
+                                              &lt;col width="100"&gt;
+                                              &lt;col width="120"&gt;
+                                          &lt;/colgroup&gt;
+                                          &lt;thead&gt;
+                                              &lt;tr&gt;
+                                                  &lt;th&gt;모델&lt;/th&gt;
+                                                  &lt;th&gt;기준일자&lt;/th&gt;
+                                                  &lt;th&gt;계약번호&lt;button class="sort"&gt;&lt;i&gt;&lt;/i&gt;정렬&lt;/button&gt;&lt;/th&gt;
+                                                  &lt;th class="tLeft"&gt;차량정보&lt;/th&gt;
+                                                  &lt;th&gt;고객정보&lt;/th&gt;
+                                                  &lt;th&gt;본부&lt;small&gt;(지점/영업사원)&lt;/small&gt;&lt;/th&gt;
+                                              &lt;/tr&gt;
+                                          &lt;/thead&gt;
+                                      &lt;/table&gt;
+                                  &lt;/div&gt;
+                              &lt;/div&gt;
+                              &lt;!-- // table header / Tab --&gt;
+                          &lt;/div&gt;
+                          &lt;!-- // fixed --&gt;
+                          &lt;/div&gt;
+                      &lt;/div&gt;  
+			&lt;/section&gt;
+                  &lt;button class="pageTop list" style="display: none;"&gt;TOP&lt;/button&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;!-- //container --&gt;
+&lt;/div&gt;
+&lt;!-- //wrap --&gt;
+</pre>
+						</p>
+						<p class="line"><img src="images/commonPage.png" alt="structure img" /></p>
+						</li>
+						<li>sub 폼<br/>
+						<p style="padding-left:50px;"><strong>.searchField<br/>.tbContainer(상단노랑색라인)<br/>.tbContainer(상단진한회색)</strong>
+						<br/><p class="fr">※ 같은 상위클래스를 사용하지만 자식태그에 따라 다른디자인 ※</p>
+<pre class="line">
+&lt;!-- contents --&gt;
+&lt;div class="contents"&gt;
+
+	&lt;div class="searchField"&gt;
+		&lt;div class="innerInpGrp type3"&gt;
+			&lt;ul class="srhGrpLine two"&gt;
+				&lt;li&gt;
+					&lt;span class="selectSet"&gt; &lt;!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 --&gt;
+						&lt;select id="historyType"&gt;
+							&lt;option&gt;구분&lt;/option&gt;
+							&lt;option value="1"&gt;구매이력&lt;/option&gt;
+							&lt;option value="2"&gt;계약이력&lt;/option&gt;
+						&lt;/select&gt;
+					&lt;/span&gt;
+				&lt;/li&gt;
+				&lt;li&gt;
+					&lt;span class="selectSet"&gt; &lt;!-- 2019-04-17 strong 삭제 / js는 common.js에서 공통삭제 --&gt;
+						&lt;select id="custType"&gt;
+							&lt;option&gt;개인/법인&lt;/option&gt;
+							&lt;option value="1"&gt;개인&lt;/option&gt;
+							&lt;option value="2"&gt;법인&lt;/option&gt;
+							&lt;option value="3"&gt;차량등록번호&lt;/option&gt;
+						&lt;/select&gt;
+					&lt;/span&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;
+			&lt;div class="iptSearch"&gt;
+				&lt;input type="text" id="searchWord" class="searchInp" placeholder="Safe KEY"&gt;
+				&lt;button class="btnBY"&gt;조회&lt;/button&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;button class="mbView btnSchOpen"&gt;열기&lt;/button&gt;
+	&lt;/div&gt;
+
+	&lt;div class="tbContainer"&gt;
+		&lt;ul class="tbList tbHead"&gt;
+			&lt;li&gt;
+				&lt;span&gt;차량번호&lt;/span&gt;
+				&lt;span&gt;모델&lt;/span&gt;
+				&lt;span&gt;연식&lt;/span&gt;
+				&lt;span&gt;차종&lt;/span&gt;
+				&lt;span&gt;고객명&lt;/span&gt;
+				&lt;span&gt;휴대폰&lt;/span&gt;
+				&lt;span&gt;출고일&lt;/span&gt;
+			&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+	
+	
+	
+	&lt;div class="tbContainer"&gt;
+		&lt;ul class="tbList tbBody"&gt;
+			&lt;li&gt;
+				&lt;span class="carNum"&gt;10가1234&lt;/span&gt;
+				&lt;span class="carModel"&gt;SM6-LFD&lt;/span&gt;
+				&lt;span class="carYear"&gt;18MY&lt;/span&gt;
+				&lt;span class="carType"&gt;GdeRE&lt;/span&gt;
+				&lt;span class="custmNm"&gt;&lt;button class="showingInfo"&gt;홍길동&lt;/button&gt;&lt;/span&gt;
+				&lt;span class="tel"&gt;010-1235-5268&lt;/span&gt;
+				&lt;span class="deliDate"&gt;&lt;span class="mTxt"&gt;출고일 : &lt;/span&gt;2019-03-12&lt;/span&gt;
+			&lt;/li&gt;
+			&lt;li&gt;
+				&lt;span class="carNum"&gt;10가1234&lt;/span&gt;
+				&lt;span class="carModel"&gt;SM6-LFD&lt;/span&gt;
+				&lt;span class="carYear"&gt;18MY&lt;/span&gt;
+				&lt;span class="carType"&gt;GdeRE&lt;/span&gt;
+				&lt;span class="custmNm"&gt;&lt;button class="showingInfo"&gt;홍길동&lt;/button&gt;&lt;/span&gt;
+				&lt;span class="tel"&gt;010-1235-5268&lt;/span&gt;
+				&lt;span class="deliDate"&gt;&lt;span class="mTxt"&gt;출고일 : &lt;/span&gt;2019-03-12&lt;/span&gt;
+			&lt;/li&gt;
+			&lt;li&gt;
+				&lt;span class="carNum"&gt;10가1234&lt;/span&gt;
+				&lt;span class="carModel"&gt;SM6-LFD&lt;/span&gt;
+				&lt;span class="carYear"&gt;18MY&lt;/span&gt;
+				&lt;span class="carType"&gt;GdeRE&lt;/span&gt;
+				&lt;span class="custmNm"&gt;&lt;button class="showingInfo"&gt;홍길동&lt;/button&gt;&lt;/span&gt;
+				&lt;span class="tel"&gt;010-1235-5268&lt;/span&gt;
+				&lt;span class="deliDate"&gt;&lt;span class="mTxt"&gt;출고일 : &lt;/span&gt;2019-03-12&lt;/span&gt;
+			&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;									
+
+
+	&lt;div class="tbContainer" id="buyHistory"&gt;
+		&lt;span class="txtDot"&gt;Total 2610&lt;/span&gt;
+		&lt;div class="tbScroll"&gt;
+			&lt;table class="tbStaus line"&gt;
+				&lt;colgroup&gt;
+					&lt;col style="width:40px;"&gt;
+					&lt;col style="width:80px;"&gt;
+					&lt;col style="width:80px;"&gt;
+					&lt;col style="width:60px;"&gt;
+					&lt;col style="width:80px;"&gt;
+					&lt;col style="width:80px;"&gt;
+					&lt;col style="width:90px;"&gt;
+					&lt;col style="width:80px;"&gt;
+					&lt;col style="width:80px;"&gt;
+				&lt;/colgroup&gt;
+				&lt;thead&gt;
+					&lt;tr&gt;
+						&lt;th scope="col"&gt;No&lt;/th&gt;
+						&lt;th scope="col"&gt;지점명&lt;/th&gt;
+						&lt;th scope="col"&gt;계약번호&lt;/th&gt;
+						&lt;th scope="col" id="custBuyNm"&gt;고객명&lt;/th&gt;
+						&lt;th scope="col"&gt;고객분류&lt;/th&gt;
+						&lt;th scope="col"&gt;지불조건&lt;/th&gt;
+						&lt;th scope="col" id="keyNum"&gt;Safe KEY&lt;/th&gt;
+						&lt;th scope="col"&gt;구입차종&lt;/th&gt;
+						&lt;th scope="col"&gt;출고일자&lt;/th&gt;
+					&lt;/tr&gt;
+				&lt;/thead&gt;
+				&lt;tbody&gt;
+					&lt;tr&gt;
+						&lt;td&gt;1&lt;/td&gt;
+						&lt;td&gt;강남대리점&lt;/td&gt;
+						&lt;td&gt;800105020&lt;/td&gt;
+						&lt;td&gt;홍길동&lt;/td&gt;
+						&lt;td&gt;임직원-영업임직원&lt;/td&gt;
+						&lt;td&gt;할부정상조건&lt;/td&gt;
+						&lt;td&gt;8888888888&lt;/td&gt;
+						&lt;td&gt;SM6 GDe LE 19MY&lt;/td&gt;
+						&lt;td&gt;2020-12-31&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;2&lt;/td&gt;
+						&lt;td&gt;강남대리점&lt;/td&gt;
+						&lt;td&gt;800105020&lt;/td&gt;
+						&lt;td&gt;홍길동&lt;/td&gt;
+						&lt;td&gt;임직원-영업임직원&lt;/td&gt;
+						&lt;td&gt;현금일시불&lt;/td&gt;
+						&lt;td&gt;8888888888&lt;/td&gt;
+						&lt;td&gt;SM6 GDe LE 19MY&lt;/td&gt;
+						&lt;td&gt;2020-12-31&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;3&lt;/td&gt;
+						&lt;td&gt;강남대리점&lt;/td&gt;
+						&lt;td&gt;800105020&lt;/td&gt;
+						&lt;td&gt;홍길동&lt;/td&gt;
+						&lt;td&gt;임직원-영업임직원&lt;/td&gt;
+						&lt;td&gt;할부정상조건&lt;/td&gt;
+						&lt;td&gt;8888888888&lt;/td&gt;
+						&lt;td&gt;SM6 GDe LE 19MY&lt;/td&gt;
+						&lt;td&gt;2020-12-31&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;4&lt;/td&gt;
+						&lt;td&gt;강남대리점&lt;/td&gt;
+						&lt;td&gt;800105020&lt;/td&gt;
+						&lt;td&gt;홍길동&lt;/td&gt;
+						&lt;td&gt;임직원-영업임직원&lt;/td&gt;
+						&lt;td&gt;현금일시불&lt;/td&gt;
+						&lt;td&gt;8888888888&lt;/td&gt;
+						&lt;td&gt;SM6 GDe LE 19MY&lt;/td&gt;
+						&lt;td&gt;2020-12-31&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td colspan="9" class="listNone"&gt;
+							&lt;span class="sIcon"&gt;조회 결과가 존재하지 않습니다.&lt;/span&gt;
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/tbody&gt;
+			&lt;/table&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- //contents --&gt;
+</pre>
+						</p>
+
+						
+						<p class="line"><img src="images/yellow_head_page.png" alt="structure img" /></p>
+						<p class="line"><img src="images/black_head_page.png" alt="structure img" /></p>
+						<p style="padding-left:50px;"><strong>.customerDtlBox</strong>
+<pre class="line">
+&lt;!-- contents --&gt;
+&lt;div class="customerDtlbody"&gt;       
+	&lt;!-- 구매정보 --&gt;
+	&lt;dl class="customerDtlBox"&gt;
+		&lt;dt class="custDtlTit type2"&gt;
+			&lt;button class="slideBtn"&gt;구매정보&lt;span class="btnSlideOpen"&gt;&lt;/span&gt;&lt;/button&gt;
+		&lt;/dt&gt;
+		&lt;dd class="custDtlMain" style="display: none;"&gt;
+			&lt;div class="gridContainer"&gt;
+				&lt;div class="gridSet grid3"&gt;
+					&lt;div class="gridItem"&gt;
+						&lt;dl class="listView"&gt;
+							&lt;dt&gt;구매가능도&lt;/dt&gt;
+							&lt;dd&gt;
+								&lt;span class="selectSet"&gt;
+									&lt;select&gt;
+										&lt;option&gt;선택해 주세요&lt;/option&gt;
+										&lt;option&gt;1개월&lt;/option&gt;
+										&lt;option&gt;3개월&lt;/option&gt;
+										&lt;option&gt;6개월&lt;/option&gt;
+										&lt;option&gt;1년 이내&lt;/option&gt;
+										&lt;option&gt;1년 이후&lt;/option&gt;
+										&lt;option&gt;접촉종료&lt;/option&gt;
+									&lt;/select&gt;
+								&lt;/span&gt;
+							&lt;/dd&gt;
+						&lt;/dl&gt;
+					&lt;/div&gt;
+					&lt;div class="gridItem"&gt;
+						&lt;dl class="listView"&gt;
+							&lt;dt class="nonTxt"&gt;&lt;/dt&gt;
+							&lt;dd&gt;
+								&lt;span class="selectSet"&gt;
+									&lt;select&gt;
+										&lt;option&gt;선택해 주세요&lt;/option&gt;
+										&lt;option&gt;SM3&lt;/option&gt;
+										&lt;option&gt;SM5&lt;/option&gt;
+										&lt;option&gt;SM5 Taxi&lt;/option&gt;
+										&lt;option&gt;SM6&lt;/option&gt;
+										&lt;option&gt;All New SM7&lt;/option&gt;
+										&lt;option&gt;SM7 Lpe&lt;/option&gt;
+										&lt;option&gt;QM6&lt;/option&gt;
+										&lt;option&gt;QM3&lt;/option&gt;
+										&lt;option&gt;SM3 ZW&lt;/option&gt;
+										&lt;option&gt;TWIZY&lt;/option&gt;
+										&lt;option&gt;CLIO&lt;/option&gt;
+										&lt;option&gt;MASTER&lt;/option&gt;
+									&lt;/select&gt;
+								&lt;/span&gt;
+							&lt;/dd&gt;
+						&lt;/dl&gt;
+					&lt;/div&gt;
+					&lt;div class="gridItem"&gt;
+						&lt;dl class="listView"&gt;
+							&lt;dt&gt;구매예상일&lt;/dt&gt;
+							&lt;dd&gt;&lt;div class="calendarSet gray"&gt;&lt;input type="tel" id="" name=""&gt;&lt;button&gt;달력열기&lt;/button&gt;&lt;/div&gt;&lt;/dd&gt;
+						&lt;/dl&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div class="gridSet"&gt;
+					&lt;div class="gridItem"&gt;
+						&lt;dl class="listView"&gt;
+							&lt;dt&gt;접촉종료사유&lt;/dt&gt;
+							&lt;dd&gt;&lt;input type="text" placeholder="내용을 입력해 주세요"&gt;&lt;/dd&gt;
+						&lt;/dl&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div class="gridSet"&gt;
+					&lt;div class="gridItem"&gt;
+						&lt;dl class="listView"&gt;
+							&lt;dt&gt;고객특징&lt;/dt&gt;
+							&lt;dd&gt;&lt;input type="text" placeholder="내용을 입력해주세요"&gt;&lt;/dd&gt;
+						&lt;/dl&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/dd&gt;
+	&lt;/dl&gt;
+	&lt;!-- // 구매정보 --&gt;                                
+&lt;/div&gt;
+&lt;!-- //contents --&gt;
+</pre>						
+						</p>						
+						<p class="line"><img src="images/Opening_and_closing_page.png" alt="structure img" /></p>
+						
+						</li>
+						<li>견적관리
+						<p style="padding-left: 50px;">	<strong>.estSummary(네비게이션).<br/>.estimateWrap (내용영역)<br/>.estimateBtn (하단 버튼영역)</strong>
+						
+<pre class="line">
+&lt;!-- contents --&gt;
+&lt;div class="contents"&gt;
+
+	&lt;div class="estSummary slideDefault com-push-left is-active"&gt;
+		&lt;button class="stepClose"&gt;견적 써머리 닫기&lt;/button&gt;
+		&lt;article&gt;
+			&lt;div class="estSumScroll"&gt;
+				&lt;div class="summaryHead"&gt;
+					&lt;ul class="frmList"&gt;
+						&lt;li&gt;
+							&lt;label for="baisicDate" class="dotLabel"&gt;기준일자&lt;/label&gt;
+							&lt;div class="calendarSet"&gt;&lt;input type="tel" id="baisicDate" name=""&gt;&lt;button&gt;달력열기&lt;/button&gt;&lt;/div&gt;&lt;!--2019-03-15---&gt;
+						&lt;/li&gt;
+						&lt;li&gt;
+							&lt;label for="contractNum" class="dotLabel"&gt;계약번호&lt;/label&gt;
+							&lt;input type="number" id="contractNum" placeholder="-" disabled="disabled"&gt;
+						&lt;/li&gt;
+					&lt;/ul&gt;
+				&lt;/div&gt;
+				&lt;div class="summaryMain"&gt;
+					&lt;ul class="titLinkList"&gt;
+						&lt;li class="stepMenu01 active"&gt;
+							&lt;a href="new_step01.html" class="tit"&gt;&lt;i class="icon"&gt;&lt;/i&gt;&lt;span class="txt"&gt;기본정보&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="tglGrdList"&gt;
+								&lt;li&gt;
+									&lt;div class="left"&gt;[11] 개인 - 일반개인판매&lt;/div&gt;
+								&lt;/li&gt;
+								&lt;li&gt;
+									&lt;div class="left"&gt;과세&lt;/div&gt;
+								&lt;/li&gt;
+							&lt;/ul&gt;
+						&lt;/li&gt;
+						&lt;li class="stepMenu02"&gt;
+							&lt;a href="new_step02.html" class="tit"&gt;&lt;i class="icon"&gt;&lt;/i&gt;&lt;span class="txt"&gt;차량/배송&lt;/span&gt;&lt;span class="priceSum"&gt;0&lt;/span&gt;&lt;/a&gt;
+							&lt;ul class="tglGrdList"&gt;
+								&lt;li&gt;
+									&lt;div class="left"&gt;차량 :&lt;/div&gt;
+									&lt;div class="right"&gt;
+										&lt;span class="priceView"&gt;&lt;/span&gt;
+										&lt;span class="option"&gt;
+											&lt;span&gt;(NEW SM7 V6 10M)&lt;/span&gt;
+										&lt;/span&gt;
+									&lt;/div&gt;
+								&lt;/li&gt;
+								&lt;li&gt;
+									&lt;div class="left"&gt;색상 :&lt;/div&gt;
+									&lt;div class="right"&gt;
+										&lt;span class="priceView"&gt;&lt;/span&gt;
+										&lt;span class="option"&gt;
+											&lt;span&gt;(화이트 펄/라이트 그레이 나파 가죽시트)&lt;/span&gt;
+										&lt;/span&gt;
+									&lt;/div&gt;
+								&lt;/li&gt;
+								&lt;li&gt;
+									&lt;div class="left"&gt;옵션 :&lt;/div&gt;
+									&lt;div class="right"&gt;
+										&lt;span class="priceView"&gt;&lt;/span&gt;
+										&lt;span class="option"&gt;
+											&lt;span&gt;[선택] BOSE 사운드 시스템+뒷자리&lt;/span&gt;
+											&lt;span&gt;[선택] 18" 프레스티지 알로이 휠 &amp; SM7-L47&lt;/span&gt;
+											&lt;span&gt;[선택] 뒷자석 VIP Pack1&lt;/span&gt;
+										&lt;/span&gt;
+									&lt;/div&gt;
+								&lt;/li&gt;
+								&lt;li&gt;
+									&lt;div class="left"&gt;용품 :&lt;/div&gt;
+									&lt;div class="right"&gt;
+										&lt;span class="priceView"&gt;&lt;/span&gt;
+										&lt;span class="option"&gt;
+											&lt;span&gt;[용품] 내비게이션 업그레이드&lt;/span&gt;
+											&lt;span&gt;[용품] 파노라마 선루프&lt;/span&gt;
+											&lt;span&gt;[용품] 뒷자석 VIP Pack1&lt;/span&gt;
+											&lt;span&gt;[용품] 18" 프레스티지 알로이 휠&lt;/span&gt;
+										&lt;/span&gt;
+									&lt;/div&gt;
+								&lt;/li&gt;
+								&lt;li&gt;
+									&lt;div class="left"&gt;해피케어 상품 :&lt;/div&gt;
+									&lt;div class="right"&gt;
+										&lt;span class="priceView"&gt;&lt;/span&gt;
+									&lt;/div&gt;
+								&lt;/li&gt;
+								&lt;li&gt;
+									&lt;div class="left"&gt;탁송료 :&lt;/div&gt;
+									&lt;div class="right"&gt;
+										&lt;span class="priceView"&gt;&lt;/span&gt;
+									&lt;/div&gt;
+								&lt;/li&gt;
+							&lt;/ul&gt;
+						&lt;/li&gt;
+					&lt;/ul&gt;
+				&lt;/div&gt;
+				&lt;div class="summaryFoot"&gt;
+					&lt;dl&gt;
+						&lt;dt&gt;출고 전 입금액&lt;/dt&gt;
+						&lt;dd class="allPriceSum"&gt;33,245,620&lt;/dd&gt;
+					&lt;/dl&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/article&gt;
+	&lt;/div&gt;
+
+
+
+
+	&lt;div id="estimateWrap" class="wrapper has-push-left pushCase"&gt
+		&lt;!-- 신규 견적 Step.01 --&gt
+		&lt;article&gt
+			&lt;div class="stepBox"&gt
+				&lt;h3 class="sbTit"&gt1. 판매구분&lt;/h3&gt
+				&lt;div class="gridSet grid2"&gt
+					&lt;div class="gridItem inlineBL"&gt
+						&lt;div class="sbSub"&gt
+							&lt;h4 class="sbsTit"&gt계약서구분&lt;sup&gt필수항목&lt;/sup&gt&lt;/h4&gt
+							&lt;ul class="contractSlt"&gt
+								&lt;li class="onContract"&gt&lt;!-- 2019-03-29 수정 --&gt
+									&lt;span class="radioSet"&gt&lt;input type="radio" id="online" name="contract" checked=""&gt&lt;label for="online"&gt&lt;i&gt&lt;/i&gt&lt;strong&gt전자&lt;/strong&gt 계약서&lt;span class="eIcon"&gt&lt;/span&gt&lt;/label&gt&lt;/span&gt
+								&lt;/li&gt
+								&lt;li class="offContract"&gt
+									&lt;span class="radioSet"&gt&lt;input type="radio" id="offline" name="contract"&gt&lt;label for="offline"&gt&lt;i&gt&lt;/i&gt&lt;strong&gt종이&lt;/strong&gt 계약서&lt;/label&gt&lt;/span&gt
+								&lt;/li&gt
+							&lt;/ul&gt
+						&lt;/div&gt
+					&lt;/div&gt
+				&lt;/div&gt
+				&lt;div class="gridSet grid2"&gt
+					&lt;div class="gridItem"&gt
+						&lt;div class="sbSub"&gt
+							&lt;h4 class="sbsTit"&gt판매구분&lt;sup&gt필수항목&lt;/sup&gt&lt;/h4&gt
+							&lt;button class="scrollToggle"&gt전체보기&lt;/button&gt
+							&lt;div class="lstBox lstScroll"&gt
+								&lt;ul&gt
+									&lt;li&gt&lt;span class="radioSet"&gt&lt;input type="radio" id="sale01" name="saleType" checked=""&gt&lt;label for="sale01"&gt&lt;i&gt&lt;/i&gt[11] 개인 - 일반개인판매&lt;/label&gt&lt;/span&gt&lt;/li&gt
+									&lt;li&gt&lt;span class="radioSet"&gt&lt;input type="radio" id="sale02" name="saleType"&gt&lt;label for="sale02"&gt&lt;i&gt&lt;/i&gt[19] 개인 - 외국인개인판매&lt;/label&gt&lt;/span&gt&lt;/li&gt
+									&lt;li&gt&lt;span class="radioSet"&gt&lt;input type="radio" id="sale03" name="saleType"&gt&lt;label for="sale03"&gt&lt;i&gt&lt;/i&gt[21] 법인 - 일반법인판매&lt;/label&gt&lt;/span&gt&lt;/li&gt
+									&lt;li&gt&lt;span class="radioSet"&gt&lt;input type="radio" id="sale04" name="saleType"&gt&lt;label for="sale04"&gt&lt;i&gt&lt;/i&gt[24] 법인 - 택시업체&lt;/label&gt&lt;/span&gt&lt;/li&gt
+									&lt;li&gt&lt;span class="radioSet"&gt&lt;input type="radio" id="sale05" name="saleType"&gt&lt;label for="sale05"&gt&lt;i&gt&lt;/i&gt[25] 법인 - 렌트업체&lt;/label&gt&lt;/span&gt&lt;/li&gt
+									&lt;li&gt&lt;span class="radioSet"&gt&lt;input type="radio" id="sale06" name="saleType"&gt&lt;label for="sale06"&gt&lt;i&gt&lt;/i&gt[26] 법인 - 개인택시&lt;/label&gt&lt;/span&gt&lt;/li&gt
+									&lt;li&gt&lt;span class="radioSet"&gt&lt;input type="radio" id="sale07" name="saleType"&gt&lt;label for="sale07"&gt&lt;i&gt&lt;/i&gt[27] 법인 - 개인사업자&lt;/label&gt&lt;/span&gt&lt;/li&gt
+									&lt;li&gt&lt;span class="radioSet"&gt&lt;input type="radio" id="sale08" name="saleType"&gt&lt;label for="sale08"&gt&lt;i&gt&lt;/i&gt[28] 법인 - 리스업체(제휴리스제외)&lt;/label&gt&lt;/span&gt&lt;/li&gt
+									&lt;li&gt&lt;span class="radioSet"&gt&lt;input type="radio" id="sale09" name="saleType"&gt&lt;label for="sale09"&gt&lt;i&gt&lt;/i&gt[30] 법인 - 조달판매&lt;/label&gt&lt;/span&gt&lt;/li&gt
+									&lt;li&gt&lt;span class="radioSet"&gt&lt;input type="radio" id="sale10" name="saleType"&gt&lt;label for="sale10"&gt&lt;i&gt&lt;/i&gt[40] 법인 - 관계법인판매&lt;/label&gt&lt;/span&gt&lt;/li&gt
+									&lt;li&gt&lt;span class="radioSet"&gt&lt;input type="radio" id="sale11" name="saleType"&gt&lt;label for="sale11"&gt&lt;i&gt&lt;/i&gt[51] 임직원 - 영업임직원 구입&lt;/label&gt&lt;/span&gt&lt;/li&gt
+									&lt;li&gt&lt;span class="radioSet"&gt&lt;input type="radio" id="sale12" name="saleType"&gt&lt;label for="sale12"&gt&lt;i&gt&lt;/i&gt[52] 임직원 - 생산임직원 구입&lt;/label&gt&lt;/span&gt&lt;/li&gt
+									&lt;li&gt&lt;span class="radioSet"&gt&lt;input type="radio" id="sale13" name="saleType"&gt&lt;label for="sale13"&gt&lt;i&gt&lt;/i&gt[53] 임직원 - 연구소임직원 구입&lt;/label&gt&lt;/span&gt&lt;/li&gt
+									&lt;li&gt&lt;span class="radioSet"&gt&lt;input type="radio" id="sale14" name="saleType"&gt&lt;label for="sale14"&gt&lt;i&gt&lt;/i&gt[54] 임직원 - 본사임직원 구입&lt;/label&gt&lt;/span&gt&lt;/li&gt
+									&lt;li&gt&lt;span class="radioSet"&gt&lt;input type="radio" id="sale15" name="saleType"&gt&lt;label for="sale15"&gt&lt;i&gt&lt;/i&gt[55] 시승차&lt;/label&gt&lt;/span&gt&lt;/li&gt
+									&lt;li&gt&lt;span class="radioSet"&gt&lt;input type="radio" id="sale16" name="saleType"&gt&lt;label for="sale16"&gt&lt;i&gt&lt;/i&gt[59] 삼성그룹 임직원 구입&lt;/label&gt&lt;/span&gt&lt;/li&gt
+								&lt;/ul&gt
+							&lt;/div&gt
+						&lt;/div&gt
+					&lt;/div&gt
+					&lt;div class="gridItem"&gt
+						&lt;div class="sbSub"&gt
+							&lt;h4 class="sbsTit"&gt면세구분&lt;sup&gt필수항목&lt;/sup&gt&lt;/h4&gt
+							&lt;div class="lstBox"&gt
+								&lt;ul&gt
+									&lt;li&gt&lt;span class="radioSet"&gt&lt;input type="radio" id="tax01" name="taxType" checked=""&gt&lt;label for="tax01"&gt&lt;i&gt&lt;/i&gt과세&lt;/label&gt&lt;/span&gt&lt;/li&gt
+									&lt;li&gt&lt;span class="radioSet"&gt&lt;input type="radio" id="tax02" name="taxType"&gt&lt;label for="tax02"&gt&lt;i&gt&lt;/i&gt면세&lt;/label&gt&lt;/span&gt&lt;/li&gt
+									&lt;li&gt&lt;span class="radioSet"&gt&lt;input type="radio" id="tax03" name="taxType"&gt&lt;label for="tax03"&gt&lt;i&gt&lt;/i&gt영세&lt;/label&gt&lt;/span&gt&lt;/li&gt
+								&lt;/ul&gt
+							&lt;/div&gt
+						&lt;/div&gt
+					&lt;/div&gt
+				&lt;/div&gt
+			&lt;/div&gt
+		&lt;/article&gt
+		&lt;!-- // 신규 견적 Step.01 --&gt
+	&lt;/div&gt;
+	
+	
+	&lt;div class="estimateBtn"&gt;
+		&lt;div class="footLeft"&gt;
+			&lt;button class="btnPrev gray"&gt;&lt;i&gt;이전페이지&lt;/i&gt;&lt;/button&gt;
+			&lt;button onclick="location.href='new_step02.html'" class="btnNext"&gt;&lt;i&gt;다음페이지&lt;/i&gt;&lt;/button&gt;
+		&lt;/div&gt;
+		&lt;div class="footRight"&gt;
+			&lt;button class="btnCYN fullOpen fullPop1"&gt;견적전체보기&lt;/button&gt;
+			&lt;button class="btnOpen mbView"&gt;&lt;i&gt;열기&lt;/i&gt;&lt;/button&gt;
+			&lt;div class="footBtnGroup"&gt;
+				&lt;button id="estimateCopyBtn" class="btnRBG"&gt;복사견적&lt;/button&gt;
+				&lt;button class="btnRBG"&gt;견적발송&lt;/button&gt;
+				&lt;button class="btnRBG openPop1"&gt;할부계산기&lt;/button&gt;
+				&lt;button id="estimateDelBtn" class="btnRD"&gt;삭제&lt;/button&gt;
+			&lt;/div&gt;
+			&lt;button class="pageTop" style="display: none;"&gt;TOP&lt;/button&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;	
+&lt;div&gt;	
+&lt;!-- //contents --&gt;
+</pre>
+						</p>
+						<p class="line"><img src="images/estmate_page.png" alt="structure img" /></p>
+						</li>
+						<li>발송관리
+						<p style="padding-left:50px;"><strong> .sendDetail (내용 영역)<br/>.sendBtn (하단 버튼영역)</strong>
+<pre class="line">
+&lt;!-- wrap --&gt;
+&lt;div id="wrap" class="styleOrange basicCase"&gt;
+	&lt;!-- container --&gt;
+	&lt;div id="container"&gt;
+
+		&lt;div class="sendDetail"&gt;
+			&lt;!-- 발송공통 --&gt;
+			&lt;div class="sendSetting"&gt;
+				&lt;div class="gridSet grid2"&gt;
+					&lt;div class="gridItem"&gt;
+						&lt;h4&gt;받는사람 
+							&lt;span&gt;
+								&lt;button class="btnBO" id="customerOpen"&gt;고객검색&lt;/button&gt;
+								&lt;button class="btnBG"&gt;삭제&lt;/button&gt;
+							&lt;/span&gt;
+						&lt;/h4&gt;
+						&lt;div class="linebox lstScroll"&gt;
+							&lt;ul class="receiveList"&gt;
+								&lt;li&gt;
+									&lt;strong&gt;
+										&lt;span class="checkSet"&gt;&lt;input type="checkbox" id="" name=""&gt;&lt;label for=""&gt;&lt;i&gt;&lt;/i&gt;홍길동&lt;/label&gt;&lt;/span&gt;
+									&lt;/strong&gt;
+									&lt;div&gt;010-1234-4567&lt;/div&gt;
+								&lt;/li&gt;
+							&lt;/ul&gt;
+						&lt;/div&gt;
+						&lt;p&gt;총 발송대상 수 : &lt;strong&gt;1&lt;/strong&gt; 건&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div class="sendForm"&gt;
+				&lt;div class="gridSet grid2"&gt;
+					&lt;div class="gridItem"&gt;
+						&lt;div class="sendSMS"&gt;
+							&lt;div class="smsLayout mmsCase"&gt; &lt;!-- 글자수에 따라 자동으로 class 추가 / smsCase / lmsCase / mmsCase  --&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+					&lt;div class="gridItem"&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;!-- //SMS 용 --&gt;
+			&lt;div class="sendBtn"&gt;
+				&lt;button class="btnBY"&gt;SMS 발송&lt;/button&gt;
+			&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div class="sendBtn"&gt;
+				&lt;button class="btnCYN" id="formatViewOpen"&gt;미리보기&lt;/button&gt;
+				&lt;button class="btnBY"&gt;SMS 발송&lt;/button&gt;
+			&lt;/div&gt;			
+	&lt;/div&gt;
+	&lt;!-- //container --&gt;
+&lt;/div&gt; 
+&lt;!-- //wrap --&gt;
+</pre>
+						</p>
+						<p class="line"><img src="images/send_page.png" alt="structure img" /></p>
+						</li>
+						<li>통합게시판	
+						<p style="padding-left:50px;"><strong> .boardDetail (내용영역)<br/></strong>
+						
+<pre class="line">
+&lt;!-- contents --&gt;
+&lt;div class="contents"&gt;
+	&lt;div class="boardDetail"&lt;
+		&lt;div class="boardHead"&lt;
+			&lt;h1 class="tit"&lt;시스템 점검을 위한 사용제한 시간 안내&lt;/h1&lt;
+			&lt;ul class="boardHeadTail"&lt;
+				&lt;li&lt;&lt;span class="tit"&lt;번호 : &lt;/span&lt;&lt;span class="txt"&lt;3&lt;/span&lt;&lt;/li&lt;
+				&lt;li&lt;&lt;span class="tit"&lt;작성일자 : &lt;/span&lt;&lt;span class="txt"&lt;2018-12-03&lt;/span&lt;&lt;/li&lt;
+				&lt;li&lt;&lt;span class="tit"&lt;작성자 : &lt;/span&lt;&lt;span class="txt"&lt;관리자&lt;/span&lt;&lt;/li&lt;
+				&lt;li&lt;&lt;span class="tit"&lt;조회수 : &lt;/span&lt;&lt;span class="txt"&lt;540&lt;/span&lt;&lt;/li&lt;
+				&lt;li class="right"&lt;&lt;span class="tit"&lt;부서명 : &lt;/span&lt;&lt;span class="txt"&lt;용품&amp;서비스 상품 마케팅&lt;/span&lt;&lt;/li&lt;
+			&lt;/ul&lt;
+		&lt;/div&lt;
+	&lt;/div&lt;
+	
+&lt;/div&gt;
+&lt;!-- //contents --&gt;
+</pre>
+						</p>
+						<p class="line"><img src="images/notice_page.png" alt="structure img" /></p>
+						</li>
+						<li>통계
+						<p style="padding-left:50px;"><strong>.commissionLayout (내용영역)</strong>
+<pre class="line">
+&lt;!-- wrap --&gt;
+&lt;div id="wrap" class="styleOrange basicCase"&gt;
+	&lt;!-- container --&gt;
+	&lt;div id="container"&gt;
+		&lt;div class="commissionLayout"&gt;
+			&lt;div class="sorting noBtn"&gt;
+				&lt;div&gt;
+					&lt;span class="selectSet"&gt;
+						&lt;select&gt;
+							&lt;option selected=""&gt;2019년&lt;/option&gt;
+							&lt;option&gt;2017년&lt;/option&gt;
+						&lt;/select&gt;
+					&lt;/span&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;h3&gt;&lt;strong&gt;판매수수료&lt;/strong&gt; (2019, 경인본부 &gt; 청라지점) &lt;span&gt;(단위: 대 / 수수료: 원)&lt;/span&gt;&lt;/h3&gt;
+			&lt;table&gt;
+				&lt;colgroup&gt;
+					&lt;col span="4" width="25%"&gt;
+				&lt;/colgroup&gt;
+				&lt;thead&gt;
+					&lt;tr&gt;
+						&lt;th&gt;2019&lt;/th&gt;
+						&lt;th&gt;대수&lt;/th&gt;
+						&lt;th&gt;판매수수료(예상)&lt;/th&gt;
+					&lt;/tr&gt;
+				&lt;/thead&gt;
+				&lt;tbody class="total"&gt;
+					&lt;tr&gt;
+						&lt;td&gt;Total&lt;/td&gt;
+						&lt;td&gt;316&lt;/td&gt;
+						&lt;td&gt;89,567,348&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/tbody&gt;
+				&lt;tbody&gt;
+					&lt;tr&gt;
+						&lt;td&gt;1월&lt;/td&gt;
+						&lt;td&gt;13&lt;/td&gt;
+						&lt;td&gt;699,678&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/tbody&gt;
+			&lt;/table&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;!-- //container --&gt;
+&lt;/div&gt; 
+&lt;!-- //wrap --&gt;
+</pre>
+						</p>
+						<p class="line"><img src="images/statistics_page.png" alt="structure img" /></p>
+						</li>
+					</ol>
+				</article>
+			</section>
+			<hr/>
+			</div>
+
+			<footer>
+				<div><strong>Think-tree </strong>&nbsp;|&nbsp;copyright (c) think-tree all right reserved.</div>
+				<p>Last Update 2016-08-29 by Park, Kyoung Min</p>
+			</footer>
+
+		</div> 
+		<!-- //wrap -->
+	</body>
+</html>

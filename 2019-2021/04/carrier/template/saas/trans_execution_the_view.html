@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/push.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css"><!-- 2020-07-28 swiper-->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script><!-- 2020-07-28 swiper-->
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.taxBillArea .btnM').click(function() {
+					$(this).css('display','none');
+					$('.taxBillArea .imgArea img, .taxBillArea .billBtn').css('display','inline-block');
+				});
+				$('.btnTaxBill').click(function(){
+			        $('.popDim').show();
+			        $('.taxBillPop').show();
+			    });
+				$('.etransPop input:radio[name="etrans"]').change(function(){
+					var etransDp = this.value;
+					$('.etransPop .dataBox .etransDp').hide();
+					if(etransDp == 'own'){
+						$('.etransPop .dataBox .etransDp.ownCase').show();
+					} else if(etransDp == 'partner'){
+						$('.etransPop .dataBox .etransDp.partnerCase').show();
+					}
+				}); // etrans 신고 팝업 내 배차차량정보 radio
+				$('.btnEtrans').click(function(){
+			        $('.popDim').show();
+			        $('.etransPop').show();
+					scrollClose();
+			    });
+				$('.btnDpChange').click(function(){
+					$('.alertDim').show();
+					$('.dpAlertPop1.dpChangeCase').show();
+					$('.dpAlertPop1.dpChangeCase button').click(function(){
+						$('.alertDim').show();
+						$('.dpAlertPop2.dpChangeCase').show();
+					});
+					$(this).hide();
+					$('.btnDpSetEnd').show();
+					$('.dispatchSet dl dd .setText').hide();
+					$('.dispatchSet dl dd .selectSet').show();
+			    }); //배차변경 클릭 시
+				$('.btnDpSetEnd').click(function(){
+					$(this).hide();
+					$('.btnDpChange').show();
+					$('.dispatchSet dl dd .setText').show();
+					$('.dispatchSet dl dd .selectSet').hide();
+				}); //배차변경완료 클릭 시
+				$('.btnDpCancel').click(function(){
+					$('.alertDim').show();
+					$('.dpAlertPop1.dpCancelCase').show();
+					$('.dpAlertPop1.dpCancelCase button').click(function(){
+						$('.alertDim').show();
+						$('.dpAlertPop2.dpCancelCase').show();
+						$('.dpAlertPop2.dpCancelCase button').click(function(){
+							$('.alertDim').show();
+							$('.dpCancelAlertPop').show();
+						});
+					});
+					$('.dpCancelAlertPop button').click(function(){
+						$('.popDim').show();
+						$('.dpCancelPop').show();
+					});
+				}); //배차취소 클릭 시
+
+				/* 신고하기 관련 대응샘플 */
+				$(".btnTaxOk").click(function(){
+					$(this).hide();
+					$(this).next(".btnTaxCancel").show();
+					$(this).prev('span').addClass('on');
+					if($(this).is('#st01')){
+						$(".btnM.green.btnEtrans:first").removeClass('notYet');
+					} else if($(this).is('#st02')){
+						$(".btnM.green.btnEtrans:last").removeClass('notYet');
+					}
+				});
+				$(".btnTaxCancel").click(function(){
+					$(this).hide();
+					$(this).prev(".btnTaxOk").show();
+					$(this).prev().prev('span').removeClass('on');
+					if($(this).is('#st01Cancel')){
+						$(".btnM.green.btnEtrans:first").addClass('notYet');
+					} else if($(this).is('#st02Cancel')){
+						$(".btnM.green.btnEtrans:last").addClass('notYet');
+					}
+				});
+				/* end 신고하기 관련 대응샘플 */
+				$('.btnPush').click(function(){
+					$('.popDim, .transNotiPop').show();
+				}); //2020-07-16 운송완료 푸시
+				$('.btnFileChk').click(function(){
+			        $('.popDim, .imgZoomPop').show();
+			        $('.imgZoomPop .imgConBack').show();
+					var swiper = new Swiper('.swiper-container', {
+						navigation: {
+							nextEl: '.swiper-button-next',
+							prevEl: '.swiper-button-prev'
+						},
+						pagination: {
+							el: '.swiper-pagination'
+						},
+						grabCursor: true,
+						slidesPerView: 'auto'
+					});
+			    }); // 2020-07-28 이미지 확인 팝업
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap" class="freightCase">
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back">
+						<div data-include="../include/saas_snb.html"></div>
+					</div>
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<!-- 모바일 메뉴 없음 -->
+			<!-- //mobile Menu -->
+			<hr/>
+			<div id="containerBack">
+				<!-- header -->
+				<div id="header">
+					<header>
+						<span class="left">
+							<button class="btnList" onclick="location.href='trans_execution.html'">목록</button>
+						</span>
+						<div class="viewTit2">
+							<span class="simpleTit">
+								<em>[<span class="blue">수출</span> / 왕복]</em>
+								<strong class="date">2020-01-22</strong>
+								<span class="statusSet confirm">운송실행</span>
+							</span>
+							<span class="right">
+								<dl>
+									<dt>구간거리</dt>
+									<dd><span>486</span>km</dd>
+								</dl>
+								<dl>
+									<dt>운송금액</dt><!-- 2020-06-22 텍스트 수정 -->
+									<dd><span>560,000</span>원</dd>
+								</dl>
+							</span>
+						</div>
+						<!-- 2020-06-22 hiddenHead 추가 -->
+						<div class="hiddenHead" style="display:none;">
+							<dl>
+								<dt>작업시간</dt>
+								<dd>2020-01-22  09:00</dd>
+							</dl>
+							<dl>
+								<dt>작업지</dt>
+								<dd>
+									<strong>주식회사 안산중공업 (제1공장 1층 하역장)</strong>
+									<p>[충북/안산] 충청북도 청주시 상당구 북문로2가 18-2</p>
+								</dd>
+							</dl>
+						</div>
+						<!-- //2020-06-22 hiddenHead 추가 -->
+					</header>
+				</div>
+				<!-- //header -->
+				<hr/>
+				<!-- container -->
+				<div id="container">
+				<section>
+					<div class="content">
+					<article>
+						<!-- Page Layout -->
+						<div class="transExecutionView">
+							<div class="dispatchSetArea">
+								<span class="disCode">배차번호 20010001</span>
+								<span class="dispatchSet">
+									<dl class="inputBox iner">
+										<dt>운송 드라이버</dt>
+										<dd>
+											<span class="setText">홍길동 (010-0000-9999)</span>
+											<span class="selectSet" style="display:none;">
+												<select>
+													<option>홍길동 (010-0000-9999)</option>
+													<option>홍길동 (010-9999-9999)</option>
+												</select>
+											</span>
+										</dd>
+									</dl>
+									<dl class="inputBox iner">
+										<dt>운송 차량</dt>
+										<dd>
+											<span class="setText">(자차) 55호 3456</span>
+											<span class="selectSet" style="display:none;">
+												<select>
+													<option>(자차) 55호 3456</option>
+													<option>(자차) 55호 3456</option>
+												</select>
+											</span>
+										</dd>
+									</dl>
+									<span class="dpBtnSet">
+										<button class="btnM blue btnDpChange">배차변경</button>
+										<button class="btnM blue btnDpSetEnd" style="display:none;">완료</button>
+										<button class="btnM whiteBlue btnDpCancel">배차취소</button>
+									</span>
+								</span>
+							</div>
+							<div class="pd2">
+								<div class="gridSet grid2">
+									<div class="gridItem">
+										<div class="tEstep schedule">
+											<div class="tEstepTit">
+												<strong><span>1</span>운송일정</strong>
+											</div>
+											<div class="tls">
+												<table>
+													<colgroup>
+														<col width="120" />
+														<col width="80" />
+														<col width="300" />
+													</colgroup>
+													<thead>
+														<tr>
+															<th>운송일자</th>
+															<th>운송시간</th>
+															<th>출발/작업/도착지</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>2020-01-22</td>
+															<td>05:00</td><!-- 2020-06-22 '오전' 표기 없음 -->
+															<td class="tL">
+																<strong>[부산북항]</strong>
+																<span>부산광역시 남구 북항로</span>
+																<!-- 2020-06-16 모바일용 버튼 추가 -->
+																<div class="mBtn">
+																	<button class="btnS gray">주소 복사</button>
+																	<button class="btnS gray">내비게이션</button>
+																</div>
+																<!-- //2020-06-16 모바일용 버튼 추가 -->
+																<!-- 2020-07-16 출발지, 도착지에서는 담당자 번호 삭제 -->
+															</td>
+														</tr>
+														<tr>
+															<td>2020-01-22</td>
+															<td>05:00</td><!-- 2020-06-22 '오전' 표기 없음 -->
+															<td class="tL pb3">
+																<strong>[부산북항]</strong>
+																<span>주식회사 안산중공업 (제1공장 1층 하역장)</span>
+																<span>충청북도 청주시 상당구 북문로2가 18-2</span>
+																<!-- 2020-06-16 모바일용 버튼 추가 -->
+																<div class="mBtn">
+																	<button class="btnS gray">주소 복사</button>
+																	<button class="btnS gray">내비게이션</button>
+																</div>
+																<!-- //2020-06-16 모바일용 버튼 추가 -->
+																<div class="grayArea">홍길동 · <a class="phoneNum" href="tel:010-1234-5678">010-1234-5678</a></div>
+															</td>
+														</tr>
+														<tr>
+															<td>2020-01-22</td>
+															<td>05:00</td><!-- 2020-06-22 '오전' 표기 없음 -->
+															<td class="tL">
+																<strong>[부산북항]</strong>
+																<span>부산광역시 남구 북항로</span>
+																<!-- 2020-06-16 모바일용 버튼 추가 -->
+																<div class="mBtn">
+																	<button class="btnS gray">주소 복사</button>
+																	<button class="btnS gray">내비게이션</button>
+																</div>
+																<!-- //2020-06-16 모바일용 버튼 추가 -->
+																<!-- 2020-07-16 출발지, 도착지에서는 담당자 번호 삭제 -->
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+									<div class="gridItem">
+										<div class="tEstep container">
+											<div class="tEstepTit">
+												<strong><span>2</span>컨테이너 / 물품 정보</strong>
+												<div class="btn">
+													<button class="btnM green btnEtrans">e-trans 반출신고</button><!-- 2020-06-23 class 수정 -->
+													<button class="btnM green btnEtrans notYet">e-trans 반입신고</button><!-- 2020-06-23 안되었을 때 notYet class 추가 -->
+												</div>
+											</div>
+											<div class="tls">
+												<table>
+													<colgroup>
+														<col width="110" />
+														<col width="60" />
+														<col width="30" />
+														<col width="85" />
+														<col width="80"/>
+													</colgroup>
+													<thead>
+														<tr>
+															<th>유형</th><!-- 2020-06-16 순서 변경 -->
+															<th>크기</th>
+															<th>중량</th>
+															<th>컨테이너 번호</th>
+															<th>Seal 번호</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>Open Top</td><!-- 2020-06-16 순서 변경 -->
+															<td>40ft High Cube</td>
+															<td>30ton</td>
+															<td>999999999</td>
+															<td>888888888</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<div class="memo">
+												<strong>품목</strong>
+												<!-- 2020-08-04 품목 텍스트 상자 3줄 이상일 경우 스크롤 -->
+												<p>
+													공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.<br/>
+													공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기,<br/>
+													공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기,<br/>
+													빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.
+												</p>
+												<!-- //2020-08-04 품목 텍스트 상자 3줄 이상일 경우 스크롤 -->
+												<strong>운송 메모</strong>
+												<!-- //2020-08-04 품목 텍스트 상자 3줄 -->
+												<p>
+													공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.<br/>
+													공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기,<br/>
+													공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기
+												</p>
+												<!-- //2020-08-04 품목 텍스트 상자 3줄 -->
+												<strong>기타 메모</strong>
+												<p>
+													공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.
+													공기청정기, 빠렛트 작업됨. 공기청정기, 빠렛트 작업됨. 공기청정기,
+													빠렛트 작업됨. 공기청정기, 빠렛트 작업됨.
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tEstep diary">
+									<div class="tEstepTit">
+										<strong><span>3</span>운송일지</strong>
+									</div>
+									<div class="gridSet grid2">
+										<div class="gridItem">
+											<div class="log">
+												<table>
+													<colgroup>
+														<col width="70" />
+														<col />
+													</colgroup>
+													<tbody>
+														<tr>
+															<th rowspan="3" class="downAllow"><strong>운송실행</strong></th>
+															<td>
+																<dl>
+																	<dt>픽업지 이동</dt>
+																	<dd><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-16 컴포넌트 수정 --></dd>
+																	<dd></dd>
+																</dl>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<dl>
+																	<dt>픽업지 도착</dt>
+																	<dd><span class="dateFormat"><em>2019-12-01</em><i>오전 11:30:00</i></span><!-- 2020-06-16 컴포넌트 수정 --></dd>
+																	<dd></dd>
+																</dl>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<dl>
+																	<dt>작업지 이동</dt>
+																	<dd><input type="text" readonly/></dd>
+																	<dd><button class="btnM lineRed">현재시간 입력</button></dd>
+																</dl>
+															</td>
+														</tr>
+														<tr>
+															<th rowspan="3" class="downAllow"><strong>컨테이너 작업</strong></th>
+															<td>
+																<dl>
+																	<dt>작업지 도착</dt>
+																	<dd><input type="text" readonly/></dd>
+																	<dd><button class="btnM lineRed">현재시간 입력</button></dd>
+																</dl>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<dl>
+																	<dt>하역/실링</dt>
+																	<dd></dd>
+																	<dd>
+																		<button class="btnM lineRed">현재시간 입력</button>
+																		<button class="btnFileChk" disabled>미첨부</button>
+																	</dd>
+																</dl>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<!-- 2020-06-22 익월반납 영역 삭제 -->
+																<dl>
+																	<dt>하차지 이동</dt>
+																	<dd><input type="text" readonly/></dd>
+																	<dd><button class="btnM lineRed">현재시간 입력</button></dd>
+																</dl>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+										<div class="gridItem">
+											<div class="log">
+												<table>
+													<colgroup>
+														<col width="70" />
+														<col />
+													</colgroup>
+													<tbody>
+														<tr>
+															<th><strong>운송완료</strong></th>
+															<td>
+																<dl>
+																	<dt>하차지 도착</dt><!-- 2020-06-22 도착 시간입력 시 finish 클래스 추가 -->
+																	<dd><input type="text" readonly/></dd>
+																	<dd><button class="btnM lineRed btnPush">현재시간 입력</button></dd>
+																</dl>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- //page Layout -->
+					</article>
+					</div>
+				</section>
+				</div>
+				<!-- //container -->
+			</div>
+		</div>
+		<!-- //Wrap -->
+		<!-- alertPopup -->
+		<div class="alertDim" style="display:none;">
+			<!-- 2020-06-22 배차확정 기간이 지난 경우 -->
+			<div class="alertPop dpAlertPop1 dpChangeCase" style="display:none;">
+				<div class="pBack">
+					<div>
+						<strong>배차 변경 기한이 지난 건입니다.</strong>
+						<div class="alertUl">
+							<ul>
+								<li>※ 배차변경은 배차 확정 당일 24시까지만 가능합니다.</li>
+								<li>※ 부득이하게 [배차변경]이 필요한 경우, 물류플랫폼<!-- 2020-10-29 텍스트 변경 -->에 연락해주세요. Tel. 02) 123-4566 <span>(차후 배차 선정에 불이익이 있을 수 있습니다.)</span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn tC"><!-- 2020-06-22 가운데 정렬 class 추가 -->
+					<button class="btnM black">닫기</button>
+				</div>
+			</div>
+			<div class="alertPop dpAlertPop1 dpCancelCase" style="display:none;">
+				<div class="pBack">
+					<div>
+						<strong>배차 취소 기한이 지난 건입니다.</strong>
+						<div class="alertUl">
+							<ul>
+								<li>※ 배차취소는 배차 확정 당일 24시까지만 가능합니다.</li>
+								<li>※ 부득이하게 [배차변경]이 필요한 경우, 물류플랫폼<!-- 2020-10-29 텍스트 변경 -->에 연락해주세요. Tel. 02) 123-4566 <span>(차후 배차 선정에 불이익이 있을 수 있습니다.)</span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn tC"><!-- 2020-06-22 가운데 정렬 class 추가 -->
+					<button class="btnM black">닫기</button>
+				</div>
+			</div>
+			<!-- //2020-06-22 배차확정 기간이 지난 경우 -->
+			<!-- 2020-06-22 본인이 확정한 배차가 아닌 경우 -->
+			<div class="alertPop dpAlertPop2 dpChangeCase" style="display:none;">
+				<div class="pBack">
+					<p class="dpChangeCase">배차 변경은 해당 배차를 신청한 분만 진행 가능합니다.</p>
+				</div>
+				<div class="pBtn tC"><!-- 2020-06-22 가운데 정렬 class 추가 -->
+					<button class="btnM black">닫기</button>
+				</div>
+			</div>
+			<div class="alertPop dpAlertPop2 dpCancelCase" style="display:none;">
+				<div class="pBack">
+					<p>배차 취소는 해당 배차를 신청한 분만 진행 가능합니다.</p>
+				</div>
+				<div class="pBtn tC"><!-- 2020-06-22 가운데 정렬 class 추가 -->
+					<button class="btnM black">닫기</button>
+				</div>
+			</div>
+			<!-- //2020-06-22 본인이 확정한 배차가 아닌 경우 -->
+			<!-- 배차 취소 알림 팝업 -->
+			<div class="alertPop dpCancelAlertPop" style="display:none;">
+				<div class="pBack">
+					<div>
+						<strong>배차를 취소하시겠습니까?</strong>
+						<div class="alertUl">
+							<ul>
+								<li>※ [배차취소] 할 경우, 2시간 동안배차정보를 열람하실 수 없습니다.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM black">취소</button>
+					<button class="btnM red">확인</button>
+				</div>
+			</div>
+			<!-- //배차 취소 알림 팝업 -->
+			<!-- 2020-06-22 운송 삭제 알림 팝업 -->
+			<div class="alertPop dpDelAlertPop" style="display:none;">
+				<div class="pBack">
+					<div>
+						<strong>해당 운송건을 삭제하시겠습니까?</strong>
+					</div>
+				</div>
+				<div class="pBtn">
+					<button class="btnM black">취소</button>
+					<button class="btnM red">확인</button>
+				</div>
+			</div>
+			<!-- //2020-06-22 운송 삭제 알림 팝업 -->
+		</div>
+		<!-- //alertPopup -->
+		<!-- Popup -->
+		<div class="popDim" style="display:none">
+			<div class="layerDim" style="display:none;"></div><!-- 2020-06-22 layerDim 추가 -->
+			<!-- 배차 취소 팝업 -->
+			<div class="basicPop dpCancelPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>배차 취소</h1>
+				</div>
+				<div class="pBack">
+					<strong>해당 배차 건을 취소하시겠습니까? 배차취소 사유를 등록해 주세요.</strong>
+					<span class="radioSet">
+						<input type="radio" id="dpc1" name="dpCancel" />
+						<label for="dpc1"><i></i>해당 날짜에 운송할 수 없는 상황이 발생함</label>
+					</span>
+					<span class="radioSet">
+						<input type="radio" id="dpc2" name="dpCancel" />
+						<label for="dpc2"><i></i>화주와의 트러블이 발생함</label>
+					</span>
+					<span class="radioSet">
+						<input type="radio" id="dpc3" name="dpCancel" />
+						<label for="dpc3"><i></i>마음에 들지 않는 운송건인데 잘못 신청함</label>
+					</span>
+					<span class="radioSet">
+						<input type="radio" id="dpc4" name="dpCancel" />
+						<label for="dpc4"><i></i>기타 (사유를 입력해 주세요)</label>
+					</span>
+					<textarea></textarea>
+				</div>
+				<div class="pBtn">
+					<button class="btnM whiteBlack">닫기</button>
+					<button class="btnM red">배차취소하기</button>
+				</div>
+			</div>
+			<!-- //배차 취소 팝업 -->
+			<!-- e-trans 반출입 신고 -->
+			<div class="basicPop etransPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>e-Trans 반출/반입 신고</h1>
+				</div>
+				<div class="pBack">
+					<div class="left"><!-- 2020-06-23 div 추가 -->
+						<div class="etransTop"><!-- 2020-06-24 위치변경 -->
+							<span class="transType red">수입</span>
+							<span class="transType blue" style="display:none;">수출</span>
+							<span class="right">
+								<button class="btnRefresh">새로고침</button>
+								<button class="btnS orange">신고정보 불러오기</button>
+							</span>
+						</div>
+						<div class="dataBox">
+							<dl class="inputBox">
+								<dt>D/O</dt>
+								<dd><input type="text"/></dd><!-- 2020-07-16 placeholder 삭제 -->
+							</dl>
+							<dl class="inputBox">
+								<dt>선사</dt>
+								<dd><input type="text"/></dd><!-- 2020-07-16 placeholder 삭제 -->
+							</dl>
+							<div class="gridSet grid2">
+								<div class="gridItem">
+									<dl class="inputBox">
+										<dt>적재중량</dt>
+										<dd><input type="text" class="tR"/></dd><!-- 2020-07-16 placeholder 삭제 -->
+										<dd>ton</dd>
+									</dl>
+								</div>
+								<div class="gridItem">
+									<dl class="inputBox">
+										<dt>컨테이너번호</dt>
+										<dd><input type="text"/></dd><!-- 2020-07-16 placeholder 삭제 -->
+									</dl>
+								</div>
+							</div>
+							<dl class="inputBox">
+								<dt>Seal no.</dt>
+								<dd><input type="text"/></dd><!-- 2020-07-16 placeholder 삭제 -->
+							</dl>
+						</div>
+						<strong>배차차량정보</strong>
+						<div class="dataBox">
+							<span class="radioSet">
+								<input type="radio" id="own" name="etrans" value="own" checked/>
+								<label for="own"><i></i>자사 배차</label>
+							</span>
+							<span class="radioSet">
+								<input type="radio" id="partner" name="etrans" value="partner"/>
+								<label for="partner"><i></i>파트너 배차</label>
+							</span>
+							<div class="etransDp ownCase">
+								<dl class="inputBox">
+									<dt>드라이버 선택</dt>
+									<dd>
+										<span class="selectSet">
+											<select>
+												<option>선택 (성명 + 연락처)</option>
+												<option>홍길동 (010-1234-5678)</option>
+												<option>홍길똥 (010-1891-1675)</option>
+												<option>홍동동 (010-1224-5238)</option>
+											</select>
+										</span>
+									</dd>
+								</dl>
+								<dl class="inputBox">
+									<dt>차량 선택</dt>
+									<dd>
+										<span class="selectSet">
+											<select>
+												<option>선택</option>
+												<option>(자차) 123가 1234</option>
+												<option>(지입) 123가 1234</option>
+											</select>
+										</span>
+									</dd>
+								</dl>
+							</div>
+							<div class="etransDp partnerCase" style="display:none;">
+								<dl class="inputBox">
+									<dt>파트너 입력</dt>
+									<dd><input type="text"/></dd><!-- 2020-07-16 placeholder 삭제 -->
+								</dl>
+							</div>
+						</div>
+					</div>
+					<div class="right"><!-- 2020-06-23 div 추가 -->
+						<div class="taxStampSet">
+							<div>
+								<span class="taxStamp export on">반입 신고</span>
+								<button class="btnTaxOk" id="st01"  style="display:none;">e-Trans 반출신고</button>
+								<button class="btnTaxCancel" id="st01Cancel">e-Trans 신고취소</button>
+							</div><!-- 2020-06-23 div 추가 -->
+							<div>
+								<span class="taxStamp">반출 신고</span>
+								<button class="btnTaxOk" id="st02">e-Trans 반입신고</button>
+								<button class="btnTaxCancel" id="st02Cancel" style="display:none;">e-Trans 신고취소</button>
+							</div><!-- 2020-06-23 div 추가 -->
+						</div>
+					</div>
+				</div>
+				<div class="pBtn tC"><!-- 2020-06-16 class 추가 및 취소버튼 삭제-->
+					<button class="btnM black">확인</button>
+				</div>
+			</div>
+			<!-- //e-trans 반출입 신고 -->
+			<!-- 2020-07-28 이미지 확대 -->
+			<div class="imgZoomPop" style="display:none">
+				<button class="pclose">닫기</button>
+				<div class="imgConBack" style="display:none;">
+					<div class="imgContainer swiper-container">
+						<div class="centered swiper-wrapper">
+							<div class="swiper-slide"><img src="../../images/sample1.png" alt="이미지 샘플"/></div>
+							<div class="swiper-slide"><img src="../../images/sample2.png" alt="이미지 샘플"/></div>
+							<div class="swiper-slide"><img src="../../images/img_taxBillRed.png" alt="이미지 샘플"/></div>
+						</div>
+						<div class="swiper-pagination"></div>
+					</div>
+					<button class="btnImgPass before swiper-button-prev">이전</button>
+					<button class="btnImgPass next swiper-button-next">다음</button>
+				</div>
+			</div>
+			<!--//2020-07-28 이미지 확대 -->
+			<!-- 2020-07-16 운송알림 -->
+			<div class="basicPop transNotiPop" style="display:none;">
+				<button class="pclose">닫기</button>
+				<div class="tt">
+					<h1>운송 완료</h1>
+				</div>
+				<div class="pBack">
+					<strong>[배차번호: 20010001]<br/>운송이 완료되었습니다.</strong>
+					<div class="arrival">
+						<ul>
+							<li>운송일: 2020-01-22</li>
+							<li>일정: 부산북항(05:00)-충북안산(09:00)-부산북항(익 15:00)</li>
+							<li>드라이버: 홍길동(010-2345-6789)</li>
+						</ul>
+					</div>
+				</div>
+				<div class="pBtn tC">
+					<button class="btnM orange">확인</button>
+				</div>
+			</div>
+			<!-- //2020-07-16 운송알림 -->
+		</div>
+		<!-- //popup -->
+    </body>
+</html>

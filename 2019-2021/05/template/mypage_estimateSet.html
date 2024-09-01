@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../css/responsive.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+		<!-- <script type="text/javascript" src="js/swiper.min.js"></script> -->
+		<script type="text/javascript" src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../js/menu.js"></script>
+		<script type="text/javascript" src="../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$(".publicSet .btnBG").click(function(){
+				$('.publicSet dl dd button').toggle();
+			});
+			$(".agencySet button").click(function(){
+				$('.dimPop, #estSetPop1').show();
+			});
+			$(".publicSet .addPublic, .publicSet .mofidy").click(function(){
+				$('.dimPop, #estSetPop2').show();
+			});
+			$(".popMNCase .close").click(function(){
+				$('.dimPop, .popMNCase').hide();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+
+		<!-- DimPopUp -->
+		<div class="dimPop" style="display:none;">
+			<!-- 등록대행 맞춤설정 -->
+			<div class="popMNCase estSetPop" id="estSetPop1" style="display:none;">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>등록대행 맞춤설정</h1>
+					<button>새로고침</button>
+				</div>
+				<div class="popBack">
+					<dl>
+						<dt>차량용도</dt>
+						<dd>
+							<span class="selectSet">
+								<select>
+									<option>선택해주세요.</option>
+									<option>자가용</option>
+									<option>영업용</option>
+									<option>택시</option>
+									<option>자가용(기타)</option>
+								</select>
+							</span>
+						</dd>
+					</dl>
+					<dl>
+						<dt>번호판대 (단위:원)</dt>
+						<dd>
+							<div class="price">
+								<input type="text" /><span>원</span>
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>등록대행여부<sup>*</sup></dt>
+						<dd>
+							<span class="selectSet">
+								<select>
+									<option>선택해주세요.</option>
+									<option>개인등록</option>
+									<option>등록대행</option>
+									<option>카드대행</option>
+									<option>개인등록(구조변경업체구입)</option>
+								</select>
+							</span>
+						</dd>
+					</dl>
+					<dl>
+						<dt>등록대행 수수료</dt>
+						<dd>
+							<div class="price">
+								<input type="text" /><span>원</span>
+							</div>
+						</dd>
+					</dl>
+				</div>
+				<div class="btn">
+					<button class="btnLB">취소</button>
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+			<!-- //등록대행 맞춤설정 -->
+			<!-- 공채설정 -->
+			<div class="popMNCase estSetPop" id="estSetPop2" style="display:none;">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>공채 설정</h1>
+				</div>
+				<div class="popBack">
+					<dl>
+						<dt>공채구분<sup>*</sup></dt>
+						<dd>
+							<span class="selectSet">
+								<select>
+									<option>선택해주세요.</option>
+									<option>도시철도</option>
+									<option>지역개발</option>
+									<option>지역개발(경남)</option>
+									<option>도시철도(부산)</option>
+									<option>도시철도(대구)</option>
+									<option>지역개발(달성)</option>
+									<option>지역개발(인천)</option>
+									<option>지역개발(제주)</option>
+									<option>지역개발(경기)</option>
+									<option>지역개발(충남)</option>
+									<option>지역개발(광주)</option>
+									<option>지역개발(전북)</option>
+									<option>지역개발(대전)</option>
+								</select>
+							</span>
+						</dd>
+					</dl>
+					<dl>
+						<dt>할인여부<sup>*</sup></dt>
+						<dd>
+							<span class="radioSet"><input type="radio" id="a1" name="a" checked /><label for="a1"><i></i>예</label></span>
+							<span class="radioSet"><input type="radio" id="a2" name="a" /><label for="a2"><i></i>아니오</label></span>
+						</dd>
+					</dl>
+					<dl>
+						<dt>할인율(0~100%)</dt>
+						<dd><input type="text" placeholder="0~100 이내의 숫자로 입력해 주세요." /></dd>
+					</dl>
+					<dl>
+						<dt>기본공채여부<sup>*</sup></dt>
+						<dd>
+							<span class="radioSet"><input type="radio" id="b1" name="b" checked /><label for="b1"><i></i>예</label></span>
+							<span class="radioSet"><input type="radio" id="b2" name="b" /><label for="b2"><i></i>아니오</label></span>
+						</dd>
+					</dl>
+				</div>
+				<div class="btn">
+					<button class="btnLB">취소</button>
+					<button class="btnBY">확인</button>
+				</div>
+			</div>
+			<!-- //공채설정 -->
+		</div>
+		<!-- //DimPopUp -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 서브 생략 -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="goPrev" onclick="history.back()">뒤로가기</button>
+						</span>
+						<h1><img src="../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2 class="sCase"><span>마이페이지 &gt; </span>견적설정</h2> <!-- 2019-04-17 타이틀변경 -->
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<!-- myPage -->
+						<div class="estSetLayout">
+							<div class="agencySet">
+								<p>
+									<strong>등록대행 맞춤설정</strong>
+									(자가용/ 번호판대: 37,000원/ 등록대행/ 수수료: 25.000원)
+									<button class="btnBY">설정/변경</button>
+								</p>
+							</div>
+							<div class="publicSet">
+								<dl>
+									<dt>
+										공채설정 <button class="btnBG">편집</button>
+									</dt>
+									<!-- Loop -->
+									<dd>
+										<div>
+											<strong>지역개발</strong>
+											(할인여부: 예/ 할인율: 50%/ 기본공채: 예)
+											<button class="mofidy">수정하기</button>
+											<button class="delete">삭제하기</button>
+										</div>
+									</dd>
+									<!-- //Loop -->
+									<dd>
+										<div>
+											<strong>도시철도</strong>
+											(할인여부: 예/ 할인율: 50%/ 기본공채: 예)
+											<button class="mofidy">수정하기</button>
+											<button class="delete">삭제하기</button>
+										</div>
+									</dd>
+									<dd>
+										<div class="listNone"><span>공채설정 등록을 하지 않습니다.</span></div>
+									</dd>
+								</dl>
+								<button class="addPublic">공채설정 추가</button>
+							</div>
+						</div>
+						<!-- //myPage -->
+					</section>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+	</body>
+</html>

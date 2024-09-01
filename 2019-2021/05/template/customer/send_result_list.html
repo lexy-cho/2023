@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="format-detection" content="telephone=no"/>
+		<title>르노삼성자동차 e-BEST</title>
+		<link rel="shortcut icon" href="../../images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bbs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/process.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/contract.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/customer.css" />
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-1.4.0.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../../js/swiper.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../js/menu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>  
+		$(document).ready(function(){
+			$(document).on('click tab', '.gnbOpen', function(e){
+				$('.gnbScroll').load('../gnb.html',function(){
+					funcGnbOpen();
+				});
+				return false;
+			});// 2019-03-15 gnb html load (퍼블리시용)
+            
+			// 2019-03-15 달력형식 변경, 공통으로 사용
+            $('.calendarSet button').duDatepicker({
+                format: 'yyyy-mm-dd', // Determines the date format
+                theme: 'yellow',        // Determines the color theme of the date picker
+				readOnly: true,       // Determines if input element is readonly (key input is disabled)
+				clearBtn: false,      // Determines if Clear button is displayed
+				cancelBtn: true,     // Determines if Cancel button is displayed
+				overlayClose: true    // Determines if clicking the overlay will close the date picker
+			}).on('datechanged', function(event){
+                $(this).prev().val(event.date);
+            });
+            
+            // 헤더 컨텐츠 고정 값만큼 컨텐츠에 padding-top 설정, 목록은 모두 공통 <!--2019-03-15--->
+            $(window).resize(function(){
+                $(".postList").css({
+                    "padding-top" : $(".headFixed").height()
+                });
+            }).resize();
+
+            // sms / fax / e-mail 페이지 이동
+            $("#custCarType").on("change", function(){
+                if($(this).find("option:selected").val() == 1){
+                    window.location.href = 'send_result_list2.html';
+                }else if($(this).find("option:selected").val() == 2){
+                    window.location.href = 'send_result_list3.html';
+                }
+            });
+            
+            // mobile 한정 - 검색영역 확장 버튼, 목록은 공통으로 사용 <!--2019-03-15--->
+            $(".btnSchOpen").click(function(){
+                if($(this).hasClass("active")){
+                    $(this).removeClass("active");
+                    $(this).parent(".searchField").removeClass("on");
+                    $(".postList").css({
+                        "padding-top" : $(".headFixed").height()
+                    });
+                }else{
+                    $(this).addClass("active");
+                    $(this).parent(".searchField").addClass("on");
+                    $(".postList").css({
+                        "padding-top" : $(".headFixed").height()
+                    });
+                }
+            });
+
+            // 미리보기
+            $(".iSentForm").click(function(){
+				$('.dimPop, .formatViewPop').show();
+			});
+            
+            // 2019-05-06 탭추가
+            $(".sentList.tbBody").hide();
+            $(".sentList.tbBody.sentEndCase").show();
+            $(".sendTab li a").click(function () {
+                $(".sendTab li").removeClass("on");
+                $(this).parent("li").addClass("on");
+                $(".sentList.tbBody").hide();
+                var activeTab = $(this).attr("data-name");
+                $("." + activeTab).fadeIn();
+            });
+		});
+		</script>
+	</head>
+	<body>
+		<!-- skip-navigation -->
+		<div class="skip-navigation">
+			<p><a href="#container" tabindex="0">본문 바로가기</a></p>
+		</div>
+		<!-- //skip-navigation -->
+		<!-- wrap -->
+		<div id="wrap" class="wrapper">
+			<!-- GNB : 왼쪽 > 오른쪽 -->
+			<button class="gnbClose">GNB 닫기</button>
+			<div class="gnbArea slideDefault com-slide-left">
+				<div class="gnbScroll">
+				</div>
+			</div>
+			<div id="c-mask" class="c-mask"><!-- GNB Mask --></div>
+			<!-- //GNB -->
+			<!-- header -->
+			<div id="header"> 
+				<head>
+					<div class="headTop">
+						<span class="hBtnLeft">
+							<button class="gnbOpen">GNB 열기</button>
+							<!-- <button class="goPrev" onclick="history.back()">뒤로가기</button> -->
+						</span>
+						<h1><img src="../../images/img_topLogo.svg" alt="GROUPE RENAULT" /></h1>
+						<span class="hBtnRight">
+							<a href="../main.html" class="goMain">메인으로 이동</a>
+						</span>
+					</div>
+					<div class="headSub">
+						<h2 class="sCase">발송결과 조회</h2>
+						<div class="right">
+							<p class="userInfo"><strong>김르노</strong> 님</p>
+							<span class="session cyanCase">
+								세션만료 <strong>26분 30초<span><!-- time progress bar --></span></strong>
+							</span>
+						</div>
+					</div>
+				</head>
+			</div>
+			<!-- //header -->
+			<!-- container -->
+			<div id="container">
+				<div class="content">
+					<section>
+						<div class="postList"> <!--2019-03-15 클래스명 변경--->
+                            <!-- fixed -->
+                            <div class="headFixed">
+                                <!-- 검색 -->
+                                <div class="searchField send">
+                                    <div class="iptSltLine">
+                                        <div class="sltGrp">
+                                            <span class="selectSet" id="custCarType">
+                                                <select>
+                                                    <option selected>SMS</option>
+                                                    <option value="1">e-mail</option>
+                                                    <option value="2">Fax</option>
+                                                </select>
+                                            </span>
+											<div class="dateLabelCnt">
+												<ul class="calGrp">
+													<li>
+														<div class="calendarSet"><input type="tel" id="" name="" /><button>달력열기</button></div><!--2019-03-15--->
+													</li>
+													<li>
+														<div class="calendarSet"><input type="tel" id="" name="" /><button>달력열기</button></div><!--2019-03-15--->
+													</li>
+												</ul>
+												<button class="btnBG reflesh">새고로침</button>
+											</div>
+                                        </div>
+                                    </div>
+                                    <button class="btnBY">조회</button>
+                                    <button class="mbView btnSchOpen">열기</button>
+                                </div>
+                                <!-- // 검색 -->
+                                <!-- table header / Tab -->
+								<!-- 2019-05-06 tab 추가 및 포인트정보 위치 변경 -->
+								<p class="pointDot">사용가능 포인트: <strong>3,500 p</strong> / <span>116건</span> 발송 가능</p>
+								<div class="sendTab">
+									<nav>
+										<ul>
+											<li class="on"><a data-name="sentEndCase">발송결과</a></li>
+											<li><a data-name="sentYetCase">예약내역</a></li>
+										</ul>
+									</nav>
+								</div>
+								<!-- //2019-05-06 -->
+                                <!-- table header -->
+                                <div class="tablet"> <!--  tab > tablet -->
+                                    <div class="tbContainer">
+                                        <ul class="sentList tbHead">
+                                            <li>
+												<span class="sTime">발송시각</span>
+												<span class="name">고객명(상호)</span>
+												<span class="call">전화번호</span>
+												<span class="sResults">보낸결과</span>
+												<span class="resend">재발송</span>
+												<span class="spreview">미리보기</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- // table header -->
+                            </div>
+                            <!-- // fixed -->
+                            
+                            <div class="postListBody"> <!-- 클래스명 변경--->
+                                <!-- 목록 -->
+                                <div class="tbContainer sentCase"> <!-- 2019-05-06 class 추가  -->
+                                   <!-- 2019-05-06 포인트정보 모바일버전 삭제 -->
+                                    <ul class="sentList tbBody sentEndCase">
+                                        <li>
+                                            <span class="sTime">2018-12-05 09:00</span>
+											<span class="name">홍길동</span>
+											<span class="call longTxt"><span class="mTxt">고객 전화번호 : </span>010-0000-0000</span>
+											<span class="sResults">실패</span>
+											<span class="resend"><button class="iReSend">재발송</button></span>
+											<span class="spreview"><button class="iSentForm">미리보기</button></span>
+                                        </li>
+                                        <li>
+                                            <span class="sTime">2018-12-05 09:00</span>
+											<span class="name">홍길동</span>
+											<span class="call longTxt"><span class="mTxt">고객 전화번호 : </span>010-0000-0000</span>
+											<span class="sResults">실패</span>
+											<span class="resend"><button class="iReSend">재발송</button></span>
+											<span class="spreview"><button class="iSentForm">미리보기</button></span>
+                                        </li>
+                                        <li>
+                                            <span class="sTime">2018-12-05 09:00</span>
+											<span class="name">홍길동</span>
+											<span class="call longTxt"><span class="mTxt">고객 전화번호 : </span>010-0000-0000</span>
+											<span class="sResults">성공</span>
+											<span class="resend"></span>
+											<span class="spreview"><button class="iSentForm">미리보기</button></span>
+                                        </li>
+                                        <li>
+                                            <span class="sTime">2018-12-05 09:00</span>
+											<span class="name">홍길동</span>
+											<span class="call longTxt"><span class="mTxt">고객 전화번호 : </span>010-0000-0000</span>
+											<span class="sResults">성공</span>
+											<span class="resend"></span>
+											<span class="spreview"><button class="iSentForm">미리보기</button></span>
+                                        </li>
+                                        <li>
+                                            <span class="sTime">2018-12-05 09:00</span>
+											<span class="name">홍길동</span>
+											<span class="call longTxt"><span class="mTxt">고객 전화번호 : </span>010-0000-0000</span>
+											<span class="sResults">성공</span>
+											<span class="resend"></span>
+											<span class="spreview"><button class="iSentForm">미리보기</button></span>
+                                        </li>
+                                        <li>
+                                            <span class="sTime">2018-12-05 09:00</span>
+											<span class="name">홍길동</span>
+											<span class="call longTxt"><span class="mTxt">고객 전화번호 : </span>010-0000-0000</span>
+											<span class="sResults">성공</span>
+											<span class="resend"></span>
+											<span class="spreview"><button class="iSentForm">미리보기</button></span>
+                                        </li>
+                                        <li>
+                                            <span class="sTime">2018-12-05 09:00</span>
+											<span class="name">홍길동</span>
+											<span class="call longTxt"><span class="mTxt">고객 전화번호 : </span>010-0000-0000</span>
+											<span class="sResults">성공</span>
+											<span class="resend"></span>
+											<span class="spreview"><button class="iSentForm">미리보기</button></span>
+                                        </li>
+                                        <li>
+                                            <span class="sTime">2018-12-05 09:00</span>
+											<span class="name">홍길동</span>
+											<span class="call longTxt"><span class="mTxt">고객 전화번호 : </span>010-0000-0000</span>
+											<span class="sResults">성공</span>
+											<span class="resend"></span>
+											<span class="spreview"><button class="iSentForm">미리보기</button></span>
+                                        </li>
+                                        <li>
+                                            <span class="sTime">2018-12-05 09:00</span>
+											<span class="name">홍길동</span>
+											<span class="call longTxt"><span class="mTxt">고객 전화번호 : </span>010-0000-0000</span>
+											<span class="sResults">성공</span>
+											<span class="resend"></span>
+											<span class="spreview"><button class="iSentForm">미리보기</button></span>
+                                        </li>
+                                        <li>
+                                            <span class="sTime">2018-12-05 09:00</span>
+											<span class="name">홍길동</span>
+											<span class="call longTxt"><span class="mTxt">고객 전화번호 : </span>010-0000-0000</span>
+											<span class="sResults">성공</span>
+											<span class="resend"></span>
+											<span class="spreview"><button class="iSentForm">미리보기</button></span>
+                                        </li>
+                                        <li>
+                                            <span class="sTime">2018-12-05 09:00</span>
+											<span class="name">홍길동</span>
+											<span class="call longTxt"><span class="mTxt">고객 전화번호 : </span>010-0000-0000</span>
+											<span class="sResults">성공</span>
+											<span class="resend"></span>
+											<span class="spreview"><button class="iSentForm">미리보기</button></span>
+                                        </li>
+                                        <li>
+                                            <span class="sTime">2018-12-05 09:00</span>
+											<span class="name">홍길동</span>
+											<span class="call longTxt"><span class="mTxt">고객 전화번호 : </span>010-0000-0000</span>
+											<span class="sResults">성공</span>
+											<span class="resend"></span>
+											<span class="spreview"><button class="iSentForm">미리보기</button></span>
+                                        </li>
+                                    </ul>
+									<!-- 2019-05-06 예약목록 별도 나눔 -->
+                                    <ul class="sentList tbBody sentYetCase" style="display:none;">
+                                        <li class="reserved">
+                                            <span class="sTime">2018-12-05 09:00</span>
+											<span class="name">홍길동</span>
+											<span class="call longTxt"><span class="mTxt">고객 전화번호 : </span>010-0000-0000</span>
+											<span class="sResults">예약</span>
+											<span class="resend"></span>
+											<span class="spreview"><button class="iSentForm">미리보기</button></span>
+                                        </li>
+                                        <li class="reserved">
+                                            <span class="sTime">2018-12-05 09:00</span>
+											<span class="name">홍길동</span>
+											<span class="call longTxt"><span class="mTxt">고객 전화번호 : </span>010-0000-0000</span>
+											<span class="sResults">예약</span>
+											<span class="resend"></span>
+											<span class="spreview"><button class="iSentForm">미리보기</button></span>
+                                        </li>
+                                    </ul>
+									<!-- //2019-05-06 예약목록 별도 나눔 -->
+                                    <!-- 조회결과가 없을 때 -->
+                                    <ul class="customerList tbBody">
+                                        <li class="listNone">
+                                            <span class="sIcon">조회 결과가 존재하지 않습니다.</span>
+                                        </li>
+                                    </ul>
+                                    <!-- // 조회결과가 없을 때 -->
+                                </div>
+                                <!-- // 목록 -->
+                            </div>
+                        </div>  
+					</section>
+                    <button class="pageTop list">TOP</button>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+		<!-- //wrap -->
+        
+        <!-- DimPopUp -->
+		<div class="dimPop" style="display:none;">
+			<!-- 미리보기 : SMS 경우-->
+			<div class="popLGCase formatViewPop smsCase" style="display:none;">
+				<button class="close">닫기</button>
+				<div class="tt">
+					<h1>SMS 미리보기</h1>
+				</div>
+				<!-- 서식입력, 미리보기 Layout 공통으로 사용 -->
+				<div class="fdView">
+					<dl>
+						<dt>고객명</dt>
+						<dd>홍길동 / 010-1234-5678 외 n건</dd>
+					</dl>
+					<dl>
+						<dt>발신인</dt>
+						<dd>김르노 / 010-8765-4321</dd>
+					</dl>
+					<div class="txtArea">
+						<div class="lstScroll">
+							(광고) 고객님 안녕하세요?<br/>
+							르노삼성자동차 김르노입니다.<br/> 
+							저희 지점에서 차량을 구매해 주신 것에 대해 다시 한번 감사 말씀 드립니다. 또한, 제가 도와드릴 일이 있거나 차량관련 문의사항이 있으시면 언제든지 연락 주시면 신속한 처리를 약속 드리겠습니다.<br/><br/>
+							고객님 장마철 안전운전 잊지 마시고 늘 건강하십시오.<br/>
+							▣무료수신거부 080-300-3004
+						</div>
+					</div>
+				</div>
+				<!-- //서식입력, 미리보기 Layout 공통으로 사용 -->
+				<div class="btn tCenter">
+					<button class="btnLB">확인</button>
+				</div>
+			</div>
+			<!-- //미리보기 -->
+        </div>
+        <!-- // DimPopUp -->
+	</body>
+</html>

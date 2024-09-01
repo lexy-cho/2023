@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<title>thecontainer</title>
+		<link rel="stylesheet" type="text/css" href="../../css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/duDatepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/push.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../../js/pushmenu.js"></script>
+		<script type="text/javascript" src="../../js/duDatepicker.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.helperIcon').click(function(){
+					$('.helper').toggleClass('on');
+				});
+				$('.helper .pclose').click(function(){
+					$('.helper').removeClass('on');
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Wrap -->
+		<div id="wrap">
+			<!-- Sub Menu -->
+			<div id="snb">
+				<aside>
+					<div class="back">
+						<div data-include="../include/saas_snb.html"></div>
+					</div>
+				</aside>
+			</div>
+			<!-- //Sub Menu -->
+			<!-- mobile Menu -->
+			<div id="headerM">
+				<div data-include="../include/saas_headM.html"></div>
+			</div>
+			<!-- //mobile Menu -->
+			<!-- mobile push -->
+			<div id="push">
+				<aside>
+					<div class="panelBack c-menu--slide-right" data-include="../push.html"></div>
+					<div class="c-mask"></div><!-- /c-mask -->
+				</aside>
+			</div>
+			<!-- //mobile push -->
+			<hr/>
+			<div id="containerBack">
+				<!-- header -->
+				<div id="header" class="changeList"><!-- 2020-06-16 class 추가 -->
+					<header>
+						<span class="left">
+							<strong class="switchTit">매출 <strong>리스트</strong></strong>
+						   <a class="btnM btnListSwitch own" href="freight_calculate_buying.html">리스트 전환</a><!-- 2020-06-16 위치변경 -->
+						</span>
+						 <div class="calNavigation">
+							<button class="btnCalNavi before">이전</button>
+							<strong>2020-04</strong>
+							<button class="btnCalNavi after">다음</button>
+						</div>
+						<div class="helper"><!-- 2020-06-16 위치변경 -->
+							<strong class="helperIcon">도움말</strong>
+							<div class="hiddenArea">
+								<div>
+									<strong>도움말</strong>
+									<ul>
+										<li>※1. 운임 정산 > 매출 리스트에는 ‘자사가 운송 완료한 건‘만 표출됩니다.</li>
+										<li>※2. 운임 정산 탭에서 발행하는 세금계산서는 전자 세금계산서(국세청 홈택스)가 아닌, 간이 세금계산서 입니다. 이 점 참고하시어 이용해주세요.</li>
+									</ul>
+								</div>
+								<button class="pclose">도움말 닫기</button>
+							</div>
+						</div>
+					</header>
+				</div>
+				<!-- //header -->
+				<hr/>
+				<!-- container -->
+				<div id="container">
+				<section>
+					<div class="content">
+					<article>
+						<!-- Page Layout -->
+						<div class="freightCalculate">
+							<div class="pCase" data-include="freight_calculate_pc.html"></div>
+							<div class="mCase" data-include="freight_calculate_m.html"></div>
+						</div>
+						<!-- //page Layout -->
+					</article>
+					</div>
+				</section>
+				</div>
+				<!-- //container -->
+			</div>
+		</div>
+		<!-- //Wrap -->
+    </body>
+</html>
